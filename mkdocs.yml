@@ -14,4 +14,5 @@ plugins:
   - awesome-pages
 nav:
   - Home: index.md
-  - Sample Blog Article: sample-blog-article.md
+  - Sample Blog Article:
+      - Article: sample-blog-article/index.md
