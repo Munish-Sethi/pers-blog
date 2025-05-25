@@ -21,6 +21,31 @@ This is a sample article to demonstrate how blogging works with MkDocs. You can 
 print("Hello, MkDocs Blog!")
 ```
 
+## Example: Simple Python Function
+
+Below is a sample Python function. You can use the copy button (provided by the Material theme) to copy the code:
+
+```python
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("World")
+```
+
+## Example: Data Processing with Pandas
+
+Here is a more advanced example using pandas:
+
+```python
+import pandas as pd
+
+data = {'Name': ['Alice', 'Bob', 'Charlie'], 'Age': [25, 30, 35]}
+df = pd.DataFrame(data)
+print(df)
+```
+
 ---
 
 Happy blogging!
+
+You can add more code blocks like these. The copy button appears automatically if you have `content.code.copy` enabled in your mkdocs.yml (which you do).
