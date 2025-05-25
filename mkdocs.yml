@@ -1,0 +1,17 @@
+site_name: My Technical Blog
+site_description: >-
+  A professional blog showcasing business problem solutions with Python, Azure, and PowerShell examples.
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - content.code.annotate
+    - content.code.copy
+plugins:
+  - search
+  - git-revision-date-localized
+  - awesome-pages
+nav:
+  - Home: docs/index.md
+  - Sample Blog Article: docs/sample-blog-article.md
