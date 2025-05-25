@@ -13,5 +13,5 @@ plugins:
   - git-revision-date-localized
   - awesome-pages
 nav:
-  - Home: docs/index.md
-  - Sample Blog Article: docs/sample-blog-article.md
+  - Home: index.md
+  - Sample Blog Article: sample-blog-article.md
