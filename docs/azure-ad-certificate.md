@@ -1,3 +1,5 @@
+<!-- Certificate Based Authentication for Azure AD -->
+
 # Certificate-Based Authentication for Azure AD: Why and How
 
 ## Creating a Certificate for Azure AD Authentication

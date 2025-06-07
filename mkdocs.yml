@@ -18,9 +18,11 @@ plugins:
 nav:
   - Home: index.md
   - Entra:
-      - Certificate Based Authentication: azure-ad-certificate/index.md
+      - Certificate Based Authentication: azure-ad-certificate.md
+      - Download Azure Bill: azure-billing.md
+      - Download Azure Resource: azure-resources.md
   - SAP:
-      - Setup PyRFC in your Container: sap-rfc-python-container/index.md
+      - Setup PyRFC in your Container: sap-rfc-python-container.md
 extra_css:
   - assets/custom.css
 extra_javascript:

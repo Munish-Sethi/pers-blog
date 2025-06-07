@@ -2,10 +2,13 @@
 
 Browse the latest articles below:
 
-## Azure AD
-- [Certificate Based Auth](azure-ad-certificate/index.md)
-## SAP 
-- [Setup PyRFC in your Container](sap-rfc-python-container/index.md)
+## Azure
+- [Certificate Based Authentication](azure-ad-certificate.md)
+- [Download Subscription Bill](azure-billing.md)
+- [Download Azure Resource](azure-resources.md)
+
+## SAP
+- [Setup PyRFC in your Container](sap-rfc-python-container.md)
 
 ---
 
