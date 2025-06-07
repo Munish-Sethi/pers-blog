@@ -7,6 +7,7 @@ theme:
     - navigation.sections
     - content.code.annotate
     - content.code.copy
+  pygments_style: github
   logo: null
   favicon: null
   homepage: index.md
@@ -17,9 +18,12 @@ plugins:
 nav:
   - Home: index.md
   - Azure AD:
-      - Certificate Based Authorization: azure-ad-certificate/index.md
+      - Certificate Based Authentication: azure-ad-certificate/index.md
       - Sample Article: azure-ad-certificate/sample-article.md
 extra_css:
   - assets/custom.css
 extra_javascript:
   - assets/custom.js
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
