@@ -1,0 +1,14 @@
+html, body, .md-typeset {
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+  font-size: 10pt !important;
+}
+
+/* Hide the left navigation sidebar */
+.md-sidebar--primary {
+  display: none !important;
+}
+
+/* Make the content section wider */
+.md-main__inner {
+  grid-template-columns: 1fr minmax(0, 900px) 320px !important;
+}

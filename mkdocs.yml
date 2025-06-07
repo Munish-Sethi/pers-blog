@@ -14,5 +14,7 @@ plugins:
   - awesome-pages
 nav:
   - Home: index.md
-  - Sample Blog Article:
-      - Article: sample-blog-article/index.md
+  - Certificate Based Auth for Azure AD:
+      - Article: azure-ad-certificate/index.md
+extra_css:
+  - assets/custom.css
