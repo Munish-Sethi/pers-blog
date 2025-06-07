@@ -4,11 +4,24 @@ html, body, .md-typeset {
 }
 
 /* Hide the left navigation sidebar */
-.md-sidebar--primary {
+/* .md-sidebar--primary {
   display: none !important;
-}
+} */
 
 /* Make the content section wider */
 .md-main__inner {
-  grid-template-columns: 1fr minmax(0, 900px) 320px !important;
+  grid-template-columns: minmax(0, 1fr) 320px !important;
+}
+
+/* Increase font size in the content section by 1pt */
+.md-typeset {
+  font-size: 10pt !important;
+}
+
+/* Hide sidebar only on article pages, not on index */
+body[data-md-page="index"] .md-sidebar--primary {
+  display: block !important;
+}
+.md-sidebar--primary {
+  display: none !important;
 }
