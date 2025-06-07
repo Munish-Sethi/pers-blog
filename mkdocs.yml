@@ -1,6 +1,6 @@
-site_name: Munish Sethi's Blog
+site_name: Munish(s) Blog
 site_description: >-
-  A professional blog showcasing business problem solutions with Python, Azure, and PowerShell examples.
+  A professional blog showcasing business problem solutions.
 theme:
   name: material
   features:
@@ -17,9 +17,10 @@ plugins:
   - awesome-pages
 nav:
   - Home: index.md
-  - Azure AD:
+  - Entra:
       - Certificate Based Authentication: azure-ad-certificate/index.md
-      - Sample Article: azure-ad-certificate/sample-article.md
+  - SAP:
+      - Setup PyRFC in your Container: sap-rfc-python-container/index.md
 extra_css:
   - assets/custom.css
 extra_javascript:

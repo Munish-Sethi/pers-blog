@@ -4,7 +4,8 @@ Browse the latest articles below:
 
 ## Azure AD
 - [Certificate Based Auth](azure-ad-certificate/index.md)
-- [Sample Article](azure-ad-certificate/sample-article.md)
+## SAP 
+- [Setup PyRFC in your Container](sap-rfc-python-container/index.md)
 
 ---
 
