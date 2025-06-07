@@ -3,7 +3,7 @@
 Browse the latest articles below:
 
 ## Azure AD
-- [Certificate Based Auth 1](azure-ad-certificate/index.md)
+- [Certificate Based Auth](azure-ad-certificate/index.md)
 - [Sample Article](azure-ad-certificate/sample-article.md)
 
 ---
