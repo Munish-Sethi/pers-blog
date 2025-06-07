@@ -10,14 +10,3 @@ Browse the latest articles below:
 ## SAP
 - [Setup PyRFC in your Container](sap-rfc-python-container.md)
 
----
-
-Deploy to GitHub Pages directly:
-```bash
-mkdocs gh-deploy --force
-```
-
-Run in local Dev Container:
-```bash
-mkdocs serve --dev-addr=0.0.0.0:8000
-```
