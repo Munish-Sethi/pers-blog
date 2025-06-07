@@ -2,7 +2,8 @@
 
 This project is a professional technical blog built with [MkDocs](https://www.mkdocs.org/) and the Material for MkDocs theme. It showcases business problem solutions, technical guides, and automation scripts, with a focus on Azure and SAP integration topics.
 
-[![Open in Dev Container](https://img.shields.io/badge/Open%20in-Dev%20Container-blue?logo=visualstudiocode)](https://aka.ms/vscode-remote/containers)
+[![Open in Dev Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/Munish-Sethi/pers-blog)
+
 
 > **Note:** This project is designed to be developed and run inside a [VS Code Dev Container](https://containers.dev/). All dependencies and environment setup are managed automatically when you open the project in a compatible environment (such as GitHub Codespaces or locally with VS Code and the Dev Containers extension).
 
