@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var siteName = document.querySelector('.md-header__title .md-header__topic');
   if (siteName) {
     var link = document.createElement('a');
-    link.href = '/';
+    link.href = (window.location.pathname.startsWith('/pers-blog/') ? '/pers-blog/' : '/');
     link.style.color = 'inherit';
     link.style.textDecoration = 'none';
     link.innerHTML = siteName.innerHTML;
