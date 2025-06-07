@@ -1,14 +1,19 @@
 # Welcome to My Technical Blog
 
-This is the homepage. Use the navigation to browse articles.
+Browse the latest articles below:
 
-Deploy to Git Hub Pages directly use 
+## Azure AD
+- [Certificate Based Auth 1](azure-ad-certificate/index.md)
+- [Sample Article](azure-ad-certificate/sample-article.md)
 
+---
+
+Deploy to GitHub Pages directly:
 ```bash
 mkdocs gh-deploy --force
 ```
 
-Run in local Dev Container 
+Run in local Dev Container:
 ```bash
 mkdocs serve --dev-addr=0.0.0.0:8000
 ```

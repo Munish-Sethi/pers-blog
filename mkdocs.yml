@@ -1,20 +1,25 @@
-site_name: My Technical Blog
+site_name: Munish Sethi's Blog
 site_description: >-
   A professional blog showcasing business problem solutions with Python, Azure, and PowerShell examples.
 theme:
   name: material
   features:
-    - navigation.tabs
     - navigation.sections
     - content.code.annotate
     - content.code.copy
+  logo: null
+  favicon: null
+  homepage: index.md
 plugins:
   - search
   - git-revision-date-localized
   - awesome-pages
 nav:
   - Home: index.md
-  - Certificate Based Auth for Azure AD:
-      - Article: azure-ad-certificate/index.md
+  - Azure AD:
+      - Certificate Based Authorization: azure-ad-certificate/index.md
+      - Sample Article: azure-ad-certificate/sample-article.md
 extra_css:
   - assets/custom.css
+extra_javascript:
+  - assets/custom.js
