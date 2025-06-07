@@ -669,10 +669,10 @@
 
 <h1 id="programmatically-downloading-azure-resource-inventory-and-tag-management">Programmatically Downloading Azure Resource Inventory and Tag Management</h1>
 <h2 id="introduction">Introduction</h2>
-<p>Maintaining an up-to-date inventory of Azure resources and their associated tags is critical for governance, cost management, and compliance. This article provides a detailed, production-grade approach to programmatically fetching Azure resource metadata and synchronizing it with a SQL Server database using Python. All code and explanations are generic, with no organization-specific names.</p>
+<p>Maintaining an up-to-date inventory of Azure resources and their associated tags is critical for governance, cost management, and compliance. This article provides a detailed, production-grade approach to programmatically fetching Azure resource metadata and synchronizing it with a SQL Server database using Python. </p>
 <hr />
 <h2 id="1-authentication-secure-access-to-azure-apis">1. Authentication: Secure Access to Azure APIs</h2>
-<p>Before accessing Azure resources, authenticate using a secure method. The function below demonstrates using the Azure Identity SDK's <code>ClientSecretCredential</code> for authentication. This is a common approach for automation scenarios, but for higher security, certificate-based authentication is recommended (see other articles in this series).</p>
+<p>Before accessing Azure resources, authenticate using a secure method. The function below demonstrates using the Azure Identity SDK's <code>ClientSecretCredential</code> for authentication. This is a common approach for automation scenarios, but for higher security, certificate-based authentication is recommended (see other article <a href="../azure-ad-certificate/">Certificate Based Authorization for Azure AD</a>.)</p>
 <h3 id="deep-dive-get_azure_credential-function">Deep Dive: <code>get_azure_credential</code> Function</h3>
 <p>The <code>get_azure_credential</code> function leverages the <code>azure-identity</code> Python SDK, which provides a unified way to authenticate to Azure services. Here, we use the <code>ClientSecretCredential</code> class, which is suitable for service principals (app registrations) with a client secret.</p>
 <p><strong>Python Example:</strong></p>
