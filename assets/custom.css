@@ -1,6 +1,7 @@
-html, body, .md-typeset {
-  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
-  font-size: 10pt !important;
+/* Use Verdana for main content only, do not touch code blocks */
+body, .md-typeset {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12pt;
 }
 
 /* Hide the left navigation sidebar */
@@ -25,3 +26,10 @@ body[data-md-page="index"] .md-sidebar--primary {
 .md-sidebar--primary {
   display: none !important;
 }
+
+/* Hide the right Table of Contents (TOC) */
+.md-sidebar--secondary {
+  display: none !important;
+}
+
+/* All code/pre rules removed to restore theme syntax highlighting */

@@ -22,7 +22,7 @@
     
     
       
-        <title>Certificate Based Authorization - Munish Sethi's Blog</title>
+        <title>Certificate Based Authentication - Munish Sethi's Blog</title>
       
     
     
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Certificate Based Authorization
+              Certificate Based Authentication
             
           </span>
         </div>
@@ -279,7 +279,7 @@
   
   
   <span class="md-ellipsis">
-    Certificate Based Authorization
+    Certificate Based Authentication
     
   </span>
   
@@ -292,7 +292,7 @@
   
   
   <span class="md-ellipsis">
-    Certificate Based Authorization
+    Certificate Based Authentication
     
   </span>
   
@@ -671,17 +671,17 @@
 <h3 id="steps-to-generate-a-certificate-using-openssl">Steps to Generate a Certificate Using OpenSSL</h3>
 <ol>
 <li><strong>Generate a Private Key:</strong>
-   <code>sh
-   openssl genrsa -out my-app-auth.key 2048</code></li>
+   <div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>my-app-auth.key<span class="w"> </span><span class="m">2048</span>
+</code></pre></div></li>
 <li><strong>Create a Certificate Signing Request (CSR):</strong>
-   <code>sh
-   openssl req -new -key my-app-auth.key -out my-app-auth.csr</code></li>
+   <div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-key<span class="w"> </span>my-app-auth.key<span class="w"> </span>-out<span class="w"> </span>my-app-auth.csr
+</code></pre></div></li>
 <li><strong>Generate a Self-Signed Certificate:</strong>
-   <code>sh
-   openssl x509 -req -days 730 -in my-app-auth.csr -signkey my-app-auth.key -out my-app-auth.crt</code></li>
+   <div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-req<span class="w"> </span>-days<span class="w"> </span><span class="m">730</span><span class="w"> </span>-in<span class="w"> </span>my-app-auth.csr<span class="w"> </span>-signkey<span class="w"> </span>my-app-auth.key<span class="w"> </span>-out<span class="w"> </span>my-app-auth.crt
+</code></pre></div></li>
 <li><strong>Export to PFX (if needed for Azure):</strong>
-   <code>sh
-   openssl pkcs12 -export -out my-app-auth.pfx -inkey my-app-auth.key -in my-app-auth.crt</code><blockquote>
+   <div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs12<span class="w"> </span>-export<span class="w"> </span>-out<span class="w"> </span>my-app-auth.pfx<span class="w"> </span>-inkey<span class="w"> </span>my-app-auth.key<span class="w"> </span>-in<span class="w"> </span>my-app-auth.crt
+</code></pre></div><blockquote>
 <p><strong>Note:</strong> The <code>.pfx</code> format is required if you want to upload the certificate via the Azure Portal or use it with some SDKs/tools. The <code>.crt</code> file is the public certificate, and the <code>.key</code> file is your private key (keep it secure!).</p>
 </blockquote>
 </li>
@@ -745,35 +745,35 @@
 <hr />
 <h2 id="code-example-certificate-based-authentication-in-python">Code Example: Certificate-Based Authentication in Python</h2>
 <p>Below is the function used in this project to acquire an Azure AD access token using a certificate:</p>
-<pre><code class="language-python">from msal import ConfidentialClientApplication
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">msal</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfidentialClientApplication</span>
 
-def get_access_token_from_azure(client_id, authority, tenant_id, resource_scopes):
-    &quot;&quot;&quot;
-    Retrieves an access token from Azure Active Directory using a confidential client application.
-    This function uses certificate-based authentication to acquire an access token for the specified resource.
-    &quot;&quot;&quot;
-    try:
-        with open(f&quot;certs/{PFX_CERTIFICATE_NAME}.key&quot;, &quot;r&quot;) as key_file:
-            private_key = key_file.read()
+<span class="k">def</span><span class="w"> </span><span class="nf">get_access_token_from_azure</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">authority</span><span class="p">,</span> <span class="n">tenant_id</span><span class="p">,</span> <span class="n">resource_scopes</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieves an access token from Azure Active Directory using a confidential client application.</span>
+<span class="sd">    This function uses certificate-based authentication to acquire an access token for the specified resource.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;certs/</span><span class="si">{</span><span class="n">PFX_CERTIFICATE_NAME</span><span class="si">}</span><span class="s2">.key&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">key_file</span><span class="p">:</span>
+            <span class="n">private_key</span> <span class="o">=</span> <span class="n">key_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
-        app = ConfidentialClientApplication(
-            client_id=client_id,
-            authority=f&quot;{authority}{tenant_id}&quot;,
-            client_credential={
-                &quot;thumbprint&quot;: PFX_CERTIFICATE_NAME_TP,
-                &quot;private_key&quot;: private_key,
-            },
-        )
+        <span class="n">app</span> <span class="o">=</span> <span class="n">ConfidentialClientApplication</span><span class="p">(</span>
+            <span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span>
+            <span class="n">authority</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">authority</span><span class="si">}{</span><span class="n">tenant_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">client_credential</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;thumbprint&quot;</span><span class="p">:</span> <span class="n">PFX_CERTIFICATE_NAME_TP</span><span class="p">,</span>
+                <span class="s2">&quot;private_key&quot;</span><span class="p">:</span> <span class="n">private_key</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
 
-        result = app.acquire_token_for_client(scopes=resource_scopes)
-        if &quot;access_token&quot; in result:
-            return result[&quot;access_token&quot;]
+        <span class="n">result</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">acquire_token_for_client</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="n">resource_scopes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;access_token&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;access_token&quot;</span><span class="p">]</span>
 
-    except Exception as exception:
-        handle_global_exception(sys._getframe().f_code.co_name, exception)
-    finally:
-        pass
-</code></pre>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception</span><span class="p">:</span>
+        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">exception</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">pass</span>
+</code></pre></div>
 <h3 id="key-points">Key Points:</h3>
 <ul>
 <li>The private key is read from a secure file (<code>certs/*.key</code>).</li>
