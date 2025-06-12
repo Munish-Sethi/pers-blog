@@ -1,6 +1,4 @@
-# Welcome to My Technical Blog
-
-Browse the latest articles below:
+# Welcome to My Blog
 
 ## Azure
 - [Certificate Based Authentication](azure-ad-certificate.md)
