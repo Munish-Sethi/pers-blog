@@ -1,3 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://Munish-Sethi.github.io/pers-blog/</loc>
+         <lastmod>2025-06-13</lastmod>
+    </url>
+    <url>
+         <loc>https://Munish-Sethi.github.io/pers-blog/adds-user-creation/</loc>
+         <lastmod>2025-06-13</lastmod>
+    </url>
+    <url>
+         <loc>https://Munish-Sethi.github.io/pers-blog/adds-user-update/</loc>
+         <lastmod>2025-06-13</lastmod>
+    </url>
+    <url>
+         <loc>https://Munish-Sethi.github.io/pers-blog/azure-ad-certificate/</loc>
+         <lastmod>2025-06-13</lastmod>
+    </url>
+    <url>
+         <loc>https://Munish-Sethi.github.io/pers-blog/azure-billing/</loc>
+         <lastmod>2025-06-13</lastmod>
+    </url>
+    <url>
+         <loc>https://Munish-Sethi.github.io/pers-blog/azure-resources/</loc>
+         <lastmod>2025-06-13</lastmod>
+    </url>
+    <url>
+         <loc>https://Munish-Sethi.github.io/pers-blog/sap-rfc-python-container/</loc>
+         <lastmod>2025-06-13</lastmod>
+    </url>
 </urlset>
