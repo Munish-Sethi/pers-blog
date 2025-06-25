@@ -1,0 +1,1401 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/sharepoint-site-library-enumeration/">
+      
+      
+        <link rel="prev" href="../sharepoint-sites-enumeration/">
+      
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Sharepoint Document Library Enumeration - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sharepoint-files-and-folders-inventory-with-python-and-microsoft-graph-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sharepoint Document Library Enumeration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Entra
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Entra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Bill
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Resource
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Active Directory Domain Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Active Directory Domain Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            SAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup PyRFC in your Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    O365
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            O365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Document Library Enumeration
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Document Library Enumeration
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microsoft-graph-api-endpoint-constant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microsoft Graph API Endpoint Constant
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-functions-and-code-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Functions and Code Walkthrough
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Functions and Code Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-get_all_files_from_sp" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. get_all_files_from_sp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. get_all_files_from_sp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-get_all_sp_sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. get_all_sp_sites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-fetch_all_sites_including_subsites" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. fetch_all_sites_including_subsites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-process_document_library" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. process_document_library
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supporting-utilities-full-implementations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supporting Utilities (Full Implementations)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supporting Utilities (Full Implementations)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execute_odata_query_geturl" class="md-nav__link">
+    <span class="md-ellipsis">
+      execute_odata_query_get(url)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse_iso_datedate_str" class="md-nav__link">
+    <span class="md-ellipsis">
+      parse_iso_date(date_str)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write_data_to_csvdata-file_path" class="md-nav__link">
+    <span class="md-ellipsis">
+      write_data_to_csv(data, file_path)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handle_global_exceptionfunctionname-exceptionobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      handle_global_exception(functionName, exceptionObject)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_access_token_api_access_aadscopesnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_access_token_API_Access_AAD(scopes=None)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-large-sharepoint-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Large SharePoint Environments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Large SharePoint Environments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#best-practices-for-large-document-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices for Large Document Libraries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-end-to-end-inventory-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: End-to-End Inventory Flow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microsoft-graph-api-endpoint-constant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microsoft Graph API Endpoint Constant
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-functions-and-code-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Functions and Code Walkthrough
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Functions and Code Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-get_all_files_from_sp" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. get_all_files_from_sp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. get_all_files_from_sp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-get_all_sp_sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. get_all_sp_sites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-fetch_all_sites_including_subsites" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. fetch_all_sites_including_subsites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-process_document_library" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. process_document_library
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supporting-utilities-full-implementations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supporting Utilities (Full Implementations)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supporting Utilities (Full Implementations)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execute_odata_query_geturl" class="md-nav__link">
+    <span class="md-ellipsis">
+      execute_odata_query_get(url)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse_iso_datedate_str" class="md-nav__link">
+    <span class="md-ellipsis">
+      parse_iso_date(date_str)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write_data_to_csvdata-file_path" class="md-nav__link">
+    <span class="md-ellipsis">
+      write_data_to_csv(data, file_path)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handle_global_exceptionfunctionname-exceptionobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      handle_global_exception(functionName, exceptionObject)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_access_token_api_access_aadscopesnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_access_token_API_Access_AAD(scopes=None)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-large-sharepoint-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Large SharePoint Environments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Large SharePoint Environments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#best-practices-for-large-document-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices for Large Document Libraries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-end-to-end-inventory-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: End-to-End Inventory Flow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="sharepoint-files-and-folders-inventory-with-python-and-microsoft-graph-api">SharePoint Files and Folders Inventory with Python and Microsoft Graph API</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This article provides a detailed, company-agnostic guide to inventorying all files and folders across all SharePoint sites and document libraries in a Microsoft 365 tenant using Python and the Microsoft Graph API. It focuses on the <code>get_all_files_from_sp</code> function and its supporting functions, with best practices for handling large environments, including recommendations for running the code in an Azure container.</p>
+<hr />
+<h2 id="microsoft-graph-api-endpoint-constant">Microsoft Graph API Endpoint Constant</h2>
+<p>The code uses the following constant for all Microsoft Graph API v1.0 calls:</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">AZURE_GRAPH_V1</span> <span class="o">=</span> <span class="s1">&#39;https://graph.microsoft.com/v1.0/&#39;</span>
+</code></pre></div>
+This ensures all API requests are made to the correct Microsoft Graph endpoint.</p>
+<hr />
+<h2 id="key-functions-and-code-walkthrough">Key Functions and Code Walkthrough</h2>
+<h3 id="1-get_all_files_from_sp">1. <code>get_all_files_from_sp</code></h3>
+<p>This is the main orchestration function for SharePoint inventory. It:
+- Retrieves all root SharePoint sites using <code>get_all_sp_sites</code>.
+- Expands the list to include all subsites with <code>fetch_all_sites_including_subsites</code>.
+- Iterates through every site and its document libraries, calling <code>process_document_library</code> for each.
+- Sends notification emails on progress and completion.</p>
+<p><strong>Full Function Code:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_all_files_from_sp</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">gdep_sharepoint_root_sites</span> <span class="o">=</span> <span class="n">get_all_sp_sites</span><span class="p">()</span>
+        <span class="n">gdep_all_sites</span> <span class="o">=</span> <span class="n">fetch_all_sites_including_subsites</span><span class="p">(</span><span class="n">gdep_sharepoint_root_sites</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">gdep_all_sites</span><span class="p">:</span>
+            <span class="n">site_id</span> <span class="o">=</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+            <span class="n">site_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_V1</span><span class="si">}</span><span class="s2">sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s2">/drives&quot;</span>
+
+            <span class="n">document_libraries</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="n">site_url</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">library</span> <span class="ow">in</span> <span class="n">document_libraries</span><span class="p">:</span>
+                <span class="n">process_document_library</span><span class="p">(</span><span class="n">site_id</span><span class="p">,</span> <span class="n">library</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">library</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">gdep_all_sites</span><span class="p">)</span>
+                <span class="n">send_email</span><span class="p">(</span><span class="n">recipients</span><span class="o">=</span><span class="n">EMAIL_TO_SEND_EXCEPTIONS</span><span class="p">,</span>
+                    <span class="n">subject</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Completed Doc Lib --&gt;</span><span class="si">{</span><span class="n">library</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> - on site </span><span class="si">{</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;webUrl&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                    <span class="n">plain_message</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Update on SP Library</span><span class="si">{</span><span class="n">library</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> - for site </span><span class="si">{</span><span class="n">site_url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">send_email</span><span class="p">(</span><span class="n">recipients</span><span class="o">=</span><span class="n">EMAIL_TO_SEND_EXCEPTIONS</span><span class="p">,</span>
+            <span class="n">subject</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Finished all Sites&#39;</span><span class="p">,</span>
+            <span class="n">plain_message</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Finished all Sites&#39;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">pass</span>
+</code></pre></div></p>
+<h4 id="explanation">Explanation</h4>
+<ul>
+<li><strong>Site Discovery:</strong> Uses <code>get_all_sp_sites()</code> to get all root sites, then <code>fetch_all_sites_including_subsites()</code> to get all subsites.</li>
+<li><strong>Document Library Enumeration:</strong> For each site, queries all document libraries (drives) and processes them.</li>
+<li><strong>Progress Notification:</strong> Sends emails after each library and when all sites are complete.</li>
+<li><strong>Error Handling:</strong> All exceptions are logged and reported.</li>
+</ul>
+<hr />
+<h3 id="2-get_all_sp_sites">2. <code>get_all_sp_sites</code></h3>
+<p>Fetches all root-level SharePoint sites in the tenant using the Microsoft Graph API:
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_all_sp_sites</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_V1</span><span class="si">}</span><span class="s2">sites?search=*&quot;</span>
+    <span class="k">return</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</code></pre></div>
+- <strong>Purpose:</strong> Returns a list of all root SharePoint sites.
+- <strong>API Used:</strong> <a href="https://learn.microsoft.com/en-us/graph/api/site-list?view=graph-rest-1.0&amp;tabs=http">List SharePoint Sites</a></p>
+<hr />
+<h3 id="3-fetch_all_sites_including_subsites">3. <code>fetch_all_sites_including_subsites</code></h3>
+<p>Recursively discovers all subsites for each root site:
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fetch_all_sites_including_subsites</span><span class="p">(</span><span class="n">sharepoint_root_sites</span><span class="p">):</span>
+    <span class="n">all_sites</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">sharepoint_root_sites</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Started site </span><span class="si">{</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;webUrl&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">all_sites</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="s2">&quot;webUrl&quot;</span><span class="p">:</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;webUrl&quot;</span><span class="p">]})</span>
+        <span class="n">sharepoint_subsites</span> <span class="o">=</span> <span class="n">get_sp_subsites</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sharepoint_subsites</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">subsite</span> <span class="ow">in</span> <span class="n">sharepoint_subsites</span><span class="p">:</span>
+                <span class="n">all_sites</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">subsite</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="s2">&quot;webUrl&quot;</span><span class="p">:</span> <span class="n">subsite</span><span class="p">[</span><span class="s2">&quot;webUrl&quot;</span><span class="p">]})</span>
+    <span class="k">return</span> <span class="n">all_sites</span>
+</code></pre></div>
+- <strong>Purpose:</strong> Ensures every site and subsite is included in the inventory.
+- <strong>API Used:</strong> <a href="https://learn.microsoft.com/en-us/graph/api/site-list?view=graph-rest-1.0&amp;tabs=http#list-subsites">List Subsites</a></p>
+<hr />
+<h3 id="4-process_document_library">4. <code>process_document_library</code></h3>
+<p>Processes each document library (drive) for a site:
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_document_library</span><span class="p">(</span><span class="n">site_id</span><span class="p">,</span> <span class="n">drive_id</span><span class="p">,</span> <span class="n">drive_name</span><span class="p">,</span> <span class="n">all_sites</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Started Document Library -- </span><span class="si">{</span><span class="n">drive_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+    <span class="n">site_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_V1</span><span class="si">}</span><span class="s2">sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s2">/drives/</span><span class="si">{</span><span class="n">drive_id</span><span class="si">}</span><span class="s2">/root/delta</span><span class="si">{</span><span class="n">DOCUMENT_LIB_SELECT_QUERY</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">search_results</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="n">site_url</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">search_results</span><span class="p">:</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;site_id&quot;</span><span class="p">:</span> <span class="n">site_id</span><span class="p">,</span>
+            <span class="s2">&quot;webUrl&quot;</span><span class="p">:</span> <span class="nb">next</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;webUrl&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">all_sites</span> <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">site_id</span><span class="p">),</span>
+            <span class="s2">&quot;drive_id&quot;</span><span class="p">:</span> <span class="n">drive_id</span><span class="p">,</span>
+            <span class="s2">&quot;document_id&quot;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;lastModifiedDateTime&quot;</span><span class="p">:</span> <span class="n">parse_iso_date</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lastModifiedDateTime&quot;</span><span class="p">)),</span>
+            <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;size&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;file&quot;</span> <span class="ow">in</span> <span class="n">item</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">}</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+    <span class="n">write_data_to_csv</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">SP_WITHOUT_VERSION_CSV_FILE_PATH</span><span class="p">)</span>
+    <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Document Library &#39;</span><span class="si">{</span><span class="n">drive_name</span><span class="si">}</span><span class="s2">&#39; took </span><span class="si">{</span><span class="n">elapsed_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds to process.&quot;</span><span class="p">)</span>
+</code></pre></div>
+- <strong>Purpose:</strong>
+  - Queries all files in the document library using the Graph API delta endpoint.
+  - Collects metadata for each file.
+  - Writes results to a CSV for further processing or database import.
+  - Logs processing time for performance monitoring.</p>
+<hr />
+<h2 id="supporting-utilities-full-implementations">Supporting Utilities (Full Implementations)</h2>
+<h3 id="execute_odata_query_geturl"><code>execute_odata_query_get(url)</code></h3>
+<p>Handles authenticated GET requests to the Microsoft Graph API, including error handling and token refresh.
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">execute_odata_query_get</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="n">get_access_token_API_Access_AAD</span><span class="p">()</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[]</span>
+</code></pre></div></p>
+<h3 id="parse_iso_datedate_str"><code>parse_iso_date(date_str)</code></h3>
+<p>Converts ISO 8601 date strings to Python datetime objects for easier manipulation and formatting.
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_iso_date</span><span class="p">(</span><span class="n">date_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">date_str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">date_str</span> <span class="o">=</span> <span class="n">date_str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span>
+    <span class="n">formats</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%f</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">fmt</span> <span class="ow">in</span> <span class="n">formats</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">fmt</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">continue</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div></p>
+<h3 id="write_data_to_csvdata-file_path"><code>write_data_to_csv(data, file_path)</code></h3>
+<p>Appends data to a CSV file, writing headers if the file does not exist.
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">write_data_to_csv</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+    <span class="n">file_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_file</span><span class="p">:</span>
+        <span class="n">fieldnames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;site_id&quot;</span><span class="p">,</span> <span class="s2">&quot;webUrl&quot;</span><span class="p">,</span> <span class="s2">&quot;drive_id&quot;</span><span class="p">,</span> <span class="s2">&quot;document_id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;lastModifiedDateTime&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">]</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">csv_file</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">file_exists</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></p>
+<h3 id="handle_global_exceptionfunctionname-exceptionobject"><code>handle_global_exception(functionName, exceptionObject)</code></h3>
+<p>Logs and emails details of any exception that occurs.
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">handle_global_exception</span><span class="p">(</span><span class="n">functionName</span><span class="p">,</span> <span class="n">exceptionObject</span><span class="p">):</span>
+    <span class="n">emailBody</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Function Name: </span><span class="si">{</span><span class="n">functionName</span><span class="si">}</span><span class="s2">; Exception Description: </span><span class="si">{</span><span class="n">exceptionObject</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">send_email</span><span class="p">(</span><span class="n">recipients</span><span class="o">=</span><span class="n">EMAIL_TO_SEND_EXCEPTIONS</span><span class="p">,</span>
+               <span class="n">subject</span><span class="o">=</span><span class="s1">&#39;Exception occured in code&#39;</span><span class="p">,</span> 
+               <span class="n">plain_message</span><span class="o">=</span><span class="n">emailBody</span><span class="p">)</span>
+</code></pre></div></p>
+<h3 id="get_access_token_api_access_aadscopesnone"><code>get_access_token_API_Access_AAD(scopes=None)</code></h3>
+<p>Obtains an access token for Microsoft Graph API using MSAL or Azure Identity. (Example implementation:)
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_access_token_API_Access_AAD</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">scopes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">scopes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://graph.microsoft.com/.default&#39;</span><span class="p">]</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">ConfidentialClientApplication</span><span class="p">(</span>
+        <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
+        <span class="n">authority</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_AUTHORITY_BASE_URL</span><span class="si">}{</span><span class="n">AZURE_TENANT_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">client_credential</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_SECRET</span>
+    <span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">acquire_token_for_client</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="n">scopes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;access_token&quot;</span><span class="p">]</span>
+</code></pre></div></p>
+<hr />
+<h2 id="handling-large-sharepoint-environments">Handling Large SharePoint Environments</h2>
+<p><strong>Important:</strong> Large tenants with many sites, subsites, and document libraries can have tens or hundreds of thousands of files. Processing all of them can take significant time and resources.</p>
+<h3 id="best-practices-for-large-document-libraries">Best Practices for Large Document Libraries</h3>
+<ul>
+<li><strong>Run in Azure:</strong> For large environments, it is highly recommended to run this inventory code in an Azure Container Instance or Azure VM. This ensures:</li>
+<li>Sufficient compute and memory resources.</li>
+<li>Proximity to Microsoft 365 services for faster API calls.</li>
+<li>Ability to scale or schedule the job as needed.</li>
+<li><strong>Batch Processing:</strong> The code is designed to process and write data in batches, minimizing memory usage and allowing for partial progress in case of interruptions.</li>
+<li><strong>Progress Notifications:</strong> The function sends email notifications after each document library and when all sites are complete, so you can monitor long-running jobs.</li>
+<li><strong>Error Handling:</strong> All exceptions are logged and reported, ensuring that issues with individual sites or libraries do not halt the entire process.</li>
+</ul>
+<hr />
+<h2 id="example-end-to-end-inventory-flow">Example: End-to-End Inventory Flow</h2>
+<ol>
+<li><strong>Discover Sites:</strong></li>
+<li><code>get_all_sp_sites()</code> → returns all root sites.</li>
+<li><strong>Expand to Subsites:</strong></li>
+<li><code>fetch_all_sites_including_subsites()</code> → returns all sites and subsites.</li>
+<li><strong>Process Each Library:</strong></li>
+<li>For each site, enumerate all document libraries and call <code>process_document_library()</code>.</li>
+<li><strong>Write Results:</strong></li>
+<li>Metadata for each file is written to a CSV file for further analysis or database import.</li>
+</ol>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/graph/api/site-list?view=graph-rest-1.0&amp;tabs=http">Microsoft Graph API: List SharePoint Sites</a></li>
+<li><a href="https://learn.microsoft.com/en-us/graph/api/driveitem-list-children?view=graph-rest-1.0&amp;tabs=http">Microsoft Graph API: List Drive Items</a></li>
+<li><a href="https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/best-practices-for-large-scale-sharepoint-online-environments/ba-p/123456">Best Practices for Large-Scale SharePoint Inventory</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/container-instances/">Azure Container Instances Documentation</a></li>
+</ul>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>The <code>get_all_files_from_sp</code> function and its supporting helpers provide a robust, scalable way to inventory all files and folders across a Microsoft 365 tenant's SharePoint environment. For large tenants, running this code in an Azure container or VM is strongly recommended to ensure reliability and performance.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 25, 2025 14:30:32 UTC">June 25, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
