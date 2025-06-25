@@ -1167,7 +1167,7 @@
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not obtain access token: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>See <a href="LINK_TO_YOUR_AUTH_BLOG">this blog post</a> for a full explanation and troubleshooting tips for certificate-based authentication.</p>
+<p>See <a href="../azure-ad-certificate/">this blog post</a> for a full explanation and troubleshooting tips for certificate-based authentication.</p>
 </blockquote>
 <hr />
 <h2 id="step-2-query-the-microsoft-graph-api-for-sharepoint-sites">Step 2: Query the Microsoft Graph API for SharePoint Sites</h2>
@@ -1330,14 +1330,12 @@
 <h2 id="summary">Summary</h2>
 <ul>
 <li>Register an Azure Entra application and grant it <code>Sites.Read.All</code> permission</li>
-<li>Authenticate using a certificate (see <a href="LINK_TO_YOUR_AUTH_BLOG">this blog post</a>)</li>
+<li>Authenticate using a certificate (see <a href="../azure-ad-certificate/">this blog post</a>)</li>
 <li>Use the Microsoft Graph API <code>/sites?search=*</code> endpoint to enumerate all SharePoint sites</li>
 <li>Use <code>/sites/{site-id}/sites</code> to enumerate subsites</li>
 <li>Handle pagination using <code>@odata.nextLink</code></li>
 </ul>
 <p>This approach is secure, scalable, and works in any Microsoft 365 tenant. You can now automate SharePoint site inventory, reporting, or governance tasks in your own environment.</p>
-<hr />
-<p><em>Edit the authentication link above to point to your detailed certificate-based authentication blog post.</em></p>
 
 
 
@@ -1358,7 +1356,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 25, 2025 13:30:32 UTC">June 25, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 25, 2025 13:33:45 UTC">June 25, 2025</span>
   </span>
 
     
