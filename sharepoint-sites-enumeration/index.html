@@ -1,0 +1,1419 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/sharepoint-sites-enumeration/">
+      
+      
+        <link rel="prev" href="../adaptive-card-consultant-review-part2/">
+      
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Sharepoint Sites Enumeration - Part 3 - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-retrieve-all-sharepoint-sites-in-your-microsoft-365-tenant-using-python-and-microsoft-graph" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sharepoint Sites Enumeration - Part 3
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Entra
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Entra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Bill
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Resource
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Active Directory Domain Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Active Directory Domain Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            SAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup PyRFC in your Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    O365
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            O365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration - Part 3
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration - Part 3
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-azure-entra-application-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Azure Entra Application Registration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-certificate-based-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Certificate-Based Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-python-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Python Environment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-authenticate-and-get-an-access-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Authenticate and Get an Access Token
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-query-the-microsoft-graph-api-for-sharepoint-sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Query the Microsoft Graph API for SharePoint Sites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Query the Microsoft Graph API for SharePoint Sites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helper-function-execute-odata-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      Helper Function: Execute OData Query
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieve-all-sites-with-pagination" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieve All Sites (with Pagination)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieve All Sites (with Pagination)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-retrieve-subsites-for-each-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Retrieve Subsites for Each Site
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Retrieve Subsites for Each Site">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-to-get-subsites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function to Get Subsites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Function to Get Subsites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explanation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-full-example-enumerate-all-sites-and-subsites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Full Example - Enumerate All Sites and Subsites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-code-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step Code Walkthrough
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-permissions-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Permissions Recap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-and-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting and Tips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-azure-entra-application-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Azure Entra Application Registration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-certificate-based-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Certificate-Based Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-python-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Python Environment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-authenticate-and-get-an-access-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Authenticate and Get an Access Token
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-query-the-microsoft-graph-api-for-sharepoint-sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Query the Microsoft Graph API for SharePoint Sites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Query the Microsoft Graph API for SharePoint Sites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helper-function-execute-odata-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      Helper Function: Execute OData Query
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieve-all-sites-with-pagination" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieve All Sites (with Pagination)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieve All Sites (with Pagination)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-retrieve-subsites-for-each-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Retrieve Subsites for Each Site
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Retrieve Subsites for Each Site">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-to-get-subsites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function to Get Subsites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Function to Get Subsites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explanation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-full-example-enumerate-all-sites-and-subsites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Full Example - Enumerate All Sites and Subsites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-code-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step Code Walkthrough
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-permissions-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Permissions Recap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-and-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting and Tips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="how-to-retrieve-all-sharepoint-sites-in-your-microsoft-365-tenant-using-python-and-microsoft-graph">How to Retrieve All SharePoint Sites in Your Microsoft 365 Tenant Using Python and Microsoft Graph</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Retrieving a complete list of SharePoint sites in your Microsoft 365 (M365) tenant is essential for IT automation, reporting, and governance. This article provides a detailed, company-agnostic, step-by-step guide to programmatically enumerate all SharePoint sites using Python and the Microsoft Graph API. All code samples are generic and ready to use in any tenant.</p>
+<hr />
+<h2 id="prerequisites">Prerequisites</h2>
+<h3 id="1-azure-entra-application-registration">1. Azure Entra Application Registration</h3>
+<ul>
+<li>Register an application in Azure Entra (Azure AD).</li>
+<li>Assign the following Microsoft Graph API permissions:</li>
+<li><code>Sites.Read.All</code> (Application permission)</li>
+<li><code>Sites.ReadWrite.All</code> (if you need to write/update)</li>
+<li>Grant admin consent for these permissions.</li>
+</ul>
+<h3 id="2-certificate-based-authentication">2. Certificate-Based Authentication</h3>
+<ul>
+<li>Upload a certificate to your Azure Entra application.</li>
+<li>Use the certificate thumbprint and private key for authentication.</li>
+<li>For a detailed guide and code on certificate-based authentication, see: <a href="../azure-ad-certificate/">Certificate Auth for Microsoft Graph API</a></li>
+</ul>
+<h3 id="3-python-environment">3. Python Environment</h3>
+<ul>
+<li>Install the required packages:
+  <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>requests<span class="w"> </span>msal
+</code></pre></div></li>
+</ul>
+<hr />
+<h2 id="step-1-authenticate-and-get-an-access-token">Step 1: Authenticate and Get an Access Token</h2>
+<p>You need to authenticate as your Azure Entra application and obtain an access token for Microsoft Graph. This is best done using certificate-based authentication for security.</p>
+<p>Below is a full, reusable function for certificate-based authentication. (Replace the placeholders with your actual values.)</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">msal</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_access_token_API_Access_AAD</span><span class="p">(</span><span class="n">resource_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># Replace these with your app&#39;s values</span>
+    <span class="n">TENANT_ID</span> <span class="o">=</span> <span class="s2">&quot;&lt;YOUR_TENANT_ID&gt;&quot;</span>
+    <span class="n">CLIENT_ID</span> <span class="o">=</span> <span class="s2">&quot;&lt;YOUR_CLIENT_ID&gt;&quot;</span>
+    <span class="n">AUTHORITY</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://login.microsoftonline.com/</span><span class="si">{</span><span class="n">TENANT_ID</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">CERT_THUMBPRINT</span> <span class="o">=</span> <span class="s2">&quot;&lt;YOUR_CERT_THUMBPRINT&gt;&quot;</span>
+    <span class="n">CERT_PRIVATE_KEY_PATH</span> <span class="o">=</span> <span class="s2">&quot;&lt;PATH_TO_YOUR_PRIVATE_KEY&gt;.pem&quot;</span>
+    <span class="k">if</span> <span class="n">resource_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">resource_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://graph.microsoft.com/.default&quot;</span><span class="p">]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">CERT_PRIVATE_KEY_PATH</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">private_key</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">msal</span><span class="o">.</span><span class="n">ConfidentialClientApplication</span><span class="p">(</span>
+        <span class="n">client_id</span><span class="o">=</span><span class="n">CLIENT_ID</span><span class="p">,</span>
+        <span class="n">authority</span><span class="o">=</span><span class="n">AUTHORITY</span><span class="p">,</span>
+        <span class="n">client_credential</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;thumbprint&quot;</span><span class="p">:</span> <span class="n">CERT_THUMBPRINT</span><span class="p">,</span>
+            <span class="s2">&quot;private_key&quot;</span><span class="p">:</span> <span class="n">private_key</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">acquire_token_for_client</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="n">resource_list</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;access_token&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;access_token&quot;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not obtain access token: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>See <a href="LINK_TO_YOUR_AUTH_BLOG">this blog post</a> for a full explanation and troubleshooting tips for certificate-based authentication.</p>
+</blockquote>
+<hr />
+<h2 id="step-2-query-the-microsoft-graph-api-for-sharepoint-sites">Step 2: Query the Microsoft Graph API for SharePoint Sites</h2>
+<p>The Microsoft Graph API endpoint to list all sites is:</p>
+<div class="highlight"><pre><span></span><code>GET https://graph.microsoft.com/v1.0/sites?search=*
+</code></pre></div>
+<p>This returns a paginated list of root SharePoint sites in your tenant.</p>
+<h3 id="helper-function-execute-odata-query">Helper Function: Execute OData Query</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">execute_odata_query_get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="retrieve-all-sites-with-pagination">Retrieve All Sites (with Pagination)</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_all_sp_sites</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://graph.microsoft.com/v1.0/sites?search=*&quot;</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">get_access_token_API_Access_AAD</span><span class="p">([</span><span class="s2">&quot;https://graph.microsoft.com/.default&quot;</span><span class="p">])</span>
+    <span class="n">sites</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">next_url</span> <span class="o">=</span> <span class="n">url</span>
+    <span class="k">while</span> <span class="n">next_url</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="n">next_url</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+        <span class="n">sites</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+        <span class="n">next_url</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;@odata.nextLink&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sites</span>
+</code></pre></div>
+<h4 id="explanation">Explanation:</h4>
+<ul>
+<li><code>get_all_sp_sites</code> starts with the root search URL.</li>
+<li>It uses the access token for authentication.</li>
+<li>It loops through all pages using the <code>@odata.nextLink</code> property for pagination.</li>
+<li>All sites are collected in the <code>sites</code> list.</li>
+</ul>
+<hr />
+<h2 id="step-3-retrieve-subsites-for-each-site">Step 3: Retrieve Subsites for Each Site</h2>
+<p>To enumerate subsites for a given site, use:</p>
+<div class="highlight"><pre><span></span><code>GET https://graph.microsoft.com/v1.0/sites/{site-id}/sites
+</code></pre></div>
+<h3 id="function-to-get-subsites">Function to Get Subsites</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_sp_subsites</span><span class="p">(</span><span class="n">site_id</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://graph.microsoft.com/v1.0/sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s2">/sites&quot;</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">get_access_token_API_Access_AAD</span><span class="p">([</span><span class="s2">&quot;https://graph.microsoft.com/.default&quot;</span><span class="p">])</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="p">[])</span>
+</code></pre></div>
+<h4 id="explanation_1">Explanation:</h4>
+<ul>
+<li>For each site, call <code>get_sp_subsites(site_id)</code> to get its direct subsites.</li>
+<li>You can recursively call this function to build a full site tree.</li>
+</ul>
+<hr />
+<h2 id="step-4-full-example-enumerate-all-sites-and-subsites">Step 4: Full Example - Enumerate All Sites and Subsites</h2>
+<p>Here is a complete script you can copy, edit, and run in your own environment:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">msal</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_access_token_API_Access_AAD</span><span class="p">(</span><span class="n">resource_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">TENANT_ID</span> <span class="o">=</span> <span class="s2">&quot;&lt;YOUR_TENANT_ID&gt;&quot;</span>
+    <span class="n">CLIENT_ID</span> <span class="o">=</span> <span class="s2">&quot;&lt;YOUR_CLIENT_ID&gt;&quot;</span>
+    <span class="n">AUTHORITY</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://login.microsoftonline.com/</span><span class="si">{</span><span class="n">TENANT_ID</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">CERT_THUMBPRINT</span> <span class="o">=</span> <span class="s2">&quot;&lt;YOUR_CERT_THUMBPRINT&gt;&quot;</span>
+    <span class="n">CERT_PRIVATE_KEY_PATH</span> <span class="o">=</span> <span class="s2">&quot;&lt;PATH_TO_YOUR_PRIVATE_KEY&gt;.pem&quot;</span>
+    <span class="k">if</span> <span class="n">resource_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">resource_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://graph.microsoft.com/.default&quot;</span><span class="p">]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">CERT_PRIVATE_KEY_PATH</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">private_key</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">msal</span><span class="o">.</span><span class="n">ConfidentialClientApplication</span><span class="p">(</span>
+        <span class="n">client_id</span><span class="o">=</span><span class="n">CLIENT_ID</span><span class="p">,</span>
+        <span class="n">authority</span><span class="o">=</span><span class="n">AUTHORITY</span><span class="p">,</span>
+        <span class="n">client_credential</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;thumbprint&quot;</span><span class="p">:</span> <span class="n">CERT_THUMBPRINT</span><span class="p">,</span>
+            <span class="s2">&quot;private_key&quot;</span><span class="p">:</span> <span class="n">private_key</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">acquire_token_for_client</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="n">resource_list</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;access_token&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;access_token&quot;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not obtain access token: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">execute_odata_query_get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_all_sp_sites</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://graph.microsoft.com/v1.0/sites?search=*&quot;</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">get_access_token_API_Access_AAD</span><span class="p">([</span><span class="s2">&quot;https://graph.microsoft.com/.default&quot;</span><span class="p">])</span>
+    <span class="n">sites</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">next_url</span> <span class="o">=</span> <span class="n">url</span>
+    <span class="k">while</span> <span class="n">next_url</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="n">next_url</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+        <span class="n">sites</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+        <span class="n">next_url</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;@odata.nextLink&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sites</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_sp_subsites</span><span class="p">(</span><span class="n">site_id</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://graph.microsoft.com/v1.0/sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s2">/sites&quot;</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">get_access_token_API_Access_AAD</span><span class="p">([</span><span class="s2">&quot;https://graph.microsoft.com/.default&quot;</span><span class="p">])</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">enumerate_all_sites_and_subsites</span><span class="p">():</span>
+    <span class="n">all_sites</span> <span class="o">=</span> <span class="n">get_all_sp_sites</span><span class="p">()</span>
+    <span class="n">all_sites_with_subsites</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">all_sites</span><span class="p">:</span>
+        <span class="n">site_id</span> <span class="o">=</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+        <span class="n">subsites</span> <span class="o">=</span> <span class="n">get_sp_subsites</span><span class="p">(</span><span class="n">site_id</span><span class="p">)</span>
+        <span class="n">site</span><span class="p">[</span><span class="s1">&#39;subsites&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subsites</span>
+        <span class="n">all_sites_with_subsites</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">all_sites_with_subsites</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">all_sites</span> <span class="o">=</span> <span class="n">enumerate_all_sites_and_subsites</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">all_sites</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h2 id="step-by-step-code-walkthrough">Step-by-Step Code Walkthrough</h2>
+<ol>
+<li><strong>get_access_token_API_Access_AAD</strong>: Authenticates using your Azure Entra app and certificate, returning a valid access token for Microsoft Graph.</li>
+<li><strong>execute_odata_query_get</strong>: Sends a GET request to the specified Microsoft Graph endpoint using the access token, returning the parsed JSON response.</li>
+<li><strong>get_all_sp_sites</strong>: Uses the <code>/sites?search=*</code> endpoint to retrieve all root SharePoint sites, handling pagination.</li>
+<li><strong>get_sp_subsites</strong>: For each site, retrieves its direct subsites.</li>
+<li><strong>enumerate_all_sites_and_subsites</strong>: Combines the above to build a list of all sites and their subsites.</li>
+<li><strong>Main block</strong>: Runs the enumeration and prints the result as formatted JSON.</li>
+</ol>
+<hr />
+<h2 id="required-permissions-recap">Required Permissions Recap</h2>
+<ul>
+<li><code>Sites.Read.All</code> (Application permission, admin consent required)</li>
+<li>The Azure Entra app must be granted consent by a tenant admin</li>
+<li>The app must authenticate using a certificate or secret (certificate recommended)</li>
+</ul>
+<hr />
+<h2 id="troubleshooting-and-tips">Troubleshooting and Tips</h2>
+<ul>
+<li>If you get a 403 error, check that your app registration has admin consent for <code>Sites.Read.All</code>.</li>
+<li>If you get a 401 error, check your certificate and app credentials.</li>
+<li>The <code>search=*</code> parameter is required to enumerate all sites, not just the root site.</li>
+<li>For large tenants, always handle pagination using <code>@odata.nextLink</code>.</li>
+<li>You can extend the code to recursively enumerate subsites to any depth.</li>
+</ul>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/graph/api/site-list?view=graph-rest-1.0&amp;tabs=http">Microsoft Graph API - List sites</a></li>
+<li><a href="https://learn.microsoft.com/en-us/graph/api/site-list-subsites?view=graph-rest-1.0&amp;tabs=http">Microsoft Graph API - List subsites</a></li>
+<li><a href="https://learn.microsoft.com/en-us/graph/permissions-reference">Microsoft Graph permissions reference</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app">Register an application with the Microsoft identity platform</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials">Certificate credentials for application authentication</a></li>
+<li><a href="https://msal-python.readthedocs.io/en/latest/">MSAL for Python documentation</a></li>
+<li><a href="https://developer.microsoft.com/en-us/graph/graph-explorer">Microsoft Graph Explorer</a></li>
+</ul>
+<hr />
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Register an Azure Entra application and grant it <code>Sites.Read.All</code> permission</li>
+<li>Authenticate using a certificate (see <a href="LINK_TO_YOUR_AUTH_BLOG">this blog post</a>)</li>
+<li>Use the Microsoft Graph API <code>/sites?search=*</code> endpoint to enumerate all SharePoint sites</li>
+<li>Use <code>/sites/{site-id}/sites</code> to enumerate subsites</li>
+<li>Handle pagination using <code>@odata.nextLink</code></li>
+</ul>
+<p>This approach is secure, scalable, and works in any Microsoft 365 tenant. You can now automate SharePoint site inventory, reporting, or governance tasks in your own environment.</p>
+<hr />
+<p><em>Edit the authentication link above to point to your detailed certificate-based authentication blog post.</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 25, 2025 13:26:23 UTC">June 25, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
