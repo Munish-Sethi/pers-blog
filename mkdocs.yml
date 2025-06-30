@@ -1,6 +1,7 @@
 site_name: Munish(s) Blog
 site_description: >-
   A professional blog showcasing business problem solutions.
+site_url: https://Munish-Sethi.github.io/pers-blog/
 theme:
   name: material
   features:
@@ -21,8 +22,21 @@ nav:
       - Certificate Based Authentication: azure-ad-certificate.md
       - Download Azure Bill: azure-billing.md
       - Download Azure Resource: azure-resources.md
+  - Cisco Meraki & Nagios:
+      - Cisco Meraki Devices Discovery and Nagios Integration: meraki-nagios-device-sync.md
+  - Active Directory Domain Services:
+      - Create ADDS User: adds-user-creation.md
+      - Update ADDS User: adds-user-update.md
   - SAP:
       - Setup PyRFC in your Container: sap-rfc-python-container.md
+      - Calling SAP RFC Function Modules from Python: sap-rfc-python.md
+  - O365:
+      - Outlook Actionable Adaptive Card - Part 1: adaptive-card-consultant-review-part1.md
+      - Outlook Actionable Adaptive Card - Part 2: adaptive-card-consultant-review-part2.md
+      - Sharepoint Sites Enumeration: sharepoint-sites-enumeration.md
+      - Sharepoint Document Library Enumeration: sharepoint-site-library-enumeration.md
+      - Concur Expense Report Aggregation: sap-concur-expense-reports-aggregation.md
+
 extra_css:
   - assets/custom.css
 extra_javascript:
