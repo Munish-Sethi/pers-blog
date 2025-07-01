@@ -42,7 +42,7 @@ body[data-md-page="index"] .md-sidebar--primary {
   flex: 1 1 30% !important;
   min-width: 260px !important;
   max-width: 32% !important;
-  margin: 0 3em 3em 0 !important; /* Even more space between columns and rows */
+  margin: 0 2em 1.2em 0 !important; /* Reduce right and bottom margin for less vertical space */
   background: #fff !important;
   border-radius: 14px !important;
   padding: 2em 1.5em !important;
