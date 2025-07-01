@@ -69,4 +69,34 @@ body[data-md-page="index"] .md-sidebar--primary {
   box-shadow: 0 4px 12px rgba(25, 118, 210, 0.10) !important;
 }
 
+/* Article table styles for 3-column layout */
+.article-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 1.2em 1.2em;
+  margin-bottom: 2em;
+}
+.article-table td {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.1em 1em;
+  text-align: left;
+  vertical-align: top;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  font-size: 1.05em;
+  font-weight: 500;
+  transition: box-shadow 0.2s, background 0.2s;
+  border: none;
+}
+.article-table td a {
+  color: var(--md-typeset-color, #222);
+  text-decoration: none;
+  display: block;
+}
+.article-table td a:hover {
+  background: var(--md-accent-bg-color, #f0f6ff);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.10);
+  border-radius: 10px;
+}
+
 /* All code/pre rules removed to restore theme syntax highlighting */
