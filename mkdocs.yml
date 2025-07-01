@@ -35,7 +35,10 @@ nav:
       - Outlook Actionable Adaptive Card - Part 2: adaptive-card-consultant-review-part2.md
       - Sharepoint Sites Enumeration: sharepoint-sites-enumeration.md
       - Sharepoint Document Library Enumeration: sharepoint-site-library-enumeration.md
+      - Migrate Sharepoint Document Library to Azure File Share: sharepoint-site-library-to-azure-fileshare.md
       - Concur Expense Report Aggregation: sap-concur-expense-reports-aggregation.md
+  - UKG:
+      - Secure File Transfer with UKG Dimensions: ukg-sftp-file-transfer.md
 
 extra_css:
   - assets/custom.css
