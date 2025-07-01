@@ -1,0 +1,1211 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/ukg-sftp-file-transfer/">
+      
+      
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Secure File Transfer with UKG Dimensions: - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#secure-file-transfer-with-ukg-dimensions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Secure File Transfer with UKG Dimensions:
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Entra
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Entra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Bill
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Resource
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki & Nagios
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Cisco Meraki & Nagios
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Devices Discovery and Nagios Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Active Directory Domain Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Active Directory Domain Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            SAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup PyRFC in your Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calling SAP RFC Function Modules from Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    O365
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            O365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Document Library Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concur Expense Report Aggregation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-azure-key-vault-for-secret-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Azure Key Vault for Secret Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-sftp-connection-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. SFTP Connection Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. SFTP Connection Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-constants-and-their-secure-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Constants and Their Secure Retrieval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-get_azure_kv_sceret-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How get_azure_kv_sceret Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sftp-connection-function-with-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      SFTP Connection Function (with Explanation)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-downloading-and-decrypting-files-from-ukg" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Downloading and Decrypting Files from UKG
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-encrypting-and-uploading-files-to-ukg" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Encrypting and Uploading Files to UKG
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Putting It All Together
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-key-points-and-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Key Points and Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="secure-file-transfer-with-ukg-dimensions">Secure File Transfer with UKG Dimensions:</h1>
+<blockquote>
+<p><strong>Note:</strong> This article is a practical, end-to-end guide for automating file uploads and downloads with the UKG Dimensions SFTP site, including file encryption and decryption. Adapt the code to your own environment and credentials.</p>
+</blockquote>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>UKG Dimensions (Kronos) provides SFTP endpoints for secure file exchange. For additional security, files are often encrypted (e.g., with PGP/GPG) before upload and must be decrypted after download. This article demonstrates how to:</p>
+<ul>
+<li>Connect to a UKG SFTP server using Python</li>
+<li>Download and decrypt files from UKG</li>
+<li>Encrypt and upload files to UKG</li>
+<li>Use Azure Storage (or any local mount) as your working directory</li>
+</ul>
+<p>We use Python libraries such as <code>pysftp</code>, <code>paramiko</code>, and <code>gnupg</code> to accomplish these tasks.</p>
+<hr />
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Python 3.7+</li>
+<li>The following Python packages:</li>
+<li><code>pysftp</code> (SFTP client)</li>
+<li><code>paramiko</code> (SSH key handling)</li>
+<li><code>python-gnupg</code> (PGP encryption/decryption)</li>
+<li>Access to your UKG SFTP credentials and keys (public/private, passphrase)</li>
+<li>GPG/PGP keys for file encryption/decryption</li>
+<li>A local directory (e.g., Azure Storage mount) for file staging</li>
+<li><strong>Azure Key Vault for Secrets:</strong> Store all sensitive credentials (SFTP username, private key, passphrase, GPG passphrase, etc.) in <a href="https://learn.microsoft.com/en-us/azure/key-vault/general/overview">Azure Key Vault</a> and retrieve them securely at runtime. This avoids hardcoding secrets in your code or environment variables.</li>
+</ul>
+<p>Install dependencies:
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pysftp<span class="w"> </span>paramiko<span class="w"> </span>python-gnupg<span class="w"> </span>azure-identity<span class="w"> </span>azure-keyvault-secrets
+</code></pre></div></p>
+<h3 id="using-azure-key-vault-for-secret-management">Using Azure Key Vault for Secret Management</h3>
+<p>To securely access secrets in your Python code, use the Azure SDK:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">azure.identity</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAzureCredential</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">azure.keyvault.secrets</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecretClient</span>
+
+<span class="c1"># Replace with your Key Vault URL</span>
+<span class="n">key_vault_url</span> <span class="o">=</span> <span class="s2">&quot;https://&lt;your-key-vault-name&gt;.vault.azure.net/&quot;</span>
+<span class="n">credential</span> <span class="o">=</span> <span class="n">DefaultAzureCredential</span><span class="p">()</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">SecretClient</span><span class="p">(</span><span class="n">vault_url</span><span class="o">=</span><span class="n">key_vault_url</span><span class="p">,</span> <span class="n">credential</span><span class="o">=</span><span class="n">credential</span><span class="p">)</span>
+
+<span class="c1"># Retrieve secrets</span>
+<span class="n">SFTP_USER</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;ukg-sftp-username&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+<span class="n">SFTP_PRIVATE_KEY</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;ukg-sftp-private-key&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+<span class="n">SFTP_PRIVATE_KEY_PASSPHRASE</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;ukg-sftp-private-key-passphrase&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+<span class="n">GPG_PASSPHRASE</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;gpg-passphrase&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Best Practice:</strong> Never store secrets in your codebase. Always use a secure vault like Azure Key Vault for all credentials and sensitive data.</p>
+</blockquote>
+<hr />
+<h2 id="1-sftp-connection-setup">1. SFTP Connection Setup</h2>
+<h3 id="key-constants-and-their-secure-retrieval">Key Constants and Their Secure Retrieval</h3>
+<p>In this solution, all SFTP credentials and keys are securely retrieved from Azure Key Vault using the <code>get_azure_kv_sceret</code> function. Here are the main constants and how they are constructed:</p>
+<ul>
+<li><strong>SFTP_UKG_DATA_HOST_NAME</strong>: The SFTP server hostname (e.g., <code>'your-ukg-sftp-host.com'</code>).</li>
+<li><strong>SFTP_UKG_DATA_USER_NAME</strong>: The SFTP username.</li>
+<li><strong>SFTP_UKG_PUBLIC_KEY</strong>: The SFTP server's public key, retrieved and decoded as bytes:
+  <div class="highlight"><pre><span></span><code><span class="n">SFTP_UKG_PUBLIC_KEY</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;ukg-sftp-host-public-key&#39;</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</code></pre></div></li>
+<li><strong>SFTP_UKG_PRIVATE_KEY</strong>: The private key for SFTP authentication, retrieved as a base64-encoded string from Key Vault, then decoded to a PEM string:
+  <div class="highlight"><pre><span></span><code><span class="n">SFTP_UKG_PRIVATE_KEY</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;ukg-sftp-host-private-key&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</code></pre></div>
+  <strong>Why base64.b64decode?</strong><blockquote>
+<p>When storing sensitive files like private keys in Azure Key Vault, it is common to first encode them using Base64. This ensures the key is stored as a plain string (since Key Vault secrets are always strings) and avoids issues with special characters or line breaks. When retrieving the key, you must decode it back to its original binary (or PEM) format using <code>base64.b64decode</code>. This allows you to safely store and retrieve binary data (like private keys) in a text-only secret store.</p>
+</blockquote>
+</li>
+<li><strong>SFTP_UKG_PRIVATE_KEY_PASSPHRASE</strong>: The passphrase for the private key, also retrieved from Key Vault.</li>
+</ul>
+<h3 id="how-get_azure_kv_sceret-works">How <code>get_azure_kv_sceret</code> Works</h3>
+<p>This function retrieves secrets from Azure Key Vault using the Azure SDK. It authenticates using environment variables for client ID, client secret, and tenant ID, then fetches the secret value by name:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_azure_kv_sceret</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">secret</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">vault_url</span> <span class="o">=</span> <span class="s2">&quot;https://&lt;your-key-vault-name&gt;.vault.azure.net/&quot;</span>
+        <span class="n">client_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;application_interface_clientid&quot;</span><span class="p">)</span>
+        <span class="n">client_secret</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;application_interface_clientsecret&quot;</span><span class="p">)</span>
+        <span class="n">tenant_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;application_interface_tenantid&quot;</span><span class="p">)</span>
+        <span class="n">credential</span> <span class="o">=</span> <span class="n">ClientSecretCredential</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="o">=</span><span class="n">client_secret</span><span class="p">,</span> <span class="n">tenant_id</span><span class="o">=</span><span class="n">tenant_id</span><span class="p">)</span>
+        <span class="n">secret_client</span> <span class="o">=</span> <span class="n">SecretClient</span><span class="p">(</span><span class="n">vault_url</span><span class="o">=</span><span class="n">vault_url</span><span class="p">,</span> <span class="n">credential</span><span class="o">=</span><span class="n">credential</span><span class="p">)</span>
+        <span class="n">retrieved_secret</span> <span class="o">=</span> <span class="n">secret_client</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">secret</span> <span class="o">=</span> <span class="n">retrieved_secret</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error:&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">secret</span>
+</code></pre></div>
+<h3 id="sftp-connection-function-with-explanation">SFTP Connection Function (with Explanation)</h3>
+<p>The following function establishes a secure SFTP connection to the UKG server using all the above constants. It supports both production and non-production environments:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pysftp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">paramiko</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_sftp_connection</span><span class="p">(</span><span class="n">environment</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pysftp</span><span class="o">.</span><span class="n">Connection</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Establish an SFTP connection to the UKG server.</span>
+<span class="sd">    Returns a pysftp.Connection object if successful, otherwise None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">localConnection</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pysftp</span><span class="o">.</span><span class="n">Connection</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">hostname</span> <span class="o">=</span> <span class="p">(</span><span class="n">SFTP_UKG_DATA_HOST_NAME</span> <span class="k">if</span> <span class="n">environment</span> <span class="o">==</span> <span class="s1">&#39;PROD&#39;</span> <span class="k">else</span> <span class="n">SFTP_UKG_DATA_HOST_NAME_NON_PROD</span><span class="p">)</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="p">(</span><span class="n">SFTP_UKG_DATA_USER_NAME</span> <span class="k">if</span> <span class="n">environment</span> <span class="o">==</span> <span class="s1">&#39;PROD&#39;</span> <span class="k">else</span> <span class="n">SFTP_UKG_DATA_USER_NAME_NON_PROD</span><span class="p">)</span>
+        <span class="n">hostkey</span> <span class="o">=</span> <span class="p">(</span><span class="n">SFTP_UKG_PUBLIC_KEY</span> <span class="k">if</span> <span class="n">environment</span> <span class="o">==</span> <span class="s1">&#39;PROD&#39;</span> <span class="k">else</span> <span class="n">SFTP_UKG_PUBLIC_KEY_NON_PROD</span><span class="p">)</span>
+
+        <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="s1">&#39;.*Failed to load HostKeys.*&#39;</span><span class="p">)</span>
+        <span class="n">hostKey</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">RSAKey</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">base64</span><span class="o">.</span><span class="n">decodebytes</span><span class="p">(</span><span class="n">hostkey</span><span class="p">))</span>
+        <span class="n">cnopts</span> <span class="o">=</span> <span class="n">pysftp</span><span class="o">.</span><span class="n">CnOpts</span><span class="p">()</span>
+        <span class="n">cnopts</span><span class="o">.</span><span class="n">hostkeys</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="s1">&#39;ssh-rsa&#39;</span><span class="p">,</span> <span class="n">hostKey</span><span class="p">)</span>
+
+        <span class="c1"># Convert private key string to file-like object</span>
+        <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">SFTP_UKG_PRIVATE_KEY</span><span class="p">)</span> <span class="k">as</span> <span class="n">private_key_file</span><span class="p">:</span>
+            <span class="n">private_key</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">RSAKey</span><span class="o">.</span><span class="n">from_private_key</span><span class="p">(</span><span class="n">private_key_file</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">SFTP_UKG_PRIVATE_KEY_PASSPHRASE</span><span class="p">)</span>
+            <span class="n">localConnection</span> <span class="o">=</span> <span class="n">pysftp</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">hostname</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">private_key</span><span class="o">=</span><span class="n">private_key</span><span class="p">,</span> <span class="n">cnopts</span><span class="o">=</span><span class="n">cnopts</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SFTP connection failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">localConnection</span>
+</code></pre></div>
+<p>This function:
+- Retrieves all connection parameters and keys from Azure Key Vault.
+- Decodes and loads the SFTP server's public key for host verification.
+- Loads the private key and passphrase for authentication.
+- Returns a live SFTP connection object for use in upload/download operations.</p>
+<hr />
+<h2 id="2-downloading-and-decrypting-files-from-ukg">2. Downloading and Decrypting Files from UKG</h2>
+<p>UKG may deliver files encrypted with PGP/GPG. Use <code>python-gnupg</code> to decrypt after download.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">gnupg</span>
+
+<span class="n">gpg</span> <span class="o">=</span> <span class="n">gnupg</span><span class="o">.</span><span class="n">GPG</span><span class="p">()</span>
+<span class="n">LOCAL_DOWNLOAD_DIR</span> <span class="o">=</span> <span class="s1">&#39;/mnt/azure/UKG/Download/&#39;</span>  <span class="c1"># Example: Azure Storage mount</span>
+<span class="n">REMOTE_UKG_FOLDER</span> <span class="o">=</span> <span class="s1">&#39;./Outbound/&#39;</span>
+
+<span class="c1"># --- Download and Decrypt Function ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">download_and_decrypt_files</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">get_sftp_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">sftp</span><span class="p">:</span>
+        <span class="n">sftp</span><span class="o">.</span><span class="n">cwd</span><span class="p">(</span><span class="n">REMOTE_UKG_FOLDER</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">sftp</span><span class="o">.</span><span class="n">listdir</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.gpg&#39;</span><span class="p">):</span>
+                <span class="n">local_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">LOCAL_DOWNLOAD_DIR</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+                <span class="n">sftp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">local_path</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded: </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="c1"># Decrypt the file</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">decrypted_data</span> <span class="o">=</span> <span class="n">gpg</span><span class="o">.</span><span class="n">decrypt_file</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">passphrase</span><span class="o">=</span><span class="s1">&#39;your-gpg-passphrase&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">decrypted_data</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+                    <span class="n">decrypted_path</span> <span class="o">=</span> <span class="n">local_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.gpg&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">decrypted_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+                        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">decrypted_data</span><span class="p">))</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Decrypted: </span><span class="si">{</span><span class="n">decrypted_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Decryption failed for </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">decrypted_data</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="3-encrypting-and-uploading-files-to-ukg">3. Encrypting and Uploading Files to UKG</h2>
+<p>Before uploading, files must be encrypted with UKG's public key.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># --- Encrypt and Upload Function ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">encrypt_and_upload_file</span><span class="p">(</span><span class="n">local_file</span><span class="p">,</span> <span class="n">remote_folder</span><span class="o">=</span><span class="s1">&#39;./Inbound/&#39;</span><span class="p">):</span>
+    <span class="c1"># Encrypt the file</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">local_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">encrypted_data</span> <span class="o">=</span> <span class="n">gpg</span><span class="o">.</span><span class="n">encrypt_file</span><span class="p">(</span>
+            <span class="n">f</span><span class="p">,</span>
+            <span class="n">recipients</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;UKG_PUBLIC_KEY_NAME&#39;</span><span class="p">],</span>  <span class="c1"># Replace with UKG&#39;s GPG key name</span>
+            <span class="n">always_trust</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">encrypted_data</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Encryption failed: </span><span class="si">{</span><span class="n">encrypted_data</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">encrypted_file</span> <span class="o">=</span> <span class="n">local_file</span> <span class="o">+</span> <span class="s1">&#39;.gpg&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">encrypted_file</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ef</span><span class="p">:</span>
+        <span class="n">ef</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">encrypted_data</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Encrypted: </span><span class="si">{</span><span class="n">encrypted_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Upload to SFTP</span>
+    <span class="k">with</span> <span class="n">get_sftp_connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">sftp</span><span class="p">:</span>
+        <span class="n">sftp</span><span class="o">.</span><span class="n">cwd</span><span class="p">(</span><span class="n">remote_folder</span><span class="p">)</span>
+        <span class="n">sftp</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">encrypted_file</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Uploaded: </span><span class="si">{</span><span class="n">encrypted_file</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">remote_folder</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="4-putting-it-all-together">4. Putting It All Together</h2>
+<p>You can automate the full workflow:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Download and decrypt all new files</span>
+    <span class="n">download_and_decrypt_files</span><span class="p">()</span>
+    <span class="c1"># Encrypt and upload a file (example)</span>
+    <span class="n">file_to_upload</span> <span class="o">=</span> <span class="s1">&#39;/mnt/azure/UKG/Upload/myfile.csv&#39;</span>
+    <span class="n">encrypt_and_upload_file</span><span class="p">(</span><span class="n">file_to_upload</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="5-key-points-and-best-practices">5. Key Points and Best Practices</h2>
+<ul>
+<li><strong>Key Management:</strong> Never hardcode sensitive keys or passphrases in your code. Use environment variables or a secure vault.</li>
+<li><strong>File Cleanup:</strong> Remove decrypted/encrypted files after processing if not needed.</li>
+<li><strong>Error Handling:</strong> Add robust error handling for production use.</li>
+<li><strong>Azure Storage:</strong> If using Azure Files, ensure your container mounts the share with correct permissions.</li>
+<li><strong>Security:</strong> Only trust files from known sources and validate signatures if possible.</li>
+</ul>
+<hr />
+<h2 id="6-references">6. References</h2>
+<ul>
+<li><a href="https://pysftp.readthedocs.io/en/release_0.2.9/">pysftp Documentation</a></li>
+<li><a href="https://pythonhosted.org/python-gnupg/">python-gnupg Documentation</a></li>
+<li><a href="https://community.kronos.com/s/">UKG Dimensions Integration Guides</a></li>
+</ul>
+<hr />
+<p>With this approach, you can securely automate file transfers to and from UKG Dimensions, including encryption and decryption, using Python in any environment—including containers with Azure storage mounts.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 1, 2025 13:49:37 UTC">July 1, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
