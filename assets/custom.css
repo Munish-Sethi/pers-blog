@@ -32,4 +32,37 @@ body[data-md-page="index"] .md-sidebar--primary {
   display: none !important;
 }
 
+/* Optimized article grid for index.md: 3 columns, compact spacing, no border, subtle shadow */
+.article-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 1.2em !important;
+  justify-content: flex-start !important;
+}
+.article-grid a {
+  flex: 1 1 30% !important;
+  min-width: 220px !important;
+  max-width: 32% !important;
+  margin: 0 1.2em 0.8em 0 !important; /* Compact right and bottom margin */
+  background: #fff !important;
+  border-radius: 10px !important;
+  padding: 1.1em 1em !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  color: var(--md-typeset-color, #222) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07) !important;
+  border: none !important;
+  font-size: 1.05em !important;
+  font-weight: 500 !important;
+  transition: box-shadow 0.2s, background 0.2s !important;
+  box-sizing: border-box !important;
+}
+.article-grid a:nth-child(3n) {
+  margin-right: 0 !important;
+}
+.article-grid a:hover {
+  background: var(--md-accent-bg-color, #f0f6ff) !important;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.10) !important;
+}
+
 /* All code/pre rules removed to restore theme syntax highlighting */
