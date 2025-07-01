@@ -50,12 +50,12 @@ body[data-md-page="index"] .md-sidebar--primary {
   text-decoration: none !important;
   color: var(--md-typeset-color, #222) !important;
   box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important;
-  border: 2.5px solid #bfc8d1 !important;
+  border: none !important;
   font-size: 1.12em !important;
   font-weight: 500 !important;
   transition: box-shadow 0.2s, border 0.2s, background 0.2s !important;
   box-sizing: border-box !important;
-  outline: 2px dashed #e57373 !important; /* DEBUG: Remove after confirming effect */
+  outline: none !important;
 }
 .article-grid a:nth-child(3n) {
   margin-right: 0 !important;
