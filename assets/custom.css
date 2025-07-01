@@ -32,21 +32,19 @@ body[data-md-page="index"] .md-sidebar--primary {
   display: none !important;
 }
 
-/* Optimized article grid for index.md: 3 columns, compact spacing, no border, subtle shadow */
+/* Strict 3-column layout for article grid, with a visual indicator at the start of each article */
 .article-grid {
-  display: flex !important;
-  flex-wrap: wrap !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.2em 1.2em !important;
   margin-bottom: 1.2em !important;
-  justify-content: flex-start !important;
 }
 .article-grid a {
-  flex: 1 1 30% !important;
-  min-width: 220px !important;
-  max-width: 32% !important;
-  margin: 0 1.2em 0.8em 0 !important; /* Compact right and bottom margin */
+  position: relative !important;
+  display: block !important;
   background: #fff !important;
   border-radius: 10px !important;
-  padding: 1.1em 1em !important;
+  padding: 1.1em 1em 1.1em 2.2em !important; /* Extra left padding for indicator */
   text-align: left !important;
   text-decoration: none !important;
   color: var(--md-typeset-color, #222) !important;
@@ -57,8 +55,16 @@ body[data-md-page="index"] .md-sidebar--primary {
   transition: box-shadow 0.2s, background 0.2s !important;
   box-sizing: border-box !important;
 }
-.article-grid a:nth-child(3n) {
-  margin-right: 0 !important;
+.article-grid a::before {
+  content: "";
+  position: absolute;
+  left: 0.9em;
+  top: 1.1em;
+  width: 0.5em;
+  height: 2em;
+  background: var(--md-accent-fg-color, #1976d2);
+  border-radius: 4px;
+  opacity: 0.7;
 }
 .article-grid a:hover {
   background: var(--md-accent-bg-color, #f0f6ff) !important;
