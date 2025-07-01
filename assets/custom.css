@@ -32,4 +32,31 @@ body[data-md-page="index"] .md-sidebar--primary {
   display: none !important;
 }
 
+/* Article grid for index.md: 3 columns, but each article styled as a card with full width and clear separation */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em 1.5em;
+  margin-bottom: 2em;
+}
+.article-grid a {
+  display: block;
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.2em 1em;
+  text-align: left;
+  text-decoration: none;
+  color: var(--md-typeset-color, #222);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  border: 1px solid #e0e0e0;
+  font-size: 1.05em;
+  font-weight: 500;
+  transition: box-shadow 0.2s, border 0.2s, background 0.2s;
+}
+.article-grid a:hover {
+  background: var(--md-accent-bg-color, #f0f6ff);
+  border: 1px solid var(--md-accent-fg-color, #1976d2);
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+}
+
 /* All code/pre rules removed to restore theme syntax highlighting */
