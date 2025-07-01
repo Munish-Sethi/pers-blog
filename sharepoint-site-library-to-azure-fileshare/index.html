@@ -1,0 +1,1590 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/sharepoint-site-library-to-azure-fileshare/">
+      
+      
+        <link rel="prev" href="../sharepoint-site-library-enumeration/">
+      
+      
+        <link rel="next" href="../sap-concur-expense-reports-aggregation/">
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Migrate Sharepoint Document Library to Azure File Share - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#copying-files-from-sharepoint-to-azure-file-share-at-scale" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Migrate Sharepoint Document Library to Azure File Share
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Entra
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Entra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Bill
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Resource
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki & Nagios
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Cisco Meraki & Nagios
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Devices Discovery and Nagios Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Active Directory Domain Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Active Directory Domain Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            SAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup PyRFC in your Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calling SAP RFC Function Modules from Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    O365
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            O365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Document Library Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Migrate Sharepoint Document Library to Azure File Share
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migrate Sharepoint Document Library to Azure File Share
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-python-code-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Python Code Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Walkthrough
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-authentication-and-secret-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Authentication and Secret Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-multi-threaded-file-copy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Multi-Threaded File Copy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-chunked-upload-for-large-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Chunked Upload for Large Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-directory-structure-and-metadata-preservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Directory Structure and Metadata Preservation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-database-integration-and-idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Database Integration and Idempotency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling-and-running-in-azure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling and Running in Azure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-articles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Articles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concur Expense Report Aggregation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    UKG
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            UKG
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Secure File Transfer with UKG Dimensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-python-code-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Python Code Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Walkthrough
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-authentication-and-secret-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Authentication and Secret Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-multi-threaded-file-copy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Multi-Threaded File Copy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-chunked-upload-for-large-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Chunked Upload for Large Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-directory-structure-and-metadata-preservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Directory Structure and Metadata Preservation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-database-integration-and-idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Database Integration and Idempotency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling-and-running-in-azure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling and Running in Azure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-articles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Articles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="copying-files-from-sharepoint-to-azure-file-share-at-scale">Copying Files from SharePoint to Azure File Share at Scale</h1>
+<h2 id="overview">Overview</h2>
+<p>This article provides a comprehensive, company-agnostic guide for copying large volumes of files from SharePoint Online document libraries into Azure File Shares. The solution is designed for high-throughput, scalable execution (e.g., as an Azure Container Instance), and is suitable for enterprise-scale migrations, backups, or data archiving. The approach leverages multi-threading for performance and handles large files (30–50 GB+) efficiently by streaming and chunked uploads.</p>
+<p><strong>Key Features:</strong>
+- Secure, certificate-based authentication to Microsoft Graph and Azure
+- Multi-threaded file copy for high throughput
+- Chunked upload for large files
+- Robust error handling and progress tracking
+- All secrets managed via Azure Key Vault</p>
+<blockquote>
+<p><strong>Note:</strong> This article assumes you have already extracted the list of files and their metadata from SharePoint. For details on how to enumerate SharePoint files and extract metadata, see <a href="../sharepoint-site-library-enumeration/">Extracting SharePoint Document Library Metadata</a>.</p>
+</blockquote>
+<hr />
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Python 3.8+</li>
+<li>Azure File Share and connection string</li>
+<li>Azure AD App Registration with certificate-based authentication</li>
+<li>Azure Key Vault for secret management</li>
+<li>Extracted metadata for all SharePoint files to be copied (see stub above)</li>
+</ul>
+<hr />
+<h2 id="solution-architecture">Solution Architecture</h2>
+<ol>
+<li><strong>Metadata Extraction</strong>: Retrieve all file metadata from SharePoint (site ID, drive ID, item ID, file path, size, timestamps, etc.) and store in a database or CSV. <em>(See stub above)</em></li>
+<li><strong>File Copy Process</strong>: For each file, download from SharePoint using Microsoft Graph and upload to Azure File Share, preserving directory structure and metadata.</li>
+<li><strong>Multi-threading</strong>: Use a thread pool to process multiple files in parallel for maximum throughput.</li>
+<li><strong>Chunked Upload</strong>: For large files, stream and upload in chunks to avoid memory issues and support files up to 100s of GB.</li>
+<li><strong>Progress Tracking</strong>: Log and track progress for monitoring and troubleshooting.</li>
+</ol>
+<hr />
+<h2 id="full-python-code-example">Full Python Code Example</h2>
+<p>Below is a complete, production-ready script for the file copy process. All company-specific values have been removed. Replace stub values and secret names as appropriate for your environment.</p>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This script copies files from SharePoint Online to Azure File Share using multi-threading and chunked uploads.</span>
+<span class="sd">- Designed for high-volume, large-file scenarios (30–50 GB+)</span>
+<span class="sd">- All secrets are retrieved from Azure Key Vault</span>
+<span class="sd">- Can be run as an Azure Container Instance (ACI) or VM</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">queue</span><span class="w"> </span><span class="kn">import</span> <span class="n">Queue</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">unquote</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">azure.storage.fileshare</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShareFileClient</span><span class="p">,</span> <span class="n">ShareDirectoryClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">timezone</span><span class="p">,</span> <span class="n">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">msal</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfidentialClientApplication</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">gdepcommon.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">setup_logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gdepcommon.utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">get_azure_kv_sceret</span><span class="p">,</span>
+    <span class="n">sql_dbconnection</span><span class="p">,</span>
+    <span class="n">PFX_CERTIFICATE_NAME</span><span class="p">,</span>
+    <span class="n">PFX_CERTIFICATE_NAME_TP</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gdepazure.common</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
+    <span class="n">AZURE_TENANT_ID</span><span class="p">,</span>
+    <span class="n">AZURE_AUTHORITY_BASE_URL</span><span class="p">,</span>
+    <span class="n">AZURE_GRAPH_DEFAULT_RESOURCE</span>
+<span class="p">)</span>
+
+<span class="c1"># Thread and chunk parameters</span>
+<span class="n">THREAD_COUNT</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Tune based on environment</span>
+<span class="n">CHUNK_SIZE</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>  <span class="c1"># 4 MB</span>
+
+<span class="c1"># Shared progress state</span>
+<span class="n">total_files</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">processed_files</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+
+<span class="c1"># Token management</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">token_expiry_time</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">refresh_access_token</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Refreshes the Microsoft Graph access token using certificate-based auth.&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">access_token</span><span class="p">,</span> <span class="n">token_expiry_time</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Refreshing access token...&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;certs/</span><span class="si">{</span><span class="n">PFX_CERTIFICATE_NAME</span><span class="si">}</span><span class="s2">.key&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">key_file</span><span class="p">:</span>
+            <span class="n">private_key</span> <span class="o">=</span> <span class="n">key_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="n">ConfidentialClientApplication</span><span class="p">(</span>
+            <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
+            <span class="n">authority</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_AUTHORITY_BASE_URL</span><span class="si">}{</span><span class="n">AZURE_TENANT_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">client_credential</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;thumbprint&quot;</span><span class="p">:</span> <span class="n">PFX_CERTIFICATE_NAME_TP</span><span class="p">,</span>
+                <span class="s2">&quot;private_key&quot;</span><span class="p">:</span> <span class="n">private_key</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">acquire_token_for_client</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="n">AZURE_GRAPH_DEFAULT_RESOURCE</span><span class="p">)</span>
+        <span class="n">access_token</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;access_token&quot;</span><span class="p">]</span>
+        <span class="n">expires_in</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;expires_in&quot;</span><span class="p">]</span>
+        <span class="n">token_expiry_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">expires_in</span> <span class="o">-</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Access token refreshed successfully.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to refresh access token: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Access token refresh failed.&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_access_token</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a valid access token, refreshing if expired.&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">access_token</span><span class="p">,</span> <span class="n">token_expiry_time</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">access_token</span> <span class="ow">or</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">token_expiry_time</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">refresh_access_token</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrying token refresh (attempt </span><span class="si">{</span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/3)...&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">e</span>
+    <span class="k">return</span> <span class="n">access_token</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ensure_directory_path_exists</span><span class="p">(</span><span class="n">azure_conn_str</span><span class="p">,</span> <span class="n">share_name</span><span class="p">,</span> <span class="n">directory_path</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ensures the full directory path exists in Azure File Share.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">cache</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cache</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">directory_path</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    <span class="n">current_path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+        <span class="n">current_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">part</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">current_path</span> <span class="k">else</span> <span class="n">part</span>
+        <span class="k">if</span> <span class="n">current_path</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">dir_client</span> <span class="o">=</span> <span class="n">ShareDirectoryClient</span><span class="o">.</span><span class="n">from_connection_string</span><span class="p">(</span>
+            <span class="n">conn_str</span><span class="o">=</span><span class="n">azure_conn_str</span><span class="p">,</span>
+            <span class="n">share_name</span><span class="o">=</span><span class="n">share_name</span><span class="p">,</span>
+            <span class="n">directory_path</span><span class="o">=</span><span class="n">current_path</span>
+        <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">dir_client</span><span class="o">.</span><span class="n">create_directory</span><span class="p">()</span>
+            <span class="n">cache</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">current_path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;ResourceAlreadyExists&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">):</span>
+                <span class="n">cache</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">current_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">copy_file_from_sp_to_azure</span><span class="p">(</span><span class="n">site_id</span><span class="p">,</span> <span class="n">drive_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">azure_file_client</span><span class="p">,</span> <span class="n">total_file_size_in_bytes</span><span class="p">,</span> <span class="n">created_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">modified_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Streams a file from SharePoint and uploads to Azure File Share in chunks.&quot;&quot;&quot;</span>
+    <span class="n">access_token</span> <span class="o">=</span> <span class="n">get_access_token</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://graph.microsoft.com/v1.0/sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s2">/drives/</span><span class="si">{</span><span class="n">drive_id</span><span class="si">}</span><span class="s2">/items/</span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">/content&quot;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+    <span class="n">retries</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">retries</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting file copy for item_id: </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+                <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+                <span class="n">azure_file_client</span><span class="o">.</span><span class="n">create_file</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">total_file_size_in_bytes</span><span class="p">)</span>
+                <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="n">CHUNK_SIZE</span><span class="p">):</span>
+                    <span class="n">azure_file_client</span><span class="o">.</span><span class="n">upload_range</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">chunk</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">))</span>
+                    <span class="n">offset</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+                    <span class="c1"># Log progress for large files (&gt;5GB) every 10%</span>
+                    <span class="k">if</span> <span class="n">total_file_size_in_bytes</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">:</span>
+                        <span class="n">percent_complete</span> <span class="o">=</span> <span class="p">(</span><span class="n">offset</span> <span class="o">/</span> <span class="n">total_file_size_in_bytes</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+                        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">offset</span> <span class="o">/</span> <span class="n">CHUNK_SIZE</span><span class="p">)</span> <span class="o">%</span> <span class="nb">int</span><span class="p">((</span><span class="n">total_file_size_in_bytes</span> <span class="o">/</span> <span class="n">CHUNK_SIZE</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">percent_complete</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% complete&quot;</span><span class="p">)</span>
+            <span class="c1"># Set file properties for created/modified dates</span>
+            <span class="k">if</span> <span class="n">created_date</span> <span class="ow">or</span> <span class="n">modified_date</span><span class="p">:</span>
+                <span class="n">file_properties</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">if</span> <span class="n">created_date</span><span class="p">:</span>
+                    <span class="n">created_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">created_date</span><span class="p">,</span> <span class="n">time</span><span class="p">())</span>
+                    <span class="n">file_properties</span><span class="p">[</span><span class="s1">&#39;file_creation_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">created_datetime</span>
+                <span class="k">if</span> <span class="n">modified_date</span><span class="p">:</span>
+                    <span class="n">modified_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">modified_date</span><span class="p">,</span> <span class="n">time</span><span class="p">())</span>
+                    <span class="n">file_properties</span><span class="p">[</span><span class="s1">&#39;file_last_write_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">modified_datetime</span>
+                <span class="kn">from</span><span class="w"> </span><span class="nn">azure.storage.fileshare</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContentSettings</span>
+                <span class="n">content_settings</span> <span class="o">=</span> <span class="n">ContentSettings</span><span class="p">(</span><span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/octet-stream&quot;</span><span class="p">)</span>
+                <span class="n">azure_file_client</span><span class="o">.</span><span class="n">set_http_headers</span><span class="p">(</span><span class="n">file_attributes</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">content_settings</span><span class="o">=</span><span class="n">content_settings</span><span class="p">,</span> <span class="o">**</span><span class="n">file_properties</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully copied file for item_id: </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="n">retries</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrying file copy for item_id </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2"> (attempt </span><span class="si">{</span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">retries</span><span class="si">}</span><span class="s2">)...&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to copy file for item_id: </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">. Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">raise</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error during file copy for item_id </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">worker</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">azure_conn_str</span><span class="p">,</span> <span class="n">share_name</span><span class="p">,</span> <span class="n">created_dirs</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Thread worker function: processes files from the queue.&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">processed_files</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">file_record</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="n">site_id</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;site_id&#39;</span><span class="p">]</span>
+            <span class="n">drive_id</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;drive_id&#39;</span><span class="p">]</span>
+            <span class="n">item_id</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;item_id&#39;</span><span class="p">]</span>
+            <span class="n">total_file_size_in_bytes</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">]</span>
+            <span class="n">created_date</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;created_date&#39;</span><span class="p">]</span>
+            <span class="n">modified_date</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;modified_date&#39;</span><span class="p">]</span>
+            <span class="n">decoded_path</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;decoded_path&#39;</span><span class="p">]</span>
+            <span class="c1"># Ensure directory exists</span>
+            <span class="n">azure_directory_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">decoded_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">azure_directory_path</span><span class="p">:</span>
+                <span class="n">ensure_directory_path_exists</span><span class="p">(</span><span class="n">azure_conn_str</span><span class="p">,</span> <span class="n">share_name</span><span class="p">,</span> <span class="n">azure_directory_path</span><span class="p">,</span> <span class="n">created_dirs</span><span class="p">)</span>
+            <span class="n">file_client</span> <span class="o">=</span> <span class="n">ShareFileClient</span><span class="o">.</span><span class="n">from_connection_string</span><span class="p">(</span>
+                <span class="n">conn_str</span><span class="o">=</span><span class="n">azure_conn_str</span><span class="p">,</span>
+                <span class="n">share_name</span><span class="o">=</span><span class="n">share_name</span><span class="p">,</span>
+                <span class="n">file_path</span><span class="o">=</span><span class="n">decoded_path</span>
+            <span class="p">)</span>
+            <span class="n">copy_file_from_sp_to_azure</span><span class="p">(</span><span class="n">site_id</span><span class="p">,</span> <span class="n">drive_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">file_client</span><span class="p">,</span> <span class="n">total_file_size_in_bytes</span><span class="p">,</span> <span class="n">created_date</span><span class="p">,</span> <span class="n">modified_date</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+            <span class="c1"># Mark as copied in DB</span>
+            <span class="k">with</span> <span class="n">sql_dbconnection</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+                <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;UPDATE [dbo].[Fact_Document_Library_Details] SET [copied] = 1 WHERE [unique_id] = ?&quot;</span><span class="p">,</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;unique_id&#39;</span><span class="p">])</span>
+                <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+                <span class="k">global</span> <span class="n">processed_files</span>
+                <span class="n">processed_files</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">overall_progress</span> <span class="o">=</span> <span class="p">(</span><span class="n">processed_files</span> <span class="o">/</span> <span class="n">total_files</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overall Progress: </span><span class="si">{</span><span class="n">overall_progress</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% (</span><span class="si">{</span><span class="n">processed_files</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_files</span><span class="si">}</span><span class="s2"> files complete)&quot;</span><span class="p">)</span>
+            <span class="n">queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error processing file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Main entry point: loads file metadata, initializes threads, and starts the copy process.</span>
+<span class="sd">    - Loads Azure File Share connection string from Key Vault</span>
+<span class="sd">    - Loads file metadata (site_id, drive_id, item_id, file path, size, timestamps, etc.)</span>
+<span class="sd">    - Spawns worker threads to process the file queue</span>
+<span class="sd">    - Tracks and logs progress</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">total_files</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">azure_conn_str</span> <span class="o">=</span> <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;your-azure-file-connection-string-secret&#39;</span><span class="p">)</span>
+        <span class="n">share_name</span> <span class="o">=</span> <span class="s2">&quot;your-azure-file-share-name&quot;</span>
+        <span class="n">site_id</span> <span class="o">=</span> <span class="s2">&quot;your-sharepoint-site-id&quot;</span>
+        <span class="n">drive_id</span> <span class="o">=</span> <span class="s2">&quot;your-sharepoint-drive-id&quot;</span>
+        <span class="n">created_dirs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="c1"># Fetch files to copy (replace with your DB or CSV logic)</span>
+        <span class="k">with</span> <span class="n">sql_dbconnection</span><span class="p">()</span> <span class="k">as</span> <span class="n">sqlConnection</span><span class="p">:</span>
+            <span class="n">cursor</span> <span class="o">=</span> <span class="n">sqlConnection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM [dbo].[Fact_Document_Library_Details] WHERE [type] = &#39;file&#39; AND [copied] = 0&quot;</span><span class="p">)</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="n">total_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">total_files</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No files to process.&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+            <span class="n">sp_relative_url</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">server_relative_url</span>
+            <span class="n">decoded_path</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">sp_relative_url</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;/sites/YourSite/YourLibrary&quot;</span><span class="p">):]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">))</span>
+            <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">({</span>
+                <span class="s1">&#39;site_id&#39;</span><span class="p">:</span> <span class="n">site_id</span><span class="p">,</span>
+                <span class="s1">&#39;drive_id&#39;</span><span class="p">:</span> <span class="n">drive_id</span><span class="p">,</span>
+                <span class="s1">&#39;item_id&#39;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">unique_id</span><span class="p">,</span>
+                <span class="s1">&#39;unique_id&#39;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">unique_id</span><span class="p">,</span>
+                <span class="s1">&#39;length&#39;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">length</span><span class="p">,</span>
+                <span class="s1">&#39;created_date&#39;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">time_created</span><span class="p">,</span>
+                <span class="s1">&#39;modified_date&#39;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">time_last_modified</span><span class="p">,</span>
+                <span class="s1">&#39;decoded_path&#39;</span><span class="p">:</span> <span class="n">decoded_path</span>
+            <span class="p">})</span>
+        <span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">THREAD_COUNT</span><span class="p">):</span>
+            <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">azure_conn_str</span><span class="p">,</span> <span class="n">share_name</span><span class="p">,</span> <span class="n">created_dirs</span><span class="p">,</span> <span class="n">logger</span><span class="p">))</span>
+            <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+            <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+            <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;All files have been processed successfully.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error in main function: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">setup_logger</span><span class="p">(</span><span class="s2">&quot;sp2azfileshare&quot;</span><span class="p">,</span> <span class="s2">&quot;/mnt/azure/logs/sp2azfileshare.log&quot;</span><span class="p">)</span>
+    <span class="n">main</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="code-walkthrough">Code Walkthrough</h2>
+<h3 id="1-authentication-and-secret-management">1. <strong>Authentication and Secret Management</strong></h3>
+<ul>
+<li>All secrets (Azure connection string, certificate thumbprint, etc.) are retrieved from Azure Key Vault using a utility function (<code>get_azure_kv_sceret</code>).</li>
+<li>Microsoft Graph authentication uses certificate-based credentials for security and automation.</li>
+</ul>
+<h3 id="2-multi-threaded-file-copy">2. <strong>Multi-Threaded File Copy</strong></h3>
+<ul>
+<li>The script uses a thread pool (<code>THREAD_COUNT</code>) and a <code>Queue</code> to distribute file copy tasks across multiple threads.</li>
+<li>Each thread processes files independently, ensuring high throughput and efficient use of resources.</li>
+<li>Thread-safe progress tracking is implemented using a <code>Lock</code>.</li>
+</ul>
+<h3 id="3-chunked-upload-for-large-files">3. <strong>Chunked Upload for Large Files</strong></h3>
+<ul>
+<li>Files are streamed from SharePoint and uploaded to Azure File Share in 4 MB chunks.</li>
+<li>This approach supports very large files (30–50 GB+) without excessive memory usage.</li>
+<li>Progress for large files is logged every 10% (configurable).</li>
+</ul>
+<h3 id="4-directory-structure-and-metadata-preservation">4. <strong>Directory Structure and Metadata Preservation</strong></h3>
+<ul>
+<li>The script ensures that the full directory path exists in Azure File Share before uploading each file.</li>
+<li>File creation and modification timestamps are preserved if available.</li>
+</ul>
+<h3 id="5-database-integration-and-idempotency">5. <strong>Database Integration and Idempotency</strong></h3>
+<ul>
+<li>The script marks each file as copied in the database after successful upload, ensuring idempotency and resumability.</li>
+<li>You can adapt this logic to use a CSV or other metadata store as needed.</li>
+</ul>
+<hr />
+<h2 id="scaling-and-running-in-azure">Scaling and Running in Azure</h2>
+<ul>
+<li>This script is designed to run as an Azure Container Instance (ACI), but can also be run on VMs or Kubernetes.</li>
+<li>Tune <code>THREAD_COUNT</code> based on available CPU and network bandwidth.</li>
+<li>For very large migrations, consider splitting the workload across multiple containers or jobs.</li>
+</ul>
+<hr />
+<h2 id="related-articles">Related Articles</h2>
+<ul>
+<li><a href="../sharepoint-site-library-enumeration/">Extracting SharePoint Document Library Metadata for Automation</a></li>
+<li><a href="./UKG-SFTP-File-Transfer-Blog.md#secure-secret-management">Automating Secure Secret Management with Azure Key Vault</a></li>
+</ul>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>By following this guide and using the provided code, you can efficiently and securely copy massive volumes of files from SharePoint Online to Azure File Share, with full support for large files, multi-threaded performance, and robust error handling. All sensitive information is managed via Azure Key Vault, ensuring compliance and security for enterprise automation scenarios.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 1, 2025 18:51:43 UTC">July 1, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
