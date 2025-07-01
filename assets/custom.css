@@ -34,36 +34,36 @@ body[data-md-page="index"] .md-sidebar--primary {
 
 /* Article grid for index.md: 3 columns, with extra margin between each card for strong separation */
 .article-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
-  margin-bottom: 2em;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 2em !important;
 }
 .article-grid a {
-  flex: 1 1 30%;
-  min-width: 260px;
-  max-width: 32%;
-  margin: 0 2.5em 2.5em 0; /* Right and bottom margin for spacing */
-  background: #fff;
-  border-radius: 14px;
-  padding: 2em 1.5em;
-  text-align: left;
-  text-decoration: none;
-  color: var(--md-typeset-color, #222);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-  border: 2.5px solid #bfc8d1;
-  font-size: 1.12em;
-  font-weight: 500;
-  transition: box-shadow 0.2s, border 0.2s, background 0.2s;
-  box-sizing: border-box;
+  flex: 1 1 30% !important;
+  min-width: 260px !important;
+  max-width: 32% !important;
+  margin: 0 3em 3em 0 !important; /* Even more space between columns and rows */
+  background: #fff !important;
+  border-radius: 14px !important;
+  padding: 2em 1.5em !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  color: var(--md-typeset-color, #222) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important;
+  border: 2.5px solid #bfc8d1 !important;
+  font-size: 1.12em !important;
+  font-weight: 500 !important;
+  transition: box-shadow 0.2s, border 0.2s, background 0.2s !important;
+  box-sizing: border-box !important;
+  outline: 2px dashed #e57373 !important; /* DEBUG: Remove after confirming effect */
 }
 .article-grid a:nth-child(3n) {
-  margin-right: 0; /* Remove right margin for last column */
+  margin-right: 0 !important;
 }
 .article-grid a:hover {
-  background: var(--md-accent-bg-color, #f0f6ff);
-  border: 2.5px solid var(--md-accent-fg-color, #1976d2);
-  box-shadow: 0 6px 20px rgba(25, 118, 210, 0.13);
+  background: var(--md-accent-bg-color, #f0f6ff) !important;
+  border: 2.5px solid var(--md-accent-fg-color, #1976d2) !important;
+  box-shadow: 0 6px 20px rgba(25, 118, 210, 0.13) !important;
 }
 
 /* All code/pre rules removed to restore theme syntax highlighting */
