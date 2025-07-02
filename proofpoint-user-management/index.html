@@ -10,13 +10,11 @@
       
       
       
-        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/adds-user-update/">
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/proofpoint-user-management/">
       
       
-        <link rel="prev" href="../adds-user-creation/">
+        <link rel="prev" href="../ukg-api-integration-and-dataview/">
       
-      
-        <link rel="next" href="../sap-rfc-python-container/">
       
       
       <link rel="icon" href="../None">
@@ -24,7 +22,7 @@
     
     
       
-        <title>Update ADDS User - Munish(s) Blog</title>
+        <title>User Management - Munish(s) Blog</title>
       
     
     
@@ -68,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#updating-active-directory-user-attributes" class="md-skip">
+        <a href="#automating-user-management-in-proofpoint-essentials" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Update ADDS User
+              User Management
             
           </span>
         </div>
@@ -411,8 +409,6 @@
       
   
   
-    
-  
   
   
     
@@ -425,11 +421,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -445,7 +441,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Active Directory Domain Services
@@ -479,32 +475,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Update ADDS User
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
         
   
   
@@ -515,140 +489,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#understanding-adds-attributes-delivered-vs-custom" class="md-nav__link">
-    <span class="md-ellipsis">
-      Understanding ADDS Attributes: Delivered vs. Custom
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-python-approach-using-ldap3" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Python Approach: Using ldap3
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-by-step-updating-user-attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step-by-Step: Updating User Attributes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step-by-Step: Updating User Attributes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-prepare-the-attribute-dictionary" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Prepare the Attribute Dictionary
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-connect-to-adds" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Connect to ADDS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-update-attributes-with-modify" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Update Attributes with modify
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-error-handling-and-notification" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Error Handling and Notification
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-updating-a-users-attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example: Updating a User's Attributes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      Best Practices
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conclusion
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1068,8 +908,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1080,11 +922,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
@@ -1100,7 +942,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Proof Point
@@ -1111,10 +953,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../proofpoint-user-management/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    User Management
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1125,6 +989,98 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-create-an-api-key-in-proofpoint-essentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Create an API Key in Proofpoint Essentials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-connect-to-the-proofpoint-essentials-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Connect to the Proofpoint Essentials API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-retrieve-user-data-from-your-hr-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Retrieve User Data from Your HR System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-compare-and-mark-users-as-functional-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Compare and Mark Users as Functional Accounts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-example-orchestrating-the-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Example: Orchestrating the Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1173,87 +1129,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#understanding-adds-attributes-delivered-vs-custom" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Understanding ADDS Attributes: Delivered vs. Custom
+      Prerequisites
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-python-approach-using-ldap3" class="md-nav__link">
+  <a href="#how-to-create-an-api-key-in-proofpoint-essentials" class="md-nav__link">
     <span class="md-ellipsis">
-      The Python Approach: Using ldap3
+      How to Create an API Key in Proofpoint Essentials
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-by-step-updating-user-attributes" class="md-nav__link">
+  <a href="#step-1-connect-to-the-proofpoint-essentials-api" class="md-nav__link">
     <span class="md-ellipsis">
-      Step-by-Step: Updating User Attributes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step-by-Step: Updating User Attributes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-prepare-the-attribute-dictionary" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Prepare the Attribute Dictionary
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-connect-to-adds" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Connect to ADDS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-update-attributes-with-modify" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Update Attributes with modify
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-error-handling-and-notification" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Error Handling and Notification
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-updating-a-users-attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example: Updating a User's Attributes
+      Step 1: Connect to the Proofpoint Essentials API
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
+  <a href="#step-2-retrieve-user-data-from-your-hr-system" class="md-nav__link">
     <span class="md-ellipsis">
-      Best Practices
+      Step 2: Retrieve User Data from Your HR System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-compare-and-mark-users-as-functional-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Compare and Mark Users as Functional Accounts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-example-orchestrating-the-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Example: Orchestrating the Process
     </span>
   </a>
   
@@ -1263,15 +1186,6 @@
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       Conclusion
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
     </span>
   </a>
   
@@ -1293,108 +1207,130 @@
 
 
 
-<h1 id="updating-active-directory-user-attributes">Updating Active Directory User Attributes</h1>
+<h1 id="automating-user-management-in-proofpoint-essentials">Automating User Management in Proofpoint Essentials</h1>
 <h2 id="introduction">Introduction</h2>
-<p>Active Directory Domain Services (ADDS) is the backbone of identity management in many organizations. While user creation and group assignment are common automation tasks, updating user attributes—both standard (delivered) and custom—is equally important for keeping directory data accurate and useful. This article explains, with practical Python code, how to update ADDS user attributes using the <code>ldap3</code> library, focusing on the function <code>update_existing_users_adds</code>.</p>
-<hr />
-<h2 id="understanding-adds-attributes-delivered-vs-custom">Understanding ADDS Attributes: Delivered vs. Custom</h2>
+<p>Proofpoint Essentials provides robust APIs for managing users and optimizing licensing. Marking certain users as "functional accounts" (such as service, shared, or terminated accounts) can help reduce licensing costs and improve compliance. This article demonstrates how to:</p>
 <ul>
-<li><strong>Delivered (Standard) Attributes:</strong></li>
-<li>These are built-in attributes provided by Microsoft, such as <code>givenName</code>, <code>sn</code>, <code>title</code>, <code>department</code>, <code>telephoneNumber</code>, etc.</li>
-<li>They are part of the default AD schema and are widely supported by tools and scripts.</li>
-<li><strong>Custom Attributes:</strong></li>
-<li>Organizations can extend the AD schema to include custom attributes (e.g., <code>extensionAttribute1</code>, <code>departmentNumber</code>).</li>
-<li>These are used for business-specific data not covered by standard attributes.</li>
+<li>Connect to the Proofpoint Essentials API using an API user and key</li>
+<li>Retrieve active users from Proofpoint</li>
+<li>Compare users to your HR system (e.g., ADP or any HRIS)</li>
+<li>Mark users as functional accounts via API</li>
 </ul>
-<p>Both types can be updated using the same LDAP operations.</p>
+<p>All code is provided in Python, and the approach is company-agnostic and suitable for any enterprise environment.</p>
 <hr />
-<h2 id="the-python-approach-using-ldap3">The Python Approach: Using ldap3</h2>
-<p>The <code>ldap3</code> library provides a high-level, Pythonic interface for interacting with ADDS. The function <code>update_existing_users_adds</code> demonstrates how to:</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Proofpoint Essentials administrator access</li>
+<li>An API user and API key (see below)</li>
+<li>Python 3.8+ and the <code>requests</code> library</li>
+<li>Access to your HR system data (e.g., via SQL, API, or CSV)</li>
+</ul>
+<hr />
+<h2 id="how-to-create-an-api-key-in-proofpoint-essentials">How to Create an API Key in Proofpoint Essentials</h2>
 <ol>
-<li>Build a dictionary of user attributes to update (both standard and custom).</li>
-<li>Connect to ADDS securely.</li>
-<li>Use the <code>modify</code> method to update attributes for each user.</li>
-<li>Handle errors and notify administrators if updates fail.</li>
+<li>Log in to the Proofpoint Essentials admin portal.</li>
+<li>Navigate to <strong>Account Management &gt; API Keys</strong>.</li>
+<li>Click <strong>Create API Key</strong>.</li>
+<li>Assign the key to a dedicated API user with appropriate permissions.</li>
+<li>Save the API key securely (e.g., in Azure Key Vault or a secrets manager).</li>
 </ol>
+<p><em>For more details, refer to the official <a href="https://us5.proofpointessentials.com/docs/api/">Proofpoint Essentials API documentation</a>.</em>  </p>
 <hr />
-<h2 id="step-by-step-updating-user-attributes">Step-by-Step: Updating User Attributes</h2>
-<h3 id="1-prepare-the-attribute-dictionary">1. Prepare the Attribute Dictionary</h3>
-<p>For each user, a dictionary is built with the attributes to update. This can include both delivered and custom attributes:</p>
-<div class="highlight"><pre><span></span><code><span class="n">item</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;displayName&#39;</span><span class="p">:</span> <span class="n">display_name</span><span class="p">,</span>           <span class="c1"># Standard</span>
-    <span class="s1">&#39;givenName&#39;</span><span class="p">:</span> <span class="n">first_name</span><span class="p">,</span>               <span class="c1"># Standard</span>
-    <span class="s1">&#39;sn&#39;</span><span class="p">:</span> <span class="n">last_name</span><span class="p">,</span>                       <span class="c1"># Standard</span>
-    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>                        <span class="c1"># Standard</span>
-    <span class="s1">&#39;department&#39;</span><span class="p">:</span> <span class="n">department</span><span class="p">,</span>              <span class="c1"># Standard</span>
-    <span class="s1">&#39;employeeType&#39;</span><span class="p">:</span> <span class="n">employee_type</span><span class="p">,</span>         <span class="c1"># Standard</span>
-    <span class="s1">&#39;extensionAttribute1&#39;</span><span class="p">:</span> <span class="n">is_mgmt_position</span><span class="p">,</span> <span class="c1"># Custom</span>
-    <span class="s1">&#39;manager&#39;</span><span class="p">:</span> <span class="n">manager_dn</span><span class="p">,</span>                 <span class="c1"># Standard (DN of manager)</span>
-    <span class="c1"># ... add more as needed ...</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="2-connect-to-adds">2. Connect to ADDS</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ldap3</span><span class="w"> </span><span class="kn">import</span> <span class="n">Server</span><span class="p">,</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">MODIFY_REPLACE</span>
+<h2 id="step-1-connect-to-the-proofpoint-essentials-api">Step 1: Connect to the Proofpoint Essentials API</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">your_utils_module</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_azure_kv_sceret</span>  <span class="c1"># Replace with your actual secret retrieval function</span>
 
-<span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span><span class="s1">&#39;your_dc_ip&#39;</span><span class="p">,</span> <span class="n">use_ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;your_user&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;your_password&#39;</span><span class="p">)</span>
-<span class="n">conn</span><span class="o">.</span><span class="n">bind</span><span class="p">()</span>
+<span class="n">PROOFPOINT_BASE_API</span> <span class="o">=</span> <span class="s1">&#39;https://&lt;your-region&gt;.proofpointessentials.com/api/v1/&#39;</span>
+<span class="n">PROOFPOINT_API_USER</span> <span class="o">=</span> <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;pp-api-user&#39;</span><span class="p">)</span>
+<span class="n">PROOFPOINT_API_PASSWORD</span> <span class="o">=</span> <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;pp-api-key&#39;</span><span class="p">)</span>
+
+<span class="c1"># Example: Get all users in your organization</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">PROOFPOINT_BASE_API</span> <span class="o">+</span> <span class="s1">&#39;orgs/&lt;your-domain&gt;/users&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;X-user&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_USER</span><span class="p">,</span> <span class="s1">&#39;X-password&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_PASSWORD</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="n">users</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="p">[])</span>
 </code></pre></div>
-<h3 id="3-update-attributes-with-modify">3. Update Attributes with <code>modify</code></h3>
-<p>The <code>modify</code> method is used to update one or more attributes for a user. The changes dictionary maps attribute names to a tuple specifying the operation (e.g., <code>MODIFY_REPLACE</code>) and the new value(s):</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">changes</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="p">(</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="n">value</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span><span class="p">}</span>
-<span class="n">conn</span><span class="o">.</span><span class="n">modify</span><span class="p">(</span><span class="n">dn</span><span class="o">=</span><span class="n">distinguished_name</span><span class="p">,</span> <span class="n">changes</span><span class="o">=</span><span class="n">changes</span><span class="p">)</span>
-</code></pre></div>
-- <code>dn</code>: The distinguished name of the user to update.
-- <code>changes</code>: A dictionary of attribute updates.</p>
-<h3 id="4-error-handling-and-notification">4. Error Handling and Notification</h3>
-<p>After each modify operation, the result is checked. If the update fails, an email notification is sent to administrators:</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">conn</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">send_email</span><span class="p">(</span>
-        <span class="n">recipients</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;admin@example.com&#39;</span><span class="p">],</span>
-        <span class="n">subject</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Error while updating user </span><span class="si">{</span><span class="n">distinguished_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-        <span class="n">plain_message</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;An error occurred while modifying user: </span><span class="si">{</span><span class="n">conn</span><span class="o">.</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
+<p><strong>Explanation:</strong>
+- Credentials are retrieved securely.
+- The API call retrieves all users for your organization.</p>
+<hr />
+<h2 id="step-2-retrieve-user-data-from-your-hr-system">Step 2: Retrieve User Data from Your HR System</h2>
+<p>Assume you have a function to get user data from your HR system (e.g., via SQL):</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_latest_hr_data</span><span class="p">():</span>
+    <span class="n">sql_statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        SELECT status, email, company_code, worker_category_code, location_code</span>
+<span class="s2">        FROM hr_employees WHERE email IS NOT NULL</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">execute_sql_fetch_dicts</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h2 id="example-updating-a-users-attributes">Example: Updating a User's Attributes</h2>
-<p>Here is a simplified, generalized example:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ldap3</span><span class="w"> </span><span class="kn">import</span> <span class="n">Server</span><span class="p">,</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">MODIFY_REPLACE</span>
+<h2 id="step-3-compare-and-mark-users-as-functional-accounts">Step 3: Compare and Mark Users as Functional Accounts</h2>
+<p>The following function compares Proofpoint users to your HR data and marks users as functional accounts via the API:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">mark_users_as_functional</span><span class="p">(</span><span class="n">hr_users</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Get active users from Proofpoint</span>
+        <span class="n">url_to_invoke</span> <span class="o">=</span> <span class="n">PROOFPOINT_BASE_API</span> <span class="o">+</span> <span class="s1">&#39;orgs/&lt;your-domain&gt;/users&#39;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">url_to_invoke</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;X-user&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_USER</span><span class="p">,</span> <span class="s1">&#39;X-password&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_PASSWORD</span><span class="p">},</span>
+        <span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+        <span class="n">active_users_from_pp</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="p">[])</span>
 
-<span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span><span class="s1">&#39;your_dc_ip&#39;</span><span class="p">,</span> <span class="n">use_ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;your_user&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;your_password&#39;</span><span class="p">)</span>
-<span class="n">conn</span><span class="o">.</span><span class="n">bind</span><span class="p">()</span>
+        <span class="n">hr_emails</span> <span class="o">=</span> <span class="p">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">user</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">hr_users</span><span class="p">}</span>
+        <span class="n">users_to_mark_functional</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">dn</span> <span class="o">=</span> <span class="s1">&#39;CN=John Doe,OU=Users,DC=example,DC=com&#39;</span>
-<span class="n">changes</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Senior Engineer&#39;</span><span class="p">]),</span>
-    <span class="s1">&#39;department&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Engineering&#39;</span><span class="p">]),</span>
-    <span class="s1">&#39;extensionAttribute1&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Project Lead&#39;</span><span class="p">])</span>
-<span class="p">}</span>
-<span class="n">conn</span><span class="o">.</span><span class="n">modify</span><span class="p">(</span><span class="n">dn</span><span class="o">=</span><span class="n">dn</span><span class="p">,</span> <span class="n">changes</span><span class="o">=</span><span class="n">changes</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">active_users_from_pp</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;end_user&#39;</span><span class="p">:</span>
+                <span class="n">email</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;primary_email&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="n">hr_user</span> <span class="o">=</span> <span class="n">hr_emails</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+                <span class="c1"># Example logic: mark as functional if not in HR or if terminated</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">hr_user</span> <span class="ow">or</span> <span class="n">hr_user</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;terminated&#39;</span><span class="p">:</span>
+                    <span class="n">users_to_mark_functional</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">conn</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error updating user: </span><span class="si">{</span><span class="n">conn</span><span class="o">.</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">conn</span><span class="o">.</span><span class="n">unbind</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users_to_mark_functional</span><span class="p">:</span>
+            <span class="n">email_to_lookup</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;primary_email&#39;</span><span class="p">]</span>
+            <span class="n">url_update</span> <span class="o">=</span> <span class="n">PROOFPOINT_BASE_API</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;orgs/&lt;your-domain&gt;/users/</span><span class="si">{</span><span class="n">email_to_lookup</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="n">json_update_values</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;uid&quot;</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;uid&#39;</span><span class="p">],</span>
+                <span class="s2">&quot;primary_email&quot;</span><span class="p">:</span> <span class="n">email_to_lookup</span><span class="p">,</span>
+                <span class="s2">&quot;is_active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;functional_account&quot;</span>
+            <span class="p">}</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+                    <span class="n">url_update</span><span class="p">,</span>
+                    <span class="n">json</span><span class="o">=</span><span class="n">json_update_values</span><span class="p">,</span>
+                    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;X-user&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_USER</span><span class="p">,</span> <span class="s1">&#39;X-password&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_PASSWORD</span><span class="p">}</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+            <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">RequestException</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div>
+<p><strong>Explanation:</strong>
+- Retrieves all active users from Proofpoint.
+- Compares each user to the HR system.
+- Marks users as functional accounts if they are not in HR or are terminated.
+- Updates are made via the Proofpoint API.</p>
 <hr />
-<h2 id="best-practices">Best Practices</h2>
-<ul>
-<li><strong>Batch Updates:</strong> You can update multiple attributes in a single <code>modify</code> call for efficiency.</li>
-<li><strong>Custom Attributes:</strong> Ensure custom attributes exist in your AD schema before attempting to update them.</li>
-<li><strong>Error Handling:</strong> Always check the result of LDAP operations and log or notify on failure.</li>
-<li><strong>Security:</strong> Never hardcode credentials; use secure storage.</li>
-</ul>
+<h2 id="full-example-orchestrating-the-process">Full Example: Orchestrating the Process</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">hr_data</span> <span class="o">=</span> <span class="n">get_latest_hr_data</span><span class="p">()</span>
+    <span class="n">mark_users_as_functional</span><span class="p">(</span><span class="n">hr_data</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
-<p>Updating user attributes in ADDS with Python and <code>ldap3</code> is straightforward and powerful. Whether you are updating standard or custom attributes, the process is the same. By following the approach in <code>update_existing_users_adds</code>, you can automate directory maintenance and ensure your AD data stays current and accurate.</p>
-<hr />
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://ldap3.readthedocs.io/en/latest/">ldap3 Documentation</a></li>
-<li><a href="https://docs.microsoft.com/en-us/windows/win32/adschema/attributes-all">Microsoft ADDS Schema</a></li>
-<li><a href="https://github.com/cannatag/ldap3">Python ADDS Automation Examples</a></li>
-</ul>
+<p>By following this guide, you can automate the process of marking functional accounts in Proofpoint Essentials, optimizing your licensing and compliance posture. The approach is secure, repeatable, and adaptable to any enterprise environment.</p>
+<p>For more details, consult the <a href="https://us5.proofpointessentials.com/docs/api/">Proofpoint Essentials API documentation</a>.</p>
 
 
 
@@ -1415,7 +1351,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 30, 2025 21:58:08 UTC">June 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:32:22 UTC">July 2, 2025</span>
   </span>
 
     
