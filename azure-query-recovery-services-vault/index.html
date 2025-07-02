@@ -413,18 +413,45 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-connect-to-the-recovery-services-backup-client" class="md-nav__link">
+  <a href="#step-3-query-backup-items-in-a-recovery-services-vault" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Connect to the Recovery Services Backup Client
+      Step 3: Query Backup Items in a Recovery Services Vault
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-query-backup-items-in-a-recovery-services-vault" class="md-nav__link">
+  <a href="#step-4-store-or-report-on-backup-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3: Query Backup Items in a Recovery Services Vault
+      Step 4: Store or Report on Backup Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-example-orchestrating-the-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Example: Orchestrating the Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-updating-backup-resource-details-programmatically" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced: Updating Backup Resource Details Programmatically
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
     </span>
   </a>
   
@@ -1145,18 +1172,45 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-connect-to-the-recovery-services-backup-client" class="md-nav__link">
+  <a href="#step-3-query-backup-items-in-a-recovery-services-vault" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Connect to the Recovery Services Backup Client
+      Step 3: Query Backup Items in a Recovery Services Vault
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-query-backup-items-in-a-recovery-services-vault" class="md-nav__link">
+  <a href="#step-4-store-or-report-on-backup-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3: Query Backup Items in a Recovery Services Vault
+      Step 4: Store or Report on Backup Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-example-orchestrating-the-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Example: Orchestrating the Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-updating-backup-resource-details-programmatically" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced: Updating Backup Resource Details Programmatically
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
     </span>
   </a>
   
@@ -1204,80 +1258,70 @@
 <hr />
 <h2 id="step-1-authenticate-to-azure-with-a-service-principal">Step 1: Authenticate to Azure with a Service Principal</h2>
 <p>Use the Azure Identity library to authenticate securely:</p>
-<p>def get_client_secret_credential(tenant_id, client_id, client_secret):
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">azure.identity</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClientSecretCredential</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_client_secret_credential</span><span class="p">(</span><span class="n">tenant_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtain a ClientSecretCredential for Azure authentication.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ClientSecretCredential</span><span class="p">(</span>
         <span class="n">tenant_id</span><span class="o">=</span><span class="n">tenant_id</span><span class="p">,</span>
         <span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span>
         <span class="n">client_secret</span><span class="o">=</span><span class="n">client_secret</span>
     <span class="p">)</span>
 
-<span class="c1"># Example usage:</span>
-<span class="c1"># credential = get_client_secret_credential(</span>
-<span class="c1">#     tenant_id=&#39;&lt;your-tenant-id&gt;&#39;,</span>
-<span class="c1">#     client_id=&#39;&lt;your-client-id&gt;&#39;,</span>
-<span class="c1">#     client_secret=&#39;&lt;your-client-secret&gt;&#39;</span>
-<span class="c1"># )</span>
-</code></pre></div></p>
-<p><strong>Explanation:</strong>
-- Use a service principal for secure, automated access.
-- Store secrets securely (e.g., Azure Key Vault).</p>
-<hr />
-<h2 id="step-2-connect-to-the-recovery-services-backup-client">Step 2: Connect to the Recovery Services Backup Client</h2>
-<p>def get_backup_client(credential, subscription_id):
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">azure.mgmt.recoveryservicesbackup</span><span class="w"> </span><span class="kn">import</span> <span class="n">RecoveryServicesBackupClient</span>
+<span class="o">**</span><span class="n">Explanation</span><span class="p">:</span><span class="o">**</span>
+<span class="o">-</span> <span class="n">Use</span> <span class="n">a</span> <span class="n">service</span> <span class="n">principal</span> <span class="k">for</span> <span class="n">secure</span><span class="p">,</span> <span class="n">automated</span> <span class="n">access</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">Store</span> <span class="n">secrets</span> <span class="n">securely</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="n">Azure</span> <span class="n">Key</span> <span class="n">Vault</span><span class="p">)</span><span class="o">.</span>
+
+<span class="o">---</span>
+
+<span class="c1">## Step 2: Connect to the Recovery Services Backup Client</span>
+
+
+<span class="err">```</span><span class="n">python</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">azure.mgmt.recoveryservicesbackup</span><span class="w"> </span><span class="kn">import</span> <span class="n">RecoveryServicesBackupClient</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_backup_client</span><span class="p">(</span><span class="n">credential</span><span class="p">,</span> <span class="n">subscription_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a RecoveryServicesBackupClient for backup operations.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">RecoveryServicesBackupClient</span><span class="p">(</span><span class="n">credential</span><span class="p">,</span> <span class="n">subscription_id</span><span class="p">)</span>
-
 <span class="c1"># Example usage:</span>
 <span class="c1"># backup_client = get_backup_client(credential, &#39;&lt;your-subscription-id&gt;&#39;)</span>
-</code></pre></div></p>
+</code></pre></div>
 <p><strong>Explanation:</strong>
 - The <code>RecoveryServicesBackupClient</code> allows you to query backup items, jobs, and policies.</p>
 <hr />
 <h2 id="step-3-query-backup-items-in-a-recovery-services-vault">Step 3: Query Backup Items in a Recovery Services Vault</h2>
-<p>def list_vm_backups(backup_client, resource_group, vault_name):
-    # List all backup items (e.g., Azure VMs) in the specified vault
-    items = backup_client.backup_protected_items.list(
-        vault_name=vault_name,
-        resource_group_name=resource_group,
-        filter="backupManagementType eq 'AzureIaasVM'"
-    )
-    backup_info = []
-    for item in items:
-        backup_info.append({
-            'vm_name': item.properties.friendly_name,
-            'protection_status': item.properties.protection_status,
-            'last_backup_time': item.properties.last_backup_time,
-            'health_status': item.properties.health_status,
-            'resource_id': item.id
-        })
-    return backup_info</p>
-<h1 id="example-usage">Example usage:</h1>
-<h1 id="backups-list_vm_backupsbackup_client-my-resource-group-my-vault-name">backups = list_vm_backups(backup_client, 'my-resource-group', 'my-vault-name')</h1>
-<div class="highlight"><pre><span></span><code>**Explanation:**
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">list_vm_backups</span><span class="p">(</span><span class="n">backup_client</span><span class="p">,</span> <span class="n">resource_group</span><span class="p">,</span> <span class="n">vault_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;List all backup items (e.g., Azure VMs) in the specified vault.&quot;&quot;&quot;</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">backup_client</span><span class="o">.</span><span class="n">backup_protected_items</span><span class="o">.</span><span class="n">list</span><span class="p">(</span>
+        <span class="n">vault_name</span><span class="o">=</span><span class="n">vault_name</span><span class="p">,</span>
+        <span class="n">resource_group_name</span><span class="o">=</span><span class="n">resource_group</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="o">=</span><span class="s2">&quot;backupManagementType eq &#39;AzureIaasVM&#39;&quot;</span>
+    <span class="p">)</span>
+    <span class="n">backup_info</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">backup_info</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;vm_name&#39;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">friendly_name</span><span class="p">,</span>
+            <span class="s1">&#39;protection_status&#39;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">protection_status</span><span class="p">,</span>
+            <span class="s1">&#39;last_backup_time&#39;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">last_backup_time</span><span class="p">,</span>
+            <span class="s1">&#39;health_status&#39;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">health_status</span><span class="p">,</span>
+            <span class="s1">&#39;resource_id&#39;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span>
+        <span class="p">})</span>
+    <span class="k">return</span> <span class="n">backup_info</span>
+</code></pre></div>
+<p><strong>Explanation:</strong>
 - Lists all VM backup items in the specified Recovery Services Vault.
-- Extracts key properties for reporting or further processing.
-
----
-
-## Step 4: Store or Report on Backup Data
-
-You can save the backup information to a CSV file or database for further analysis:
-
-def save_backup_info_to_csv(backup_info, filename):
-    with open(filename, &#39;w&#39;, newline=&#39;&#39;) as csvfile:
-        fieldnames = [&#39;vm_name&#39;, &#39;protection_status&#39;, &#39;last_backup_time&#39;, &#39;health_status&#39;, &#39;resource_id&#39;]
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        for row in backup_info:
-            writer.writerow(row)
-
-# Example usage:
-# save_backup_info_to_csv(backups, &#39;azure_vm_backups.csv&#39;)
+- Extracts key properties for reporting or further processing.</p>
+<hr />
+<h2 id="step-4-store-or-report-on-backup-data">Step 4: Store or Report on Backup Data</h2>
+<p>You can save the backup information to a CSV file or database for further analysis:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">save_backup_info_to_csv</span><span class="p">(</span><span class="n">backup_info</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save backup information to a CSV file.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+        <span class="n">fieldnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;vm_name&#39;</span><span class="p">,</span> <span class="s1">&#39;protection_status&#39;</span><span class="p">,</span> <span class="s1">&#39;last_backup_time&#39;</span><span class="p">,</span> <span class="s1">&#39;health_status&#39;</span><span class="p">,</span> <span class="s1">&#39;resource_id&#39;</span><span class="p">]</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">)</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">backup_info</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </code></pre></div>
 <hr />
 <h2 id="full-example-orchestrating-the-process">Full Example: Orchestrating the Process</h2>
@@ -1298,6 +1342,65 @@ def save_backup_info_to_csv(backup_info, filename):
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
+<hr />
+<hr />
+<h2 id="advanced-updating-backup-resource-details-programmatically">Advanced: Updating Backup Resource Details Programmatically</h2>
+<p>In some enterprise scenarios, you may want to enrich or update your backup resource inventory with additional details from Azure Recovery Services Vault (RSV). The following function demonstrates how to programmatically update a list of backup resources with the latest backup status and metadata for each VM.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">azure.mgmt.recoveryservicesbackup</span><span class="w"> </span><span class="kn">import</span> <span class="n">RecoveryServicesBackupClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">azure.mgmt.recoveryservicesbackup.activestamp.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AzureIaaSComputeVMProtectedItem</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_backup_resources</span><span class="p">(</span><span class="n">resource_group</span><span class="p">,</span> <span class="n">vault_name</span><span class="p">,</span> <span class="n">backup_resources</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update backup resource details by fetching relevant VM backup information from Recovery Services Vault (RSV).</span>
+
+<span class="sd">    :param resource_group: Name of the Azure resource group</span>
+<span class="sd">    :param vault_name: Name of the Recovery Services Vault</span>
+<span class="sd">    :param backup_resources: List of backup resource dictionaries to update</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Obtain Azure credentials (replace with your secure credential retrieval)</span>
+        <span class="n">credential</span> <span class="o">=</span> <span class="n">get_client_secret_credential</span><span class="p">(</span><span class="n">tenant_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">)</span>
+        <span class="n">backup_client</span> <span class="o">=</span> <span class="n">RecoveryServicesBackupClient</span><span class="p">(</span><span class="n">credential</span><span class="p">,</span> <span class="n">subscription_id</span><span class="p">)</span>
+
+        <span class="c1"># Dictionary to store VM backups from the vault</span>
+        <span class="n">azure_vm_backups</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Fetch backup-protected items from the Recovery Services Vault</span>
+        <span class="n">rsv_backup_items</span> <span class="o">=</span> <span class="n">backup_client</span><span class="o">.</span><span class="n">backup_protected_items</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">vault_name</span><span class="p">,</span> <span class="n">resource_group</span><span class="p">)</span>
+        <span class="n">azure_vm_backups</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="n">item</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">virtual_machine_id</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">item</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">rsv_backup_items</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span> <span class="n">AzureIaaSComputeVMProtectedItem</span><span class="p">)</span>
+        <span class="p">})</span>
+
+        <span class="c1"># Get today&#39;s date in YYYY-MM-DD format</span>
+        <span class="n">today_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">format_date</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span> <span class="k">else</span> <span class="n">today_date</span>
+
+        <span class="c1"># Iterate through the list of backup resources and update details</span>
+        <span class="k">for</span> <span class="n">resource</span> <span class="ow">in</span> <span class="n">backup_resources</span><span class="p">:</span>
+            <span class="n">normalized_vm_id</span> <span class="o">=</span> <span class="n">resource</span><span class="p">[</span><span class="s1">&#39;resource_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="n">vm_backup</span> <span class="o">=</span> <span class="n">azure_vm_backups</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">normalized_vm_id</span><span class="p">)</span>
+            <span class="n">resource</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+                <span class="s2">&quot;friendly_name&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">vm_backup</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span> <span class="s1">&#39;friendly_name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">vm_backup</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;policy_name&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">vm_backup</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span> <span class="s1">&#39;policy_name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">vm_backup</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;last_backup_status&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">vm_backup</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span> <span class="s1">&#39;last_backup_status&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">vm_backup</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;last_backup_time&quot;</span><span class="p">:</span> <span class="n">format_date</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">vm_backup</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span> <span class="s1">&#39;last_backup_time&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="k">if</span> <span class="n">vm_backup</span> <span class="k">else</span> <span class="n">today_date</span><span class="p">,</span>
+                <span class="s2">&quot;last_recovery_point&quot;</span><span class="p">:</span> <span class="n">format_date</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">vm_backup</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span> <span class="s1">&#39;last_recovery_point&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="k">if</span> <span class="n">vm_backup</span> <span class="k">else</span> <span class="n">today_date</span><span class="p">,</span>
+                <span class="s2">&quot;protection_state&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">vm_backup</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span> <span class="s1">&#39;protection_state&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">vm_backup</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;protection_status&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">vm_backup</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span> <span class="s1">&#39;protection_status&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">vm_backup</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;container_name&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">vm_backup</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span> <span class="s1">&#39;container_name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">vm_backup</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="p">})</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error updating backup resources: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Explanation:</strong>
+- This function takes a list of backup resources (e.g., VMs) and updates each with the latest backup metadata from Azure RSV.
+- It normalizes VM IDs for matching, fetches backup items from the vault, and updates each resource dictionary in-place.
+- Error handling is included for robustness; in production, use secure credential management and structured logging.</p>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>By following this guide, you can automate the retrieval and reporting of VM backup data from Azure Recovery Services Vaults. This enables better compliance, reporting, and operational insight into your backup posture.</p>
@@ -1322,7 +1425,7 @@ def save_backup_info_to_csv(backup_info, filename):
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 16:23:20 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 16:48:09 UTC">July 2, 2025</span>
   </span>
 
     
