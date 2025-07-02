@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/azure-ad-certificate/">
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/azure-query-recovery-services-vault/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../azure-resources/">
       
       
-        <link rel="next" href="../azure-billing/">
+        <link rel="next" href="../meraki-nagios-device-sync/">
       
       
       <link rel="icon" href="../None">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Certificate Based Authentication - Munish(s) Blog</title>
+        <title>Query Recovery Services Vault - Munish(s) Blog</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#certificate-based-authentication-for-azure-ad-why-and-how" class="md-skip">
+        <a href="#querying-azure-recovery-services-vault-rsv" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Certificate Based Authentication
+              Query Recovery Services Vault
             
           </span>
         </div>
@@ -264,32 +264,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Certificate Based Authentication
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
         
   
   
@@ -300,161 +278,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#creating-a-certificate-for-azure-ad-authentication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating a Certificate for Azure AD Authentication
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating a Certificate for Azure AD Authentication">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#steps-to-generate-a-certificate-using-openssl" class="md-nav__link">
-    <span class="md-ellipsis">
-      Steps to Generate a Certificate Using OpenSSL
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#uploading-the-certificate-to-your-entra-azure-ad-application" class="md-nav__link">
-    <span class="md-ellipsis">
-      Uploading the Certificate to Your Entra (Azure AD) Application
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assigning-permissions-to-the-application" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assigning Permissions to the Application
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-use-a-certificate-instead-of-an-application-secret" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Use a Certificate Instead of an Application Secret?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Why Use a Certificate Instead of an Application Secret?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-security" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Security
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-lifecycle-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Lifecycle Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-compliance-and-best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Compliance and Best Practices
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-use-the-msal-library-and-not-a-specific-azure-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Use the MSAL Library (and Not a Specific Azure SDK)?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#code-example-certificate-based-authentication-in-python" class="md-nav__link">
-    <span class="md-ellipsis">
-      Code Example: Certificate-Based Authentication in Python
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Code Example: Certificate-Based Authentication in Python">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Points:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conclusion
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -510,10 +333,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Query Recovery Services Vault
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -524,6 +369,71 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-authenticate-to-azure-with-a-service-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Authenticate to Azure with a Service Principal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-connect-to-the-recovery-services-backup-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Connect to the Recovery Services Backup Client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-query-backup-items-in-a-recovery-services-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Query Backup Items in a Recovery Services Vault
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1208,135 +1118,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating-a-certificate-for-azure-ad-authentication" class="md-nav__link">
+  <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating a Certificate for Azure AD Authentication
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating a Certificate for Azure AD Authentication">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#steps-to-generate-a-certificate-using-openssl" class="md-nav__link">
-    <span class="md-ellipsis">
-      Steps to Generate a Certificate Using OpenSSL
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#uploading-the-certificate-to-your-entra-azure-ad-application" class="md-nav__link">
-    <span class="md-ellipsis">
-      Uploading the Certificate to Your Entra (Azure AD) Application
+      Introduction
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#assigning-permissions-to-the-application" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Assigning Permissions to the Application
+      Prerequisites
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-use-a-certificate-instead-of-an-application-secret" class="md-nav__link">
+  <a href="#step-1-authenticate-to-azure-with-a-service-principal" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Use a Certificate Instead of an Application Secret?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Why Use a Certificate Instead of an Application Secret?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-security" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Security
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-lifecycle-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Lifecycle Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-compliance-and-best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Compliance and Best Practices
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-use-the-msal-library-and-not-a-specific-azure-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Use the MSAL Library (and Not a Specific Azure SDK)?
+      Step 1: Authenticate to Azure with a Service Principal
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#code-example-certificate-based-authentication-in-python" class="md-nav__link">
+  <a href="#step-2-connect-to-the-recovery-services-backup-client" class="md-nav__link">
     <span class="md-ellipsis">
-      Code Example: Certificate-Based Authentication in Python
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Code Example: Certificate-Based Authentication in Python">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Points:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conclusion
+      Step 2: Connect to the Recovery Services Backup Client
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#step-3-query-backup-items-in-a-recovery-services-vault" class="md-nav__link">
     <span class="md-ellipsis">
-      References
+      Step 3: Query Backup Items in a Recovery Services Vault
     </span>
   </a>
   
@@ -1358,133 +1178,130 @@
 
 
 
-<!-- Certificate Based Authentication for Azure AD -->
-
-<h1 id="certificate-based-authentication-for-azure-ad-why-and-how">Certificate-Based Authentication for Azure AD: Why and How</h1>
-<h2 id="creating-a-certificate-for-azure-ad-authentication">Creating a Certificate for Azure AD Authentication</h2>
-<p>To use certificate-based authentication with Azure Active Directory (Azure AD), you first need to generate a certificate. Certificates provide a secure, manageable, and standards-based way to authenticate applications. A <code>.pfx</code> certificate may be required because Azure AD expects a certificate in Personal Information Exchange (PFX) format when uploading via the portal or for certain SDKs. The <code>.pfx</code> file contains both the public and private keys, protected by a password, and is suitable for import/export scenarios.</p>
-<h3 id="steps-to-generate-a-certificate-using-openssl">Steps to Generate a Certificate Using OpenSSL</h3>
-<ol>
-<li><strong>Generate a Private Key:</strong>
-   <div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>my-app-auth.key<span class="w"> </span><span class="m">2048</span>
-</code></pre></div></li>
-<li><strong>Create a Certificate Signing Request (CSR):</strong>
-   <div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-key<span class="w"> </span>my-app-auth.key<span class="w"> </span>-out<span class="w"> </span>my-app-auth.csr
-</code></pre></div></li>
-<li><strong>Generate a Self-Signed Certificate:</strong>
-   <div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-req<span class="w"> </span>-days<span class="w"> </span><span class="m">730</span><span class="w"> </span>-in<span class="w"> </span>my-app-auth.csr<span class="w"> </span>-signkey<span class="w"> </span>my-app-auth.key<span class="w"> </span>-out<span class="w"> </span>my-app-auth.crt
-</code></pre></div></li>
-<li><strong>Export to PFX (if needed for Azure):</strong>
-   <div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs12<span class="w"> </span>-export<span class="w"> </span>-out<span class="w"> </span>my-app-auth.pfx<span class="w"> </span>-inkey<span class="w"> </span>my-app-auth.key<span class="w"> </span>-in<span class="w"> </span>my-app-auth.crt
-</code></pre></div><blockquote>
-<p><strong>Note:</strong> The <code>.pfx</code> format is required if you want to upload the certificate via the Azure Portal or use it with some SDKs/tools. The <code>.crt</code> file is the public certificate, and the <code>.key</code> file is your private key (keep it secure!).</p>
-</blockquote>
-</li>
-</ol>
-<hr />
-<h2 id="uploading-the-certificate-to-your-entra-azure-ad-application">Uploading the Certificate to Your Entra (Azure AD) Application</h2>
-<ol>
-<li>Go to the <a href="https://entra.microsoft.com/">Microsoft Entra admin center</a> and select <strong>Azure Active Directory</strong>.</li>
-<li>Navigate to <strong>App registrations</strong> and select your application.</li>
-<li>In the left menu, click <strong>Certificates &amp; secrets</strong>.</li>
-<li>Under <strong>Certificates</strong>, click <strong>Upload certificate</strong>.</li>
-<li>Select your <code>.crt</code> or <code>.pfx</code> file and upload it.</li>
-<li>After uploading, Azure will display the certificate thumbprint. Save this value for use in your application code.</li>
-</ol>
-<hr />
-<h2 id="assigning-permissions-to-the-application">Assigning Permissions to the Application</h2>
-<p>After uploading the certificate, you must assign the necessary API permissions to your application:</p>
-<ol>
-<li>In your application's <strong>App registration</strong> page, go to <strong>API permissions</strong>.</li>
-<li>Click <strong>Add a permission</strong> and select the required Microsoft APIs (e.g., Microsoft Graph, Azure Service Management, etc.).</li>
-<li>Choose the appropriate permission type (Application or Delegated) and select the required permissions.</li>
-<li>Click <strong>Add permissions</strong>.</li>
-<li>If required, click <strong>Grant admin consent</strong> to approve the permissions for your organization.</li>
-</ol>
-<blockquote>
-<p><strong>Note:</strong> The application will only be able to access resources for which it has been granted permissions. Make sure to review and assign only the permissions your app needs.</p>
-</blockquote>
-<hr />
-<h2 id="why-use-a-certificate-instead-of-an-application-secret">Why Use a Certificate Instead of an Application Secret?</h2>
-<h3 id="1-security">1. <strong>Security</strong></h3>
+<h1 id="querying-azure-recovery-services-vault-rsv">Querying Azure Recovery Services Vault (RSV)</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Azure Recovery Services Vault (RSV) is a core component for managing and monitoring backups of virtual machines and other resources in Azure. Automating the retrieval and analysis of backup data can help with compliance, reporting, and operational efficiency. This article demonstrates how to:</p>
 <ul>
-<li><strong>Application secrets</strong> are essentially passwords. They are susceptible to accidental exposure (e.g., in code repositories, logs, or configuration files).</li>
-<li><strong>Certificates</strong> use asymmetric cryptography. The private key never leaves your environment, and only the public key is uploaded to Azure AD. This makes certificates much harder to compromise.</li>
+<li>Connect to Azure using the Python SDK and a service principal</li>
+<li>Query a Recovery Services Vault for backup details</li>
+<li>Process and store backup information for further analysis</li>
 </ul>
-<h3 id="2-lifecycle-management">2. <strong>Lifecycle Management</strong></h3>
+<p>All code is provided in Python, and the approach is company-agnostic and suitable for any enterprise environment.</p>
+<hr />
+<h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li><strong>Secrets</strong> typically expire every 6-12 months, requiring regular rotation and updates in all dependent systems.</li>
-<li><strong>Certificates</strong> can have longer lifespans (e.g., 1-2 years), and their expiration is easier to track and automate.</li>
-</ul>
-<h3 id="3-compliance-and-best-practices">3. <strong>Compliance and Best Practices</strong></h3>
-<ul>
-<li>Microsoft and most security frameworks recommend certificates for service-to-service authentication.</li>
-<li>Certificates support better auditing and can be managed centrally (e.g., via Azure Key Vault).</li>
+<li>Azure subscription with Recovery Services Vault(s) and VM backups</li>
+<li>Service principal with appropriate permissions (Backup Reader, etc.)</li>
+<li>Python 3.8+ and the following packages (install with <code>pip install ...</code>):</li>
+<li><code>azure-identity</code> (for authentication)</li>
+<li><code>azure-mgmt-recoveryservicesbackup</code> (for querying backup data)</li>
+<li><code>azure-mgmt-resource</code> (for resource management, optional)</li>
+<li><code>requests</code> (for any direct REST API calls, optional)</li>
+<li><code>python-dateutil</code> (for date parsing, optional)</li>
+<li><code>csv</code> (standard library, for CSV export)</li>
+<li>Secure storage for credentials (e.g., Azure Key Vault)</li>
 </ul>
 <hr />
-<h2 id="why-use-the-msal-library-and-not-a-specific-azure-sdk">Why Use the MSAL Library (and Not a Specific Azure SDK)?</h2>
-<p>The <a href="https://github.com/AzureAD/microsoft-authentication-library-for-python">MSAL (Microsoft Authentication Library) for Python</a> is a lightweight, flexible library for acquiring tokens from Azure AD. It supports a wide range of authentication scenarios, including certificate-based authentication for confidential clients.</p>
-<ul>
-<li><strong>Why MSAL?</strong></li>
-<li>MSAL is the official library for handling authentication and token acquisition with Azure AD.</li>
-<li>It is not tied to a specific Azure service, making it ideal for generic authentication scenarios.</li>
-<li>
-<p>It supports advanced scenarios like certificate-based authentication, multi-tenant apps, and more.</p>
-</li>
-<li>
-<p><strong>Why Not Use a Specific Azure SDK?</strong></p>
-</li>
-<li>Some Azure SDKs (e.g., for Storage, Key Vault, etc.) provide their own authentication mechanisms, but they may not support all advanced scenarios or may require additional dependencies.</li>
-<li>Using MSAL directly gives you full control over the authentication flow and token management, and is more transparent for troubleshooting and customization.</li>
-</ul>
+<h2 id="step-1-authenticate-to-azure-with-a-service-principal">Step 1: Authenticate to Azure with a Service Principal</h2>
+<p>Use the Azure Identity library to authenticate securely:</p>
+<p>def get_client_secret_credential(tenant_id, client_id, client_secret):
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">azure.identity</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClientSecretCredential</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_client_secret_credential</span><span class="p">(</span><span class="n">tenant_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">ClientSecretCredential</span><span class="p">(</span>
+        <span class="n">tenant_id</span><span class="o">=</span><span class="n">tenant_id</span><span class="p">,</span>
+        <span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span>
+        <span class="n">client_secret</span><span class="o">=</span><span class="n">client_secret</span>
+    <span class="p">)</span>
+
+<span class="c1"># Example usage:</span>
+<span class="c1"># credential = get_client_secret_credential(</span>
+<span class="c1">#     tenant_id=&#39;&lt;your-tenant-id&gt;&#39;,</span>
+<span class="c1">#     client_id=&#39;&lt;your-client-id&gt;&#39;,</span>
+<span class="c1">#     client_secret=&#39;&lt;your-client-secret&gt;&#39;</span>
+<span class="c1"># )</span>
+</code></pre></div></p>
+<p><strong>Explanation:</strong>
+- Use a service principal for secure, automated access.
+- Store secrets securely (e.g., Azure Key Vault).</p>
 <hr />
-<h2 id="code-example-certificate-based-authentication-in-python">Code Example: Certificate-Based Authentication in Python</h2>
-<p>Below is the function used in this project to acquire an Azure AD access token using a certificate:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">msal</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfidentialClientApplication</span>
+<h2 id="step-2-connect-to-the-recovery-services-backup-client">Step 2: Connect to the Recovery Services Backup Client</h2>
+<p>def get_backup_client(credential, subscription_id):
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">azure.mgmt.recoveryservicesbackup</span><span class="w"> </span><span class="kn">import</span> <span class="n">RecoveryServicesBackupClient</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">get_access_token_from_azure</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">authority</span><span class="p">,</span> <span class="n">tenant_id</span><span class="p">,</span> <span class="n">resource_scopes</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Retrieves an access token from Azure Active Directory using a confidential client application.</span>
-<span class="sd">    This function uses certificate-based authentication to acquire an access token for the specified resource.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;certs/</span><span class="si">{</span><span class="n">PFX_CERTIFICATE_NAME</span><span class="si">}</span><span class="s2">.key&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">key_file</span><span class="p">:</span>
-            <span class="n">private_key</span> <span class="o">=</span> <span class="n">key_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_backup_client</span><span class="p">(</span><span class="n">credential</span><span class="p">,</span> <span class="n">subscription_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">RecoveryServicesBackupClient</span><span class="p">(</span><span class="n">credential</span><span class="p">,</span> <span class="n">subscription_id</span><span class="p">)</span>
 
-        <span class="n">app</span> <span class="o">=</span> <span class="n">ConfidentialClientApplication</span><span class="p">(</span>
-            <span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span>
-            <span class="n">authority</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">authority</span><span class="si">}{</span><span class="n">tenant_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="n">client_credential</span><span class="o">=</span><span class="p">{</span>
-                <span class="s2">&quot;thumbprint&quot;</span><span class="p">:</span> <span class="n">PFX_CERTIFICATE_NAME_TP</span><span class="p">,</span>
-                <span class="s2">&quot;private_key&quot;</span><span class="p">:</span> <span class="n">private_key</span><span class="p">,</span>
-            <span class="p">},</span>
-        <span class="p">)</span>
+<span class="c1"># Example usage:</span>
+<span class="c1"># backup_client = get_backup_client(credential, &#39;&lt;your-subscription-id&gt;&#39;)</span>
+</code></pre></div></p>
+<p><strong>Explanation:</strong>
+- The <code>RecoveryServicesBackupClient</code> allows you to query backup items, jobs, and policies.</p>
+<hr />
+<h2 id="step-3-query-backup-items-in-a-recovery-services-vault">Step 3: Query Backup Items in a Recovery Services Vault</h2>
+<p>def list_vm_backups(backup_client, resource_group, vault_name):
+    # List all backup items (e.g., Azure VMs) in the specified vault
+    items = backup_client.backup_protected_items.list(
+        vault_name=vault_name,
+        resource_group_name=resource_group,
+        filter="backupManagementType eq 'AzureIaasVM'"
+    )
+    backup_info = []
+    for item in items:
+        backup_info.append({
+            'vm_name': item.properties.friendly_name,
+            'protection_status': item.properties.protection_status,
+            'last_backup_time': item.properties.last_backup_time,
+            'health_status': item.properties.health_status,
+            'resource_id': item.id
+        })
+    return backup_info</p>
+<h1 id="example-usage">Example usage:</h1>
+<h1 id="backups-list_vm_backupsbackup_client-my-resource-group-my-vault-name">backups = list_vm_backups(backup_client, 'my-resource-group', 'my-vault-name')</h1>
+<div class="highlight"><pre><span></span><code>**Explanation:**
+- Lists all VM backup items in the specified Recovery Services Vault.
+- Extracts key properties for reporting or further processing.
 
-        <span class="n">result</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">acquire_token_for_client</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="n">resource_scopes</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s2">&quot;access_token&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;access_token&quot;</span><span class="p">]</span>
+---
 
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception</span><span class="p">:</span>
-        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">exception</span><span class="p">)</span>
-    <span class="k">finally</span><span class="p">:</span>
-        <span class="k">pass</span>
+## Step 4: Store or Report on Backup Data
+
+You can save the backup information to a CSV file or database for further analysis:
+
+def save_backup_info_to_csv(backup_info, filename):
+    with open(filename, &#39;w&#39;, newline=&#39;&#39;) as csvfile:
+        fieldnames = [&#39;vm_name&#39;, &#39;protection_status&#39;, &#39;last_backup_time&#39;, &#39;health_status&#39;, &#39;resource_id&#39;]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in backup_info:
+            writer.writerow(row)
+
+# Example usage:
+# save_backup_info_to_csv(backups, &#39;azure_vm_backups.csv&#39;)
 </code></pre></div>
-<h3 id="key-points">Key Points:</h3>
-<ul>
-<li>The private key is read from a secure file (<code>certs/*.key</code>).</li>
-<li>The certificate thumbprint and private key are passed to MSAL's <code>ConfidentialClientApplication</code>.</li>
-<li>No secrets or passwords are stored in code or configuration.</li>
-</ul>
+<hr />
+<h2 id="full-example-orchestrating-the-process">Full Example: Orchestrating the Process</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Retrieve credentials securely</span>
+    <span class="n">tenant_id</span> <span class="o">=</span> <span class="s1">&#39;&lt;your-tenant-id&gt;&#39;</span>
+    <span class="n">client_id</span> <span class="o">=</span> <span class="s1">&#39;&lt;your-client-id&gt;&#39;</span>
+    <span class="n">client_secret</span> <span class="o">=</span> <span class="s1">&#39;&lt;your-client-secret&gt;&#39;</span>
+    <span class="n">subscription_id</span> <span class="o">=</span> <span class="s1">&#39;&lt;your-subscription-id&gt;&#39;</span>
+    <span class="n">resource_group</span> <span class="o">=</span> <span class="s1">&#39;&lt;your-resource-group&gt;&#39;</span>
+    <span class="n">vault_name</span> <span class="o">=</span> <span class="s1">&#39;&lt;your-vault-name&gt;&#39;</span>
+
+    <span class="n">credential</span> <span class="o">=</span> <span class="n">get_client_secret_credential</span><span class="p">(</span><span class="n">tenant_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">)</span>
+    <span class="n">backup_client</span> <span class="o">=</span> <span class="n">get_backup_client</span><span class="p">(</span><span class="n">credential</span><span class="p">,</span> <span class="n">subscription_id</span><span class="p">)</span>
+    <span class="n">backup_info</span> <span class="o">=</span> <span class="n">list_vm_backups</span><span class="p">(</span><span class="n">backup_client</span><span class="p">,</span> <span class="n">resource_group</span><span class="p">,</span> <span class="n">vault_name</span><span class="p">)</span>
+    <span class="n">save_backup_info_to_csv</span><span class="p">(</span><span class="n">backup_info</span><span class="p">,</span> <span class="s1">&#39;azure_vm_backups.csv&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
-<p><strong>Certificate-based authentication</strong> is the recommended and most secure way to authenticate service applications with Azure AD. It reduces risk, simplifies management, and aligns with industry best practices. Migrating from secrets to certificates is straightforward and well-supported by both Azure and the MSAL Python library.</p>
-<hr />
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample">MSAL Python Certificate Auth Sample</a></li>
-<li><a href="https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals">Azure AD App Registration: Certificates &amp; Secrets</a></li>
-<li><a href="https://www.openssl.org/docs/">OpenSSL Documentation</a></li>
-</ul>
+<p>By following this guide, you can automate the retrieval and reporting of VM backup data from Azure Recovery Services Vaults. This enables better compliance, reporting, and operational insight into your backup posture.</p>
+<p>For more details, consult the <a href="https://learn.microsoft.com/en-us/python/api/overview/azure/?view=azure-python">Azure SDK for Python documentation</a> and <a href="https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-introduction">Azure Recovery Services documentation</a>.</p>
 
 
 
@@ -1505,7 +1322,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 7, 2025 22:20:31 UTC">June 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 16:17:40 UTC">July 2, 2025</span>
   </span>
 
     
