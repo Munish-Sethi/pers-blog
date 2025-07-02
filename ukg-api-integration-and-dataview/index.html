@@ -1,0 +1,1558 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/ukg-api-integration-and-dataview/">
+      
+      
+        <link rel="prev" href="../ukg-api-employee-verification/">
+      
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Automating Integration Execution and Dataview extract - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#automating-ukg-dimensions-integrations-and-dataview-exports-with-python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Automating Integration Execution and Dataview extract
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Entra
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Entra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Bill
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Resource
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki & Nagios
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Cisco Meraki & Nagios
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Devices Discovery and Nagios Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Active Directory Domain Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Active Directory Domain Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            SAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup PyRFC in your Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calling SAP RFC Function Modules from Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    O365
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            O365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Document Library Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migrate Sharepoint Document Library to Azure File Share
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concur Expense Report Aggregation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    UKG
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            UKG
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Secure File Transfer with UKG Dimensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Employee Verification via API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Automating Integration Execution and Dataview extract
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automating Integration Execution and Dataview extract
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-executing-a-predefined-integration-in-ukg-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Executing a Predefined Integration in UKG Dimensions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Executing a Predefined Integration in UKG Dimensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-function-fetch_and_store_payroll_hours" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Function: fetch_and_store_payroll_hours
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-extracting-data-from-a-dataview-using-a-hyperfind-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Extracting Data from a DataView Using a Hyperfind Query
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Extracting Data from a DataView Using a Hyperfind Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-function-fetch_and_store_hours_using_dataview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Function: fetch_and_store_hours_using_dataview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-orchestrating-the-process-process_and_validate_payroll_hours" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Orchestrating the Process: process_and_validate_payroll_hours
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Orchestrating the Process: process_and_validate_payroll_hours">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-function-process_and_validate_payroll_hours-with-prior_period-and-current_period-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Function: process_and_validate_payroll_hours (with prior_period and current_period parameters)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python Function: process_and_validate_payroll_hours (with prior_period and current_period parameters)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-prior_period-and-current_period" class="md-nav__link">
+    <span class="md-ellipsis">
+      About prior_period and current_period
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-executing-a-predefined-integration-in-ukg-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Executing a Predefined Integration in UKG Dimensions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Executing a Predefined Integration in UKG Dimensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-function-fetch_and_store_payroll_hours" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Function: fetch_and_store_payroll_hours
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-extracting-data-from-a-dataview-using-a-hyperfind-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Extracting Data from a DataView Using a Hyperfind Query
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Extracting Data from a DataView Using a Hyperfind Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-function-fetch_and_store_hours_using_dataview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Function: fetch_and_store_hours_using_dataview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-orchestrating-the-process-process_and_validate_payroll_hours" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Orchestrating the Process: process_and_validate_payroll_hours
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Orchestrating the Process: process_and_validate_payroll_hours">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-function-process_and_validate_payroll_hours-with-prior_period-and-current_period-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Function: process_and_validate_payroll_hours (with prior_period and current_period parameters)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python Function: process_and_validate_payroll_hours (with prior_period and current_period parameters)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-prior_period-and-current_period" class="md-nav__link">
+    <span class="md-ellipsis">
+      About prior_period and current_period
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="automating-ukg-dimensions-integrations-and-dataview-exports-with-python">Automating UKG Dimensions Integrations and DataView Exports with Python</h1>
+<h2 id="introduction">Introduction</h2>
+<p>UKG Dimensions (formerly Kronos) provides powerful APIs for automating data extraction and integration tasks. This article demonstrates how to:</p>
+<ul>
+<li>Programmatically execute a predefined integration (such as a payroll export) in UKG Dimensions and retrieve the output file.</li>
+<li>Programmatically extract data from an existing DataView using a Hyperfind query.</li>
+</ul>
+<p>All code is provided in Python, and the approach is suitable for any enterprise environment. This guide is company-agnostic and can be adapted to your own UKG tenant.</p>
+<hr />
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Access to UKG Dimensions APIs (with appropriate permissions)</li>
+<li>A predefined integration (e.g., Payroll Export) already set up in your UKG tenant</li>
+<li>An existing DataView in UKG Dimensions</li>
+<li>Python 3.8+ and the <code>requests</code> library</li>
+<li>Secure storage for API credentials (e.g., Azure Key Vault)</li>
+</ul>
+<hr />
+<h2 id="1-executing-a-predefined-integration-in-ukg-dimensions">1. Executing a Predefined Integration in UKG Dimensions</h2>
+<p>UKG Dimensions allows you to define integrations (such as payroll exports) via the UI. These integrations can be triggered and monitored via API, and the resulting files can be downloaded programmatically.</p>
+<h3 id="python-function-fetch_and_store_payroll_hours">Python Function: <code>fetch_and_store_payroll_hours</code></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fetch_and_store_payroll_hours</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">week_start</span><span class="p">,</span> <span class="n">week_end</span><span class="p">,</span> <span class="n">week_start_datetime</span><span class="p">,</span> <span class="n">week_end_datetime</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">csv</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
+    <span class="c1"># ... import your secret and DB utilities ...</span>
+    <span class="n">unique_id</span> <span class="o">=</span> <span class="s1">&#39;Automation-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+    <span class="n">access_token</span><span class="p">,</span> <span class="n">base_uri</span><span class="p">,</span> <span class="n">api_key</span> <span class="o">=</span> <span class="n">get_token_apikey_and_uri</span><span class="p">(</span><span class="n">environment</span><span class="p">)</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;appkey&#39;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span>
+        <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="n">access_token</span>
+    <span class="p">}</span>
+    <span class="c1"># 1. Trigger the integration</span>
+    <span class="n">dimensions_api_uri</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="s1">&#39;api/v1/platform/integrations/4/execute&#39;</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+        <span class="s2">&quot;integrationParameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Symbolic Period&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;symbolicPeriod&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">},</span> <span class="s1">&#39;startDate&#39;</span><span class="p">:</span> <span class="n">week_start</span> <span class="o">+</span> <span class="s1">&#39;.000Z&#39;</span><span class="p">,</span> <span class="s1">&#39;endDate&#39;</span><span class="p">:</span> <span class="n">week_end</span> <span class="o">+</span> <span class="s1">&#39;.000Z&#39;</span><span class="p">}},</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Summary File Name&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AutomationPayrollSummaryExport.csv&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hyperfind ID&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;hyperfind&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;1304&#39;</span><span class="p">}}},</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ignore Sign Off&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;File Name&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;automationpayrollexport.csv&quot;</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">unique_id</span>
+    <span class="p">})</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">dimensions_api_uri</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c1"># 2. Poll for completion</span>
+    <span class="n">execution_id</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+    <span class="n">status_url</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;api/v1/platform/integration_executions/</span><span class="si">{</span><span class="n">execution_id</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">status_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">status_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">status_response</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Completed&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># Wait before polling again</span>
+    <span class="c1"># 3. Download the output file</span>
+    <span class="n">file_url</span> <span class="o">=</span> <span class="n">status_url</span> <span class="o">+</span> <span class="s1">&#39;/file&#39;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;file_name&#39;</span><span class="p">:</span> <span class="s1">&#39;automationpayrollexport.csv&#39;</span><span class="p">}</span>
+    <span class="n">file_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">data_file</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">file_response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">csv_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv_reader</span><span class="p">)</span>
+    <span class="c1"># ... process and store data as needed ...</span>
+</code></pre></div>
+<h3 id="explanation">Explanation</h3>
+<ul>
+<li><strong>Trigger Integration:</strong> The function sends a POST request to the integration execution endpoint, passing required parameters (dates, file names, hyperfind, etc.).</li>
+<li><strong>Poll for Completion:</strong> The function polls the execution status endpoint until the integration is complete.</li>
+<li><strong>Download Output:</strong> Once complete, the output file is downloaded and parsed as CSV.</li>
+<li><strong>Processing:</strong> The data can then be processed or loaded into a database as needed.</li>
+</ul>
+<p><strong>Reference:</strong>
+- <a href="https://community.kronos.com/s/article/UKG-Dimensions-API-Documentation">UKG Dimensions API Documentation – Integrations</a></p>
+<hr />
+<h2 id="2-extracting-data-from-a-dataview-using-a-hyperfind-query">2. Extracting Data from a DataView Using a Hyperfind Query</h2>
+<p>DataViews in UKG Dimensions allow you to define custom reports. You can extract data from a DataView programmatically using the API and a Hyperfind query to filter employees.</p>
+<h3 id="python-function-fetch_and_store_hours_using_dataview">Python Function: <code>fetch_and_store_hours_using_dataview</code></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fetch_and_store_hours_using_dataview</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">week_start_datetime</span><span class="p">,</span> <span class="n">week_end_datetime</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">csv</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
+    <span class="c1"># ... import your secret and DB utilities ...</span>
+    <span class="n">pay_code_translation</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;Regular&#39;</span><span class="p">:</span> <span class="s1">&#39;REG&#39;</span><span class="p">,</span> <span class="s1">&#39;Overtime 1.5&#39;</span><span class="p">:</span> <span class="s1">&#39;OT&#39;</span><span class="p">,</span> <span class="s1">&#39;Doubletime&#39;</span><span class="p">:</span> <span class="s1">&#39;DBL&#39;</span><span class="p">,</span> <span class="o">...</span> <span class="p">}</span>
+    <span class="n">access_token</span><span class="p">,</span> <span class="n">base_uri</span><span class="p">,</span> <span class="n">api_key</span> <span class="o">=</span> <span class="n">get_token_apikey_and_uri</span><span class="p">(</span><span class="n">environment</span><span class="p">)</span>
+    <span class="n">export_url</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="s1">&#39;api/v1/commons/exports/async&#39;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;appkey&#39;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span>
+        <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="n">access_token</span>
+    <span class="p">}</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;UKG DV Export Pay Code&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;payLoad&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;employeeSet&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;hyperfind&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1304&quot;</span><span class="p">},</span>
+                    <span class="s2">&quot;dateRange&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;startDate&quot;</span><span class="p">:</span> <span class="n">week_start_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">),</span>
+                        <span class="s2">&quot;endDate&quot;</span><span class="p">:</span> <span class="n">week_end_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">),</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;viewPresentation&quot;</span><span class="p">:</span> <span class="s2">&quot;People&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;select&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;PEOPLE_PERSON_NUMBER&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;Employee ID&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;CORE_PAYCODE&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;Pay Code Name&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;TIMECARD_TRANS_ACTUAL_HOURS&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;Actual Hours&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
+                <span class="c1"># ... more fields ...</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;groupBy&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;DATA&quot;</span>
+    <span class="p">})</span>
+    <span class="c1"># 1. Trigger DataView export</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">export_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+    <span class="n">execution_key</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;executionKey&#39;</span><span class="p">]</span>
+    <span class="c1"># 2. Wait for export to complete</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="c1"># 3. Download the CSV file</span>
+    <span class="n">csv_export_url</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;api/v1/commons/exports/</span><span class="si">{</span><span class="n">execution_key</span><span class="si">}</span><span class="s1">/file&#39;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">csv_export_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">temp_file_path</span> <span class="o">=</span> <span class="s1">&#39;/tmp/paycodeextracttempdetail.csv&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">temp_file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="c1"># ... process CSV as needed ...</span>
+</code></pre></div>
+<h3 id="explanation_1">Explanation</h3>
+<ul>
+<li><strong>Trigger DataView Export:</strong> Sends a POST request to the DataView export endpoint with the required payload (including Hyperfind and date range).</li>
+<li><strong>Wait for Completion:</strong> Waits for the export to complete (can be improved with polling).</li>
+<li><strong>Download CSV:</strong> Downloads the resulting CSV file for further processing.</li>
+<li><strong>Processing:</strong> The CSV can be parsed and loaded into a database or used for reporting.</li>
+</ul>
+<p><strong>Reference:</strong>
+- <a href="https://community.kronos.com/s/article/UKG-Dimensions-API-Documentation">UKG Dimensions API Documentation – DataViews</a></p>
+<hr />
+<h2 id="3-orchestrating-the-process-process_and_validate_payroll_hours">3. Orchestrating the Process: <code>process_and_validate_payroll_hours</code></h2>
+<p>This function coordinates the two previous steps, automating the extraction of both payroll export and DataView data for a given period. It uses the <code>fetch_period</code> function to retrieve the start and end dates for both the prior and current pay periods, and then passes these as parameters to the extraction functions.</p>
+<h3 id="python-function-process_and_validate_payroll_hours-with-prior_period-and-current_period-parameters">Python Function: <code>process_and_validate_payroll_hours</code> (with <code>prior_period</code> and <code>current_period</code> parameters)</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_and_validate_payroll_hours</span><span class="p">(</span><span class="n">environment</span><span class="o">=</span><span class="s1">&#39;PROD&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Main function to process and validate payroll hours.</span>
+<span class="sd">    Steps:</span>
+<span class="sd">    1. Fetches the prior period data and stores payroll hours.</span>
+<span class="sd">    2. Fetches and stores hours using dataview for the prior period.</span>
+<span class="sd">    3. Fetches the current period data and stores hours using dataview.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Get prior period (returns tuple: start_date, end_date, start_datetime, end_datetime)</span>
+    <span class="n">prior_period</span> <span class="o">=</span> <span class="n">fetch_period</span><span class="p">(</span><span class="s1">&#39;Previous&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="p">)</span>
+    <span class="c1"># Extract and store payroll hours for prior period</span>
+    <span class="n">fetch_and_store_payroll_hours</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="o">*</span><span class="n">prior_period</span><span class="p">)</span>
+    <span class="c1"># Extract and store DataView hours for prior period</span>
+    <span class="n">fetch_and_store_hours_using_dataview</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">prior_period</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">prior_period</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+
+    <span class="c1"># Get current period</span>
+    <span class="n">current_period</span> <span class="o">=</span> <span class="n">fetch_period</span><span class="p">(</span><span class="s1">&#39;Current&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="p">)</span>
+    <span class="c1"># Extract and store DataView hours for current period</span>
+    <span class="n">fetch_and_store_hours_using_dataview</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">current_period</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">current_period</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+
+    <span class="c1"># Optionally, add validation or reporting here</span>
+</code></pre></div>
+<h4 id="about-prior_period-and-current_period">About <code>prior_period</code> and <code>current_period</code></h4>
+<p>The <code>fetch_period</code> function returns a tuple for each period:</p>
+<ul>
+<li><code>start_date</code> (str): Start date of the pay period (e.g., '2025-06-01')</li>
+<li><code>end_date</code> (str): End date of the pay period (e.g., '2025-06-15')</li>
+<li><code>start_datetime</code> (datetime): Start date as a Python <code>datetime</code> object</li>
+<li><code>end_datetime</code> (datetime): End date as a Python <code>datetime</code> object</li>
+</ul>
+<p>These are used as parameters for the extraction functions:</p>
+<ul>
+<li><code>fetch_and_store_payroll_hours(environment, start_date, end_date, start_datetime, end_datetime)</code></li>
+<li><code>fetch_and_store_hours_using_dataview(environment, start_datetime, end_datetime)</code></li>
+</ul>
+<p>This approach ensures that all data extraction is aligned to the correct pay periods, and makes it easy to extend the process for additional periods or custom ranges.</p>
+<h3 id="example-usage">Example Usage</h3>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">process_and_validate_payroll_hours</span><span class="p">(</span><span class="n">environment</span><span class="o">=</span><span class="s2">&quot;PROD&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="explanation_2">Explanation</h3>
+<ul>
+<li><strong>Fetch Periods:</strong> Retrieves the date ranges for the previous and current pay periods using <code>fetch_period</code>.</li>
+<li><strong>Extract Data:</strong> Calls the two extraction functions for each period, passing the correct parameters.</li>
+<li><strong>Validation:</strong> (Optional) You can add logic to compare and validate the extracted data.</li>
+</ul>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>By leveraging the UKG Dimensions API, you can automate the execution of predefined integrations and the extraction of DataView data. This enables robust, repeatable, and auditable data flows for payroll, compliance, and analytics.</p>
+<p>For more details, consult the official <a href="https://community.kronos.com/s/article/UKG-Dimensions-API-Documentation">UKG Dimensions API Documentation</a> or your UKG support representative.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 13:18:53 UTC">July 2, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
