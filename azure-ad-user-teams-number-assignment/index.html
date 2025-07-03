@@ -10,11 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/proofpoint-user-management/">
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/azure-ad-user-teams-number-assignment/">
       
       
-        <link rel="prev" href="../ukg-api-integration-and-dataview/">
+        <link rel="prev" href="../azure-ad-user-devices/">
       
+      
+        <link rel="next" href="../meraki-nagios-device-sync/">
       
       
       <link rel="icon" href="../None">
@@ -22,7 +24,7 @@
     
     
       
-        <title>Proof Point User Management - Munish(s) Blog</title>
+        <title>Entra User Teams Phone Assignment - Munish(s) Blog</title>
       
     
     
@@ -66,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#automating-user-management-in-proofpoint-essentials" class="md-skip">
+        <a href="#programmatically-retrieving-teams-phone-number-assignments-from-entra-azure-ad-with-python-and-powershell" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Proof Point User Management
+              Entra User Teams Phone Assignment
             
           </span>
         </div>
@@ -217,8 +219,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -229,11 +233,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -249,7 +253,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Azure
@@ -398,10 +402,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../azure-ad-user-teams-number-assignment/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Entra User Teams Phone Assignment
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -412,6 +438,119 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-powershell-for-teams-phone-assignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use PowerShell for Teams Phone Assignments?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-retrieve-teams-phone-number-assignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Retrieve Teams Phone Number Assignments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Retrieve Teams Phone Number Assignments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-get_teams_phone_number_assignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function: get_teams_phone_number_assignments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-retrieve-teams-phone-numbers-via-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Retrieve Teams Phone Numbers via PowerShell
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Retrieve Teams Phone Numbers via PowerShell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-get_teams_phone_numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function: get_teams_phone_numbers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-export-or-store-the-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Export or Store the Results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1000,8 +1139,6 @@
       
   
   
-    
-  
   
   
     
@@ -1014,11 +1151,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
@@ -1034,7 +1171,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Proof Point
@@ -1045,32 +1182,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Proof Point User Management
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
         
   
   
@@ -1081,98 +1196,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-create-an-api-key-in-proofpoint-essentials" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to Create an API Key in Proofpoint Essentials
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-connect-to-the-proofpoint-essentials-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1: Connect to the Proofpoint Essentials API
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-retrieve-user-data-from-your-hr-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Retrieve User Data from Your HR System
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-compare-and-mark-users-as-functional-accounts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Compare and Mark Users as Functional Accounts
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#full-example-orchestrating-the-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      Full Example: Orchestrating the Process
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conclusion
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1221,6 +1244,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#why-use-powershell-for-teams-phone-assignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use PowerShell for Teams Phone Assignments?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       Prerequisites
@@ -1230,45 +1262,57 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-create-an-api-key-in-proofpoint-essentials" class="md-nav__link">
+  <a href="#step-1-retrieve-teams-phone-number-assignments" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Create an API Key in Proofpoint Essentials
+      Step 1: Retrieve Teams Phone Number Assignments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Retrieve Teams Phone Number Assignments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-get_teams_phone_number_assignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function: get_teams_phone_number_assignments
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-connect-to-the-proofpoint-essentials-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1: Connect to the Proofpoint Essentials API
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-retrieve-user-data-from-your-hr-system" class="md-nav__link">
+  <a href="#step-2-retrieve-teams-phone-numbers-via-powershell" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Retrieve User Data from Your HR System
+      Step 2: Retrieve Teams Phone Numbers via PowerShell
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Retrieve Teams Phone Numbers via PowerShell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-get_teams_phone_numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function: get_teams_phone_numbers
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-compare-and-mark-users-as-functional-accounts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Compare and Mark Users as Functional Accounts
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#full-example-orchestrating-the-process" class="md-nav__link">
+  <a href="#step-3-export-or-store-the-results" class="md-nav__link">
     <span class="md-ellipsis">
-      Full Example: Orchestrating the Process
+      Step 3: Export or Store the Results
     </span>
   </a>
   
@@ -1299,130 +1343,106 @@
 
 
 
-<h1 id="automating-user-management-in-proofpoint-essentials">Automating User Management in Proofpoint Essentials</h1>
+<h1 id="programmatically-retrieving-teams-phone-number-assignments-from-entra-azure-ad-with-python-and-powershell">Programmatically Retrieving Teams Phone Number Assignments from Entra (Azure AD) with Python and PowerShell</h1>
 <h2 id="introduction">Introduction</h2>
-<p>Proofpoint Essentials provides robust APIs for managing users and optimizing licensing. Marking certain users as "functional accounts" (such as service, shared, or terminated accounts) can help reduce licensing costs and improve compliance. This article demonstrates how to:</p>
-<ul>
-<li>Connect to the Proofpoint Essentials API using an API user and key</li>
-<li>Retrieve active users from Proofpoint</li>
-<li>Compare users to your HR system (e.g., ADP or any HRIS)</li>
-<li>Mark users as functional accounts via API</li>
-</ul>
-<p>All code is provided in Python, and the approach is company-agnostic and suitable for any enterprise environment.</p>
+<p>This guide demonstrates how to programmatically retrieve Microsoft Teams phone number assignments for users in Entra (Azure AD), combining Python and PowerShell. The approach is modular, production-ready, and company-agnostic. All code is explained step by step, with constants and endpoints included for clarity.</p>
+<hr />
+<h2 id="why-use-powershell-for-teams-phone-assignments">Why Use PowerShell for Teams Phone Assignments?</h2>
+<p>Some Microsoft Teams telephony data, such as direct phone number assignments, is not always available via the Microsoft Graph API or may require additional permissions and modules. PowerShell modules (such as <code>MicrosoftTeams</code> or <code>SkypeOnlineConnector</code>) provide richer access to Teams telephony configuration and are often used in enterprise automation for this purpose.</p>
 <hr />
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li>Proofpoint Essentials administrator access</li>
-<li>An API user and API key (see below)</li>
-<li>Python 3.8+ and the <code>requests</code> library</li>
-<li>Access to your HR system data (e.g., via SQL, API, or CSV)</li>
+<li>Python 3.8+</li>
+<li>The following Python packages:</li>
+<li><code>subprocess</code> (standard library)</li>
+<li><code>requests</code></li>
+<li>PowerShell installed on the system (with the required Teams modules)</li>
+<li>An Azure AD application (service principal) with permissions to read user information</li>
+<li>Secure storage for credentials (e.g., Azure Key Vault)</li>
 </ul>
 <hr />
-<h2 id="how-to-create-an-api-key-in-proofpoint-essentials">How to Create an API Key in Proofpoint Essentials</h2>
-<ol>
-<li>Log in to the Proofpoint Essentials admin portal.</li>
-<li>Navigate to <strong>Account Management &gt; API Keys</strong>.</li>
-<li>Click <strong>Create API Key</strong>.</li>
-<li>Assign the key to a dedicated API user with appropriate permissions.</li>
-<li>Save the API key securely (e.g., in Azure Key Vault or a secrets manager).</li>
-</ol>
-<p><em>For more details, refer to the official <a href="https://us1.proofpointessentials.com/api/v1/docs/index.php">Proofpoint Essentials API documentation</a>.</em>  </p>
-<hr />
-<h2 id="step-1-connect-to-the-proofpoint-essentials-api">Step 1: Connect to the Proofpoint Essentials API</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">your_utils_module</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_azure_kv_sceret</span>  <span class="c1"># Replace with your actual secret retrieval function</span>
-
-<span class="n">PROOFPOINT_BASE_API</span> <span class="o">=</span> <span class="s1">&#39;https://&lt;your-region&gt;.proofpointessentials.com/api/v1/&#39;</span>
-<span class="n">PROOFPOINT_API_USER</span> <span class="o">=</span> <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;pp-api-user&#39;</span><span class="p">)</span>
-<span class="n">PROOFPOINT_API_PASSWORD</span> <span class="o">=</span> <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;pp-api-key&#39;</span><span class="p">)</span>
-
-<span class="c1"># Example: Get all users in your organization</span>
-<span class="n">url</span> <span class="o">=</span> <span class="n">PROOFPOINT_BASE_API</span> <span class="o">+</span> <span class="s1">&#39;orgs/&lt;your-domain&gt;/users&#39;</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;X-user&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_USER</span><span class="p">,</span> <span class="s1">&#39;X-password&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_PASSWORD</span><span class="p">},</span>
-<span class="p">)</span>
-<span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-<span class="n">users</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="p">[])</span>
-</code></pre></div>
-<p><strong>Explanation:</strong>
-- Credentials are retrieved securely.
-- The API call retrieves all users for your organization.</p>
-<hr />
-<h2 id="step-2-retrieve-user-data-from-your-hr-system">Step 2: Retrieve User Data from Your HR System</h2>
-<p>Assume you have a function to get user data from your HR system (e.g., via SQL):</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_latest_hr_data</span><span class="p">():</span>
-    <span class="n">sql_statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        SELECT status, email, company_code, worker_category_code, location_code</span>
-<span class="s2">        FROM hr_employees WHERE email IS NOT NULL</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">execute_sql_fetch_dicts</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">)</span>
-</code></pre></div>
-<hr />
-<h2 id="step-3-compare-and-mark-users-as-functional-accounts">Step 3: Compare and Mark Users as Functional Accounts</h2>
-<p>The following function compares Proofpoint users to your HR data and marks users as functional accounts via the API:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">mark_users_as_functional</span><span class="p">(</span><span class="n">hr_users</span><span class="p">):</span>
+<h2 id="step-1-retrieve-teams-phone-number-assignments">Step 1: Retrieve Teams Phone Number Assignments</h2>
+<h3 id="function-get_teams_phone_number_assignments">Function: <code>get_teams_phone_number_assignments</code></h3>
+<p>This function combines user data from Entra (Azure AD) with Teams phone number assignments, which are typically retrieved via a PowerShell script/module.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_teams_phone_number_assignments</span><span class="p">(</span><span class="n">aad_users</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># Get active users from Proofpoint</span>
-        <span class="n">url_to_invoke</span> <span class="o">=</span> <span class="n">PROOFPOINT_BASE_API</span> <span class="o">+</span> <span class="s1">&#39;orgs/&lt;your-domain&gt;/users&#39;</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">url</span><span class="o">=</span><span class="n">url_to_invoke</span><span class="p">,</span>
-            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;X-user&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_USER</span><span class="p">,</span> <span class="s1">&#39;X-password&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_PASSWORD</span><span class="p">},</span>
-        <span class="p">)</span>
-        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-        <span class="n">active_users_from_pp</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="p">[])</span>
-
-        <span class="n">hr_emails</span> <span class="o">=</span> <span class="p">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">user</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">hr_users</span><span class="p">}</span>
-        <span class="n">users_to_mark_functional</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">active_users_from_pp</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;end_user&#39;</span><span class="p">:</span>
-                <span class="n">email</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;primary_email&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-                <span class="n">hr_user</span> <span class="o">=</span> <span class="n">hr_emails</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
-                <span class="c1"># Example logic: mark as functional if not in HR or if terminated</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">hr_user</span> <span class="ow">or</span> <span class="n">hr_user</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;terminated&#39;</span><span class="p">:</span>
-                    <span class="n">users_to_mark_functional</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users_to_mark_functional</span><span class="p">:</span>
-            <span class="n">email_to_lookup</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;primary_email&#39;</span><span class="p">]</span>
-            <span class="n">url_update</span> <span class="o">=</span> <span class="n">PROOFPOINT_BASE_API</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;orgs/&lt;your-domain&gt;/users/</span><span class="si">{</span><span class="n">email_to_lookup</span><span class="si">}</span><span class="s1">&#39;</span>
-            <span class="n">json_update_values</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;uid&quot;</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;uid&#39;</span><span class="p">],</span>
-                <span class="s2">&quot;primary_email&quot;</span><span class="p">:</span> <span class="n">email_to_lookup</span><span class="p">,</span>
-                <span class="s2">&quot;is_active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;functional_account&quot;</span>
-            <span class="p">}</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
-                    <span class="n">url_update</span><span class="p">,</span>
-                    <span class="n">json</span><span class="o">=</span><span class="n">json_update_values</span><span class="p">,</span>
-                    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;X-user&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_USER</span><span class="p">,</span> <span class="s1">&#39;X-password&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_PASSWORD</span><span class="p">}</span>
-                <span class="p">)</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-            <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">RequestException</span><span class="p">:</span>
-                <span class="k">pass</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">user_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]:</span> <span class="n">user</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">aad_users</span><span class="p">}</span>  <span class="c1"># Dictionary for faster lookups</span>
+        <span class="n">phone_assignments</span> <span class="o">=</span> <span class="n">get_teams_phone_numbers</span><span class="p">()</span>  <span class="c1"># Calls PowerShell to get assignments</span>
+        <span class="n">teams_phone_assignments</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">assignment</span> <span class="ow">in</span> <span class="n">phone_assignments</span><span class="p">:</span>
+            <span class="n">user_id</span> <span class="o">=</span> <span class="n">assignment</span><span class="p">[</span><span class="s1">&#39;AssignedPstnTargetId&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">user_id</span> <span class="ow">in</span> <span class="n">user_dict</span><span class="p">:</span>
+                <span class="n">formatted_assignment</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;assigned_to_entra_account&#39;</span><span class="p">:</span> <span class="s1">&#39;yes&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_user&#39;</span><span class="p">:</span> <span class="n">user_dict</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;displayName&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;teams_telephoneNumber&#39;</span><span class="p">:</span> <span class="n">assignment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TelephoneNumber&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_businessPhones&#39;</span><span class="p">:</span> <span class="n">user_dict</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;businessPhones&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_mobilePhone&#39;</span><span class="p">:</span> <span class="n">user_dict</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;mobilePhone&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_accountEnabled&#39;</span><span class="p">:</span> <span class="n">user_dict</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;accountEnabled&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_employeeType&#39;</span><span class="p">:</span> <span class="n">user_dict</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;employeeType&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_city&#39;</span><span class="p">:</span> <span class="n">user_dict</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;city&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_officeLocation&#39;</span><span class="p">:</span> <span class="n">user_dict</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;officeLocation&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;teams_assignmentCategory&#39;</span><span class="p">:</span> <span class="n">assignment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;AssignmentCategory&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;teams_city&#39;</span><span class="p">:</span> <span class="n">assignment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;teams_isosubdivision&#39;</span><span class="p">:</span> <span class="n">assignment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;IsoSubdivision&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;teams_numbertype&#39;</span><span class="p">:</span> <span class="n">assignment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;NumberType&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;teams_pstnassignmentstatus&#39;</span><span class="p">:</span> <span class="n">assignment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PstnAssignmentStatus&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">formatted_assignment</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;assigned_to_entra_account&#39;</span><span class="p">:</span> <span class="s1">&#39;no&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_user&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;teams_telephoneNumber&#39;</span><span class="p">:</span> <span class="n">assignment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TelephoneNumber&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_businessPhones&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_mobilePhone&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_accountEnabled&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_employeeType&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_city&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;entra_officeLocation&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;teams_assignmentCategory&#39;</span><span class="p">:</span> <span class="n">assignment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;AssignmentCategory&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;teams_city&#39;</span><span class="p">:</span> <span class="n">assignment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;teams_isosubdivision&#39;</span><span class="p">:</span> <span class="n">assignment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;IsoSubdivision&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;teams_numbertype&#39;</span><span class="p">:</span> <span class="n">assignment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;NumberType&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;teams_pstnassignmentstatus&#39;</span><span class="p">:</span> <span class="n">assignment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PstnAssignmentStatus&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="n">teams_phone_assignments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">formatted_assignment</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">teams_phone_assignments</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Explanation:</strong>
-- Retrieves all active users from Proofpoint.
-- Compares each user to the HR system.
-- Marks users as functional accounts if they are not in HR or are terminated.
-- Updates are made via the Proofpoint API.</p>
+- Builds a dictionary of users for fast lookup.
+- Calls <code>get_teams_phone_numbers</code> to retrieve phone assignments (see next step).
+- Combines user and phone assignment data into a unified list for reporting or export.</p>
 <hr />
-<h2 id="full-example-orchestrating-the-process">Full Example: Orchestrating the Process</h2>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="n">hr_data</span> <span class="o">=</span> <span class="n">get_latest_hr_data</span><span class="p">()</span>
-    <span class="n">mark_users_as_functional</span><span class="p">(</span><span class="n">hr_data</span><span class="p">)</span>
+<h2 id="step-2-retrieve-teams-phone-numbers-via-powershell">Step 2: Retrieve Teams Phone Numbers via PowerShell</h2>
+<h3 id="function-get_teams_phone_numbers">Function: <code>get_teams_phone_numbers</code></h3>
+<p>This function (not shown in full here) typically uses Python's <code>subprocess</code> module to invoke a PowerShell script or command that retrieves Teams phone number assignments. The PowerShell script should output data in a format that Python can parse (e.g., JSON or CSV).</p>
+<p><strong>Example (conceptual):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_teams_phone_numbers</span><span class="p">():</span>
+    <span class="c1"># Example PowerShell command to get Teams phone assignments as JSON</span>
+    <span class="n">ps_command</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;pwsh&#39;</span><span class="p">,</span> <span class="s1">&#39;-Command&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Import-Module MicrosoftTeams; Get-CsPhoneNumberAssignment | ConvertTo-Json&#39;</span>
+    <span class="p">]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">ps_command</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PowerShell error: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
 </code></pre></div>
+<p><strong>Explanation:</strong>
+- Uses PowerShell to access Teams telephony data not available via Graph API.
+- Returns a list of phone assignment dictionaries for further processing in Python.</p>
+<hr />
+<h2 id="step-3-export-or-store-the-results">Step 3: Export or Store the Results</h2>
+<p>After combining the data, you can export the results to CSV or store them in a database for reporting or compliance purposes.</p>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
-<p>By following this guide, you can automate the process of marking functional accounts in Proofpoint Essentials, optimizing your licensing and compliance posture. The approach is secure, repeatable, and adaptable to any enterprise environment.</p>
-<p>For more details, consult the <a href="https://us1.proofpointessentials.com/api/v1/docs/index.php">Proofpoint Essentials API documentation</a>.</p>
+<p>By following this approach, you can programmatically retrieve and correlate Teams phone number assignments with Entra (Azure AD) user data, using a combination of Python and PowerShell. This enables automated reporting, compliance, and inventory workflows for Teams telephony in your organization.</p>
+<p>For more details, see the <a href="https://learn.microsoft.com/en-us/powershell/module/teams/?view=teams-ps">Microsoft Teams PowerShell documentation</a> and <a href="https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-beta">Microsoft Graph API documentation</a>.</p>
 
 
 
