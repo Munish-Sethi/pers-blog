@@ -1,0 +1,1713 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/fabric-wharehouse-fact-import/">
+      
+      
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Importing Data into Fabric Data Warehouse - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#importing-data-into-fabric-data-warehouse" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Importing Data into Fabric Data Warehouse
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Bill
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Resource
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Query Recovery Services Vault
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra Users, User Groups and Licence assignments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra User Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Fabric
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Fabric
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-warehouse-fact-import.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Warehouse data import
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki & Nagios
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Cisco Meraki & Nagios
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Devices Discovery and Nagios Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Active Directory Domain Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Active Directory Domain Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup PyRFC in your Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calling SAP RFC Function Modules from Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    O365
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            O365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Document Library Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migrate Sharepoint Document Library to Azure File Share
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concur Expense Report Aggregation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teams-user-number-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Teams Phone Assignment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    UKG
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            UKG
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Secure File Transfer with UKG Dimensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Employee Verification via API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-integration-and-dataview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automating Integration Execution and Dataview extract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Proof Point
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Proof Point
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof Point User Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-libraries-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Libraries Used
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-data-import-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Data Import Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-process_fabric_employees_dw" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. process_fabric_employees_dw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-upload_file_to_datalake" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. upload_file_to_datalake
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-get_employee_unprocessed_files" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. get_employee_unprocessed_files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-get_metadata_lists_from_hr_sql_wh" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. get_metadata_lists_from_hr_sql_wh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-parse_csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. parse_csv
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-determine_date_auto_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. determine_date_auto_id
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-transform_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. transform_data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-insert_into_db" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. insert_into_db
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-move_file_to_processed_folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. move_file_to_processed_folder
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supplement-get_client_sceret_credential" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supplement: get_client_sceret_credential
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="importing-data-into-fabric-data-warehouse">Importing Data into Fabric Data Warehouse</h1>
+<h2 id="introduction">Introduction</h2>
+<p>In this article, we will walk through a robust Python-based workflow for importing employee data into Azure Fabric Data Warehouse (DW). This workflow leverages a combination of Azure SDKs, ODBC, and custom utility functions to automate the process of uploading, transforming, and loading data from CSV files into a cloud-based data warehouse. We will explore the key functions involved, their implementation, and how they work together to achieve a seamless data integration pipeline.</p>
+<h2 id="python-libraries-used">Python Libraries Used</h2>
+<ul>
+<li><strong>pyodbc</strong>: Enables Python to connect to ODBC-compliant databases, such as SQL Server, for executing SQL queries and transactions.</li>
+<li><strong>os, sys</strong>: Standard Python libraries for interacting with the operating system and system-specific parameters.</li>
+<li><strong>csv</strong>: Provides tools for reading and writing CSV files.</li>
+<li><strong>datetime</strong>: Used for manipulating dates and times.</li>
+<li><strong>io.StringIO</strong>: Allows treating strings as file-like objects, useful for CSV parsing.</li>
+<li><strong>typing</strong>: Provides type hints for better code clarity and static analysis.</li>
+<li><strong>azure.storage.filedatalake</strong>: Azure SDK for interacting with Azure Data Lake Storage Gen2, including file and directory operations.</li>
+</ul>
+<h2 id="the-data-import-workflow">The Data Import Workflow</h2>
+<p>The workflow is orchestrated by the <code>process_fabric_employees_dw</code> function, which coordinates the following steps:</p>
+<ol>
+<li><strong>Upload the latest HR system file to the Azure Data Lake 'unprocessed' folder.</strong></li>
+<li><strong>Retrieve all unprocessed files from the Data Lake.</strong></li>
+<li><strong>Fetch metadata from the HR SQL Data Warehouse.</strong></li>
+<li><strong>For each unprocessed file:</strong><ul>
+<li>Parse the CSV content.</li>
+<li>Determine the date identifier for the data.</li>
+<li>Transform the data for database insertion.</li>
+<li>Insert the transformed data into the database.</li>
+<li>Move the processed file to the 'processed' folder in Data Lake.</li>
+</ul>
+</li>
+</ol>
+<p>Let's examine the key functions involved in this workflow.</p>
+<hr />
+<h2 id="1-process_fabric_employees_dw">1. <code>process_fabric_employees_dw</code></h2>
+<p>This is the main orchestration function. It manages the end-to-end process of uploading, processing, and loading employee data files.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_fabric_employees_dw</span><span class="p">(</span><span class="n">adp_file</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">upload_file_to_datalake</span><span class="p">(</span><span class="n">adp_file</span><span class="p">)</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">get_employee_unprocessed_files</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">metadata</span> <span class="o">=</span> <span class="n">get_metadata_lists_from_hr_sql_wh</span><span class="p">()</span>
+            <span class="n">department</span><span class="p">,</span> <span class="n">costcenter</span><span class="p">,</span> <span class="n">jobfunction</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">payrate</span><span class="p">,</span> <span class="n">terminationreason</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">metadata</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                    <span class="n">file_name</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span>
+                    <span class="n">file_datetime</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s1">&#39;file_datetime&#39;</span><span class="p">]</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing file: </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2"> (Datetime: </span><span class="si">{</span><span class="n">file_datetime</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+                    <span class="n">headers</span><span class="p">,</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">parse_csv</span><span class="p">(</span><span class="n">file</span><span class="p">[</span><span class="s1">&#39;file_content&#39;</span><span class="p">])</span>
+                    <span class="n">date_auto_id</span> <span class="o">=</span> <span class="n">determine_date_auto_id</span><span class="p">(</span><span class="n">file_datetime</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
+                    <span class="n">transformed_data</span> <span class="o">=</span> <span class="n">transform_data</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">date_auto_id</span><span class="p">,</span> <span class="n">department</span><span class="p">,</span> <span class="n">costcenter</span><span class="p">,</span> <span class="n">jobfunction</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">payrate</span><span class="p">,</span> <span class="n">terminationreason</span><span class="p">)</span>
+                    <span class="n">insertsuccessfull</span> <span class="o">=</span> <span class="n">insert_into_db</span><span class="p">(</span><span class="n">date_auto_id</span><span class="p">,</span> <span class="n">transformed_data</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">HR_DBOBJECT_PREFIX</span><span class="si">}</span><span class="s2">.[FactEmployee]&quot;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">insertsuccessfull</span><span class="p">:</span>
+                        <span class="n">move_file_to_processed_folder</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATALAKE_UNPROCESSED_FOLDER</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATALAKE_PROCESSED_FOLDER</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finished Successfully Processing file: </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2"> (Datetime: </span><span class="si">{</span><span class="n">file_datetime</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">localexception</span><span class="p">:</span>
+                <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">localexception</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception_obj</span><span class="p">:</span>
+        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">exception_obj</span><span class="p">)</span>
+</code></pre></div>
+<p>This function first uploads the provided HR system file to the Data Lake, then processes all unprocessed files by parsing, transforming, and loading them into the database. Successfully processed files are moved to a 'processed' folder.</p>
+<hr />
+<h2 id="2-upload_file_to_datalake">2. <code>upload_file_to_datalake</code></h2>
+<p>Handles uploading a local file to the Azure Data Lake 'unprocessed' folder.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">upload_file_to_datalake</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">datalake_folder</span> <span class="o">=</span> <span class="n">DATALAKE_UNPROCESSED_FOLDER</span>
+        <span class="n">credential</span> <span class="o">=</span> <span class="n">get_client_sceret_credential</span><span class="p">()</span>
+        <span class="n">service_client</span> <span class="o">=</span> <span class="n">DataLakeServiceClient</span><span class="p">(</span><span class="n">account_url</span><span class="o">=</span><span class="n">FABRIC_URL</span><span class="p">,</span> <span class="n">credential</span><span class="o">=</span><span class="n">credential</span><span class="p">)</span>
+        <span class="n">file_system_client</span> <span class="o">=</span> <span class="n">service_client</span><span class="o">.</span><span class="n">get_file_system_client</span><span class="p">(</span><span class="n">file_system</span><span class="o">=</span><span class="n">FABRIC_WS_HR_NAME</span><span class="p">)</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="n">destination_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">datalake_folder</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ADP_LOCAL_FOLDER</span> <span class="o">+</span> <span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
+            <span class="n">file_client</span> <span class="o">=</span> <span class="n">file_system_client</span><span class="o">.</span><span class="n">get_file_client</span><span class="p">(</span><span class="n">destination_path</span><span class="p">)</span>
+            <span class="n">file_client</span><span class="o">.</span><span class="n">upload_data</span><span class="p">(</span><span class="n">file_data</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Uploaded file </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">destination_path</span><span class="si">}</span><span class="s2"> in Data Lake.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to upload file </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2"> to Data Lake: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span>
+</code></pre></div>
+<p>This function uses the Azure Data Lake SDK to authenticate and upload the file. The file is placed in the 'unprocessed' folder, ready for further processing.</p>
+<hr />
+<h2 id="3-get_employee_unprocessed_files">3. <code>get_employee_unprocessed_files</code></h2>
+<p>Retrieves all files in the 'unprocessed' folder of the Data Lake that match the expected filename format.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_employee_unprocessed_files</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">credential</span> <span class="o">=</span> <span class="n">get_client_sceret_credential</span><span class="p">()</span>
+        <span class="n">service_client</span> <span class="o">=</span> <span class="n">DataLakeServiceClient</span><span class="p">(</span><span class="n">account_url</span><span class="o">=</span><span class="n">FABRIC_URL</span><span class="p">,</span> <span class="n">credential</span><span class="o">=</span><span class="n">credential</span><span class="p">)</span>
+        <span class="n">file_system_client</span> <span class="o">=</span> <span class="n">service_client</span><span class="o">.</span><span class="n">get_file_system_client</span><span class="p">(</span><span class="n">file_system</span><span class="o">=</span><span class="n">FABRIC_WS_HR_NAME</span><span class="p">)</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="n">file_system_client</span><span class="o">.</span><span class="n">get_paths</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DATALAKE_UNPROCESSED_FOLDER</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">valid_files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">is_directory</span><span class="p">:</span>
+                <span class="n">file_name</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">file_datetime</span> <span class="o">=</span> <span class="n">GDEPUtils</span><span class="o">.</span><span class="n">parse_datetime_from_filename</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">file_datetime</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">file_client</span> <span class="o">=</span> <span class="n">file_system_client</span><span class="o">.</span><span class="n">get_file_client</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                        <span class="n">file_content</span> <span class="o">=</span> <span class="n">file_client</span><span class="o">.</span><span class="n">download_file</span><span class="p">()</span><span class="o">.</span><span class="n">readall</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span>
+                        <span class="n">valid_files</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                            <span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="n">file_name</span><span class="p">,</span>
+                            <span class="s2">&quot;file_datetime&quot;</span><span class="p">:</span> <span class="n">file_datetime</span><span class="p">,</span>
+                            <span class="s2">&quot;file_content&quot;</span><span class="p">:</span> <span class="n">file_content</span><span class="p">,</span>
+                        <span class="p">})</span>
+                    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception_obj</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to process file </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">exception_obj</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">valid_files</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;file_datetime&quot;</span><span class="p">])</span>
+        <span class="n">GDEPUtils</span><span class="o">.</span><span class="n">send_email</span><span class="p">(</span><span class="n">recipients</span><span class="o">=</span><span class="n">GDEPUtils</span><span class="o">.</span><span class="n">EMAIL_TO_SEND_EXCEPTIONS</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="s1">&#39;Number of files&#39;</span><span class="p">,</span> <span class="n">plain_message</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_files</span><span class="p">)</span><span class="si">}</span><span class="s1"> valid files.&#39;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_files</span><span class="p">)</span><span class="si">}</span><span class="s2"> valid files.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">valid_files</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception_obj</span><span class="p">:</span>
+        <span class="n">GDEPUtils</span><span class="o">.</span><span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">exception_obj</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[]</span>
+</code></pre></div>
+<p>This function lists all files in the 'unprocessed' directory, filters them by filename pattern, downloads their content, and returns a list of valid files for processing.</p>
+<hr />
+<h2 id="4-get_metadata_lists_from_hr_sql_wh">4. <code>get_metadata_lists_from_hr_sql_wh</code></h2>
+<p>Fetches reference metadata from the HR SQL Data Warehouse, such as departments, cost centers, job functions, etc.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_metadata_lists_from_hr_sql_wh</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">metadata_sources</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">HR_DBOBJECT_PREFIX</span><span class="si">}</span><span class="s2">.[DimDepartment]&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]})),</span>
+            <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">HR_DBOBJECT_PREFIX</span><span class="si">}</span><span class="s2">.[DimCostCenter]&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]})),</span>
+            <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">HR_DBOBJECT_PREFIX</span><span class="si">}</span><span class="s2">.[DimJobFunction]&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]})),</span>
+            <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">HR_DBOBJECT_PREFIX</span><span class="si">}</span><span class="s2">.[DimLocation]&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]})),</span>
+            <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">HR_DBOBJECT_PREFIX</span><span class="si">}</span><span class="s2">.[DimPayRate]&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]})),</span>
+            <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">HR_DBOBJECT_PREFIX</span><span class="si">}</span><span class="s2">.[DimTerminationReason]&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]})),</span>
+            <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">HR_DBOBJECT_PREFIX</span><span class="si">}</span><span class="s2">.[DimDate]&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%m-</span><span class="si">%d</span><span class="s1">-%Y&#39;</span><span class="p">),</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]})),</span>
+        <span class="p">]</span>
+        <span class="n">return_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">sql_connection</span> <span class="o">=</span> <span class="n">get_sql_server_connection_hr_wh</span><span class="p">()</span>
+        <span class="n">db_cursor</span> <span class="o">=</span> <span class="n">sql_connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">query</span><span class="p">,</span> <span class="n">processor</span> <span class="ow">in</span> <span class="n">metadata_sources</span><span class="p">:</span>
+            <span class="n">working_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">db_cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT * FROM </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">rows</span> <span class="o">=</span> <span class="n">db_cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+                    <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">processor</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                    <span class="n">working_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception_obj</span><span class="p">:</span>
+                <span class="n">GDEPUtils</span><span class="o">.</span><span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">exception_obj</span><span class="p">)</span>
+            <span class="n">return_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">working_dict</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">return_list</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception_obj</span><span class="p">:</span>
+        <span class="n">GDEPUtils</span><span class="o">.</span><span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">exception_obj</span><span class="p">)</span>
+</code></pre></div>
+<p>This function queries several dimension tables in the data warehouse and returns their contents as dictionaries for use in data transformation.</p>
+<hr />
+<h2 id="5-parse_csv">5. <code>parse_csv</code></h2>
+<p>Parses the content of a CSV file into headers and rows.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_csv</span><span class="p">(</span><span class="n">file_content</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">csv_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">file_content</span><span class="p">))</span>
+        <span class="n">file_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv_reader</span><span class="p">)</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="n">file_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">file_data</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">return</span> <span class="n">headers</span><span class="p">,</span> <span class="n">rows</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception_obj</span><span class="p">:</span>
+        <span class="n">GDEPUtils</span><span class="o">.</span><span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">exception_obj</span><span class="p">)</span>
+</code></pre></div>
+<p>This function uses Python's built-in <code>csv</code> module to parse the file content, returning the header row and the data rows separately.</p>
+<hr />
+<h2 id="6-determine_date_auto_id">6. <code>determine_date_auto_id</code></h2>
+<p>Determines or creates a unique date identifier for a given transaction date in the data warehouse.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">determine_date_auto_id</span><span class="p">(</span><span class="n">date</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">sql_connection</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sql_connection</span> <span class="o">=</span> <span class="n">get_sql_server_connection_hr_wh</span><span class="p">()</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">sql_connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT DateAutoID FROM </span><span class="si">{</span><span class="n">HR_DBOBJECT_PREFIX</span><span class="si">}</span><span class="s2">.[DimDate] WHERE TransactionDate = ?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">date</span><span class="p">,))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT MAX(DateAutoID) FROM </span><span class="si">{</span><span class="n">HR_DBOBJECT_PREFIX</span><span class="si">}</span><span class="s2">.[DimDate]&quot;</span><span class="p">)</span>
+        <span class="n">max_date_auto_id</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">new_date_auto_id</span> <span class="o">=</span> <span class="p">(</span><span class="n">max_date_auto_id</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;INSERT INTO </span><span class="si">{</span><span class="n">HR_DBOBJECT_PREFIX</span><span class="si">}</span><span class="s2">.[DimDate] (DateAutoID, TransactionDate) VALUES (?, ?)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">new_date_auto_id</span><span class="p">,</span> <span class="n">date</span><span class="p">))</span>
+        <span class="n">sql_connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">new_date_auto_id</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception_obj</span><span class="p">:</span>
+        <span class="n">GDEPUtils</span><span class="o">.</span><span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">exception_obj</span><span class="p">)</span>
+        <span class="k">raise</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">sql_connection</span><span class="p">:</span>
+            <span class="n">sql_connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p>This function checks if a date already exists in the <code>DimDate</code> table. If not, it inserts a new record and returns the new identifier.</p>
+<hr />
+<h2 id="7-transform_data">7. <code>transform_data</code></h2>
+<p>Transforms raw CSV data into the format required for database insertion, mapping codes to IDs using metadata.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">transform_data</span><span class="p">(</span><span class="n">headers</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">rows</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">date_auto_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">department</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">],</span> <span class="n">costcenter</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Dict</span><span class="p">],</span> <span class="n">jobfunction</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">],</span> <span class="n">location</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">],</span> <span class="n">payrate</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">],</span> <span class="n">terminationreason</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">get_code_value</span><span class="p">(</span><span class="n">dictionary</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">code</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">code</span><span class="o">.</span><span class="n">strip</span><span class="p">()):</span>
+                <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">dictionary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">dictionary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">transformed_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+            <span class="n">row_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">row</span><span class="p">))</span>
+            <span class="n">cost_center_number</span> <span class="o">=</span> <span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Home Cost Number Code&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">cost_center_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cost_center_number</span><span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+                <span class="n">cost_center_number</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">is_management_position</span> <span class="o">=</span> <span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;This is a Management position&#39;</span><span class="p">,</span> <span class="s1">&#39;false&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">is_management_position</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;yes&#39;</span><span class="p">:</span>
+                    <span class="n">is_management_position</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">is_management_position</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">is_management_position</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">transformed_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+                <span class="n">date_auto_id</span><span class="p">,</span>
+                <span class="n">get_code_value</span><span class="p">(</span><span class="n">department</span><span class="p">,</span> <span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Home Department Code&#39;</span><span class="p">,</span> <span class="s1">&#39;UNDF&#39;</span><span class="p">)),</span>
+                <span class="n">get_code_value</span><span class="p">(</span><span class="n">costcenter</span><span class="p">,</span> <span class="n">cost_center_number</span><span class="p">),</span>
+                <span class="n">get_code_value</span><span class="p">(</span><span class="n">jobfunction</span><span class="p">,</span> <span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Job Function Code&#39;</span><span class="p">,</span> <span class="s1">&#39;UNDF&#39;</span><span class="p">)),</span>
+                <span class="n">get_code_value</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Location Code&#39;</span><span class="p">,</span> <span class="s1">&#39;UNDF&#39;</span><span class="p">)),</span>
+                <span class="n">get_code_value</span><span class="p">(</span><span class="n">payrate</span><span class="p">,</span> <span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Regular Pay Rate Code&#39;</span><span class="p">,</span> <span class="s1">&#39;UNDF&#39;</span><span class="p">)),</span>
+                <span class="n">get_code_value</span><span class="p">(</span><span class="n">terminationreason</span><span class="p">,</span> <span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Termination Reason Code&#39;</span><span class="p">,</span> <span class="s1">&#39;UNDF&#39;</span><span class="p">)),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;File Number&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Position ID&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Legal First Name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Preferred First Name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Last Name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="n">convert_to_date</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Hire Date&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)),</span>
+                <span class="n">convert_to_date</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Rehire Date&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Job Title Description&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="n">is_management_position</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Work Contact: Work Email&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Personal Contact: Personal Email&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Reports To Name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Reports To Position ID&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Payroll Company Code&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Job Class Description&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Position Status&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Personal Contact: Personal Mobile&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Work Contact: Work Phone&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="n">convert_to_date</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Termination Date&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Worker Category Code&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Associate ID&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Assigned Shift Description&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">row_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;FLSA Description&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+            <span class="p">])</span>
+        <span class="k">return</span> <span class="n">transformed_data</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception_obj</span><span class="p">:</span>
+        <span class="n">GDEPUtils</span><span class="o">.</span><span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">exception_obj</span><span class="p">)</span>
+</code></pre></div>
+<p>This function maps each row of the CSV to the required database schema, converting codes to IDs and handling data type conversions.</p>
+<hr />
+<h2 id="8-insert_into_db">8. <code>insert_into_db</code></h2>
+<p>Inserts the transformed data into the target SQL table in batches for efficiency.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">insert_into_db</span><span class="p">(</span><span class="n">date_auto_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">],</span> <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">returnvalue</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">sql_connection</span> <span class="o">=</span> <span class="n">get_sql_server_connection_hr_wh</span><span class="p">()</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">sql_connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DELETE FROM </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> WHERE DateAutoID = </span><span class="si">{</span><span class="n">date_auto_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">sql_connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">sql_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;INSERT INTO </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> ([DateAutoID],[DepartmentAutoID],[CostCenterAutoID],[JobFunctionAutoID],[LocationAutoID],[PayRateAutoID],[TerminationReasonAutoID],[FileNumber],[PositionID],[FirstName],[PreferredFirstName],[MiddleInitial],[LastName],[HireDate],[RehireDate],[JobTitleDescription],[IsManagementPosition],[WorkEmail],[PersonalEmail],[ManagerName],[ManagerPositionID],[PayrollCompanyCode],[JobClassDescription],[PositionStatus],[PersonalMobile],[WorkMobile],[TerminationDate],[WorkerCategoryCode],[AssociateID],[AssignedShiftDescription],[FLSADescription]) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)&quot;</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">fast_executemany</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">batch_size</span><span class="p">):</span>
+            <span class="n">batch</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">batch_size</span><span class="p">]</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="n">sql_query</span><span class="p">,</span> <span class="n">batch</span><span class="p">)</span>
+        <span class="n">sql_connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inserted </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2"> rows into </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="n">returnvalue</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="n">returnvalue</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception_obj</span><span class="p">:</span>
+        <span class="n">GDEPUtils</span><span class="o">.</span><span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">exception_obj</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">sql_connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">returnvalue</span>
+</code></pre></div>
+<p>This function first deletes any existing records for the given date, then inserts the new data in batches for performance.</p>
+<hr />
+<h2 id="9-move_file_to_processed_folder">9. <code>move_file_to_processed_folder</code></h2>
+<p>Moves a file from the 'unprocessed' folder to the 'processed' folder in Azure Data Lake by renaming it.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">move_file_to_processed_folder</span><span class="p">(</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">source_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">destination_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">credential</span> <span class="o">=</span> <span class="n">get_client_sceret_credential</span><span class="p">()</span>
+        <span class="n">service_client</span> <span class="o">=</span> <span class="n">DataLakeServiceClient</span><span class="p">(</span><span class="n">account_url</span><span class="o">=</span><span class="n">FABRIC_URL</span><span class="p">,</span> <span class="n">credential</span><span class="o">=</span><span class="n">credential</span><span class="p">)</span>
+        <span class="n">file_system_client</span> <span class="o">=</span> <span class="n">service_client</span><span class="o">.</span><span class="n">get_file_system_client</span><span class="p">(</span><span class="n">file_system</span><span class="o">=</span><span class="n">FABRIC_WS_HR_NAME</span><span class="p">)</span>
+        <span class="n">source_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">source_folder</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">destination_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">destination_folder</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Source Path: </span><span class="si">{</span><span class="n">source_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Destination Path: </span><span class="si">{</span><span class="n">destination_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">file_client</span> <span class="o">=</span> <span class="n">file_system_client</span><span class="o">.</span><span class="n">get_file_client</span><span class="p">(</span><span class="n">source_path</span><span class="p">)</span>
+        <span class="n">file_client</span><span class="o">.</span><span class="n">rename_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_system_client</span><span class="o">.</span><span class="n">file_system_name</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">destination_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moved file </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">source_folder</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">destination_folder</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception_obj</span><span class="p">:</span>
+        <span class="n">GDEPUtils</span><span class="o">.</span><span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">exception_obj</span><span class="p">)</span>
+</code></pre></div>
+<p>This function uses the Azure Data Lake SDK to rename (move) the file, ensuring that processed files are archived and not reprocessed.</p>
+<hr />
+<h2 id="supplement-get_client_sceret_credential">Supplement: <code>get_client_sceret_credential</code></h2>
+<p>This function provides the Azure credential used for authentication in all Data Lake and Azure SDK operations. It is a wrapper around Azure's <code>ClientSecretCredential</code> and is essential for secure, programmatic access to Azure resources.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_client_sceret_credential</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ClientSecretCredential</span><span class="p">(</span>
+            <span class="n">tenant_id</span><span class="o">=</span><span class="n">AZURE_TENANT_ID</span><span class="p">,</span>
+            <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
+            <span class="n">client_secret</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_SECRET</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">localExceptionObject</span><span class="p">:</span>
+        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">localExceptionObject</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">pass</span>
+</code></pre></div>
+<p>This function should be used in place of any direct reference to <code>GDEPAzure.get_client_sceret_credential</code> in the workflow. For example, in the <code>upload_file_to_datalake</code> and other related functions, replace <code>GDEPAzure.get_client_sceret_credential()</code> with <code>get_client_sceret_credential()</code> for clarity and modularity.</p>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/python/api/overview/azure/storage-file-datalake-readme?view=azure-python">Azure Data Lake Storage Gen2 Python SDK</a></li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>By combining Python's data processing capabilities with Azure's scalable storage and compute, this workflow provides a reliable and efficient way to automate the import of employee data into Azure Fabric Data Warehouse. The modular design allows for easy extension and maintenance, while leveraging batch operations and cloud-native features ensures performance and scalability. This approach can be adapted for similar ETL scenarios involving other data sources and targets in the Azure ecosystem.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 3, 2025 17:15:00 UTC">July 3, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
