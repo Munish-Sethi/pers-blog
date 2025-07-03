@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/azure-ad-user/">
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/azure-ad-user-devices/">
       
       
-        <link rel="prev" href="../azure-query-recovery-services-vault/">
+        <link rel="prev" href="../azure-ad-user/">
       
       
-        <link rel="next" href="../azure-ad-user-devices/">
+        <link rel="next" href="../meraki-nagios-device-sync/">
       
       
       <link rel="icon" href="../None">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Entra Users, User Groups and Licence assignments - Munish(s) Blog</title>
+        <title>Entra User Devices - Munish(s) Blog</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#retrieving-entra-azure-ad-users-group-membership-and-license-assignments" class="md-skip">
+        <a href="#retrieving-entra-azure-ad-user-device" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Entra Users, User Groups and Licence assignments
+              Entra User Devices
             
           </span>
         </div>
@@ -356,6 +356,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra Users, User Groups and Licence assignments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -373,7 +396,7 @@
   
   
   <span class="md-ellipsis">
-    Entra Users, User Groups and Licence assignments
+    Entra User Devices
     
   </span>
   
@@ -386,7 +409,7 @@
   
   
   <span class="md-ellipsis">
-    Entra Users, User Groups and Licence assignments
+    Entra User Devices
     
   </span>
   
@@ -436,91 +459,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-retrieve-users-with-license-assignments-and-group-memberships" class="md-nav__link">
+  <a href="#step-1-retrieve-device-inventory-from-entra-azure-ad" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Retrieve Users with License Assignments and Group Memberships
+      Step 1: Retrieve Device Inventory from Entra (Azure AD)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Step 1: Retrieve Users with License Assignments and Group Memberships">
+    <nav class="md-nav" aria-label="Step 1: Retrieve Device Inventory from Entra (Azure AD)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#function-get_users_licenseassignments_and_groups" class="md-nav__link">
+  <a href="#function-get_list_of_devices" class="md-nav__link">
     <span class="md-ellipsis">
-      Function: get_users_licenseassignments_and_groups
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-retrieve-all-groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Retrieve All Groups
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2: Retrieve All Groups">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-get_list_of_groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function: get_list_of_groups
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-combine-user-license-and-group-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Combine User, License, and Group Data
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 3: Combine User, License, and Group Data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-get_users_with_license_and_groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function: get_users_with_license_and_groups
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-high-level-orchestration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 4: High-Level Orchestration
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 4: High-Level Orchestration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-get_list_of_users_with_license_and_groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function: get_list_of_users_with_license_and_groups
+      Function: get_list_of_devices
     </span>
   </a>
   
@@ -553,29 +504,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../azure-ad-user-devices/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Entra User Devices
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1287,91 +1215,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-retrieve-users-with-license-assignments-and-group-memberships" class="md-nav__link">
+  <a href="#step-1-retrieve-device-inventory-from-entra-azure-ad" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Retrieve Users with License Assignments and Group Memberships
+      Step 1: Retrieve Device Inventory from Entra (Azure AD)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Step 1: Retrieve Users with License Assignments and Group Memberships">
+    <nav class="md-nav" aria-label="Step 1: Retrieve Device Inventory from Entra (Azure AD)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#function-get_users_licenseassignments_and_groups" class="md-nav__link">
+  <a href="#function-get_list_of_devices" class="md-nav__link">
     <span class="md-ellipsis">
-      Function: get_users_licenseassignments_and_groups
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-retrieve-all-groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Retrieve All Groups
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2: Retrieve All Groups">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-get_list_of_groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function: get_list_of_groups
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-combine-user-license-and-group-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Combine User, License, and Group Data
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 3: Combine User, License, and Group Data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-get_users_with_license_and_groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function: get_users_with_license_and_groups
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-high-level-orchestration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 4: High-Level Orchestration
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 4: High-Level Orchestration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-get_list_of_users_with_license_and_groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function: get_list_of_users_with_license_and_groups
+      Function: get_list_of_devices
     </span>
   </a>
   
@@ -1416,9 +1272,9 @@
 
 
 
-<h1 id="retrieving-entra-azure-ad-users-group-membership-and-license-assignments">Retrieving Entra (Azure AD) Users, Group Membership, and License Assignments</h1>
+<h1 id="retrieving-entra-azure-ad-user-device">Retrieving Entra (Azure AD) User Device</h1>
 <h2 id="introduction">Introduction</h2>
-<p>This guide demonstrates how to programmatically retrieve a list of all users from Microsoft Entra (Azure AD), including their group memberships and license assignments, using Python and the Microsoft Graph API. The approach is modular, production-ready, and company-agnostic. All code is explained step by step, with constants and endpoints included for clarity.</p>
+<p>This guide demonstrates how to programmatically retrieve a list of all devices registered in Microsoft Entra (Azure AD), including key device attributes and registered user information, using Python and the Microsoft Graph API. The approach is modular, production-ready, and company-agnostic. All code is explained step by step, with constants and endpoints included for clarity.</p>
 <hr />
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
@@ -1426,134 +1282,69 @@
 <li>The following Python packages:</li>
 <li><code>requests</code></li>
 <li><code>msal</code> (for authentication, not shown here)</li>
-<li>An Azure AD application (service principal) with permissions to read users, groups, and licenses</li>
+<li>An Azure AD application (service principal) with permissions to read device information</li>
 <li>Secure storage for credentials (e.g., Azure Key Vault)</li>
 </ul>
 <hr />
 <h2 id="constants-and-endpoints">Constants and Endpoints</h2>
 <div class="highlight"><pre><span></span><code><span class="n">AZURE_GRAPH_BETA</span> <span class="o">=</span> <span class="s1">&#39;https://graph.microsoft.com/beta/&#39;</span>
-<span class="n">LIST_OF_AAD_USER_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;displayName&#39;</span><span class="p">,</span> <span class="s1">&#39;accountEnabled&#39;</span><span class="p">,</span> <span class="s1">&#39;userPrincipalName&#39;</span><span class="p">,</span> <span class="s1">&#39;licenseAssignmentStates&#39;</span><span class="p">,</span>
+<span class="n">LIST_OF_AAD_DEVICE_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;approximateLastSignInDateTime&#39;</span><span class="p">,</span> <span class="s1">&#39;deviceId&#39;</span><span class="p">,</span> <span class="s1">&#39;displayName&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;isCompliant&#39;</span><span class="p">,</span> <span class="s1">&#39;isManaged&#39;</span><span class="p">,</span> <span class="s1">&#39;manufacturer&#39;</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;operatingSystem&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;operatingSystemVersion&#39;</span><span class="p">,</span> <span class="s1">&#39;deviceOwnership&#39;</span><span class="p">,</span> <span class="s1">&#39;managementType&#39;</span>
 <span class="p">]</span>
 </code></pre></div>
 <hr />
-<h2 id="step-1-retrieve-users-with-license-assignments-and-group-memberships">Step 1: Retrieve Users with License Assignments and Group Memberships</h2>
-<h3 id="function-get_users_licenseassignments_and_groups">Function: <code>get_users_licenseassignments_and_groups</code></h3>
-<p>This function retrieves a list of users from Entra (Azure AD), including their license assignment states and group memberships, using the Microsoft Graph API.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_users_licenseassignments_and_groups</span><span class="p">():</span>
-    <span class="n">user_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Initialize list to store user data</span>
+<h2 id="step-1-retrieve-device-inventory-from-entra-azure-ad">Step 1: Retrieve Device Inventory from Entra (Azure AD)</h2>
+<h3 id="function-get_list_of_devices">Function: <code>get_list_of_devices</code></h3>
+<p>This function retrieves a list of devices from Entra (Azure AD), including key device attributes and registered user information, using the Microsoft Graph API.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_list_of_devices</span><span class="p">():</span>
+    <span class="n">devices_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Initialize list to store device data</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">LIST_OF_AAD_USER_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;displayName&#39;</span><span class="p">,</span> <span class="s1">&#39;accountEnabled&#39;</span><span class="p">,</span> <span class="s1">&#39;userPrincipalName&#39;</span><span class="p">,</span> <span class="s1">&#39;licenseAssignmentStates&#39;</span><span class="p">,</span>
+        <span class="n">LIST_OF_AAD_DEVICE_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;approximateLastSignInDateTime&#39;</span><span class="p">,</span> <span class="s1">&#39;deviceId&#39;</span><span class="p">,</span> <span class="s1">&#39;displayName&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;isCompliant&#39;</span><span class="p">,</span> <span class="s1">&#39;isManaged&#39;</span><span class="p">,</span> <span class="s1">&#39;manufacturer&#39;</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;operatingSystem&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;operatingSystemVersion&#39;</span><span class="p">,</span> <span class="s1">&#39;deviceOwnership&#39;</span><span class="p">,</span> <span class="s1">&#39;managementType&#39;</span>
         <span class="p">]</span>
-        <span class="n">selected_attributes</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">LIST_OF_AAD_USER_ATTRIBUTES</span><span class="p">)</span>
-        <span class="n">query_params</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;$select=</span><span class="si">{</span><span class="n">selected_attributes</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="n">query_params</span> <span class="o">+=</span> <span class="s2">&quot;&amp;$expand=memberOf&quot;</span>
-        <span class="n">user_list</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_BETA</span><span class="si">}</span><span class="s2">users?</span><span class="si">{</span><span class="n">query_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">selected_attributes</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">LIST_OF_AAD_DEVICE_ATTRIBUTES</span><span class="p">)</span>
+        <span class="n">query_params</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;$select=</span><span class="si">{</span><span class="n">selected_attributes</span><span class="si">}</span><span class="s2">&amp;$expand=registeredUsers&quot;</span>
+        <span class="n">devices_list</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_BETA</span><span class="si">}</span><span class="s2">devices?</span><span class="si">{</span><span class="n">query_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">user_device</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices_list</span><span class="p">:</span>
+            <span class="n">registered_user</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;registeredUsers&#39;</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="n">user_id</span> <span class="o">=</span> <span class="n">registered_user</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">registered_user</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="n">user_ip</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Not assigned from the device dictionary, keeping as None</span>
+            <span class="n">user_upn</span> <span class="o">=</span> <span class="n">registered_user</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;userPrincipalName&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">registered_user</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="n">device_to_add</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;approximateLastSignInDateTime&#39;</span><span class="p">:</span> <span class="n">parse_iso_date</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;approximateLastSignInDateTime&#39;</span><span class="p">)),</span>
+                <span class="s1">&#39;deviceId&#39;</span><span class="p">:</span> <span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviceId&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;displayName&#39;</span><span class="p">:</span> <span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;displayName&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;isCompliant&#39;</span><span class="p">:</span> <span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isCompliant&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;isManaged&#39;</span><span class="p">:</span> <span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isManaged&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;manufacturer&#39;</span><span class="p">:</span> <span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;operatingSystem&#39;</span><span class="p">:</span> <span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;operatingSystem&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;operatingSystemVersion&#39;</span><span class="p">:</span> <span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;operatingSystemVersion&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;deviceOwnership&#39;</span><span class="p">:</span> <span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviceOwnership&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="n">user_id</span><span class="p">,</span>
+                <span class="s1">&#39;user_ip&#39;</span><span class="p">:</span> <span class="n">user_ip</span><span class="p">,</span>
+                <span class="s1">&#39;user_upn&#39;</span><span class="p">:</span> <span class="n">user_upn</span><span class="p">,</span>
+                <span class="s1">&#39;managementType&#39;</span><span class="p">:</span> <span class="n">device</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;managementType&#39;</span><span class="p">),</span>
+            <span class="p">}</span>
+            <span class="n">user_device</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">device_to_add</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
         <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">user_list</span>
+    <span class="k">return</span> <span class="n">user_device</span>
 </code></pre></div>
 <p><strong>Explanation:</strong>
-- Builds a query to select user attributes and expand group memberships (<code>memberOf</code>).
+- Builds a query to select device attributes and expand registered user information (<code>registeredUsers</code>).
 - Calls <code>execute_odata_query_get</code> to make the API request and handle pagination.
-- Returns a list of user dictionaries with license and group data.</p>
-<hr />
-<h2 id="step-2-retrieve-all-groups">Step 2: Retrieve All Groups</h2>
-<h3 id="function-get_list_of_groups">Function: <code>get_list_of_groups</code></h3>
-<p>This function retrieves all groups from Entra (Azure AD).</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_list_of_groups</span><span class="p">():</span>
-    <span class="n">group_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Initialize list to store group data</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">group_list</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_BETA</span><span class="si">}</span><span class="s2">groups?&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">group_list</span>
-</code></pre></div>
-<p><strong>Explanation:</strong>
-- Calls the Microsoft Graph <code>/groups</code> endpoint to retrieve all groups.
-- Uses <code>execute_odata_query_get</code> for API calls and pagination.
-- Returns a list of group dictionaries.</p>
-<hr />
-<h2 id="step-3-combine-user-license-and-group-data">Step 3: Combine User, License, and Group Data</h2>
-<h3 id="function-get_users_with_license_and_groups">Function: <code>get_users_with_license_and_groups</code></h3>
-<p>This function combines user, license, and group data into a unified list.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_users_with_license_and_groups</span><span class="p">():</span>
-    <span class="n">final_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Final list of dictionaries</span>
-    <span class="n">SKU_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;ee02fd1b-340e-4a4b-b355-4a514e4c8943&quot;</span><span class="p">:</span> <span class="s2">&quot;Exchange Online Archiving&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;05e9a617-0261-4cee-bb44-138d3ef5d965&quot;</span><span class="p">:</span> <span class="s2">&quot;365 E3&quot;</span><span class="p">,</span>
-        <span class="c1"># ... (other SKU mappings) ...</span>
-    <span class="p">}</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">users</span> <span class="o">=</span> <span class="n">get_users_licenseassignments_and_groups</span><span class="p">()</span>
-        <span class="n">groups</span> <span class="o">=</span> <span class="n">get_list_of_groups</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">:</span>
-            <span class="c1"># Extract license assignments and group memberships</span>
-            <span class="n">license_assignments</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">group_memberships</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="c1"># Parse license assignments</span>
-            <span class="k">for</span> <span class="n">license</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;licenseAssignmentStates&#39;</span><span class="p">,</span> <span class="p">[]):</span>
-                <span class="n">sku_id</span> <span class="o">=</span> <span class="n">license</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;skuId&#39;</span><span class="p">)</span>
-                <span class="n">sku_name</span> <span class="o">=</span> <span class="n">SKU_MAPPING</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sku_id</span><span class="p">,</span> <span class="n">sku_id</span><span class="p">)</span>
-                <span class="n">license_assignments</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                    <span class="s1">&#39;sku_id&#39;</span><span class="p">:</span> <span class="n">sku_id</span><span class="p">,</span>
-                    <span class="s1">&#39;sku_name&#39;</span><span class="p">:</span> <span class="n">sku_name</span><span class="p">,</span>
-                    <span class="s1">&#39;assigned_by_group&#39;</span><span class="p">:</span> <span class="n">license</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;assignedByGroup&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-                <span class="p">})</span>
-            <span class="c1"># Parse group memberships</span>
-            <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;memberOf&#39;</span><span class="p">,</span> <span class="p">[]):</span>
-                <span class="n">group_memberships</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                    <span class="s1">&#39;group_id&#39;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">),</span>
-                    <span class="s1">&#39;display_name&#39;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;displayName&#39;</span><span class="p">),</span>
-                <span class="p">})</span>
-            <span class="n">final_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;user_principal_name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;userPrincipalName&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;display_name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;displayName&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;account_enabled&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;accountEnabled&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;license_assignments&#39;</span><span class="p">:</span> <span class="n">license_assignments</span><span class="p">,</span>
-                <span class="s1">&#39;group_memberships&#39;</span><span class="p">:</span> <span class="n">group_memberships</span><span class="p">,</span>
-            <span class="p">})</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">final_list</span>
-</code></pre></div>
-<p><strong>Explanation:</strong>
-- Calls the previous two functions to get users and groups.
-- Maps license SKUs to human-readable names.
-- Extracts and structures license and group membership data for each user.
-- Returns a list of user dictionaries with all relevant information.</p>
-<hr />
-<h2 id="step-4-high-level-orchestration">Step 4: High-Level Orchestration</h2>
-<h3 id="function-get_list_of_users_with_license_and_groups">Function: <code>get_list_of_users_with_license_and_groups</code></h3>
-<p>This function orchestrates the retrieval and structuring of user, license, and group data.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_list_of_users_with_license_and_groups</span><span class="p">():</span>
-    <span class="n">user_groups</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">user_license</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">user_lic_and_groups</span> <span class="o">=</span> <span class="n">get_users_with_license_and_groups</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">user_lic_and_groups</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">membership</span> <span class="ow">in</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;group_memberships&#39;</span><span class="p">]:</span>
-            <span class="n">user_groups</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;user_principal_name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;user_principal_name&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;group_id&#39;</span><span class="p">:</span> <span class="n">membership</span><span class="p">[</span><span class="s1">&#39;group_id&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;group_display_name&#39;</span><span class="p">:</span> <span class="n">membership</span><span class="p">[</span><span class="s1">&#39;display_name&#39;</span><span class="p">],</span>
-            <span class="p">})</span>
-        <span class="k">for</span> <span class="n">licassignment</span> <span class="ow">in</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;license_assignments&#39;</span><span class="p">]:</span>
-            <span class="n">user_license</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;user_principal_name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;user_principal_name&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;sku_id&#39;</span><span class="p">:</span> <span class="n">licassignment</span><span class="p">[</span><span class="s1">&#39;sku_id&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;sku_name&#39;</span><span class="p">:</span> <span class="n">licassignment</span><span class="p">[</span><span class="s1">&#39;sku_name&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;assigned_by_group&#39;</span><span class="p">:</span> <span class="n">licassignment</span><span class="p">[</span><span class="s1">&#39;assigned_by_group&#39;</span><span class="p">],</span>
-            <span class="p">})</span>
-    <span class="k">return</span> <span class="n">user_groups</span><span class="p">,</span> <span class="n">user_license</span>
-</code></pre></div>
-<p><strong>Explanation:</strong>
-- Calls <code>get_users_with_license_and_groups</code> to get the unified user data.
-- Flattens group memberships and license assignments into separate lists for easy processing or storage.
-- Returns two lists: one for user-group relationships, one for user-license assignments.</p>
+- For each device, extracts key attributes and the first registered user's ID and UPN (if available).
+- Returns a list of device dictionaries, each including device and user information.</p>
 <hr />
 <h2 id="supporting-function-execute_odata_query_get">Supporting Function: <code>execute_odata_query_get</code></h2>
-<p>This function is used throughout to make authenticated, paginated requests to the Microsoft Graph API.</p>
+<p>This function is used to make authenticated, paginated requests to the Microsoft Graph API.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">execute_odata_query_get</span><span class="p">(</span><span class="n">urltoInvoke</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">localUserList</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1602,8 +1393,8 @@
 - Used by all higher-level functions to retrieve data from Entra (Azure AD).  For a deep dive into certificate-based authentication setup, see the dedicated article: <a href="../azure-ad-certificate/">Certificate Based Authorization for Azure AD</a>.</p>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
-<p>By following this step-by-step approach, you can programmatically retrieve all users from Entra (Azure AD), along with their group memberships and license assignments, using Python and the Microsoft Graph API. The modular design allows for easy extension and integration into enterprise automation workflows.</p>
-<p>For more details, see the <a href="https://learn.microsoft.com/en-us/graph/api/resources/users?view=graph-rest-beta">Microsoft Graph API documentation</a>.</p>
+<p>By following this approach, you can programmatically retrieve a complete inventory of devices from Entra (Azure AD), including device details and registered user information, using Python and the Microsoft Graph API. This enables automated device inventory, compliance, and reporting workflows in your organization.</p>
+<p>For more details, see the <a href="https://learn.microsoft.com/en-us/graph/api/resources/device?view=graph-rest-beta">Microsoft Graph API documentation</a>.</p>
 
 
 
