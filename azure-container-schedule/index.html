@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/azure-billing/">
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/azure-container-schedule/">
       
       
-        <link rel="prev" href="../azure-ad-certificate/">
+        <link rel="prev" href="../azure-ad-user-devices/">
       
       
-        <link rel="next" href="../azure-resources/">
+        <link rel="next" href="../meraki-unused-device-sync/">
       
       
       <link rel="icon" href="../None">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Download Azure Bill - Munish(s) Blog</title>
+        <title>Orchestrating Scheduled Jobs - Munish(s) Blog</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#programmatically-downloading-and-storing-azure-billing-data" class="md-skip">
+        <a href="#orchestrating-scheduled-jobs-in-a-python-container-using-a-scheduler-script" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Download Azure Bill
+              Orchestrating Scheduled Jobs
             
           </span>
         </div>
@@ -287,32 +287,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Download Azure Bill
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
         
   
   
@@ -323,107 +301,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-secure-authentication-acquiring-an-azure-access-token-with-certificates" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Secure Authentication: Acquiring an Azure Access Token with Certificates
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-generating-the-azure-cost-report-via-rest-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Generating the Azure Cost Report via REST API
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-downloading-the-cost-report-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Downloading the Cost Report Data
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-loading-the-cost-data-into-sql-server-efficiently" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Loading the Cost Data into SQL Server Efficiently
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-orchestrating-the-end-to-end-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Orchestrating the End-to-End Process
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-additional-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Additional Considerations
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conclusion
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -525,10 +402,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../azure-container-schedule/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Orchestrating Scheduled Jobs
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -539,6 +438,170 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-scheduler-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Scheduler Script
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Scheduler Script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importing-required-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importing Required Libraries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helper-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Helper Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Helper Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timezone-aware-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timezone-Aware Scheduling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-jobs-in-the-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Jobs in the Background
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executing-python-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executing Python Scripts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-job-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining Job Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduling-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scheduling Jobs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scheduling Jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-startup-with-supervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Startup with Supervisor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1365,63 +1428,135 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#table-of-contents" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      Table of Contents
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-secure-authentication-acquiring-an-azure-access-token-with-certificates" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Secure Authentication: Acquiring an Azure Access Token with Certificates
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-generating-the-azure-cost-report-via-rest-api" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Generating the Azure Cost Report via REST API
+      Key Concepts
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-downloading-the-cost-report-data" class="md-nav__link">
+  <a href="#core-scheduler-script" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Downloading the Cost Report Data
+      Core Scheduler Script
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Scheduler Script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importing-required-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importing Required Libraries
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4-loading-the-cost-data-into-sql-server-efficiently" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#helper-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Loading the Cost Data into SQL Server Efficiently
+      Helper Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Helper Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timezone-aware-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timezone-Aware Scheduling
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#5-orchestrating-the-end-to-end-process" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#running-jobs-in-the-background" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Orchestrating the End-to-End Process
+      Running Jobs in the Background
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#executing-python-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executing Python Scripts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-job-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining Job Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduling-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scheduling Jobs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scheduling Jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#6-additional-considerations" class="md-nav__link">
+  <a href="#container-startup-with-supervisor" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Additional Considerations
+      Container Startup with Supervisor
     </span>
   </a>
   
@@ -1431,15 +1566,6 @@
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       Conclusion
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
     </span>
   </a>
   
@@ -1461,148 +1587,129 @@
 
 
 
-<!-- Programmatically Downloading and Storing Azure Billing Data -->
-
-<h1 id="programmatically-downloading-and-storing-azure-billing-data">Programmatically Downloading and Storing Azure Billing Data:</h1>
-<h2 id="introduction">Introduction</h2>
-<p>Automating the retrieval and storage of Azure billing data is essential for organizations seeking cost transparency and operational efficiency. This guide details a robust, production-grade approach to programmatically obtaining Azure billing data using Python, authenticating securely with certificates, and efficiently storing the results in a SQL Server database. </p>
+<h1 id="orchestrating-scheduled-jobs-in-a-python-container-using-a-scheduler-script">Orchestrating Scheduled Jobs in a Python Container Using a Scheduler Script</h1>
+<p>This article demonstrates how to build a robust job scheduler in a Python-based container environment. The scheduler coordinates the execution of various Python scripts at specific times or intervals, ensuring that business processes run reliably and in the correct timezone. The approach is suitable for any containerized environment, such as those running in Azure, AWS, or on-premises.</p>
 <hr />
-<h2 id="1-secure-authentication-acquiring-an-azure-access-token-with-certificates">1. Secure Authentication: Acquiring an Azure Access Token with Certificates</h2>
-<p>The first step is to authenticate with Azure Active Directory (Azure AD) using certificate-based authentication. This is more secure than using client secrets and is recommended for automation and service-to-service scenarios. For a deep dive into certificate-based authentication setup, see the dedicated article: <a href="../azure-ad-certificate/">Certificate Based Authorization for Azure AD</a>.</p>
-<p><strong>Python Example:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">msal</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfidentialClientApplication</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">get_access_token</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">authority</span><span class="p">,</span> <span class="n">tenant_id</span><span class="p">,</span> <span class="n">resource_scopes</span><span class="p">,</span> <span class="n">cert_thumbprint</span><span class="p">,</span> <span class="n">cert_key_path</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Acquire an Azure AD access token using certificate-based authentication.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">cert_key_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">key_file</span><span class="p">:</span>
-        <span class="n">private_key</span> <span class="o">=</span> <span class="n">key_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">ConfidentialClientApplication</span><span class="p">(</span>
-        <span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span>
-        <span class="n">authority</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">authority</span><span class="si">}{</span><span class="n">tenant_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="n">client_credential</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;thumbprint&quot;</span><span class="p">:</span> <span class="n">cert_thumbprint</span><span class="p">,</span>
-            <span class="s2">&quot;private_key&quot;</span><span class="p">:</span> <span class="n">private_key</span><span class="p">,</span>
-        <span class="p">},</span>
-    <span class="p">)</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">acquire_token_for_client</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="n">resource_scopes</span><span class="p">)</span>
-    <span class="k">if</span> <span class="s2">&quot;access_token&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Token acquisition failed: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;access_token&quot;</span><span class="p">]</span>
-</code></pre></div>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#key-concepts">Key Concepts</a></li>
+<li><a href="#core-scheduler-script">Core Scheduler Script</a><ul>
+<li><a href="#scheduling-jobs">Scheduling Jobs</a></li>
+<li><a href="#running-jobs-in-the-background">Running Jobs in the Background</a></li>
+<li><a href="#timezone-handling">Timezone Handling</a></li>
+<li><a href="#error-handling-and-logging">Error Handling and Logging</a></li>
+</ul>
+</li>
+<li><a href="#container-startup-with-supervisor">Container Startup with Supervisor</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>In many automation and integration scenarios, you need to run a set of scripts or jobs on a schedule—some daily, some every few minutes, and some only on certain days. When running in a container, you want the scheduler to start automatically and keep running, launching jobs as needed. This article explains how to implement such a scheduler in Python, using the <code>schedule</code> library, and how to ensure it starts with your container using Supervisor.</p>
+<hr />
+<h2 id="key-concepts">Key Concepts</h2>
 <ul>
-<li><strong>Why certificates?</strong> They are more secure, support longer lifecycles, and are recommended for automation.</li>
-<li><strong>MSAL Library:</strong> The Microsoft Authentication Library (MSAL) is used for token acquisition, providing flexibility and support for advanced scenarios.</li>
+<li><strong>Job Scheduling:</strong> Use the <code>schedule</code> library to define when each job should run (e.g., every day at a certain time, every N minutes).</li>
+<li><strong>Background Execution:</strong> Use Python's <code>threading</code> module to run jobs asynchronously, so the scheduler loop is never blocked.</li>
+<li><strong>Timezone Awareness:</strong> Use the <code>pytz</code> library to ensure jobs run at the correct local time, even if the container's system time is UTC.</li>
+<li><strong>Error Handling:</strong> Use try/except blocks and logging to capture and report errors without stopping the scheduler.</li>
+<li><strong>Container Startup:</strong> Use Supervisor to ensure the scheduler script starts automatically when the container is created and restarts if it fails.</li>
 </ul>
 <hr />
-<h2 id="2-generating-the-azure-cost-report-via-rest-api">2. Generating the Azure Cost Report via REST API</h2>
-<p>Once authenticated, you can use the Azure Cost Management API to request a cost details report for your subscription. This involves making a POST request to the appropriate endpoint and polling until the report is ready.</p>
-<p><strong>Python Example:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<h2 id="core-scheduler-script">Core Scheduler Script</h2>
+<p>Below is a simplified and generic version of a Python scheduler script suitable for containerized environments. All company-specific details have been removed.</p>
+<h3 id="importing-required-libraries">Importing Required Libraries</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">schedule</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytz</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">generate_azure_cost_report</span><span class="p">(</span><span class="n">subscription_id</span><span class="p">,</span> <span class="n">access_token</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;2022-05-01&quot;</span><span class="p">):</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://management.azure.com/subscriptions/</span><span class="si">{</span><span class="n">subscription_id</span><span class="si">}</span><span class="s2">/providers/Microsoft.CostManagement/generateCostDetailsReport?api-version=</span><span class="si">{</span><span class="n">api_version</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;metric&quot;</span><span class="p">:</span> <span class="s2">&quot;ActualCost&quot;</span><span class="p">,</span> <span class="s2">&quot;timePeriod&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">start_date</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">end_date</span><span class="p">}})</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
-    <span class="c1"># Poll until the report is ready</span>
-    <span class="k">while</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">202</span><span class="p">:</span>
-        <span class="n">location_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Location&#39;</span><span class="p">)</span>
-        <span class="n">retry_after</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Retry-After&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">retry_after</span><span class="p">)</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">location_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to generate cost report: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="c1"># Set up logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;scheduler&quot;</span><span class="p">)</span>
 </code></pre></div>
-<ul>
-<li><strong>Polling:</strong> The API may return a 202 status, indicating the report is being generated. Poll the <code>Location</code> header until a 200 response is received.</li>
-<li><strong>Error Handling:</strong> Always check for non-200 responses and handle errors appropriately.</li>
-</ul>
-<hr />
-<h2 id="3-downloading-the-cost-report-data">3. Downloading the Cost Report Data</h2>
-<p>The response from the cost report API includes a manifest with one or more blob URLs. Download these blobs to obtain the actual cost data, typically in CSV format.</p>
-<p><strong>Python Example:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">urllib3</span>
+<h3 id="helper-functions">Helper Functions</h3>
+<h4 id="timezone-aware-scheduling">Timezone-Aware Scheduling</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_next_utc_for_local</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">timezone_str</span><span class="o">=</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the next occurrence of the specified hour in the given timezone and convert to UTC.&quot;&quot;&quot;</span>
+    <span class="n">tz</span> <span class="o">=</span> <span class="n">pytz</span><span class="o">.</span><span class="n">timezone</span><span class="p">(</span><span class="n">timezone_str</span><span class="p">)</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="p">)</span>
+    <span class="n">target_time</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">now</span> <span class="o">&gt;=</span> <span class="n">target_time</span><span class="p">:</span>
+        <span class="n">target_time</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">target_time</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">pytz</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%H:%M&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="running-jobs-in-the-background">Running Jobs in the Background</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">run_in_background</span><span class="p">(</span><span class="n">target_function</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Runs the given function asynchronously in a background thread.&quot;&quot;&quot;</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">target_function</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="executing-python-scripts">Executing Python Scripts</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">execute_script</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper function to execute a Python script with optional arguments.&quot;&quot;&quot;</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="n">script_path</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">])</span>
+</code></pre></div>
+<h3 id="defining-job-functions">Defining Job Functions</h3>
+<p>Each job function can call a different Python script or perform a specific task. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">job_example</span><span class="p">():</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running example job...&quot;</span><span class="p">)</span>
+    <span class="n">execute_script</span><span class="p">(</span><span class="s1">&#39;path/to/your_script.py&#39;</span><span class="p">,</span> <span class="s1">&#39;optional_arg&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="scheduling-jobs">Scheduling Jobs</h3>
+<p>You can schedule jobs at specific times or intervals. Here are some examples:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Schedule daily jobs at specific local times (converted to UTC)</span>
+        <span class="n">schedule</span><span class="o">.</span><span class="n">every</span><span class="p">()</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">get_next_utc_for_local</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">run_in_background</span><span class="p">(</span><span class="n">job_example</span><span class="p">))</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="s1">&#39;job_example&#39;</span><span class="p">,</span> <span class="s1">&#39;daily_task&#39;</span><span class="p">)</span>
+        <span class="n">schedule</span><span class="o">.</span><span class="n">every</span><span class="p">()</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">get_next_utc_for_local</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">run_in_background</span><span class="p">(</span><span class="n">job_example</span><span class="p">))</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="s1">&#39;job_example&#39;</span><span class="p">,</span> <span class="s1">&#39;daily_task&#39;</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">download_cost_report_blobs</span><span class="p">(</span><span class="n">manifest</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
-    <span class="n">http</span> <span class="o">=</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">PoolManager</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">blob</span> <span class="ow">in</span> <span class="n">manifest</span><span class="p">[</span><span class="s1">&#39;blobs&#39;</span><span class="p">]:</span>
-        <span class="n">blob_url</span> <span class="o">=</span> <span class="n">blob</span><span class="p">[</span><span class="s1">&#39;blobLink&#39;</span><span class="p">]</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
-            <span class="n">blob_response</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">blob_url</span><span class="p">,</span> <span class="n">preload_content</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">blob_response</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>
-<ul>
-<li><strong>Blob Download:</strong> Use a robust HTTP client (e.g., <code>urllib3</code>) to download the report data.</li>
-<li><strong>Output:</strong> Save the CSV file to a secure, accessible location for further processing.</li>
-</ul>
-<hr />
-<h2 id="4-loading-the-cost-data-into-sql-server-efficiently">4. Loading the Cost Data into SQL Server Efficiently</h2>
-<p>After downloading the cost report, the next step is to load the data into a SQL Server table. For large datasets, use a fast, batch insert method to optimize performance.</p>
-<p><strong>Python Example:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pyodbc</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+        <span class="c1"># Schedule jobs at regular intervals</span>
+        <span class="n">schedule</span><span class="o">.</span><span class="n">every</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">minutes</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">run_in_background</span><span class="p">(</span><span class="n">job_example</span><span class="p">))</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="s1">&#39;job_example&#39;</span><span class="p">,</span> <span class="s1">&#39;frequent_task&#39;</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">load_csv_to_sql_server</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="n">connection_string</span><span class="p">,</span> <span class="n">table_name</span><span class="p">):</span>
-    <span class="n">conn</span> <span class="o">=</span> <span class="n">pyodbc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">connection_string</span><span class="p">)</span>
-    <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
-        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
-        <span class="n">columns</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>  <span class="c1"># Header row</span>
-        <span class="n">insert_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;INSERT INTO </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">) VALUES (</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;?&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">columns</span><span class="p">])</span><span class="si">}</span><span class="s2">)&quot;</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>
-        <span class="n">cursor</span><span class="o">.</span><span class="n">fast_executemany</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">cursor</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="n">insert_query</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-        <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-    <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="c1"># Main scheduler loop</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">schedule</span><span class="o">.</span><span class="n">run_pending</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Scheduler Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fatal Scheduler Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
+<h4 id="explanation">Explanation</h4>
 <ul>
-<li><strong>Fast Insert:</strong> The <code>fast_executemany</code> flag in <code>pyodbc</code> enables high-performance bulk inserts.</li>
-<li><strong>Schema Alignment:</strong> Ensure the CSV columns match the SQL table schema.</li>
+<li><strong>get_next_utc_for_local:</strong> Ensures jobs run at the correct local time, regardless of the container's timezone.</li>
+<li><strong>run_in_background:</strong> Prevents long-running jobs from blocking the scheduler loop.</li>
+<li><strong>execute_script:</strong> Launches other Python scripts as subprocesses, optionally with command-line arguments.</li>
+<li><strong>schedule.every().day.at(...):</strong> Schedules jobs at specific times.</li>
+<li><strong>schedule.every(N).minutes.do(...):</strong> Schedules jobs at regular intervals.</li>
+<li><strong>Infinite Loop:</strong> The script runs forever, checking for jobs to run every second.</li>
 </ul>
 <hr />
-<h2 id="5-orchestrating-the-end-to-end-process">5. Orchestrating the End-to-End Process</h2>
-<p>A typical workflow to automate Azure billing data retrieval and storage:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fetch_and_update_azure_billing_data</span><span class="p">():</span>
-    <span class="c1"># Step 1: Get access token</span>
-    <span class="n">access_token</span> <span class="o">=</span> <span class="n">get_access_token</span><span class="p">(</span>
-        <span class="n">client_id</span><span class="o">=...</span><span class="p">,</span> <span class="n">authority</span><span class="o">=...</span><span class="p">,</span> <span class="n">tenant_id</span><span class="o">=...</span><span class="p">,</span> <span class="n">resource_scopes</span><span class="o">=...</span><span class="p">,</span> <span class="n">cert_thumbprint</span><span class="o">=...</span><span class="p">,</span> <span class="n">cert_key_path</span><span class="o">=...</span>
-    <span class="p">)</span>
-    <span class="c1"># Step 2: Generate cost report</span>
-    <span class="n">report</span> <span class="o">=</span> <span class="n">generate_azure_cost_report</span><span class="p">(</span>
-        <span class="n">subscription_id</span><span class="o">=...</span><span class="p">,</span> <span class="n">access_token</span><span class="o">=</span><span class="n">access_token</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=...</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=...</span>
-    <span class="p">)</span>
-    <span class="c1"># Step 3: Download report blob(s)</span>
-    <span class="n">download_cost_report_blobs</span><span class="p">(</span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;manifest&#39;</span><span class="p">],</span> <span class="n">output_path</span><span class="o">=</span><span class="s2">&quot;azure_billing.csv&quot;</span><span class="p">)</span>
-    <span class="c1"># Step 4: Load into SQL Server</span>
-    <span class="n">load_csv_to_sql_server</span><span class="p">(</span>
-        <span class="n">csv_path</span><span class="o">=</span><span class="s2">&quot;azure_billing.csv&quot;</span><span class="p">,</span> <span class="n">connection_string</span><span class="o">=...</span><span class="p">,</span> <span class="n">table_name</span><span class="o">=</span><span class="s2">&quot;AzureBilling&quot;</span>
-    <span class="p">)</span>
+<h2 id="container-startup-with-supervisor">Container Startup with Supervisor</h2>
+<p>To ensure your scheduler script starts automatically when the container is created and restarts if it fails, use Supervisor. Add a <code>supervisord.conf</code> file to your container image with the following content:</p>
+<div class="highlight"><pre><span></span><code>[program:scheduler]
+command=python /app/src/gdepscheduler.py
+autostart=true
+autorestart=true
 </code></pre></div>
-<hr />
-<h2 id="6-additional-considerations">6. Additional Considerations</h2>
 <ul>
-<li><strong>Permissions:</strong> The Azure AD application must have the required API permissions (e.g., Cost Management Reader) and access to the subscription.</li>
-<li><strong>Certificate Security:</strong> Store private keys securely and never commit them to source control.</li>
-<li><strong>Error Handling:</strong> Implement robust error handling and logging for production use.</li>
-<li><strong>Scheduling:</strong> Use a scheduler (e.g., cron, Azure Automation) to run the process regularly.</li>
+<li><strong>[program:scheduler]:</strong> Defines a program called "scheduler".</li>
+<li><strong>command:</strong> The command to run your scheduler script.</li>
+<li><strong>autostart=true:</strong> Start the program automatically when Supervisor starts.</li>
+<li><strong>autorestart=true:</strong> Restart the program if it exits unexpectedly.</li>
 </ul>
+<p>Supervisor will keep your scheduler running, even if it crashes or the container restarts.</p>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
-<p>By following this approach, you can securely and efficiently automate the retrieval and storage of Azure billing data using Python. This enables advanced reporting, cost analysis, and integration with enterprise data platforms.</p>
-<hr />
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://learn.microsoft.com/en-us/rest/api/cost-management/">Azure Cost Management REST API</a></li>
-<li><a href="https://github.com/AzureAD/microsoft-authentication-library-for-python">MSAL Python Library</a></li>
-<li><a href="https://github.com/mkleehammer/pyodbc/wiki">pyodbc Documentation</a></li>
-<li><a href="https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals">Azure AD App Registration: Certificates &amp; Secrets</a></li>
-</ul>
+<p>By combining the <code>schedule</code> library, background threading, timezone handling, and Supervisor, you can build a reliable, container-friendly job scheduler in Python. This approach ensures your automation and integration jobs run on time, every time, with minimal manual intervention.</p>
+<p>Adapt the code and configuration to your own scripts and business requirements. This pattern is suitable for any containerized environment where scheduled automation is needed.</p>
 
 
 
@@ -1623,7 +1730,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 7, 2025 22:20:31 UTC">June 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 6, 2025 13:10:03 UTC">July 6, 2025</span>
   </span>
 
     
