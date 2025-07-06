@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/adds-user-creation/">
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/avd-publish-part2/">
       
       
-        <link rel="prev" href="../monitoring-itsm-integration/">
+        <link rel="prev" href="../avd-custon-image-compute-gallery-part1/">
       
       
-        <link rel="next" href="../adds-user-update/">
+        <link rel="next" href="../meraki-unused-device-sync/">
       
       
       <link rel="icon" href="../None">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Create ADDS User - Munish(s) Blog</title>
+        <title>Deploying Azure Virtual Desktop (AVD) Desktops - Munish(s) Blog</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#automating-active-directory-user-creation-and-group-assignment" class="md-skip">
+        <a href="#part-2-deploying-azure-virtual-desktop-avd-desktops" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Create ADDS User
+              Deploying Azure Virtual Desktop (AVD) Desktops
             
           </span>
         </div>
@@ -219,8 +219,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -231,11 +233,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -251,7 +253,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Azure
@@ -515,10 +517,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../avd-publish-part2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Deploying Azure Virtual Desktop (AVD) Desktops
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -529,6 +553,104 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-review-and-update-parameter-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Review and Update Parameter File
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Review and Update Parameter File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-parameter-file-avdpjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Parameter File (avdp.json)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-full-bicep-code-for-avd-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Full Bicep Code for AVD Deployment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-deploy-the-avd-vms-using-azure-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Deploy the AVD VM(s) Using Azure CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-domain-join-and-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Domain Join and Permissions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-post-deployment-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Post-Deployment Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-and-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security and Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -737,8 +859,6 @@
       
   
   
-    
-  
   
   
     
@@ -751,11 +871,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -771,7 +891,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Active Directory Domain Services
@@ -782,32 +902,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Create ADDS User
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
         
   
   
@@ -818,107 +916,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#overview-of-the-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      Overview of the Workflow
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-establishing-a-connection-to-adds" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1: Establishing a Connection to ADDS
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-creating-a-new-user-in-adds" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Creating a New User in ADDS
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-adding-the-user-to-adds-groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Adding the User to ADDS Groups
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#error-handling-and-best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      Error Handling and Best Practices
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-creating-and-assigning-a-user" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example: Creating and Assigning a User
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conclusion
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1480,81 +1477,78 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#overview-of-the-workflow" class="md-nav__link">
+  <a href="#step-1-review-and-update-parameter-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview of the Workflow
+      Step 1: Review and Update Parameter File
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Review and Update Parameter File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-parameter-file-avdpjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Parameter File (avdp.json)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-full-bicep-code-for-avd-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Full Bicep Code for AVD Deployment
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-establishing-a-connection-to-adds" class="md-nav__link">
+  <a href="#step-3-deploy-the-avd-vms-using-azure-cli" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Establishing a Connection to ADDS
+      Step 3: Deploy the AVD VM(s) Using Azure CLI
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-creating-a-new-user-in-adds" class="md-nav__link">
+  <a href="#step-4-domain-join-and-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Creating a New User in ADDS
+      Step 4: Domain Join and Permissions
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-adding-the-user-to-adds-groups" class="md-nav__link">
+  <a href="#step-5-post-deployment-validation" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3: Adding the User to ADDS Groups
+      Step 5: Post-Deployment Validation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#error-handling-and-best-practices" class="md-nav__link">
+  <a href="#security-and-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
-      Error Handling and Best Practices
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-creating-and-assigning-a-user" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example: Creating and Assigning a User
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conclusion
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
+      Security and Best Practices
     </span>
   </a>
   
@@ -1576,120 +1570,280 @@
 
 
 
-<h1 id="automating-active-directory-user-creation-and-group-assignment">Automating Active Directory User Creation and Group Assignment</h1>
-<h2 id="introduction">Introduction</h2>
-<p>Automating user provisioning in Active Directory Domain Services (ADDS) is a common requirement for IT teams managing large organizations. Python, with its rich ecosystem of libraries, makes it possible to programmatically create users and assign them to groups in ADDS. This article provides a detailed walkthrough of a working Python implementation for creating new ADDS users and adding them to groups, using the <code>ldap3</code> library and related tools.</p>
-<h2 id="overview-of-the-workflow">Overview of the Workflow</h2>
-<p>The core function, <code>create_new_users_adds</code>, orchestrates the process of:</p>
-<ol>
-<li>Establishing a secure connection to the ADDS server.</li>
-<li>Creating a new user account with the required attributes.</li>
-<li>Setting the user's password and enabling the account.</li>
-<li>Adding the user to one or more ADDS groups.</li>
-</ol>
-<p>This workflow is modular, with each step handled by a dedicated function or library call, making it easy to adapt for different environments.</p>
+<h1 id="part-2-deploying-azure-virtual-desktop-avd-desktops">Part 2: Deploying Azure Virtual Desktop (AVD) Desktops</h1>
+<p>This article provides a detailed, step-by-step guide to deploying AVD VMs from a custom image in the Azure Compute Gallery, joining them to a domain, and ensuring a successful deployment. For the image creation process, see <a href="../avd-custon-image-compute-gallery-part1/">Part 1: Building and Publishing an AVD Image</a>.</p>
 <hr />
-<h2 id="step-1-establishing-a-connection-to-adds">Step 1: Establishing a Connection to ADDS</h2>
-<p>The function <code>get_adds_Connection</code> uses the <code>ldap3</code> library to connect to the ADDS server over SSL. Credentials are securely retrieved (in this codebase, from Azure Key Vault, but you can use environment variables or other secure stores):</p>
-<div class="highlight"><pre><span></span><code><span class="n">server</span> <span class="o">=</span> <span class="n">ldap3</span><span class="o">.</span><span class="n">Server</span><span class="p">(</span><span class="n">dc_ip</span><span class="p">,</span> <span class="n">use_ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">ldap3</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">LDAP_USER_ID</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">LDAP_USER_PASSWORD</span><span class="p">)</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">conn</span><span class="o">.</span><span class="n">bind</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in bind&#39;</span><span class="p">,</span> <span class="n">conn</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+<h2 id="overview">Overview</h2>
+<p>The process involves:
+- Reviewing and updating parameter files for deployment
+- Deploying AVD VMs using Bicep and Azure CLI
+- Joining VMs to the domain using a privileged service account
+- Post-deployment validation and best practices</p>
+<hr />
+<h2 id="step-1-review-and-update-parameter-file">Step 1: Review and Update Parameter File</h2>
+<p>Before deploying, ensure your parameter file (e.g., <code>avdp.json</code>) is up to date with the correct image reference, VM size, network settings, and domain join information.</p>
+<h3 id="example-parameter-file-avdpjson">Example Parameter File (<code>avdp.json</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;resource_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rg-gdep-peus-avd-pools&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;nic_subnet_resourcegroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rg-gdep-peus-vnets&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;nic_vnet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GDEP_VNET_PROD&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;nic_subnet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prod_AVD_FS_Subnet&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;vm_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AZGDEPENG&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;adminusername&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;avdadmin&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;hostpoolname&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GDEP_Engineering&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;adminPassword&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;keyVault&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/subscriptions/&lt;sub-id&gt;/resourceGroups/&lt;rg&gt;/providers/Microsoft.KeyVault/vaults/&lt;vault-name&gt;&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;secretName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new-vm-password&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;adadminusername&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-account@yourdomain.com&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;adadminPassword&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;keyVault&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/subscriptions/&lt;sub-id&gt;/resourceGroups/&lt;rg&gt;/providers/Microsoft.KeyVault/vaults/&lt;vault-name&gt;&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;secretName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ad-join-password&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;hostpoolregistrationkey&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;keyVault&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/subscriptions/&lt;sub-id&gt;/resourceGroups/&lt;rg&gt;/providers/Microsoft.KeyVault/vaults/&lt;vault-name&gt;&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;secretName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;avd-host-pool-reg-key&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;vmCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>This returns a connection object used for all subsequent LDAP operations.</p>
+<p><strong>Parameter Explanations:</strong>
+- <code>resource_group</code>, <code>nic_subnet_resourcegroup</code>, <code>nic_vnet_name</code>, <code>nic_subnet_name</code>: Networking and resource group settings.
+- <code>vm_name</code>: Prefix for VM names.
+- <code>adminusername</code>/<code>adminPassword</code>: Local admin credentials for the VM (use Key Vault for secrets).
+- <code>adadminusername</code>/<code>adadminPassword</code>: <strong>Service account</strong> with delegated rights to join computers to the domain. Do not use personal admin accounts; use a dedicated service account.
+- <code>hostpoolname</code>, <code>hostpoolregistrationkey</code>: AVD host pool registration details.
+- <code>vmCount</code>: Number of VMs to deploy.</p>
 <hr />
-<h2 id="step-2-creating-a-new-user-in-adds">Step 2: Creating a New User in ADDS</h2>
-<p>The function <code>create_adds_user</code> (called within <code>create_new_users_adds</code>) performs the following:</p>
+<h2 id="step-2-full-bicep-code-for-avd-deployment">Step 2: Full Bicep Code for AVD Deployment</h2>
+<p>Below is the full Bicep code for deploying AVD VMs, joining them to the domain, and registering them with the AVD host pool.</p>
+<div class="highlight"><pre><span></span><code>param location string = resourceGroup().location
+param resource_group string
+param nic_subnet_resourcegroup string
+param nic_vnet_name string
+param nic_subnet_name string
+param vm_name string
+param adminusername string
+param adadminusername string
+param hostpoolregistrationkey string
+param hostpoolname string  
+param vmCount int
+
+@secure()
+param adminPassword string
+@secure()
+param adadminPassword string
+
+var applicationtag = &#39;Virtual Desktop&#39;
+var environmetag = &#39;Production&#39;
+var domain = &#39;yourdomain.com&#39;
+var ou2add2 = &#39;OU=Computers,OU=Standard,OU=Virtual Desktops,OU=Azure,OU=GD,DC=yourdomain,DC=com&#39;
+
+@description(&#39;Create NICs for each VM&#39;)
+module nicgdepavd &#39;../../../networking/nic/nic.bicep&#39; = [for i in range(0, vmCount):{
+  name: &#39;${deployment().name}-nic${i}&#39;
+  scope: resourceGroup(resource_group)
+  params: {
+    name: &#39;nicgdepp${location}${vm_name}${i}&#39;
+    location: location
+    tags: { Application: applicationtag, Environment: environmetag }
+    properties: {
+      ipConfigurations: [
+        {
+          name: &#39;ipconfig&#39;
+          properties: {
+            privateIPAllocationMethod: &#39;Dynamic&#39;
+            subnet: {
+              id: resourceId(
+                &#39;${nic_subnet_resourcegroup}&#39;,
+                &#39;Microsoft.Network/virtualNetworks/subnets&#39;,
+                &#39;${nic_vnet_name}&#39;,
+                &#39;${nic_subnet_name}&#39;
+              )
+            }
+          }
+        }
+      ]
+    }
+  }
+}]
+
+@description(&#39;Create the AVD VM(s)&#39;)
+module vmgdepavd &#39;../vm.bicep&#39; = [for i in range(0, vmCount): {
+  name: &#39;${deployment().name}-${i}&#39;
+  scope: resourceGroup(resource_group)
+  params: {
+    name: &#39;${vm_name}-${i}&#39;
+    location: location
+    tags: { Application: applicationtag, Environment: environmetag }
+    properties: {
+      hardwareProfile: { vmSize: &#39;Standard_NV16as_v4&#39; }
+      storageProfile: {
+        imageReference: {
+          id: resourceId(&#39;Microsoft.Compute/galleries/images&#39;, &#39;GDEP_Azure_Compute_Gallery&#39;, &#39;Win11AVD&#39;)
+        }
+        osDisk: {
+          createOption: &#39;FromImage&#39;
+          diskSizeGB: 512
+          managedDisk: { storageAccountType: &#39;Premium_LRS&#39; }
+        }
+      }
+      osProfile: {
+        computerName: &#39;${vm_name}-${i}&#39;
+        adminUsername: adminusername
+        adminPassword: adminPassword
+        windowsConfiguration: {
+          provisionVMAgent: true
+          enableAutomaticUpdates: true
+        }
+      }
+      networkProfile: {
+        networkInterfaces: [
+          {
+            id: nicgdepavd[i].outputs.id
+            properties: { deleteOption: &#39;Delete&#39; }
+          }
+        ]
+      }
+      diagnosticsProfile: { bootDiagnostics: { enabled: true } }
+      licenseType: &#39;Windows_Client&#39;
+    }
+  }
+}]
+
+@description(&#39;Add Custom Script Extension for Kofax&#39;)
+resource extkofaxcustomscript &#39;Microsoft.Compute/virtualMachines/extensions@2024-03-01&#39; = [for i in range(0, vmCount): {
+  name: &#39;${vm_name}-${i}/CustomScriptExtension&#39;
+  location: location
+  tags: {
+    Environment: environmetag
+    Application: applicationtag
+  }
+  properties: {
+    publisher: &#39;Microsoft.Compute&#39;
+    type: &#39;CustomScriptExtension&#39;
+    typeHandlerVersion: &#39;1.9&#39;
+    autoUpgradeMinorVersion: true
+    settings: {
+      commandToExecute: &#39;powershell.exe -ExecutionPolicy Unrestricted -Command &quot;Invoke-WebRequest -Uri \&#39;https://storeusgdepsoftware.blob.core.windows.net/software4avd/avdkofax.ps1\&#39; -OutFile \&#39;C:\\software\\avdkofax.ps1\&#39;; Set-Location -Path \&#39;C:\\software\&#39;; .\\avdkofax.ps1&quot;&#39;
+    }
+  }
+  dependsOn: [
+    vmgdepavd[i]
+  ]
+}]
+
+@description(&#39;Join VM(s) to the domain&#39;)
+resource extadd2adcustomscript &#39;Microsoft.Compute/virtualMachines/extensions@2024-03-01&#39; = [for i in range(0, vmCount): {
+  name: &#39;${vm_name}-${i}/joindomain&#39;
+  location: location
+  tags: {
+    Environment: environmetag
+    Application: applicationtag
+  }
+  properties: {
+    autoUpgradeMinorVersion: true
+    publisher: &#39;Microsoft.Compute&#39;
+    type: &#39;JsonADDomainExtension&#39;
+    typeHandlerVersion: &#39;1.3&#39;
+    settings: {
+      name: domain
+      ouPath: ou2add2
+      user: adadminusername
+      restart: true
+      options: &#39;3&#39;
+    }
+    protectedSettings: {
+      password: adadminPassword
+    }
+  }
+  dependsOn: [
+    vmgdepavd[i]
+    extkofaxcustomscript[i]
+  ]
+}]
+
+@description(&#39;Register VM(s) with AVD Host Pool&#39;)
+resource vmExtension &#39;Microsoft.Compute/virtualMachines/extensions@2024-03-01&#39; = [for i in range(0, vmCount): {
+  name: &#39;${vm_name}-${i}/Microsoft.PowerShell.DSC&#39;
+  location: location
+  tags: {
+    Environment: environmetag
+    Application: applicationtag
+  }
+  properties: {
+    autoUpgradeMinorVersion: true
+    publisher: &#39;Microsoft.Powershell&#39;
+    type: &#39;DSC&#39;
+    typeHandlerVersion: &#39;2.73&#39;
+    settings: {
+      modulesUrl: &#39;https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts/Configuration_1.0.02714.342.zip&#39;
+      configurationFunction: &#39;Configuration.ps1\\AddSessionHost&#39;
+      properties: {
+        hostPoolName: hostpoolname
+        registrationInfoToken: hostpoolregistrationkey
+        aadJoin: false
+        UseAgentDownloadEndpoint: true
+      }
+    }
+  }
+  dependsOn: [
+    vmgdepavd[i]
+    extkofaxcustomscript[i]
+    extadd2adcustomscript[i]
+  ]
+}]
+</code></pre></div>
+<hr />
+<h2 id="step-3-deploy-the-avd-vms-using-azure-cli">Step 3: Deploy the AVD VM(s) Using Azure CLI</h2>
+<p>Use the following command to deploy the VM(s):</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>gdepiacavd<span class="w"> </span>--resource-group<span class="w"> </span>rg-gdep-peus-avd-pools<span class="w"> </span>--template-file<span class="w"> </span>./compute/vm/avd/avd.bicep<span class="w"> </span>--parameters<span class="w"> </span>@./compute/vm/avd/avdp.json
+</code></pre></div>
 <ul>
-<li>
-<p><strong>Adds the user object:</strong>
-  <div class="highlight"><pre><span></span><code><span class="n">conn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-    <span class="n">distinguished_name</span><span class="p">,</span>
-    <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">,</span> <span class="s1">&#39;organizationalPerson&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">],</span>
-    <span class="p">{</span>
-        <span class="s1">&#39;givenName&#39;</span><span class="p">:</span> <span class="n">first_name</span><span class="p">,</span>
-        <span class="s1">&#39;sn&#39;</span><span class="p">:</span> <span class="n">last_name</span><span class="p">,</span>
-        <span class="s1">&#39;sAMAccountName&#39;</span><span class="p">:</span> <span class="n">sam_account_name</span><span class="p">,</span>
-        <span class="s1">&#39;userPrincipalName&#39;</span><span class="p">:</span> <span class="n">upn_name</span><span class="p">,</span>
-        <span class="s1">&#39;mail&#39;</span><span class="p">:</span> <span class="n">upn_name</span>
-    <span class="p">}</span>
-<span class="p">)</span>
-</code></pre></div>
-  The <code>distinguished_name</code> (DN) specifies the user's location in the directory tree (OU). For generalization, replace any organization-specific OUs with your own structure.</p>
-</li>
-<li>
-<p><strong>Enables the account and sets the password:</strong>
-  <div class="highlight"><pre><span></span><code><span class="n">conn</span><span class="o">.</span><span class="n">modify</span><span class="p">(</span>
-    <span class="n">distinguished_name</span><span class="p">,</span>
-    <span class="p">{</span>
-        <span class="s1">&#39;userAccountControl&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">ldap3</span><span class="o">.</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="mi">512</span><span class="p">])],</span>  <span class="c1"># Enable the account</span>
-        <span class="s1">&#39;unicodePwd&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">ldap3</span><span class="o">.</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">default_password</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-16-le&#39;</span><span class="p">)])]</span>
-    <span class="p">}</span>
-<span class="p">)</span>
-</code></pre></div>
-  The password must be encoded in UTF-16-LE and quoted. The <code>userAccountControl</code> value of 512 enables the account.</p>
-</li>
+<li>This command deploys the VM(s) using the custom image and parameters.</li>
 </ul>
 <hr />
-<h2 id="step-3-adding-the-user-to-adds-groups">Step 3: Adding the User to ADDS Groups</h2>
-<p>After the user is created, the code assigns them to one or more groups using the <code>add_members_to_group</code> function from <code>ldap3.extend.microsoft.addMembersToGroups</code>:</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">add_members_to_group</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="p">[</span><span class="n">distinguished_name</span><span class="p">],</span> <span class="n">group_dns</span><span class="p">,</span> <span class="n">fix</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-- <code>conn</code>: The active LDAP connection.
-- <code>[distinguished_name]</code>: A list of user DNs to add.
-- <code>group_dns</code>: A list of group DNs (distinguished names) to which the user should be added.
-- <code>fix=True</code>: Ensures the function will attempt to fix any inconsistencies in group membership.</p>
-<p>This function performs the necessary LDAP modifications to add the user as a member of each specified group. It is robust and handles group membership updates according to Microsoft's AD schema.</p>
-<hr />
-<h2 id="error-handling-and-best-practices">Error Handling and Best Practices</h2>
+<h2 id="step-4-domain-join-and-permissions">Step 4: Domain Join and Permissions</h2>
 <ul>
-<li><strong>Error Handling:</strong> Each step is wrapped in try/except blocks, and errors are logged or emailed to administrators. This is critical for production automation.</li>
-<li><strong>Security:</strong> Credentials are not hardcoded. Use secure storage for service accounts and passwords.</li>
-<li><strong>Generalization:</strong> Replace any organization-specific OUs or group names with your own. The logic is portable to any ADDS environment.</li>
+<li>The <code>adadminusername</code> must be a <strong>service account</strong> with delegated permissions to join computers to the specified OU in Active Directory.</li>
+<li>Do <strong>not</strong> use personal admin accounts; use a dedicated, least-privilege service account.</li>
+<li>The deployment will use the provided credentials to join the VM to the domain and place it in the correct OU.</li>
 </ul>
 <hr />
-<h2 id="example-creating-and-assigning-a-user">Example: Creating and Assigning a User</h2>
-<p>Here is a simplified, generalized version of the workflow:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ldap3</span><span class="w"> </span><span class="kn">import</span> <span class="n">Server</span><span class="p">,</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">MODIFY_REPLACE</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ldap3.extend.microsoft.addMembersToGroups</span><span class="w"> </span><span class="kn">import</span> <span class="n">ad_add_members_to_groups</span> <span class="k">as</span> <span class="n">add_members_to_group</span>
-
-<span class="c1"># Connect to ADDS</span>
-<span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span><span class="s1">&#39;your_dc_ip&#39;</span><span class="p">,</span> <span class="n">use_ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;your_user&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;your_password&#39;</span><span class="p">)</span>
-<span class="n">conn</span><span class="o">.</span><span class="n">bind</span><span class="p">()</span>
-
-<span class="c1"># Create user</span>
-<span class="n">dn</span> <span class="o">=</span> <span class="s1">&#39;CN=John Doe,OU=Users,DC=example,DC=com&#39;</span>
-<span class="n">conn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dn</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">,</span> <span class="s1">&#39;organizationalPerson&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">],</span> <span class="p">{</span>
-    <span class="s1">&#39;givenName&#39;</span><span class="p">:</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;sn&#39;</span><span class="p">:</span> <span class="s1">&#39;Doe&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;sAMAccountName&#39;</span><span class="p">:</span> <span class="s1">&#39;jdoe&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;userPrincipalName&#39;</span><span class="p">:</span> <span class="s1">&#39;jdoe@example.com&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;mail&#39;</span><span class="p">:</span> <span class="s1">&#39;jdoe@example.com&#39;</span>
-<span class="p">})</span>
-
-<span class="c1"># Enable account and set password</span>
-<span class="n">conn</span><span class="o">.</span><span class="n">modify</span><span class="p">(</span><span class="n">dn</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s1">&#39;userAccountControl&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="mi">512</span><span class="p">])],</span>
-    <span class="s1">&#39;unicodePwd&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;&quot;YourPassword123!&quot;&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-16-le&#39;</span><span class="p">)])]</span>
-<span class="p">})</span>
-
-<span class="c1"># Add to groups</span>
-<span class="n">group_dns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CN=YourGroup,OU=Groups,DC=example,DC=com&#39;</span><span class="p">]</span>
-<span class="n">add_members_to_group</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="p">[</span><span class="n">dn</span><span class="p">],</span> <span class="n">group_dns</span><span class="p">,</span> <span class="n">fix</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">conn</span><span class="o">.</span><span class="n">unbind</span><span class="p">()</span>
-</code></pre></div>
-<hr />
-<h2 id="conclusion">Conclusion</h2>
-<p>With Python and the <code>ldap3</code> library, you can fully automate the process of creating users and managing group memberships in Active Directory. This approach is scalable, secure, and adaptable to any ADDS environment. By modularizing each step and handling errors robustly, you can integrate this workflow into larger HR or IT automation pipelines.</p>
-<hr />
-<h2 id="references">References</h2>
+<h2 id="step-5-post-deployment-validation">Step 5: Post-Deployment Validation</h2>
 <ul>
-<li><a href="https://ldap3.readthedocs.io/en/latest/">ldap3 Documentation</a></li>
-<li><a href="https://docs.microsoft.com/en-us/windows/win32/adschema/attributes-all">Microsoft ADDS Schema</a></li>
-<li><a href="https://github.com/cannatag/ldap3">Python ADDS Automation Examples</a></li>
+<li>Log in to the new VM(s) as the local admin account.</li>
+<li>Verify log files (e.g., in <code>C:\Software</code>) to ensure a clean build.</li>
+<li>Expand the disk to 512 GB if required.</li>
+<li>(Optional) Install additional software as needed.</li>
+<li>For validation desktops, use the correct host pool name and ensure only authorized users have access.</li>
 </ul>
+<hr />
+<h2 id="security-and-best-practices">Security and Best Practices</h2>
+<ul>
+<li>Always use secure methods (Key Vault references) for passwords and sensitive data.</li>
+<li>Review all scripts and templates for security and compliance.</li>
+<li>Mask all sensitive information in documentation.</li>
+<li>Use service accounts for domain join, not personal accounts.</li>
+</ul>
+<hr />
+<p><strong>Next Steps:</strong><br />
+If you haven't built your custom image yet, see <a href="Part-1-Building-AVD-Image-for-Compute-Gallery.md">Part 1: Building and Publishing an AVD Image</a>.</p>
+<hr />
+<p><strong>Related Articles:</strong><br />
+- <a href="../avd-custon-image-compute-gallery-part1/">Part 1: Building and Publishing an Custom Image</a></p>
 
 
 
@@ -1710,7 +1864,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 30, 2025 21:58:08 UTC">June 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 6, 2025 17:12:11 UTC">July 6, 2025</span>
   </span>
 
     

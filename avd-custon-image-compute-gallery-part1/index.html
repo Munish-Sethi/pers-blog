@@ -1,0 +1,2099 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/avd-custon-image-compute-gallery-part1/">
+      
+      
+        <link rel="prev" href="../devops-deploy-container-github-action/">
+      
+      
+        <link rel="next" href="../avd-publish-part2/">
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Building and Publishing an Custom Image - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-1-building-and-publishing-an-custom-image-to-azure-compute-gallery" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Building and Publishing an Custom Image
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Bill
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Resource
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Query Recovery Services Vault
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra Users, User Groups and Licence assignments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra User Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-container-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orchestrating Scheduled Jobs (Container Instances)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-build-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Build Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Deploy Container IaC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Deploy Container Github Actions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Building and Publishing an Custom Image
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building and Publishing an Custom Image
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-clean-out-old-images-in-azure-compute-gallery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Clean Out Old Images in Azure Compute Gallery
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-determine-the-latest-microsoft-365-image-sku" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Determine the Latest Microsoft 365 Image SKU
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-the-image-template-using-bicep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Create the Image Template Using Bicep
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Create the Image Template Using Bicep">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-bicep-snippet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Bicep Snippet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-file-example-avdpjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter File Example (avdp.json)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-deploy-the-image-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Deploy the Image Template
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-build-the-image-and-publish-to-compute-gallery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Build the Image and Publish to Compute Gallery
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-automate-software-installation-and-configuration-with-avdps1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Automate Software Installation and Configuration with avd.ps1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: Automate Software Installation and Configuration with avd.ps1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-functions-in-avdps1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Functions in avd.ps1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Functions in avd.ps1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-invokestartprocess" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. InvokeStartProcess
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-downloadfilefromsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. DownloadfilefromSA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-write-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Write-Log
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-installandconfiguresoftware" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. InstallandConfigureSoftware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. InstallandConfigureSoftware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chocolatey-installs-with-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chocolatey Installs (with code):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-steps-in-installandconfiguresoftware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Steps in InstallandConfigureSoftware:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-downloading-and-installing-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Downloading and Installing Software
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Note
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-publish-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploying Azure Virtual Desktop (AVD) Desktops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Fabric
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Fabric
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-warehouse-fact-import.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WarWharehouse data import
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki, Nagios XI & Manage Engine
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Cisco Meraki, Nagios XI & Manage Engine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-unused-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Unused Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Devices Discovery and Nagios Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-itsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integrating Monitoring System with ITSM System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Active Directory Domain Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Active Directory Domain Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup PyRFC in your Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calling SAP RFC Function Modules from Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    O365
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            O365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Document Library Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migrate Sharepoint Document Library to Azure File Share
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concur Expense Report Aggregation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teams-user-number-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Teams Phone Assignment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    UKG
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            UKG
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Secure File Transfer with UKG Dimensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Employee Verification via API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-integration-and-dataview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automating Integration Execution and Dataview extract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Proof Point
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Proof Point
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof Point User Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-clean-out-old-images-in-azure-compute-gallery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Clean Out Old Images in Azure Compute Gallery
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-determine-the-latest-microsoft-365-image-sku" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Determine the Latest Microsoft 365 Image SKU
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-the-image-template-using-bicep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Create the Image Template Using Bicep
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Create the Image Template Using Bicep">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-bicep-snippet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Bicep Snippet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-file-example-avdpjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter File Example (avdp.json)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-deploy-the-image-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Deploy the Image Template
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-build-the-image-and-publish-to-compute-gallery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Build the Image and Publish to Compute Gallery
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-automate-software-installation-and-configuration-with-avdps1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Automate Software Installation and Configuration with avd.ps1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: Automate Software Installation and Configuration with avd.ps1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-functions-in-avdps1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Functions in avd.ps1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Functions in avd.ps1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-invokestartprocess" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. InvokeStartProcess
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-downloadfilefromsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. DownloadfilefromSA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-write-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Write-Log
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-installandconfiguresoftware" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. InstallandConfigureSoftware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. InstallandConfigureSoftware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chocolatey-installs-with-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chocolatey Installs (with code):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-steps-in-installandconfiguresoftware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Steps in InstallandConfigureSoftware:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-downloading-and-installing-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Downloading and Installing Software
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Note
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="part-1-building-and-publishing-an-custom-image-to-azure-compute-gallery">Part 1: Building and Publishing an Custom Image to Azure Compute Gallery</h1>
+<p>This article provides a comprehensive, step-by-step guide to creating a custom Azure Virtual Desktop (AVD) image using Infrastructure as Code (IaC), and publishing it to the Azure Compute Gallery. This is the foundation for deploying consistent, secure, and up-to-date AVD environments. For deploying AVD desktops from this image, see <a href="../avd-publish-part2/">Part 2</a>.</p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>The process involves:
+- Cleaning up old images in the Azure Compute Gallery
+- Determining the latest Microsoft 365 image SKU
+- Creating an image template using Bicep and Azure CLI
+- Building the image and publishing it to the Compute Gallery</p>
+<hr />
+<h2 id="step-1-clean-out-old-images-in-azure-compute-gallery">Step 1: Clean Out Old Images in Azure Compute Gallery</h2>
+<ol>
+<li>Navigate to your Azure Compute Gallery (e.g., <code>GDEP_Azure_Compute_Gallery</code>).</li>
+<li>Identify and delete old images (sort by published date descending).</li>
+<li>Keep only the most recent image (from last month) for rollback purposes.</li>
+<li>Log in to Azure CLI as an administrator:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>login
+</code></pre></div>
+<blockquote>
+<p><strong>Note:</strong> Use an account with sufficient permissions (e.g., Contributor or higher on the resource group). Masked example: <code>user.name@domain.com</code>.</p>
+</blockquote>
+<hr />
+<h2 id="step-2-determine-the-latest-microsoft-365-image-sku">Step 2: Determine the Latest Microsoft 365 Image SKU</h2>
+<p>To ensure your template uses the latest Microsoft 365 image, run:</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>vm<span class="w"> </span>image<span class="w"> </span>list-skus<span class="w"> </span>--location<span class="w"> </span>eastus<span class="w"> </span>--publisher<span class="w"> </span>MicrosoftWindowsDesktop<span class="w"> </span>--offer<span class="w"> </span>office-365<span class="w"> </span>--output<span class="w"> </span>table
+</code></pre></div>
+<ul>
+<li>This command lists all available SKUs for Microsoft 365 images in the East US region.</li>
+<li>Update your Bicep or parameter file to reference the latest SKU as needed.</li>
+</ul>
+<hr />
+<h2 id="step-3-create-the-image-template-using-bicep">Step 3: Create the Image Template Using Bicep</h2>
+<p>You can define your image template as code using a Bicep file (e.g., <code>avd.bicep</code>).</p>
+<h3 id="example-bicep-snippet">Example Bicep Snippet</h3>
+<div class="highlight"><pre><span></span><code>param location string = &#39;eastus&#39;
+param imageTemplateName string = &#39;GDEPAVDWin11Template&#39;
+param galleryName string = &#39;GDEP_Azure_Compute_Gallery&#39;
+param resourceGroupName string = &#39;rg-gdep-peus-avd&#39;
+param sourceImagePublisher string = &#39;MicrosoftWindowsDesktop&#39;
+param sourceImageOffer string = &#39;office-365&#39;
+param sourceImageSku string = &#39;latest-sku-here&#39;
+param storageAccountUrl string = &#39;https://&lt;maskedstorageaccount&gt;.blob.core.windows.net/software/&#39;
+
+// ...other parameters as needed...
+
+resource imageTemplate &#39;Microsoft.VirtualMachineImages/imageTemplates@2022-02-14&#39; = {
+  name: imageTemplateName
+  location: location
+  properties: {
+    source: {
+      type: &#39;PlatformImage&#39;
+      publisher: sourceImagePublisher
+      offer: sourceImageOffer
+      sku: sourceImageSku
+      version: &#39;latest&#39;
+    }
+    customize: [
+      {
+        type: &#39;PowerShell&#39;
+        name: &#39;InstallSoftware&#39;
+        scriptUri: &#39;${storageAccountUrl}install.ps1&#39;
+      }
+      // Add more customization steps as needed
+    ]
+    distribute: [
+      {
+        type: &#39;SharedImage&#39;
+        galleryImageId: &#39;/subscriptions/&lt;sub-id&gt;/resourceGroups/${resourceGroupName}/providers/Microsoft.Compute/galleries/${galleryName}/images/GDEPAVDWin11Image&#39;
+        runOutputName: &#39;GDEPAVDWin11ImageOutput&#39;
+        artifactTags: {
+          source: &#39;avd-image-builder&#39;
+        }
+      }
+    ]
+  }
+}
+</code></pre></div>
+<h3 id="parameter-file-example-avdpjson">Parameter File Example (<code>avdp.json</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eastus&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;imageTemplateName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GDEPAVDWin11Template&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;galleryName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GDEP_Azure_Compute_Gallery&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;resourceGroupName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rg-gdep-peus-avd&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;sourceImagePublisher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MicrosoftWindowsDesktop&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;sourceImageOffer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;office-365&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;sourceImageSku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;latest-sku-here&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;storageAccountUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://&lt;maskedstorageaccount&gt;.blob.core.windows.net/software/&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Parameter Explanations:</strong>
+- <code>location</code>: Azure region for deployment.
+- <code>imageTemplateName</code>: Name for the image template resource.
+- <code>galleryName</code>: Name of the Azure Compute Gallery.
+- <code>resourceGroupName</code>: Resource group for the template and gallery.
+- <code>sourceImagePublisher</code>, <code>sourceImageOffer</code>, <code>sourceImageSku</code>: Define the base image.
+- <code>storageAccountUrl</code>: URL to a non-secure storage account containing install scripts and software (mask this in documentation).</p>
+<hr />
+<h2 id="step-4-deploy-the-image-template">Step 4: Deploy the Image Template</h2>
+<p>Run the following command to deploy the image template:</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>GDEPAVDImage<span class="w"> </span>--resource-group<span class="w"> </span>rg-gdep-peus-avd<span class="w"> </span>--template-file<span class="w"> </span>./compute/img/avd/avd.bicep<span class="w"> </span>--parameters<span class="w"> </span>@./compute/vm/avd/avdp.json
+</code></pre></div>
+<ul>
+<li>This command creates the image template in the specified resource group.</li>
+</ul>
+<hr />
+<h2 id="step-5-build-the-image-and-publish-to-compute-gallery">Step 5: Build the Image and Publish to Compute Gallery</h2>
+<p>After the template is created, build the image and publish it:</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>image<span class="w"> </span>builder<span class="w"> </span>run<span class="w"> </span>--resource-group<span class="w"> </span>rg-gdep-peus-avd<span class="w"> </span>--name<span class="w"> </span>GDEPAVDWin11Template<span class="w"> </span>--no-wait
+</code></pre></div>
+<ul>
+<li>This command starts the image build process and publishes the resulting image to the Azure Compute Gallery.</li>
+</ul>
+<hr />
+<h2 id="step-6-automate-software-installation-and-configuration-with-avdps1">Step 6: Automate Software Installation and Configuration with avd.ps1</h2>
+<p>The <code>avd.ps1</code> PowerShell script is used during image creation to automate the installation and configuration of all required software and settings on the AVD image. Below is a detailed breakdown of its structure and key functions, with code examples and explanations for each part.</p>
+<h3 id="key-functions-in-avdps1">Key Functions in avd.ps1</h3>
+<h4 id="1-invokestartprocess">1. <code>InvokeStartProcess</code></h4>
+<p>Runs a command (such as an installer) in a specified working directory with arguments, waits for completion, and logs the result.</p>
+<div class="highlight"><pre><span></span><code><span class="k">Function</span> <span class="n">InvokeStartProcess</span> <span class="p">{</span>
+    <span class="k">Param</span><span class="p">(</span><span class="no">[string]</span><span class="nv">$Command</span><span class="p">,</span><span class="no">[string]</span><span class="nv">$WorkingDirectory</span><span class="p">,</span><span class="no">[string]</span><span class="nv">$Arguments</span><span class="p">)</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nv">$InstallProcess</span> <span class="p">=</span> <span class="nb">Start-Process</span> <span class="n">-FilePath</span> <span class="nv">$Command</span> <span class="p">`</span>
+                                        <span class="n">-WorkingDirectory</span> <span class="nv">$WorkingDirectory</span> <span class="p">`</span>
+                                        <span class="n">-ArgumentList</span> <span class="nv">$Arguments</span> <span class="p">`</span>
+                                        <span class="n">-Wait</span> <span class="p">`</span>
+                                        <span class="n">-Passthru</span>
+        <span class="nb">Write-Log</span> <span class="s2">&quot;Installed successfully  using command &quot;</span><span class="p">,</span> <span class="nv">$Command</span><span class="p">,</span> <span class="nv">$Arguments</span> <span class="n">-join</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+        <span class="nb">Write-Log</span> <span class="s2">&quot;Error While running command &quot;</span><span class="p">,</span> <span class="nv">$Command</span><span class="p">,</span> <span class="nv">$Arguments</span> <span class="n">-join</span>
+        <span class="nv">$InstallProcess</span><span class="p">.</span><span class="n">Kill</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="2-downloadfilefromsa">2. <code>DownloadfilefromSA</code></h4>
+<p>Downloads a file from a given URI to a destination filename and logs the result.</p>
+<div class="highlight"><pre><span></span><code><span class="k">Function</span> <span class="n">DownloadfilefromSA</span> <span class="p">{</span>
+    <span class="k">Param</span><span class="p">(</span><span class="no">[string]</span><span class="nv">$SourceURI</span><span class="p">,</span><span class="no">[string]</span><span class="nv">$DestinationFileName</span><span class="p">)</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nb">Invoke-WebRequest</span> <span class="nv">$SourceURI</span> <span class="n">-OutFile</span> <span class="nv">$DestinationFileName</span>        
+        <span class="nb">Write-Log</span> <span class="s2">&quot;Downloaded successfully file &quot;</span><span class="p">,</span> <span class="nv">$DestinationFileName</span> <span class="n">-join</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+        <span class="nb">Write-Log</span> <span class="s2">&quot;Error While Downloading file &quot;</span><span class="p">,</span> <span class="nv">$DestinationFileName</span> <span class="n">-join</span>
+        <span class="nv">$InstallProcess</span><span class="p">.</span><span class="n">Kill</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="3-write-log">3. <code>Write-Log</code></h4>
+<p>Writes a message to a log file and outputs it to the console.</p>
+<div class="highlight"><pre><span></span><code><span class="k">Function</span> <span class="nb">Write-Log</span> <span class="p">{</span>
+    <span class="k">Param</span><span class="p">(</span><span class="nv">$message</span><span class="p">)</span>
+    <span class="nb">Write-Output</span> <span class="s2">&quot;</span><span class="p">$(</span><span class="nb">get-date</span> <span class="n">-format</span> <span class="s1">&#39;yyyyMMdd HH:mm:ss&#39;</span><span class="p">)</span><span class="s2"> $message&quot;</span> <span class="p">|</span> <span class="nb">Out-File</span> <span class="n">-Encoding</span> <span class="n">utf8</span> <span class="nv">$logFile</span> <span class="n">-Append</span>
+    <span class="nb">Write-Output</span> <span class="nv">$message</span>  
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="4-installandconfiguresoftware">4. <code>InstallandConfigureSoftware</code></h4>
+<p>This is the main function that orchestrates all software installations, registry changes, and configuration steps. It uses Chocolatey (<code>choco</code>) to install a wide range of software and handles additional configuration for FSLogix, SAP, and more.</p>
+<h5 id="chocolatey-installs-with-code">Chocolatey Installs (with code):</h5>
+<div class="highlight"><pre><span></span><code><span class="n">choco</span> <span class="n">install</span> <span class="n">googlechrome</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span> <span class="p">&gt;&gt;</span> <span class="nv">$ChocoFileName</span>
+<span class="n">choco</span> <span class="n">install</span> <span class="n">notepadplusplus</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span> <span class="p">&gt;&gt;</span> <span class="nv">$ChocoFileName</span>
+<span class="n">choco</span> <span class="n">install</span> <span class="n">7zip</span><span class="p">.</span><span class="n">install</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span> <span class="p">&gt;&gt;</span> <span class="nv">$ChocoFileName</span>
+<span class="n">choco</span> <span class="n">install</span> <span class="n">visioviewer</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span> <span class="p">&gt;&gt;</span> <span class="nv">$ChocoFileName</span>
+<span class="n">choco</span> <span class="n">install</span> <span class="n">vscode</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span> <span class="p">&gt;&gt;</span> <span class="nv">$ChocoFileName</span>
+<span class="n">choco</span> <span class="n">install</span> <span class="n">git</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span> <span class="p">&gt;&gt;</span> <span class="nv">$ChocoFileName</span>
+<span class="n">choco</span> <span class="n">install</span> <span class="n">powerbi</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span> <span class="p">&gt;&gt;</span> <span class="nv">$ChocoFileName</span>
+<span class="n">choco</span> <span class="n">install</span> <span class="n">winscp</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span> <span class="p">&gt;&gt;</span> <span class="nv">$ChocoFileName</span>
+<span class="n">choco</span> <span class="n">install</span> <span class="n">python</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span> <span class="p">&gt;&gt;</span> <span class="nv">$ChocoFileName</span>
+<span class="n">choco</span> <span class="n">install</span> <span class="n">wireshark</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span> <span class="p">&gt;&gt;</span> <span class="nv">$ChocoFileName</span>
+<span class="n">choco</span> <span class="n">install</span> <span class="n">sql-server-management-studio</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span> <span class="p">&gt;&gt;</span> <span class="nv">$ChocoFileName</span>
+<span class="n">choco</span> <span class="n">install</span> <span class="n">putty</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span> <span class="p">&gt;&gt;</span> <span class="nv">$ChocoFileName</span>
+</code></pre></div>
+<p><strong>Explanation:</strong>
+- Each <code>choco install</code> command installs a specific application silently and logs the output.
+- Chocolatey is a package manager for Windows, making it easy to automate software installation in your image builds.
+- You can add or remove packages as needed for your own environment.</p>
+<h5 id="additional-steps-in-installandconfiguresoftware">Additional Steps in <code>InstallandConfigureSoftware</code>:</h5>
+<ul>
+<li>Configures FSLogix profile containers via registry.</li>
+<li>Applies local GPO and Office registry settings.</li>
+<li>Installs SAP, BPC Excel Add-In, and other business software.</li>
+<li>Creates desktop shortcuts for SAP, Notepad++, and a graceful logoff.</li>
+<li>Installs endpoint protection (Crowdstrike) and other utilities.</li>
+<li>All actions are logged for troubleshooting.</li>
+</ul>
+<hr />
+<h3 id="example-downloading-and-installing-software">Example: Downloading and Installing Software</h3>
+<div class="highlight"><pre><span></span><code><span class="nv">$StorageAccountDownloadURI</span> <span class="p">=</span> <span class="s2">&quot;https://&lt;maskedstorageaccount&gt;.blob.core.windows.net/software4avd/&quot;</span>
+<span class="nv">$SoftwarefolderName</span> <span class="p">=</span> <span class="s2">&quot;C:\\Software\\&quot;</span>
+
+<span class="c"># Download a file</span>
+<span class="nv">$file2Download</span> <span class="p">=</span> <span class="s2">&quot;ComputerGPO.cmd&quot;</span>
+<span class="nv">$fileURL2DownloadFrom</span> <span class="p">=</span> <span class="nv">$StorageAccountDownloadURI</span> <span class="p">+</span> <span class="nv">$file2Download</span>
+<span class="nb">Invoke-WebRequest</span> <span class="nv">$fileURL2DownloadFrom</span> <span class="n">-OutFile</span> <span class="nv">$SoftwarefolderName</span><span class="p">\</span><span class="nv">$file2Download</span>
+
+<span class="c"># Install Chrome using Chocolatey</span>
+<span class="n">choco</span> <span class="n">install</span> <span class="n">googlechrome</span> <span class="n">-y</span> <span class="p">-</span><span class="n">-no-progress</span> <span class="p">-</span><span class="n">-limit-output</span> <span class="p">-</span><span class="n">-ignore-checksums</span>
+</code></pre></div>
+<h3 id="security-note">Security Note</h3>
+<ul>
+<li>The storage account used for downloads should be read-only and not contain sensitive data.</li>
+<li>All user accounts and credentials should be masked in documentation.</li>
+</ul>
+<hr />
+<h2 id="additional-notes">Additional Notes</h2>
+<ul>
+<li>All scripts (e.g., <code>avd.ps1</code>) should be reviewed for security and idempotency.</li>
+<li>Use service principals or user accounts with Contributor or higher permissions for these operations. Mask actual usernames in documentation.</li>
+</ul>
+<hr />
+<p><strong>Next Steps:</strong>
+Proceed to <a href="Part-2-Deploying-AVD-Desktops.md">Part 2: Deploying AVD Desktops and Domain Join</a> to learn how to deploy AVD VMs from your published image.</p>
+<hr />
+<p><strong>Related Articles:</strong>
+- <a href="../avd-publish-part2/">Part 2: Deploying AVD Desktops</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 6, 2025 17:12:11 UTC">July 6, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
