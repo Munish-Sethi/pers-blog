@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/devops-deploy-container-iac/">
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/azure-bcpdr-part1/">
       
       
-        <link rel="prev" href="../devops-build-container/">
+        <link rel="prev" href="../avd-cleanup-obsolete-fsLogix-profiles/">
       
       
-        <link rel="next" href="../devops-deploy-container-github-action/">
+        <link rel="next" href="../azure-bcpdr-part2/">
       
       
       <link rel="icon" href="../None">
@@ -24,7 +24,7 @@
     
     
       
-        <title>DevOps Deploy Container IaC - Munish(s) Blog</title>
+        <title>Business Coninuity Program / Diasister Recovery - Part 1 - Munish(s) Blog</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deploying-azure-container-instances-with-bicep-iac" class="md-skip">
+        <a href="#azure-bcpdr-with-backup-restore-part-1-resource-group-storage-and-network-foundation" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DevOps Deploy Container IaC
+              Business Coninuity Program / Diasister Recovery - Part 1
             
           </span>
         </div>
@@ -448,32 +448,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    DevOps Deploy Container IaC
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
         
   
   
@@ -484,104 +462,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bicep-template-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      BICEP Template Overview
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="BICEP Template Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Variables
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource-definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource Definition
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parameters-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameters File
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-use-azure-key-vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Use Azure Key Vault?
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-articles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Related Articles
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -683,10 +563,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../azure-bcpdr-part1/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Business Coninuity Program / Diasister Recovery - Part 1
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -697,6 +599,89 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Approach?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-the-target-resource-group-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create the Target Resource Group (Manual)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-deploy-resource-groups-via-bicep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Deploy Resource Groups via Bicep
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-staging-storage-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Create Staging Storage Account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-create-network-security-groups-nsgs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Create Network Security Groups (NSGs)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-create-route-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Create Route Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-create-virtual-networks-and-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Create Virtual Networks and Subnets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1546,78 +1531,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#why-this-approach" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      Why This Approach?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bicep-template-overview" class="md-nav__link">
+  <a href="#step-1-create-the-target-resource-group-manual" class="md-nav__link">
     <span class="md-ellipsis">
-      BICEP Template Overview
+      Step 1: Create the Target Resource Group (Manual)
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="BICEP Template Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Variables
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource-definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource Definition
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parameters-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameters File
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-use-azure-key-vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Use Azure Key Vault?
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#related-articles" class="md-nav__link">
+  <a href="#step-2-deploy-resource-groups-via-bicep" class="md-nav__link">
     <span class="md-ellipsis">
-      Related Articles
+      Step 2: Deploy Resource Groups via Bicep
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-staging-storage-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Create Staging Storage Account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-create-network-security-groups-nsgs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Create Network Security Groups (NSGs)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-create-route-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Create Route Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-create-virtual-networks-and-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Create Virtual Networks and Subnets
     </span>
   </a>
   
@@ -1639,183 +1609,466 @@
 
 
 
-<h1 id="deploying-azure-container-instances-with-bicep-iac">Deploying Azure Container Instances with BICEP (IaC)</h1>
-<p>This article demonstrates how to use Infrastructure as Code (IaC) with BICEP to deploy an Azure Container Instance (ACI). We'll walk through the main BICEP template, explain each section, and highlight best practices such as using Azure Key Vault for secrets management.</p>
+<h1 id="azure-bcpdr-with-backup-restore-part-1-resource-group-storage-and-network-foundation">Azure BCP/DR with Backup &amp; Restore: Part 1 – Resource Group, Storage, and Network Foundation</h1>
+<p>This multi-part technical blog series walks you through a practical, cost-effective approach to Business Continuity and Disaster Recovery (BCP/DR) in Azure using backup and restore, rather than Azure Site Recovery. The scenario targets restoring all critical infrastructure from Azure East (primary) to Azure West (DR region). Each step is explained with code and rationale, so you can duplicate this in your own environment.</p>
+<p><strong><a href="../azure-bcpdr-part2/">Part 2: Compute, Firewall, and Final Steps</a></strong></p>
 <hr />
-<h2 id="introduction">Introduction</h2>
-<p>Azure Container Instances provide a fast and simple way to run containers in Azure, without managing virtual machines. Using BICEP, you can define your container infrastructure as code, making deployments repeatable and version-controlled.</p>
+<h2 id="why-this-approach">Why This Approach?</h2>
+<ul>
+<li><strong>Cost-Effective:</strong> Backup and restore avoids the ongoing costs of Azure Site Recovery (ASR) replication.</li>
+<li><strong>Simplicity:</strong> You control what is restored and when, with clear, auditable steps.</li>
+<li><strong>RTO/RPO:</strong> Recovery Time Objective (RTO) and Recovery Point Objective (RPO) are acceptable for many workloads, as restore times are predictable and backups are recent.</li>
+<li><strong>Flexibility:</strong> You can restore to any region, in this case from East to West US.</li>
+</ul>
 <hr />
-<h2 id="bicep-template-overview">BICEP Template Overview</h2>
-<p>The main BICEP file is <code>compute/ci/interface/interface.bicep</code>. It defines all the parameters, secrets, and resources needed to deploy an ACI.</p>
-<h3 id="parameters">Parameters</h3>
-<div class="highlight"><pre><span></span><code>param image_name string 
-param image_tag string 
-param container_registry_name string 
-param aci_name string
-param subnet_name string
-param tags object
-param subnet_id string
-param volume_name string 
+<h2 id="step-1-create-the-target-resource-group-manual">Step 1: Create the Target Resource Group (Manual)</h2>
+<p>This is the only step that must be done manually in the Azure Portal or CLI. It creates the DR resource group in the target region (West US).</p>
+<ul>
+<li><strong>Resource Group Name:</strong> <code>dr-rg-gdep-pwus-deployment</code></li>
+<li><strong>Region:</strong> West US</li>
+<li><strong>Tags:</strong> Infrastructure, Disaster Recovery</li>
+</ul>
+<p><strong>Command:</strong>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>dr-rg-gdep-pwus-deployment<span class="w"> </span>--location<span class="w"> </span>westus<span class="w"> </span>--tags<span class="w"> </span><span class="s2">&quot;Purpose=Infrastructure&quot;</span><span class="w"> </span><span class="s2">&quot;Type=DisasterRecovery&quot;</span>
+</code></pre></div></p>
+<hr />
+<h2 id="step-2-deploy-resource-groups-via-bicep">Step 2: Deploy Resource Groups via Bicep</h2>
+<p>This step uses a Bicep template to deploy any additional resource groups needed for the DR environment.</p>
+<p><strong>Command:</strong>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>gdepdr-rg<span class="w"> </span>--template-file<span class="w"> </span>./rg/rg_main.bicep<span class="w"> </span>--resource-group<span class="w"> </span>dr-rg-gdep-pwus-deployment
+</code></pre></div></p>
+<p><strong>Bicep Code: <code>rg_main.bicep</code></strong>
+<div class="highlight"><pre><span></span><code>param location string = &#39;westus&#39;
+var environmetag = &#39;Disaster Recovery&#39;
 
-@secure()
-param azure_file_share_name string
-@secure()
-param azure_file_share_user_name string
-@secure()
-param application_interface_clientid string
-@secure()
-param application_interface_clientsecret string
-@secure()
-param application_interface_tenantid string
-@secure()
-param container_registry_password string
-@secure()
-param azure_file_share_password string
-@secure()
-param ukg_encrypt_passphrase string
-param location string = resourceGroup().location
-param containerRegistryServer string = &#39;${container_registry_name}.azurecr.io&#39; 
-</code></pre></div>
-<p><strong>Explanation:</strong><br />
-- Parameters allow you to customize the deployment.<br />
-- <code>@secure()</code> marks secrets so they are not logged or exposed.<br />
-- Many parameters are injected from Azure Key Vault for security.</p>
-<h3 id="variables">Variables</h3>
-<div class="highlight"><pre><span></span><code>var container_registry_username  = container_registry_name
-</code></pre></div>
-<p><strong>Explanation:</strong><br />
-- Sets the registry username to the registry name for convenience.</p>
-<h3 id="resource-definition">Resource Definition</h3>
-<div class="highlight"><pre><span></span><code>resource aci &#39;Microsoft.ContainerInstance/containerGroups@2023-05-01&#39; = {
-  name: aci_name
+param resourcegroups2create array = [
+  &#39;dr-rg-gdep-pwus-infrastructure&#39;
+  &#39;dr-rg-gdep-pwus-vnets&#39;
+  &#39;dr-rg-gdep-pwus-fortinet&#39;
+  &#39;dr-rg-gdep-pwus-meraki-sdwan&#39;
+]
+
+module rggdepwus &#39;./rg.bicep&#39; = [for rggroupname in resourcegroups2create: {
+  name: &#39;${deployment().name}-${rggroupname}&#39;
+  scope:subscription()
+  params: {
+    name: rggroupname
+    location: location
+    tags: {Application:&#39;Infrastructure&#39;,Environment: environmetag}
+    }
+}]
+</code></pre></div></p>
+<p><strong>Supporting Bicep: <code>rg.bicep</code></strong>
+<div class="highlight"><pre><span></span><code>targetScope=&#39;subscription&#39;
+
+param name string 
+param location string
+param tags object
+
+resource rggdepdrwus &#39;Microsoft.Resources/resourceGroups@2022-09-01&#39; = {
+  name: name
   location: location
   tags: tags
+}
+output resourceGroupName string = rggdepdrwus.name
+</code></pre></div></p>
+<p><strong>Explanation:</strong>
+- <code>rg_main.bicep</code> loops through a list of DR resource group names and deploys each using the <code>rg.bicep</code> module.
+- <code>rg.bicep</code> creates a resource group at the subscription level with the specified name, location, and tags.
+- This ensures all required DR resource groups are created consistently and tagged for easy management.</p>
+<hr />
+<h2 id="step-3-create-staging-storage-account">Step 3: Create Staging Storage Account</h2>
+<p>Deploy a storage account for staging backups and other DR artifacts.</p>
+<p><strong>Command:</strong>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>gdepdr-sa-staging<span class="w"> </span>--resource-group<span class="w"> </span>dr-rg-gdep-pwus-deployment<span class="w"> </span>--template-file<span class="w"> </span>./storage/sa/sa_staging.bicep
+</code></pre></div></p>
+<p><strong>Bicep Code: <code>sa_staging.bicep</code></strong>
+<div class="highlight"><pre><span></span><code>param location string = resourceGroup().location
+var applicationtag = &#39;Infrastructure&#39;
+var environmetag = &#39;Disaster Recovery&#39;
+var infrastructure_rg_name = &#39;dr-rg-gdep-pwus-infrastructure&#39;
 
-  properties: {
-    containers: [
-      {
-        name: aci_name
-        properties: {
-          image: &#39;${containerRegistryServer}/${image_name}:${image_tag}&#39;
-          ports: [
-            {
-              port: 80
-              protocol: &#39;TCP&#39;
-            }
-          ]
-          resources: {
-            limits: {
-              cpu: 4
-              memoryInGB: json(&#39;16&#39;)
-            }
-            requests: {
-              cpu: 4
-              memoryInGB: json(&#39;16&#39;)
-            }
+@description(&#39;This Storage Account is used as a Staging account to restore VM(s)&#39;)
+module sagdepdrwusstaging &#39;./sa.bicep&#39; = {
+  name: &#39;${deployment().name}-sa-gdep-pwus-staging&#39;
+  scope: resourceGroup(infrastructure_rg_name)
+  params: {
+    name: &#39;storegdeppwusstaging&#39;
+    location: location
+    tags: { Application: applicationtag, Environment: environmetag }
+    properties: {
+      accessTier: &#39;Hot&#39;
+      allowBlobPublicAccess: false
+      allowCrossTenantReplication: false
+      allowSharedKeyAccess: true
+      defaultToOAuthAuthentication: false
+      dnsEndpointType: &#39;Standard&#39;
+      encryption: {
+        keySource: &#39;Microsoft.Storage&#39;
+        requireInfrastructureEncryption: false
+        services: {
+          blob: {
+            enabled: true
+            keyType: &#39;Account&#39;
           }
-          environmentVariables:[
-            {
-              name:&#39;application_interface_clientid&#39;
-              secureValue:application_interface_clientid
-            }
-            {
-              name:&#39;application_interface_clientsecret&#39;
-              secureValue:application_interface_clientsecret
-            }
-            {
-              name:&#39;application_interface_tenantid&#39;
-              secureValue:application_interface_tenantid
-            }
-            {
-              name:&#39;azure_file_share_name&#39;
-              secureValue:azure_file_share_name
-            }
-            {
-              name:&#39;azure_file_share_user_name&#39;
-              secureValue:azure_file_share_user_name
-            }
-            {
-              name:&#39;azure_file_share_password&#39;
-              secureValue:azure_file_share_password
-            }
-            {
-              name:&#39;ukg_encrypt_passphrase&#39;
-              secureValue:ukg_encrypt_passphrase
-            }
-          ]
-          volumeMounts: [
-            {
-              name: volume_name
-              mountPath: &#39;/mnt/azure&#39;
-              readOnly: false
-            }
-          ]
+          file: {
+            enabled: true
+            keyType: &#39;Account&#39;
+          }
         }
       }
-    ]
-    osType: &#39;Linux&#39;
-    imageRegistryCredentials: [
-      {
-        server: containerRegistryServer
-        username: container_registry_username
-        password: container_registry_password
+      largeFileSharesState: &#39;Enabled&#39;
+      minimumTlsVersion: &#39;TLS1_2&#39;
+      networkAcls: {
+        bypass: &#39;AzureServices&#39;
+        defaultAction: &#39;Allow&#39;
+        ipRules: []
+        virtualNetworkRules: []
       }
-    ]
-    volumes: [
-      {
-        name: volume_name 
-        azureFile: {
-          shareName: azure_file_share_name
-          storageAccountName: azure_file_share_user_name
-          storageAccountKey: azure_file_share_password
+      publicNetworkAccess: &#39;Enabled&#39;
+      supportsHttpsTrafficOnly: true
+    }
+  }
+}
+</code></pre></div></p>
+<p><strong>Supporting Bicep: <code>sa.bicep</code></strong>
+<div class="highlight"><pre><span></span><code>param location string
+param name string
+param tags object
+param properties object
+
+resource sagdepdrwus &#39;Microsoft.Storage/storageAccounts@2023-04-01&#39; = {
+  name: name
+  location: location
+  tags: tags
+  kind: &#39;StorageV2&#39;
+  sku: {
+    name: &#39;Standard_LRS&#39;
+  }
+  properties: properties
+}
+
+resource sagdepdrwusblobservices &#39;Microsoft.Storage/storageAccounts/blobServices@2023-04-01&#39; = {
+  parent: sagdepdrwus
+  name: &#39;default&#39;
+  properties: {
+    cors: {
+      corsRules: []
+    }
+    deleteRetentionPolicy: {
+      allowPermanentDelete: false
+      enabled: false
+    }
+  }
+}
+
+resource sagdepdrwusfileservices &#39;Microsoft.Storage/storageAccounts/fileServices@2023-04-01&#39; = {
+  parent: sagdepdrwus
+  name: &#39;default&#39;
+  properties: {
+    cors: {
+      corsRules: []
+    }
+    protocolSettings: {
+      smb: {}
+    }
+  }
+}
+
+resource sagdepdrwusqueueservices &#39;Microsoft.Storage/storageAccounts/queueServices@2023-04-01&#39; = {
+  parent: sagdepdrwus
+  name: &#39;default&#39;
+  properties: {
+    cors: {
+      corsRules: []
+    }
+  }
+}
+
+resource sagdepdrwustableservices &#39;Microsoft.Storage/storageAccounts/tableServices@2023-04-01&#39; = {
+  parent: sagdepdrwus
+  name: &#39;default&#39;
+  properties: {
+    cors: {
+      corsRules: []
+    }
+  }
+}
+</code></pre></div></p>
+<p><strong>Explanation:</strong>
+- <code>sa_staging.bicep</code> deploys a storage account for DR staging in the infrastructure resource group, with secure settings and encryption.
+- The <code>sa.bicep</code> module provisions the storage account and all required services (blob, file, queue, table).
+- This storage account is used for storing backup files, scripts, and logs during the DR restore process.</p>
+<hr />
+<h2 id="step-4-create-network-security-groups-nsgs">Step 4: Create Network Security Groups (NSGs)</h2>
+<p>Deploy NSGs to secure your DR environment.</p>
+<p><strong>Command:</strong>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>gdepdr-nsg<span class="w"> </span>--resource-group<span class="w"> </span>dr-rg-gdep-pwus-deployment<span class="w"> </span>--template-file<span class="w"> </span>./networking/nsg/nsg_main.bicep
+</code></pre></div></p>
+<p><strong>Bicep Code: <code>nsg_main.bicep</code></strong>
+<div class="highlight"><pre><span></span><code>param location string = resourceGroup().location
+var applicationtag = &#39;Infrastructure&#39;
+var environmetag = &#39;Disaster Recovery&#39;
+var infrastructure_rg_name = &#39;dr-rg-gdep-pwus-infrastructure&#39;
+var fortinet_rg_name = &#39;dr-rg-gdep-pwus-fortinet&#39;
+
+@description(&#39;Used By Most of our Subnets&#39;)
+module nsggdepdrwusdefault &#39;./nsg.bicep&#39; = {
+  name: &#39;${deployment().name}-nsg-gdep-pwus-default&#39;
+  scope: resourceGroup(infrastructure_rg_name)
+  params: {
+    name: &#39;nsg-gdep-pwus-default&#39;
+    location: location
+    tags: { Application: applicationtag, Environment: environmetag }
+    properties: {}
+  }
+}
+@description(&#39;Used By Meraki Public Subnet&#39;)
+module nsggdepdrwusmeraki &#39;./nsg.bicep&#39; = {
+  name: &#39;${deployment().name}-nsg-gdep-pwus-meraki&#39;
+  scope: resourceGroup(infrastructure_rg_name)
+  params: {
+    name: &#39;nsg-gdep-pwus-meraki&#39;
+    location: location
+    tags: { Application: applicationtag, Environment: environmetag }
+    properties: {
+      securityRules: [
+        {
+          name: &#39;AllowAnyCustom443Inbound&#39;
+          type: &#39;Microsoft.Network/networkSecurityGroups/securityRules&#39;
+          properties: {
+            description: &#39;Per Abhishek this may be required when (if) we enable Cisco Anyconnect&#39;
+            protocol: &#39;*&#39;
+            sourcePortRange: &#39;*&#39;
+            destinationPortRange: &#39;*&#39;
+            sourceAddressPrefix: &#39;*&#39;
+            destinationAddressPrefix: &#39;*&#39;
+            access: &#39;Allow&#39;
+            priority: 100
+            direction: &#39;Inbound&#39;
+            sourcePortRanges: []
+            destinationPortRanges: []
+            sourceAddressPrefixes: []
+            destinationAddressPrefixes: []
+          }
         }
-      }
-    ]
-    priority: &#39;Regular&#39;
-    restartPolicy: &#39;Never&#39;
-    sku: &#39;Standard&#39;
-    subnetIds: [
-      {
-        id: subnet_id
-        name: subnet_name
-      }
-    ]
-    dnsConfig: {
-      nameServers: [
-        &#39;10.27.11.4&#39;
-        &#39;10.27.11.5&#39;
-        &#39;168.63.129.16&#39;  
+        {
+          name: &#39;AllowAnyCustom443InboundUDP&#39;
+          type: &#39;Microsoft.Network/networkSecurityGroups/securityRules&#39;
+          properties: {
+            protocol: &#39;UDP&#39;
+            sourcePortRange: &#39;443&#39;
+            destinationPortRange: &#39;443&#39;
+            sourceAddressPrefix: &#39;*&#39;
+            destinationAddressPrefix: &#39;*&#39;
+            access: &#39;Allow&#39;
+            priority: 110
+            direction: &#39;Inbound&#39;
+            sourcePortRanges: []
+            destinationPortRanges: []
+            sourceAddressPrefixes: []
+            destinationAddressPrefixes: []
+          }
+        }
+        {
+          name: &#39;AllowAny&#39;
+          type: &#39;Microsoft.Network/networkSecurityGroups/securityRules&#39;
+          properties: {
+            protocol: &#39;*&#39;
+            sourcePortRange: &#39;*&#39;
+            destinationPortRange: &#39;*&#39;
+            sourceAddressPrefix: &#39;*&#39;
+            destinationAddressPrefix: &#39;*&#39;
+            access: &#39;Allow&#39;
+            priority: 120
+            direction: &#39;Outbound&#39;
+            sourcePortRanges: []
+            destinationPortRanges: []
+            sourceAddressPrefixes: []
+            destinationAddressPrefixes: []
+          }
+        }
       ]
     }
   }
 }
-</code></pre></div>
-<p><strong>Explanation:</strong><br />
-- <strong>Container Definition:</strong> Specifies the image, ports, resources, environment variables, and volume mounts.
-- <strong>Resources:</strong> Both <code>limits</code> and <code>requests</code> are set to 4 CPUs and 16GB RAM.
-- <strong>Environment Variables:</strong> Secure values are injected from Key Vault.
-- <strong>Volumes:</strong> Azure File Share is mounted for persistent storage.
-- <strong>Image Registry Credentials:</strong> Pulled securely from parameters.
-- <strong>Networking:</strong> Subnet and DNS configuration are specified.</p>
+@description(&#39;Used By Fortinet Firewall&#39;)
+module nsggdepdrwusfortinet &#39;./nsg.bicep&#39; = {
+  name: &#39;${deployment().name}-nsg-gdep-pwus-fortinet&#39;
+  scope: resourceGroup(fortinet_rg_name)
+  params: {
+    name: &#39;nsg-gdep-pwus-fortinet&#39;
+    location: location
+    tags: { Application: applicationtag, Environment: environmetag }
+    properties: {
+      securityRules: [
+        {
+          name: &#39;AllowAllOutbound&#39;
+          properties: {
+            access: &#39;Allow&#39;
+            description: &#39;Allow all out&#39;
+            destinationAddressPrefix: &#39;*&#39;
+            destinationAddressPrefixes: []
+            destinationPortRange: &#39;*&#39;
+            destinationPortRanges: []
+            direction: &#39;Outbound&#39;
+            priority: 105
+            protocol: &#39;*&#39;
+            sourceAddressPrefix: &#39;*&#39;
+            sourceAddressPrefixes: []
+            sourcePortRange: &#39;*&#39;
+            sourcePortRanges: []
+          }
+          type: &#39;Microsoft.Network/networkSecurityGroups/securityRules&#39;
+        }
+        {
+          name: &#39;AllowAllInbound&#39;
+          properties: {
+            access: &#39;Allow&#39;
+            destinationAddressPrefix: &#39;*&#39;
+            destinationAddressPrefixes: []
+            destinationPortRange: &#39;*&#39;
+            destinationPortRanges: []
+            direction: &#39;Inbound&#39;
+            priority: 110
+            protocol: &#39;*&#39;
+            sourceAddressPrefix: &#39;*&#39;
+            sourceAddressPrefixes: []
+            sourcePortRange: &#39;*&#39;
+            sourcePortRanges: []
+          }
+          type: &#39;Microsoft.Network/networkSecurityGroups/securityRules&#39;
+        }
+      ]
+    }
+  }
+}
+</code></pre></div></p>
+<p><strong>Supporting Bicep: <code>nsg.bicep</code></strong>
+<div class="highlight"><pre><span></span><code>param location string 
+param name string 
+param tags object
+param properties object
+
+resource nsggdepdrwus &#39;Microsoft.Network/networkSecurityGroups@2023-09-01&#39;={
+  name:name
+  location:location
+  tags:tags
+  properties:properties
+}
+</code></pre></div></p>
+<p><strong>Explanation:</strong>
+- <code>nsg_main.bicep</code> deploys three NSGs: default, Meraki, and Fortinet, each with appropriate rules for their subnet roles.
+- The <code>nsg.bicep</code> module provisions the NSG with the specified rules and tags.
+- NSGs are critical for controlling traffic flow and securing your DR network.</p>
 <hr />
-<h3 id="parameters-file">Parameters File</h3>
-<p>The <code>interface-dev.parameters.json</code> file provides all parameter values for deployment. This keeps secrets and environment-specific values out of the main template.</p>
-<p><strong>Advantages:</strong>
-- <strong>Separation of Concerns:</strong> Code and configuration are separated.
-- <strong>Reusability:</strong> Use different parameter files for different environments.</p>
+<h2 id="step-5-create-route-tables">Step 5: Create Route Tables</h2>
+<p>Deploy User Defined Route (UDR) tables for custom routing.</p>
+<p><strong>Command:</strong>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>gdepdr-rt<span class="w"> </span>--resource-group<span class="w"> </span>dr-rg-gdep-pwus-deployment<span class="w"> </span>--template-file<span class="w"> </span>./networking/udr/udr_main.bicep
+</code></pre></div></p>
+<p><strong>Bicep Code: <code>udr_main.bicep</code></strong>
+<div class="highlight"><pre><span></span><code>param location string = resourceGroup().location
+var applicationtag = &#39;Infrastructure&#39;
+var environmetag = &#39;Disaster Recovery&#39;
+
+//var infrastructure_rg_name = &#39;dr-rg-gdep-pwus-infrastructure&#39;
+var fortinet_rg_name = &#39;dr-rg-gdep-pwus-fortinet&#39;
+var meraki_sdwan_rg_name = &#39;dr-rg-gdep-pwus-meraki-sdwan&#39;
+
+@description(&#39;Used to route traffic intended to go to On Premise network from Azure Hub&#39;)
+module udrgdepdrwushub2onprem &#39;./udr.bicep&#39; = {
+  name: &#39;${deployment().name}-route-gdep-pwus-azurehub-onprem&#39;
+  scope: resourceGroup(fortinet_rg_name)
+  params: {
+    name: &#39;route-gdep-pwus-azurehub-onprem&#39;
+    location: location
+    tags: { Application: applicationtag, Environment: environmetag }
+    properties: {
+      disableBgpRoutePropagation: false
+      routes: [ ... ]
+    }
+  }
+}
+// ...additional modules for all required UDRs (see full code in repo)...
+</code></pre></div></p>
+<p><strong>Supporting Bicep: <code>udr.bicep</code></strong>
+<div class="highlight"><pre><span></span><code>param location string 
+param name string 
+param tags object
+param properties object
+
+resource rtgdepdrwus &#39;Microsoft.Network/routeTables@2023-09-01&#39;={
+  name:name
+  location:location
+  tags:tags
+  properties:properties
+}
+</code></pre></div></p>
+<p><strong>Explanation:</strong>
+- <code>udr_main.bicep</code> deploys all required route tables for the DR environment, including routes for on-premises, spokes, and SDWAN.
+- The <code>udr.bicep</code> module provisions each route table with the specified routes and settings.
+- UDRs are essential for custom traffic flow and integration with firewalls and VPNs.</p>
 <hr />
-<h3 id="why-use-azure-key-vault">Why Use Azure Key Vault?</h3>
-<ul>
-<li><strong>Security:</strong> Secrets like passwords and client secrets are never stored in source control.</li>
-<li><strong>Centralized Management:</strong> Rotate secrets in one place without updating code.</li>
-<li><strong>Integration:</strong> BICEP and Azure Resource Manager can reference Key Vault secrets directly.</li>
-</ul>
+<h2 id="step-6-create-virtual-networks-and-subnets">Step 6: Create Virtual Networks and Subnets</h2>
+<p>Deploy VNETs, subnets, and associate them with NSGs and UDRs.</p>
+<p><strong>Command:</strong>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>gdepdr-vnet<span class="w"> </span>--resource-group<span class="w"> </span>dr-rg-gdep-pwus-deployment<span class="w"> </span>--template-file<span class="w"> </span>./networking/vnet/vnet_main.bicep
+</code></pre></div></p>
+<p><strong>Bicep Code: <code>vnet_main.bicep</code></strong>
+<div class="highlight"><pre><span></span><code>param location string = resourceGroup().location
+var applicationtag = &#39;Infrastructure&#39;
+var environmetag = &#39;Disaster Recovery&#39;
+
+/*
+var infrastructure_rg_name = &#39;dr-rg-gdep-pwus-infrastructure&#39;
+var fortinet_rg_name = &#39;dr-rg-gdep-pwus-fortinet&#39;
+var meraki_sdwan_rg_name = &#39;dr-rg-gdep-pwus-meraki-sdwan&#39;
+*/
+var vnet_rg_name = &#39;dr-rg-gdep-pwus-vnets&#39;
+
+@description(&#39;Hub Virtual Network with NVA namely Fortinet Firewall&#39;)
+module vnetgdepdrwusfortinet &#39;./vnet.bicep&#39; = {
+  name: &#39;${deployment().name}-vnet-gdep-pwus-fortinet&#39;
+  scope: resourceGroup(vnet_rg_name)
+  params: {
+    name: &#39;vnet-gdep-pwus-fortinet&#39;
+    location: location
+    tags: { Application: applicationtag, Environment: environmetag }
+    properties: {
+      addressSpace: {
+        addressPrefixes: [ ... ]
+      }
+      dhcpOptions: {
+        dnsServers: [ ... ]
+      }
+      enableDdosProtection: false
+      subnets: [ ... ]
+    }
+  }
+}
+// ...additional modules for management and production spokes, and VNET peering (see full code in repo)...
+</code></pre></div></p>
+<p><strong>Supporting Bicep: <code>vnet.bicep</code></strong>
+<div class="highlight"><pre><span></span><code>param location string 
+param name string 
+param tags object
+param properties object
+
+resource vnetgdepdrwus &#39;Microsoft.Network/virtualNetworks@2023-09-01&#39;={
+  name:name
+  location:location
+  tags:tags
+  properties:properties
+}
+output virtualnetworkname string = vnetgdepdrwus.name
+</code></pre></div></p>
+<p><strong>Explanation:</strong>
+- <code>vnet_main.bicep</code> provisions all required virtual networks and subnets for the DR environment, including hub, management, and production spokes.
+- Subnets are associated with NSGs and UDRs as needed, and VNET peering is configured for connectivity.
+- The <code>vnet.bicep</code> module provisions each VNET with the specified address spaces, subnets, and settings.</p>
 <hr />
-<h2 id="related-articles">Related Articles</h2>
-<ul>
-<li><a href="../devops-build-container/">How to Build Your Container Image</a></li>
-<li><a href="../devops-deploy-container-github-action/">How to Run Your Azure Container Instance Bicep Deployment</a></li>
-</ul>
+<p><strong><a href="../azure-bcpdr-part2/">Continue to Part 2: Compute, Firewall, and Final Steps</a></strong></p>
 
 
 
@@ -1836,7 +2089,7 @@ param containerRegistryServer string = &#39;${container_registry_name}.azurecr.i
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 14:57:43 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 14:57:42 UTC">July 7, 2025</span>
   </span>
 
     

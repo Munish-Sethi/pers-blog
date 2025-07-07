@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/devops-deploy-container-iac/">
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/azure-bcpdr-part2/">
       
       
-        <link rel="prev" href="../devops-build-container/">
+        <link rel="prev" href="../azure-bcpdr-part1/">
       
       
-        <link rel="next" href="../devops-deploy-container-github-action/">
+        <link rel="next" href="../meraki-unused-device-sync/">
       
       
       <link rel="icon" href="../None">
@@ -24,7 +24,7 @@
     
     
       
-        <title>DevOps Deploy Container IaC - Munish(s) Blog</title>
+        <title>Business Coninuity Program / Diasister Recovery - Part 2 - Munish(s) Blog</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deploying-azure-container-instances-with-bicep-iac" class="md-skip">
+        <a href="#azure-bcpdr-with-backup-restore-part-2-compute-firewall-vpn-and-restore" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DevOps Deploy Container IaC
+              Business Coninuity Program / Diasister Recovery - Part 2
             
           </span>
         </div>
@@ -448,32 +448,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    DevOps Deploy Container IaC
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
         
   
   
@@ -484,104 +462,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bicep-template-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      BICEP Template Overview
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="BICEP Template Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Variables
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource-definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource Definition
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parameters-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameters File
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-use-azure-key-vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Use Azure Key Vault?
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-articles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Related Articles
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -706,10 +586,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../azure-bcpdr-part2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Business Coninuity Program / Diasister Recovery - Part 2
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -720,6 +622,89 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-deploy-fortinet-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 7: Deploy Fortinet Firewall
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-fortinet-firewall-manual-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 8: Fortinet Firewall Manual Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-deploy-point-to-site-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 9: Deploy Point-to-Site VPN
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-restore-virtual-machines-or-disks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 10: Restore Virtual Machines or Disks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-11-attach-nics-to-restored-vms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 11: Attach NICs to Restored VMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Tips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-why-backup-restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary: Why Backup &amp; Restore?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1546,78 +1531,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#step-7-deploy-fortinet-firewall" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      Step 7: Deploy Fortinet Firewall
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bicep-template-overview" class="md-nav__link">
+  <a href="#step-8-fortinet-firewall-manual-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      BICEP Template Overview
+      Step 8: Fortinet Firewall Manual Steps
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="BICEP Template Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Variables
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource-definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource Definition
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parameters-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameters File
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-use-azure-key-vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Use Azure Key Vault?
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#related-articles" class="md-nav__link">
+  <a href="#step-9-deploy-point-to-site-vpn" class="md-nav__link">
     <span class="md-ellipsis">
-      Related Articles
+      Step 9: Deploy Point-to-Site VPN
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-restore-virtual-machines-or-disks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 10: Restore Virtual Machines or Disks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-11-attach-nics-to-restored-vms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 11: Attach NICs to Restored VMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Tips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-why-backup-restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary: Why Backup &amp; Restore?
     </span>
   </a>
   
@@ -1639,183 +1609,220 @@
 
 
 
-<h1 id="deploying-azure-container-instances-with-bicep-iac">Deploying Azure Container Instances with BICEP (IaC)</h1>
-<p>This article demonstrates how to use Infrastructure as Code (IaC) with BICEP to deploy an Azure Container Instance (ACI). We'll walk through the main BICEP template, explain each section, and highlight best practices such as using Azure Key Vault for secrets management.</p>
+<h1 id="azure-bcpdr-with-backup-restore-part-2-compute-firewall-vpn-and-restore">Azure BCP/DR with Backup &amp; Restore: Part 2 – Compute, Firewall, VPN, and Restore</h1>
+<p><strong><a href="../azure-bcpdr-part1/">Back to Part 1: Resource Group, Storage, and Network Foundation</a></strong></p>
+<p>This part continues the step-by-step BCP/DR process, focusing on compute, firewall, VPN, and restoring VMs. All steps are automated using Bicep and PowerShell, but executed manually for full control and auditability.</p>
 <hr />
-<h2 id="introduction">Introduction</h2>
-<p>Azure Container Instances provide a fast and simple way to run containers in Azure, without managing virtual machines. Using BICEP, you can define your container infrastructure as code, making deployments repeatable and version-controlled.</p>
-<hr />
-<h2 id="bicep-template-overview">BICEP Template Overview</h2>
-<p>The main BICEP file is <code>compute/ci/interface/interface.bicep</code>. It defines all the parameters, secrets, and resources needed to deploy an ACI.</p>
-<h3 id="parameters">Parameters</h3>
-<div class="highlight"><pre><span></span><code>param image_name string 
-param image_tag string 
-param container_registry_name string 
-param aci_name string
-param subnet_name string
-param tags object
-param subnet_id string
-param volume_name string 
+<h2 id="step-7-deploy-fortinet-firewall">Step 7: Deploy Fortinet Firewall</h2>
+<p>Deploy the Fortinet firewall solution, including load balancers, NVAs, and all required public IPs and NICs.</p>
+<p><strong>Command:</strong>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>gdepdr-nva<span class="w"> </span>--resource-group<span class="w"> </span>dr-rg-gdep-pwus-deployment<span class="w"> </span>--template-file<span class="w"> </span>./compute/vm/nva/nva.bicep<span class="w"> </span>--parameters<span class="w"> </span>./compute/vm/nva/nva.json
+</code></pre></div></p>
+<p><strong>Bicep Code: <code>nva.bicep</code></strong>
+<div class="highlight"><pre><span></span><code>param location string = resourceGroup().location
+param resource_group string
+param adminusername string
+@secure()
+param adminPassword string
+param fortinetoffer string //Will need to check what is availabe at the time of DR (fortinet_fortigate-vm_v5)
+param fortinetsku string //Will need to check what is availabe at the time of DR (fortinet_fg-vm_payg_2023)
 
-@secure()
-param azure_file_share_name string
-@secure()
-param azure_file_share_user_name string
-@secure()
-param application_interface_clientid string
-@secure()
-param application_interface_clientsecret string
-@secure()
-param application_interface_tenantid string
-@secure()
-param container_registry_password string
-@secure()
-param azure_file_share_password string
-@secure()
-param ukg_encrypt_passphrase string
+// ...existing code for variables and modules (see repo for full details)...
+// This Bicep deploys:
+// - Public IPs for Fortinet
+// - External and internal load balancers
+// - 8 NICs for Fortinet VMs
+// - 2 Fortinet NVA VMs with all required extensions
+</code></pre></div></p>
+<p><strong>Parameter File: <code>nva.json</code></strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;resource_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dr-rg-gdep-pwus-fortinet&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;adminusername&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nvafwadmin&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;fortinetoffer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fortinet_fortigate-vm_v5&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;fortinetsku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fortinet_fg-vm_payg_2023&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;adminPassword&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;keyVault&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/subscriptions/df8d9f29-f5c5-4e48-a004-21ea3b8a4834/resourceGroups/rg-gdep-peus-applications/providers/Microsoft.KeyVault/vaults/kv-gdep-peus-iac&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;secretName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new-vm-password&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Explanation:</strong>
+- The Bicep file provisions Fortinet NVAs, load balancers, public IPs, NICs, and all required networking for the DR firewall solution.
+- The parameter file provides values for resource group, admin credentials, and Fortinet offer/SKU.</p>
+<hr />
+<h2 id="step-8-fortinet-firewall-manual-steps">Step 8: Fortinet Firewall Manual Steps</h2>
+<ul>
+<li>Obtain or create a backup of the NVA configuration (from SFTP or by running <code>backup.py</code> in the scripts folder).</li>
+<li>Update alias/host names as needed for the DR region.</li>
+<li>Import configuration via the Fortinet web interface for each NVA in West US.</li>
+<li>Confirm settings via Serial Console.</li>
+<li>Ensure Point-to-Site VPN is up before proceeding.</li>
+</ul>
+<hr />
+<h2 id="step-9-deploy-point-to-site-vpn">Step 9: Deploy Point-to-Site VPN</h2>
+<p>Deploy the P2S VPN gateway and configuration.</p>
+<p><strong>Command:</strong>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>gdepdr-p2s<span class="w"> </span>--resource-group<span class="w"> </span>dr-rg-gdep-pwus-deployment<span class="w"> </span>--template-file<span class="w"> </span>./networking/p2s/p2s.bicep<span class="w"> </span>--parameters<span class="w"> </span>./networking/p2s/p2sp.json
+</code></pre></div></p>
+<p><strong>Bicep Code: <code>p2s.bicep</code></strong>
+<div class="highlight"><pre><span></span><code>/*
+Lets create Point to Site VPN for users to connect into US West
+Create PIP, VPN Gateway, for PIP we have no dependency but 
+for VPN Gateway we do.  As such notice 
+*/
 param location string = resourceGroup().location
-param containerRegistryServer string = &#39;${container_registry_name}.azurecr.io&#39; 
-</code></pre></div>
-<p><strong>Explanation:</strong><br />
-- Parameters allow you to customize the deployment.<br />
-- <code>@secure()</code> marks secrets so they are not logged or exposed.<br />
-- Many parameters are injected from Azure Key Vault for security.</p>
-<h3 id="variables">Variables</h3>
-<div class="highlight"><pre><span></span><code>var container_registry_username  = container_registry_name
-</code></pre></div>
-<p><strong>Explanation:</strong><br />
-- Sets the registry username to the registry name for convenience.</p>
-<h3 id="resource-definition">Resource Definition</h3>
-<div class="highlight"><pre><span></span><code>resource aci &#39;Microsoft.ContainerInstance/containerGroups@2023-05-01&#39; = {
-  name: aci_name
-  location: location
-  tags: tags
+param resource_group string
 
-  properties: {
-    containers: [
-      {
-        name: aci_name
-        properties: {
-          image: &#39;${containerRegistryServer}/${image_name}:${image_tag}&#39;
-          ports: [
-            {
-              port: 80
-              protocol: &#39;TCP&#39;
-            }
-          ]
-          resources: {
-            limits: {
-              cpu: 4
-              memoryInGB: json(&#39;16&#39;)
-            }
-            requests: {
-              cpu: 4
-              memoryInGB: json(&#39;16&#39;)
-            }
-          }
-          environmentVariables:[
-            {
-              name:&#39;application_interface_clientid&#39;
-              secureValue:application_interface_clientid
-            }
-            {
-              name:&#39;application_interface_clientsecret&#39;
-              secureValue:application_interface_clientsecret
-            }
-            {
-              name:&#39;application_interface_tenantid&#39;
-              secureValue:application_interface_tenantid
-            }
-            {
-              name:&#39;azure_file_share_name&#39;
-              secureValue:azure_file_share_name
-            }
-            {
-              name:&#39;azure_file_share_user_name&#39;
-              secureValue:azure_file_share_user_name
-            }
-            {
-              name:&#39;azure_file_share_password&#39;
-              secureValue:azure_file_share_password
-            }
-            {
-              name:&#39;ukg_encrypt_passphrase&#39;
-              secureValue:ukg_encrypt_passphrase
-            }
-          ]
-          volumeMounts: [
-            {
-              name: volume_name
-              mountPath: &#39;/mnt/azure&#39;
-              readOnly: false
-            }
-          ]
-        }
-      }
-    ]
-    osType: &#39;Linux&#39;
-    imageRegistryCredentials: [
-      {
-        server: containerRegistryServer
-        username: container_registry_username
-        password: container_registry_password
-      }
-    ]
-    volumes: [
-      {
-        name: volume_name 
-        azureFile: {
-          shareName: azure_file_share_name
-          storageAccountName: azure_file_share_user_name
-          storageAccountKey: azure_file_share_password
-        }
-      }
-    ]
-    priority: &#39;Regular&#39;
-    restartPolicy: &#39;Never&#39;
-    sku: &#39;Standard&#39;
-    subnetIds: [
-      {
-        id: subnet_id
-        name: subnet_name
-      }
-    ]
-    dnsConfig: {
-      nameServers: [
-        &#39;10.27.11.4&#39;
-        &#39;10.27.11.5&#39;
-        &#39;168.63.129.16&#39;  
-      ]
+var applicationtag = &#39;Infrastructure&#39;
+var environmetag = &#39;Disaster Recovery&#39;
+var AADTenant = &#39;${environment().authentication.loginEndpoint}${subscription().tenantId}&#39;
+
+module pipgdepdrfw &#39;../../networking/pip/pip.bicep&#39; = {
+  name: &#39;${deployment().name}-pipp2svpn&#39;
+  scope: resourceGroup(resource_group)
+  params: {
+    name: &#39;pip-gdep-pwus-p2svpn&#39;
+    location: location
+    tags: { Application: applicationtag, Environment: environmetag }
+    properties: {
+      publicIPAllocationMethod: &#39;Static&#39;
+      publicIPAddressVersion: &#39;IPv4&#39;
     }
   }
 }
-</code></pre></div>
-<p><strong>Explanation:</strong><br />
-- <strong>Container Definition:</strong> Specifies the image, ports, resources, environment variables, and volume mounts.
-- <strong>Resources:</strong> Both <code>limits</code> and <code>requests</code> are set to 4 CPUs and 16GB RAM.
-- <strong>Environment Variables:</strong> Secure values are injected from Key Vault.
-- <strong>Volumes:</strong> Azure File Share is mounted for persistent storage.
-- <strong>Image Registry Credentials:</strong> Pulled securely from parameters.
-- <strong>Networking:</strong> Subnet and DNS configuration are specified.</p>
+//Create VPN Gateway
+module vngwpoint2site &#39;./p2sngw.bicep&#39; = {
+  name: &#39;${deployment().name}-vngwpoint2site&#39;
+  scope: resourceGroup(&#39;dr-rg-gdep-pwus-vnets&#39;)
+  params: {
+    name: &#39;vngw_gdep_pwus&#39;
+    location: location
+    tags: { Application: applicationtag, Environment: environmetag }
+    properties: {
+      enablePrivateIpAddress: false
+      ipConfigurations: [ ... ]
+      sku: {
+        name: &#39;VpnGw2&#39;
+        tier: &#39;VpnGw2&#39;
+      }
+      gatewayType: &#39;Vpn&#39;
+      vpnType: &#39;RouteBased&#39;
+      enableBgp: false
+      activeActive: false
+      vpnClientConfiguration: {
+        vpnClientAddressPool: {
+          addressPrefixes: [&#39;10.27.48.0/22&#39;]
+        }
+        vpnClientProtocols: [&#39;OpenVPN&#39;]
+        vpnAuthenticationTypes: [&#39;AAD&#39;]
+        aadTenant: AADTenant
+        aadAudience: &#39;41b23e61-6c1e-4545-b367-cd054e0ed4b4&#39;
+        aadIssuer: &#39;${&#39;https://sts.windows.net/&#39;}${subscription().tenantId}${&#39;/&#39;}&#39;
+      }
+      customRoutes: {
+        addressPrefixes: [ ... ]
+      }
+      vpnGatewayGeneration: &#39;Generation2&#39;
+    }
+  }
+}
+</code></pre></div></p>
+<p><strong>Parameter File: <code>p2sp.json</code></strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;resource_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dr-rg-gdep-pwus-fortinet&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Explanation:</strong>
+- The Bicep file provisions the VPN gateway, public IP, and all required settings for secure remote access to the DR environment.</p>
 <hr />
-<h3 id="parameters-file">Parameters File</h3>
-<p>The <code>interface-dev.parameters.json</code> file provides all parameter values for deployment. This keeps secrets and environment-specific values out of the main template.</p>
-<p><strong>Advantages:</strong>
-- <strong>Separation of Concerns:</strong> Code and configuration are separated.
-- <strong>Reusability:</strong> Use different parameter files for different environments.</p>
+<h2 id="step-10-restore-virtual-machines-or-disks">Step 10: Restore Virtual Machines or Disks</h2>
+<p>Restore VMs using PowerShell Core. All VMs to be restored should be listed in <code>vmlist.json</code>.</p>
+<p><strong>Command:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">pwsh</span> <span class="p">./</span><span class="n">scripts</span><span class="p">/</span><span class="n">bcpdr</span><span class="p">/</span><span class="n">vm</span><span class="p">/</span><span class="n">restorevms</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-restorediskonly</span> <span class="s2">&quot;false&quot;</span> <span class="n">-numberofhours2wait</span> <span class="n">5</span> <span class="n">-vmlist</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span>
+</code></pre></div></p>
+<p><strong>PowerShell Script: <code>restorevms.ps1</code></strong>
+<div class="highlight"><pre><span></span><code><span class="c"># Boolean variable to indicate whether to restore disks only</span>
+<span class="c"># If it is True then VM will also be created so be careful </span>
+<span class="k">param</span> <span class="p">(</span>
+    <span class="no">[string]</span> <span class="nv">$restorediskonly</span> <span class="p">=</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+    <span class="no">[int]</span> <span class="nv">$numberofhours2wait</span> <span class="p">=</span> <span class="n">2</span><span class="p">,</span>
+    <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span>
+<span class="p">)</span>
+
+<span class="c"># ...existing code for restore logic (see repo for full details)...</span>
+<span class="c"># This script restores VMs or disks from backup, as defined in the JSON file.</span>
+<span class="c"># Set -restorediskonly to false to create VMs directly.</span>
+<span class="c"># Adjust -numberofhours2wait as needed for your restore window.</span>
+</code></pre></div></p>
+<p><strong>Explanation:</strong>
+- The script restores VMs or disks from backup, as defined in the JSON file.
+- Set <code>-restorediskonly</code> to <code>false</code> to create VMs directly.
+- Adjust <code>-numberofhours2wait</code> as needed for your restore window.</p>
 <hr />
-<h3 id="why-use-azure-key-vault">Why Use Azure Key Vault?</h3>
+<h2 id="step-11-attach-nics-to-restored-vms">Step 11: Attach NICs to Restored VMs</h2>
+<p>Attach NICs to the restored VMs using PowerShell Core. This can be run multiple times safely.</p>
+<p><strong>Command:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">pwsh</span> <span class="p">./</span><span class="n">scripts</span><span class="p">/</span><span class="n">bcpdr</span><span class="p">/</span><span class="n">vm</span><span class="p">/</span><span class="n">attachnics</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-vaultname</span> <span class="s2">&quot;&lt;your-recovery-vault&gt;&quot;</span> <span class="n">-vaultresourcegroupname</span> <span class="s2">&quot;&lt;your-backup-rg&gt;&quot;</span> <span class="n">-vmlist</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span>
+</code></pre></div></p>
+<p><strong>PowerShell Script: <code>attachnics.ps1</code></strong>
+<div class="highlight"><pre><span></span><code><span class="k">param</span> <span class="p">(</span>
+    <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span><span class="p">,</span>
+    <span class="no">[string]</span> <span class="nv">$vaultname</span> <span class="p">=</span> <span class="s1">&#39;rsv-prod-eus-01&#39;</span><span class="p">,</span>
+    <span class="no">[string]</span> <span class="nv">$vaultresourcegroupname</span> <span class="p">=</span> <span class="s1">&#39;rg-gdep-peus-backup&#39;</span>
+<span class="p">)</span>
+
+<span class="c"># ...existing code for NIC attachment logic (see repo for full details)...</span>
+<span class="c"># This script attaches network interfaces to the restored VMs.</span>
+<span class="c"># Replace &lt;your-recovery-vault&gt; and &lt;your-backup-rg&gt; with your actual values.</span>
+</code></pre></div></p>
+<p><strong>Explanation:</strong>
+- The script attaches network interfaces to the restored VMs.
+- Replace <code>&lt;your-recovery-vault&gt;</code> and <code>&lt;your-backup-rg&gt;</code> with your actual values.</p>
+<hr />
+<h2 id="additional-tips">Additional Tips</h2>
 <ul>
-<li><strong>Security:</strong> Secrets like passwords and client secrets are never stored in source control.</li>
-<li><strong>Centralized Management:</strong> Rotate secrets in one place without updating code.</li>
-<li><strong>Integration:</strong> BICEP and Azure Resource Manager can reference Key Vault secrets directly.</li>
+<li>If you need to re-run any step, you can safely delete previous deployments and start again.</li>
+<li>All steps are idempotent and can be repeated as needed.</li>
 </ul>
 <hr />
-<h2 id="related-articles">Related Articles</h2>
+<h2 id="summary-why-backup-restore">Summary: Why Backup &amp; Restore?</h2>
 <ul>
-<li><a href="../devops-build-container/">How to Build Your Container Image</a></li>
-<li><a href="../devops-deploy-container-github-action/">How to Run Your Azure Container Instance Bicep Deployment</a></li>
+<li><strong>Cost:</strong> No ongoing replication costs as with Azure Site Recovery (ASR).</li>
+<li><strong>Control:</strong> You decide what to restore and when.</li>
+<li><strong>RTO/RPO:</strong> For many workloads, restore times and backup frequency are sufficient.</li>
+<li><strong>Flexibility:</strong> Restore to any region (here, from East to West US).</li>
 </ul>
+<p><strong>When to Use This Approach:</strong>
+- When RTO/RPO requirements are not sub-minute.
+- When cost is a concern.
+- When you want full control over the DR process.</p>
+<p><strong>When to Use Azure Site Recovery:</strong>
+- When you need near-instant failover and minimal data loss.
+- When you want fully automated DR with minimal manual steps.</p>
+<hr />
+<p><strong><a href="../azure-bcpdr-part1/">Back to Part 1</a></strong></p>
 
 
 
@@ -1836,7 +1843,7 @@ param containerRegistryServer string = &#39;${container_registry_name}.azurecr.i
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 14:57:43 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 14:57:42 UTC">July 7, 2025</span>
   </span>
 
     
