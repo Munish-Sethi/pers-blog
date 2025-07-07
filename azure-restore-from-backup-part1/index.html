@@ -1,0 +1,2105 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/azure-restore-from-backup-part1/">
+      
+      
+        <link rel="prev" href="../azure-bcpdr-github-action/">
+      
+      
+        <link rel="next" href="../azure-restore-from-backup-part2/">
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Restore VM from RSV Backup - Part 1 - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#azure-vm-restore-from-backup-part-1-automated-restore-with-powershell" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Restore VM from RSV Backup - Part 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Bill
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Resource
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Query Recovery Services Vault
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra Users, User Groups and Licence assignments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra User Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-container-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orchestrating Scheduled Jobs (Container Instances)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-build-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Build Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Deploy Container IaC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Deploy Container Github Actions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-custon-image-compute-gallery-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building and Publishing an Custom Image
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-publish-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploying Azure Virtual Desktop (AVD) Desktops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-cleanup-obsolete-fsLogix-profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cleanup Obsolete FXLogix Profiles(AVD)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Coninuity Program / Diasister Recovery - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Continuity Program / Disaster Recovery - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Continuity Program / Disaster Recovery - Git Hub Action
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Restore VM from RSV Backup - Part 1
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore VM from RSV Backup - Part 1
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-script-restorevmsps1" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Script: restorevms.ps1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step Explanation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Explanation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-parameters-and-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Parameters and Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-helper-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Helper Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-main-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Main Logic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-vm-list-json-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. VM List JSON Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore VM from RSV Backup - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Fabric
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Fabric
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-warehouse-fact-import.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WarWharehouse data import
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki, Nagios XI & Manage Engine
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Cisco Meraki, Nagios XI & Manage Engine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-unused-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Unused Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Devices Discovery and Nagios Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-itsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integrating Monitoring System with ITSM System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Active Directory Domain Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Active Directory Domain Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup PyRFC in your Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calling SAP RFC Function Modules from Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    O365
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            O365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Document Library Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migrate Sharepoint Document Library to Azure File Share
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concur Expense Report Aggregation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teams-user-number-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Teams Phone Assignment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    UKG
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            UKG
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Secure File Transfer with UKG Dimensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Employee Verification via API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-integration-and-dataview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automating Integration Execution and Dataview extract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Misc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof Point User Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-clean-deployments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Clean GitHub Deployments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-script-restorevmsps1" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Script: restorevms.ps1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step Explanation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Explanation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-parameters-and-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Parameters and Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-helper-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Helper Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-main-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Main Logic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-vm-list-json-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. VM List JSON Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="azure-vm-restore-from-backup-part-1-automated-restore-with-powershell">Azure VM Restore from Backup – Part 1: Automated Restore with PowerShell</h1>
+<p>This article is Part 1 of a two-part series on automating Azure VM restore from Recovery Services Vault (RSV) backups, enabling Business Continuity/Disaster Recovery (BCP/DR) across regions. Here, we focus on the main restore process using the <code>restorevms.ps1</code> script. In <a href="../azure-restore-from-backup-part2/">Part 2</a>, we cover NIC re-creation and IP assignment for a true like-for-like DR.</p>
+<hr />
+<h2 id="overview">Overview</h2>
+<ul>
+<li><strong>Goal:</strong> Restore VMs from backup in one Azure region (e.g., East US) to another (e.g., West US) for BCP/DR.</li>
+<li><strong>Approach:</strong> Use PowerShell and Azure CLI to automate finding the latest restore point and restoring the VM, including all required network and resource group settings.</li>
+<li><strong>Why:</strong> This approach ensures your DR VM is as close as possible to the original, with minimal manual effort.</li>
+</ul>
+<hr />
+<h2 id="the-script-restorevmsps1">The Script: <code>restorevms.ps1</code></h2>
+<p>Below is the full script used to automate the restore process:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Boolean variable to indicate whether to restore disks only</span>
+<span class="c"># If it is True then VM will also be created so be careful </span>
+<span class="k">param</span> <span class="p">(</span>
+    <span class="no">[string]</span> <span class="nv">$restorediskonly</span> <span class="p">=</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+    <span class="no">[int]</span> <span class="nv">$numberofhours2wait</span> <span class="p">=</span> <span class="n">2</span><span class="p">,</span>
+    <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span>
+<span class="p">)</span>
+
+<span class="c">########################################################</span>
+<span class="c"># Install Azure CLI manually if not installed already</span>
+<span class="c"># curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash</span>
+<span class="c">########################################################</span>
+<span class="k">function</span> <span class="nb">Get-Latest</span><span class="n">-Recovery-Point</span> <span class="p">{</span>
+    <span class="k">param</span> <span class="p">(</span>
+        <span class="no">[string]</span><span class="nv">$vmname</span><span class="p">,</span>    
+        <span class="no">[string]</span><span class="nv">$vmcontainername</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$vaultname</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$vaultresourcegroupname</span>
+    <span class="p">)</span>
+
+    <span class="nv">$latest_recovery_point</span> <span class="p">=</span> <span class="n">az</span> <span class="n">backup</span> <span class="n">recoverypoint</span> <span class="n">list</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-container-name</span> <span class="nv">$vmcontainername</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-backup-management-type</span> <span class="n">AzureIaasVM</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-item-name</span> <span class="nv">$vmname</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-resource-group</span> <span class="nv">$vaultresourcegroupname</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-vault-name</span> <span class="nv">$vaultname</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-query</span> <span class="s2">&quot;[0]&quot;</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-use-secondary-region</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-output</span> <span class="n">json</span> <span class="p">`</span>
+    <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
+    <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">name</span>
+
+    <span class="k">return</span> <span class="nv">$latest_recovery_point</span>
+<span class="p">}</span>
+<span class="k">function</span> <span class="nb">Restore-Disks</span> <span class="p">{</span>
+    <span class="k">param</span> <span class="p">(</span>
+        <span class="no">[string]</span><span class="nv">$vmname</span><span class="p">,</span>    
+        <span class="no">[string]</span><span class="nv">$vmcontainername</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$vaultname</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$vaulresourcegrouptname</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$storageaccountname</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$recoverypointname</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$targetresourcegroupname</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$targetvmname</span> <span class="p">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$targetvnetname</span> <span class="p">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$targetvnetresourcegroup</span> <span class="p">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$targetsubnetname</span> <span class="p">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="no">[bool]</span><span class="nv">$restoretodisk</span> <span class="p">=</span> <span class="nv">$false</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$restoretodisk</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$restore_operation</span> <span class="p">=</span> <span class="n">az</span> <span class="n">backup</span> <span class="n">restore</span> <span class="nb">restore-disks</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-resource-group</span> <span class="nv">$vaulresourcegrouptname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-vault-name</span> <span class="nv">$vaultname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-restore-mode</span> <span class="n">AlternateLocation</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-container-name</span> <span class="nv">$vmcontainername</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-item-name</span> <span class="nv">$vmname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-storage-account</span> <span class="nv">$storageaccountname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-rp-name</span> <span class="nv">$recoverypointname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-target-resource-group</span> <span class="nv">$targetresourcegroupname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-restore-to-staging-storage-account</span> <span class="nv">$true</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-use-secondary-region</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$restore_operation</span> <span class="p">=</span> <span class="n">az</span> <span class="n">backup</span> <span class="n">restore</span> <span class="nb">restore-disks</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-resource-group</span> <span class="nv">$vaulresourcegrouptname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-vault-name</span> <span class="nv">$vaultname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-container-name</span> <span class="nv">$vmcontainername</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-item-name</span> <span class="nv">$vmname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-storage-account</span> <span class="nv">$storageaccountname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-rp-name</span> <span class="nv">$recoverypointname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-target-resource-group</span> <span class="nv">$targetresourcegroupname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-target-vm-name</span> <span class="nv">$targetvmname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-target-vnet-name</span> <span class="nv">$targetvnetname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-target-vnet-resource-group</span> <span class="nv">$targetvnetresourcegroup</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-target-subnet-name</span> <span class="nv">$targetsubnetname</span> <span class="p">`</span>
+            <span class="p">-</span><span class="n">-use-secondary-region</span> 
+    <span class="p">}</span>    
+
+    <span class="k">return</span> <span class="nv">$restore_operation</span>
+<span class="p">}</span>
+<span class="k">function</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="p">{</span>
+    <span class="k">param</span> <span class="p">(</span>
+        <span class="no">[string]</span><span class="nv">$command</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$message</span> <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="no">[string]</span><span class="p">::</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="nv">$message</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to run message {0}&quot;</span> <span class="o">-f</span> <span class="nv">$message</span><span class="p">)</span>
+        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to run command {0}&quot;</span> <span class="o">-f</span> <span class="nv">$command</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-Expression</span> <span class="nv">$command</span>
+    <span class="k">return</span> <span class="nv">$executionResult</span>
+<span class="p">}</span>
+<span class="c"># logging function which should work on both local dev container and Git Hub action</span>
+<span class="k">function</span> <span class="nb">Write-CustomLog</span> <span class="p">{</span>
+    <span class="k">param</span> <span class="p">(</span>
+        <span class="no">[string]</span><span class="nv">$message</span>
+    <span class="p">)</span>
+    <span class="nb">Write-Host</span> <span class="s2">&quot;::notice::$message&quot;</span>
+<span class="p">}</span>
+
+<span class="nv">$booleanRestorediskonly</span> <span class="p">=</span> <span class="nv">$false</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$restorediskonly</span><span class="p">.</span><span class="n">ToLower</span><span class="p">())</span> <span class="p">{</span>
+    <span class="s2">&quot;true&quot;</span> <span class="p">{</span>
+        <span class="nv">$restorediskonly</span> <span class="p">=</span> <span class="no">[bool]</span><span class="nv">$true</span>
+        <span class="nv">$booleanRestorediskonly</span> <span class="p">=</span> <span class="nv">$true</span>
+    <span class="p">}</span>
+    <span class="s2">&quot;false&quot;</span> <span class="p">{</span>
+        <span class="nv">$restorediskonly</span> <span class="p">=</span> <span class="no">[bool]</span><span class="nv">$false</span>
+        <span class="nv">$booleanRestorediskonly</span> <span class="p">=</span> <span class="nv">$false</span>
+    <span class="p">}</span>
+    <span class="k">default</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="s2">&quot;Invalid value for restorediskonly: $restorediskonly. Must be &#39;true&#39; or &#39;false&#39;.&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c"># Log values with type information</span>
+<span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;BooleanRestorediskonly variable value: $booleanRestorediskonly (Type: </span><span class="p">$(</span><span class="nv">$booleanRestorediskonly</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">)</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Numberofhours2wait variable value: $numberofhours2wait (Type: </span><span class="p">$(</span><span class="nv">$numberofhours2wait</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">)</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c"># Use the boolean variable in further logic</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$booleanRestorediskonly</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Write-CustomLog</span> <span class="s2">&quot;Restoring disk only.&quot;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nb">Write-CustomLog</span> <span class="s2">&quot;Performing full restore.&quot;</span>
+<span class="p">}</span>
+
+<span class="c">############################################################</span>
+<span class="c"># Variables, note the staging SA we created in earler steps</span>
+<span class="c">############################################################</span>
+<span class="nv">$gdep_rsv_vault_name</span> <span class="p">=</span> <span class="s2">&quot;rsv-prod-eus-01&quot;</span>
+<span class="nv">$gdep_rsv_vault_resource_group</span> <span class="p">=</span> <span class="s2">&quot;rg-gdep-peus-backup&quot;</span>
+
+<span class="nv">$gdep_staging_storage_account</span> <span class="p">=</span> <span class="n">az</span> <span class="n">storage</span> <span class="n">account</span> <span class="n">show</span> <span class="p">-</span><span class="n">-name</span> <span class="n">storegdeppwusstaging</span> <span class="p">-</span><span class="n">-query</span> <span class="s1">&#39;id&#39;</span> <span class="p">-</span><span class="n">-output</span> <span class="n">tsv</span>
+<span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Staging storage account is {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_staging_storage_account</span><span class="p">)</span>
+
+<span class="cm">&lt;#</span>
+<span class="cm">    gdep_virtual_machine                = Specifies the name of the backed-up VM item to restore.</span>
+<span class="cm">    gdep_virtual_machine_containername  = Specifies the name of the container within the vault that holds the backed-up VM</span>
+<span class="cm">    gdep_target_resource_group_name     = Specifies the resource group where the restored VM will be created.</span>
+<span class="cm">    gdep_target_vm_name                 = Specifies the name to assign to the newly restored VM</span>
+<span class="cm">    gdep_target_vnet_name               = Specifies the name of the virtual network (VNet) to which the restored VM will be connected</span>
+<span class="cm">    gdep_target_vnet_resource_group     = Specifies the resource group name of the VNet where the restored VM will be connected</span>
+<span class="cm">    gdep_target_subnet_name             = Specifies the name of the subnet within the target VNet where the restored VM will be placed</span>
+
+<span class="cm">    vaultname = Specifies the name of the Recovery Services vault from which the backup will be restored</span>
+<span class="cm">    vaulresourcegrouptname = Specifies the resource group name where the vault is located. </span>
+<span class="cm">    storageaccountname = Specifies the name of the storage account where the VM disks will be restored. </span>
+<span class="cm">    recoverypointname = Specifies the name of the recovery point to restore from.</span>
+
+<span class="cm">    gdep_virtual_machine_nic_name = Name of the NIC resource</span>
+<span class="cm">    gdep_virtual_machine_nic_ip = Final IP desired for this NIC</span>
+<span class="cm">    gdep_virtual_machine_nic_subnet_resource_group = </span>
+<span class="cm">    gdep_virtual_machine_nic_vnet_name = </span>
+<span class="cm">    gdep_virtual_machine_nic_snet_name = </span>
+<span class="cm">#&gt;</span>
+
+<span class="nv">$vm_list</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="nv">$vmlist</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
+<span class="c"># Start of script</span>
+
+<span class="c"># Lets add restore Job related properties to keep track of each job </span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$gdepvm</span> <span class="k">in</span> <span class="nv">$vm_list</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$gdepvm</span> <span class="p">|</span> <span class="nb">Add-Member</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&quot;gdep_restore_job_name&quot;</span> <span class="n">-Value</span> <span class="s2">&quot;&quot;</span>
+    <span class="nv">$gdepvm</span> <span class="p">|</span> <span class="nb">Add-Member</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&quot;gdep_restore_job_status&quot;</span> <span class="n">-Value</span> <span class="s2">&quot;Not Started&quot;</span>
+    <span class="nv">$gdepvm</span> <span class="p">|</span> <span class="nb">Add-Member</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&quot;gdep_nic_operation_completed&quot;</span> <span class="n">-Value</span> <span class="nv">$false</span>
+<span class="p">}</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$gdepvm</span> <span class="k">in</span> <span class="nv">$vm_list</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="c"># Extract parameters from the hashtable</span>
+        <span class="nv">$gdep_virtual_machine</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine</span>
+        <span class="nv">$gdep_virtual_machine_container_name</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_containername</span>
+        <span class="nv">$gdep_target_resource_group_name</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_resource_group_name</span>
+        <span class="nv">$gdep_target_vm_name</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_vm_name</span>
+        <span class="nv">$gdep_target_vnet_name</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_vnet_name</span>
+        <span class="nv">$gdep_target_vnet_resource_group</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_vnet_resource_group</span>
+        <span class="nv">$gdep_target_subnet_name</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_subnet_name</span>
+
+        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to obtain recovery point for VM {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
+
+        <span class="nv">$latest_recovery_point</span> <span class="p">=</span> <span class="nb">Get-Latest</span><span class="n">-Recovery-Point</span> <span class="p">`</span>
+            <span class="n">-vmname</span> <span class="nv">$gdep_virtual_machine</span> <span class="p">`</span>
+            <span class="n">-vmcontainername</span> <span class="nv">$gdep_virtual_machine_container_name</span> <span class="p">`</span>
+            <span class="n">-vaultname</span> <span class="nv">$gdep_rsv_vault_name</span> <span class="p">`</span>
+            <span class="n">-vaultresourcegroupname</span> <span class="nv">$gdep_rsv_vault_resource_group</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$booleanRestorediskonly</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Sould not have come into this loop {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="no">[string]</span><span class="p">::</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="nv">$latest_recovery_point</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nv">$restore_operation</span> <span class="p">=</span> <span class="nb">Restore-Disks</span> <span class="p">`</span>
+                    <span class="n">-vmname</span> <span class="nv">$gdep_virtual_machine</span> <span class="p">`</span>
+                    <span class="n">-vmcontainername</span> <span class="nv">$gdep_virtual_machine_container_name</span> <span class="p">`</span>
+                    <span class="n">-vaultname</span> <span class="nv">$gdep_rsv_vault_name</span> <span class="p">`</span>
+                    <span class="n">-vaulresourcegrouptname</span> <span class="nv">$gdep_rsv_vault_resource_group</span> <span class="p">`</span>
+                    <span class="n">-storageaccountname</span> <span class="nv">$gdep_staging_storage_account</span> <span class="p">`</span>
+                    <span class="n">-recoverypointname</span> <span class="nv">$latest_recovery_point</span> <span class="p">`</span>
+                    <span class="n">-targetresourcegroupname</span> <span class="nv">$gdep_target_resource_group_name</span> <span class="p">`</span>
+                    <span class="n">-restoretodisk</span> <span class="nv">$true</span>
+                <span class="c"># ($restore_operation | ConvertFrom-Json).properties.activityId</span>
+                <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_restore_job_name</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$restore_operation</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span><span class="p">).</span><span class="n">name</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Working on Restoring Disk for job name {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_restore_job_name</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;No disk(s) recovery point found for VM specfified {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="no">[string]</span><span class="p">::</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="nv">$latest_recovery_point</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;This is the correct condition for VM {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
+                <span class="nv">$restore_operation</span> <span class="p">=</span> <span class="nb">Restore-Disks</span> <span class="p">`</span>
+                    <span class="n">-vmname</span> <span class="nv">$gdep_virtual_machine</span> <span class="p">`</span>
+                    <span class="n">-vmcontainername</span> <span class="nv">$gdep_virtual_machine_container_name</span> <span class="p">`</span>
+                    <span class="n">-vaultname</span> <span class="nv">$gdep_rsv_vault_name</span> <span class="p">`</span>
+                    <span class="n">-vaulresourcegrouptname</span> <span class="nv">$gdep_rsv_vault_resource_group</span> <span class="p">`</span>
+                    <span class="n">-storageaccountname</span> <span class="nv">$gdep_staging_storage_account</span> <span class="p">`</span>
+                    <span class="n">-recoverypointname</span> <span class="nv">$latest_recovery_point</span> <span class="p">`</span>
+                    <span class="n">-targetresourcegroupname</span> <span class="nv">$gdep_target_resource_group_name</span> <span class="p">`</span>
+                    <span class="n">-targetvmname</span> <span class="nv">$gdep_target_vm_name</span> <span class="p">`</span>
+                    <span class="n">-targetvnetname</span> <span class="nv">$gdep_target_vnet_name</span> <span class="p">`</span>
+                    <span class="n">-targetvnetresourcegroup</span> <span class="nv">$gdep_target_vnet_resource_group</span> <span class="p">`</span>
+                    <span class="n">-targetsubnetname</span> <span class="nv">$gdep_target_subnet_name</span> <span class="p">`</span>
+                    <span class="n">-restoretodisk</span> <span class="nv">$false</span>
+                <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_restore_job_name</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$restore_operation</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span><span class="p">).</span><span class="n">name</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Working on Restoring Virtual Machine for job name {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_restore_job_name</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;No virtual machine recovery point found for VM {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">{</span>
+        <span class="nb">Write-Error</span> <span class="s2">&quot;An error occurred: $_&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="step-by-step-explanation">Step-by-Step Explanation</h2>
+<h3 id="1-parameters-and-setup">1. Parameters and Setup</h3>
+<ul>
+<li><code>restorediskonly</code>: If <code>true</code>, only disks are restored; if <code>false</code>, a full VM is created.</li>
+<li><code>numberofhours2wait</code>: How long to wait for restore jobs (not used directly in this script, but can be used for polling/wait logic).</li>
+<li><code>vmlist</code>: Path to the JSON file listing VMs to restore (see example below).</li>
+</ul>
+<h3 id="2-helper-functions">2. Helper Functions</h3>
+<ul>
+<li><strong>Get-Latest-Recovery-Point</strong>: Finds the most recent backup recovery point for a VM in the secondary region.</li>
+<li><strong>Restore-Disks</strong>: Runs the Azure CLI command to restore either disks or a full VM, depending on parameters.</li>
+<li><strong>Invoke-AzureCLICommand</strong>: Utility to run arbitrary Azure CLI commands and log them.</li>
+<li><strong>Write-CustomLog</strong>: Standardized logging for both local and CI environments.</li>
+</ul>
+<h3 id="3-main-logic">3. Main Logic</h3>
+<ul>
+<li>Loads the VM list from the provided JSON file.</li>
+<li>For each VM, finds the latest recovery point and triggers a restore (either disk or full VM).</li>
+<li>Tracks job names and statuses for each VM.</li>
+</ul>
+<h3 id="4-vm-list-json-example">4. VM List JSON Example</h3>
+<p>The script expects a JSON file like this:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MDCAVDPRDAE02&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine_containername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MDCAVDPRDAE02&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gdep_target_resource_group_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dr-rg-gdep-pwus-infrastructure&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gdep_target_vm_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRMDCAVDPRDAE02&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gdep_target_vnet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vnet-gdep-pwus-management&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gdep_target_vnet_resource_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dr-rg-gdep-pwus-vnets&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gdep_target_subnet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;snet-gdep-pwus-management-restore&quot;</span>
+<span class="w">    </span><span class="c1">// ...other NIC properties...</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr />
+<h2 id="summary">Summary</h2>
+<ul>
+<li>This script automates the restore of VMs from Azure RSV backups to a new region.</li>
+<li>It ensures you always restore from the latest available backup.</li>
+<li>For full DR, combine with the NIC re-creation process in <a href="../azure-restore-from-backup-part2/">Part 2</a>.</li>
+</ul>
+<hr />
+<p><strong>Continue to <a href="../azure-restore-from-backup-part2/">Part 2: NIC Re-Creation and IP Assignment</a></strong></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 16:47:48 UTC">July 7, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>

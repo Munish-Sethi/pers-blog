@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/azure-bcpdr-part2/">
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/azure-restore-from-backup-part2/">
       
       
-        <link rel="prev" href="../azure-bcpdr-part1/">
+        <link rel="prev" href="../azure-restore-from-backup-part1/">
       
       
-        <link rel="next" href="../azure-bcpdr-github-action/">
+        <link rel="next" href="../meraki-unused-device-sync/">
       
       
       <link rel="icon" href="../None">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Business Continuity Program / Disaster Recovery - Part 2 - Munish(s) Blog</title>
+        <title>Restore VM from RSV Backup - Part 2 - Munish(s) Blog</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#azure-bcpdr-with-backup-restore-part-2-compute-firewall-vpn-and-restore" class="md-skip">
+        <a href="#azure-vm-restore-from-backup-part-2-nic-re-creation-and-ip-assignment" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Business Continuity Program / Disaster Recovery - Part 2
+              Restore VM from RSV Backup - Part 2
             
           </span>
         </div>
@@ -586,32 +586,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Business Continuity Program / Disaster Recovery - Part 2
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part2/" class="md-nav__link">
         
   
   
@@ -622,89 +600,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#step-7-deploy-fortinet-firewall" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 7: Deploy Fortinet Firewall
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-8-fortinet-firewall-manual-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 8: Fortinet Firewall Manual Steps
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-9-deploy-point-to-site-vpn" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 9: Deploy Point-to-Site VPN
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-10-restore-virtual-machines-or-disks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 10: Restore Virtual Machines or Disks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-11-attach-nics-to-restored-vms" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 11: Attach NICs to Restored VMs
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#additional-tips" class="md-nav__link">
-    <span class="md-ellipsis">
-      Additional Tips
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary-why-backup-restore" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary: Why Backup &amp; Restore?
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -760,10 +655,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../azure-restore-from-backup-part2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Restore VM from RSV Backup - Part 2
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -774,6 +691,104 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-script-attachnicsps1" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Script: attachnics.ps1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step Explanation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Explanation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-parameters-and-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Parameters and Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-helper-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Helper Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-main-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Main Logic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-vm-list-json-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. VM List JSON Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1623,63 +1638,78 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-7-deploy-fortinet-firewall" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 7: Deploy Fortinet Firewall
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-8-fortinet-firewall-manual-steps" class="md-nav__link">
+  <a href="#the-script-attachnicsps1" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 8: Fortinet Firewall Manual Steps
+      The Script: attachnics.ps1
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-9-deploy-point-to-site-vpn" class="md-nav__link">
+  <a href="#step-by-step-explanation" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 9: Deploy Point-to-Site VPN
+      Step-by-Step Explanation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Explanation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-parameters-and-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Parameters and Setup
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-10-restore-virtual-machines-or-disks" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2-helper-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 10: Restore Virtual Machines or Disks
+      2. Helper Functions
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-11-attach-nics-to-restored-vms" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#3-main-logic" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 11: Attach NICs to Restored VMs
+      3. Main Logic
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#additional-tips" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#4-vm-list-json-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Additional Tips
+      4. VM List JSON Example
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#summary-why-backup-restore" class="md-nav__link">
+  <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary: Why Backup &amp; Restore?
+      Summary
     </span>
   </a>
   
@@ -1701,220 +1731,219 @@
 
 
 
-<h1 id="azure-bcpdr-with-backup-restore-part-2-compute-firewall-vpn-and-restore">Azure BCP/DR with Backup &amp; Restore: Part 2 – Compute, Firewall, VPN, and Restore</h1>
-<p><strong><a href="../azure-bcpdr-part1/">Back to Part 1: Resource Group, Storage, and Network Foundation</a></strong></p>
-<p>This part continues the step-by-step BCP/DR process, focusing on compute, firewall, VPN, and restoring VMs. All steps are automated using Bicep and PowerShell, but executed manually for full control and auditability.</p>
+<h1 id="azure-vm-restore-from-backup-part-2-nic-re-creation-and-ip-assignment">Azure VM Restore from Backup – Part 2: NIC Re-Creation and IP Assignment</h1>
+<p>This article is Part 2 of the series on automating Azure VM restore from Recovery Services Vault (RSV) backups for BCP/DR. Here, we focus on the process of re-creating and attaching NICs to restored VMs, ensuring each VM receives the correct IP address and network configuration—just as it was in the source region.</p>
+<p>If you haven't already, see <a href="../azure-restore-from-backup-part1/">Part 1</a> for the main restore process.</p>
 <hr />
-<h2 id="step-7-deploy-fortinet-firewall">Step 7: Deploy Fortinet Firewall</h2>
-<p>Deploy the Fortinet firewall solution, including load balancers, NVAs, and all required public IPs and NICs.</p>
-<p><strong>Command:</strong>
-<div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>gdepdr-nva<span class="w"> </span>--resource-group<span class="w"> </span>dr-rg-gdep-pwus-deployment<span class="w"> </span>--template-file<span class="w"> </span>./compute/vm/nva/nva.bicep<span class="w"> </span>--parameters<span class="w"> </span>./compute/vm/nva/nva.json
-</code></pre></div></p>
-<p><strong>Bicep Code: <code>nva.bicep</code></strong>
-<div class="highlight"><pre><span></span><code>param location string = resourceGroup().location
-param resource_group string
-param adminusername string
-@secure()
-param adminPassword string
-param fortinetoffer string //Will need to check what is availabe at the time of DR (fortinet_fortigate-vm_v5)
-param fortinetsku string //Will need to check what is availabe at the time of DR (fortinet_fg-vm_payg_2023)
-
-// ...existing code for variables and modules (see repo for full details)...
-// This Bicep deploys:
-// - Public IPs for Fortinet
-// - External and internal load balancers
-// - 8 NICs for Fortinet VMs
-// - 2 Fortinet NVA VMs with all required extensions
-</code></pre></div></p>
-<p><strong>Parameter File: <code>nva.json</code></strong>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;resource_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dr-rg-gdep-pwus-fortinet&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;adminusername&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nvafwadmin&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;fortinetoffer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fortinet_fortigate-vm_v5&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;fortinetsku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fortinet_fg-vm_payg_2023&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;adminPassword&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;keyVault&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/subscriptions/df8d9f29-f5c5-4e48-a004-21ea3b8a4834/resourceGroups/rg-gdep-peus-applications/providers/Microsoft.KeyVault/vaults/kv-gdep-peus-iac&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;secretName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new-vm-password&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<p><strong>Explanation:</strong>
-- The Bicep file provisions Fortinet NVAs, load balancers, public IPs, NICs, and all required networking for the DR firewall solution.
-- The parameter file provides values for resource group, admin credentials, and Fortinet offer/SKU.</p>
-<hr />
-<h2 id="step-8-fortinet-firewall-manual-steps">Step 8: Fortinet Firewall Manual Steps</h2>
+<h2 id="overview">Overview</h2>
 <ul>
-<li>Obtain or create a backup of the NVA configuration (from SFTP or by running <code>backup.py</code> in the scripts folder).</li>
-<li>Update alias/host names as needed for the DR region.</li>
-<li>Import configuration via the Fortinet web interface for each NVA in West US.</li>
-<li>Confirm settings via Serial Console.</li>
-<li>Ensure Point-to-Site VPN is up before proceeding.</li>
+<li><strong>Goal:</strong> After restoring VMs from backup, ensure each VM has a NIC with the same IP and subnet as in the original region.</li>
+<li><strong>Approach:</strong> Use PowerShell and Azure CLI to automate NIC creation, assignment, and validation.</li>
+<li><strong>Why:</strong> Azure restores VMs with default NICs; for true DR, you must re-create and attach NICs with the desired configuration.</li>
 </ul>
 <hr />
-<h2 id="step-9-deploy-point-to-site-vpn">Step 9: Deploy Point-to-Site VPN</h2>
-<p>Deploy the P2S VPN gateway and configuration.</p>
-<p><strong>Command:</strong>
-<div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>gdepdr-p2s<span class="w"> </span>--resource-group<span class="w"> </span>dr-rg-gdep-pwus-deployment<span class="w"> </span>--template-file<span class="w"> </span>./networking/p2s/p2s.bicep<span class="w"> </span>--parameters<span class="w"> </span>./networking/p2s/p2sp.json
-</code></pre></div></p>
-<p><strong>Bicep Code: <code>p2s.bicep</code></strong>
-<div class="highlight"><pre><span></span><code>/*
-Lets create Point to Site VPN for users to connect into US West
-Create PIP, VPN Gateway, for PIP we have no dependency but 
-for VPN Gateway we do.  As such notice 
-*/
-param location string = resourceGroup().location
-param resource_group string
-
-var applicationtag = &#39;Infrastructure&#39;
-var environmetag = &#39;Disaster Recovery&#39;
-var AADTenant = &#39;${environment().authentication.loginEndpoint}${subscription().tenantId}&#39;
-
-module pipgdepdrfw &#39;../../networking/pip/pip.bicep&#39; = {
-  name: &#39;${deployment().name}-pipp2svpn&#39;
-  scope: resourceGroup(resource_group)
-  params: {
-    name: &#39;pip-gdep-pwus-p2svpn&#39;
-    location: location
-    tags: { Application: applicationtag, Environment: environmetag }
-    properties: {
-      publicIPAllocationMethod: &#39;Static&#39;
-      publicIPAddressVersion: &#39;IPv4&#39;
-    }
-  }
-}
-//Create VPN Gateway
-module vngwpoint2site &#39;./p2sngw.bicep&#39; = {
-  name: &#39;${deployment().name}-vngwpoint2site&#39;
-  scope: resourceGroup(&#39;dr-rg-gdep-pwus-vnets&#39;)
-  params: {
-    name: &#39;vngw_gdep_pwus&#39;
-    location: location
-    tags: { Application: applicationtag, Environment: environmetag }
-    properties: {
-      enablePrivateIpAddress: false
-      ipConfigurations: [ ... ]
-      sku: {
-        name: &#39;VpnGw2&#39;
-        tier: &#39;VpnGw2&#39;
-      }
-      gatewayType: &#39;Vpn&#39;
-      vpnType: &#39;RouteBased&#39;
-      enableBgp: false
-      activeActive: false
-      vpnClientConfiguration: {
-        vpnClientAddressPool: {
-          addressPrefixes: [&#39;10.27.48.0/22&#39;]
-        }
-        vpnClientProtocols: [&#39;OpenVPN&#39;]
-        vpnAuthenticationTypes: [&#39;AAD&#39;]
-        aadTenant: AADTenant
-        aadAudience: &#39;41b23e61-6c1e-4545-b367-cd054e0ed4b4&#39;
-        aadIssuer: &#39;${&#39;https://sts.windows.net/&#39;}${subscription().tenantId}${&#39;/&#39;}&#39;
-      }
-      customRoutes: {
-        addressPrefixes: [ ... ]
-      }
-      vpnGatewayGeneration: &#39;Generation2&#39;
-    }
-  }
-}
-</code></pre></div></p>
-<p><strong>Parameter File: <code>p2sp.json</code></strong>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;resource_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dr-rg-gdep-pwus-fortinet&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<p><strong>Explanation:</strong>
-- The Bicep file provisions the VPN gateway, public IP, and all required settings for secure remote access to the DR environment.</p>
-<hr />
-<h2 id="step-10-restore-virtual-machines-or-disks">Step 10: Restore Virtual Machines or Disks</h2>
-<p>Restore VMs using PowerShell Core. All VMs to be restored should be listed in <code>vmlist.json</code>.</p>
-<p><strong>Command:</strong>
-<div class="highlight"><pre><span></span><code><span class="n">pwsh</span> <span class="p">./</span><span class="n">scripts</span><span class="p">/</span><span class="n">bcpdr</span><span class="p">/</span><span class="n">vm</span><span class="p">/</span><span class="n">restorevms</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-restorediskonly</span> <span class="s2">&quot;false&quot;</span> <span class="n">-numberofhours2wait</span> <span class="n">5</span> <span class="n">-vmlist</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span>
-</code></pre></div></p>
-<p><strong>PowerShell Script: <code>restorevms.ps1</code></strong>
-<div class="highlight"><pre><span></span><code><span class="c"># Boolean variable to indicate whether to restore disks only</span>
-<span class="c"># If it is True then VM will also be created so be careful </span>
-<span class="k">param</span> <span class="p">(</span>
-    <span class="no">[string]</span> <span class="nv">$restorediskonly</span> <span class="p">=</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-    <span class="no">[int]</span> <span class="nv">$numberofhours2wait</span> <span class="p">=</span> <span class="n">2</span><span class="p">,</span>
-    <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span>
-<span class="p">)</span>
-
-<span class="c"># ...existing code for restore logic (see repo for full details)...</span>
-<span class="c"># This script restores VMs or disks from backup, as defined in the JSON file.</span>
-<span class="c"># Set -restorediskonly to false to create VMs directly.</span>
-<span class="c"># Adjust -numberofhours2wait as needed for your restore window.</span>
-</code></pre></div></p>
-<p><strong>Explanation:</strong>
-- The script restores VMs or disks from backup, as defined in the JSON file.
-- Set <code>-restorediskonly</code> to <code>false</code> to create VMs directly.
-- Adjust <code>-numberofhours2wait</code> as needed for your restore window.</p>
-<hr />
-<h2 id="step-11-attach-nics-to-restored-vms">Step 11: Attach NICs to Restored VMs</h2>
-<p>Attach NICs to the restored VMs using PowerShell Core. This can be run multiple times safely.</p>
-<p><strong>Command:</strong>
-<div class="highlight"><pre><span></span><code><span class="n">pwsh</span> <span class="p">./</span><span class="n">scripts</span><span class="p">/</span><span class="n">bcpdr</span><span class="p">/</span><span class="n">vm</span><span class="p">/</span><span class="n">attachnics</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-vaultname</span> <span class="s2">&quot;&lt;your-recovery-vault&gt;&quot;</span> <span class="n">-vaultresourcegroupname</span> <span class="s2">&quot;&lt;your-backup-rg&gt;&quot;</span> <span class="n">-vmlist</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span>
-</code></pre></div></p>
-<p><strong>PowerShell Script: <code>attachnics.ps1</code></strong>
+<h2 id="the-script-attachnicsps1">The Script: <code>attachnics.ps1</code></h2>
+<p>Below is the full script used to automate the NIC re-creation and assignment process:</p>
 <div class="highlight"><pre><span></span><code><span class="k">param</span> <span class="p">(</span>
     <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span><span class="p">,</span>
     <span class="no">[string]</span> <span class="nv">$vaultname</span> <span class="p">=</span> <span class="s1">&#39;rsv-prod-eus-01&#39;</span><span class="p">,</span>
     <span class="no">[string]</span> <span class="nv">$vaultresourcegroupname</span> <span class="p">=</span> <span class="s1">&#39;rg-gdep-peus-backup&#39;</span>
 <span class="p">)</span>
 
-<span class="c"># ...existing code for NIC attachment logic (see repo for full details)...</span>
-<span class="c"># This script attaches network interfaces to the restored VMs.</span>
-<span class="c"># Replace &lt;your-recovery-vault&gt; and &lt;your-backup-rg&gt; with your actual values.</span>
-</code></pre></div></p>
-<p><strong>Explanation:</strong>
-- The script attaches network interfaces to the restored VMs.
-- Replace <code>&lt;your-recovery-vault&gt;</code> and <code>&lt;your-backup-rg&gt;</code> with your actual values.</p>
+<span class="k">function</span> <span class="nb">Write-CustomLog</span> <span class="p">{</span>
+    <span class="k">param</span> <span class="p">(</span>
+        <span class="no">[string]</span><span class="nv">$message</span>
+    <span class="p">)</span>
+    <span class="nb">Write-Host</span> <span class="s2">&quot;::notice::$message&quot;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nb">Get-Last</span><span class="n">-Restore-JobID</span> <span class="p">{</span>
+    <span class="k">param</span> <span class="p">(</span>
+        <span class="no">[string]</span><span class="nv">$vaultname</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$vaultresourcegroupname</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$vmname</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$timeRangeStart</span>
+    <span class="p">)</span>
+
+    <span class="nv">$vmname</span> <span class="p">=</span> <span class="nv">$vmname</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()</span>
+    <span class="nv">$jobid</span> <span class="p">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="nv">$backupJobsJson</span> <span class="p">=</span> <span class="n">az</span> <span class="n">backup</span> <span class="n">job</span> <span class="n">list</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-resource-group</span> <span class="nv">$vaultresourcegroupname</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-vault-name</span> <span class="nv">$vaultname</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-query</span> <span class="s2">&quot;[?properties.endTime &gt;= &#39;$timeRangeStart&#39; `</span>
+<span class="s2">                &amp;&amp; properties.operation == &#39;CrossRegionRestore&#39;  `</span>
+<span class="s2">                &amp;&amp; properties.jobType == &#39;AzureIaaSVMJob&#39; `</span>
+<span class="s2">                &amp;&amp; properties.status == &#39;Completed&#39; `</span>
+<span class="s2">                ] | sort_by(@, &amp;properties.endTime) | reverse(@)&quot;</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-output</span> <span class="n">json</span>
+    <span class="nv">$backupJobsJson</span> <span class="p">=</span> <span class="nv">$backupJobsJson</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$job</span> <span class="k">in</span> <span class="nv">$backupJobsJson</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$job</span><span class="p">.</span><span class="n">properties</span><span class="p">.</span><span class="n">entityFriendlyName</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()</span> <span class="o">-like</span> <span class="s2">&quot;*$vmName*&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$vmNameRestored</span> <span class="p">=</span> <span class="nv">$job</span><span class="p">.</span><span class="n">properties</span><span class="p">.</span><span class="n">entityFriendlyName</span>
+            <span class="nb">Write-CustomLog</span> <span class="s2">&quot;Cross Region Restore for VM has completed : $vmNameRestored&quot;</span>
+            <span class="nv">$jobid</span> <span class="p">=</span> <span class="nv">$job</span><span class="p">.</span><span class="n">id</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nv">$jobid</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="p">{</span>
+    <span class="k">param</span> <span class="p">(</span>
+        <span class="no">[string]</span><span class="nv">$command</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$message</span> <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="no">[string]</span><span class="p">::</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="nv">$message</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to run message {0}&quot;</span> <span class="o">-f</span> <span class="nv">$message</span><span class="p">)</span>
+        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to run command {0}&quot;</span> <span class="o">-f</span> <span class="nv">$command</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-Expression</span> <span class="nv">$command</span>
+    <span class="k">return</span> <span class="nv">$executionResult</span>
+<span class="p">}</span>
+
+<span class="nv">$vm_list</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="nv">$vmlist</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
+<span class="nv">$deploymentresourceGroupName</span> <span class="p">=</span> <span class="s2">&quot;dr-rg-gdep-pwus-deployment&quot;</span>
+<span class="nv">$templateFilePath</span> <span class="p">=</span> <span class="s2">&quot;./networking/nic/nic4drvms.bicep&quot;</span>
+<span class="nv">$vaultname</span> <span class="p">=</span> <span class="s1">&#39;rsv-prod-eus-01&#39;</span>
+<span class="nv">$vaultresourcegroupname</span> <span class="p">=</span> <span class="s1">&#39;rg-gdep-peus-backup&#39;</span>
+<span class="nv">$data2gobacktoo</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddDays</span><span class="p">(-</span><span class="n">2</span><span class="p">).</span><span class="n">ToString</span><span class="p">(</span><span class="s2">&quot;yyyy-MM-ddTHH:mm:ssZ&quot;</span><span class="p">)</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$gdepvm</span> <span class="k">in</span> <span class="nv">$vm_list</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+
+        <span class="nv">$nicName</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_name</span>
+        <span class="nv">$deploymentGroupName</span> <span class="p">=</span> <span class="s2">&quot;gdepdr-&quot;</span> <span class="p">+</span> <span class="nv">$nicName</span>
+        <span class="nv">$nicResouceGroup</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_resource_group_name</span>
+        <span class="nv">$nicIpAddress</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_ip</span>
+        <span class="nv">$nicSubnetResourceGroup</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_subnet_resource_group</span>
+        <span class="nv">$nicVnetName</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_vnet_name</span>
+        <span class="nv">$nicSubnetName</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_snet_name</span>
+        <span class="nv">$vmName</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_vm_name</span>
+        <span class="nv">$vmresourceGroupName</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_resource_group_name</span>
+
+        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Retrieving last completed cross region restore status for VM {0} since {1}&quot;</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine</span><span class="p">,</span><span class="nv">$data2gobacktoo</span><span class="p">)</span>
+        <span class="nv">$gdep_restore_job_id</span> <span class="p">=</span> <span class="nb">Get-Last</span><span class="n">-Restore-JobID</span> <span class="p">`</span>
+            <span class="n">-vaultname</span> <span class="nv">$vaultname</span> <span class="p">`</span>
+            <span class="n">-vaultresourcegroupname</span> <span class="nv">$vaultresourcegroupname</span> <span class="p">`</span>
+            <span class="n">-vmname</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine</span> <span class="p">`</span>
+            <span class="n">-timeRangeStart</span> <span class="nv">$data2gobacktoo</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="no">[string]</span><span class="p">::</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="nv">$gdep_restore_job_id</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c">#This means that VM has been restored </span>
+            <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Restore job {0} has finished for VM {1}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_restore_job_id</span><span class="p">,</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine</span><span class="p">)</span>
+            <span class="c">#Check if we have already created and attached the new NIC for this or not</span>
+            <span class="nv">$nicExists</span> <span class="p">=</span> <span class="n">az</span> <span class="n">network</span> <span class="n">nic</span> <span class="n">show</span> <span class="p">-</span><span class="n">-resource-group</span> <span class="nv">$nicResouceGroup</span> <span class="p">-</span><span class="n">-name</span> <span class="nv">$nicName</span> <span class="p">-</span><span class="n">-query</span> <span class="n">id</span> <span class="p">-</span><span class="n">-output</span> <span class="n">tsv</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$nicExists</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;NIC {0} has already been created and attached to VM {1} nothing to do&quot;</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_name</span><span class="p">,</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_vm_name</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to create new NIC namely {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_name</span><span class="p">)</span>
+                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">&quot;az deployment group create --name $deploymentGroupName --resource-group $deploymentresourceGroupName --template-file $templateFilePath --parameters nic_name=$nicName nic_resource_group=$nicResouceGroup nic_ipaddress=$nicIpAddress nic_subnet_resourcegroup=$nicSubnetResourceGroup nic_vnet_name=$nicVnetName nic_subnet_name=$nicSubnetName&quot;</span>
+                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">&quot;About to Create new NIC for VM : $vmName&quot;</span>
+                <span class="nb">Write-CustomLog</span> <span class="s2">&quot;Provisioning State: </span><span class="p">$(((</span><span class="nv">$executionResult</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span><span class="p">).</span><span class="n">properties</span><span class="p">.</span><span class="n">provisioningState</span><span class="p">))</span><span class="s2">&quot;</span>
+                <span class="c">#Setup New NIC Variables we are going to need later</span>
+                <span class="nv">$nicid2add</span> <span class="p">=</span> <span class="p">(</span><span class="n">az</span> <span class="n">network</span> <span class="n">nic</span> <span class="n">show</span> <span class="n">-g</span> <span class="nv">$nicResouceGroup</span> <span class="n">-n</span> <span class="nv">$nicName</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span><span class="p">).</span><span class="n">id</span>
+                <span class="c">#Dealocate the VM first as it would be up and running </span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to deallocate VM namely {0}&quot;</span> <span class="o">-f</span> <span class="nv">$vmName</span><span class="p">)</span>
+                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">&quot;az vm deallocate --name $vmName --resource-group $vmresourceGroupName --no-wait&quot;</span>
+                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">&quot;About to deallocate restored VM: $vmName&quot;</span>
+
+                <span class="c"># Verify that VM is deallocated</span>
+                <span class="nv">$vmStatus</span> <span class="p">=</span> <span class="nv">$null</span>
+                <span class="k">while</span> <span class="p">(</span><span class="nv">$vmStatus</span> <span class="o">-ne</span> <span class="s2">&quot;VM deallocated&quot;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$vmStatus</span> <span class="p">=</span> <span class="n">az</span> <span class="n">vm</span> <span class="nb">get-instance</span><span class="n">-view</span> <span class="p">-</span><span class="n">-name</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_vm_name</span> <span class="p">-</span><span class="n">-resource-group</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_resource_group_name</span>
+                    <span class="nv">$vmObject</span> <span class="p">=</span> <span class="nv">$vmStatus</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
+                    <span class="nv">$nicid2remove</span> <span class="p">=</span> <span class="nv">$vmObject</span><span class="p">.</span><span class="n">networkProfile</span><span class="p">.</span><span class="n">networkInterfaces</span><span class="p">[</span><span class="n">0</span><span class="p">].</span><span class="n">id</span>
+                    <span class="nv">$nicname2remove</span> <span class="p">=</span> <span class="n">az</span> <span class="n">network</span> <span class="n">nic</span> <span class="n">show</span> <span class="p">-</span><span class="n">-ids</span> <span class="nv">$nicid2remove</span> <span class="p">-</span><span class="n">-query</span> <span class="s2">&quot;name&quot;</span> <span class="n">-o</span> <span class="n">tsv</span>
+
+                    <span class="nv">$vmInstanceView</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$vmStatus</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span><span class="p">).</span><span class="n">instanceView</span>  
+                    <span class="nv">$powerState</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$vmInstanceView</span><span class="p">.</span><span class="n">statuses</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">code</span> <span class="o">-eq</span> <span class="s2">&quot;PowerState/deallocated&quot;</span> <span class="p">}).</span><span class="n">displayStatus</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$powerState</span> <span class="o">-eq</span> <span class="s2">&quot;VM deallocated&quot;</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;VM namely {0} is deallocated &quot;</span> <span class="o">-f</span> <span class="nv">$vmName</span><span class="p">)</span>
+                        <span class="nv">$vmStatus</span> <span class="p">=</span> <span class="s2">&quot;VM deallocated&quot;</span>
+                    <span class="p">}</span>
+                    <span class="k">else</span> <span class="p">{</span>
+                        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;VM namely {0} is still not deallocated sleeping for 15 seconds&quot;</span> <span class="o">-f</span> <span class="nv">$vmName</span><span class="p">)</span>
+                        <span class="nb">Start-Sleep</span> <span class="n">-Seconds</span> <span class="n">15</span>
+                    <span class="p">}</span>      
+                <span class="p">}</span>
+
+                <span class="c"># First we need to associate the new NIC to this VM and Make it primary</span>
+                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">&quot;az vm nic add -g $vmresourceGroupName --vm-name $vmName --nics $nicid2add --primary-nic $nicid2add&quot;</span>
+                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">&quot;Adding NIC $nicid2add to $vmName&quot;</span>
+                <span class="c"># Now lets remove and delete NIC</span>
+                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">&quot;az vm nic remove -g $vmresourceGroupName --vm-name $vmName --nics $nicid2remove&quot;</span>
+                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">&quot;Removing NIC $nicid2remove from $vmName&quot;</span>
+                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">&quot;az network nic delete -g $nicResouceGroup -n $nicname2remove&quot;</span>
+                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">&quot;Deleting NIC $nicname2remove&quot;</span>
+
+                <span class="c"># Check if the NIC name is &#39;nic-dr-azgdepprt01&#39; so we can add to backend pool of printer lb created earlier</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$nicIpAddress</span> <span class="o">-eq</span> <span class="s2">&quot;10.27.17.39&quot;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$backendAddressPoolName</span> <span class="p">=</span> <span class="s2">&quot;bep-lbi-gdep-pwus-print&quot;</span>
+                    <span class="nv">$printerilbname</span> <span class="p">=</span> <span class="s2">&quot;lbi-gdep-pwus-print-001&quot;</span>
+                    <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Adding NIC $nicid2add to backend address pool $backendAddressPoolName&quot;</span><span class="p">)</span>
+                    <span class="nv">$command</span> <span class="p">=</span> <span class="s2">&quot;az network nic ip-config address-pool add --address-pool $backendAddressPoolName --ip-config-name ipconfig --nic-name $nicName --resource-group $nicResouceGroup --lb-name $printerilbname&quot;</span>
+                    <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">&quot;Adding NIC $nicid2add to backend address pool $backendAddressPoolName&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;No completed restore job found for VM {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">{</span>
+        <span class="nb">Write-Error</span> <span class="s2">&quot;An error occurred: $_&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
-<h2 id="additional-tips">Additional Tips</h2>
+<h2 id="step-by-step-explanation">Step-by-Step Explanation</h2>
+<h3 id="1-parameters-and-setup">1. Parameters and Setup</h3>
 <ul>
-<li>If you need to re-run any step, you can safely delete previous deployments and start again.</li>
-<li>All steps are idempotent and can be repeated as needed.</li>
+<li><code>vmlist</code>: Path to the JSON file listing VMs and their desired NIC/network configuration.</li>
+<li><code>vaultname</code>, <code>vaultresourcegroupname</code>: Used for querying restore jobs.</li>
+</ul>
+<h3 id="2-helper-functions">2. Helper Functions</h3>
+<ul>
+<li><strong>Write-CustomLog</strong>: Standardized logging for local and CI environments.</li>
+<li><strong>Get-Last-Restore-JobID</strong>: Finds the most recent completed cross-region restore job for a VM.</li>
+<li><strong>Invoke-AzureCLICommand</strong>: Utility to run and log Azure CLI commands.</li>
+</ul>
+<h3 id="3-main-logic">3. Main Logic</h3>
+<ul>
+<li>Loads the VM list from the provided JSON file.</li>
+<li>For each VM:</li>
+<li>Checks if a NIC with the desired name already exists and is attached. If so, skips.</li>
+<li>If not, creates a new NIC with the correct IP, subnet, and VNet.</li>
+<li>Deallocates the VM, attaches the new NIC as primary, removes and deletes the old NIC.</li>
+<li>Special handling for printer NICs to add to the correct backend pool.</li>
+</ul>
+<h3 id="4-vm-list-json-example">4. VM List JSON Example</h3>
+<p>The script expects a JSON file like this:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MDCAVDPRDAE02&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine_nic_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nic-dr-mdcavdprdae02&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine_nic_ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.27.11.5&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine_nic_subnet_resource_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dr-rg-gdep-pwus-vnets&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine_nic_vnet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vnet-gdep-pwus-management&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine_nic_snet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;snet-gdep-pwus-management&quot;</span>
+<span class="w">    </span><span class="c1">// ...other properties...</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr />
+<h2 id="summary">Summary</h2>
+<ul>
+<li>This script automates the process of re-creating and attaching NICs to restored VMs in a DR region.</li>
+<li>Ensures each VM receives the correct IP address and network configuration for a true like-for-like DR.</li>
+<li>Use in conjunction with <a href="../azure-restore-from-backup-part1/">Part 1</a> for a complete BCP/DR restore workflow.</li>
 </ul>
 <hr />
-<h2 id="summary-why-backup-restore">Summary: Why Backup &amp; Restore?</h2>
-<ul>
-<li><strong>Cost:</strong> No ongoing replication costs as with Azure Site Recovery (ASR).</li>
-<li><strong>Control:</strong> You decide what to restore and when.</li>
-<li><strong>RTO/RPO:</strong> For many workloads, restore times and backup frequency are sufficient.</li>
-<li><strong>Flexibility:</strong> Restore to any region (here, from East to West US).</li>
-</ul>
-<p><strong>When to Use This Approach:</strong>
-- When RTO/RPO requirements are not sub-minute.
-- When cost is a concern.
-- When you want full control over the DR process.</p>
-<p><strong>When to Use Azure Site Recovery:</strong>
-- When you need near-instant failover and minimal data loss.
-- When you want fully automated DR with minimal manual steps.</p>
-<hr />
-<p><strong><a href="../azure-bcpdr-part1/">Back to Part 1</a></strong></p>
+<p><strong>You now have a fully automated, script-driven process for restoring Azure VMs and their network configuration across regions!</strong></p>
 
 
 
@@ -1935,7 +1964,7 @@ module vngwpoint2site &#39;./p2sngw.bicep&#39; = {
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:21:49 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 16:47:48 UTC">July 7, 2025</span>
   </span>
 
     
