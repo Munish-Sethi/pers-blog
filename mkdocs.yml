@@ -33,8 +33,11 @@ nav:
       - Deploying Azure Virtual Desktop (AVD) Desktops: avd-publish-part2.md
       - Cleanup Obsolete FXLogix Profiles(AVD): avd-cleanup-obsolete-fsLogix-profiles.md
       - Business Coninuity Program / Diasister Recovery - Part 1: azure-bcpdr-part1.md
-      - Business Coninuity Program / Diasister Recovery - Part 2: azure-bcpdr-part2.md
-      - Business Coninuity Program / Diasister Recovery - Git Hub Action: azure-bcpdr-github-action.md
+      - Business Continuity Program / Disaster Recovery - Part 2: azure-bcpdr-part2.md
+      - Business Continuity Program / Disaster Recovery - Git Hub Action: azure-bcpdr-github-action.md
+      - Restore VM from RSV Backup - Part 1: azure-restore-from-backup-part1.md
+      - Restore VM from RSV Backup - Part 2: azure-restore-from-backup-part2.md
+
   - Fabric:
       - WarWharehouse data import: fabric-warehouse-fact-import.md
   - Cisco Meraki, Nagios XI & Manage Engine:
@@ -60,8 +63,9 @@ nav:
       - Employee Verification via API: ukg-api-employee-verification.md
       - Automating Integration Execution and Dataview extract: ukg-api-integration-and-dataview.md
   
-  - Proof Point:
+  - Misc:
       - Proof Point User Management: proofpoint-user-management.md
+      - Clean GitHub Deployments: github-clean-deployments.md
 
 extra_css:
   - assets/custom.css

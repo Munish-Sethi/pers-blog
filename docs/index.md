@@ -17,6 +17,9 @@
 - [Business Continuity Program / Disaster Recovery - Part 1](azure-bcpdr-part1.md)
 - [Business Continuity Program / Disaster Recovery - Part 2](azure-bcpdr-part2.md)
 - [Business Continuity Program / Disaster Recovery - Git Hub Action](azure-bcpdr-github-action.md)
+- [Restore VM from RSV Backup - Part 1](azure-restore-from-backup-part1.md)
+- [Restore VM from RSV Backup - Part 2](azure-restore-from-backup-part2.md)
+
 
 ## Fabric
 - [Warehouse data import](fabric-wharehouse-fact-import.md)
@@ -44,9 +47,10 @@
 - [Employee Verification via API](ukg-api-employee-verification.md)
 - [Automating Integration Execution and Dataview extract](ukg-api-integration-and-dataview.md)
 
-## Proof Point Essentials
-- [Proof Point User Management](proofpoint-user-management.md)
-
 ## Active Directory Domain Services
 - [Create User and assign groups](adds-user-creation.md)
 - [Update User](adds-user-update.md)
+
+## Misc.
+- [Proof Point User Management](proofpoint-user-management.md)
+- [Clean GitHub Deployments](proofpoint-user-management.md)
