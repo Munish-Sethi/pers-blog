@@ -18,12 +18,29 @@ plugins:
   - awesome-pages
 nav:
   - Home: index.md
-  - Entra:
+  - Azure:
       - Certificate Based Authentication: azure-ad-certificate.md
       - Download Azure Bill: azure-billing.md
       - Download Azure Resource: azure-resources.md
-  - Cisco Meraki & Nagios:
+      - Query Recovery Services Vault: azure-query-recovery-services-vault.md
+      - Entra Users, User Groups and Licence assignments: azure-ad-user.md
+      - Entra User Devices: azure-ad-user-devices.md
+      - Orchestrating Scheduled Jobs (Container Instances): azure-container-schedule.md
+      - DevOps Build Container: devops-build-container.md
+      - DevOps Deploy Container IaC: devops-deploy-container-iac.md
+      - DevOps Deploy Container Github Actions: devops-deploy-container-github-action.md
+      - Building and Publishing an Custom Image: avd-custon-image-compute-gallery-part1.md
+      - Deploying Azure Virtual Desktop (AVD) Desktops: avd-publish-part2.md
+      - Cleanup Obsolete FXLogix Profiles(AVD): avd-cleanup-obsolete-fsLogix-profiles.md
+      - Business Coninuity Program / Diasister Recovery - Part 1: azure-bcpdr-part1.md
+      - Business Coninuity Program / Diasister Recovery - Part 2: azure-bcpdr-part2.md
+      - Business Coninuity Program / Diasister Recovery - Git Hub Action: azure-bcpdr-github-action.md
+  - Fabric:
+      - WarWharehouse data import: fabric-warehouse-fact-import.md
+  - Cisco Meraki, Nagios XI & Manage Engine:
+      - Cisco Meraki Unused Devices : meraki-unused-device-sync.md
       - Cisco Meraki Devices Discovery and Nagios Integration: meraki-nagios-device-sync.md
+      - Integrating Monitoring System with ITSM System: monitoring-itsm-integration.md
   - Active Directory Domain Services:
       - Create ADDS User: adds-user-creation.md
       - Update ADDS User: adds-user-update.md
@@ -37,8 +54,14 @@ nav:
       - Sharepoint Document Library Enumeration: sharepoint-site-library-enumeration.md
       - Migrate Sharepoint Document Library to Azure File Share: sharepoint-site-library-to-azure-fileshare.md
       - Concur Expense Report Aggregation: sap-concur-expense-reports-aggregation.md
+      - Teams Phone Assignment: teams-user-number-assignment.md
   - UKG:
       - Secure File Transfer with UKG Dimensions: ukg-sftp-file-transfer.md
+      - Employee Verification via API: ukg-api-employee-verification.md
+      - Automating Integration Execution and Dataview extract: ukg-api-integration-and-dataview.md
+  
+  - Proof Point:
+      - Proof Point User Management: proofpoint-user-management.md
 
 extra_css:
   - assets/custom.css
