@@ -10,7 +10,7 @@ Maintaining an up-to-date inventory of Azure resources and their associated tags
 
 ## 1. Authentication: Secure Access to Azure APIs
 
-Before accessing Azure resources, authenticate using a secure method. The function below demonstrates using the Azure Identity SDK's `ClientSecretCredential` for authentication. This is a common approach for automation scenarios, but for higher security, certificate-based authentication is recommended (see other article [Certificate Based Authorization for Azure AD](azure-ad-certificate.md).)
+Before accessing Azure resources, authenticate using a secure method. The function below demonstrates using the Azure Identity SDK's `ClientSecretCredential` for authentication. This is a common approach for automation scenarios, but for higher security, certificate-based authentication is recommended (see the article [Certificate Based Authorization for Azure AD](azure-ad-certificate.md).)
 
 ### Deep Dive: `get_azure_credential` Function
 

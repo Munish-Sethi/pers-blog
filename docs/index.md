@@ -5,21 +5,21 @@
 - [Download Subscription Bill](azure-billing.md)
 - [Download Azure Resource Listing](azure-resources.md)
 - [Query Recovery Services Vault](azure-query-recovery-services-vault.md)
-- [Entra Users, User Groups and Licence assignments](azure-ad-user.md)
+- [Entra Users, User Groups and License assignments](azure-ad-user.md)
 - [Entra User Devices](azure-ad-user-devices.md)
 - [Orchestrating Scheduled Jobs (Container Instances)](azure-container-schedule.md)
 - [DevOps Build Container](devops-build-container.md)
 - [DevOps Deploy Container IaC](devops-deploy-container-iac.md)
 - [DevOps Deploy Container Github Actions](devops-deploy-container-github-action.md)
-- [Building and Publishing an Custom Image - Part 1](avd-custon-image-compute-gallery-part1.md)
+- [Building and Publishing a Custom Image - Part 1](avd-custon-image-compute-gallery-part1.md)
 - [Deploying Azure Virtual Desktop (AVD) Desktops - Part 2](avd-publish-part2.md)
-- [Cleanup Obsolete FXLogix Profiles](avd-cleanup-obsolete-fsLogix-profiles.md)
-- [Business Coninuity Program / Diasister Recovery - Part 1](azure-bcpdr-part1.md)
-- [Business Coninuity Program / Diasister Recovery - Part 2](azure-bcpdr-part2.md)
-- [Business Coninuity Program / Diasister Recovery - Git Hub Action](azure-bcpdr-github-action.md)
+- [Cleanup Obsolete FSLogix Profiles](avd-cleanup-obsolete-fsLogix-profiles.md)
+- [Business Continuity Program / Disaster Recovery - Part 1](azure-bcpdr-part1.md)
+- [Business Continuity Program / Disaster Recovery - Part 2](azure-bcpdr-part2.md)
+- [Business Continuity Program / Disaster Recovery - Git Hub Action](azure-bcpdr-github-action.md)
 
 ## Fabric
-- [Wharehouse data import](fabric-wharehouse-fact-import.md)
+- [Warehouse data import](fabric-wharehouse-fact-import.md)
 
 ## Cisco Meraki, Nagios XI & Manage Engine
 - [Cisco Meraki Unused Devices](meraki-unused-device-sync.md)

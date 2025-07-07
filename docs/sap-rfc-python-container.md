@@ -41,7 +41,7 @@ Update the system's library cache and set the required environment variable:
 
 ```bash
 sudo ldconfig
-# Verify the path configuration should not have any error(s)
+# Verify the path configuration should not have any errors
 ldconfig -p | grep sap
 # Set Environment Variable
 export SAPNWRFC_HOME=/usr/local/sap/nwrfcsdk
