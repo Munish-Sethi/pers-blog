@@ -44,6 +44,7 @@ nav:
       - Cisco Meraki Unused Devices : meraki-unused-device-sync.md
       - Cisco Meraki Devices Discovery and Nagios Integration: meraki-nagios-device-sync.md
       - Integrating Monitoring System with ITSM System: monitoring-itsm-integration.md
+      - Deploying Cisco Meraki vMX: meraki-vm-deployment.md
   - Active Directory Domain Services:
       - Create ADDS User: adds-user-creation.md
       - Update ADDS User: adds-user-update.md

@@ -28,6 +28,7 @@
 - [Cisco Meraki Unused Devices](meraki-unused-device-sync.md)
 - [Cisco Meraki Devices Discovery and Nagios Integration](meraki-nagios-device-sync.md)
 - [Integrating Monitoring System with ITSM System](monitoring-itsm-integration.md)
+- [Deploying Cisco Meraki vMX](meraki-vm-deployment.md)
 
 ## Microsoft 365
 - [Outlook Actionable Adaptive Card - Part 1](adaptive-card-consultant-review-part1.md)
