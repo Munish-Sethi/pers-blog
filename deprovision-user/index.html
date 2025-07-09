@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/devops-build-container/">
+        <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/deprovision-user/">
       
       
-        <link rel="prev" href="../azure-container-schedule/">
+        <link rel="prev" href="../teams-user-number-assignment/">
       
       
-        <link rel="next" href="../devops-deploy-container-iac/">
+        <link rel="next" href="../ukg-sftp-file-transfer/">
       
       
       <link rel="icon" href="../None">
@@ -24,7 +24,7 @@
     
     
       
-        <title>DevOps Build Container - Munish(s) Blog</title>
+        <title>Deprovison User - Munish(s) Blog</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#building-the-container-image-dockerfile-explained" class="md-skip">
+        <a href="#automating-user-deprovisioning-in-microsoft-365-onedrive-and-mailbox-reassignment" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DevOps Build Container
+              Deprovison User
             
           </span>
         </div>
@@ -219,8 +219,6 @@
       
   
   
-    
-  
   
   
     
@@ -233,11 +231,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -253,7 +251,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Azure
@@ -425,32 +423,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    DevOps Build Container
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../devops-build-container/" class="md-nav__link">
         
   
   
@@ -461,86 +437,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dockerfile-walkthrough" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dockerfile Walkthrough
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Dockerfile Walkthrough">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-sections" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Sections
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#requirementstxt" class="md-nav__link">
-    <span class="md-ellipsis">
-      requirements.txt
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#building-the-image-locally" class="md-nav__link">
-    <span class="md-ellipsis">
-      Building the Image Locally
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-articles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Related Articles
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1194,8 +1090,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1206,11 +1104,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1226,7 +1124,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             O365
@@ -1398,10 +1296,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../deprovision-user/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Deprovison User
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1412,6 +1332,98 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-disabling-users-in-active-directory-adadds" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Disabling Users in Active Directory (AD/ADDS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-disabling-users-in-entra-id-azure-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Disabling Users in Entra ID (Azure AD)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-assigning-onedrive-access-to-the-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Assigning OneDrive Access to the Manager
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-assigning-mailbox-access-to-the-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Assigning Mailbox Access to the Manager
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-methodology-and-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Methodology and Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-required-libraries-and-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Required Libraries and Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1666,60 +1678,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      Prerequisites
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#dockerfile-walkthrough" class="md-nav__link">
+  <a href="#1-disabling-users-in-active-directory-adadds" class="md-nav__link">
     <span class="md-ellipsis">
-      Dockerfile Walkthrough
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Dockerfile Walkthrough">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-sections" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Sections
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#requirementstxt" class="md-nav__link">
-    <span class="md-ellipsis">
-      requirements.txt
+      1. Disabling Users in Active Directory (AD/ADDS)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#building-the-image-locally" class="md-nav__link">
+  <a href="#2-disabling-users-in-entra-id-azure-ad" class="md-nav__link">
     <span class="md-ellipsis">
-      Building the Image Locally
+      2. Disabling Users in Entra ID (Azure AD)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#related-articles" class="md-nav__link">
+  <a href="#3-assigning-onedrive-access-to-the-manager" class="md-nav__link">
     <span class="md-ellipsis">
-      Related Articles
+      3. Assigning OneDrive Access to the Manager
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-assigning-mailbox-access-to-the-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Assigning Mailbox Access to the Manager
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-methodology-and-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Methodology and Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-required-libraries-and-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Required Libraries and Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Conclusion
     </span>
   </a>
   
@@ -1741,110 +1765,162 @@
 
 
 
-<h1 id="building-the-container-image-dockerfile-explained">Building the Container Image: Dockerfile Explained</h1>
-<p>This article explains how to build the container image for your Azure Container Instance, focusing on the <code>Dockerfile</code> and <code>requirements.txt</code>. This is the foundation for running your application in the cloud. For deploying and running the image using Bicep and GitHub Actions, see the related articles linked below.</p>
-<hr />
-<h2 id="overview">Overview</h2>
-<p>The container image is built using a <code>Dockerfile</code> and a <code>requirements.txt</code> file. The Dockerfile defines the environment, dependencies, and setup steps, while <code>requirements.txt</code> lists the Python packages needed by your application.</p>
-<hr />
-<h2 id="dockerfile-walkthrough">Dockerfile Walkthrough</h2>
-<p>The main Dockerfile is located at <code>compute/ci/interface/container/Dockerfile</code>.</p>
-<h3 id="key-sections">Key Sections</h3>
-<div class="highlight"><pre><span></span><code><span class="c"># Use a specific version of the base image</span>
-<span class="k">FROM</span><span class="w"> </span><span class="s">mcr.microsoft.com/devcontainers/python:3</span>
-
-<span class="c"># Keeps Python from generating .pyc files in the container</span>
-<span class="k">ENV</span><span class="w"> </span><span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
-
-<span class="c"># Install necessary packages</span>
-<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>supervisor<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>unzip<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>build-essential<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>python3-dev<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>git<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>gnupg<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>snmp<span class="w"> </span>
-
-<span class="c"># Add Microsoft GPG key and SQL Server repository</span>
-<span class="k">RUN</span><span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://packages.microsoft.com/keys/microsoft.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/microsoft-prod.gpg
-<span class="k">RUN</span><span class="w"> </span>curl<span class="w"> </span>https://packages.microsoft.com/config/debian/12/prod.list<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/mssql-release.list
-
-<span class="c"># Install Microsoft SQL Server related packages</span>
-<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="nv">ACCEPT_EULA</span><span class="o">=</span>Y<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>msodbcsql18<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>mssql-tools18<span class="w"> </span>
-
-<span class="c"># Install PowerShell Core and modules</span>
-<span class="k">RUN</span><span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb<span class="w"> </span>-o<span class="w"> </span>packages-microsoft-prod.deb<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-dpkg<span class="w"> </span>-i<span class="w"> </span>packages-microsoft-prod.deb<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-rm<span class="w"> </span>packages-microsoft-prod.deb<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>powershell
-
-<span class="k">RUN</span><span class="w"> </span>pwsh<span class="w"> </span>-Command<span class="w"> </span>Install-Module<span class="w"> </span>PnP.PowerShell<span class="w"> </span>-Force<span class="w"> </span>-AllowClobber<span class="w"> </span>-SkipPublisherCheck
-<span class="k">RUN</span><span class="w"> </span>pwsh<span class="w"> </span>-Command<span class="w"> </span>Install-Module<span class="w"> </span>ExchangeOnlineManagement<span class="w"> </span>-Force<span class="w"> </span>-AllowClobber<span class="w"> </span>-SkipPublisherCheck
-<span class="k">RUN</span><span class="w"> </span>pwsh<span class="w"> </span>-Command<span class="w"> </span>Install-Module<span class="w"> </span>MicrosoftTeams<span class="w"> </span>-Force<span class="w"> </span>-AllowClobber<span class="w"> </span>-SkipPublisherCheck
-
-<span class="c"># Clean up</span>
-<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
-
-<span class="c"># Add MS SQL Server tools to PATH</span>
-<span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PATH=&quot;$PATH:/opt/mssql-tools18/bin&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-
-<span class="c"># Supervisor configuration</span>
-<span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/supervisor/conf.d
-<span class="k">COPY</span><span class="w"> </span>supervisord.conf<span class="w"> </span>/etc/supervisor/conf.d/supervisord.conf
-
-<span class="c"># Copy and install Python dependencies</span>
-<span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
-<span class="k">RUN</span><span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-
-<span class="c"># Clone the private repository using a build argument</span>
-<span class="k">ARG</span><span class="w"> </span>GITHUB_PAT
-<span class="k">RUN</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://<span class="nv">$GITHUB_PAT</span>@github.com/GDEnergyproducts/GDEP-INTFC.git<span class="w"> </span>/app
-
-<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
-
-<span class="k">RUN</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>scripts/container/setuppyrfc.sh
-<span class="k">RUN</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>scripts/container/mountstorage.sh
-<span class="k">RUN</span><span class="w"> </span>./scripts/container/setuppyrfc.sh
-
-<span class="c"># Run tests</span>
-<span class="k">RUN</span><span class="w"> </span>pytest
-
-<span class="c"># Start supervisor</span>
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/bin/supervisord&quot;</span><span class="p">]</span>
-</code></pre></div>
-<p><strong>Explanation:</strong>
-- <strong>Base Image:</strong> Uses a Python dev container as the base.
-- <strong>System Packages:</strong> Installs tools for Python, SQL Server, PowerShell, and more.
-- <strong>PowerShell Modules:</strong> Installs modules for Azure and Microsoft 365 automation.
-- <strong>Python Dependencies:</strong> Installs all Python packages listed in <code>requirements.txt</code>.
-- <strong>Source Code:</strong> Clones the application code from a private GitHub repository using a build argument for authentication.
-- <strong>Setup Scripts:</strong> Makes and runs setup scripts executable.
-- <strong>Testing:</strong> Runs <code>pytest</code> to ensure the build is valid.
-- <strong>Supervisor:</strong> Uses Supervisor to manage processes in the container.</p>
-<hr />
-<h2 id="requirementstxt">requirements.txt</h2>
-<p>This file lists all Python dependencies needed by your application. It is copied into the image and installed with pip. Keeping dependencies in this file makes builds reproducible and easy to update.</p>
-<hr />
-<h2 id="building-the-image-locally">Building the Image Locally</h2>
-<p>To build the image locally, run:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">GITHUB_PAT</span><span class="o">=</span>your_token_here<span class="w"> </span>-t<span class="w"> </span>myacr.azurecr.io/myimage:latest<span class="w"> </span>compute/ci/interface/container
-</code></pre></div>
-<p>Replace <code>your_token_here</code> with a valid GitHub personal access token.</p>
-<hr />
-<h2 id="related-articles">Related Articles</h2>
+<h1 id="automating-user-deprovisioning-in-microsoft-365-onedrive-and-mailbox-reassignment">Automating User Deprovisioning in Microsoft 365: OneDrive and Mailbox Reassignment</h1>
+<p>When an employee leaves an organization, it's critical to deprovision their accounts securely and efficiently, while ensuring business continuity. This article demonstrates a Python-based approach to automate user deprovisioning in Microsoft 365, focusing on:</p>
 <ul>
-<li><a href="../devops-deploy-container-iac/">How to Deploy an Azure Container Instance Using Bicep (IaC)</a></li>
-<li><a href="../devops-deploy-container-github-action/">How to Run Your Azure Container Instance Bicep Deployment</a></li>
+<li>Disabling accounts in Active Directory (AD/ADDS)</li>
+<li>Disabling accounts in Entra ID (Azure AD)</li>
+<li>Assigning the user's OneDrive and mailbox access to their manager</li>
 </ul>
+<p>We will walk through the following functions:
+- <code>terminate_employees_adds</code>
+- <code>terminate_employees_entra</code>
+- <code>grant_access_to_users_mailbox</code></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Python 3.8+</li>
+<li>Required libraries:</li>
+<li><code>requests</code></li>
+<li><code>msal</code> (Microsoft Authentication Library)</li>
+<li><code>subprocess</code> (standard library)</li>
+<li><code>PnP.PowerShell</code> and <code>ExchangeOnlineManagement</code> PowerShell modules installed on a system with PowerShell Core</li>
+<li>Service principal with appropriate permissions in Microsoft 365</li>
+<li>Certificate-based authentication for automation</li>
+</ul>
+<hr />
+<h2 id="1-disabling-users-in-active-directory-adadds">1. Disabling Users in Active Directory (AD/ADDS)</h2>
+<p>The function <code>terminate_employees_adds</code> connects to AD and disables user accounts. This is typically done using the <code>ldap3</code> library, but the code can be adapted for other libraries or direct PowerShell calls.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">terminate_employees_adds</span><span class="p">(</span><span class="n">terminated_employees</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">get_adds_Connection</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">conn</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">for</span> <span class="n">employee</span> <span class="ow">in</span> <span class="n">terminated_employees</span><span class="p">:</span>
+            <span class="c1"># Example: Disable the user account</span>
+            <span class="n">user_dn</span> <span class="o">=</span> <span class="n">employee</span><span class="p">[</span><span class="s1">&#39;distinguishedName&#39;</span><span class="p">]</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">modify</span><span class="p">(</span><span class="n">user_dn</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;userAccountControl&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">ldap3</span><span class="o">.</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="mi">514</span><span class="p">])]})</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">conn</span><span class="p">:</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">unbind</span><span class="p">()</span>
+</code></pre></div>
+<ul>
+<li><strong>Explanation:</strong></li>
+<li>Connects to AD using a service account.</li>
+<li>Iterates through the list of terminated employees.</li>
+<li>Sets the <code>userAccountControl</code> attribute to <code>514</code> (disabled).</li>
+</ul>
+<hr />
+<h2 id="2-disabling-users-in-entra-id-azure-ad">2. Disabling Users in Entra ID (Azure AD)</h2>
+<p>The function <code>terminate_employees_entra</code> disables the user in Entra ID and then delegates OneDrive and mailbox access to the user's manager.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">terminate_employees_entra</span><span class="p">(</span><span class="n">terminated_employees</span><span class="p">,</span> <span class="n">existing_employees</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">existing_employee_dict</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">employee</span><span class="p">[</span><span class="s1">&#39;hr_PositionID&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">employee</span> <span class="k">for</span> <span class="n">employee</span> <span class="ow">in</span> <span class="n">existing_employees</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">terminated_employee</span> <span class="ow">in</span> <span class="n">terminated_employees</span><span class="p">:</span>
+            <span class="n">terminated_user_reportsto_id</span> <span class="o">=</span> <span class="n">terminated_employee</span><span class="p">[</span><span class="s1">&#39;hr_ReportsToPositionID&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">terminated_user_reportsto_id</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">existing_employee_dict</span><span class="p">:</span>
+                <span class="n">manager</span> <span class="o">=</span> <span class="n">existing_employee_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">terminated_user_reportsto_id</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+                <span class="n">manager_email</span> <span class="o">=</span> <span class="n">manager</span><span class="p">[</span><span class="s1">&#39;entra_mail&#39;</span><span class="p">]</span>
+
+            <span class="n">entra_id</span> <span class="o">=</span> <span class="n">terminated_employee</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;entra_id&#39;</span><span class="p">)</span>
+            <span class="n">terminated_user_email</span> <span class="o">=</span> <span class="n">terminated_employee</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;entra_userPrincipalName&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">entra_id</span><span class="p">:</span>
+                <span class="n">entra_onedrive_url</span> <span class="o">=</span> <span class="n">grant_access_to_users_onedrive</span><span class="p">(</span>
+                                        <span class="n">terminated_user_email</span><span class="p">,</span> 
+                                        <span class="n">manager_email</span><span class="p">)</span>
+                <span class="n">grant_access_to_users_mailbox</span><span class="p">(</span>
+                                        <span class="n">terminated_user_email</span><span class="p">,</span> 
+                                        <span class="n">manager_email</span><span class="p">)</span>  
+                <span class="n">terminated_employee</span><span class="p">[</span><span class="s1">&#39;entra_onedrive_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">entra_onedrive_url</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+<ul>
+<li><strong>Explanation:</strong></li>
+<li>Looks up the manager for each terminated employee.</li>
+<li>Calls helper functions to delegate OneDrive and mailbox access to the manager.</li>
+</ul>
+<hr />
+<h2 id="3-assigning-onedrive-access-to-the-manager">3. Assigning OneDrive Access to the Manager</h2>
+<p>The function <code>grant_access_to_users_onedrive</code> uses Microsoft Graph API to get the user's OneDrive URL, then uses PowerShell to assign the manager as the site owner.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grant_access_to_users_onedrive</span><span class="p">(</span><span class="n">terminated_user_email</span><span class="p">,</span> <span class="n">manager_email</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">access_token</span> <span class="o">=</span> <span class="n">get_access_token_API_Access_AAD</span><span class="p">()</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://graph.microsoft.com/v1.0/users/</span><span class="si">{</span><span class="n">terminated_user_email</span><span class="si">}</span><span class="s2">/drive&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">})</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+        <span class="n">graph_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="n">user_onedrive_url</span> <span class="o">=</span> <span class="n">graph_data</span><span class="p">[</span><span class="s1">&#39;webUrl&#39;</span><span class="p">]</span>
+
+        <span class="n">command_to_run</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        Import-Module PnP.PowerShell</span>
+<span class="s1">        Connect-PnPOnline -Url &lt;SharePointRootUrl&gt; -ClientId &lt;AppId&gt; -Tenant &lt;TenantName&gt; -CertificatePath &lt;CertPath&gt;</span>
+<span class="s1">        $OneDriveSiteUrl = &quot;</span><span class="si">{</span><span class="n">user_onedrive_url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/Documents&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s1">&quot;</span>
+<span class="s1">        $SiteCollAdmin = &quot;</span><span class="si">{</span><span class="n">manager_email</span><span class="si">}</span><span class="s1">&quot;</span>
+<span class="s1">        Set-PnPTenantSite -Url $OneDriveSiteUrl -Owners $SiteCollAdmin</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">command_result</span> <span class="o">=</span> <span class="n">execute_powershell_command</span><span class="p">(</span><span class="n">command_to_run</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">command_result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">user_onedrive_url</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+</code></pre></div>
+<ul>
+<li><strong>Explanation:</strong></li>
+<li>Retrieves the user's OneDrive URL via Microsoft Graph.</li>
+<li>Uses PnP PowerShell to assign the manager as the site owner.</li>
+<li>Requires certificate-based authentication for automation.</li>
+</ul>
+<hr />
+<h2 id="4-assigning-mailbox-access-to-the-manager">4. Assigning Mailbox Access to the Manager</h2>
+<p>The function <code>grant_access_to_users_mailbox</code> uses PowerShell to grant the manager full access to the user's mailbox.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grant_access_to_users_mailbox</span><span class="p">(</span><span class="n">terminated_user_email</span><span class="p">,</span> <span class="n">manager_email</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">command_to_run</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        Import-Module ExchangeOnlineManagement</span>
+<span class="s1">        Connect-ExchangeOnline -CertificateFilePath &lt;CertPath&gt; -AppID &lt;AppId&gt; -Organization &lt;TenantName&gt;</span>
+<span class="s1">        Add-MailboxPermission -Identity </span><span class="si">{</span><span class="n">terminated_user_email</span><span class="si">}</span><span class="s1"> -User </span><span class="si">{</span><span class="n">manager_email</span><span class="si">}</span><span class="s1"> -AccessRights FullAccess -InheritanceType All</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">command_result</span> <span class="o">=</span> <span class="n">execute_powershell_command</span><span class="p">(</span><span class="n">command_to_run</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">command_result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">command_result</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div>
+<ul>
+<li><strong>Explanation:</strong></li>
+<li>Connects to Exchange Online using certificate-based authentication.</li>
+<li>Grants the manager full access to the terminated user's mailbox.</li>
+</ul>
+<hr />
+<h2 id="5-methodology-and-best-practices">5. Methodology and Best Practices</h2>
+<ul>
+<li><strong>Automation:</strong> All steps are automated to reduce manual errors and speed up offboarding.</li>
+<li><strong>Security:</strong> Uses certificate-based authentication for all automated PowerShell and Graph API calls.</li>
+<li><strong>Separation of Duties:</strong> The terminated user's data is not deleted immediately, but access is reassigned to their manager for business continuity.</li>
+<li><strong>Error Handling:</strong> All functions use a global exception handler to log and notify on errors.</li>
+</ul>
+<hr />
+<h2 id="6-required-libraries-and-tools">6. Required Libraries and Tools</h2>
+<ul>
+<li><code>requests</code> for REST API calls</li>
+<li><code>msal</code> for Microsoft authentication</li>
+<li><code>ldap3</code> for AD/LDAP operations</li>
+<li><code>PnP.PowerShell</code> and <code>ExchangeOnlineManagement</code> PowerShell modules</li>
+<li>Service principal with delegated permissions and certificate</li>
+</ul>
+<hr />
+<h2 id="7-conclusion">7. Conclusion</h2>
+<p>Automating user deprovisioning in Microsoft 365 ensures compliance, security, and business continuity. By delegating OneDrive and mailbox access to managers, organizations can maintain access to critical data while protecting sensitive information.</p>
+<p><strong>Note:</strong>
+- Replace placeholders like <code>&lt;SharePointRootUrl&gt;</code>, <code>&lt;AppId&gt;</code>, <code>&lt;TenantName&gt;</code>, and <code>&lt;CertPath&gt;</code> with your actual values.
+- Always test automation in a non-production environment before rolling out to production.</p>
 
 
 
@@ -1865,7 +1941,7 @@ apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w">
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:21:49 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 9, 2025 14:09:04 UTC">July 9, 2025</span>
   </span>
 
     
