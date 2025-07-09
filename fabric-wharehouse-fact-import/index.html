@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://Munish-Sethi.github.io/pers-blog/fabric-wharehouse-fact-import/">
       
       
+        <link rel="prev" href="../azure-restore-from-backup-part2/">
+      
+      
+        <link rel="next" href="../meraki-unused-device-sync/">
       
       
       <link rel="icon" href="../None">
@@ -20,7 +24,7 @@
     
     
       
-        <title>Importing Data into Fabric Data Warehouse - Munish(s) Blog</title>
+        <title>Warehouse data import - Munish(s) Blog</title>
       
     
     
@@ -100,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Importing Data into Fabric Data Warehouse
+              Warehouse data import
             
           </span>
         </div>
@@ -679,8 +683,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -691,11 +697,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -711,7 +717,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Fabric
@@ -722,10 +728,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../fabric-warehouse-fact-import.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Warehouse data import
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -736,6 +764,161 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-libraries-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Libraries Used
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-data-import-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Data Import Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-process_fabric_employees_dw" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. process_fabric_employees_dw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-upload_file_to_datalake" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. upload_file_to_datalake
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-get_employee_unprocessed_files" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. get_employee_unprocessed_files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-get_metadata_lists_from_hr_sql_wh" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. get_metadata_lists_from_hr_sql_wh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-parse_csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. parse_csv
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-determine_date_auto_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. determine_date_auto_id
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-transform_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. transform_data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-insert_into_db" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. insert_into_db
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-move_file_to_processed_folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. move_file_to_processed_folder
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supplement-get_client_sceret_credential" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supplement: get_client_sceret_credential
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
