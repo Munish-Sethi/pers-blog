@@ -1,4 +1,4 @@
-# Welcome to My Blog
+# [Resume](Munish Sethi.pdf)
 
 ## Azure
 - [Certificate Based Authentication](azure-ad-certificate.md)
@@ -36,7 +36,8 @@
 - [Sharepoint Sites Enumeration](sharepoint-sites-enumeration.md)
 - [Sharepoint Document Library Enumeration](sharepoint-site-library-enumeration.md)
 - [Sharepoint Document Library Copy to Azure File Share](sharepoint-site-library-to-azure-fileshare.md)
-- [Teams Phone Assignment](teams-user-number-assignment.md)
+- [Get all Teams Phone Assignment(s)](teams-user-number-assignment.md)
+- [Deprovison User](deprovision-user.md)
 
 ## SAP
 - [Setup PyRFC in your Container](sap-rfc-python-container.md)

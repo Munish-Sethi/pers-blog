@@ -39,7 +39,7 @@ nav:
       - Restore VM from RSV Backup - Part 2: azure-restore-from-backup-part2.md
 
   - Fabric:
-      - WarWharehouse data import: fabric-warehouse-fact-import.md
+      - Warehouse data import: fabric-wharehouse-fact-import.md
   - Cisco Meraki, Nagios XI & Manage Engine:
       - Cisco Meraki Unused Devices : meraki-unused-device-sync.md
       - Cisco Meraki Devices Discovery and Nagios Integration: meraki-nagios-device-sync.md
@@ -58,7 +58,8 @@ nav:
       - Sharepoint Document Library Enumeration: sharepoint-site-library-enumeration.md
       - Migrate Sharepoint Document Library to Azure File Share: sharepoint-site-library-to-azure-fileshare.md
       - Concur Expense Report Aggregation: sap-concur-expense-reports-aggregation.md
-      - Teams Phone Assignment: teams-user-number-assignment.md
+      - Get all Teams Phone Assignment(s): teams-user-number-assignment.md
+      - Deprovison User: deprovision-user.md
   - UKG:
       - Secure File Transfer with UKG Dimensions: ukg-sftp-file-transfer.md
       - Employee Verification via API: ukg-api-employee-verification.md

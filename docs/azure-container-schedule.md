@@ -10,8 +10,7 @@ This article demonstrates how to build a robust job scheduler in a Python-based 
 3. [Core Scheduler Script](#core-scheduler-script)
     - [Scheduling Jobs](#scheduling-jobs)
     - [Running Jobs in the Background](#running-jobs-in-the-background)
-    - [Timezone Handling](#timezone-handling)
-    - [Error Handling and Logging](#error-handling-and-logging)
+    - [Timezone Aware Scheduling](#timezone-aware-scheduling)
 4. [Container Startup with Supervisor](#container-startup-with-supervisor)
 5. [Conclusion](#conclusion)
 
@@ -56,7 +55,7 @@ logger = logging.getLogger("scheduler")
 
 ### Helper Functions
 
-#### Timezone-Aware Scheduling
+#### Timezone Aware Scheduling
 
 ```python
 def get_next_utc_for_local(hour, minute=0, timezone_str='America/Chicago'):
