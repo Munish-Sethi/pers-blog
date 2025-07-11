@@ -60,5 +60,28 @@ PERS-BLOG/
 - Custom CSS and JS can be added in `docs/assets/` and referenced in `mkdocs.yml`.
 - The theme and navigation structure can be adjusted in `mkdocs.yml`.
 
+## Custom Domain Setup
+
+To use your custom domain (munishsethi.com) with GitHub Pages:
+
+1. **DNS Configuration (AWS Route 53):**
+   - In the AWS Route 53 console, select your hosted zone for `munishsethi.com`.
+   - Add or update a record:
+     - For the root domain, add an **A record (Alias)** pointing to GitHub Pages IPs:
+       - 185.199.108.153
+       - 185.199.109.153
+       - 185.199.110.153
+       - 185.199.111.153
+     - For `www.munishsethi.com`, add a **CNAME** record pointing to `Munish-Sethi.github.io`.
+
+2. **Repository Configuration:**
+   - Ensure the `CNAME` file in your repo contains your domain: `munishsethi.com`.
+   - Set `site_url` in `mkdocs.yml` to `https://munishsethi.com/` for correct sitemap and SEO.
+   - A `robots.txt` and sitemap will be generated automatically.
+
+3. **Wait for DNS propagation** (can take up to 24 hours).
+
+For more details, see [GitHub Pages custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages).
+
 ## License
 This project is for educational and professional demonstration purposes. Please review individual article content for any additional licensing or attribution requirements.

@@ -1,7 +1,7 @@
 site_name: Munish(s) Blog
 site_description: >-
   A professional blog showcasing business problem solutions.
-site_url: https://Munish-Sethi.github.io/pers-blog/
+site_url: https://munishsethi.com/
 theme:
   name: material
   features:
@@ -69,6 +69,8 @@ nav:
       - Proof Point User Management: proofpoint-user-management.md
       - Clean GitHub Deployments: github-clean-deployments.md
 
+extra:
+  description: "Munish Sethi's technical blog on Azure, SAP, and automation."
 extra_css:
   - assets/custom.css
 extra_javascript:
