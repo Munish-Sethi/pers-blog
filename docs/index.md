@@ -55,4 +55,4 @@
 
 ## Misc.
 - [Proof Point User Management](proofpoint-user-management.md)
-- [Clean GitHub Deployments](proofpoint-user-management.md)
+- [Clean GitHub Deployments](github-clean-deployments.md)
