@@ -1,0 +1,2386 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://munishsethi.com/tenantallowblocklist/">
+      
+      
+        <link rel="prev" href="../deprovision-user/">
+      
+      
+        <link rel="next" href="../ukg-sftp-file-transfer/">
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tenant Allow Block List - False Positive - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#investigating-a-false-positive-in-o365-tenant-allowblock-list-a-complete-technical-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tenant Allow Block List - False Positive
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Bill
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Resource
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Query Recovery Services Vault
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra Users, User Groups and Licence assignments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra User Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-container-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orchestrating Scheduled Jobs (Container Instances)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-build-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Build Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Deploy Container IaC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Deploy Container Github Actions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-custon-image-compute-gallery-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building and Publishing an Custom Image
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-publish-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploying Azure Virtual Desktop (AVD) Desktops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-cleanup-obsolete-fsLogix-profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cleanup Obsolete FXLogix Profiles(AVD)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Coninuity Program / Diasister Recovery - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Continuity Program / Disaster Recovery - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Continuity Program / Disaster Recovery - Git Hub Action
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore VM from RSV Backup - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore VM from RSV Backup - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Fabric
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Fabric
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-wharehouse-fact-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Warehouse data import
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki, Nagios XI & Manage Engine
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Cisco Meraki, Nagios XI & Manage Engine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-unused-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Unused Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Devices Discovery and Nagios Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-itsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integrating Monitoring System with ITSM System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-vm-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploying Cisco Meraki vMX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Active Directory Domain Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Active Directory Domain Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup PyRFC in your Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calling SAP RFC Function Modules from Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    O365
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            O365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Document Library Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migrate Sharepoint Document Library to Azure File Share
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concur Expense Report Aggregation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teams-user-number-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get all Teams Phone Assignment(s)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprovision-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deprovison User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tenant Allow Block List - False Positive
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tenant Allow Block List - False Positive
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-incident-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Incident Timeline
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Incident Timeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investigation-phase-1-identifying-the-root-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      Investigation Phase 1: Identifying the Root Cause
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investigation-phase-2-audit-log-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Investigation Phase 2: Audit Log Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investigation-phase-3-understanding-the-anomalous-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Investigation Phase 3: Understanding the Anomalous Behavior
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Investigation Phase 3: Understanding the Anomalous Behavior">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-trace-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Trace Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-failure-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Failure Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-email-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Email Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investigation-phase-4-proofpoint-connector-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Investigation Phase 4: ProofPoint Connector Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-explanation-why-the-behavior-occurred" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Explanation: Why the Behavior Occurred
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technical Explanation: Why the Behavior Occurred">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#email-flow-architecture-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Flow Architecture Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-technical-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Technical Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolution-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolution Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resolution Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-immediate-remediation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Immediate Remediation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-comprehensive-impact-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Comprehensive Impact Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Verification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned-and-preventive-measures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lessons Learned and Preventive Measures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lessons Learned and Preventive Measures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Insights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-preventive-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Preventive Actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#powershell-monitoring-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell Monitoring Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    UKG
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            UKG
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Secure File Transfer with UKG Dimensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Employee Verification via API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-integration-and-dataview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automating Integration Execution and Dataview extract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Misc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof Point User Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-clean-deployments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Clean GitHub Deployments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-incident-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Incident Timeline
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Incident Timeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investigation-phase-1-identifying-the-root-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      Investigation Phase 1: Identifying the Root Cause
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investigation-phase-2-audit-log-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Investigation Phase 2: Audit Log Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investigation-phase-3-understanding-the-anomalous-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Investigation Phase 3: Understanding the Anomalous Behavior
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Investigation Phase 3: Understanding the Anomalous Behavior">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-trace-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Trace Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-failure-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Failure Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-email-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Email Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investigation-phase-4-proofpoint-connector-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Investigation Phase 4: ProofPoint Connector Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-explanation-why-the-behavior-occurred" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Explanation: Why the Behavior Occurred
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technical Explanation: Why the Behavior Occurred">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#email-flow-architecture-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Flow Architecture Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-technical-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Technical Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolution-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolution Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resolution Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-immediate-remediation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Immediate Remediation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-comprehensive-impact-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Comprehensive Impact Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Verification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned-and-preventive-measures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lessons Learned and Preventive Measures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lessons Learned and Preventive Measures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Insights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-preventive-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Preventive Actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#powershell-monitoring-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell Monitoring Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="investigating-a-false-positive-in-o365-tenant-allowblock-list-a-complete-technical-analysis">Investigating a False Positive in O365 Tenant Allow/Block List: A Complete Technical Analysis</h1>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>This article provides a detailed technical walkthrough of investigating and resolving an O365 Tenant Allow/Block List false positive that occurred when a user accidentally reported an internal email as phishing. We'll explore the investigation process, explain the unexpected behavior between internal and external email delivery, and demonstrate how to properly diagnose and resolve such issues in a hybrid ProofPoint Essentials + O365 environment.</p>
+<h2 id="environment-overview">Environment Overview</h2>
+<p><strong>Email Security Architecture:</strong>
+- <strong>External Email Flow</strong>: Internet → ProofPoint Essentials → O365 → End User
+- <strong>Internal Email Flow</strong>: Internal User → O365 → End User
+- <strong>Security Stack</strong>: ProofPoint Essentials (primary external filter) + O365 Defender for Office 365</p>
+<p><strong>Key Systems:</strong>
+- Microsoft 365 Defender Portal: <code>https://security.microsoft.com</code>
+- Exchange Online PowerShell
+- ProofPoint Essentials Portal
+- Microsoft Purview Compliance Portal: <code>https://compliance.microsoft.com</code></p>
+<h2 id="the-incident-timeline">The Incident Timeline</h2>
+<h3 id="initial-discovery">Initial Discovery</h3>
+<p><strong>Time</strong>: 9:00 AM CST, July 17, 2025<br />
+<strong>Issue</strong>: User <code>john.doe@yourdomain.com</code> could not receive internal emails<br />
+<strong>Symptoms</strong>: Internal emails bouncing, external emails delivering normally</p>
+<h3 id="investigation-phase-1-identifying-the-root-cause">Investigation Phase 1: Identifying the Root Cause</h3>
+<p>The first step was to check the O365 Tenant Allow/Block List for any entries related to the affected user.</p>
+<p><strong>Navigation</strong>: Microsoft 365 Defender Portal → Email &amp; collaboration → Policies &amp; rules → Threat policies → Tenant Allow/Block List</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Connect to Exchange Online</span>
+<span class="nb">Connect-ExchangeOnline</span> <span class="n">-Device</span>
+
+<span class="c"># Check current Tenant Allow/Block List entries</span>
+<span class="nb">Get-TenantAllowBlockListItems</span> <span class="n">-ListType</span> <span class="n">Sender</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Value</span><span class="p">,</span> <span class="n">Action</span><span class="p">,</span> <span class="n">CreatedDateTime</span><span class="p">,</span> <span class="n">LastModifiedDateTime</span><span class="p">,</span> <span class="n">Notes</span><span class="p">,</span> <span class="n">CreatedBy</span><span class="p">,</span> <span class="n">ModifiedBy</span>
+</code></pre></div>
+<p><strong>Key Finding</strong>: The user <code>john.doe@yourdomain.com</code> was found on the block list with:
+- <strong>CreatedDateTime</strong>: July 17, 2025 2:07:06 PM UTC (8:07:06 AM CST)
+- <strong>ModifiedBy</strong>: [Blank] - indicating system-generated entry
+- <strong>Action</strong>: Block</p>
+<h3 id="investigation-phase-2-audit-log-analysis">Investigation Phase 2: Audit Log Analysis</h3>
+<p>To understand how the user ended up on the block list, we needed to examine the audit logs.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Search for Tenant Allow/Block List activities on July 17th</span>
+<span class="nb">Search-UnifiedAuditLog</span> <span class="n">-StartDate</span> <span class="s2">&quot;2025-07-17 00:00:00&quot;</span> <span class="n">-EndDate</span> <span class="s2">&quot;2025-07-17 23:59:59&quot;</span> <span class="n">-Operations</span> <span class="s2">&quot;New-TenantAllowBlockListItems&quot;</span> <span class="n">-ResultSize</span> <span class="n">1000</span>
+</code></pre></div>
+<p><strong>Critical Discovery</strong>: The audit log revealed:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;CreationTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-07-17T14:07:06&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Operation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;New-TenantAllowBlockListItems&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;UserId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NT AUTHORITY\\SYSTEM (Microsoft.Exchange.AdminApi.NetCore)&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ListSubType&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Submission&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Block&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;True&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Entries&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;john.doe@yourdomain.com&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SubmissionID&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8c3cd19d-e1fb-4095-fa0a-08ddc53afdd2&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ListType&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sender&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExpirationDate&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8/15/2025 6:30:00 PM&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SubmissionUserId&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin.user@yourdomain.com&quot;</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Root Cause Identified</strong>: 
+- <strong>Trigger</strong>: User <code>admin.user@yourdomain.com</code> reported an email as phishing using Outlook's "Report Message" feature
+- <strong>System Response</strong>: Microsoft's automated system analyzed the submission and incorrectly added the <strong>recipient</strong> to the block list instead of evaluating the sender
+- <strong>ListSubType: "Submission"</strong>: Confirms this was from a user report, not manual admin action</p>
+<h3 id="investigation-phase-3-understanding-the-anomalous-behavior">Investigation Phase 3: Understanding the Anomalous Behavior</h3>
+<p>The most puzzling aspect was why internal emails were blocked while external emails continued to deliver normally. This behavior seemed inconsistent with how the Tenant Allow/Block List should function.</p>
+<h4 id="message-trace-analysis">Message Trace Analysis</h4>
+<div class="highlight"><pre><span></span><code><span class="c"># Check for failed internal emails</span>
+<span class="nb">Get-MessageTrace</span> <span class="n">-RecipientAddress</span> <span class="s2">&quot;john.doe@yourdomain.com&quot;</span> <span class="n">-StartDate</span> <span class="s2">&quot;2025-07-17 00:00:00&quot;</span> <span class="n">-EndDate</span> <span class="s2">&quot;2025-07-17 23:59:59&quot;</span> <span class="n">-Status</span> <span class="s2">&quot;Failed&quot;</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Received</span><span class="p">,</span> <span class="n">SenderAddress</span><span class="p">,</span> <span class="n">Subject</span><span class="p">,</span> <span class="n">Status</span><span class="p">,</span> <span class="n">MessageTraceId</span>
+</code></pre></div>
+<p><strong>Results</strong>: Multiple internal emails failed after 8:07 AM CST:</p>
+<div class="highlight"><pre><span></span><code>Received             SenderAddress                    Subject                Status
+--------             -------------                    -------                ------
+7/17/2025 9:35:35 PM internal.user@yourdomain.com    Testing - ignore       Failed
+7/17/2025 9:30:58 PM manager@yourdomain.com          Daily Stats           Failed
+7/17/2025 9:29:08 PM hr@yourdomain.com               Test Email            Failed
+</code></pre></div>
+<h4 id="detailed-failure-analysis">Detailed Failure Analysis</h4>
+<div class="highlight"><pre><span></span><code><span class="c"># Get detailed trace for specific failed message</span>
+<span class="nb">Get-MessageTraceDetail</span> <span class="n">-MessageTraceId</span> <span class="s2">&quot;990b654e-bcad-489d-66b1-08ddc579ddd4&quot;</span> <span class="n">-RecipientAddress</span> <span class="s2">&quot;john.doe@yourdomain.com&quot;</span>
+</code></pre></div>
+<p><strong>Critical Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Event: Fail
+Reason: [{LED=550 5.7.703 Your message can&#39;t be delivered because messages to john.doe@yourdomain.com...
+</code></pre></div></p>
+<p><strong>Error Code Analysis</strong>: <code>550 5.7.703</code> is the specific error code for Tenant Allow/Block List blocking, confirming the block list was the cause.</p>
+<h4 id="external-email-analysis">External Email Analysis</h4>
+<div class="highlight"><pre><span></span><code><span class="c"># Check if external emails were delivered successfully after the block</span>
+<span class="nb">Get-MessageTrace</span> <span class="n">-RecipientAddress</span> <span class="s2">&quot;john.doe@yourdomain.com&quot;</span> <span class="n">-StartDate</span> <span class="s2">&quot;2025-07-17 08:07:00&quot;</span> <span class="n">-EndDate</span> <span class="s2">&quot;2025-07-17 23:59:59&quot;</span> <span class="n">-Status</span> <span class="s2">&quot;Delivered&quot;</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">SenderAddress</span> <span class="o">-notlike</span> <span class="s2">&quot;*@yourdomain.com&quot;</span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Surprising Results</strong>: External emails were successfully delivered:</p>
+<div class="highlight"><pre><span></span><code>Received             SenderAddress                        Subject
+--------             -------------                        -------
+7/17/2025 11:34:38 PM noreply@vendor.com                 Flight Details
+7/17/2025 10:48:58 PM shop@retailer.com                  Promotional Email
+7/17/2025 1:39:06 PM  partner@external.com               Business Communication
+</code></pre></div>
+<h3 id="investigation-phase-4-proofpoint-connector-analysis">Investigation Phase 4: ProofPoint Connector Analysis</h3>
+<p>The anomalous behavior led us to examine the ProofPoint integration with O365.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Check for ProofPoint connectors</span>
+<span class="nb">Get-InboundConnector</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="o">-like</span> <span class="s2">&quot;*proof*&quot;</span> <span class="o">-or</span> <span class="nv">$_</span><span class="p">.</span><span class="n">ConnectorSource</span> <span class="o">-like</span> <span class="s2">&quot;*proof*&quot;</span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Discovery</strong>: 
+<div class="highlight"><pre><span></span><code>Name                         SenderDomains SenderIPAddresses           Enabled
+----                         ------------- -----------------           -------
+Proofpoint Inbound connector {smtp:*;1}    {67.231.149.0/24, ...}     True
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Get detailed connector configuration</span>
+<span class="nb">Get-InboundConnector</span> <span class="s2">&quot;Proofpoint Inbound connector&quot;</span> <span class="p">|</span> <span class="nb">Format-List</span>
+</code></pre></div>
+<p><strong>Key Configuration Properties</strong>:
+- <strong>SenderDomains</strong>: <code>{smtp:*;1}</code> - Accepts from any domain
+- <strong>SenderIPAddresses</strong>: Restricted to ProofPoint IP ranges
+- <strong>RestrictDomainsToIPAddresses</strong>: True - Only accepts from trusted IPs
+- <strong>CloudServicesMailEnabled</strong>: True - Enables certain bypass capabilities</p>
+<h2 id="technical-explanation-why-the-behavior-occurred">Technical Explanation: Why the Behavior Occurred</h2>
+<h3 id="email-flow-architecture-analysis">Email Flow Architecture Analysis</h3>
+<p><strong>Internal Email Flow</strong>:
+<div class="highlight"><pre><span></span><code>Internal Sender → O365 Mail Flow Rules → Tenant Allow/Block List Check → Recipient
+                                              ↓
+                                         BLOCKED (550 5.7.703)
+</code></pre></div></p>
+<p><strong>External Email Flow</strong>:
+<div class="highlight"><pre><span></span><code>External Sender → ProofPoint Essentials → Trusted Inbound Connector → Recipient
+                                                    ↓
+                                              BYPASSES Tenant Allow/Block List
+</code></pre></div></p>
+<h3 id="the-technical-explanation">The Technical Explanation</h3>
+<p>The ProofPoint Inbound connector is configured as a <strong>trusted source</strong> that bypasses standard O365 mail flow rules, including the Tenant Allow/Block List. This is intentional design because:</p>
+<ol>
+<li><strong>ProofPoint serves as the primary external threat filter</strong></li>
+<li><strong>Trusted connectors have elevated permissions</strong> to bypass certain O365 security checks</li>
+<li><strong>Internal emails</strong> still flow through standard O365 routing where security policies apply</li>
+</ol>
+<p>This explains why:
+- ✅ <strong>External emails continued to deliver</strong> (via ProofPoint's trusted connector)
+- ❌ <strong>Internal emails were blocked</strong> (via standard O365 mail flow)</p>
+<h2 id="resolution-steps">Resolution Steps</h2>
+<h3 id="step-1-immediate-remediation">Step 1: Immediate Remediation</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Remove the user from the block list</span>
+<span class="nb">Remove-TenantAllowBlockListItems</span> <span class="n">-ListType</span> <span class="n">Sender</span> <span class="n">-Entries</span> <span class="s2">&quot;john.doe@yourdomain.com&quot;</span>
+</code></pre></div>
+<h3 id="step-2-comprehensive-impact-assessment">Step 2: Comprehensive Impact Assessment</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Generate comprehensive report of all blocked emails</span>
+<span class="nv">$blockedEmails</span> <span class="p">=</span> <span class="nb">Get-MessageTrace</span> <span class="n">-RecipientAddress</span> <span class="s2">&quot;john.doe@yourdomain.com&quot;</span> <span class="n">-StartDate</span> <span class="s2">&quot;2025-07-17 08:07:00&quot;</span> <span class="n">-EndDate</span> <span class="s2">&quot;2025-07-17 23:59:59&quot;</span> <span class="n">-Status</span> <span class="s2">&quot;Failed&quot;</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">SenderAddress</span> <span class="o">-like</span> <span class="s2">&quot;*@yourdomain.com&quot;</span><span class="p">}</span>
+
+<span class="c"># Export for documentation</span>
+<span class="nv">$blockedEmails</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="p">@{</span><span class="n">Name</span><span class="p">=</span><span class="s2">&quot;Time_CST&quot;</span><span class="p">;</span><span class="n">Expression</span><span class="p">={</span><span class="nv">$_</span><span class="p">.</span><span class="n">Received</span><span class="p">.</span><span class="n">AddHours</span><span class="p">(-</span><span class="n">5</span><span class="p">)}},</span> <span class="n">SenderAddress</span><span class="p">,</span> <span class="n">Subject</span><span class="p">,</span> <span class="n">Status</span><span class="p">,</span> <span class="n">MessageTraceId</span> <span class="p">|</span> <span class="nb">Export-Csv</span> <span class="n">-Path</span> <span class="s2">&quot;C:\temp\BlockedEmails_Impact_Assessment.csv&quot;</span> <span class="n">-NoTypeInformation</span>
+
+<span class="nb">Write-Host</span> <span class="s2">&quot;Total internal emails blocked: </span><span class="p">$(</span><span class="nv">$blockedEmails</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="step-3-verification">Step 3: Verification</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Verify removal from block list</span>
+<span class="nb">Get-TenantAllowBlockListItems</span> <span class="n">-ListType</span> <span class="n">Sender</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Value</span> <span class="o">-like</span> <span class="s2">&quot;*john.doe*&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h2 id="lessons-learned-and-preventive-measures">Lessons Learned and Preventive Measures</h2>
+<h3 id="technical-insights">Technical Insights</h3>
+<ol>
+<li><strong>User Reports Can Cause False Positives</strong>: The "Report Message" feature can incorrectly target recipients instead of malicious senders</li>
+<li><strong>Trusted Connectors Bypass Security Rules</strong>: ProofPoint's trusted connector configuration explains the asymmetric behavior</li>
+<li><strong>Audit Logs Are Critical</strong>: The <code>ListSubType: "Submission"</code> parameter was key to identifying the root cause</li>
+</ol>
+<h3 id="recommended-preventive-actions">Recommended Preventive Actions</h3>
+<ol>
+<li><strong>User Training</strong>: Educate users on proper use of "Report Message" functionality</li>
+<li><strong>Monitoring</strong>: Implement alerts for Tenant Allow/Block List changes</li>
+<li><strong>Review Process</strong>: Consider implementing approval workflows for user-reported submissions</li>
+</ol>
+<h3 id="powershell-monitoring-script">PowerShell Monitoring Script</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Daily monitoring script for Tenant Allow/Block List changes</span>
+<span class="nv">$yesterday</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddDays</span><span class="p">(-</span><span class="n">1</span><span class="p">)</span>
+<span class="nv">$today</span> <span class="p">=</span> <span class="nb">Get-Date</span>
+
+<span class="nv">$changes</span> <span class="p">=</span> <span class="nb">Search-UnifiedAuditLog</span> <span class="n">-StartDate</span> <span class="nv">$yesterday</span> <span class="n">-EndDate</span> <span class="nv">$today</span> <span class="n">-Operations</span> <span class="s2">&quot;New-TenantAllowBlockListItems&quot;</span><span class="p">,</span><span class="s2">&quot;Set-TenantAllowBlockListItems&quot;</span><span class="p">,</span><span class="s2">&quot;Remove-TenantAllowBlockListItems&quot;</span> <span class="n">-ResultSize</span> <span class="n">5000</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$changes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Write-Host</span> <span class="s2">&quot;Tenant Allow/Block List changes detected:&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span>
+    <span class="nv">$changes</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+        <span class="nv">$details</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">AuditData</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
+        <span class="nb">Write-Host</span> <span class="s2">&quot;Time: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">CreationDate</span><span class="p">)</span><span class="s2"> | Operation: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Operations</span><span class="p">)</span><span class="s2"> | User: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">UserIds</span><span class="p">)</span><span class="s2">&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Cyan</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nb">Write-Host</span> <span class="s2">&quot;No Tenant Allow/Block List changes in the last 24 hours.&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="conclusion">Conclusion</h2>
+<p>This incident highlighted the importance of understanding complex email security architectures and the interactions between different security layers. The false positive was quickly identified and resolved through systematic investigation using PowerShell and audit logs.</p>
+<p><strong>Key Takeaways</strong>:
+- Audit logs provide crucial forensic information for security incidents
+- Trusted connectors can create asymmetric email flow behavior
+- User education is essential for preventing false positive security reports
+- Systematic investigation methodology is critical for complex email issues</p>
+<p>The resolution restored normal email flow while maintaining the security benefits of both ProofPoint Essentials and O365 Defender integration.</p>
+<hr />
+<p><em>This article demonstrates real-world troubleshooting techniques for O365 and ProofPoint environments. All domain names and user identities have been anonymized for security purposes.</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 19, 2025 16:13:07 UTC">July 19, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
