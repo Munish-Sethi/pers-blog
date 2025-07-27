@@ -51,6 +51,7 @@ nav:
   - SAP:
       - Setup PyRFC in your Container: sap-rfc-python-container.md
       - Calling SAP RFC Function Modules from Python: sap-rfc-python.md
+      - Automating SAP System Start/Stop Operations: sap-system-start-stop.md
   - O365:
       - Outlook Actionable Adaptive Card - Part 1: adaptive-card-consultant-review-part1.md
       - Outlook Actionable Adaptive Card - Part 2: adaptive-card-consultant-review-part2.md
@@ -60,6 +61,7 @@ nav:
       - Concur Expense Report Aggregation: sap-concur-expense-reports-aggregation.md
       - Get all Teams Phone Assignment(s): teams-user-number-assignment.md
       - Deprovison User: deprovision-user.md
+      - Tenant Allow Block List - False Positive: tenantallowblocklist.md
   - UKG:
       - Secure File Transfer with UKG Dimensions: ukg-sftp-file-transfer.md
       - Employee Verification via API: ukg-api-employee-verification.md

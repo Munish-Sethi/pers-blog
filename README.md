@@ -1,4 +1,4 @@
-# Munish(s) Technical Blog
+# Munish Sethi(s) Technical Blog
 
 This project is a professional technical blog built with [MkDocs](https://www.mkdocs.org/) and the Material for MkDocs theme. It showcases business problem solutions, technical guides, and automation scripts, with a focus on Azure and SAP integration topics.
 

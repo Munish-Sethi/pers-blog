@@ -38,11 +38,13 @@
 - [Sharepoint Document Library Copy to Azure File Share](sharepoint-site-library-to-azure-fileshare.md)
 - [Get all Teams Phone Assignment(s)](teams-user-number-assignment.md)
 - [Deprovison User](deprovision-user.md)
+- [Tenant Allow Block List - False Positive](tenantallowblocklist.md)
 
 ## SAP
 - [Setup PyRFC in your Container](sap-rfc-python-container.md)
 - [Concur Expense Report Aggregation](sap-concur-expense-reports-aggregation.md)
 - [Calling SAP RFC Function Modules from Python](sap-rfc-python.md)
+- [Automating SAP System Start/Stop Operations](sap-system-start-stop.md)
 
 ## UKG
 - [Secure File Transfer with UKG Dimensions](ukg-sftp-file-transfer.md)
