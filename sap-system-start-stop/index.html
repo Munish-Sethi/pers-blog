@@ -1,0 +1,2641 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://munishsethi.com/sap-system-start-stop/">
+      
+      
+        <link rel="prev" href="../sap-rfc-python/">
+      
+      
+        <link rel="next" href="../adaptive-card-consultant-review-part1/">
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Automating SAP System Start/Stop Operations - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#automating-sap-system-startstop-operations-with-powershell" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Automating SAP System Start/Stop Operations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Bill
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Resource
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Query Recovery Services Vault
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra Users, User Groups and Licence assignments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra User Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-container-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orchestrating Scheduled Jobs (Container Instances)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-build-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Build Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Deploy Container IaC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Deploy Container Github Actions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-custon-image-compute-gallery-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building and Publishing an Custom Image
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-publish-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploying Azure Virtual Desktop (AVD) Desktops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-cleanup-obsolete-fsLogix-profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cleanup Obsolete FXLogix Profiles(AVD)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Coninuity Program / Diasister Recovery - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Continuity Program / Disaster Recovery - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Continuity Program / Disaster Recovery - Git Hub Action
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore VM from RSV Backup - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore VM from RSV Backup - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Fabric
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Fabric
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-wharehouse-fact-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Warehouse data import
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki, Nagios XI & Manage Engine
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Cisco Meraki, Nagios XI & Manage Engine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-unused-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Unused Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Devices Discovery and Nagios Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-itsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integrating Monitoring System with ITSM System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-vm-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploying Cisco Meraki vMX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Active Directory Domain Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Active Directory Domain Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup PyRFC in your Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calling SAP RFC Function Modules from Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Automating SAP System Start/Stop Operations
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automating SAP System Start/Stop Operations
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-process-execution-helper" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Process Execution Helper
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sap-system-stop-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. SAP System Stop Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sap-system-start-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. SAP System Start Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#password-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Password Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-and-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging and Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging and Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structured-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structured Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Notifications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-execution-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Execution Logic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-an-ecc-development-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting an ECC Development System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stopping-a-bw-production-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stopping a BW Production System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Environments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-pre-execution-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pre-execution Checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Security Considerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    O365
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            O365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Document Library Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migrate Sharepoint Document Library to Azure File Share
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concur Expense Report Aggregation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teams-user-number-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get all Teams Phone Assignment(s)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprovision-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deprovison User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tenantallowblocklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tenant Allow Block List - False Positive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    UKG
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            UKG
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Secure File Transfer with UKG Dimensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Employee Verification via API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-integration-and-dataview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automating Integration Execution and Dataview extract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Misc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof Point User Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-clean-deployments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Clean GitHub Deployments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-process-execution-helper" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Process Execution Helper
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sap-system-stop-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. SAP System Stop Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sap-system-start-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. SAP System Start Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#password-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Password Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-and-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging and Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging and Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structured-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structured Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Notifications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-execution-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Execution Logic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-an-ecc-development-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting an ECC Development System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stopping-a-bw-production-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stopping a BW Production System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Environments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-pre-execution-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pre-execution Checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Security Considerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="automating-sap-system-startstop-operations-with-powershell">Automating SAP System Start/Stop Operations with PowerShell</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Managing SAP systems efficiently requires reliable automation tools that can handle both routine maintenance and emergency situations. This article demonstrates how to implement a comprehensive PowerShell-based solution for automating SAP system start and stop operations across multiple environments including ECC (Enterprise Central Component), BW (Business Warehouse), and Dispatch systems.</p>
+<p>The solution provides a centralized approach to managing different SAP landscapes while maintaining proper logging, error handling, and notification mechanisms.</p>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The automation script is built around several key components:</p>
+<ul>
+<li><strong>Environment-specific configurations</strong> for different SAP systems</li>
+<li><strong>Secure password management</strong> using PowerShell's credential system</li>
+<li><strong>Robust logging</strong> with timestamped entries</li>
+<li><strong>Email notifications</strong> for operation status updates</li>
+<li><strong>Error handling</strong> to ensure graceful failure recovery</li>
+</ul>
+<h2 id="core-functions">Core Functions</h2>
+<h3 id="1-process-execution-helper">1. Process Execution Helper</h3>
+<p>The <code>InvokeStartProcess</code> function serves as the foundation for executing SAP control commands:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Function</span> <span class="n">InvokeStartProcess</span>
+<span class="p">{</span>
+    <span class="k">Param</span><span class="p">(</span>  <span class="no">[string]</span><span class="nv">$Command</span><span class="p">,</span>
+            <span class="no">[string]</span><span class="nv">$WorkingDirectory</span><span class="p">,</span>
+            <span class="no">[string]</span><span class="nv">$Arguments</span><span class="p">,</span>
+            <span class="no">[System.Int16]</span><span class="nv">$SleepInSeconds</span><span class="p">,</span>
+            <span class="no">[string]</span><span class="nv">$Replaceinlogfile</span>
+        <span class="p">)</span>
+    <span class="k">try</span> 
+    <span class="p">{</span>
+        <span class="nv">$Processrun</span> <span class="p">=</span> <span class="nb">Start-Process</span> <span class="n">-FilePath</span> <span class="nv">$Command</span> <span class="p">`</span>
+                                        <span class="n">-WorkingDirectory</span> <span class="nv">$WorkingDirectory</span> <span class="p">`</span>
+                                        <span class="n">-ArgumentList</span> <span class="nv">$Arguments</span> <span class="p">`</span>
+                                        <span class="n">-Wait</span> <span class="p">`</span>
+                                        <span class="n">-Passthru</span>
+
+        <span class="nb">Write-Log</span> <span class="s2">&quot;Executed Command &quot;</span><span class="p">,</span> <span class="nv">$Command</span><span class="p">,</span> <span class="nv">$Arguments</span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="nv">$Replaceinlogfile</span><span class="p">,</span><span class="s2">&quot;nothing2writeinlog&quot;</span><span class="p">)</span> <span class="n">-join</span>
+        <span class="nb">Write-Log</span> <span class="s2">&quot;Sleeping for &quot;</span><span class="p">,</span> <span class="nv">$SleepInSeconds</span><span class="p">.</span><span class="n">ToString</span><span class="p">(),</span> <span class="s2">&quot; seconds&quot;</span> <span class="n">-join</span>
+        <span class="nb">Start-Sleep</span> <span class="n">-Seconds</span> <span class="nv">$SleepInSeconds</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> 
+    <span class="p">{</span>
+        <span class="nb">Write-Log</span> <span class="s2">&quot;Error While running command &quot;</span><span class="p">,</span> <span class="nv">$Command</span><span class="p">,</span> <span class="nv">$Arguments</span> <span class="n">-join</span>
+        <span class="nv">$Processrun</span><span class="p">.</span><span class="n">Kill</span><span class="p">()</span>
+    <span class="p">}</span>
+    <span class="k">finally</span> 
+    <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Key Features:</strong>
+- Executes SAP control commands with proper parameters
+- Implements security by masking sensitive information in logs
+- Includes configurable sleep intervals for system stabilization
+- Provides error handling with process termination on failure</p>
+<h3 id="2-sap-system-stop-function">2. SAP System Stop Function</h3>
+<p>The <code>StopSAP</code> function handles the shutdown sequence for different SAP environments:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Function</span> <span class="n">StopSAP</span> 
+<span class="p">{</span>
+    <span class="k">Param</span><span class="p">(</span><span class="no">[System.String]</span><span class="nv">$Environment</span><span class="p">)</span>
+    <span class="k">try</span> 
+    <span class="p">{</span>
+        <span class="nv">$Command</span> <span class="p">=</span> <span class="s2">&quot;sapcontrol.exe&quot;</span>
+        <span class="n">SendEmail</span> <span class="s2">&quot;SAP stop has been initiated via Automated script.&quot;</span> <span class="s2">&quot;Stop Initiated&quot;</span> <span class="nv">$Environment</span>
+        <span class="nv">$serviceaccountpwd</span> <span class="p">=</span> <span class="n">GetPassword</span> <span class="nv">$Environment</span>
+        <span class="nv">$WorkingDirectory</span> <span class="p">=</span> <span class="s2">&quot;C:\Program Files\SAP\hostctrl\exe&quot;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$Environment</span> <span class="o">-eq</span> <span class="s2">&quot;ECCDEV&quot;</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$CommandlineArgs</span> <span class="p">=</span> <span class="s2">&quot;-nr 0 -host [MASKED-DEV-HOST] -user devadm &quot;</span> <span class="p">+</span> <span class="nv">$serviceaccountpwd</span> <span class="p">+</span> <span class="s2">&quot; -function StopSystem&quot;</span>
+            <span class="n">InvokeStartProcess</span> <span class="nv">$Command</span> <span class="nv">$WorkingDirectory</span> <span class="nv">$CommandlineArgs</span> <span class="n">60</span> <span class="nv">$serviceaccountpwd</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$Environment</span> <span class="o">-eq</span> <span class="s2">&quot;ECCTEST&quot;</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$CommandlineArgs</span> <span class="p">=</span> <span class="s2">&quot;-nr 0 -host [MASKED-TEST-HOST] -user tstadm &quot;</span> <span class="p">+</span> <span class="nv">$serviceaccountpwd</span> <span class="p">+</span> <span class="s2">&quot; -function StopSystem&quot;</span>
+            <span class="n">InvokeStartProcess</span> <span class="nv">$Command</span> <span class="nv">$WorkingDirectory</span> <span class="nv">$CommandlineArgs</span> <span class="n">60</span> <span class="nv">$serviceaccountpwd</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$Environment</span> <span class="o">-eq</span> <span class="s2">&quot;ECCPROD&quot;</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$CommandlineArgs</span> <span class="p">=</span> <span class="s2">&quot;-nr 0 -host [MASKED-PROD-HOST] -user prdadm &quot;</span> <span class="p">+</span> <span class="nv">$serviceaccountpwd</span> <span class="p">+</span> <span class="s2">&quot; -function StopSystem&quot;</span>
+            <span class="n">InvokeStartProcess</span> <span class="nv">$Command</span> <span class="nv">$WorkingDirectory</span> <span class="nv">$CommandlineArgs</span> <span class="n">60</span> <span class="nv">$serviceaccountpwd</span>
+        <span class="p">}</span>
+
+        <span class="c"># BW Development - Multi-step shutdown process</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$Environment</span> <span class="o">-eq</span> <span class="s2">&quot;BWDEV&quot;</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$CommandlineArgs</span> <span class="p">=</span> <span class="s2">&quot;-nr 0 -host [MASKED-BWDEV-HOST] -user bwdadm &quot;</span> <span class="p">+</span> <span class="nv">$serviceaccountpwd</span> <span class="p">+</span> <span class="s2">&quot; -function StopSystem DIALOG&quot;</span>
+            <span class="n">InvokeStartProcess</span> <span class="nv">$Command</span> <span class="nv">$WorkingDirectory</span> <span class="nv">$CommandlineArgs</span> <span class="n">60</span> <span class="nv">$serviceaccountpwd</span>
+            <span class="nv">$CommandlineArgs</span> <span class="p">=</span> <span class="s2">&quot;-nr 1 -host [MASKED-BWDEV-HOST] -user bwdadm &quot;</span> <span class="p">+</span> <span class="nv">$serviceaccountpwd</span> <span class="p">+</span> <span class="s2">&quot; -function StopSystem SCS&quot;</span>
+            <span class="n">InvokeStartProcess</span> <span class="nv">$Command</span> <span class="nv">$WorkingDirectory</span> <span class="nv">$CommandlineArgs</span> <span class="n">60</span> <span class="nv">$serviceaccountpwd</span>
+        <span class="p">}</span>
+
+        <span class="c"># Additional environment configurations...</span>
+
+        <span class="n">SendEmail</span> <span class="s2">&quot;SAP stop has now been completed via Automated script.&quot;</span> <span class="s2">&quot;Stop Completed&quot;</span> <span class="nv">$Environment</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> 
+    <span class="p">{</span>
+        <span class="nb">Write-Output</span> <span class="s2">&quot;Error While Stopping SAP&quot;</span>    
+        <span class="nv">$Error</span><span class="p">.</span><span class="n">Clear</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Environment-Specific Handling:</strong>
+- <strong>ECC Systems</strong>: Standard single-command shutdown
+- <strong>BW Systems</strong>: Multi-step process (DIALOG → SCS components)
+- <strong>Dispatch Systems</strong>: Specialized user account handling</p>
+<h3 id="3-sap-system-start-function">3. SAP System Start Function</h3>
+<p>The <code>StartSAP</code> function manages the startup sequence with proper component ordering:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Function</span> <span class="n">StartSAP</span> 
+<span class="p">{</span>
+    <span class="k">Param</span><span class="p">(</span><span class="no">[System.String]</span><span class="nv">$Environment</span><span class="p">)</span>
+    <span class="k">try</span> 
+    <span class="p">{</span>
+        <span class="nv">$Command</span> <span class="p">=</span> <span class="s2">&quot;sapcontrol.exe&quot;</span>
+        <span class="n">SendEmail</span> <span class="s2">&quot;SAP start has been initiated via Automated script.&quot;</span> <span class="s2">&quot;Start Initiated&quot;</span> <span class="nv">$Environment</span>
+        <span class="nv">$serviceaccountpwd</span> <span class="p">=</span> <span class="n">GetPassword</span> <span class="nv">$Environment</span>
+        <span class="nv">$WorkingDirectory</span> <span class="p">=</span> <span class="s2">&quot;C:\Program Files\SAP\hostctrl\exe&quot;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$Environment</span> <span class="o">-eq</span> <span class="s2">&quot;ECCDEV&quot;</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$CommandlineArgs</span> <span class="p">=</span> <span class="s2">&quot;-nr 1 -host [MASKED-DEV-HOST] -user devadm &quot;</span> <span class="p">+</span> <span class="nv">$serviceaccountpwd</span> <span class="p">+</span> <span class="s2">&quot; -function StartSystem&quot;</span>
+            <span class="n">InvokeStartProcess</span> <span class="nv">$Command</span> <span class="nv">$WorkingDirectory</span> <span class="nv">$CommandlineArgs</span> <span class="n">60</span> <span class="nv">$serviceaccountpwd</span>
+        <span class="p">}</span>
+
+        <span class="c"># BW Development - Ordered startup process</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$Environment</span> <span class="o">-eq</span> <span class="s2">&quot;BWDEV&quot;</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c"># Start SCS first</span>
+            <span class="nv">$CommandlineArgs</span> <span class="p">=</span> <span class="s2">&quot;-nr 1 -host [MASKED-BWDEV-HOST] -user bwdadm &quot;</span> <span class="p">+</span> <span class="nv">$serviceaccountpwd</span> <span class="p">+</span> <span class="s2">&quot; -function StartSystem SCS&quot;</span>
+            <span class="n">InvokeStartProcess</span> <span class="nv">$Command</span> <span class="nv">$WorkingDirectory</span> <span class="nv">$CommandlineArgs</span> <span class="n">60</span> <span class="nv">$serviceaccountpwd</span>
+
+            <span class="c"># Then start DIALOG instances</span>
+            <span class="nv">$CommandlineArgs</span> <span class="p">=</span> <span class="s2">&quot;sapcontrol -nr 0 -host [MASKED-BWDEV-HOST] -user bwdadm &quot;</span> <span class="p">+</span> <span class="nv">$serviceaccountpwd</span> <span class="p">+</span> <span class="s2">&quot; -function StartSystem DIALOG&quot;</span>
+            <span class="n">InvokeStartProcess</span> <span class="nv">$Command</span> <span class="nv">$WorkingDirectory</span> <span class="nv">$CommandlineArgs</span> <span class="n">60</span> <span class="nv">$serviceaccountpwd</span>
+        <span class="p">}</span>
+
+        <span class="n">SendEmail</span> <span class="s2">&quot;SAP start has completed via Automated script.&quot;</span> <span class="s2">&quot;Start Completed&quot;</span> <span class="nv">$Environment</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> 
+    <span class="p">{</span>
+        <span class="nb">Write-Output</span> <span class="s2">&quot;Error While Starting SAP&quot;</span>    
+        <span class="nv">$Error</span><span class="p">.</span><span class="n">Clear</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Startup Sequencing:</strong>
+- SCS (SAP Central Services) components start first
+- DIALOG instances follow after SCS stabilization
+- Each step includes proper timing delays</p>
+<h2 id="security-implementation">Security Implementation</h2>
+<h3 id="password-management">Password Management</h3>
+<p>The script implements secure password handling through encrypted storage:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Function</span> <span class="n">GetPassword</span>
+<span class="p">{</span>
+    <span class="k">Param</span><span class="p">(</span><span class="no">[string]</span><span class="nv">$Environment</span><span class="p">)</span>
+    <span class="k">try</span> 
+    <span class="p">{</span>
+        <span class="nv">$localpassword</span> <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="nv">$passwordFileName</span> <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="nv">$passwordFileName</span> <span class="p">=</span> <span class="s2">&quot;.\&quot;</span> <span class="p">+</span> <span class="nv">$Environment</span> <span class="p">+</span> <span class="s2">&quot;.txt&quot;</span>
+        <span class="nv">$localpassword</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="nv">$passwordFileName</span> <span class="p">|</span> <span class="nb">ConvertTo-SecureString</span> 
+        <span class="nv">$localpassword</span> <span class="p">=</span> <span class="no">[System.Net.NetworkCredential]</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nv">$localpassword</span><span class="p">).</span><span class="n">Password</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;&quot;&quot;</span> <span class="p">+</span> <span class="nv">$localpassword</span> <span class="p">+</span> <span class="s2">&quot;&quot;&quot;&quot;</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> 
+    <span class="p">{</span>
+        <span class="nb">Write-Output</span> <span class="s2">&quot;Error while getting password&quot;</span>    
+        <span class="nv">$Error</span><span class="p">.</span><span class="n">Clear</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Security Features:</strong>
+- Passwords stored as encrypted SecureString objects
+- Environment-specific password files
+- No plain-text credentials in script or logs
+- Proper credential object handling</p>
+<h2 id="logging-and-monitoring">Logging and Monitoring</h2>
+<h3 id="structured-logging">Structured Logging</h3>
+<div class="highlight"><pre><span></span><code><span class="k">function</span> <span class="nb">Write-Log</span> <span class="p">{</span>
+    <span class="k">Param</span><span class="p">(</span><span class="nv">$message</span><span class="p">)</span>
+    <span class="nb">Write-Output</span> <span class="s2">&quot;</span><span class="p">$(</span><span class="nb">get-date</span> <span class="n">-format</span> <span class="s1">&#39;yyyyMMdd HH:mm:ss&#39;</span><span class="p">)</span><span class="s2"> $message&quot;</span> <span class="p">|</span> <span class="nb">Out-File</span> <span class="n">-Encoding</span> <span class="n">utf8</span> <span class="nv">$logFile</span> <span class="n">-Append</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="email-notifications">Email Notifications</h3>
+<div class="highlight"><pre><span></span><code><span class="k">Function</span> <span class="n">SendEmail</span>
+<span class="p">{</span>
+    <span class="k">Param</span><span class="p">(</span><span class="no">[string]</span><span class="nv">$Body</span><span class="p">,</span><span class="no">[string]</span><span class="nv">$Subject</span><span class="p">,</span> <span class="no">[string]</span><span class="nv">$Environment</span><span class="p">)</span>
+
+    <span class="nv">$From</span> <span class="p">=</span> <span class="s2">&quot;SAP-&quot;</span> <span class="p">+</span> <span class="nv">$Environment</span> <span class="p">+</span> <span class="s1">&#39;@[MASKED-DOMAIN].Com&#39;</span>
+    <span class="nv">$To</span> <span class="p">=</span> <span class="s2">&quot;[MASKED-EMAIL]@[MASKED-DOMAIN].com&quot;</span><span class="p">,</span><span class="s2">&quot;[MASKED-ADMIN]@[MASKED-DOMAIN].com&quot;</span>
+
+    <span class="nb">Send-MailMessage</span>    <span class="n">-To</span> <span class="nv">$To</span> <span class="p">`</span>
+                        <span class="n">-Subject</span> <span class="nv">$Subject</span> <span class="p">`</span>
+                        <span class="n">-Body</span> <span class="nv">$Body</span> <span class="p">`</span>
+                        <span class="n">-From</span> <span class="nv">$From</span> <span class="p">`</span>
+                        <span class="n">-SmtpServer</span> <span class="s2">&quot;[MASKED-SMTP-SERVER]&quot;</span> <span class="p">`</span>
+                        <span class="n">-Port</span> <span class="n">25</span> 
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Notification Features:</strong>
+- Environment-specific sender addresses
+- Multiple recipient support
+- Operation status tracking (Initiated/Completed)
+- Error notification capability</p>
+<h2 id="main-execution-logic">Main Execution Logic</h2>
+<p>The script's main execution block handles command-line arguments and orchestrates the operations:</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span> 
+<span class="p">{</span>
+    <span class="nv">$ScriptFolder</span> <span class="p">=</span> <span class="s1">&#39;D:\Scripts\&#39;</span>
+    <span class="nv">$LogFileName</span> <span class="p">=</span> <span class="s1">&#39;SAPAutomation.txt&#39;</span>
+    <span class="nv">$logFile</span> <span class="p">=</span> <span class="nv">$ScriptFolder</span> <span class="p">+</span> <span class="p">(</span><span class="nb">get-date</span> <span class="n">-format</span> <span class="s1">&#39;yyyyMMdd&#39;</span><span class="p">)</span> <span class="p">+</span> <span class="nv">$LogFileName</span>
+
+    <span class="nb">Write-Log</span> <span class="s2">&quot;Started SAP Automation Script&quot;</span>
+    <span class="nv">$StartStop</span> <span class="p">=</span> <span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">]</span>      <span class="c"># &quot;START&quot; or &quot;STOP&quot;</span>
+    <span class="nv">$SapEnvironment</span> <span class="p">=</span> <span class="nv">$args</span><span class="p">[</span><span class="n">1</span><span class="p">]</span> <span class="c"># Environment identifier</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$StartStop</span> <span class="o">-eq</span> <span class="s2">&quot;STOP&quot;</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">StopSAP</span> <span class="nv">$SapEnvironment</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$StartStop</span> <span class="o">-eq</span> <span class="s2">&quot;START&quot;</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">StartSAP</span> <span class="nv">$SapEnvironment</span>
+    <span class="p">}</span>
+    <span class="nb">Write-Log</span> <span class="s2">&quot;Finished SAP Automation Script&quot;</span>
+<span class="p">}</span>
+<span class="k">catch</span> 
+<span class="p">{</span>
+    <span class="nv">$ErrorMessage</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Exception</span><span class="p">.</span><span class="n">message</span>
+    <span class="nb">write-log</span> <span class="s2">&quot;Error - $ErrorMessage&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="usage-examples">Usage Examples</h2>
+<h3 id="starting-an-ecc-development-system">Starting an ECC Development System</h3>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">SAPAutomation</span><span class="p">.</span><span class="n">ps1</span> <span class="nb">START </span><span class="n">ECCDEV</span>
+</code></pre></div>
+<h3 id="stopping-a-bw-production-system">Stopping a BW Production System</h3>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">SAPAutomation</span><span class="p">.</span><span class="n">ps1</span> <span class="n">STOP</span> <span class="n">BWPROD</span>
+</code></pre></div>
+<h3 id="batch-operations">Batch Operations</h3>
+<div class="highlight"><pre><span></span><code># Stop all development systems for maintenance
+.\SAPAutomation.ps1 STOP ECCDEV
+.\SAPAutomation.ps1 STOP BWDEV
+.\SAPAutomation.ps1 STOP DISPATCHDEV
+
+# Start systems after maintenance
+.\SAPAutomation.ps1 START ECCDEV
+.\SAPAutomation.ps1 START BWDEV
+.\SAPAutomation.ps1 START DISPATCHDEV
+</code></pre></div>
+<h2 id="supported-environments">Supported Environments</h2>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>System Type</th>
+<th>Special Handling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECCDEV</td>
+<td>ECC Development</td>
+<td>Standard operation</td>
+</tr>
+<tr>
+<td>ECCTEST</td>
+<td>ECC Test</td>
+<td>Standard operation</td>
+</tr>
+<tr>
+<td>ECCPROD</td>
+<td>ECC Production</td>
+<td>Standard operation</td>
+</tr>
+<tr>
+<td>BWDEV</td>
+<td>BW Development</td>
+<td>Multi-component sequence</td>
+</tr>
+<tr>
+<td>BWTEST</td>
+<td>BW Test</td>
+<td>Multi-component sequence</td>
+</tr>
+<tr>
+<td>BWPROD</td>
+<td>BW Production</td>
+<td>Standard operation</td>
+</tr>
+<tr>
+<td>DISPATCHDEV</td>
+<td>Dispatch Development</td>
+<td>Local account handling</td>
+</tr>
+<tr>
+<td>DISPATCHPROD</td>
+<td>Dispatch Production</td>
+<td>Local account handling</td>
+</tr>
+</tbody>
+</table>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="1-pre-execution-checks">1. Pre-execution Checks</h3>
+<ul>
+<li>Verify system status before operations</li>
+<li>Ensure proper user permissions</li>
+<li>Validate network connectivity to target hosts</li>
+</ul>
+<h3 id="2-error-handling">2. Error Handling</h3>
+<ul>
+<li>Implement comprehensive try-catch blocks</li>
+<li>Log all operations and errors</li>
+<li>Provide meaningful error messages</li>
+</ul>
+<h3 id="3-security-considerations">3. Security Considerations</h3>
+<ul>
+<li>Use encrypted password storage</li>
+<li>Implement least-privilege access</li>
+<li>Regular password rotation</li>
+<li>Audit trail maintenance</li>
+</ul>
+<h3 id="4-maintenance">4. Maintenance</h3>
+<ul>
+<li>Regular log file cleanup</li>
+<li>Password file security validation</li>
+<li>Script version control</li>
+<li>Testing in non-production environments</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<p><strong>Connection Failures:</strong>
+- Verify network connectivity to SAP hosts
+- Check firewall rules for SAP ports
+- Validate DNS resolution</p>
+<p><strong>Authentication Errors:</strong>
+- Verify password file encryption/decryption
+- Check user account permissions
+- Ensure service account status</p>
+<p><strong>Process Failures:</strong>
+- Review SAP system logs
+- Check system resource availability
+- Verify SAP service status</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This PowerShell automation solution provides a robust framework for managing SAP system operations across multiple environments. The implementation demonstrates key principles of enterprise automation including security, logging, error handling, and notification management.</p>
+<p>The modular design allows for easy extension to additional SAP environments while maintaining consistency in operations and monitoring. Regular maintenance and testing ensure reliable operation in production environments.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://help.sap.com/docs/SAP_NETWEAVER">SAP Administration Guide</a></li>
+<li><a href="https://docs.microsoft.com/en-us/powershell/">PowerShell Documentation</a></li>
+</ul>
+<hr />
+<p><em>This article demonstrates enterprise-level SAP automation practices. Always test scripts in development environments before production deployment.</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 27, 2025 19:19:06 UTC">July 27, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
