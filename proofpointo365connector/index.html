@@ -10,13 +10,11 @@
       
       
       
-        <link rel="canonical" href="https://munishsethi.com/sap-rfc-python-container/">
+        <link rel="canonical" href="https://munishsethi.com/proofpointo365connector/">
       
       
-        <link rel="prev" href="../adds-user-update/">
+        <link rel="prev" href="../github-clean-deployments/">
       
-      
-        <link rel="next" href="../sap-rfc-python/">
       
       
       <link rel="icon" href="../None">
@@ -24,7 +22,7 @@
     
     
       
-        <title>Setup PyRFC in your Container - Munish(s) Blog</title>
+        <title>Understanding DMARC/Spoofing, O365 with ProofPoint - Munish(s) Blog</title>
       
     
     
@@ -68,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#installing-the-pyrfc-module-for-sap-integration-a-step-by-step-guide" class="md-skip">
+        <a href="#understanding-spf-dkim-and-dmarc-in-o365-with-proofpoint-preventing-spoofing-and-bypass-attacks" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setup PyRFC in your Container
+              Understanding DMARC/Spoofing, O365 with ProofPoint
             
           </span>
         </div>
@@ -994,8 +992,6 @@
       
   
   
-    
-  
   
   
     
@@ -1008,11 +1004,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -1028,7 +1024,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             SAP
@@ -1039,32 +1035,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Setup PyRFC in your Container
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
         
   
   
@@ -1075,98 +1049,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-download-the-netweaver-rfc-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Download the NetWeaver RFC SDK
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-prepare-the-sap-sdk-directory" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Prepare the SAP SDK Directory
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-extract-and-copy-the-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Extract and Copy the SDK
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-configure-the-library-path" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Configure the Library Path
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-update-the-library-cache-and-set-environment-variable" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Update the Library Cache and Set Environment Variable
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-install-cython-and-build-essentials" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Install Cython and Build Essentials
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-build-and-install-pyrfc" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Build and Install pyrfc
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1605,8 +1487,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1617,11 +1501,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
@@ -1637,7 +1521,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Misc
@@ -1694,10 +1578,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../proofpointo365connector/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Understanding DMARC/Spoofing, O365 with ProofPoint
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1708,6 +1614,194 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-email-flow-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Email Flow Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-spf-dkim-and-dmarc-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. SPF, DKIM, and DMARC Explained
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. SPF, DKIM, and DMARC Explained">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spf-sender-policy-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPF (Sender Policy Framework)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dkim-domainkeys-identified-mail" class="md-nav__link">
+    <span class="md-ellipsis">
+      DKIM (DomainKeys Identified Mail)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dmarc-domain-based-message-authentication-reporting-and-conformance" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMARC (Domain-based Message Authentication, Reporting, and Conformance)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-problem-spoofing-despite-dmarc-quarantine" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. The Problem: Spoofing Despite DMARC Quarantine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The Problem: Spoofing Despite DMARC Quarantine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-this-happens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Happens
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-allowing-legitimate-internal-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Allowing Legitimate Internal Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Allowing Legitimate Internal Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step-creating-a-connector-in-o365" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step: Creating a Connector in O365
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-blocking-external-spoofing-the-powershell-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Blocking External Spoofing: The PowerShell Rule
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Blocking External Spoofing: The PowerShell Rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step-creating-the-transport-rule-via-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step: Creating the Transport Rule via PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-step-by-step-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Step-by-Step Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-why-additional-connector-and-rule-are-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Why Additional Connector and Rule Are Needed
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Security Considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1747,72 +1841,168 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      Introduction
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-download-the-netweaver-rfc-sdk" class="md-nav__link">
+  <a href="#1-email-flow-architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Download the NetWeaver RFC SDK
+      1. Email Flow Architecture
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-prepare-the-sap-sdk-directory" class="md-nav__link">
+  <a href="#2-spf-dkim-and-dmarc-explained" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Prepare the SAP SDK Directory
+      2. SPF, DKIM, and DMARC Explained
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. SPF, DKIM, and DMARC Explained">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spf-sender-policy-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPF (Sender Policy Framework)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dkim-domainkeys-identified-mail" class="md-nav__link">
+    <span class="md-ellipsis">
+      DKIM (DomainKeys Identified Mail)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dmarc-domain-based-message-authentication-reporting-and-conformance" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMARC (Domain-based Message Authentication, Reporting, and Conformance)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-problem-spoofing-despite-dmarc-quarantine" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. The Problem: Spoofing Despite DMARC Quarantine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The Problem: Spoofing Despite DMARC Quarantine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-this-happens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why This Happens
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-allowing-legitimate-internal-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Allowing Legitimate Internal Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Allowing Legitimate Internal Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step-creating-a-connector-in-o365" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step: Creating a Connector in O365
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-blocking-external-spoofing-the-powershell-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Blocking External Spoofing: The PowerShell Rule
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Blocking External Spoofing: The PowerShell Rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step-creating-the-transport-rule-via-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step: Creating the Transport Rule via PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-step-by-step-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Step-by-Step Setup
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-extract-and-copy-the-sdk" class="md-nav__link">
+  <a href="#7-why-additional-connector-and-rule-are-needed" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Extract and Copy the SDK
+      7. Why Additional Connector and Rule Are Needed
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-configure-the-library-path" class="md-nav__link">
+  <a href="#8-security-considerations" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Configure the Library Path
+      8. Security Considerations
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-update-the-library-cache-and-set-environment-variable" class="md-nav__link">
+  <a href="#9-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Update the Library Cache and Set Environment Variable
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-install-cython-and-build-essentials" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Install Cython and Build Essentials
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-build-and-install-pyrfc" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Build and Install pyrfc
+      9. Summary
     </span>
   </a>
   
@@ -1834,66 +2024,211 @@
 
 
 
-<h1 id="installing-the-pyrfc-module-for-sap-integration-a-step-by-step-guide">Installing the <code>PyRFC</code> Module for SAP Integration: A Step-by-Step Guide</h1>
-<p>Integrating Python with SAP systems using the <code>PyRFC</code> module can unlock powerful automation and data access capabilities. This article provides a clear, professional walkthrough for setting up the SAP NetWeaver RFC SDK and building the <code>PyRFC</code> Python package from scratch.</p>
+<h1 id="understanding-spf-dkim-and-dmarc-in-o365-with-proofpoint-preventing-spoofing-and-bypass-attacks">Understanding SPF, DKIM, and DMARC in O365 with Proofpoint: Preventing Spoofing and Bypass Attacks</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Email security is a critical aspect of any organization’s IT infrastructure. This article explains the basics of SPF, DKIM, and DMARC, and details a real-world scenario involving Office 365 (O365) and Proofpoint, where attackers were able to bypass protections and how to mitigate such risks.</p>
 <hr />
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="1-email-flow-architecture">1. Email Flow Architecture</h2>
 <ul>
-<li>Access to the SAP NetWeaver RFC SDK (download from the official SAP website)</li>
-<li>Basic familiarity with Linux command line</li>
-<li>Python 3.x and administrative privileges on your system</li>
+<li><strong>Internal Emails:</strong> Sent from one user to another within the organization, these do <strong>not</strong> traverse Proofpoint.</li>
+<li><strong>Outbound External Emails:</strong> Sent from O365 to Proofpoint, then to external recipients.</li>
+<li><strong>Inbound External Emails:</strong> Received by Proofpoint, then relayed to O365, and finally delivered to users.</li>
 </ul>
-<hr />
-<h2 id="1-download-the-netweaver-rfc-sdk">1. Download the NetWeaver RFC SDK</h2>
-<ul>
-<li>Download the latest NetWeaver RFC SDK from the SAP website.</li>
-<li>Place the downloaded file (<code>nwrfc750P_14-70002752.zip</code>) in your repository's <code>assets</code> folder for easy access.</li>
-</ul>
-<h2 id="2-prepare-the-sap-sdk-directory">2. Prepare the SAP SDK Directory</h2>
-<p>Create the target directory for the SAP SDK:</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/usr/local/sap/
-</code></pre></div>
-<h2 id="3-extract-and-copy-the-sdk">3. Extract and Copy the SDK</h2>
-<ul>
-<li>Extract the <code>nwrfcsdk</code> folder from the ZIP file.</li>
-<li>Copy the extracted <code>nwrfcsdk</code> folder to <code>/usr/local/sap/</code>.</li>
-</ul>
-<h2 id="4-configure-the-library-path">4. Configure the Library Path</h2>
-<p>Create a configuration file for the dynamic linker and add the SDK library path:</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/ld.so.conf.d/nwrfcsdk.conf
-
-<span class="c1"># Add the following line to the file:</span>
-/usr/local/sap/nwrfcsdk/lib
-</code></pre></div>
-<h2 id="5-update-the-library-cache-and-set-environment-variable">5. Update the Library Cache and Set Environment Variable</h2>
-<p>Update the system's library cache and set the required environment variable:</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ldconfig
-<span class="c1"># Verify the path configuration should not have any errors</span>
-ldconfig<span class="w"> </span>-p<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>sap
-<span class="c1"># Set Environment Variable</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">SAPNWRFC_HOME</span><span class="o">=</span>/usr/local/sap/nwrfcsdk
-</code></pre></div>
-<h2 id="6-install-cython-and-build-essentials">6. Install Cython and Build Essentials</h2>
-<p>Install the necessary build tools and Python dependencies:</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>Cython
-sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>python3-dev
-</code></pre></div>
-<h2 id="7-build-and-install-pyrfc">7. Build and Install <code>pyrfc</code></h2>
-<p>Clone the PyRFC repository and build the package:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/SAP/PyRFC.git
-<span class="nb">cd</span><span class="w"> </span>PyRFC
-python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>build
-<span class="nv">PYRFC_BUILD_CYTHON</span><span class="o">=</span>yes<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>build<span class="w"> </span>--wheel<span class="w"> </span>--sdist<span class="w"> </span>--outdir<span class="w"> </span>dist
-pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>--no-index<span class="w"> </span>--find-links<span class="o">=</span>dist<span class="w"> </span>pyrfc
-</code></pre></div>
-<hr />
 <blockquote>
-<p><strong>Pro Tip:</strong>
-Double-check all paths and environment variables before building. For troubleshooting, consult the <a href="https://github.com/SAP/PyRFC">PyRFC documentation</a> or reach out to the SAP community forums.</p>
+<p><strong>Note:</strong> Even after configuring MX records to point only to Proofpoint (e.g., <code>mx1-us1.ppe-hosted.com</code> with IPs <code>148.163.129.50</code> and <code>67.231.154.162</code>), attackers may still find ways to bypass these controls.</p>
 </blockquote>
 <hr />
-<p>By following these steps, you’ll have a working Python-to-SAP integration environment using the <code>pyrfc</code> module. Happy coding!</p>
+<h2 id="2-spf-dkim-and-dmarc-explained">2. SPF, DKIM, and DMARC Explained</h2>
+<h3 id="spf-sender-policy-framework">SPF (Sender Policy Framework)</h3>
+<ul>
+<li><strong>Purpose:</strong> Specifies which mail servers are authorized to send email for your domain.</li>
+<li><strong>How to Check:</strong>
+  <div class="highlight"><pre><span></span><code>dig<span class="w"> </span>+short<span class="w"> </span>TXT<span class="w"> </span>munishsethi.com
+dig<span class="w"> </span>+short<span class="w"> </span>TXT<span class="w"> </span>_spf.munishsethi.com
+</code></pre></div></li>
+<li><strong>Example Record:</strong>
+  <div class="highlight"><pre><span></span><code>v=spf1 include:spf.protection.outlook.com include:spf.proofpoint.com -all
+</code></pre></div></li>
+</ul>
+<h3 id="dkim-domainkeys-identified-mail">DKIM (DomainKeys Identified Mail)</h3>
+<ul>
+<li><strong>Purpose:</strong> Uses cryptographic signatures to verify that an email was sent by an authorized server and was not altered.</li>
+<li><strong>How to Check:</strong>
+  <div class="highlight"><pre><span></span><code>dig<span class="w"> </span>+short<span class="w"> </span>TXT<span class="w"> </span>selector1._domainkey.munishsethi.com
+</code></pre></div></li>
+<li><strong>Example Record:</strong>
+  <div class="highlight"><pre><span></span><code>v=DKIM1; k=rsa; p=...public-key...
+</code></pre></div></li>
+</ul>
+<h3 id="dmarc-domain-based-message-authentication-reporting-and-conformance">DMARC (Domain-based Message Authentication, Reporting, and Conformance)</h3>
+<ul>
+<li><strong>Purpose:</strong> Tells receiving servers what to do if SPF or DKIM checks fail.</li>
+<li><strong>How to Check:</strong>
+  <div class="highlight"><pre><span></span><code>dig<span class="w"> </span>+short<span class="w"> </span>TXT<span class="w"> </span>_dmarc.munishsethi.com
+</code></pre></div></li>
+<li><strong>Example Record:</strong>
+  <div class="highlight"><pre><span></span><code>v=DMARC1; p=quarantine; rua=mailto:dmarc-reports@munishsethi.com
+</code></pre></div></li>
+<li><strong>Policy Options:</strong></li>
+<li><code>none</code>: Take no action, just report.</li>
+<li><code>quarantine</code>: Treat as suspicious (e.g., send to spam/quarantine).</li>
+<li><code>reject</code>: Reject the message outright.</li>
+</ul>
+<hr />
+<h2 id="3-the-problem-spoofing-despite-dmarc-quarantine">3. The Problem: Spoofing Despite DMARC Quarantine</h2>
+<p>Even after setting the MX records to Proofpoint and configuring DMARC with <code>p=quarantine</code>, spoofed emails were still being delivered. Investigation revealed that attackers were sending emails directly to the Microsoft EOP (Exchange Online Protection) endpoint (e.g., <code>SJ1PEPF000023D6.mail.protection.outlook.com</code>), bypassing the MX record lookup. Microsoft EOP sometimes relayed these messages to users if the spam score (SCL) was low, even if DMARC failed.</p>
+<h3 id="why-this-happens">Why This Happens</h3>
+<ul>
+<li>Microsoft EOP may not always quarantine emails with failed DMARC if the SCL is low.</li>
+<li>Attackers can send directly to O365 endpoints, bypassing Proofpoint.</li>
+</ul>
+<hr />
+<h2 id="4-allowing-legitimate-internal-applications">4. Allowing Legitimate Internal Applications</h2>
+<p>Some internal applications need to send emails (e.g., alerts, notifications) to both internal and external recipients. These are sent from trusted IP addresses and should be allowed.</p>
+<h3 id="step-by-step-creating-a-connector-in-o365">Step-by-Step: Creating a Connector in O365</h3>
+<ol>
+<li><strong>Log in to the Microsoft 365 Admin Center</strong></li>
+<li>Go to https://admin.exchange.microsoft.com</li>
+<li>
+<p>Use an account with Exchange admin permissions.</p>
+</li>
+<li>
+<p><strong>Navigate to Mail Flow &gt; Connectors</strong></p>
+</li>
+<li>
+<p>In the left pane, select <strong>Mail flow</strong> &gt; <strong>Connectors</strong>.</p>
+</li>
+<li>
+<p><strong>Create a New Connector</strong></p>
+</li>
+<li>Click <strong>Add a connector</strong>.</li>
+<li><strong>From:</strong> Your organization's email server</li>
+<li><strong>To:</strong> Office 365</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p><strong>Name and Describe the Connector</strong></p>
+</li>
+<li>Give the connector a meaningful name (e.g., "Internal App Relay").</li>
+<li>
+<p>Add a description for future reference.</p>
+</li>
+<li>
+<p><strong>Specify Trusted IP Addresses</strong></p>
+</li>
+<li>Select "By verifying that the IP address of the sending server matches one of the following IP addresses..."</li>
+<li>
+<p>Enter the public IP addresses of your trusted internal applications/servers.</p>
+</li>
+<li>
+<p><strong>Configure Security Restrictions</strong></p>
+</li>
+<li>
+<p>Choose whether to require TLS, certificate, or other restrictions as needed.</p>
+</li>
+<li>
+<p><strong>Review and Create</strong></p>
+</li>
+<li>
+<p>Review your settings and click <strong>Create connector</strong>.</p>
+</li>
+<li>
+<p><strong>Test the Connector</strong></p>
+</li>
+<li>Send a test email from your internal application to an internal and external recipient.</li>
+<li>Check message headers in the recipient's mailbox to confirm successful delivery and correct routing.</li>
+</ol>
+<p><strong>Tip:</strong> Use the "Message Trace" feature in Exchange Admin Center to troubleshoot delivery issues.</p>
+<hr />
+<h2 id="5-blocking-external-spoofing-the-powershell-rule">5. Blocking External Spoofing: The PowerShell Rule</h2>
+<p>To block external senders from bypassing Proofpoint and sending directly to O365, you must create a transport rule (mail flow rule) in Exchange Online using PowerShell. The Exchange Admin Center (EAC) UI does not support the required advanced header matching.</p>
+<h3 id="step-by-step-creating-the-transport-rule-via-powershell">Step-by-Step: Creating the Transport Rule via PowerShell</h3>
+<ol>
+<li><strong>Connect to Exchange Online PowerShell</strong></li>
+<li>Open PowerShell on your admin workstation.</li>
+<li>
+<p>Run:
+     <div class="highlight"><pre><span></span><code><span class="nb">Connect-ExchangeOnline</span> <span class="n">-UserPrincipalName</span> <span class="p">&lt;</span><span class="n">your-admin-account</span><span class="p">&gt;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Create the Transport Rule</strong></p>
+</li>
+<li>
+<p>Run the following command (update the rule name as needed):
+     <div class="highlight"><pre><span></span><code><span class="nb">New-TransportRule</span> <span class="n">-Name</span> <span class="s2">&quot;Quarantine external spoof bypass Proofpoint&quot;</span> <span class="p">`</span>
+  <span class="n">-FromScope</span> <span class="n">NotInOrganization</span> <span class="p">`</span>
+  <span class="n">-SetAuditSeverity</span> <span class="n">High</span> <span class="p">`</span>
+  <span class="n">-Quarantine</span> <span class="nv">$true</span> <span class="p">`</span>
+  <span class="n">-ExceptIfHeaderMatchesMessageHeader</span> <span class="s2">&quot;X-PPE-TRUSTED&quot;</span> <span class="n">-ExceptIfHeaderMatchesPatterns</span> <span class="s2">&quot;.+&quot;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Explanation of the Rule Parameters</strong></p>
+</li>
+<li><code>-FromScope NotInOrganization</code>: Applies to emails from outside your organization.</li>
+<li><code>-SetAuditSeverity High</code>: Flags the rule for auditing.</li>
+<li><code>-Quarantine $true</code>: Moves matching messages to quarantine.</li>
+<li><code>-ExceptIfHeaderMatchesMessageHeader "X-PPE-TRUSTED"</code>: Exempts emails with the Proofpoint trusted header.</li>
+<li>
+<p><code>-ExceptIfHeaderMatchesPatterns ".+"</code>: Ensures only emails with the trusted header are exempted.</p>
+</li>
+<li>
+<p><strong>Validate the Rule</strong></p>
+</li>
+<li>Send a test email from an external source directly to your O365 endpoint (bypassing Proofpoint) and verify it is quarantined.</li>
+<li>
+<p>Send a test email from Proofpoint and verify it is delivered.</p>
+</li>
+<li>
+<p><strong>Troubleshooting</strong></p>
+</li>
+<li>Use the "Message Trace" feature in Exchange Admin Center to check the status of test messages.</li>
+<li>Review the message headers for the presence of <code>X-PPE-TRUSTED</code>.</li>
+</ol>
+<p><strong>Note:</strong> This rule must be created via PowerShell as the EAC UI does not support regex or advanced header matching.</p>
+<hr />
+<h2 id="6-step-by-step-setup">6. Step-by-Step Setup</h2>
+<ol>
+<li><strong>Configure SPF, DKIM, and DMARC for your domain (e.g., munishsethi.com).</strong></li>
+<li>Update DNS records with your domain registrar or DNS provider.</li>
+<li>Use <code>dig</code> or online tools to verify propagation.</li>
+<li><strong>Set MX records to point only to Proofpoint.</strong></li>
+<li>In your DNS provider, set the MX record to <code>mx1-us1.ppe-hosted.com</code> (and backup as needed).</li>
+<li>Remove any direct O365 MX records.</li>
+<li><strong>Create a connector in O365 for trusted internal IPs.</strong></li>
+<li>Follow the detailed steps above in the "Allowing Legitimate Internal Applications" section.</li>
+<li><strong>Create the PowerShell transport rule to quarantine emails that bypass Proofpoint.</strong></li>
+<li>Follow the detailed steps above in the "Blocking External Spoofing" section.</li>
+<li><strong>Monitor and adjust DMARC policy to <code>p=reject</code> for stricter enforcement.</strong></li>
+<li>Start with <code>p=quarantine</code> and review DMARC reports.</li>
+<li>Move to <code>p=reject</code> once you are confident legitimate mail is not being blocked.</li>
+<li>Use DMARC reporting tools to monitor for issues.</li>
+</ol>
+<hr />
+<h2 id="7-why-additional-connector-and-rule-are-needed">7. Why Additional Connector and Rule Are Needed</h2>
+<ul>
+<li><strong>Connector:</strong> Allows legitimate internal applications to send emails without being blocked or quarantined.</li>
+<li><strong>Transport Rule:</strong> Ensures that any email not passing through Proofpoint is quarantined, preventing attackers from bypassing your MX records.</li>
+</ul>
+<hr />
+<h2 id="8-security-considerations">8. Security Considerations</h2>
+<ul>
+<li>Attackers constantly look for ways to bypass security controls, especially if they know your organization uses O365.</li>
+<li>Regularly review and update your connectors, rules, and DNS records.</li>
+<li>Use <code>p=reject</code> in DMARC for maximum protection, but test thoroughly before enforcing.</li>
+</ul>
+<hr />
+<h2 id="9-summary">9. Summary</h2>
+<ul>
+<li>SPF, DKIM, and DMARC are foundational for email security, but not foolproof.</li>
+<li>Attackers can exploit direct-to-EOP delivery if not properly mitigated.</li>
+<li>Use connectors and transport rules to enforce your security architecture.</li>
+<li>Always monitor, test, and update your configurations to stay ahead of threats.</li>
+</ul>
+<hr />
+<p><em>For more information, consult Microsoft and Proofpoint documentation, and regularly audit your email security setup.</em></p>
 
 
 
@@ -1914,7 +2249,7 @@ Double-check all paths and environment variables before building. For troublesho
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:31:31 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 28, 2025 20:02:46 UTC">July 28, 2025</span>
   </span>
 
     
