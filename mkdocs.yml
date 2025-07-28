@@ -70,6 +70,7 @@ nav:
   - Misc:
       - Proof Point User Management: proofpoint-user-management.md
       - Clean GitHub Deployments: github-clean-deployments.md
+      - Understanding DMARC/Spoofing, O365 with ProofPoint: proofpointo365connector.md
 
 extra:
   description: "Munish Sethi's technical blog on Azure, SAP, and automation."
