@@ -1,0 +1,3701 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://munishsethi.com/email-o365-proofpoint-part4/">
+      
+      
+        <link rel="prev" href="../email-o365-proofpoint-part3/">
+      
+      
+        <link rel="next" href="../ukg-sftp-file-transfer/">
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>O365 and Proof Point Essentials - Part 4 - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#email-security-implementation-o365-and-proof-point-essentials-series" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              O365 and Proof Point Essentials - Part 4
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Bill
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Resource
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Query Recovery Services Vault
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra Users, User Groups and Licence assignments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra User Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-container-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orchestrating Scheduled Jobs (Container Instances)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-build-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Build Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Deploy Container IaC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Deploy Container Github Actions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-custon-image-compute-gallery-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building and Publishing an Custom Image
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-publish-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploying Azure Virtual Desktop (AVD) Desktops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-cleanup-obsolete-fsLogix-profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cleanup Obsolete FXLogix Profiles(AVD)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Coninuity Program / Diasister Recovery - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Continuity Program / Disaster Recovery - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Continuity Program / Disaster Recovery - Git Hub Action
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore VM from RSV Backup - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore VM from RSV Backup - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Fabric
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Fabric
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-wharehouse-fact-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Warehouse data import
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki, Nagios XI & Manage Engine
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Cisco Meraki, Nagios XI & Manage Engine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-unused-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Unused Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Devices Discovery and Nagios Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-itsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integrating Monitoring System with ITSM System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-vm-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploying Cisco Meraki vMX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Active Directory Domain Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Active Directory Domain Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup PyRFC in your Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calling SAP RFC Function Modules from Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-system-start-stop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automating SAP System Start/Stop Operations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    O365
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            O365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Document Library Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migrate Sharepoint Document Library to Azure File Share
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concur Expense Report Aggregation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teams-user-number-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get all Teams Phone Assignment(s)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprovision-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deprovison User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tenantallowblocklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tenant Allow Block List - False Positive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    O365 and Proof Point Essentials - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    O365 and Proof Point Essentials - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    O365 and Proof Point Essentials - Part 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    O365 and Proof Point Essentials - Part 4
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    O365 and Proof Point Essentials - Part 4
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-proofpoint-integration-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 4: Proofpoint Integration Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Proofpoint Integration Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Series Navigation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-well-configure" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 What We'll Configure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domain-relay-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      📧 Domain Relay Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📧 Domain Relay Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-access-domain-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Access Domain Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-configure-domain-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Configure Domain Settings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Configure Domain Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-your-o365-mail-protection-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Your O365 Mail Protection Endpoint:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-verify-domain-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Verify Domain Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-features-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛡️ Security Features Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛡️ Security Features Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-core-protection-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Core Protection Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Core Protection Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-outbound-relaying" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Outbound relaying
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-disclaimers" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Disclaimers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-smtp-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable SMTP Discovery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-data-loss-prevention" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Data Loss Prevention
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Data Loss Prevention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-data-loss-prevention-dlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Data Loss Prevention (DLP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-advanced-threat-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Advanced Threat Protection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Advanced Threat Protection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-url-defense" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable URL Defense
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-attachment-defense" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Attachment Defense
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-attachment-defense-sandboxing" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Attachment Defense Sandboxing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-additional-protection-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Additional Protection Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Additional Protection Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-social-media-account-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Social Media Account Protection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-email-encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Email Encryption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-anti-spoofing-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Anti-Spoofing Policies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-administrative-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Administrative Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 5: Administrative Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-one-click-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable One Click Removal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-automatic-remediation" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Automatic Remediation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#email-warning-tags-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏷️ Email Warning Tags Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏷️ Email Warning Tags Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-access-email-warning-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Access Email Warning Tags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-configure-informational-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Configure Informational Tags
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Configure Informational Tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#external-sender-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ External Sender Tag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-configure-warning-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Configure Warning Tags
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Configure Warning Tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dmarc-failure-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ DMARC Failure Tag
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newly-registered-domain-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Newly Registered Domain Tag
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-risk-geo-ip-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ High Risk GEO IP Tag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-configure-tag-display-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Configure Tag Display Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Configure Tag Display Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-a-link-in-the-warning-tag-to-learn-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Display a link in the warning tag to learn more
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allow-users-to-perform-actions-on-learn-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Allow users to perform actions on learn more
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#include-additional-text-below-the-warning-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Include additional text below the warning tag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-tag-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Tag Customization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dkim-key-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 DKIM Key Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 DKIM Key Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-generate-dkim-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Generate DKIM Keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-dns-publication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: DNS Publication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-key-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Key Verification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-key-rotation-quarterly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Key Rotation (Quarterly)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-provisioning-and-sso-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      👥 User Provisioning and SSO Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="👥 User Provisioning and SSO Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-provisioning-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Provisioning Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Provisioning Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-smtp-discovery-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1: SMTP Discovery (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-manual-provisioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2: Manual Provisioning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3-bulk-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 3: Bulk Import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-sign-on-sso-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single Sign-On (SSO) Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Single Sign-On (SSO) Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-identity-provider-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Identity Provider Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-proofpoint-sso-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Proofpoint SSO Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-user-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: User Communication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Configuration Verification Checklist
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Configuration Verification Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#domain-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Domain Configuration:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Features:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email-warning-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Warning Tags:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dkim-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      DKIM Configuration:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Access:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨 Security Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚨 Security Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tag Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dkim-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      DKIM Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 What's Next
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 What&#39;s Next">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      📖 Series Navigation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    UKG
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            UKG
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Secure File Transfer with UKG Dimensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Employee Verification via API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-integration-and-dataview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automating Integration Execution and Dataview extract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Misc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof Point User Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-clean-deployments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Clean GitHub Deployments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpointo365connector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Understanding DMARC/Spoofing, O365 with ProofPoint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-proofpoint-integration-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 4: Proofpoint Integration Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Proofpoint Integration Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Series Navigation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-well-configure" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 What We'll Configure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domain-relay-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      📧 Domain Relay Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📧 Domain Relay Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-access-domain-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Access Domain Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-configure-domain-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Configure Domain Settings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Configure Domain Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-your-o365-mail-protection-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Your O365 Mail Protection Endpoint:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-verify-domain-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Verify Domain Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-features-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛡️ Security Features Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛡️ Security Features Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-core-protection-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Core Protection Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Core Protection Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-outbound-relaying" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Outbound relaying
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-disclaimers" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Disclaimers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-smtp-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable SMTP Discovery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-data-loss-prevention" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Data Loss Prevention
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Data Loss Prevention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-data-loss-prevention-dlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Data Loss Prevention (DLP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-advanced-threat-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Advanced Threat Protection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Advanced Threat Protection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-url-defense" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable URL Defense
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-attachment-defense" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Attachment Defense
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-attachment-defense-sandboxing" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Attachment Defense Sandboxing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-additional-protection-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Additional Protection Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Additional Protection Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-social-media-account-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Social Media Account Protection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-email-encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Email Encryption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-anti-spoofing-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Anti-Spoofing Policies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-administrative-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Administrative Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 5: Administrative Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-one-click-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable One Click Removal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-automatic-remediation" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Enable Automatic Remediation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#email-warning-tags-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏷️ Email Warning Tags Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏷️ Email Warning Tags Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-access-email-warning-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Access Email Warning Tags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-configure-informational-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Configure Informational Tags
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Configure Informational Tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#external-sender-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ External Sender Tag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-configure-warning-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Configure Warning Tags
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Configure Warning Tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dmarc-failure-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ DMARC Failure Tag
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newly-registered-domain-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Newly Registered Domain Tag
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-risk-geo-ip-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ High Risk GEO IP Tag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-configure-tag-display-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Configure Tag Display Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Configure Tag Display Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-a-link-in-the-warning-tag-to-learn-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Display a link in the warning tag to learn more
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allow-users-to-perform-actions-on-learn-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Allow users to perform actions on learn more
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#include-additional-text-below-the-warning-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Include additional text below the warning tag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-tag-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Tag Customization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dkim-key-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 DKIM Key Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 DKIM Key Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-generate-dkim-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Generate DKIM Keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-dns-publication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: DNS Publication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-key-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Key Verification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-key-rotation-quarterly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Key Rotation (Quarterly)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-provisioning-and-sso-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      👥 User Provisioning and SSO Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="👥 User Provisioning and SSO Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-provisioning-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Provisioning Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Provisioning Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-smtp-discovery-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1: SMTP Discovery (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-manual-provisioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2: Manual Provisioning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3-bulk-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 3: Bulk Import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-sign-on-sso-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single Sign-On (SSO) Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Single Sign-On (SSO) Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-identity-provider-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Identity Provider Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-proofpoint-sso-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Proofpoint SSO Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-user-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: User Communication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Configuration Verification Checklist
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Configuration Verification Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#domain-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Domain Configuration:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Features:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email-warning-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Warning Tags:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dkim-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      DKIM Configuration:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Access:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨 Security Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚨 Security Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tag Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dkim-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      DKIM Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 What's Next
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 What&#39;s Next">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      📖 Series Navigation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="email-security-implementation-o365-and-proof-point-essentials-series">📧 Email Security Implementation (O365 and Proof Point Essentials) Series</h1>
+<h2 id="part-4-proofpoint-integration-setup">Part 4: Proofpoint Integration Setup</h2>
+<hr />
+<h3 id="series-navigation">📚 <strong>Series Navigation</strong></h3>
+<ul>
+<li><a href="../email-o365-proofpoint-part1/">Part 1: Understanding SPF, DKIM, and DMARC</a></li>
+<li><a href="../email-o365-proofpoint-part2/">Part 2: DNS Configuration and Setup</a></li>
+<li><a href="../email-o365-proofpoint-part3/">Part 3: Office 365 Connector Configuration</a></li>
+<li><strong>Part 4: Proofpoint Integration Setup</strong> <em>(Current)</em></li>
+<li><a href="email-o365-proofpoint-part5.md">Part 5: Testing and Troubleshooting</a></li>
+</ul>
+<hr />
+<h2 id="what-well-configure">🎯 <strong>What We'll Configure</strong></h2>
+<p>In this part, we'll configure the Proofpoint Essentials side of the integration:
+1. <strong>Domain Relay Configuration</strong> - Set up mail routing to Office 365
+2. <strong>Security Features</strong> - Enable comprehensive email protection
+3. <strong>Email Warning Tags</strong> - Configure user notification system
+4. <strong>DKIM Key Management</strong> - Generate and manage authentication keys
+5. <strong>User Provisioning and SSO</strong> - Enable user access (overview)</p>
+<hr />
+<h2 id="prerequisites">🔧 <strong>Prerequisites</strong></h2>
+<p>Before starting, ensure you have:
+- [ ] Proofpoint Essentials administrator access
+- [ ] Office 365 connectors from Part 3 configured and tested
+- [ ] DNS records from Part 2 implemented
+- [ ] Your Office 365 tenant's mail protection endpoint (e.g., yourdomain-com.mail.protection.outlook.com)</p>
+<hr />
+<h2 id="domain-relay-configuration">📧 <strong>Domain Relay Configuration</strong></h2>
+<p>This is the foundation that tells Proofpoint where to send clean emails after filtering.</p>
+<h3 id="step-1-access-domain-configuration"><strong>Step 1: Access Domain Configuration</strong></h3>
+<ol>
+<li><strong>Log into Proofpoint Essentials</strong></li>
+<li>Navigate to your Proofpoint admin portal</li>
+<li>
+<p>Sign in with administrator credentials</p>
+</li>
+<li>
+<p><strong>Navigate to Domains</strong></p>
+</li>
+<li>Click <strong>Email</strong> in the left navigation</li>
+<li>Select <strong>Domains</strong></li>
+<li>Click <strong>Add Domain</strong> or select existing domain</li>
+</ol>
+<h3 id="step-2-configure-domain-settings"><strong>Step 2: Configure Domain Settings</strong></h3>
+<div class="highlight"><pre><span></span><code>Domain Information:
+┌─────────────────────────────────────┐
+│ Domain Type: Relay                  │
+│ Domain Name: yourdomain.com         │
+│ Primary Delivery Destination:       │
+│ yourdomain-com.mail.protection.     │
+│ outlook.com                         │
+└─────────────────────────────────────┘
+</code></pre></div>
+<h4 id="finding-your-o365-mail-protection-endpoint"><strong>Finding Your O365 Mail Protection Endpoint:</strong></h4>
+<p>Your endpoint follows this pattern:
+- <strong>Format</strong>: <code>[domain-with-dashes].mail.protection.outlook.com</code>
+- <strong>Example</strong>: For <code>yourdomain.com</code> → <code>yourdomain-com.mail.protection.outlook.com</code>
+- <strong>Verification</strong>: Check your MX record in Office 365 Admin Center</p>
+<h3 id="step-3-verify-domain-configuration"><strong>Step 3: Verify Domain Configuration</strong></h3>
+<p>After saving, ensure:
+- [ ] Domain status shows as <strong>Active</strong>
+- [ ] Primary delivery destination is correct
+- [ ] No error messages in domain configuration</p>
+<hr />
+<h2 id="security-features-configuration">🛡️ <strong>Security Features Configuration</strong></h2>
+<p>Proofpoint Essentials offers comprehensive protection. Here's what to enable and why:</p>
+<h3 id="step-1-core-protection-features"><strong>Step 1: Core Protection Features</strong></h3>
+<p>Navigate to <strong>Email</strong> &gt; <strong>Settings</strong> &gt; <strong>Features</strong> and enable:</p>
+<h4 id="enable-outbound-relaying"><strong>✅ Enable Outbound relaying</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Ensures outbound mail is protected with outbound scanning
+Benefit: Prevents your domain from sending malicious content
+Recommendation: Always enable
+</code></pre></div>
+<h4 id="enable-disclaimers"><strong>✅ Enable Disclaimers</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Adds disclaimers to emails
+Benefit: Legal protection and professional branding
+Recommendation: Enable if required by legal/compliance
+</code></pre></div>
+<h4 id="enable-smtp-discovery"><strong>✅ Enable SMTP Discovery</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Another way to provision users to the service
+Benefit: Automatic user discovery and provisioning
+Recommendation: Enable for easier user management
+</code></pre></div>
+<h3 id="step-2-data-loss-prevention"><strong>Step 2: Data Loss Prevention</strong></h3>
+<h4 id="enable-data-loss-prevention-dlp"><strong>✅ Enable Data Loss Prevention (DLP)</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Adds various data loss prevention options
+Features: 
+- Dictionaries for sensitive content detection
+- Smart identifiers (SSN, Credit Cards, etc.)
+- Custom content policies
+Recommendation: Essential for compliance
+</code></pre></div>
+<p><strong>DLP Configuration Steps:</strong>
+1. Navigate to <strong>Email</strong> &gt; <strong>Filters</strong> &gt; <strong>Data Loss Prevention</strong>
+2. Configure dictionaries for your industry
+3. Set up smart identifiers for relevant data types
+4. Create policies for different user groups</p>
+<h3 id="step-3-advanced-threat-protection"><strong>Step 3: Advanced Threat Protection</strong></h3>
+<h4 id="enable-url-defense"><strong>✅ Enable URL Defense</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Scans inbound emails for malicious links
+How it works:
+1. Rewrites URLs in emails
+2. Performs click-time analysis
+3. Blocks access to malicious sites
+Recommendation: Critical security feature
+</code></pre></div>
+<h4 id="enable-attachment-defense"><strong>✅ Enable Attachment Defense</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Scans emails for known malicious attachments
+Protection: Against attachment-based threats
+Recommendation: Always enable
+</code></pre></div>
+<h4 id="enable-attachment-defense-sandboxing"><strong>✅ Enable Attachment Defense Sandboxing</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Scans unknown attachments in isolated environment
+Process:
+1. Unknown attachments are held temporarily
+2. Analyzed in secure sandbox
+3. Released or quarantined based on analysis
+Recommendation: Enable for maximum protection
+</code></pre></div>
+<h3 id="step-4-additional-protection-features"><strong>Step 4: Additional Protection Features</strong></h3>
+<h4 id="enable-social-media-account-protection"><strong>✅ Enable Social Media Account Protection</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Protects against social media-based threats
+Benefit: Extends protection beyond traditional email threats
+Recommendation: Enable for comprehensive protection
+</code></pre></div>
+<h4 id="enable-email-encryption"><strong>✅ Enable Email Encryption</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Provides email encryption capabilities
+Use cases: 
+- Sensitive data transmission
+- Compliance requirements
+- Secure communication
+Recommendation: Enable if encryption is required
+</code></pre></div>
+<h4 id="enable-anti-spoofing-policies"><strong>✅ Enable Anti-Spoofing Policies</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Provides additional DMARC policy controls
+Benefit: Enhanced protection against domain spoofing
+Recommendation: Always enable
+Note: This unlocks Email Warning Tags (next section)
+</code></pre></div>
+<h3 id="step-5-administrative-features"><strong>Step 5: Administrative Features</strong></h3>
+<h4 id="enable-one-click-removal"><strong>✅ Enable One Click Removal</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Allow admins to remove mail from user mailboxes
+Requirement: Properly configured Microsoft environment
+Benefit: Quick response to identified threats
+Recommendation: Enable for incident response
+</code></pre></div>
+<h4 id="enable-automatic-remediation"><strong>✅ Enable Automatic Remediation</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Removes malicious email discovered after delivery
+Process:
+1. Threat identified post-delivery
+2. Automatically removed from user mailboxes
+3. Users notified of removal
+Requirement: Correctly configured Microsoft environment
+Recommendation: Essential for advanced threat response
+</code></pre></div>
+<hr />
+<h2 id="email-warning-tags-configuration">🏷️ <strong>Email Warning Tags Configuration</strong></h2>
+<p>Email Warning Tags provide visual cues to users about potentially dangerous emails.</p>
+<h3 id="prerequisites_1"><strong>Prerequisites</strong></h3>
+<p><strong>Anti-Spoofing Policies</strong> must be enabled first (see previous section).</p>
+<h3 id="step-1-access-email-warning-tags"><strong>Step 1: Access Email Warning Tags</strong></h3>
+<ol>
+<li>Navigate to <strong>Email</strong> &gt; <strong>Email Tagging</strong></li>
+<li>Confirm <strong>Email Warning Tags</strong> is enabled</li>
+<li>Access <strong>Tag Types</strong> configuration</li>
+</ol>
+<h3 id="step-2-configure-informational-tags"><strong>Step 2: Configure Informational Tags</strong></h3>
+<h4 id="external-sender-tag"><strong>✅ External Sender Tag</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Informs users when email comes from outside the organization
+Display: Banner at top of email
+User Impact: Promotes security awareness
+Configuration: Enable with custom messaging
+</code></pre></div>
+<p><strong>Recommended Message:</strong>
+<div class="highlight"><pre><span></span><code>⚠️ EXTERNAL EMAIL: This email originated from outside your organization. 
+Exercise caution with links and attachments.
+</code></pre></div></p>
+<h3 id="step-3-configure-warning-tags"><strong>Step 3: Configure Warning Tags</strong></h3>
+<h4 id="dmarc-failure-tag"><strong>✅ DMARC Failure Tag</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Informs users when email fails DMARC authentication
+Display: Warning banner
+Significance: High security risk indicator
+Action: Usually blocks email, but provides user notification
+</code></pre></div>
+<h4 id="newly-registered-domain-tag"><strong>✅ Newly Registered Domain Tag</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Warns about emails from recently registered domains
+Risk: Newly registered domains often used in phishing
+Display: Warning banner with age information
+Recommendation: Enable with 30-day threshold
+</code></pre></div>
+<h4 id="high-risk-geo-ip-tag"><strong>✅ High Risk GEO IP Tag</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Warns about emails from high-risk geographical locations
+Risk Assessment: Based on threat intelligence
+Display: Country/region information
+Customization: Configure risk levels per region
+</code></pre></div>
+<h3 id="step-4-configure-tag-display-options"><strong>Step 4: Configure Tag Display Options</strong></h3>
+<h4 id="display-a-link-in-the-warning-tag-to-learn-more"><strong>✅ Display a link in the warning tag to learn more</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Provides users with additional security education
+Implementation: Links to your security training materials
+Content: Explain why the warning appeared
+</code></pre></div>
+<h4 id="allow-users-to-perform-actions-on-learn-more"><strong>✅ Allow users to perform actions on learn more</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Enable user reporting and feedback
+Actions: 
+- Report as phishing
+- Report as safe
+- Request review
+Benefit: Improves threat intelligence
+</code></pre></div>
+<h4 id="include-additional-text-below-the-warning-tag"><strong>✅ Include additional text below the warning tag</strong></h4>
+<div class="highlight"><pre><span></span><code>Purpose: Provide specific guidance to users
+Content Examples:
+- &quot;Contact IT if you believe this is legitimate&quot;
+- &quot;Do not click links or download attachments&quot;
+- &quot;Forward suspicious emails to security@yourdomain.com&quot;
+</code></pre></div>
+<h3 id="step-5-tag-customization"><strong>Step 5: Tag Customization</strong></h3>
+<p>Create organization-specific messaging:</p>
+<p><strong>External Sender Template:</strong>
+<div class="highlight"><pre><span></span><code>🌐 EXTERNAL EMAIL 
+This message originated from outside yourdomain.com. 
+Verify sender identity before clicking links or downloading attachments.
+Questions? Contact IT at extension 1234.
+</code></pre></div></p>
+<p><strong>High Risk Warning Template:</strong>
+<div class="highlight"><pre><span></span><code>⚠️ HIGH RISK EMAIL DETECTED
+This email has characteristics associated with phishing or malware.
+• Do not click any links
+• Do not download attachments  
+• Forward to security@yourdomain.com for analysis
+</code></pre></div></p>
+<hr />
+<h2 id="dkim-key-management">🔑 <strong>DKIM Key Management</strong></h2>
+<h3 id="step-1-generate-dkim-keys"><strong>Step 1: Generate DKIM Keys</strong></h3>
+<ol>
+<li><strong>Navigate to DKIM Configuration</strong></li>
+<li><strong>Email</strong> &gt; <strong>Authentication</strong> &gt; <strong>DKIM</strong></li>
+<li>
+<p>Select your domain</p>
+</li>
+<li>
+<p><strong>Generate Key Pair</strong></p>
+</li>
+<li>Click <strong>Generate New Key</strong></li>
+<li>Select key size (2048-bit recommended)</li>
+<li>
+<p>Choose selector name (or use auto-generated)</p>
+</li>
+<li>
+<p><strong>Obtain Public Key</strong></p>
+</li>
+<li>Copy the public key provided</li>
+<li>Note the selector name (e.g., <code>selector-1678913997</code>)</li>
+</ol>
+<h3 id="step-2-dns-publication"><strong>Step 2: DNS Publication</strong></h3>
+<p>The public key from Step 1 should already be in your DNS from Part 2:</p>
+<div class="highlight"><pre><span></span><code>Type: TXT
+Name: selector-1678913997._domainkey.yourdomain.com  
+Value: &quot;v=DKIM1; k=rsa; t=s; n=core; p=[LONG_PUBLIC_KEY_STRING]&quot;
+</code></pre></div>
+<h3 id="step-3-key-verification"><strong>Step 3: Key Verification</strong></h3>
+<ol>
+<li><strong>In Proofpoint</strong>: Click <strong>Verify DNS Record</strong></li>
+<li><strong>External Verification</strong>: Use online DKIM checkers</li>
+<li><strong>Test Email</strong>: Send test email and check headers</li>
+</ol>
+<h3 id="step-4-key-rotation-quarterly"><strong>Step 4: Key Rotation (Quarterly)</strong></h3>
+<ol>
+<li>Generate new key pair in Proofpoint</li>
+<li>Publish new public key to DNS</li>
+<li>Wait for DNS propagation (24-48 hours)</li>
+<li>Activate new key in Proofpoint</li>
+<li>Remove old key from DNS after 1 week</li>
+</ol>
+<hr />
+<h2 id="user-provisioning-and-sso-setup">👥 <strong>User Provisioning and SSO Setup</strong></h2>
+<h3 id="user-provisioning-options"><strong>User Provisioning Options</strong></h3>
+<h4 id="option-1-smtp-discovery-recommended"><strong>Option 1: SMTP Discovery (Recommended)</strong></h4>
+<ul>
+<li><strong>Enabled in Features</strong> (see previous section)</li>
+<li><strong>Process</strong>: Users automatically discovered when they send/receive email</li>
+<li><strong>Benefit</strong>: No manual user management required</li>
+</ul>
+<h4 id="option-2-manual-provisioning"><strong>Option 2: Manual Provisioning</strong></h4>
+<ul>
+<li><strong>Navigate</strong>: <strong>Users</strong> &gt; <strong>Add Users</strong></li>
+<li><strong>Process</strong>: Manually add individual users</li>
+<li><strong>Use case</strong>: Small organizations or specific user groups</li>
+</ul>
+<h4 id="option-3-bulk-import"><strong>Option 3: Bulk Import</strong></h4>
+<ul>
+<li><strong>Navigate</strong>: <strong>Users</strong> &gt; <strong>Import Users</strong></li>
+<li><strong>Process</strong>: Upload CSV file with user information</li>
+<li><strong>Use case</strong>: Large organizations or initial setup</li>
+</ul>
+<h3 id="single-sign-on-sso-configuration"><strong>Single Sign-On (SSO) Configuration</strong></h3>
+<p>While specific SSO configuration varies by identity provider, here are the general steps:</p>
+<h4 id="step-1-identity-provider-setup"><strong>Step 1: Identity Provider Setup</strong></h4>
+<div class="highlight"><pre><span></span><code>Common Providers:
+- Azure Active Directory (most common with O365)
+- ADFS
+- Okta
+- Ping Identity
+</code></pre></div>
+<h4 id="step-2-proofpoint-sso-configuration"><strong>Step 2: Proofpoint SSO Configuration</strong></h4>
+<ol>
+<li><strong>Navigate</strong>: <strong>Settings</strong> &gt; <strong>Authentication</strong> &gt; <strong>Single Sign-On</strong></li>
+<li><strong>Configure</strong>: </li>
+<li>Identity Provider metadata</li>
+<li>Attribute mappings</li>
+<li>Group assignments</li>
+<li><strong>Test</strong>: Verify SSO login functionality</li>
+</ol>
+<h4 id="step-3-user-communication"><strong>Step 3: User Communication</strong></h4>
+<p>Inform users about:
+- New login process
+- Portal access URL
+- Quarantine management capabilities</p>
+<p><strong>💡 Tip</strong>: For detailed SSO configuration, consult Proofpoint documentation specific to your identity provider.</p>
+<hr />
+<h2 id="configuration-verification-checklist">📋 <strong>Configuration Verification Checklist</strong></h2>
+<h3 id="domain-configuration"><strong>Domain Configuration:</strong></h3>
+<ul>
+<li>[ ] Domain type set to "Relay"</li>
+<li>[ ] Correct O365 mail protection endpoint configured</li>
+<li>[ ] Domain status shows as "Active"</li>
+</ul>
+<h3 id="security-features"><strong>Security Features:</strong></h3>
+<ul>
+<li>[ ] All critical features enabled (URL Defense, Attachment Defense, etc.)</li>
+<li>[ ] DLP policies configured for your organization</li>
+<li>[ ] Anti-spoofing policies enabled</li>
+</ul>
+<h3 id="email-warning-tags"><strong>Email Warning Tags:</strong></h3>
+<ul>
+<li>[ ] External sender tags configured</li>
+<li>[ ] Warning tags for high-risk scenarios enabled</li>
+<li>[ ] Custom messaging appropriate for your organization</li>
+<li>[ ] "Learn more" links configured</li>
+</ul>
+<h3 id="dkim-configuration"><strong>DKIM Configuration:</strong></h3>
+<ul>
+<li>[ ] DKIM keys generated in Proofpoint</li>
+<li>[ ] Public keys published in DNS</li>
+<li>[ ] DKIM verification successful</li>
+<li>[ ] Key rotation schedule established</li>
+</ul>
+<h3 id="user-access"><strong>User Access:</strong></h3>
+<ul>
+<li>[ ] User provisioning method selected and configured</li>
+<li>[ ] SSO setup completed (if required)</li>
+<li>[ ] User communication plan executed</li>
+</ul>
+<hr />
+<h2 id="security-best-practices">🚨 <strong>Security Best Practices</strong></h2>
+<h3 id="feature-management"><strong>Feature Management</strong></h3>
+<ul>
+<li><strong>Enable gradually</strong>: Don't enable all features at once</li>
+<li><strong>Monitor impact</strong>: Watch for false positives and user complaints</li>
+<li><strong>Regular review</strong>: Quarterly assessment of feature effectiveness</li>
+</ul>
+<h3 id="tag-configuration"><strong>Tag Configuration</strong></h3>
+<ul>
+<li><strong>Clear messaging</strong>: Use simple, actionable language</li>
+<li><strong>Consistent branding</strong>: Match your organization's communication style</li>
+<li><strong>Regular updates</strong>: Refresh messaging based on threat landscape</li>
+</ul>
+<h3 id="dkim-management"><strong>DKIM Management</strong></h3>
+<ul>
+<li><strong>Secure key storage</strong>: Protect private keys appropriately</li>
+<li><strong>Regular rotation</strong>: Change keys quarterly</li>
+<li><strong>Multiple selectors</strong>: Consider using multiple DKIM keys for redundancy</li>
+</ul>
+<hr />
+<h2 id="whats-next">🎯 <strong>What's Next</strong></h2>
+<p>With Proofpoint fully configured, we'll move to <strong>Part 5</strong> where we'll cover:
+- Comprehensive testing methodology
+- Office 365 message tracing and troubleshooting
+- Mail flow verification procedures
+- Common issues and their solutions
+- Monitoring and maintenance procedures</p>
+<p>The integration is nearly complete - Part 5 will ensure everything works correctly and provide you with the tools to maintain and troubleshoot the system.</p>
+<hr />
+<h3 id="series-navigation_1">📖 <strong>Series Navigation</strong></h3>
+<ul>
+<li><a href="../email-o365-proofpoint-part3/">← Part 3: Office 365 Connector Configuration</a></li>
+<li><strong>Part 4: Proofpoint Integration Setup</strong> <em>(Current)</em></li>
+<li><a href="email-o365-proofpoint-part5.md">Part 5: Testing and Troubleshooting →</a></li>
+</ul>
+<hr />
+<p><em>Remember to enable features gradually and monitor their impact on mail flow and user experience.</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 13, 2025 15:21:54 UTC">August 13, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
