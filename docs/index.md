@@ -39,6 +39,11 @@
 - [Get all Teams Phone Assignment(s)](teams-user-number-assignment.md)
 - [Deprovison User](deprovision-user.md)
 - [Tenant Allow Block List - False Positive](tenantallowblocklist.md)
+- [O365 and Proof Point Essentials - Part 1](email-o365-proofpoint-part1.md)
+- [O365 and Proof Point Essentials - Part 2](email-o365-proofpoint-part2.md)
+- [O365 and Proof Point Essentials - Part 3](email-o365-proofpoint-part3.md)
+- [O365 and Proof Point Essentials - Part 4](email-o365-proofpoint-part4.md)
+- [O365 and Proof Point Essentials - Part 5](email-o365-proofpoint-part5.md)
 ## SAP
 - [Setup PyRFC in your Container](sap-rfc-python-container.md)
 - [Concur Expense Report Aggregation](sap-concur-expense-reports-aggregation.md)
@@ -58,4 +63,3 @@
 - [Proof Point User Management](proofpoint-user-management.md)
 - [Clean GitHub Deployments](github-clean-deployments.md)
 - [Understanding DMARC/Spoofing, O365 with ProofPoint](proofpointo365connector.md)
-
