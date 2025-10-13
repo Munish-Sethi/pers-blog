@@ -51,6 +51,7 @@
 - [O365 and Proof Point Essentials - Part 3](email-o365-proofpoint-part3.md)
 - [O365 and Proof Point Essentials - Part 4](email-o365-proofpoint-part4.md)
 - [O365 and Proof Point Essentials - Part 5](email-o365-proofpoint-part5.md)
+- [O365/Excel Automation via SPO](spo-o365_excel_automation.md)
 
 ---
 
