@@ -2,6 +2,11 @@
 
 ---
 
+## 🤖 AI
+- [Data Analysis with Claude Desktop and a Custom MCP Server](ai-claude_mcp_analytic_server.md)
+
+---
+
 ## 🔷 Azure
 - [Certificate Based Authentication](azure-ad-certificate.md)
 - [Query Recovery Services Vault](azure-query-recovery-services-vault.md)

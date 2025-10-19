@@ -18,6 +18,8 @@ plugins:
   - awesome-pages
 nav:
   - Home: index.md
+  - AI:
+    - Data Analysis with Claude Desktop and a Custom MCP Server: ai-claude_mcp_analytic_server.md
   - Azure:
       - Certificate Based Authentication: azure-ad-certificate.md
       - Download Azure Bill: azure-billing.md
