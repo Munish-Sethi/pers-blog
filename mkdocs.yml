@@ -19,7 +19,8 @@ plugins:
 nav:
   - Home: index.md
   - AI:
-    - Data Analysis with Claude Desktop and a Custom MCP Server: ai-claude_mcp_analytic_server.md
+    - Data Analysis with LLM via MCP Server - Part 1: ai-claude-mcp-analytic-server-part1.md
+    - Data Analysis with LLM via MCP Server - Part 2: ai-claude-mcp-analytic-server-part2.md
   - Azure:
       - Certificate Based Authentication: azure-ad-certificate.md
       - Download Azure Bill: azure-billing.md

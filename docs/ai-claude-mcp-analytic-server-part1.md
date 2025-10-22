@@ -1,4 +1,9 @@
-# Secure, On-Premises Data Analysis with Claude Desktop and a Custom MCP Server
+# Secure, On-Premises Data Analysis with LLM and a Custom MCP Server
+## Part 1: CSV/Parquet files 
+
+### 📚 **Series Navigation**
+- **Part 1: CSV/Parquet files** *(Current)*
+- [Part 2: CSV/Parquet & Database](ai-claude-mcp-analytic-server-part2.md)
 
 *Inspired by and adapted from [mcp-analyst](https://github.com/unravel-team/mcp-analyst). This guide documents a customized, production-ready approach for secure, LLM-powered analytics on enterprise CSV/Parquet data, including new tools and deployment strategies for real-world business needs.*
 
