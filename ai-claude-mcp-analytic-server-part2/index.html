@@ -1,0 +1,2867 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://munishsethi.com/ai-claude-mcp-analytic-server-part2/">
+      
+      
+        <link rel="prev" href="../ai-claude-mcp-analytic-server-part1/">
+      
+      
+        <link rel="next" href="../azure-ad-certificate/">
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Data Analysis with LLM via MCP Server - Part 2 - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#secure-on-premises-data-analysis-with-llm-and-a-custom-mcp-server" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Analysis with LLM via MCP Server - Part 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Analysis with LLM via MCP Server - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Data Analysis with LLM via MCP Server - Part 2
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Analysis with LLM via MCP Server - Part 2
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-csvparquet-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 2: CSV/Parquet &amp; Database
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: CSV/Parquet &amp; Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Series Navigation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-architecture-hybrid-data-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution Architecture: Hybrid Data Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-role-of-the-data-catalog-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Role of the Data Catalog JSON
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Role of the Data Catalog JSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-file-based-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: File-based Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-database-based-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Database-based Dataset
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-code-srcanalystpy-hybrid-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Code: src/analyst.py (Hybrid Version)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-walkthrough-database-connectivity-and-hybrid-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Walkthrough: Database Connectivity and Hybrid Logic
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Walkthrough: Database Connectivity and Hybrid Logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-connection-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Connection Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-data-catalog-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Data Catalog Tool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-file-and-database-listing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. File and Database Listing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-schema-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Schema Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-query-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Query Execution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-llm-uses-context-to-select-the-right-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      How the LLM Uses Context to Select the Right Tool
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How the LLM Uses Context to Select the Right Tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-catalog-driven-context-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Catalog-Driven Context Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-context-extraction-and-tool-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Context Extraction and Tool Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-example-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Example Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Why This Matters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-and-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security and Privacy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-and-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment and Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned-and-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lessons Learned and Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-and-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      References and Credits
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certificate Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Bill
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download Azure Resource
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Query Recovery Services Vault
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra Users, User Groups and Licence assignments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Entra User Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-container-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orchestrating Scheduled Jobs (Container Instances)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-build-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Build Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Deploy Container IaC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DevOps Deploy Container Github Actions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-custon-image-compute-gallery-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building and Publishing an Custom Image
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-publish-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploying Azure Virtual Desktop (AVD) Desktops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-cleanup-obsolete-fsLogix-profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cleanup Obsolete FXLogix Profiles(AVD)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Coninuity Program / Diasister Recovery - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Continuity Program / Disaster Recovery - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Business Continuity Program / Disaster Recovery - Git Hub Action
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore VM from RSV Backup - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore VM from RSV Backup - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Fabric
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Fabric
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-wharehouse-fact-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Warehouse data import
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki, Nagios XI & Manage Engine
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Cisco Meraki, Nagios XI & Manage Engine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-unused-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Unused Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cisco Meraki Devices Discovery and Nagios Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-itsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integrating Monitoring System with ITSM System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-vm-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploying Cisco Meraki vMX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Active Directory Domain Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Active Directory Domain Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update ADDS User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            SAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup PyRFC in your Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calling SAP RFC Function Modules from Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-system-start-stop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automating SAP System Start/Stop Operations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    O365
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            O365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Outlook Actionable Adaptive Card - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Sites Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharepoint Document Library Enumeration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migrate Sharepoint Document Library to Azure File Share
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concur Expense Report Aggregation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teams-user-number-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get all Teams Phone Assignment(s)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprovision-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deprovison User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tenantallowblocklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tenant Allow Block List - False Positive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    O365 and Proof Point Essentials - Part 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    O365 and Proof Point Essentials - Part 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    O365 and Proof Point Essentials - Part 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    O365 and Proof Point Essentials - Part 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    O365 and Proof Point Essentials - Part 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spo-o365_excel_automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    O365/Excel Automation via SPO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    UKG
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            UKG
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Secure File Transfer with UKG Dimensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Employee Verification via API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-integration-and-dataview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Automating Integration Execution and Dataview extract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Misc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proof Point User Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-clean-deployments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Clean GitHub Deployments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpointo365connector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Understanding DMARC/Spoofing, O365 with ProofPoint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-csvparquet-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 2: CSV/Parquet &amp; Database
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: CSV/Parquet &amp; Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Series Navigation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-architecture-hybrid-data-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution Architecture: Hybrid Data Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-role-of-the-data-catalog-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Role of the Data Catalog JSON
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Role of the Data Catalog JSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-file-based-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: File-based Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-database-based-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Database-based Dataset
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-code-srcanalystpy-hybrid-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Code: src/analyst.py (Hybrid Version)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-walkthrough-database-connectivity-and-hybrid-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Walkthrough: Database Connectivity and Hybrid Logic
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Walkthrough: Database Connectivity and Hybrid Logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-connection-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Connection Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-data-catalog-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Data Catalog Tool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-file-and-database-listing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. File and Database Listing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-schema-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Schema Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-query-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Query Execution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-llm-uses-context-to-select-the-right-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      How the LLM Uses Context to Select the Right Tool
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How the LLM Uses Context to Select the Right Tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-catalog-driven-context-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Catalog-Driven Context Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-context-extraction-and-tool-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Context Extraction and Tool Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-example-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Example Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Why This Matters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-and-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security and Privacy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-and-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment and Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned-and-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lessons Learned and Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-and-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      References and Credits
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="secure-on-premises-data-analysis-with-llm-and-a-custom-mcp-server">Secure, On-Premises Data Analysis with LLM and a Custom MCP Server</h1>
+<h2 id="part-2-csvparquet-database">Part 2: CSV/Parquet &amp; Database</h2>
+<h3 id="series-navigation">📚 <strong>Series Navigation</strong></h3>
+<ul>
+<li><a href="../ai-claude-mcp-analytic-server-part1/">Part 1: CSV/Parquet</a></li>
+<li><strong>Part 2: CSV/Parquet &amp; Database</strong> <em>(Current)</em></li>
+</ul>
+<p><em>This is Part 2 of the series. Part 1 focused on CSV/Parquet file analytics. Here, we extend the solution to support hybrid queries across both files and SQL Server databases, enabling even richer business intelligence and operational reporting.</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>As organizations mature, data is increasingly distributed across both flat files (CSV, Parquet) and enterprise databases (SQL Server). Business leaders need answers from all these sources—sometimes in combination. This article shows how to extend your MCP server to support:</p>
+<ul>
+<li>Hybrid queries across CSV/Parquet files and SQL Server databases</li>
+<li>Dynamic connection management and authentication</li>
+<li>Catalog-driven tool selection for each dataset</li>
+<li>Unified schema discovery and query execution</li>
+</ul>
+<p><strong>This guide demonstrates how to empower users to query both files and databases using natural language, with all data remaining on-premises.</strong></p>
+<hr />
+<h2 id="solution-architecture-hybrid-data-access">Solution Architecture: Hybrid Data Access</h2>
+<ol>
+<li><strong>MCP server</strong> now supports both file and database sources, with connection info and catalog-driven logic.</li>
+<li><strong>Claude Desktop</strong> interacts with the MCP server, automatically selecting the right tool for each dataset.</li>
+<li><strong>User asks questions</strong> (e.g., "Show me terminated employees from HR database and their device inventory from CSV files").</li>
+<li><strong>MCP server tools</strong> provide file lists, database table lists, schema, and business context.</li>
+<li><strong>LLM generates Polars SQL or T-SQL queries</strong> based on the source type.</li>
+<li><strong>MCP server executes the query</strong> on the correct source(s), returning results to the user.</li>
+</ol>
+<hr />
+<h2 id="the-role-of-the-data-catalog-json">The Role of the Data Catalog JSON</h2>
+<p>The <code>data/data_catalog.json</code> file is the key to business context and technical guidance for the LLM. It:
+- Lists all available datasets, with a <code>source_type</code> field (<code>file</code> or <code>database</code>)
+- Provides business descriptions, columns, rules, and relationships
+- Tells the LLM which tool to use for each dataset</p>
+<h3 id="example-file-based-dataset">Example: File-based Dataset</h3>
+<p><div class="highlight"><pre><span></span><code><span class="nt">&quot;accounts_to_be_deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;source_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;accounts_to_be_deleted.csv&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT_Operations&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Active Directory accounts eligible for deletion. Contains employees terminated more than 90 days ago.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;common_queries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;How many accounts are pending deletion?&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Accounts terminated in a specific date range&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;related_datasets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;identity_master&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;usage_tip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Use get_schema() to see all columns.&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+- LLM sees <code>source_type: file</code> and knows to use <code>execute_polars_sql()</code>
+- Query example: <code>SELECT COUNT(*) FROM self WHERE hr_TerminationDate &lt; '2025-07-01'</code></p>
+<h3 id="example-database-based-dataset">Example: Database-based Dataset</h3>
+<p><div class="highlight"><pre><span></span><code><span class="nt">&quot;adp_employee_daily_snapshot&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;source_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;database&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;database_schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mcp&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;database_table&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vw_ADP_Employee_Daily_Snapshot&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HR_Analytics&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Denormalized daily snapshot of HR system data from ADP. This is the same data as hr_data.csv but stored in SQL Server for better performance on large queries.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;common_queries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Employee tenure calculations using Hire_Date&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;related_datasets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;user_license_assignments&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;usage_tip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Use get_schema_db(schema_name=&#39;mcp&#39;, table_name=&#39;vw_ADP_Employee_Daily_Snapshot&#39;) to see all available columns.&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+- LLM sees <code>source_type: database</code> and knows to use <code>execute_database_query()</code>
+- Query example: <code>SELECT COUNT(*) FROM mcp.vw_ADP_Employee_Daily_Snapshot WHERE Position_Status = 'Active'</code></p>
+<hr />
+<h2 id="full-code-srcanalystpy-hybrid-version">Full Code: <code>src/analyst.py</code> (Hybrid Version)</h2>
+<p>Below is the complete code for the MCP server, with detailed explanations for all relevant sections, especially those handling database connectivity and hybrid logic.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mcp.server.fastmcp</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastMCP</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyodbc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--file_location&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;data/*.csv&quot;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--sql_server&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+          <span class="n">help</span><span class="o">=</span><span class="s2">&quot;SQL Server instance (e.g., localhost or server.domain.com)&quot;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--sql_database&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+          <span class="n">help</span><span class="o">=</span><span class="s2">&quot;SQL Server database name&quot;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--sql_auth&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;windows&quot;</span><span class="p">,</span>
+          <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;windows&quot;</span><span class="p">,</span> <span class="s2">&quot;sql&quot;</span><span class="p">],</span>
+          <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Authentication type: &#39;windows&#39; or &#39;sql&#39;&quot;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--sql_username&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+          <span class="n">help</span><span class="o">=</span><span class="s2">&quot;SQL Server username (only for SQL auth)&quot;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--sql_password&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+          <span class="n">help</span><span class="o">=</span><span class="s2">&quot;SQL Server password (only for SQL auth)&quot;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--catalog_path&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;data/data_catalog.json&quot;</span><span class="p">)</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="n">mcp</span> <span class="o">=</span> <span class="n">FastMCP</span><span class="p">(</span><span class="s2">&quot;analystwithsql&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;polars&quot;</span><span class="p">,</span> <span class="s2">&quot;pyodbc&quot;</span><span class="p">])</span>
+
+<span class="c1"># Connection management</span>
+<span class="n">_connection</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">_connection_string</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_connection_string</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Build SQL Server connection string based on arguments&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">sql_server</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">sql_database</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">None</span>
+  <span class="n">drivers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;ODBC Driver 18 for SQL Server&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ODBC Driver 17 for SQL Server&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;SQL Server Native Client 11.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;SQL Server&quot;</span>
+  <span class="p">]</span>
+  <span class="n">available_driver</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">installed_drivers</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">pyodbc</span><span class="o">.</span><span class="n">drivers</span><span class="p">()]</span>
+    <span class="k">for</span> <span class="n">driver</span> <span class="ow">in</span> <span class="n">drivers</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">driver</span> <span class="ow">in</span> <span class="n">installed_drivers</span><span class="p">:</span>
+        <span class="n">available_driver</span> <span class="o">=</span> <span class="n">driver</span>
+        <span class="k">break</span>
+  <span class="k">except</span><span class="p">:</span>
+    <span class="n">available_driver</span> <span class="o">=</span> <span class="s2">&quot;SQL Server&quot;</span>  <span class="c1"># Fallback</span>
+  <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">sql_auth</span> <span class="o">==</span> <span class="s2">&quot;windows&quot;</span><span class="p">:</span>
+    <span class="n">conn_str</span> <span class="o">=</span> <span class="p">(</span>
+      <span class="sa">f</span><span class="s2">&quot;Driver=</span><span class="se">{{</span><span class="si">{</span><span class="n">available_driver</span><span class="si">}</span><span class="se">}}</span><span class="s2">;&quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;Server=</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">sql_server</span><span class="si">}</span><span class="s2">;&quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;Database=</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">sql_database</span><span class="si">}</span><span class="s2">;&quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;Trusted_Connection=yes;&quot;</span>
+    <span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">sql_username</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">sql_password</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">conn_str</span> <span class="o">=</span> <span class="p">(</span>
+      <span class="sa">f</span><span class="s2">&quot;Driver=</span><span class="se">{{</span><span class="si">{</span><span class="n">available_driver</span><span class="si">}</span><span class="se">}}</span><span class="s2">;&quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;Server=</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">sql_server</span><span class="si">}</span><span class="s2">;&quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;Database=</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">sql_database</span><span class="si">}</span><span class="s2">;&quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;UID=</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">sql_username</span><span class="si">}</span><span class="s2">;&quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;PWD=</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">sql_password</span><span class="si">}</span><span class="s2">;&quot;</span>
+    <span class="p">)</span>
+  <span class="k">if</span> <span class="s2">&quot;ODBC Driver 17&quot;</span> <span class="ow">in</span> <span class="n">available_driver</span> <span class="ow">or</span> <span class="s2">&quot;ODBC Driver 18&quot;</span> <span class="ow">in</span> <span class="n">available_driver</span><span class="p">:</span>
+    <span class="n">conn_str</span> <span class="o">+=</span> <span class="s2">&quot;Encrypt=yes;TrustServerCertificate=yes;&quot;</span>
+  <span class="k">return</span> <span class="n">conn_str</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_db_connection</span><span class="p">():</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Get or create database connection with connection pooling&quot;&quot;&quot;</span>
+  <span class="k">global</span> <span class="n">_connection</span><span class="p">,</span> <span class="n">_connection_string</span>
+  <span class="k">if</span> <span class="n">_connection_string</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">_connection_string</span> <span class="o">=</span> <span class="n">build_connection_string</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">_connection_string</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">_connection</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">_connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT 1&quot;</span><span class="p">)</span>
+  <span class="k">except</span><span class="p">:</span>
+    <span class="n">_connection</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">if</span> <span class="n">_connection</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">_connection</span> <span class="o">=</span> <span class="n">pyodbc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_connection_string</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">_connection</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_database_configured</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Check if database connection is configured&quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">args</span><span class="o">.</span><span class="n">sql_server</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">sql_database</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+<span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_connection_info</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Get information about configured data sources and connection status.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">info</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;file_sources&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+      <span class="s2">&quot;pattern&quot;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">file_location</span><span class="p">,</span>
+      <span class="s2">&quot;available_files&quot;</span><span class="p">:</span> <span class="n">glob</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">file_location</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;database_sources&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">is_database_configured</span><span class="p">(),</span>
+      <span class="s2">&quot;server&quot;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">sql_server</span><span class="p">,</span>
+      <span class="s2">&quot;database&quot;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">sql_database</span><span class="p">,</span>
+      <span class="s2">&quot;auth_type&quot;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">sql_auth</span> <span class="k">if</span> <span class="n">is_database_configured</span><span class="p">()</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="n">is_database_configured</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">conn</span> <span class="o">=</span> <span class="n">get_db_connection</span><span class="p">()</span>
+      <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+      <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT @@VERSION&quot;</span><span class="p">)</span>
+      <span class="n">info</span><span class="p">[</span><span class="s2">&quot;database_sources&quot;</span><span class="p">][</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;connected&quot;</span>
+      <span class="n">info</span><span class="p">[</span><span class="s2">&quot;database_sources&quot;</span><span class="p">][</span><span class="s2">&quot;server_version&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">info</span><span class="p">[</span><span class="s2">&quot;database_sources&quot;</span><span class="p">][</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="k">return</span> <span class="n">info</span>
+
+<span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_data_catalog</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Get the comprehensive data catalog with descriptions of all available datasets.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">catalog_path</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">catalog_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;Catalog file not found.&quot;</span>
+
+<span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_files_list</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Get the list of CSV/Parquet files available in the file system.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">files_list</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">file_location</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">files_list</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;No files found.&quot;</span>
+  <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">files_list</span><span class="p">)</span>
+
+<span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_database_tables</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Get the list of database tables available in SQL Server.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">is_database_configured</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Database not configured.&quot;</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">get_db_connection</span><span class="p">()</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT TABLE_SCHEMA, TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE=&#39;BASE TABLE&#39;&quot;</span><span class="p">)</span>
+    <span class="n">tables</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">schema</span><span class="p">,</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+      <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">schema</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+  <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_schema</span><span class="p">(</span><span class="n">file_location</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;csv&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Get the technical schema of a CSV or Parquet file.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_location</span><span class="p">)</span> <span class="k">if</span> <span class="n">file_type</span> <span class="o">==</span> <span class="s2">&quot;csv&quot;</span> <span class="k">else</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">file_location</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="n">col</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">}]</span>
+  <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)}]</span>
+
+<span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_schema_db</span><span class="p">(</span><span class="n">schema_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Get the technical schema of a SQL Server database table.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">is_database_configured</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Database not configured.&quot;</span><span class="p">}]</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">get_db_connection</span><span class="p">()</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=? AND TABLE_NAME=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">schema_name</span><span class="p">,</span> <span class="n">table_name</span><span class="p">))</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="n">col</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="p">{</span><span class="s2">&quot;data_type&quot;</span><span class="p">:</span> <span class="n">col</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;nullable&quot;</span><span class="p">:</span> <span class="n">col</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">}]</span>
+  <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)}]</span>
+
+<span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">execute_polars_sql</span><span class="p">(</span><span class="n">file_locations</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;csv&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Execute a Polars SQL query on one or more files.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># Implementation omitted for brevity</span>
+  <span class="k">pass</span>
+
+<span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">execute_database_query</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">max_rows</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Execute a T-SQL query on the configured SQL Server database.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">is_database_configured</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Database not configured.&quot;</span><span class="p">}]</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">get_db_connection</span><span class="p">()</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">desc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">desc</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">description</span><span class="p">]</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchmany</span><span class="p">(</span><span class="n">max_rows</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">row</span><span class="p">))</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+  <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)}]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Main entry point for the MCP server&quot;&quot;&quot;</span>
+  <span class="n">mcp</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+  <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="code-walkthrough-database-connectivity-and-hybrid-logic">Code Walkthrough: Database Connectivity and Hybrid Logic</h2>
+<h3 id="1-connection-management">1. Connection Management</h3>
+<ul>
+<li><code>build_connection_string()</code>: Dynamically builds the ODBC connection string for SQL Server, supporting both Windows and SQL authentication.</li>
+<li><code>get_db_connection()</code>: Manages connection pooling and reconnects if needed.</li>
+<li><code>is_database_configured()</code>: Checks if database parameters are set.</li>
+</ul>
+<h3 id="2-data-catalog-tool">2. Data Catalog Tool</h3>
+<ul>
+<li><code>get_data_catalog()</code>: Returns the full JSON catalog, giving the LLM all business and technical context for every dataset.</li>
+</ul>
+<h3 id="3-file-and-database-listing">3. File and Database Listing</h3>
+<ul>
+<li><code>get_files_list()</code>: Lists available CSV/Parquet files.</li>
+<li><code>get_database_tables()</code>: Lists available SQL Server tables.</li>
+</ul>
+<h3 id="4-schema-discovery">4. Schema Discovery</h3>
+<ul>
+<li><code>get_schema()</code>: Returns column names and types for files.</li>
+<li><code>get_schema_db()</code>: Returns column names and types for database tables.</li>
+</ul>
+<h3 id="5-query-execution">5. Query Execution</h3>
+<ul>
+<li><code>execute_polars_sql()</code>: Executes Polars SQL queries on files (implementation omitted for brevity).</li>
+<li><code>execute_database_query()</code>: Executes T-SQL queries on the database, returning results as dictionaries.</li>
+</ul>
+<hr />
+<h2 id="how-the-llm-uses-context-to-select-the-right-tool">How the LLM Uses Context to Select the Right Tool</h2>
+<p>The LLM (Claude Desktop or any compatible client) relies on the data catalog JSON to make intelligent decisions about which tool to use for each user query. Here’s how the process works in detail:</p>
+<h3 id="1-catalog-driven-context-discovery">1. Catalog-Driven Context Discovery</h3>
+<ul>
+<li>The LLM first calls the MCP tool <code>get_data_catalog()</code>, which returns the full contents of <code>data/data_catalog.json</code>.</li>
+<li>This JSON file contains a dictionary of all datasets, each with metadata fields such as:</li>
+<li><code>source_type</code>: Indicates if the data is in a file (<code>file</code>) or a database (<code>database</code>).</li>
+<li><code>filename</code> (for files) or <code>database_schema</code>/<code>database_table</code> (for databases): Specifies the location or table name.</li>
+<li><code>category</code>, <code>description</code>, <code>columns</code>, <code>business_rules</code>, <code>common_queries</code>, <code>related_datasets</code>, and <code>usage_tip</code>: Provide business and technical context.</li>
+</ul>
+<h3 id="2-context-extraction-and-tool-selection">2. Context Extraction and Tool Selection</h3>
+<ul>
+<li>The LLM parses the catalog to identify which dataset(s) are relevant to the user’s question.</li>
+<li>For each relevant dataset, it checks the <code>source_type</code> field:</li>
+<li>If <code>source_type</code> is <code>file</code>, the LLM knows to use the <code>execute_polars_sql()</code> tool for querying, and can call <code>get_schema()</code> for column details.</li>
+<li>If <code>source_type</code> is <code>database</code>, the LLM uses the <code>execute_database_query()</code> tool, and can call <code>get_schema_db()</code> for table schema.</li>
+<li>The LLM also uses other fields:</li>
+<li><code>business_rules</code> help the LLM understand how to filter or interpret the data (e.g., only include terminated employees older than 90 days).</li>
+<li><code>common_queries</code> provide examples that guide the LLM in generating correct SQL or Polars SQL syntax.</li>
+<li><code>related_datasets</code> inform the LLM about possible joins or multi-source queries.</li>
+</ul>
+<h3 id="3-example-workflow">3. Example Workflow</h3>
+<p>Suppose a user asks: "How many accounts are pending deletion?"
+- The LLM calls <code>get_data_catalog()</code> and finds the <code>accounts_to_be_deleted</code> dataset.
+- It sees <code>source_type: file</code> and <code>filename: accounts_to_be_deleted.csv</code>.
+- It uses <code>execute_polars_sql(file_locations=["data/accounts_to_be_deleted.csv"], query="SELECT COUNT(*) FROM self WHERE hr_TerminationDate &lt; '2025-07-01'")</code>.</p>
+<p>For a database example, if the user asks: "How many active employees are in the HR system?"
+- The LLM finds the <code>adp_employee_daily_snapshot</code> dataset, sees <code>source_type: database</code>, and extracts <code>database_schema: mcp</code>, <code>database_table: vw_ADP_Employee_Daily_Snapshot</code>.
+- It uses <code>execute_database_query(query="SELECT COUNT(*) FROM mcp.vw_ADP_Employee_Daily_Snapshot WHERE Position_Status = 'Active'")</code>.</p>
+<h3 id="4-why-this-matters">4. Why This Matters</h3>
+<ul>
+<li>The JSON catalog acts as both a business glossary and a technical map, ensuring the LLM never guesses or misuses a tool.</li>
+<li>It enforces correct tool selection, query syntax, and business logic, making analytics reliable and secure.</li>
+<li>The LLM can answer complex questions, join datasets, and respect business rules—all by following the context provided in the catalog.</li>
+</ul>
+<hr />
+<h2 id="security-and-privacy">Security and Privacy</h2>
+<ul>
+<li><strong>All data remains on-premises:</strong> No data leaves your network.</li>
+<li><strong>Connection info and authentication are managed securely.</strong></li>
+<li><strong>Catalog-driven logic prevents accidental data leakage or misuse.</strong></li>
+</ul>
+<hr />
+<h2 id="deployment-and-usage">Deployment and Usage</h2>
+<ul>
+<li>Package as a Windows executable using PyInstaller (now includes pyodbc dependency):
+  <div class="highlight"><pre><span></span><code>pyinstaller<span class="w"> </span>--onefile<span class="w"> </span>--name<span class="w"> </span>cio-mcp_server<span class="w"> </span>src/analyst.py
+</code></pre></div></li>
+<li>Deploy alongside your data folder and update <code>data_catalog.json</code> to include database tables.</li>
+<li>Configure Claude Desktop as in Part 1.</li>
+</ul>
+<hr />
+<h2 id="lessons-learned-and-best-practices">Lessons Learned and Best Practices</h2>
+<ul>
+<li><strong>Hybrid access enables richer analytics and reporting.</strong></li>
+<li><strong>Catalog-driven tool selection is critical for reliability and security.</strong></li>
+<li><strong>Unified schema discovery simplifies query generation for LLMs.</strong></li>
+<li><strong>Connection info tool helps with troubleshooting and onboarding.</strong></li>
+</ul>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>With hybrid file and database support, your MCP server becomes a true enterprise analytics gateway. Business users can ask questions spanning all data sources, with natural language and instant results. This approach future-proofs your analytics stack and empowers users to self-serve securely.</p>
+<hr />
+<h2 id="references-and-credits">References and Credits</h2>
+<ul>
+<li><a href="https://github.com/unravel-team/mcp-analyst">mcp-analyst GitHub repository</a> — Original codebase and inspiration for this solution.</li>
+<li><a href="https://pola.rs/">Polars DataFrame library</a> — High-performance data processing in Python.</li>
+<li><a href="https://claude.ai/">Claude Desktop</a> — LLM client for natural language analytics.</li>
+<li><a href="https://pyinstaller.org/">PyInstaller</a> — For packaging Python code as a Windows executable.</li>
+<li><a href="https://github.com/mkleehammer/pyodbc">pyodbc</a> — For SQL Server connectivity.</li>
+</ul>
+<p><em>For more details, see the full code in <code>src/analyst.py</code> and the data catalog in <code>data/data_catalog.json</code>.</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 20:09:39 UTC">October 22, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
