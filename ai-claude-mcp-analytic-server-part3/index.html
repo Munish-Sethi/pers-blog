@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://munishsethi.com/ai-claude-mcp-analytic-server-part3/">
       
       
+        <link rel="prev" href="../ai-claude-mcp-analytic-server-part2/">
+      
+      
+        <link rel="next" href="../azure-ad-certificate/">
       
       
       <link rel="icon" href="../None">
@@ -20,7 +24,7 @@
     
     
       
-        <title>Secure, On-Premises Data Analysis with LLM and a Custom MCP Server - Munish(s) Blog</title>
+        <title>Data Analysis with LLM via MCP Server (files/database) https- Part 3 - Munish(s) Blog</title>
       
     
     
@@ -100,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Secure, On-Premises Data Analysis with LLM and a Custom MCP Server
+              Data Analysis with LLM via MCP Server (files/database) https- Part 3
             
           </span>
         </div>
@@ -215,8 +219,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -227,11 +233,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -247,7 +253,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             AI
@@ -266,7 +272,7 @@
   
   
   <span class="md-ellipsis">
-    Data Analysis with LLM via MCP Server - Part 1
+    Data Analysis with LLM via MCP Server (csv/Parquet) stdio- Part 1
     
   </span>
   
@@ -289,12 +295,641 @@
   
   
   <span class="md-ellipsis">
-    Data Analysis with LLM via MCP Server - Part 2
+    Data Analysis with LLM via MCP Server (database) stdio- Part 2
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Data Analysis with LLM via MCP Server (files/database) https- Part 3
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Analysis with LLM via MCP Server (files/database) https- Part 3
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-https-based-mcp-server-with-azure-oauth-and-multi-tenant-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 3: HTTPS-Based MCP Server with Azure OAuth and Multi-Tenant Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: HTTPS-Based MCP Server with Azure OAuth and Multi-Tenant Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Series Navigation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-from-stdio-to-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture: From Stdio to HTTPS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture: From Stdio to HTTPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#previous-architecture-parts-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Previous Architecture (Parts 1 &amp; 2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-architecture-part-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Architecture (Part 3)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-https-over-stdio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why HTTPS over Stdio?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure-entra-app-registration-setup-and-gotchas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Entra App Registration: Setup and Gotchas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure Entra App Registration: Setup and Gotchas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-app-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create App Registration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-configure-api-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Configure API Permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-create-client-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Create Client Secret
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-configure-redirect-uris" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Configure Redirect URIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-expose-api-and-define-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Expose API and Define Scopes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gotcha-1-oauth-version-must-be-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨 Gotcha #1: OAuth Version Must Be 2.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gotcha-2-claude-desktop-callback-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨 Gotcha #2: Claude Desktop Callback URL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-note-your-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Note Your Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-tenant-architecture-business-function-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Tenant Architecture: Business Function Routing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Tenant Architecture: Business Function Routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#business-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Business Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-url-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection URL Examples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-isolation-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Isolation Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-code-walkthrough-analystpy-https-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Code Walkthrough: analyst.py (HTTPS Version)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Full Code Walkthrough: analyst.py (HTTPS Version)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-logging-and-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Logging and Initialization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-azure-key-vault-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Azure Key Vault Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-business-function-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Business Function Middleware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-azure-oauth-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Azure OAuth Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-database-connection-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Database Connection Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-file-reading-with-sap-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. File Reading with SAP Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-user-context-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. User Context Extraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-mcp-tool-connection-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. MCP Tool: Connection Info
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-mcp-tool-data-catalog-auto-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. MCP Tool: Data Catalog (Auto-Discovery)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-mcp-tool-get-schema-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. MCP Tool: Get Schema (Files)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-mcp-tool-get-schema-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. MCP Tool: Get Schema (Database)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-mcp-tool-execute-polars-sql-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. MCP Tool: Execute Polars SQL (Files)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-mcp-tool-execute-database-query-sql-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. MCP Tool: Execute Database Query (SQL Server)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-main-entry-point-and-server-startup" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Main Entry Point and Server Startup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-azure-container-instance-with-tls-offloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment: Azure Container Instance with TLS Offloading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment: Azure Container Instance with TLS Offloading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-build-and-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Build and Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-offloading-with-fortigate" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS Offloading with FortiGate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claude-desktop-configuration-updated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claude Desktop Configuration (Updated)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-authentication-and-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Authentication and Authorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-data-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Data Protection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-secrets-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Secrets Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-network-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Network Security
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-and-scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance and Scalability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance and Scalability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Characteristics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling Strategies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-metrics-to-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Metrics to Monitor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lessons Learned
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lessons Learned">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-worked-well" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Worked Well
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenges-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenges and Solutions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-and-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      References and Credits
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
