@@ -4,7 +4,7 @@
 ### 📚 **Series Navigation**
 - [Part 1: CSV/Parquet](ai-claude-mcp-analytic-server-part1.md)
 - **Part 2: CSV/Parquet & Database** *(Current)*
-
+- [Part 3: HTTPS-Based MCP Server with Azure OAuth](ai-claude-mcp-analytic-server-part3.md)
 
 
 *This is Part 2 of the series. Part 1 focused on CSV/Parquet file analytics. Here, we extend the solution to support hybrid queries across both files and SQL Server databases, enabling even richer business intelligence and operational reporting.*
