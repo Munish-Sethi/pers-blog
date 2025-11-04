@@ -1,12 +1,14 @@
 # Secure, On-Premises Data Analysis with LLM and a Custom MCP Server
-## Part 3: HTTPS-Based MCP Server with Azure OAuth and Multi-Tenant Architecture
+## Part 3: HTTPS-Based MCP Server with OAuth 2.0 (Azure Entra ID) and Multi-Tenant Architecture
 
 ### 📚 **Series Navigation**
 - [Part 1: CSV/Parquet files](ai-claude-mcp-analytic-server-part1.md)
 - [Part 2: CSV/Parquet & Database](ai-claude-mcp-analytic-server-part2.md)
-- **Part 3: HTTPS-Based MCP Server with Azure OAuth** *(Current)*
+- **Part 3: HTTPS-Based MCP Server with OAuth 2.0 (Azure Entra ID)** *(Current)*
 
 ---
+
+*This is Part 3 of the series. Here, we extend the solution to use MCP Server over HTTPS*
 
 ## Introduction
 
@@ -23,7 +25,7 @@ While the stdio-based MCP server from Parts 1 and 2 works well for individual us
 - **HTTPS connectivity:** Compatible with Claude Desktop (paid tier), web clients, and API integrations
 
 This article shows how to transform the local MCP server into a production-ready, enterprise service that:
-- Authenticates users via Azure OAuth 2.0
+- Authenticates users via OAuth 2.0 (Azure Entra ID)
 - Routes requests to function-specific data catalogs (IT, HR, FIN)
 - Runs as a containerized service with TLS offloading
 - Integrates with Claude Desktop's custom HTTPS connector
@@ -58,7 +60,7 @@ This article shows how to transform the local MCP server into a production-ready
 ```
 
 **Key improvements:**
-- **OAuth 2.0:** Azure Entra ID handles authentication and authorization
+- **OAuth 2.0 (Azure Entra ID):** Handles authentication and authorization
 - **Multi-tenancy:** Single server supports multiple business functions with isolated data
 - **Cloud deployment:** Runs as a container in Azure Container Instances
 - **TLS offloading:** FortiGate/FortiWeb handles SSL/TLS termination
@@ -71,7 +73,7 @@ This article shows how to transform the local MCP server into a production-ready
 | Feature | Stdio (Parts 1 & 2) | HTTPS (Part 3) |
 |---------|---------------------|----------------|
 | Deployment | Executable per user | Single centralized service |
-| Authentication | None | Azure Entra ID OAuth 2.0 |
+| Authentication | None | OAuth 2.0 (Azure Entra ID) |
 | Client support | Claude Desktop (local) | Claude Desktop (paid), web, mobile, APIs |
 | Multi-user | No | Yes, with per-user context |
 | Scalability | One user per process | Hundreds of concurrent users |
@@ -412,13 +414,13 @@ def get_current_business_function() -> str:
 
 ---
 
-### 4. Azure OAuth Configuration
+### 4. OAuth 2.0 (Azure Entra ID) Configuration
 
 ```python
 from fastmcp import FastMCP
 from fastmcp.server.auth.providers.azure import AzureProvider
 
-logger.info("Configuring Azure OAuth Provider")
+logger.info("Configuring OAuth 2.0 (Azure Entra ID) Provider")
 try:
     azure_auth = AzureProvider(
         client_id=AZURE_CONFIDENTIAL_APP_ID,
@@ -427,10 +429,10 @@ try:
         base_url="https://mcp.gdenergyproducts.com",
         required_scopes=["access_as_user"]
     )
-    logger.info("Azure OAuth Provider configured successfully")
+    logger.info("OAuth 2.0 (Azure Entra ID) Provider configured successfully")
 except Exception as e:
     logger.error(
-        f"Failed to configure Azure OAuth Provider: {str(e)}", 
+    f"Failed to configure OAuth 2.0 (Azure Entra ID) Provider: {str(e)}", 
         exc_info=True
     )
     raise
@@ -1670,7 +1672,7 @@ end
 
 ---
 
-## Claude Desktop Configuration (Updated)
+## Claude Desktop Configuration
 
 To connect Claude Desktop to your MCP server:
 
@@ -1694,7 +1696,7 @@ To connect Claude Desktop to your MCP server:
 ## Security Best Practices
 
 ### 1. Authentication and Authorization
-- ✅ **OAuth 2.0 only:** No API keys or basic auth
+- ✅ **OAuth 2.0 (Azure Entra ID) only:** No API keys or basic auth
 - ✅ **Per-user context:** Track who queries what
 - ✅ **Business function isolation:** Users can't cross boundaries
 - ✅ **Audit logging:** Every tool call logged with user identity
@@ -1812,7 +1814,7 @@ To connect Claude Desktop to your MCP server:
 
 ### What Worked Well
 
-1. **Azure OAuth integration:** Seamless enterprise SSO
+1. **OAuth 2.0 (Azure Entra ID) integration:** Seamless enterprise SSO
 2. **Multi-tenant architecture:** Single server for all business functions
 3. **Polars performance:** Handles millions of rows effortlessly
 4. **Data catalog:** LLM generates correct queries consistently
@@ -1852,7 +1854,7 @@ To connect Claude Desktop to your MCP server:
 The evolution from stdio-based to HTTPS-based MCP server represents a quantum leap in enterprise readiness:
 
 - **From single-user to multi-tenant:** One server, many users, isolated data
-- **From no auth to OAuth 2.0:** Enterprise-grade security and SSO
+- **From no auth to OAuth 2.0 (Azure Entra ID):** Enterprise-grade security and SSO
 - **From local to cloud:** Scalable, containerized deployment
 - **From manual to automated:** Zero per-user setup, instant access
 
