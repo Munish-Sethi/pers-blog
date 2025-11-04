@@ -363,13 +363,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#part-3-https-based-mcp-server-with-azure-oauth-and-multi-tenant-architecture" class="md-nav__link">
+  <a href="#part-3-https-based-mcp-server-with-oauth-20-azure-entra-id-and-multi-tenant-architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      Part 3: HTTPS-Based MCP Server with Azure OAuth and Multi-Tenant Architecture
+      Part 3: HTTPS-Based MCP Server with OAuth 2.0 (Azure Entra ID) and Multi-Tenant Architecture
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Part 3: HTTPS-Based MCP Server with Azure OAuth and Multi-Tenant Architecture">
+    <nav class="md-nav" aria-label="Part 3: HTTPS-Based MCP Server with OAuth 2.0 (Azure Entra ID) and Multi-Tenant Architecture">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -604,9 +604,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-azure-oauth-configuration" class="md-nav__link">
+  <a href="#4-oauth-20-azure-entra-id-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Azure OAuth Configuration
+      4. OAuth 2.0 (Azure Entra ID) Configuration
     </span>
   </a>
   
@@ -741,9 +741,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#claude-desktop-configuration-updated" class="md-nav__link">
+  <a href="#claude-desktop-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Claude Desktop Configuration (Updated)
+      Claude Desktop Configuration
     </span>
   </a>
   
@@ -2496,13 +2496,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#part-3-https-based-mcp-server-with-azure-oauth-and-multi-tenant-architecture" class="md-nav__link">
+  <a href="#part-3-https-based-mcp-server-with-oauth-20-azure-entra-id-and-multi-tenant-architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      Part 3: HTTPS-Based MCP Server with Azure OAuth and Multi-Tenant Architecture
+      Part 3: HTTPS-Based MCP Server with OAuth 2.0 (Azure Entra ID) and Multi-Tenant Architecture
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Part 3: HTTPS-Based MCP Server with Azure OAuth and Multi-Tenant Architecture">
+    <nav class="md-nav" aria-label="Part 3: HTTPS-Based MCP Server with OAuth 2.0 (Azure Entra ID) and Multi-Tenant Architecture">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2737,9 +2737,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-azure-oauth-configuration" class="md-nav__link">
+  <a href="#4-oauth-20-azure-entra-id-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Azure OAuth Configuration
+      4. OAuth 2.0 (Azure Entra ID) Configuration
     </span>
   </a>
   
@@ -2874,9 +2874,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#claude-desktop-configuration-updated" class="md-nav__link">
+  <a href="#claude-desktop-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Claude Desktop Configuration (Updated)
+      Claude Desktop Configuration
     </span>
   </a>
   
@@ -3076,12 +3076,12 @@
 
 
 <h1 id="secure-on-premises-data-analysis-with-llm-and-a-custom-mcp-server">Secure, On-Premises Data Analysis with LLM and a Custom MCP Server</h1>
-<h2 id="part-3-https-based-mcp-server-with-azure-oauth-and-multi-tenant-architecture">Part 3: HTTPS-Based MCP Server with Azure OAuth and Multi-Tenant Architecture</h2>
+<h2 id="part-3-https-based-mcp-server-with-oauth-20-azure-entra-id-and-multi-tenant-architecture">Part 3: HTTPS-Based MCP Server with OAuth 2.0 (Azure Entra ID) and Multi-Tenant Architecture</h2>
 <h3 id="series-navigation">📚 <strong>Series Navigation</strong></h3>
 <ul>
 <li><a href="../ai-claude-mcp-analytic-server-part1/">Part 1: CSV/Parquet files</a></li>
 <li><a href="../ai-claude-mcp-analytic-server-part2/">Part 2: CSV/Parquet &amp; Database</a></li>
-<li><strong>Part 3: HTTPS-Based MCP Server with Azure OAuth</strong> <em>(Current)</em></li>
+<li><strong>Part 3: HTTPS-Based MCP Server with OAuth 2.0 (Azure Entra ID)</strong> <em>(Current)</em></li>
 </ul>
 <hr />
 <h2 id="introduction">Introduction</h2>
@@ -3096,7 +3096,7 @@
 <li><strong>HTTPS connectivity:</strong> Compatible with Claude Desktop (paid tier), web clients, and API integrations</li>
 </ul>
 <p>This article shows how to transform the local MCP server into a production-ready, enterprise service that:
-- Authenticates users via Azure OAuth 2.0
+- Authenticates users via OAuth 2.0 (Azure Entra ID)
 - Routes requests to function-specific data catalogs (IT, HR, FIN)
 - Runs as a containerized service with TLS offloading
 - Integrates with Claude Desktop's custom HTTPS connector</p>
@@ -3123,7 +3123,7 @@
                             [Files + Database per Function]
 </code></pre></div>
 <p><strong>Key improvements:</strong>
-- <strong>OAuth 2.0:</strong> Azure Entra ID handles authentication and authorization
+- <strong>OAuth 2.0 (Azure Entra ID):</strong> Handles authentication and authorization
 - <strong>Multi-tenancy:</strong> Single server supports multiple business functions with isolated data
 - <strong>Cloud deployment:</strong> Runs as a container in Azure Container Instances
 - <strong>TLS offloading:</strong> FortiGate/FortiWeb handles SSL/TLS termination
@@ -3147,7 +3147,7 @@
 <tr>
 <td>Authentication</td>
 <td>None</td>
-<td>Azure Entra ID OAuth 2.0</td>
+<td>OAuth 2.0 (Azure Entra ID)</td>
 </tr>
 <tr>
 <td>Client support</td>
@@ -3469,11 +3469,11 @@ Directory (tenant) ID: &lt;your-tenant-id&gt;
 - Each user's requests are isolated in async context
 - Supports concurrent requests from multiple users</p>
 <hr />
-<h3 id="4-azure-oauth-configuration">4. Azure OAuth Configuration</h3>
+<h3 id="4-oauth-20-azure-entra-id-configuration">4. OAuth 2.0 (Azure Entra ID) Configuration</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastmcp</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastMCP</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">fastmcp.server.auth.providers.azure</span><span class="w"> </span><span class="kn">import</span> <span class="n">AzureProvider</span>
 
-<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Configuring Azure OAuth Provider&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Configuring OAuth 2.0 (Azure Entra ID) Provider&quot;</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">azure_auth</span> <span class="o">=</span> <span class="n">AzureProvider</span><span class="p">(</span>
         <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
@@ -3482,10 +3482,10 @@ Directory (tenant) ID: &lt;your-tenant-id&gt;
         <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://mcp.gdenergyproducts.com&quot;</span><span class="p">,</span>
         <span class="n">required_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;access_as_user&quot;</span><span class="p">]</span>
     <span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Azure OAuth Provider configured successfully&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;OAuth 2.0 (Azure Entra ID) Provider configured successfully&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Failed to configure Azure OAuth Provider: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> 
+    <span class="sa">f</span><span class="s2">&quot;Failed to configure OAuth 2.0 (Azure Entra ID) Provider: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> 
         <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
     <span class="k">raise</span>
@@ -4652,7 +4652,7 @@ end
 - Internal traffic: HTTP to container (port 8000)
 - TLS handled by FortiGate with corporate SSL certificate</p>
 <hr />
-<h2 id="claude-desktop-configuration-updated">Claude Desktop Configuration (Updated)</h2>
+<h2 id="claude-desktop-configuration">Claude Desktop Configuration</h2>
 <p>To connect Claude Desktop to your MCP server:</p>
 <ol>
 <li>Open Claude Desktop and go to <strong>File → Settings</strong>.</li>
@@ -4672,7 +4672,7 @@ end
 <h2 id="security-best-practices">Security Best Practices</h2>
 <h3 id="1-authentication-and-authorization">1. Authentication and Authorization</h3>
 <ul>
-<li>✅ <strong>OAuth 2.0 only:</strong> No API keys or basic auth</li>
+<li>✅ <strong>OAuth 2.0 (Azure Entra ID) only:</strong> No API keys or basic auth</li>
 <li>✅ <strong>Per-user context:</strong> Track who queries what</li>
 <li>✅ <strong>Business function isolation:</strong> Users can't cross boundaries</li>
 <li>✅ <strong>Audit logging:</strong> Every tool call logged with user identity</li>
@@ -4770,7 +4770,7 @@ end
 <h2 id="lessons-learned">Lessons Learned</h2>
 <h3 id="what-worked-well">What Worked Well</h3>
 <ol>
-<li><strong>Azure OAuth integration:</strong> Seamless enterprise SSO</li>
+<li><strong>OAuth 2.0 (Azure Entra ID) integration:</strong> Seamless enterprise SSO</li>
 <li><strong>Multi-tenant architecture:</strong> Single server for all business functions</li>
 <li><strong>Polars performance:</strong> Handles millions of rows effortlessly</li>
 <li><strong>Data catalog:</strong> LLM generates correct queries consistently</li>
@@ -4820,7 +4820,7 @@ end
 <p>The evolution from stdio-based to HTTPS-based MCP server represents a quantum leap in enterprise readiness:</p>
 <ul>
 <li><strong>From single-user to multi-tenant:</strong> One server, many users, isolated data</li>
-<li><strong>From no auth to OAuth 2.0:</strong> Enterprise-grade security and SSO</li>
+<li><strong>From no auth to OAuth 2.0 (Azure Entra ID):</strong> Enterprise-grade security and SSO</li>
 <li><strong>From local to cloud:</strong> Scalable, containerized deployment</li>
 <li><strong>From manual to automated:</strong> Zero per-user setup, instant access</li>
 </ul>
