@@ -13,14 +13,17 @@
         <link rel="canonical" href="https://munishsethi.com/azure-ad-certificate/">
       
       
-        <link rel="prev" href="../ai-claude-mcp-analytic-server-part3/">
+        <link rel="prev" href="../ai-claude-mcp-analytic-server-part4/">
       
       
         <link rel="next" href="../azure-billing/">
       
       
+        
+      
+      
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -28,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
       
       
 
@@ -53,7 +56,6 @@
     
       
 
-    
     
     
   </head>
@@ -205,9 +207,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
     
   </span>
+  
   
 
       </a>
@@ -243,9 +250,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     AI
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -254,7 +266,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            AI
+            
+  
+    AI
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -270,9 +286,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Data Analysis with LLM via MCP Server (csv/Parquet) stdio- Part 1
+  
+
     
   </span>
+  
   
 
       </a>
@@ -293,9 +314,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Data Analysis with LLM via MCP Server (database) stdio- Part 2
+  
+
     
   </span>
+  
   
 
       </a>
@@ -316,9 +342,42 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Data Analysis with LLM via MCP Server (files/database) https- Part 3
+  
+
     
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging MCP Servers (Https) with VS Code - Part 4
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -364,9 +423,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Azure
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -375,7 +439,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Azure
+            
+  
+    Azure
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -400,9 +468,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Certificate Based Authentication
+  
+
     
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -413,9 +486,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Certificate Based Authentication
+  
+
     
   </span>
+  
   
 
       </a>
@@ -438,7 +516,9 @@
         <li class="md-nav__item">
   <a href="#creating-a-certificate-for-azure-ad-authentication" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating a Certificate for Azure AD Authentication
+      
+        Creating a Certificate for Azure AD Authentication
+      
     </span>
   </a>
   
@@ -448,7 +528,9 @@
           <li class="md-nav__item">
   <a href="#steps-to-generate-a-certificate-using-openssl" class="md-nav__link">
     <span class="md-ellipsis">
-      Steps to Generate a Certificate Using OpenSSL
+      
+        Steps to Generate a Certificate Using OpenSSL
+      
     </span>
   </a>
   
@@ -462,7 +544,9 @@
         <li class="md-nav__item">
   <a href="#uploading-the-certificate-to-your-entra-azure-ad-application" class="md-nav__link">
     <span class="md-ellipsis">
-      Uploading the Certificate to Your Entra (Azure AD) Application
+      
+        Uploading the Certificate to Your Entra (Azure AD) Application
+      
     </span>
   </a>
   
@@ -471,7 +555,9 @@
         <li class="md-nav__item">
   <a href="#assigning-permissions-to-the-application" class="md-nav__link">
     <span class="md-ellipsis">
-      Assigning Permissions to the Application
+      
+        Assigning Permissions to the Application
+      
     </span>
   </a>
   
@@ -480,7 +566,9 @@
         <li class="md-nav__item">
   <a href="#why-use-a-certificate-instead-of-an-application-secret" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Use a Certificate Instead of an Application Secret?
+      
+        Why Use a Certificate Instead of an Application Secret?
+      
     </span>
   </a>
   
@@ -490,7 +578,9 @@
           <li class="md-nav__item">
   <a href="#1-security" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Security
+      
+        1. Security
+      
     </span>
   </a>
   
@@ -499,7 +589,9 @@
           <li class="md-nav__item">
   <a href="#2-lifecycle-management" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Lifecycle Management
+      
+        2. Lifecycle Management
+      
     </span>
   </a>
   
@@ -508,7 +600,9 @@
           <li class="md-nav__item">
   <a href="#3-compliance-and-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Compliance and Best Practices
+      
+        3. Compliance and Best Practices
+      
     </span>
   </a>
   
@@ -522,7 +616,9 @@
         <li class="md-nav__item">
   <a href="#why-use-the-msal-library-and-not-a-specific-azure-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Use the MSAL Library (and Not a Specific Azure SDK)?
+      
+        Why Use the MSAL Library (and Not a Specific Azure SDK)?
+      
     </span>
   </a>
   
@@ -531,7 +627,9 @@
         <li class="md-nav__item">
   <a href="#code-example-certificate-based-authentication-in-python" class="md-nav__link">
     <span class="md-ellipsis">
-      Code Example: Certificate-Based Authentication in Python
+      
+        Code Example: Certificate-Based Authentication in Python
+      
     </span>
   </a>
   
@@ -541,7 +639,9 @@
           <li class="md-nav__item">
   <a href="#key-points" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Points:
+      
+        Key Points:
+      
     </span>
   </a>
   
@@ -555,7 +655,9 @@
         <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
-      Conclusion
+      
+        Conclusion
+      
     </span>
   </a>
   
@@ -564,7 +666,9 @@
         <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      References
+      
+        References
+      
     </span>
   </a>
   
@@ -591,9 +695,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Download Azure Bill
+  
+
     
   </span>
+  
   
 
       </a>
@@ -614,9 +723,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Download Azure Resource
+  
+
     
   </span>
+  
   
 
       </a>
@@ -637,9 +751,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Query Recovery Services Vault
+  
+
     
   </span>
+  
   
 
       </a>
@@ -660,9 +779,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Entra Users, User Groups and Licence assignments
+  
+
     
   </span>
+  
   
 
       </a>
@@ -683,9 +807,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Entra User Devices
+  
+
     
   </span>
+  
   
 
       </a>
@@ -706,9 +835,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Orchestrating Scheduled Jobs (Container Instances)
+  
+
     
   </span>
+  
   
 
       </a>
@@ -729,9 +863,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     DevOps Build Container
+  
+
     
   </span>
+  
   
 
       </a>
@@ -752,9 +891,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     DevOps Deploy Container IaC
+  
+
     
   </span>
+  
   
 
       </a>
@@ -775,9 +919,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     DevOps Deploy Container Github Actions
+  
+
     
   </span>
+  
   
 
       </a>
@@ -798,9 +947,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Building and Publishing an Custom Image
+  
+
     
   </span>
+  
   
 
       </a>
@@ -821,9 +975,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Deploying Azure Virtual Desktop (AVD) Desktops
+  
+
     
   </span>
+  
   
 
       </a>
@@ -844,9 +1003,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Cleanup Obsolete FXLogix Profiles(AVD)
+  
+
     
   </span>
+  
   
 
       </a>
@@ -867,9 +1031,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Business Coninuity Program / Diasister Recovery - Part 1
+  
+
     
   </span>
+  
   
 
       </a>
@@ -890,9 +1059,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Business Continuity Program / Disaster Recovery - Part 2
+  
+
     
   </span>
+  
   
 
       </a>
@@ -913,9 +1087,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Business Continuity Program / Disaster Recovery - Git Hub Action
+  
+
     
   </span>
+  
   
 
       </a>
@@ -936,9 +1115,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Restore VM from RSV Backup - Part 1
+  
+
     
   </span>
+  
   
 
       </a>
@@ -959,9 +1143,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Restore VM from RSV Backup - Part 2
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1005,9 +1194,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Fabric
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1016,7 +1210,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Fabric
+            
+  
+    Fabric
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1032,9 +1230,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Warehouse data import
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1078,9 +1281,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Cisco Meraki, Nagios XI & Manage Engine
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1089,7 +1297,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Cisco Meraki, Nagios XI & Manage Engine
+            
+  
+    Cisco Meraki, Nagios XI & Manage Engine
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1105,9 +1317,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Cisco Meraki Unused Devices
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1128,9 +1345,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Cisco Meraki Devices Discovery and Nagios Integration
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1151,9 +1373,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Integrating Monitoring System with ITSM System
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1174,9 +1401,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Deploying Cisco Meraki vMX
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1220,9 +1452,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Active Directory Domain Services
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1231,7 +1468,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            Active Directory Domain Services
+            
+  
+    Active Directory Domain Services
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1247,9 +1488,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Create ADDS User
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1270,9 +1516,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Update ADDS User
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1316,9 +1567,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     SAP
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1327,7 +1583,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
-            SAP
+            
+  
+    SAP
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1343,9 +1603,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Setup PyRFC in your Container
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1366,9 +1631,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Calling SAP RFC Function Modules from Python
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1389,9 +1659,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Automating SAP System Start/Stop Operations
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1435,9 +1710,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     O365
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1446,7 +1726,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            O365
+            
+  
+    O365
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1462,9 +1746,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Outlook Actionable Adaptive Card - Part 1
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1485,9 +1774,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Outlook Actionable Adaptive Card - Part 2
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1508,9 +1802,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Sharepoint Sites Enumeration
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1531,9 +1830,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Sharepoint Document Library Enumeration
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1554,9 +1858,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Migrate Sharepoint Document Library to Azure File Share
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1577,9 +1886,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Concur Expense Report Aggregation
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1600,9 +1914,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Get all Teams Phone Assignment(s)
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1623,9 +1942,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Deprovison User
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1646,9 +1970,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Tenant Allow Block List - False Positive
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1669,9 +1998,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     O365 and Proof Point Essentials - Part 1
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1692,9 +2026,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     O365 and Proof Point Essentials - Part 2
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1715,9 +2054,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     O365 and Proof Point Essentials - Part 3
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1738,9 +2082,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     O365 and Proof Point Essentials - Part 4
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1761,9 +2110,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     O365 and Proof Point Essentials - Part 5
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1784,9 +2138,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     O365/Excel Automation via SPO
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1830,9 +2189,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     UKG
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1841,7 +2205,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
-            UKG
+            
+  
+    UKG
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1857,9 +2225,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Secure File Transfer with UKG Dimensions
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1880,9 +2253,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Employee Verification via API
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1903,9 +2281,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Automating Integration Execution and Dataview extract
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1949,9 +2332,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Misc
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1960,7 +2348,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
-            Misc
+            
+  
+    Misc
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1976,9 +2368,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Proof Point User Management
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1999,9 +2396,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Clean GitHub Deployments
+  
+
     
   </span>
+  
   
 
       </a>
@@ -2022,9 +2424,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Understanding DMARC/Spoofing, O365 with ProofPoint
+  
+
     
   </span>
+  
   
 
       </a>
@@ -2069,7 +2476,9 @@
         <li class="md-nav__item">
   <a href="#creating-a-certificate-for-azure-ad-authentication" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating a Certificate for Azure AD Authentication
+      
+        Creating a Certificate for Azure AD Authentication
+      
     </span>
   </a>
   
@@ -2079,7 +2488,9 @@
           <li class="md-nav__item">
   <a href="#steps-to-generate-a-certificate-using-openssl" class="md-nav__link">
     <span class="md-ellipsis">
-      Steps to Generate a Certificate Using OpenSSL
+      
+        Steps to Generate a Certificate Using OpenSSL
+      
     </span>
   </a>
   
@@ -2093,7 +2504,9 @@
         <li class="md-nav__item">
   <a href="#uploading-the-certificate-to-your-entra-azure-ad-application" class="md-nav__link">
     <span class="md-ellipsis">
-      Uploading the Certificate to Your Entra (Azure AD) Application
+      
+        Uploading the Certificate to Your Entra (Azure AD) Application
+      
     </span>
   </a>
   
@@ -2102,7 +2515,9 @@
         <li class="md-nav__item">
   <a href="#assigning-permissions-to-the-application" class="md-nav__link">
     <span class="md-ellipsis">
-      Assigning Permissions to the Application
+      
+        Assigning Permissions to the Application
+      
     </span>
   </a>
   
@@ -2111,7 +2526,9 @@
         <li class="md-nav__item">
   <a href="#why-use-a-certificate-instead-of-an-application-secret" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Use a Certificate Instead of an Application Secret?
+      
+        Why Use a Certificate Instead of an Application Secret?
+      
     </span>
   </a>
   
@@ -2121,7 +2538,9 @@
           <li class="md-nav__item">
   <a href="#1-security" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Security
+      
+        1. Security
+      
     </span>
   </a>
   
@@ -2130,7 +2549,9 @@
           <li class="md-nav__item">
   <a href="#2-lifecycle-management" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Lifecycle Management
+      
+        2. Lifecycle Management
+      
     </span>
   </a>
   
@@ -2139,7 +2560,9 @@
           <li class="md-nav__item">
   <a href="#3-compliance-and-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Compliance and Best Practices
+      
+        3. Compliance and Best Practices
+      
     </span>
   </a>
   
@@ -2153,7 +2576,9 @@
         <li class="md-nav__item">
   <a href="#why-use-the-msal-library-and-not-a-specific-azure-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Use the MSAL Library (and Not a Specific Azure SDK)?
+      
+        Why Use the MSAL Library (and Not a Specific Azure SDK)?
+      
     </span>
   </a>
   
@@ -2162,7 +2587,9 @@
         <li class="md-nav__item">
   <a href="#code-example-certificate-based-authentication-in-python" class="md-nav__link">
     <span class="md-ellipsis">
-      Code Example: Certificate-Based Authentication in Python
+      
+        Code Example: Certificate-Based Authentication in Python
+      
     </span>
   </a>
   
@@ -2172,7 +2599,9 @@
           <li class="md-nav__item">
   <a href="#key-points" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Points:
+      
+        Key Points:
+      
     </span>
   </a>
   
@@ -2186,7 +2615,9 @@
         <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
-      Conclusion
+      
+        Conclusion
+      
     </span>
   </a>
   
@@ -2195,7 +2626,9 @@
         <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      References
+      
+        References
+      
     </span>
   </a>
   
@@ -2211,6 +2644,7 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -2413,10 +2847,11 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

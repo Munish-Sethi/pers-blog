@@ -1,0 +1,3501 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://munishsethi.com/ai-claude-mcp-analytic-server-part4/">
+      
+      
+        <link rel="prev" href="../ai-claude-mcp-analytic-server-part3/">
+      
+      
+        <link rel="next" href="../azure-ad-certificate/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Debugging MCP Servers (Https) with VS Code - Part 4 - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#secure-on-premises-data-analysis-with-llm-and-a-custom-mcp-server" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Debugging MCP Servers (Https) with VS Code - Part 4
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (csv/Parquet) stdio- Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (database) stdio- Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (files/database) https- Part 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging MCP Servers (Https) with VS Code - Part 4
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging MCP Servers (Https) with VS Code - Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-debugging-mcp-servers-with-vs-code-and-cloudflare-tunnels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Debugging MCP Servers with VS Code and Cloudflare Tunnels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Debugging MCP Servers with VS Code and Cloudflare Tunnels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Series Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-debugging-challenge-why-standard-approaches-dont-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Debugging Challenge: Why Standard Approaches Don't Work
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Debugging Challenge: Why Standard Approaches Don&#39;t Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traditional-debugging-vs-mcp-server-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traditional Debugging vs. MCP Server Debugging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-localhost-isnt-enough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Localhost Isn't Enough
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-cloudflare-tunnels-as-a-debug-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution: Cloudflare Tunnels as a Debug Bridge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution: Cloudflare Tunnels as a Debug Bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-cloudflare-tunnels-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Cloudflare Tunnels Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-debugging-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step Debugging Workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Debugging Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-open-your-mcp-server-project-in-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Open Your MCP Server Project in VS Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-install-and-start-cloudflare-tunnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Install and Start Cloudflare Tunnel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-copy-your-temporary-tunnel-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Copy Your Temporary Tunnel URL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-update-azure-oauth-provider-configuration-in-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Update Azure OAuth Provider Configuration in Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-update-claude-desktop-mcp-server-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Update Claude Desktop MCP Server Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-register-oauth-callback-url-in-azure-entra-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Register OAuth Callback URL in Azure Entra ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-configure-vs-code-debugger-and-set-breakpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Configure VS Code Debugger and Set Breakpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-start-the-mcp-server-in-debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: Start the MCP Server in Debug Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-9-connect-claude-desktop-and-test-with-real-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 9: Connect Claude Desktop and Test with Real Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Azure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certificate Based Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download Azure Bill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download Azure Resource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query Recovery Services Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entra Users, User Groups and Licence assignments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entra User Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-container-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrating Scheduled Jobs (Container Instances)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-build-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Build Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Deploy Container IaC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Deploy Container Github Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-custon-image-compute-gallery-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building and Publishing an Custom Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-publish-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying Azure Virtual Desktop (AVD) Desktops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-cleanup-obsolete-fsLogix-profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cleanup Obsolete FXLogix Profiles(AVD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Coninuity Program / Diasister Recovery - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Continuity Program / Disaster Recovery - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Continuity Program / Disaster Recovery - Git Hub Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restore VM from RSV Backup - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restore VM from RSV Backup - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fabric
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fabric
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-wharehouse-fact-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Warehouse data import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki, Nagios XI & Manage Engine
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cisco Meraki, Nagios XI & Manage Engine
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-unused-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki Unused Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki Devices Discovery and Nagios Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-itsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrating Monitoring System with ITSM System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-vm-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying Cisco Meraki vMX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory Domain Services
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory Domain Services
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create ADDS User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Update ADDS User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SAP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup PyRFC in your Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calling SAP RFC Function Modules from Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-system-start-stop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automating SAP System Start/Stop Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    O365
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outlook Actionable Adaptive Card - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outlook Actionable Adaptive Card - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharepoint Sites Enumeration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharepoint Document Library Enumeration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrate Sharepoint Document Library to Azure File Share
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concur Expense Report Aggregation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teams-user-number-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get all Teams Phone Assignment(s)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprovision-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deprovison User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tenantallowblocklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant Allow Block List - False Positive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spo-o365_excel_automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365/Excel Automation via SPO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UKG
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UKG
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secure File Transfer with UKG Dimensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Employee Verification via API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-integration-and-dataview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automating Integration Execution and Dataview extract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Misc
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Misc
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proof Point User Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-clean-deployments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clean GitHub Deployments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpointo365connector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding DMARC/Spoofing, O365 with ProofPoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-debugging-mcp-servers-with-vs-code-and-cloudflare-tunnels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Debugging MCP Servers with VS Code and Cloudflare Tunnels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Debugging MCP Servers with VS Code and Cloudflare Tunnels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Series Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-debugging-challenge-why-standard-approaches-dont-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Debugging Challenge: Why Standard Approaches Don't Work
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Debugging Challenge: Why Standard Approaches Don&#39;t Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traditional-debugging-vs-mcp-server-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traditional Debugging vs. MCP Server Debugging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-localhost-isnt-enough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Localhost Isn't Enough
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-cloudflare-tunnels-as-a-debug-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution: Cloudflare Tunnels as a Debug Bridge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution: Cloudflare Tunnels as a Debug Bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-cloudflare-tunnels-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Cloudflare Tunnels Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-debugging-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step Debugging Workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Debugging Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-open-your-mcp-server-project-in-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Open Your MCP Server Project in VS Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-install-and-start-cloudflare-tunnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Install and Start Cloudflare Tunnel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-copy-your-temporary-tunnel-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Copy Your Temporary Tunnel URL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-update-azure-oauth-provider-configuration-in-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Update Azure OAuth Provider Configuration in Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-update-claude-desktop-mcp-server-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Update Claude Desktop MCP Server Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-register-oauth-callback-url-in-azure-entra-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Register OAuth Callback URL in Azure Entra ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-configure-vs-code-debugger-and-set-breakpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Configure VS Code Debugger and Set Breakpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-start-the-mcp-server-in-debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: Start the MCP Server in Debug Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-9-connect-claude-desktop-and-test-with-real-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 9: Connect Claude Desktop and Test with Real Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="secure-on-premises-data-analysis-with-llm-and-a-custom-mcp-server">Secure, On-Premises Data Analysis with LLM and a Custom MCP Server</h1>
+<h2 id="part-4-debugging-mcp-servers-with-vs-code-and-cloudflare-tunnels">Part 4: Debugging MCP Servers with VS Code and Cloudflare Tunnels</h2>
+<h3 id="series-navigation">📚 <strong>Series Navigation</strong></h3>
+<ul>
+<li><a href="../ai-claude-mcp-analytic-server-part1/">Part 1: CSV/Parquet files</a></li>
+<li><a href="../ai-claude-mcp-analytic-server-part2/">Part 2: CSV/Parquet &amp; Database</a></li>
+<li><a href="../ai-claude-mcp-analytic-server-part3/">Part 3: HTTPS-Based MCP Server with Azure OAuth</a></li>
+<li><strong>Part 4: Debugging MCP Servers with VS Code</strong> <em>(Current)</em></li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Debugging MCP servers presents unique challenges compared to traditional applications. MCP servers typically run as background processes or containerized services, making it difficult to attach debuggers, inspect variables, and step through code during development. Additionally, OAuth-based authentication adds another layer of complexity—your MCP server must be accessible via a public HTTPS URL for OAuth callbacks to work, even during local development.</p>
+<p>This guide demonstrates a powerful debugging workflow that combines:
+- <strong>VS Code's Python debugger</strong> for breakpoints and variable inspection
+- <strong>Cloudflare Tunnels</strong> for exposing your local server with a temporary HTTPS URL
+- <strong>Dynamic OAuth configuration</strong> to route authentication through your local debug session
+- <strong>Claude Desktop integration</strong> to test real-world MCP interactions</p>
+<p><strong>Why this approach matters:</strong>
+- Debug production-like OAuth flows locally without deploying to Azure
+- Set breakpoints and inspect variables as LLM queries execute in real-time
+- Rapidly iterate on tool logic without container rebuilds
+- Troubleshoot authentication issues with full request/response visibility
+- Test multi-tenant routing and business logic before production deployment</p>
+<p><strong>Prerequisites:</strong>
+- VS Code with Python extension and Docker support
+- Python 3.9+ with MCP server dependencies
+- Azure Entra ID App Registration (from Part 3)
+- Claude Desktop (paid tier for HTTPS connectors)
+- Docker Desktop (if using containerized development)
+- Basic understanding of OAuth 2.0 flows</p>
+<p><strong>Note:</strong> This guide assumes you are comfortable with VS Code and Docker Desktop. We won't cover basic container operations or VS Code setup.</p>
+<hr />
+<h2 id="the-debugging-challenge-why-standard-approaches-dont-work">The Debugging Challenge: Why Standard Approaches Don't Work</h2>
+<h3 id="traditional-debugging-vs-mcp-server-debugging">Traditional Debugging vs. MCP Server Debugging</h3>
+<p><strong>Traditional Python debugging:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Simple CLI application</span>
+python<span class="w"> </span>my_script.py
+<span class="c1"># Set breakpoint, run, debug ✓</span>
+</code></pre></div></p>
+<p><strong>MCP server debugging challenges:</strong>
+1. <strong>Background process:</strong> MCP servers run as HTTP services, not interactive scripts
+2. <strong>OAuth callbacks:</strong> Require public HTTPS URLs (e.g., <code>https://mcp.company.com/oauth/callback</code>)
+3. <strong>Client integration:</strong> Must test with actual MCP clients (Claude Desktop, API consumers)
+4. <strong>Async operations:</strong> FastMCP uses async/await, complicating stack traces
+5. <strong>Multi-tenant routing:</strong> Business function context extracted from query strings
+6. <strong>External dependencies:</strong> Database connections, Azure Key Vault, file systems</p>
+<h3 id="why-localhost-isnt-enough">Why Localhost Isn't Enough</h3>
+<p>You might think you could debug with:
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>src/analyst.py
+<span class="c1"># Server runs on http://localhost:8000</span>
+</code></pre></div></p>
+<p><strong>Problems with localhost-only debugging:</strong></p>
+<ol>
+<li>
+<p><strong>OAuth redirect mismatch:</strong>
+   <div class="highlight"><pre><span></span><code>Azure Entra ID redirect URI: https://mcp.company.com/oauth/callback
+Your local server:           http://localhost:8000/oauth/callback
+Result: OAuth flow fails with &quot;redirect_uri_mismatch&quot; error
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>No HTTPS support:</strong></p>
+</li>
+<li>Claude Desktop (paid tier) requires HTTPS for custom connectors</li>
+<li>OAuth providers reject non-HTTPS redirect URIs in production configurations</li>
+<li>
+<p>TLS certificate management is complex for local development</p>
+</li>
+<li>
+<p><strong>Client can't reach your machine:</strong></p>
+</li>
+<li>Claude Desktop running on your laptop needs to reach the MCP server</li>
+<li><code>localhost</code> only works if both are on the same machine</li>
+<li>
+<p>Testing from mobile devices or remote machines is impossible</p>
+</li>
+<li>
+<p><strong>Can't test production-like scenarios:</strong></p>
+</li>
+<li>FortiGate TLS offloading</li>
+<li>Azure Container Instance networking</li>
+<li>Multi-tenant URL routing (<code>?function=it</code> vs <code>?function=hr</code>)</li>
+</ol>
+<hr />
+<h2 id="solution-cloudflare-tunnels-as-a-debug-bridge">Solution: Cloudflare Tunnels as a Debug Bridge</h2>
+<p>Cloudflare Tunnels (<code>cloudflared</code>) creates a secure, temporary HTTPS tunnel from the public internet to your local development machine. This allows you to:</p>
+<p>✅ <strong>Expose <code>localhost:8000</code> as <code>https://random-name.trycloudflare.com</code></strong><br />
+✅ <strong>Use this HTTPS URL in OAuth redirect URIs</strong> (Azure Entra ID accepts it)<br />
+✅ <strong>Connect Claude Desktop to your local debug session</strong> with full HTTPS support<br />
+✅ <strong>Set breakpoints and inspect code</strong> as real OAuth flows and MCP queries execute<br />
+✅ <strong>No port forwarding, VPN, or complex networking required</strong></p>
+<h3 id="how-cloudflare-tunnels-work">How Cloudflare Tunnels Work</h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────┐
+│  Claude Desktop │
+│   (your laptop) │
+└────────┬────────┘
+         │ HTTPS request to:
+         │ https://come-mart-anime-bring.trycloudflare.com/mcp?function=fin
+         ↓
+┌─────────────────────────┐
+│  Cloudflare Edge Network│
+│  (trycloudflare.com)    │
+└────────┬────────────────┘
+         │ Encrypted tunnel
+         ↓
+┌─────────────────────────┐
+│  cloudflared (local)    │
+│  Running in VS Code     │
+│  terminal               │
+└────────┬────────────────┘
+         │ HTTP to localhost:8000
+         ↓
+┌─────────────────────────┐
+│  Your MCP Server        │
+│  (Python debugger       │
+│   attached in VS Code)  │
+└─────────────────────────┘
+</code></pre></div>
+<p><strong>Key benefits:</strong>
+- <strong>Automatic HTTPS:</strong> Cloudflare provides valid TLS certificate
+- <strong>Unique URL:</strong> Each tunnel gets a random subdomain (e.g., <code>come-mart-anime-bring.trycloudflare.com</code>)
+- <strong>No configuration:</strong> Works through firewalls, NAT, and corporate networks
+- <strong>Free and temporary:</strong> Perfect for debugging sessions (tunnels expire after a few hours)
+- <strong>Full request/response access:</strong> See all HTTP traffic in VS Code debugger</p>
+<hr />
+<h2 id="step-by-step-debugging-workflow">Step-by-Step Debugging Workflow</h2>
+<h3 id="step-1-open-your-mcp-server-project-in-vs-code">Step 1: Open Your MCP Server Project in VS Code</h3>
+<p><strong>1.1. Launch VS Code and open your MCP server project:</strong></p>
+<p>If you're using a container-based development environment (which we recommend), attach to your running container in VS Code. If working directly on your host machine:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/path/to/your/mcp-server-project
+code<span class="w"> </span>.
+</code></pre></div>
+<p><strong>1.2. Verify your project structure:</strong></p>
+<div class="highlight"><pre><span></span><code>mcp-server-project/
+├── src/
+│   └── analyst.py          # Main MCP server code
+├── data/
+│   ├── it/
+│   │   ├── data_catalog.json
+│   │   └── *.csv files
+│   ├── hr/
+│   └── fin/
+├── requirements.txt
+└── .vscode/
+    └── launch.json         # Debug configuration (create in Step 7)
+</code></pre></div>
+<hr />
+<h3 id="step-2-install-and-start-cloudflare-tunnel">Step 2: Install and Start Cloudflare Tunnel</h3>
+<p><strong>2.1. Check if <code>cloudflared</code> is already installed:</strong></p>
+<p>Open a terminal in VS Code (<code>Terminal</code> → <code>New Terminal</code>) and run:</p>
+<div class="highlight"><pre><span></span><code>cloudflared<span class="w"> </span>--version
+</code></pre></div>
+<p>If you see output like <code>cloudflared version 2024.10.1</code>, skip to Step 2.3.</p>
+<p><strong>2.2. Install <code>cloudflared</code> (if not present):</strong></p>
+<p><strong>For Linux (including Docker containers):</strong>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-L<span class="w"> </span>https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64<span class="w"> </span>-o<span class="w"> </span>/usr/local/bin/cloudflared<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/cloudflared
+</code></pre></div></p>
+<p><strong>For macOS:</strong>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>cloudflared
+</code></pre></div></p>
+<p><strong>For Windows:</strong>
+1. Download from: https://github.com/cloudflare/cloudflared/releases/latest
+2. Extract <code>cloudflared.exe</code> to a directory in your PATH (e.g., <code>C:\Windows\System32</code>)
+3. Verify installation:
+   <div class="highlight"><pre><span></span><code>cloudflared --version
+</code></pre></div></p>
+<p><strong>2.3. Start the Cloudflare Tunnel:</strong></p>
+<p>In your VS Code terminal, run:</p>
+<div class="highlight"><pre><span></span><code>cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span class="w"> </span>http://localhost:8000
+</code></pre></div>
+<p><strong>Expected output:</strong>
+<div class="highlight"><pre><span></span><code>2025-11-18T15:52:49Z INF Requesting new quick Tunnel on trycloudflare.com...
+2025-11-18T15:52:52Z INF +--------------------------------------------------------------------------------------------+
+2025-11-18T15:52:52Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
+2025-11-18T15:52:52Z INF |  https://come-mart-anime-bring.trycloudflare.com                                           |
+2025-11-18T15:52:52Z INF +--------------------------------------------------------------------------------------------+
+2025-11-18T15:52:52Z INF Starting HTTP/2 server at http://localhost:8000
+</code></pre></div></p>
+<p><strong>🔑 Key Information to Copy:</strong>
+- <strong>Tunnel URL:</strong> <code>https://come-mart-anime-bring.trycloudflare.com</code>
+- This URL changes every time you start a new tunnel
+- The tunnel remains active as long as the terminal process is running
+- Keep this terminal window open throughout your debugging session</p>
+<p><strong>Why cloudflared requires <code>http://localhost:8000</code>:</strong></p>
+<p>The key concept here is <strong>TLS offloading</strong>. Your Python MCP server runs as a simple HTTP service (no SSL/TLS complexity), and Cloudflare Tunnel handles all HTTPS encryption at the edge. This is identical to how FortiGate works in production—your application code stays simple while network infrastructure handles security.</p>
+<p>Think of it as a secure pipe: HTTPS traffic enters the Cloudflare edge, travels encrypted through the tunnel to your machine, then connects to your local HTTP server. From your MCP server's perspective, it's just receiving plain HTTP requests, but the outside world sees HTTPS.</p>
+<hr />
+<h3 id="step-3-copy-your-temporary-tunnel-url">Step 3: Copy Your Temporary Tunnel URL</h3>
+<p><strong>3.1. Identify the tunnel URL from the terminal output:</strong></p>
+<p>Look for the line that starts with <code>https://</code> in the <code>cloudflared</code> output. Example:</p>
+<div class="highlight"><pre><span></span><code>2025-11-18T15:52:52Z INF |  https://come-mart-anime-bring.trycloudflare.com  |
+</code></pre></div>
+<p><strong>3.2. Copy the full HTTPS URL:</strong></p>
+<p>In this example: <code>https://come-mart-anime-bring.trycloudflare.com</code></p>
+<p><strong>⚠️ Important Notes:</strong>
+- <strong>Do not include trailing slashes</strong> when copying the URL
+- <strong>The URL is unique to this tunnel session</strong> and will be different each time
+- <strong>The URL is temporary</strong> and typically expires after 24 hours or when you stop <code>cloudflared</code>
+- <strong>Write it down or keep the terminal visible</strong>—you'll need this URL in Steps 4, 5, and 6</p>
+<hr />
+<h3 id="step-4-update-azure-oauth-provider-configuration-in-code">Step 4: Update Azure OAuth Provider Configuration in Code</h3>
+<p>Now we configure your MCP server to use the Cloudflare Tunnel URL for OAuth callbacks instead of the production URL.</p>
+<p><strong>4.1. Locate the OAuth configuration in your code:</strong></p>
+<p>Open <code>src/analyst.py</code> in VS Code and find the Azure OAuth configuration section (typically near the top of the file, after imports and logging setup):</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Azure OAuth Configuration</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Configuring Azure OAuth Provider&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">azure_auth</span> <span class="o">=</span> <span class="n">AzureProvider</span><span class="p">(</span>
+        <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
+        <span class="n">client_secret</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_SECRET</span><span class="p">,</span>
+        <span class="n">tenant_id</span><span class="o">=</span><span class="s2">&quot;00b1a755-0b06-4d05-9a59-259ebf7f9e00&quot;</span><span class="p">,</span>
+        <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://mcp.gdenergyproducts.com&quot;</span><span class="p">,</span>  <span class="c1"># ← Production URL</span>
+        <span class="n">required_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;access_as_user&quot;</span><span class="p">],</span>
+        <span class="n">additional_authorize_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;User.Read&quot;</span><span class="p">,</span> <span class="s2">&quot;offline_access&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+</code></pre></div>
+<p><strong>4.2. Replace the <code>base_url</code> with your tunnel URL:</strong></p>
+<p>Change the <code>base_url</code> parameter to your Cloudflare Tunnel URL from Step 3:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Azure OAuth Configuration (DEBUG MODE)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Configuring Azure OAuth Provider&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">azure_auth</span> <span class="o">=</span> <span class="n">AzureProvider</span><span class="p">(</span>
+        <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
+        <span class="n">client_secret</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_SECRET</span><span class="p">,</span>
+        <span class="n">tenant_id</span><span class="o">=</span><span class="s2">&quot;00b1a755-0b06-4d05-9a59-259ebf7f9e00&quot;</span><span class="p">,</span>
+        <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://come-mart-anime-bring.trycloudflare.com&quot;</span><span class="p">,</span>  <span class="c1"># ← Your tunnel URL</span>
+        <span class="n">required_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;access_as_user&quot;</span><span class="p">],</span>
+        <span class="n">additional_authorize_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;User.Read&quot;</span><span class="p">,</span> <span class="s2">&quot;offline_access&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Azure OAuth Provider configured successfully&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>⚠️ Critical:</strong> Replace <code>https://come-mart-anime-bring.trycloudflare.com</code> with <strong>your actual tunnel URL</strong> from Step 3.</p>
+<p><strong>4.3. Why this change is necessary:</strong></p>
+<p>The <code>base_url</code> parameter tells the OAuth library where to redirect users after authentication. Here's the OAuth flow with your tunnel URL:</p>
+<ol>
+<li>User clicks "Connect" in Claude Desktop</li>
+<li>Browser opens Azure Entra ID login page: <code>https://login.microsoftonline.com/...</code></li>
+<li>User authenticates successfully</li>
+<li>Azure redirects to: <code>https://come-mart-anime-bring.trycloudflare.com/oauth/callback?code=ABC123...</code></li>
+<li>Cloudflare Tunnel forwards to: <code>http://localhost:8000/oauth/callback?code=ABC123...</code></li>
+<li>Your MCP server (running in VS Code debugger) receives the callback</li>
+<li><strong>Your breakpoint hits</strong>—you can now inspect the OAuth code exchange in real-time!</li>
+</ol>
+<p><strong>4.4. Save the file:</strong></p>
+<p>Press <code>Ctrl+S</code> (Windows/Linux) or <code>Cmd+S</code> (Mac) to save <code>analyst.py</code>.</p>
+<hr />
+<h3 id="step-5-update-claude-desktop-mcp-server-configuration">Step 5: Update Claude Desktop MCP Server Configuration</h3>
+<p>Claude Desktop needs to know where to find your MCP server during debugging. We'll update its configuration to point to your Cloudflare Tunnel URL.</p>
+<p><strong>5.1. Locate the Claude Desktop MCP configuration file:</strong></p>
+<p><strong>File location by operating system:</strong>
+- <strong>Windows:</strong> <code>%APPDATA%\Claude\claude_desktop_config.json</code>
+  - Full path typically: <code>C:\Users\YourUsername\AppData\Roaming\Claude\claude_desktop_config.json</code>
+- <strong>macOS:</strong> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>
+- <strong>Linux:</strong> <code>~/.config/Claude/claude_desktop_config.json</code></p>
+<p><strong>5.2. Open the configuration file:</strong></p>
+<p>From VS Code:
+<div class="highlight"><pre><span></span><code><span class="c1"># Windows</span>
+code<span class="w"> </span><span class="s2">&quot;%APPDATA%\Claude\claude_desktop_config.json&quot;</span>
+
+<span class="c1"># macOS/Linux</span>
+code<span class="w"> </span>~/Library/Application<span class="se">\ </span>Support/Claude/claude_desktop_config.json
+</code></pre></div></p>
+<p><strong>5.3. Find your MCP server configuration:</strong></p>
+<p>The file contains a <code>mcpServers</code> object. Look for your server (e.g., <code>gdep-mcp-analyst-server</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;gdep-mcp-analyst-server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://mcp.gdenergyproducts.com/mcp?function=fin&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>5.4. Update the URL to your Cloudflare Tunnel:</strong></p>
+<p>Replace the production URL with your tunnel URL from Step 3:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;gdep-mcp-analyst-server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://come-mart-anime-bring.trycloudflare.com/mcp?function=fin&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>🔑 Key Points:</strong>
+- <strong>Keep the query string:</strong> <code>?function=fin</code> (or <code>it</code>, <code>hr</code> depending on what you're testing)
+- <strong>Keep <code>type: "http"</code></strong> (even though it's HTTPS—this tells Claude Desktop it's an HTTP-based MCP server, not stdio)
+- <strong>Replace only the domain</strong> with your Cloudflare Tunnel URL
+- <strong>Don't add <code>/oauth/callback</code></strong> to the URL—Claude Desktop handles routing internally</p>
+<p><strong>5.5. Save the file:</strong></p>
+<p>Save and close. Verify the JSON is valid (no syntax errors).</p>
+<p><strong>Example with multiple business functions for testing:</strong></p>
+<p>If you want to test different business functions in the same debugging session:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;gdep-mcp-analyst-it&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://come-mart-anime-bring.trycloudflare.com/mcp?function=it&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;gdep-mcp-analyst-hr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://come-mart-anime-bring.trycloudflare.com/mcp?function=hr&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;gdep-mcp-analyst-fin&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://come-mart-anime-bring.trycloudflare.com/mcp?function=fin&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="step-6-register-oauth-callback-url-in-azure-entra-id">Step 6: Register OAuth Callback URL in Azure Entra ID</h3>
+<p>Azure Entra ID must know that your Cloudflare Tunnel URL is an authorized redirect destination. Without this step, authentication will fail with a "redirect_uri_mismatch" error.</p>
+<p><strong>6.1. Navigate to Azure Portal:</strong></p>
+<ol>
+<li>Open: https://portal.azure.com</li>
+<li>Sign in with an account that has permissions to modify App Registrations</li>
+</ol>
+<p><strong>6.2. Locate your MCP App Registration:</strong></p>
+<ol>
+<li>Search for <strong>"App registrations"</strong> in the top search bar</li>
+<li>Click <strong>App registrations</strong> from results</li>
+<li>Find and click your MCP server app (e.g., <code>MCP-Analyst-Server</code>)</li>
+</ol>
+<p><strong>6.3. Open Authentication settings:</strong></p>
+<ol>
+<li>In the left sidebar, click <strong>Authentication</strong> (under "Manage")</li>
+<li>You should see existing redirect URIs for production:
+   <div class="highlight"><pre><span></span><code>https://mcp.gdenergyproducts.com/oauth/callback
+https://claude.ai/api/mcp/auth_callback
+</code></pre></div></li>
+</ol>
+<p><strong>6.4. Add your Cloudflare Tunnel callback URL:</strong></p>
+<ol>
+<li>Scroll to the <strong>Web</strong> platform section</li>
+<li>Click <strong>Add URI</strong></li>
+<li>Enter your tunnel URL with <code>/oauth/callback</code> appended:
+   <div class="highlight"><pre><span></span><code>https://come-mart-anime-bring.trycloudflare.com/oauth/callback
+</code></pre></div></li>
+<li><strong>Important:</strong> Use your actual tunnel URL from Step 3</li>
+</ol>
+<p><strong>6.5. Verify your redirect URI list:</strong></p>
+<p>After adding, you should see:
+<div class="highlight"><pre><span></span><code>Web - Redirect URIs:
+✓ https://mcp.gdenergyproducts.com/oauth/callback
+✓ https://claude.ai/api/mcp/auth_callback
+✓ https://come-mart-anime-bring.trycloudflare.com/oauth/callback
+</code></pre></div></p>
+<p><strong>Why three redirect URIs?</strong>
+1. <strong>Production URL:</strong> For deployed MCP server in Azure Container Instance
+2. <strong>Claude Desktop proxy:</strong> Required for Claude Desktop to act as OAuth intermediary
+3. <strong>Debug tunnel URL:</strong> Allows local debugging with OAuth authentication</p>
+<p><strong>6.6. Save the configuration:</strong></p>
+<ol>
+<li>Click <strong>Save</strong> at the top of the Authentication page</li>
+<li>Wait for confirmation: "Successfully updated MCP-Analyst-Server"</li>
+</ol>
+<p><strong>6.7. Verify OAuth version is set to 2.0:</strong></p>
+<p>While in the App Registration:</p>
+<ol>
+<li>Click <strong>Manifest</strong> in the left sidebar</li>
+<li>Find the line: <code>"accessTokenAcceptedVersion"</code></li>
+<li>Verify it's set to: <code>"accessTokenAcceptedVersion": 2</code></li>
+<li>If it's <code>null</code> or <code>1</code>, change to <code>2</code> and click <strong>Save</strong></li>
+</ol>
+<p><strong>Why this matters:</strong> OAuth 2.0 tokens include the required claims (<code>preferred_username</code>, <code>oid</code>, <code>name</code>) that your MCP server expects. OAuth 1.0 tokens use different formats and will cause authentication failures.</p>
+<p><strong>6.8. Cleanup after debugging:</strong></p>
+<p>After your debugging session ends, remove the temporary tunnel URL:
+1. Return to <strong>Authentication</strong> in Azure Portal
+2. Find: <code>https://come-mart-anime-bring.trycloudflare.com/oauth/callback</code>
+3. Click the trash icon to delete it
+4. Click <strong>Save</strong></p>
+<p>This prevents "orphaned" redirect URIs that no longer work.</p>
+<hr />
+<h3 id="step-7-configure-vs-code-debugger-and-set-breakpoints">Step 7: Configure VS Code Debugger and Set Breakpoints</h3>
+<p><strong>7.1. Create VS Code launch configuration:</strong></p>
+<p>Create <code>.vscode/launch.json</code> in your project root:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Debug MCP Server&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;debugpy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}/src/analyst.py&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;console&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integratedTerminal&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;justMyCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;PYTHONUNBUFFERED&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;MCP_DEBUG&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Configuration notes:</strong>
+- <strong><code>justMyCode: false</code></strong> allows stepping into library code (FastMCP, Polars)
+- <strong><code>PYTHONUNBUFFERED: "1"</code></strong> ensures immediate log output
+- <strong><code>MCP_DEBUG: "true"</code></strong> optional flag for debug-specific behavior in your code</p>
+<p><strong>7.2. Set strategic breakpoints:</strong></p>
+<p>Click in the left margin next to line numbers to set breakpoints. Recommended locations:</p>
+<p><strong>A. OAuth Configuration (verify tunnel URL):</strong>
+<div class="highlight"><pre><span></span><code><span class="n">azure_auth</span> <span class="o">=</span> <span class="n">AzureProvider</span><span class="p">(</span>
+    <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
+    <span class="n">client_secret</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_SECRET</span><span class="p">,</span>
+    <span class="n">tenant_id</span><span class="o">=</span><span class="s2">&quot;00b1a755-0b06-4d05-9a59-259ebf7f9e00&quot;</span><span class="p">,</span>
+    <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://come-mart-anime-bring.trycloudflare.com&quot;</span><span class="p">,</span>  <span class="c1"># ← Breakpoint here</span>
+    <span class="n">required_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;access_as_user&quot;</span><span class="p">],</span>
+    <span class="n">additional_authorize_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;User.Read&quot;</span><span class="p">,</span> <span class="s2">&quot;offline_access&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div></p>
+<p><strong>B. Business Function Extraction (verify routing):</strong>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">call_next</span><span class="p">):</span>
+    <span class="n">function_via_query_string</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;function&quot;</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
+
+    <span class="k">if</span> <span class="n">function_via_query_string</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;it&quot;</span><span class="p">,</span> <span class="s2">&quot;hr&quot;</span><span class="p">,</span> <span class="s2">&quot;fin&quot;</span><span class="p">}:</span>
+        <span class="n">business_function</span> <span class="o">=</span> <span class="n">function_via_query_string</span>  <span class="c1"># ← Breakpoint here</span>
+</code></pre></div></p>
+<p><strong>C. User Context (inspect OAuth token):</strong>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_current_user_info</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">get_access_token</span><span class="p">()</span>  <span class="c1"># ← Breakpoint here</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">claims</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;preferred_username&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">claims</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;oid&quot;</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">claims</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;oid&quot;</span><span class="p">)</span>
+    <span class="p">}</span>  <span class="c1"># ← Breakpoint here</span>
+</code></pre></div></p>
+<p><strong>D. Data Catalog Loading:</strong>
+<div class="highlight"><pre><span></span><code><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_data_catalog</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">business_function</span> <span class="o">=</span> <span class="n">get_current_business_function</span><span class="p">()</span>  <span class="c1"># ← Breakpoint here</span>
+    <span class="n">catalog_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/mnt/azure/mcp/</span><span class="si">{</span><span class="n">business_function</span><span class="si">}</span><span class="s2">/data_catalog.json&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Looking for catalog file: </span><span class="si">{</span><span class="n">catalog_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
+</code></pre></div></p>
+<p><strong>E. Query Execution:</strong>
+<div class="highlight"><pre><span></span><code><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">execute_polars_sql</span><span class="p">(</span><span class="n">file_locations</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;csv&quot;</span><span class="p">):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Query: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">read_file_list</span><span class="p">(</span><span class="n">file_locations</span><span class="p">,</span> <span class="n">file_type</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
+    <span class="n">op_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
+</code></pre></div></p>
+<hr />
+<h3 id="step-8-start-the-mcp-server-in-debug-mode">Step 8: Start the MCP Server in Debug Mode</h3>
+<p><strong>8.1. Ensure Cloudflare Tunnel is still running:</strong></p>
+<p>Check the terminal from Step 2. You should still see:
+<div class="highlight"><pre><span></span><code>2025-11-18T15:52:52Z INF Starting HTTP/2 server at http://localhost:8000
+</code></pre></div></p>
+<p>If stopped, restart: <code>cloudflared tunnel --url http://localhost:8000</code></p>
+<p><strong>8.2. Start debugging:</strong></p>
+<ol>
+<li>Press <code>F5</code> or click the green play button in the Debug panel</li>
+<li>Select <strong>"Debug MCP Server"</strong> configuration</li>
+</ol>
+<p><strong>8.3. Verify server starts successfully:</strong></p>
+<p>The Debug Console should show:
+<div class="highlight"><pre><span></span><code>======================== GDEP MCP Server Starting ========================
+Configuring Azure OAuth Provider
+Azure OAuth Provider configured successfully
+FastMCP instance initialized successfully
+Server configuration:
+  - Host: 0.0.0.0
+  - Port: 8000
+  - Functions supported: IT, HR, FIN
+===========================================================================
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+</code></pre></div></p>
+<p><strong>8.4. Test tunnel connectivity:</strong></p>
+<p>In a separate terminal:
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>https://come-mart-anime-bring.trycloudflare.com/mcp
+</code></pre></div></p>
+<p>Expected response (MCP server is running):
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-32600</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Invalid Request&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>This "Invalid Request" is correct—it means the server is responding, but we sent a plain HTTP GET instead of a proper MCP protocol message.</p>
+<p><strong>8.5. Debug toolbar reference:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>Keyboard</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>▶ Continue</td>
+<td><code>F5</code></td>
+<td>Resume until next breakpoint</td>
+</tr>
+<tr>
+<td>⏸ Pause</td>
+<td><code>F6</code></td>
+<td>Pause execution</td>
+</tr>
+<tr>
+<td>⤵ Step Over</td>
+<td><code>F10</code></td>
+<td>Execute line, don't enter functions</td>
+</tr>
+<tr>
+<td>⤴ Step Into</td>
+<td><code>F11</code></td>
+<td>Enter function to debug inside</td>
+</tr>
+<tr>
+<td>⤴ Step Out</td>
+<td><code>Shift+F11</code></td>
+<td>Exit function, return to caller</td>
+</tr>
+<tr>
+<td>↻ Restart</td>
+<td><code>Ctrl+Shift+F5</code></td>
+<td>Restart (reload code changes)</td>
+</tr>
+<tr>
+<td>■ Stop</td>
+<td><code>Shift+F5</code></td>
+<td>Stop debugger</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="step-9-connect-claude-desktop-and-test-with-real-queries">Step 9: Connect Claude Desktop and Test with Real Queries</h3>
+<p><strong>9.1. Restart Claude Desktop:</strong></p>
+<p>Claude Desktop only reads configuration at startup:</p>
+<ul>
+<li><strong>Windows:</strong> Close completely, then restart</li>
+<li><strong>macOS:</strong> Press <code>Cmd+Q</code>, then reopen</li>
+<li><strong>Linux:</strong> Kill process, then restart</li>
+</ul>
+<p><strong>9.2. Initiate OAuth authentication:</strong></p>
+<ol>
+<li>Open Claude Desktop</li>
+<li>Click on your MCP server connection</li>
+<li>Browser opens Azure Entra ID login page</li>
+<li><strong>Watch VS Code</strong>—breakpoint should hit in OAuth configuration!</li>
+<li>Sign in with your credentials</li>
+<li>Azure redirects through tunnel to your local debugger</li>
+<li>Inspect token claims in Debug Console:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># In Debug Console when breakpoint hits</span>
+<span class="n">token</span><span class="o">.</span><span class="n">claims</span>
+
+<span class="c1"># Output:</span>
+<span class="p">{</span>
+  <span class="s1">&#39;preferred_username&#39;</span><span class="p">:</span> <span class="s1">&#39;john.doe@company.com&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;John Doe&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;oid&#39;</span><span class="p">:</span> <span class="s1">&#39;12345678-1234-1234-1234-123456789012&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;scp&#39;</span><span class="p">:</span> <span class="s1">&#39;access_as_user User.Read&#39;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Press <code>F5</code> to continue. Browser closes, Claude Desktop shows 🟢 Connected.</p>
+<p><strong>9.3. Send test queries:</strong></p>
+<p>In Claude Desktop, ask questions that trigger your MCP tools:</p>
+<p><strong>For IT function (<code>?function=it</code>):</strong>
+<div class="highlight"><pre><span></span><code>How many devices do we have in our inventory?
+</code></pre></div></p>
+<p><strong>For HR function (<code>?function=hr</code>):</strong>
+<div class="highlight"><pre><span></span><code>Show me the number of active employees
+</code></pre></div></p>
+<p><strong>For Finance function (<code>?function=fin</code>):</strong>
+<div class="highlight"><pre><span></span><code>What&#39;s our total budget allocation for this quarter?
+</code></pre></div></p>
+<p><strong>9.4. Observe breakpoints hitting in sequence:</strong></p>
+<p>As Claude processes your query:</p>
+<p><strong>A. Business Function Extraction:</strong>
+<div class="highlight"><pre><span></span><code>🔴 Breakpoint hit: BusinessFunctionExtractionMiddleware.dispatch()
+Variables panel shows:
+  - request.query_params = {&quot;function&quot;: &quot;it&quot;}
+  - business_function = &quot;it&quot;
+</code></pre></div></p>
+<p>Press <code>F5</code> to continue.</p>
+<p><strong>B. Data Catalog Retrieval:</strong>
+<div class="highlight"><pre><span></span><code>🔴 Breakpoint hit: get_data_catalog()
+Variables panel shows:
+  - business_function = &quot;it&quot;
+  - catalog_path = &quot;/mnt/azure/mcp/it/data_catalog.json&quot;
+</code></pre></div></p>
+<p>Inspect in Debug Console:
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">catalog_path</span><span class="p">)</span>  <span class="c1"># Verify file exists</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">catalog_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+    <span class="n">catalog</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datasets: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">catalog</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;datasets&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Press <code>F5</code> to continue.</p>
+<p><strong>C. Query Execution:</strong>
+<div class="highlight"><pre><span></span><code>🔴 Breakpoint hit: execute_polars_sql()
+Variables panel shows:
+  - query = &quot;SELECT COUNT(*) as device_count FROM self WHERE DeviceType = &#39;Laptop&#39;&quot;
+  - file_locations = [&quot;/mnt/azure/mcp/it/device_inventory.csv&quot;]
+</code></pre></div></p>
+<p>Inspect the query Claude generated:
+<div class="highlight"><pre><span></span><code><span class="c1"># In Debug Console</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Query:</span><span class="se">\n</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Load data and test query</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">read_file_list</span><span class="p">(</span><span class="n">file_locations</span><span class="p">,</span> <span class="n">file_type</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data shape: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Columns: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Execute query</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Press <code>F5</code> to continue.</p>
+<p><strong>9.5. Verify results in Claude Desktop:</strong></p>
+<p>Claude Desktop displays:
+<div class="highlight"><pre><span></span><code>Results show up in Claude Desktop:
+</code></pre></div></p>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>This debugging workflow transforms MCP server development from a deployment-test-debug cycle into an interactive, real-time debugging experience. By combining Cloudflare Tunnels for HTTPS access, VS Code's powerful debugger, and direct Claude Desktop integration, you can inspect OAuth flows, trace business function routing, and validate query generation as it happens—all without leaving your local development environment. This approach dramatically accelerates development velocity, enables rapid iteration on complex authentication and data access logic, and provides the visibility needed to troubleshoot issues that would be nearly impossible to diagnose in production. Master this workflow once, and you'll spend less time deploying and more time building.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 18, 2025 16:55:23 UTC">November 18, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
