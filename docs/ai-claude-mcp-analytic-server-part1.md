@@ -5,6 +5,7 @@
 - **Part 1: CSV/Parquet files** *(Current)*
 - [Part 2: CSV/Parquet & Database](ai-claude-mcp-analytic-server-part2.md)
 - [Part 3: HTTPS-Based MCP Server with Azure OAuth](ai-claude-mcp-analytic-server-part3.md)
+- [Part 4: Debugging MCP Servers (Https) with VS Code](ai-claude-mcp-analytic-server-part4.md)
 
 *Inspired by and adapted from [mcp-analyst](https://github.com/unravel-team/mcp-analyst). This guide documents a customized, production-ready approach for secure, LLM-powered analytics on enterprise CSV/Parquet data, including new tools and deployment strategies for real-world business needs.*
 

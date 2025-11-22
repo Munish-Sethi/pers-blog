@@ -24,6 +24,7 @@
 - [Data Analysis with LLM via MCP Server - Part 1](ai-claude-mcp-analytic-server-part1.md)
 - [Data Analysis with LLM via MCP Server - Part 2](ai-claude-mcp-analytic-server-part2.md)
 - [Data Analysis with LLM via MCP Server - Part 3](ai-claude-mcp-analytic-server-part3.md)
+- [Data Analysis with LLM via MCP Server - Part 4](ai-claude-mcp-analytic-server-part4.md)
 ---
 
 ## 🔷 Azure

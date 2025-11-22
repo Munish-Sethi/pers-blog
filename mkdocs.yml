@@ -22,6 +22,8 @@ nav:
     - Data Analysis with LLM via MCP Server (csv/Parquet) stdio- Part 1: ai-claude-mcp-analytic-server-part1.md
     - Data Analysis with LLM via MCP Server (database) stdio- Part 2: ai-claude-mcp-analytic-server-part2.md
     - Data Analysis with LLM via MCP Server (files/database) https- Part 3: ai-claude-mcp-analytic-server-part3.md
+    - Debugging MCP Servers (Https) with VS Code - Part 4: ai-claude-mcp-analytic-server-part4.md
+
   - Azure:
       - Certificate Based Authentication: azure-ad-certificate.md
       - Download Azure Bill: azure-billing.md

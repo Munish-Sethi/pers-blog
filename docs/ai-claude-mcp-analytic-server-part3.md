@@ -5,7 +5,7 @@
 - [Part 1: CSV/Parquet files](ai-claude-mcp-analytic-server-part1.md)
 - [Part 2: CSV/Parquet & Database](ai-claude-mcp-analytic-server-part2.md)
 - **Part 3: HTTPS-Based MCP Server with OAuth 2.0 (Azure Entra ID)** *(Current)*
-
+- [Part 4: Debugging MCP Servers (Https) with VS Code](ai-claude-mcp-analytic-server-part4.md)
 ---
 
 *This is Part 3 of the series. Here, we extend the solution to use MCP Server over HTTPS*
