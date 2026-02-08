@@ -25,6 +25,7 @@
 - [Data Analysis with LLM via MCP Server - Part 2](ai-claude-mcp-analytic-server-part2.md)
 - [Data Analysis with LLM via MCP Server - Part 3](ai-claude-mcp-analytic-server-part3.md)
 - [Data Analysis with LLM via MCP Server - Part 4](ai-claude-mcp-analytic-server-part4.md)
+- [Building an Enterprise Multi-Agent AI System with Microsoft Teams](ai-multi-agent.md)
 ---
 
 ## 🔷 Azure
