@@ -40,23 +40,23 @@ The key insight driving this architecture is that **no single agent can do every
                                      │ HTTPS Webhook
                                      ▼
 ┌────────────────────────────────────────────────────────────────────────────┐
-│                    FastAPI Backend (Port 8000)                              │
+│                    FastAPI Backend (Port 8000)                             │
 │  ┌──────────────────────────────────────────────────────────────────────┐  │
-│  │                     Teams Bot Handler                                 │  │
-│  │  • User Authentication (Entra ID extraction)                          │  │
-│  │  • Thread Persistence Management                                      │  │
-│  │  • Context Injection                                                  │  │
-│  │  • AI Memory Provider (learns about users)                            │  │
+│  │                     Teams Bot Handler                                │  │
+│  │  • User Authentication (Entra ID extraction)                         │  │
+│  │  • Thread Persistence Management                                     │  │
+│  │  • Context Injection                                                 │  │
+│  │  • AI Memory Provider (learns about users)                           │  │
 │  └──────────────────────────────────────────────────────────────────────┘  │
-│                                     │                                       │
-│                                     ▼                                       │
+│                                     │                                      │
+│                                     ▼                                      │
 │  ┌──────────────────────────────────────────────────────────────────────┐  │
-│  │                    Hybrid Intent Router                               │  │
+│  │                    Hybrid Intent Router                              │  │
 │  │  1. Keyword Matching (~5ms, 80% of queries)                          │  │
 │  │  2. LLM Classification (~150ms, 20% ambiguous queries)               │  │
 │  │  3. Priority: MCP → Local → Foundry → Default (Local)                │  │
 │  └──────────────────────────────────────────────────────────────────────┘  │
-│                                     │                                       │
+│                                     │                                      │
 │           ┌─────────────────────────┼─────────────────────────┐            │
 │           ▼                         ▼                         ▼            │
 │  ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐       │
@@ -70,10 +70,10 @@ The key insight driving this architecture is that **no single agent can do every
 │  │ • SQL Queries   │     │ • Password      │     │ • Vector Store  │       │
 │  │ • File Queries  │     │   Reset         │     │ • RAG Retrieval │       │
 │  │ • Reports       │     │ • Tickets       │     │ • Policies/Docs │       │
-│  └────────┬────────┘     │ • Phone Orders  │     └─────────────────┘       │
-│           │              │ • AI Memory     │                                │
-│           │              └─────────────────┘                                │
-└───────────┼─────────────────────────────────────────────────────────────────┘
+│  │                 │     │ • Phone Orders  │     │                 │       │
+│  │                 │     │ • AI Memory     │     │                 │       │
+│  └────────┬────────┘     └─────────────────┘     └─────────────────┘       │
+└───────────┼────────────────────────────────────────────────────────────────┘
             │ HTTP (RFC 1918 private network)
             ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -92,8 +92,6 @@ The key insight driving this architecture is that **no single agent can do every
 │  9. get_user_info         - User context lookup                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
-
----
 
 ## The Multi-Agent Paradigm
 
@@ -316,15 +314,15 @@ mcp_agent = AzureOpenAIChatClient(...).create_agent(
 
 The MCP server runs as a separate container and exposes these tools:
 
-| Tool | Purpose |
-|------|---------|
-| `get_data_catalog` | List all datasets with metadata (CALL FIRST) |
-| `get_files_list` | List CSV/Parquet files |
-| `get_database_tables` | List SQL tables with row counts |
-| `get_schema` | Get file column schema |
-| `get_schema_db` | Get database table schema |
-| `execute_polars_sql` | Query files using Polars |
-| `execute_database_query` | Query SQL Server |
+| Tool                        | Purpose                                         |
+|-----------------------------|-------------------------------------------------|
+| `get_data_catalog`          | List all datasets with metadata (CALL FIRST)    |
+| `get_files_list`            | List CSV/Parquet files                          |
+| `get_database_tables`       | List SQL tables with row counts                 |
+| `get_schema`                | Get file column schema                          |
+| `get_schema_db`             | Get database table schema                       |
+| `execute_polars_sql`        | Query files using Polars                        |
+| `execute_database_query`    | Query SQL Server                                |
 
 **Full implementation details available in:** [GDEP-MCP-ANALYST Repository](https://github.com/GDEnergyproducts/GDEP-MCP-ANALYST)
 
@@ -333,13 +331,13 @@ The MCP server runs as a separate container and exposes these tools:
 The MCP server runs on a private RFC 1918 network:
 
 ```
-┌─────────────────────┐         ┌─────────────────────┐
-│  Bot Container      │  HTTP   │  MCP Container      │
-│  (Port 8000)        │ ──────► │  (Port 8001)        │
-│                     │         │                     │
-│  10.27.6.4          │  No     │  10.27.6.5          │
-│                     │  Auth   │                     │
-└─────────────────────┘         └─────────────────────┘
+┌─────────────────────┐          ┌─────────────────────┐
+│  Bot Container      │   HTTP   │  MCP Container      │
+│  (Port 8000)        │ ───────► │  (Port 8001)        │
+│                     │          │                     │
+│  10.27.6.4          │  No Auth │  10.27.6.5          │
+│                     │          │                     │
+└─────────────────────┘          └─────────────────────┘
 ```
 
 **No authentication is needed** because both containers are on the same Azure virtual network with no public exposure.
@@ -352,12 +350,12 @@ The MCP server runs on a private RFC 1918 network:
 
 Simple keyword matching fails for ambiguous queries:
 
-| Query | Expected | Keyword Match |
-|-------|----------|---------------|
-| "How many employees in IT?" | MCP | ✅ "employees" |
-| "I need some numbers" | MCP | ❌ No keyword |
-| "Show me the data" | MCP | ✅ "data" |
-| "What's the current situation?" | ??? | ❌ Ambiguous |
+| Query                           | Expected | Keyword Match   |
+|---------------------------------|----------|-----------------|
+| "How many employees in IT?"     | MCP      | ✅ "employees"  |
+| "I need some numbers"           | MCP      | ❌ No keyword   |
+| "Show me the data"              | MCP      | ✅ "data"       |
+| "What's the current situation?" | ???      | ❌ Ambiguous    |
 
 ### The Hybrid Solution
 
@@ -431,11 +429,11 @@ class IntentClassifier:
 
 ### Performance Metrics
 
-| Routing Method | Latency | Accuracy | Cost |
-|---------------|---------|----------|------|
-| Keyword Matching | ~5ms | 80% | Free |
-| LLM Classification | ~150ms | 99% | ~$0.0001/query |
-| **Hybrid** | **~15ms avg** | **93%** | **~$0.02/100 queries** |
+| Routing Method     | Latency      | Accuracy | Cost                    |
+|--------------------|--------------|----------|-------------------------|
+| Keyword Matching   | ~5ms         | 80%      | Free                    |
+| LLM Classification | ~150ms       | 99%      | ~$0.0001/query          |
+| **Hybrid**         | **~15ms avg** | **93%**  | **~$0.02/100 queries**  |
 
 ---
 
@@ -684,12 +682,12 @@ If nothing to remember, return: {{}}
 
 The AI decides what's important. Examples:
 
-| User Says | AI Learns |
-|-----------|-----------|
-| "I'm John Smith from Finance" | `name: "John Smith", department: "Finance"` |
-| "I use SAP every day" | `primary_systems: "SAP"` |
-| "This laptop issue again" | `recurring_issue: "laptop problems"` |
-| "Reset my password" | `{}` (no personal info, just request) |
+| User Says                      | AI Learns                                           |
+|--------------------------------|-----------------------------------------------------|
+| "I'm John Smith from Finance"  | `name: "John Smith", department: "Finance"`         |
+| "I use SAP every day"          | `primary_systems: "SAP"`                            |
+| "This laptop issue again"      | `recurring_issue: "laptop problems"`                |
+| "Reset my password"            | `{}` (no personal info, just request)               |
 
 ---
 
