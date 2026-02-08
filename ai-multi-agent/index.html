@@ -1,0 +1,4751 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://munishsethi.com/ai-multi-agent/">
+      
+      
+        <link rel="prev" href="../ai-claude-mcp-analytic-server-part4/">
+      
+      
+        <link rel="next" href="../azure-ad-certificate/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Building an Enterprise Multi-Agent AI System with Microsoft Teams - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#building-an-enterprise-multi-agent-ai-system-with-microsoft-teams-integration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Building an Enterprise Multi-Agent AI System with Microsoft Teams
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (csv/Parquet) stdio- Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (database) stdio- Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (files/database) https- Part 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging MCP Servers (Https) with VS Code - Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building an Enterprise Multi-Agent AI System with Microsoft Teams
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building an Enterprise Multi-Agent AI System with Microsoft Teams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-production-ready-architecture-using-azure-ai-foundry-model-context-protocol-and-agent-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Production-Ready Architecture Using Azure AI Foundry, Model Context Protocol, and Agent Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-multi-agent-paradigm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Multi-Agent Paradigm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Multi-Agent Paradigm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-multiple-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Multiple Agents?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-orchestrator-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Orchestrator Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-1-azure-ai-foundry-agent-ragknowledge-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent #1: Azure AI Foundry Agent (RAG/Knowledge Base)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agent #1: Azure AI Foundry Agent (RAG/Knowledge Base)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-azure-ai-foundry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Azure AI Foundry?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-cases-for-foundry-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Cases for Foundry Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-insight-stateless-by-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Insight: Stateless by Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-2-local-agent-custom-python-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent #2: Local Agent (Custom Python Tools)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agent #2: Local Agent (Custom Python Tools)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-a-local-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why a Local Agent?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-definition-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Definition Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-execution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Execution Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-3-mcp-agent-data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent #3: MCP Agent (Data Analysis)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agent #3: MCP Agent (Data Analysis)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-model-context-protocol-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Model Context Protocol (MCP)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-mcp-for-data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why MCP for Data Analysis?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-via-mcpstreamablehttptool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration via MCPStreamableHTTPTool
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp-server-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP Server Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hybrid-intent-routing-keywords-llm-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hybrid Intent Routing: Keywords + LLM Classification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hybrid Intent Routing: Keywords + LLM Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem-with-pure-keyword-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem with Pure Keyword Matching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-hybrid-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Hybrid Solution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-intent-classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM Intent Classifier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-persistence-conversation-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thread Persistence &amp; Conversation Memory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thread Persistence &amp; Conversation Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Challenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-serialized-thread-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution: Serialized Thread Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thread-serialization-with-agent-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thread Serialization with Agent Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sliding-window-cost-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sliding Window: Cost Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-specific-context-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent-Specific Context Filtering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agent-Specific Context Filtering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-cross-agent-hallucination-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Cross-Agent Hallucination Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-filter-before-sending-to-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution: Filter Before Sending to LLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-flow-with-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution Flow with Filtering
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ai-memory-system-learning-about-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The AI Memory System: Learning About Users
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The AI Memory System: Learning About Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beyond-session-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beyond Session Memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-contextprovider-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation: ContextProvider Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-gets-remembered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Gets Remembered
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microsoft-teams-as-the-ui-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Microsoft Teams as the UI Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Microsoft Teams as the UI Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Teams?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bot-framework-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bot Framework Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Putting It All Together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complete-request-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Request Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-architectural-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Architectural Decisions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Architectural Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-shared-thread-storage-option-b-filtered-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Shared Thread Storage (Option B: Filtered Context)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-hybrid-intent-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Hybrid Intent Routing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-foundry-agent-for-knowledge-local-agent-for-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Foundry Agent for Knowledge, Local Agent for Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mcp-for-data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. MCP for Data Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lessons Learned
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lessons Learned">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-llms-will-hallucinate-if-they-see-unavailable-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. LLMs Will Hallucinate If They See Unavailable Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-thread-serialization-requires-exact-import-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Thread Serialization Requires Exact Import Paths
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cached-thread-history-can-poison-conversations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cached Thread History Can Poison Conversations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-tool-docstrings-are-system-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tool Docstrings Are System Prompts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-emojis-and-formatting-get-lost-without-strong-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Emojis and Formatting Get Lost Without Strong Instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-and-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References and Credits
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Azure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certificate Based Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download Azure Bill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download Azure Resource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query Recovery Services Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entra Users, User Groups and Licence assignments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entra User Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-container-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrating Scheduled Jobs (Container Instances)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-build-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Build Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Deploy Container IaC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Deploy Container Github Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-custon-image-compute-gallery-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building and Publishing an Custom Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-publish-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying Azure Virtual Desktop (AVD) Desktops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-cleanup-obsolete-fsLogix-profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cleanup Obsolete FXLogix Profiles(AVD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Coninuity Program / Diasister Recovery - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Continuity Program / Disaster Recovery - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Continuity Program / Disaster Recovery - Git Hub Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restore VM from RSV Backup - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restore VM from RSV Backup - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fabric
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fabric
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-wharehouse-fact-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Warehouse data import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki, Nagios XI & Manage Engine
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cisco Meraki, Nagios XI & Manage Engine
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-unused-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki Unused Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki Devices Discovery and Nagios Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-itsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrating Monitoring System with ITSM System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-vm-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying Cisco Meraki vMX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory Domain Services
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory Domain Services
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create ADDS User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Update ADDS User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SAP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup PyRFC in your Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calling SAP RFC Function Modules from Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-system-start-stop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automating SAP System Start/Stop Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    O365
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outlook Actionable Adaptive Card - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outlook Actionable Adaptive Card - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharepoint Sites Enumeration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharepoint Document Library Enumeration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrate Sharepoint Document Library to Azure File Share
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concur Expense Report Aggregation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teams-user-number-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get all Teams Phone Assignment(s)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprovision-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deprovison User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tenantallowblocklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant Allow Block List - False Positive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spo-o365_excel_automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365/Excel Automation via SPO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UKG
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UKG
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secure File Transfer with UKG Dimensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Employee Verification via API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-integration-and-dataview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automating Integration Execution and Dataview extract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Misc
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Misc
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proof Point User Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-clean-deployments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clean GitHub Deployments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpointo365connector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding DMARC/Spoofing, O365 with ProofPoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-production-ready-architecture-using-azure-ai-foundry-model-context-protocol-and-agent-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Production-Ready Architecture Using Azure AI Foundry, Model Context Protocol, and Agent Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-multi-agent-paradigm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Multi-Agent Paradigm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Multi-Agent Paradigm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-multiple-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Multiple Agents?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-orchestrator-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Orchestrator Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-1-azure-ai-foundry-agent-ragknowledge-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent #1: Azure AI Foundry Agent (RAG/Knowledge Base)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agent #1: Azure AI Foundry Agent (RAG/Knowledge Base)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-azure-ai-foundry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Azure AI Foundry?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-cases-for-foundry-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Cases for Foundry Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-insight-stateless-by-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Insight: Stateless by Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-2-local-agent-custom-python-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent #2: Local Agent (Custom Python Tools)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agent #2: Local Agent (Custom Python Tools)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-a-local-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why a Local Agent?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-definition-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Definition Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-execution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Execution Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-3-mcp-agent-data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent #3: MCP Agent (Data Analysis)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agent #3: MCP Agent (Data Analysis)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-model-context-protocol-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Model Context Protocol (MCP)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-mcp-for-data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why MCP for Data Analysis?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-via-mcpstreamablehttptool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration via MCPStreamableHTTPTool
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp-server-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP Server Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hybrid-intent-routing-keywords-llm-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hybrid Intent Routing: Keywords + LLM Classification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hybrid Intent Routing: Keywords + LLM Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem-with-pure-keyword-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem with Pure Keyword Matching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-hybrid-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Hybrid Solution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-intent-classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM Intent Classifier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-persistence-conversation-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thread Persistence &amp; Conversation Memory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thread Persistence &amp; Conversation Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Challenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-serialized-thread-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution: Serialized Thread Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thread-serialization-with-agent-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thread Serialization with Agent Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sliding-window-cost-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sliding Window: Cost Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-specific-context-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent-Specific Context Filtering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agent-Specific Context Filtering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-cross-agent-hallucination-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Cross-Agent Hallucination Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-filter-before-sending-to-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution: Filter Before Sending to LLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-flow-with-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution Flow with Filtering
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ai-memory-system-learning-about-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The AI Memory System: Learning About Users
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The AI Memory System: Learning About Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beyond-session-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beyond Session Memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-contextprovider-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation: ContextProvider Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-gets-remembered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Gets Remembered
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microsoft-teams-as-the-ui-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Microsoft Teams as the UI Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Microsoft Teams as the UI Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Teams?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bot-framework-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bot Framework Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Putting It All Together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complete-request-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Request Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-architectural-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Architectural Decisions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Architectural Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-shared-thread-storage-option-b-filtered-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Shared Thread Storage (Option B: Filtered Context)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-hybrid-intent-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Hybrid Intent Routing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-foundry-agent-for-knowledge-local-agent-for-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Foundry Agent for Knowledge, Local Agent for Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mcp-for-data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. MCP for Data Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lessons Learned
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lessons Learned">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-llms-will-hallucinate-if-they-see-unavailable-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. LLMs Will Hallucinate If They See Unavailable Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-thread-serialization-requires-exact-import-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Thread Serialization Requires Exact Import Paths
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cached-thread-history-can-poison-conversations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cached Thread History Can Poison Conversations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-tool-docstrings-are-system-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tool Docstrings Are System Prompts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-emojis-and-formatting-get-lost-without-strong-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Emojis and Formatting Get Lost Without Strong Instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-and-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References and Credits
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="building-an-enterprise-multi-agent-ai-system-with-microsoft-teams-integration">Building an Enterprise Multi-Agent AI System with Microsoft Teams Integration</h1>
+<h2 id="a-production-ready-architecture-using-azure-ai-foundry-model-context-protocol-and-agent-orchestration">A Production-Ready Architecture Using Azure AI Foundry, Model Context Protocol, and Agent Orchestration</h2>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>This article documents the architecture and implementation of a production-ready enterprise AI assistant built using a <strong>multi-agent architecture</strong>. The system combines three specialized AI agents, each with distinct capabilities:</p>
+<ol>
+<li><strong>Foundry Agent</strong> - RAG-based knowledge retrieval using Azure AI Foundry</li>
+<li><strong>Local Agent</strong> - Custom Python tools for operational tasks</li>
+<li><strong>MCP Agent</strong> - Data analysis via Model Context Protocol server</li>
+</ol>
+<p>The key insight driving this architecture is that <strong>no single agent can do everything well</strong>. By decomposing capabilities across specialized agents and implementing intelligent routing, we achieve both flexibility and reliability at enterprise scale.</p>
+<p><strong>This guide demonstrates how to build a multi-agent system that:</strong>
+- Routes user queries to specialized agents automatically
+- Manages conversation memory across agent switches
+- Integrates with Microsoft Teams for enterprise deployment
+- Learns about users over time with AI-powered memory
+- Executes custom Python tools, RAG queries, and data analysis seamlessly</p>
+<p><strong>All code and implementation examples are available in the source repository:</strong> <a href="https://github.com/GDEnergyproducts/GDEP-IT-HELPDESK">GDEP-IT-HELPDESK</a></p>
+<hr />
+<h2 id="architecture-overview">Architecture Overview</h2>
+<div class="highlight"><pre><span></span><code>                              ┌─────────────────┐
+                              │ Microsoft Teams │
+                              │   (End Users)   │
+                              └────────┬────────┘
+                                       │ Messages
+                                       ▼
+                    ┌─────────────────────────────────────┐
+                    │     Azure Bot Service               │
+                    │     (Bot Framework Integration)     │
+                    └────────────────┬────────────────────┘
+                                     │ HTTPS Webhook
+                                     ▼
+┌────────────────────────────────────────────────────────────────────────────┐
+│                    FastAPI Backend (Port 8000)                              │
+│  ┌──────────────────────────────────────────────────────────────────────┐  │
+│  │                     Teams Bot Handler                                 │  │
+│  │  • User Authentication (Entra ID extraction)                          │  │
+│  │  • Thread Persistence Management                                      │  │
+│  │  • Context Injection                                                  │  │
+│  │  • AI Memory Provider (learns about users)                            │  │
+│  └──────────────────────────────────────────────────────────────────────┘  │
+│                                     │                                       │
+│                                     ▼                                       │
+│  ┌──────────────────────────────────────────────────────────────────────┐  │
+│  │                    Hybrid Intent Router                               │  │
+│  │  1. Keyword Matching (~5ms, 80% of queries)                          │  │
+│  │  2. LLM Classification (~150ms, 20% ambiguous queries)               │  │
+│  │  3. Priority: MCP → Local → Foundry → Default (Local)                │  │
+│  └──────────────────────────────────────────────────────────────────────┘  │
+│                                     │                                       │
+│           ┌─────────────────────────┼─────────────────────────┐            │
+│           ▼                         ▼                         ▼            │
+│  ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐       │
+│  │   MCP AGENT     │     │  LOCAL AGENT    │     │ FOUNDRY AGENT   │       │
+│  │ (Data Analyst)  │     │  (Operations)   │     │ (Knowledge/RAG) │       │
+│  ├─────────────────┤     ├─────────────────┤     ├─────────────────┤       │
+│  │ MCPStreamable   │     │ Custom Python   │     │ AzureAIAgent    │       │
+│  │ HTTPTool        │     │ Tools           │     │ Client          │       │
+│  │                 │     │                 │     │                 │       │
+│  │ • Data Catalog  │     │ • User Lookup   │     │ • File Search   │       │
+│  │ • SQL Queries   │     │ • Password      │     │ • Vector Store  │       │
+│  │ • File Queries  │     │   Reset         │     │ • RAG Retrieval │       │
+│  │ • Reports       │     │ • Tickets       │     │ • Policies/Docs │       │
+│  └────────┬────────┘     │ • Phone Orders  │     └─────────────────┘       │
+│           │              │ • AI Memory     │                                │
+│           │              └─────────────────┘                                │
+└───────────┼─────────────────────────────────────────────────────────────────┘
+            │ HTTP (RFC 1918 private network)
+            ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    MCP Server (Separate Container)                          │
+│                    FastMCP Framework - Port 8001                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  9 Data Analysis Tools:                                                     │
+│  1. get_data_catalog      - List all datasets with metadata                 │
+│  2. get_connection_info   - Check data source connectivity                  │
+│  3. get_files_list        - Available CSV/Parquet files                     │
+│  4. get_database_tables   - SQL Server tables with row counts               │
+│  5. get_schema            - File schemas (Polars)                           │
+│  6. get_schema_db         - Database table schemas                          │
+│  7. execute_polars_sql    - Query CSV/Excel files                           │
+│  8. execute_database_query - Query SQL Server                               │
+│  9. get_user_info         - User context lookup                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<h2 id="the-multi-agent-paradigm">The Multi-Agent Paradigm</h2>
+<h3 id="why-multiple-agents">Why Multiple Agents?</h3>
+<p>A single monolithic agent faces several challenges at enterprise scale:</p>
+<ol>
+<li><strong>Token Limits</strong>: Stuffing all capabilities into one agent's system prompt consumes context window</li>
+<li><strong>Specialization</strong>: Different tasks require different models, tools, and configurations</li>
+<li><strong>Maintainability</strong>: Modular agents are easier to test, debug, and update independently</li>
+<li><strong>Cost Optimization</strong>: Route simple queries to cheaper models, complex ones to capable models</li>
+</ol>
+<h3 id="the-orchestrator-pattern">The Orchestrator Pattern</h3>
+<p>Our architecture uses an <strong>orchestrator pattern</strong> where a central handler:</p>
+<ol>
+<li>Receives the user message</li>
+<li>Determines intent via hybrid routing</li>
+<li>Routes to the appropriate specialized agent</li>
+<li>Manages thread persistence across agents</li>
+<li>Returns the response to the user</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Simplified orchestrator flow</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handle_message</span><span class="p">(</span><span class="n">user_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">TurnContext</span><span class="p">):</span>
+    <span class="c1"># 1. Extract user identity from Teams</span>
+    <span class="n">user_identifier</span> <span class="o">=</span> <span class="n">extract_entra_id</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+    <span class="c1"># 2. Route to appropriate agent</span>
+    <span class="n">agent_type</span> <span class="o">=</span> <span class="n">route_to_agent</span><span class="p">(</span><span class="n">user_message</span><span class="p">)</span>  <span class="c1"># &quot;mcp&quot; | &quot;local&quot; | &quot;foundry&quot;</span>
+
+    <span class="c1"># 3. Load/create conversation thread</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="k">await</span> <span class="n">load_or_create_thread</span><span class="p">(</span><span class="n">conversation_id</span><span class="p">)</span>
+
+    <span class="c1"># 4. Execute with appropriate agent</span>
+    <span class="k">if</span> <span class="n">agent_type</span> <span class="o">==</span> <span class="s2">&quot;mcp&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">mcp_agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">user_message</span><span class="p">,</span> <span class="n">thread</span><span class="o">=</span><span class="n">thread</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">agent_type</span> <span class="o">==</span> <span class="s2">&quot;foundry&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">foundry_agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">user_message</span><span class="p">)</span>  <span class="c1"># Stateless</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">local_agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">user_message</span><span class="p">,</span> <span class="n">thread</span><span class="o">=</span><span class="n">thread</span><span class="p">)</span>
+
+    <span class="c1"># 5. Save thread and return response</span>
+    <span class="k">await</span> <span class="n">save_thread</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+<hr />
+<h2 id="agent-1-azure-ai-foundry-agent-ragknowledge-base">Agent #1: Azure AI Foundry Agent (RAG/Knowledge Base)</h2>
+<h3 id="what-is-azure-ai-foundry">What is Azure AI Foundry?</h3>
+<p>Azure AI Foundry (formerly Azure AI Studio) provides a managed platform for building AI agents with:</p>
+<ul>
+<li><strong>Hosted Agents</strong>: Pre-configured agent instances with unique Agent IDs</li>
+<li><strong>File Search</strong>: Vector store for RAG over uploaded documents</li>
+<li><strong>Code Interpreter</strong>: Execute code in a sandboxed environment</li>
+<li><strong>Function Calling</strong>: Define custom tool schemas</li>
+</ul>
+<h3 id="integration-pattern">Integration Pattern</h3>
+<p>The Foundry Agent is integrated using the <code>AzureAIAgentClient</code> from the Microsoft Agent Framework SDK:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">azure.identity</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClientSecretCredential</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agent_framework.azure</span><span class="w"> </span><span class="kn">import</span> <span class="n">AzureAIAgentClient</span>
+
+<span class="c1"># Service Principal authentication</span>
+<span class="n">credential</span> <span class="o">=</span> <span class="n">ClientSecretCredential</span><span class="p">(</span>
+    <span class="n">tenant_id</span><span class="o">=</span><span class="n">AZURE_TENANT_ID</span><span class="p">,</span>
+    <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CLIENT_ID</span><span class="p">,</span>
+    <span class="n">client_secret</span><span class="o">=</span><span class="n">AZURE_CLIENT_SECRET</span>
+<span class="p">)</span>
+
+<span class="c1"># Create agent client</span>
+<span class="n">foundry_client</span> <span class="o">=</span> <span class="n">AzureAIAgentClient</span><span class="p">(</span>
+    <span class="n">credential</span><span class="o">=</span><span class="n">credential</span><span class="p">,</span>
+    <span class="n">project_endpoint</span><span class="o">=</span><span class="s2">&quot;https://your-project.services.ai.azure.com/...&quot;</span><span class="p">,</span>
+    <span class="n">agent_id</span><span class="o">=</span><span class="s2">&quot;asst_xxxxxxxxxxxx&quot;</span><span class="p">,</span>  <span class="c1"># Pre-configured agent ID</span>
+    <span class="n">model_deployment_name</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="use-cases-for-foundry-agent">Use Cases for Foundry Agent</h3>
+<ul>
+<li><strong>Policy Questions</strong>: "What is the password policy?"</li>
+<li><strong>Procedure Lookups</strong>: "How do I request new hardware?"</li>
+<li><strong>Documentation Search</strong>: "Explain the approval process"</li>
+</ul>
+<h3 id="key-insight-stateless-by-design">Key Insight: Stateless by Design</h3>
+<p>The Foundry Agent is intentionally <strong>stateless</strong> - each query is independent. This works well for knowledge base queries where context from previous questions rarely matters.</p>
+<hr />
+<h2 id="agent-2-local-agent-custom-python-tools">Agent #2: Local Agent (Custom Python Tools)</h2>
+<h3 id="why-a-local-agent">Why a Local Agent?</h3>
+<p>While Azure AI Foundry is powerful, it has limitations for custom tool execution:</p>
+<ol>
+<li><strong>No Direct Code Execution</strong>: Foundry tools are schema-based, not Python functions</li>
+<li><strong>No Database Access</strong>: Can't directly connect to SQL Server or APIs</li>
+<li><strong>No Real-Time Integration</strong>: Can't call external services like SAP or ServiceDesk</li>
+</ol>
+<h3 id="implementation">Implementation</h3>
+<p>The Local Agent uses <code>AzureOpenAIChatClient</code> with Python function tools:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">agent_framework.azure</span><span class="w"> </span><span class="kn">import</span> <span class="n">AzureOpenAIChatClient</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">AzureOpenAIChatClient</span><span class="p">(</span>
+    <span class="n">endpoint</span><span class="o">=</span><span class="n">AZURE_OPENAI_ENDPOINT</span><span class="p">,</span>
+    <span class="n">deployment_name</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="n">AZURE_OPENAI_API_KEY</span><span class="p">,</span>
+    <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;2024-05-01-preview&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">create_agent</span><span class="p">(</span>
+    <span class="n">instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;You are an IT helpdesk assistant...&quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;IT-Helpdesk-Local&quot;</span><span class="p">,</span>
+    <span class="n">tools</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">get_user_info</span><span class="p">,</span>        <span class="c1"># SQL database lookup</span>
+        <span class="n">reset_sap_password</span><span class="p">,</span>   <span class="c1"># SAP RFC integration</span>
+        <span class="n">create_ticket</span><span class="p">,</span>        <span class="c1"># ServiceDesk Plus API</span>
+        <span class="n">check_ticket_status</span><span class="p">,</span>  <span class="c1"># ServiceDesk Plus API</span>
+        <span class="n">get_my_open_tickets</span><span class="p">,</span>  <span class="c1"># ServiceDesk Plus API</span>
+        <span class="n">request_phone_order</span>   <span class="c1"># Workflow trigger</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="tool-definition-pattern">Tool Definition Pattern</h3>
+<p>Tools are defined as Python functions with type hints and docstrings:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">reset_sap_password</span><span class="p">(</span>
+    <span class="n">sap_account_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">user_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">identifier_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;entra_id&quot;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reset SAP password for user account.</span>
+
+<span class="sd">    ALWAYS call this tool for password reset requests.</span>
+<span class="sd">    The tool handles all permission checks internally.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        sap_account_name: SAP account to reset</span>
+<span class="sd">        user_identifier: Entra ID of requesting user</span>
+<span class="sd">        identifier_type: Type of identifier (entra_id or email)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Formatted result with new temporary password</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Implementation connects to SAP via RFC</span>
+    <span class="c1"># Validates permissions, resets password, returns result</span>
+    <span class="o">...</span>
+</code></pre></div>
+<h3 id="tool-execution-flow">Tool Execution Flow</h3>
+<ol>
+<li>LLM receives user message + tool definitions</li>
+<li>LLM generates a function call with arguments</li>
+<li>Agent Framework executes the Python function</li>
+<li>Function result is injected back into conversation</li>
+<li>LLM generates final response incorporating tool output</li>
+</ol>
+<hr />
+<h2 id="agent-3-mcp-agent-data-analysis">Agent #3: MCP Agent (Data Analysis)</h2>
+<h3 id="what-is-model-context-protocol-mcp">What is Model Context Protocol (MCP)?</h3>
+<p>MCP is an open protocol (developed by Anthropic) that standardizes how AI applications connect to external data sources and tools. Key concepts:</p>
+<ul>
+<li><strong>MCP Server</strong>: Hosts tools and exposes them via HTTP/SSE</li>
+<li><strong>MCP Client</strong>: Consumes tools from one or more MCP servers</li>
+<li><strong>Tool Discovery</strong>: Client can query server for available tools</li>
+<li><strong>Standardized Format</strong>: JSON-RPC style requests/responses</li>
+</ul>
+<p>For a comprehensive guide on building MCP servers for data analysis, see our <strong><a href="../ai-claude-mcp-analytic-server-part1/">Data Analysis with LLM via MCP Server series - Part 1</a></strong>.</p>
+<h3 id="why-mcp-for-data-analysis">Why MCP for Data Analysis?</h3>
+<p>Data analysis tools have unique requirements:</p>
+<ol>
+<li><strong>Schema Discovery</strong>: Need to explore available datasets</li>
+<li><strong>Query Flexibility</strong>: Execute arbitrary SQL against files/databases</li>
+<li><strong>Separation of Concerns</strong>: Data layer managed independently from bot</li>
+</ol>
+<h3 id="integration-via-mcpstreamablehttptool">Integration via MCPStreamableHTTPTool</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">agent_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">MCPStreamableHTTPTool</span>
+
+<span class="c1"># Create MCP tool that connects to remote server</span>
+<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPStreamableHTTPTool</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;data-analyst&quot;</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://mcp-server:8001/mcp?function=it&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Data analysis tools - employee data, reports, SQL queries&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Create agent with MCP tools</span>
+<span class="n">mcp_agent</span> <span class="o">=</span> <span class="n">AzureOpenAIChatClient</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">create_agent</span><span class="p">(</span>
+    <span class="n">instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;You are a data analyst assistant.</span>
+
+<span class="s2">    CRITICAL FIRST STEP:</span>
+<span class="s2">    1. ALWAYS call get_data_catalog FIRST before any query</span>
+<span class="s2">    2. This shows available datasets with query_tool field</span>
+<span class="s2">    3. Use the appropriate execution tool based on query_tool</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Data-Analyst&quot;</span><span class="p">,</span>
+    <span class="n">tools</span><span class="o">=</span><span class="n">mcp_tool</span>  <span class="c1"># Single tool that exposes 9 MCP capabilities</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="mcp-server-architecture">MCP Server Architecture</h3>
+<p>The MCP server runs as a separate container and exposes these tools:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get_data_catalog</code></td>
+<td>List all datasets with metadata (CALL FIRST)</td>
+</tr>
+<tr>
+<td><code>get_files_list</code></td>
+<td>List CSV/Parquet files</td>
+</tr>
+<tr>
+<td><code>get_database_tables</code></td>
+<td>List SQL tables with row counts</td>
+</tr>
+<tr>
+<td><code>get_schema</code></td>
+<td>Get file column schema</td>
+</tr>
+<tr>
+<td><code>get_schema_db</code></td>
+<td>Get database table schema</td>
+</tr>
+<tr>
+<td><code>execute_polars_sql</code></td>
+<td>Query files using Polars</td>
+</tr>
+<tr>
+<td><code>execute_database_query</code></td>
+<td>Query SQL Server</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Full implementation details available in:</strong> <a href="https://github.com/GDEnergyproducts/GDEP-MCP-ANALYST">GDEP-MCP-ANALYST Repository</a></p>
+<h3 id="network-architecture">Network Architecture</h3>
+<p>The MCP server runs on a private RFC 1918 network:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────┐         ┌─────────────────────┐
+│  Bot Container      │  HTTP   │  MCP Container      │
+│  (Port 8000)        │ ──────► │  (Port 8001)        │
+│                     │         │                     │
+│  10.27.6.4          │  No     │  10.27.6.5          │
+│                     │  Auth   │                     │
+└─────────────────────┘         └─────────────────────┘
+</code></pre></div>
+<p><strong>No authentication is needed</strong> because both containers are on the same Azure virtual network with no public exposure.</p>
+<hr />
+<h2 id="hybrid-intent-routing-keywords-llm-classification">Hybrid Intent Routing: Keywords + LLM Classification</h2>
+<h3 id="the-problem-with-pure-keyword-matching">The Problem with Pure Keyword Matching</h3>
+<p>Simple keyword matching fails for ambiguous queries:</p>
+<table>
+<thead>
+<tr>
+<th>Query</th>
+<th>Expected</th>
+<th>Keyword Match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"How many employees in IT?"</td>
+<td>MCP</td>
+<td>✅ "employees"</td>
+</tr>
+<tr>
+<td>"I need some numbers"</td>
+<td>MCP</td>
+<td>❌ No keyword</td>
+</tr>
+<tr>
+<td>"Show me the data"</td>
+<td>MCP</td>
+<td>✅ "data"</td>
+</tr>
+<tr>
+<td>"What's the current situation?"</td>
+<td>???</td>
+<td>❌ Ambiguous</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-hybrid-solution">The Hybrid Solution</h3>
+<p>We combine fast keyword matching with LLM fallback:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">route_to_agent</span><span class="p">(</span><span class="n">user_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">message_lower</span> <span class="o">=</span> <span class="n">user_message</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c1"># Step 1: Check MCP keywords (HIGHEST PRIORITY) - ~5ms</span>
+    <span class="n">mcp_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;analyze&quot;</span><span class="p">,</span> <span class="s2">&quot;employees&quot;</span><span class="p">,</span> <span class="s2">&quot;bill&quot;</span><span class="p">,</span> <span class="s2">&quot;report&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">mcp_keywords</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">message_lower</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;mcp&quot;</span>
+
+    <span class="c1"># Step 2: Check operational keywords - ~5ms</span>
+    <span class="n">operational_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;reset password&quot;</span><span class="p">,</span> <span class="s2">&quot;create ticket&quot;</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">operational_keywords</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">message_lower</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;local&quot;</span>
+
+    <span class="c1"># Step 3: Check knowledge keywords - ~5ms</span>
+    <span class="n">knowledge_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;policy&quot;</span><span class="p">,</span> <span class="s2">&quot;procedure&quot;</span><span class="p">,</span> <span class="s2">&quot;how to&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">knowledge_keywords</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">message_lower</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;foundry&quot;</span>
+
+    <span class="c1"># Step 4: No match - use LLM classification - ~150ms</span>
+    <span class="n">intent</span> <span class="o">=</span> <span class="n">classify_with_llm</span><span class="p">(</span><span class="n">user_message</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">intent</span> <span class="o">==</span> <span class="s2">&quot;data_analysis&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;mcp&quot;</span>
+    <span class="k">elif</span> <span class="n">intent</span> <span class="o">==</span> <span class="s2">&quot;operational_task&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;local&quot;</span>
+    <span class="k">elif</span> <span class="n">intent</span> <span class="o">==</span> <span class="s2">&quot;knowledge_base&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;foundry&quot;</span>
+
+    <span class="c1"># Step 5: Default fallback</span>
+    <span class="k">return</span> <span class="s2">&quot;local&quot;</span>
+</code></pre></div>
+<h3 id="llm-intent-classifier">LLM Intent Classifier</h3>
+<p>For ambiguous queries, we use GPT-4.1-mini (fast, cheap):</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IntentClassifier</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;You are an intent classifier.</span>
+<span class="s2">        Classify into exactly ONE category:</span>
+
+<span class="s2">        1. data_analysis - Data, numbers, reports, employee info</span>
+<span class="s2">        2. operational_task - Password resets, tickets, actions</span>
+<span class="s2">        3. knowledge_base - Policies, procedures, how-to questions</span>
+
+<span class="s2">        Respond with ONLY ONE WORD: data_analysis OR operational_task OR knowledge_base&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">classify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1-mini&quot;</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">message</span><span class="p">}</span>
+            <span class="p">],</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>        <span class="c1"># Consistent classification</span>
+            <span class="n">max_tokens</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>          <span class="c1"># One word response</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="mf">5.0</span>             <span class="c1"># Quick timeout</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="performance-metrics">Performance Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Routing Method</th>
+<th>Latency</th>
+<th>Accuracy</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keyword Matching</td>
+<td>~5ms</td>
+<td>80%</td>
+<td>Free</td>
+</tr>
+<tr>
+<td>LLM Classification</td>
+<td>~150ms</td>
+<td>99%</td>
+<td>~$0.0001/query</td>
+</tr>
+<tr>
+<td><strong>Hybrid</strong></td>
+<td><strong>~15ms avg</strong></td>
+<td><strong>93%</strong></td>
+<td><strong>~$0.02/100 queries</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="thread-persistence-conversation-memory">Thread Persistence &amp; Conversation Memory</h2>
+<h3 id="the-challenge">The Challenge</h3>
+<p>Users expect continuity across messages:</p>
+<div class="highlight"><pre><span></span><code>User: &quot;What is our December Azure bill?&quot;
+Bot: &quot;The December 2025 Azure bill is $56,940.03&quot;
+
+User: &quot;Compare that to November&quot;  ← Bot needs to remember &quot;December bill&quot;
+</code></pre></div>
+<h3 id="solution-serialized-thread-storage">Solution: Serialized Thread Storage</h3>
+<p>We serialize the entire conversation thread to Azure Blob Storage:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ThreadStorage</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conversation_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">user_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/mnt/azure/helpdesk/threads/</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_thread</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thread_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thread_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_path</span><span class="si">}</span><span class="s2">/thread_</span><span class="si">{</span><span class="n">thread_id</span><span class="si">}</span><span class="s2">.json&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">thread_data</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_thread</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thread_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_path</span><span class="si">}</span><span class="s2">/thread_</span><span class="si">{</span><span class="n">thread_id</span><span class="si">}</span><span class="s2">.json&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="thread-serialization-with-agent-framework">Thread Serialization with Agent Framework</h3>
+<p>The Microsoft Agent Framework provides built-in serialization:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># After agent response</span>
+<span class="n">serialized</span> <span class="o">=</span> <span class="k">await</span> <span class="n">thread</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span>
+<span class="n">thread_storage</span><span class="o">.</span><span class="n">save_thread</span><span class="p">(</span><span class="n">thread_id</span><span class="p">,</span> <span class="n">serialized</span><span class="p">)</span>
+
+<span class="c1"># Before next message</span>
+<span class="n">thread_data</span> <span class="o">=</span> <span class="n">thread_storage</span><span class="o">.</span><span class="n">load_thread</span><span class="p">(</span><span class="n">active_thread_id</span><span class="p">)</span>
+
+<span class="c1"># Convert dicts back to ChatMessage objects</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agent_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatMessage</span>
+<span class="k">if</span> <span class="s1">&#39;chat_message_store_state&#39;</span> <span class="ow">in</span> <span class="n">thread_data</span><span class="p">:</span>
+    <span class="n">store</span> <span class="o">=</span> <span class="n">thread_data</span><span class="p">[</span><span class="s1">&#39;chat_message_store_state&#39;</span><span class="p">]</span>
+    <span class="n">store</span><span class="p">[</span><span class="s1">&#39;messages&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">ChatMessage</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">msg</span>
+        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">store</span><span class="p">[</span><span class="s1">&#39;messages&#39;</span><span class="p">]</span>
+    <span class="p">]</span>
+
+<span class="c1"># Restore thread with history</span>
+<span class="n">thread</span> <span class="o">=</span> <span class="k">await</span> <span class="n">agent</span><span class="o">.</span><span class="n">deserialize_thread</span><span class="p">(</span><span class="n">thread_data</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="sliding-window-cost-optimization">Sliding Window: Cost Optimization</h3>
+<p>Long conversations can consume excessive tokens. We apply a sliding window:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">apply_sliding_window</span><span class="p">(</span><span class="n">thread</span><span class="p">,</span> <span class="n">max_messages</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Keep only last N messages for LLM context, but save full history.&quot;&quot;&quot;</span>
+
+    <span class="n">original_messages</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="n">_chat_message_store</span><span class="o">.</span><span class="n">messages</span>
+    <span class="n">original_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">original_messages</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">original_count</span> <span class="o">&gt;</span> <span class="n">max_messages</span><span class="p">:</span>
+        <span class="c1"># Store full history for later restoration</span>
+        <span class="n">full_history</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">original_messages</span><span class="p">)</span>
+
+        <span class="c1"># Send only recent context to LLM</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">_chat_message_store</span><span class="o">.</span><span class="n">messages</span> <span class="o">=</span> <span class="n">original_messages</span><span class="p">[</span><span class="o">-</span><span class="n">max_messages</span><span class="p">:]</span>
+
+        <span class="c1"># After LLM response, restore full history + new messages</span>
+        <span class="c1"># ... (see full implementation)</span>
+
+    <span class="k">return</span> <span class="n">thread</span>
+</code></pre></div>
+<p><strong>Cost savings example:</strong>
+- Thread with 300 messages: ~60,000 tokens = ~$1.80/request
+- After sliding window (20 messages): ~4,000 tokens = ~$0.12/request
+- <strong>93% cost reduction</strong></p>
+<hr />
+<h2 id="agent-specific-context-filtering">Agent-Specific Context Filtering</h2>
+<h3 id="the-cross-agent-hallucination-problem">The Cross-Agent Hallucination Problem</h3>
+<p>When agents share conversation history, a dangerous issue emerges:</p>
+<div class="highlight"><pre><span></span><code>1. User: &quot;What is December Azure bill?&quot;
+2. MCP Agent: [calls execute_database_query] → &quot;$56,940.03&quot;
+
+3. User: &quot;Reset my password&quot;  ← Routes to LOCAL agent
+4. LOCAL Agent sees: execute_database_query in history
+5. LOCAL Agent doesn&#39;t have this tool
+6. LOCAL Agent HALLUCINATES random tool calls! ❌
+</code></pre></div>
+<h3 id="solution-filter-before-sending-to-llm">Solution: Filter Before Sending to LLM</h3>
+<p>Before sending context to each agent, filter out tool calls from other agents:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">filter_context_by_agent</span><span class="p">(</span><span class="n">thread</span><span class="p">,</span> <span class="n">target_agent</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Remove cross-agent tool calls to prevent hallucinations.&quot;&quot;&quot;</span>
+
+    <span class="n">MCP_TOOLS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;get_data_catalog&#39;</span><span class="p">,</span> <span class="s1">&#39;execute_database_query&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;execute_polars_sql&#39;</span><span class="p">,</span> <span class="s1">&#39;get_schema&#39;</span><span class="p">,</span> <span class="o">...</span>
+    <span class="p">}</span>
+
+    <span class="n">LOCAL_TOOLS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;get_user_info&#39;</span><span class="p">,</span> <span class="s1">&#39;reset_sap_password&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;create_ticket&#39;</span><span class="p">,</span> <span class="s1">&#39;check_ticket_status&#39;</span><span class="p">,</span> <span class="o">...</span>
+    <span class="p">}</span>
+
+    <span class="n">filtered_messages</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">thread</span><span class="o">.</span><span class="n">messages</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s1">&#39;user&#39;</span><span class="p">:</span>
+            <span class="c1"># ALWAYS keep user messages</span>
+            <span class="n">filtered_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s1">&#39;assistant&#39;</span><span class="p">:</span>
+            <span class="c1"># Check for cross-agent tool calls</span>
+            <span class="n">has_foreign_tools</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="k">for</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">contents</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">content</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;function_call&#39;</span><span class="p">:</span>
+                    <span class="n">tool_name</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">name</span>
+
+                    <span class="k">if</span> <span class="n">target_agent</span> <span class="o">==</span> <span class="s1">&#39;local&#39;</span> <span class="ow">and</span> <span class="n">tool_name</span> <span class="ow">in</span> <span class="n">MCP_TOOLS</span><span class="p">:</span>
+                        <span class="n">has_foreign_tools</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">elif</span> <span class="n">target_agent</span> <span class="o">==</span> <span class="s1">&#39;mcp&#39;</span> <span class="ow">and</span> <span class="n">tool_name</span> <span class="ow">in</span> <span class="n">LOCAL_TOOLS</span><span class="p">:</span>
+                        <span class="n">has_foreign_tools</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">has_foreign_tools</span><span class="p">:</span>
+                <span class="n">filtered_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="n">thread</span><span class="o">.</span><span class="n">messages</span> <span class="o">=</span> <span class="n">filtered_messages</span>
+    <span class="k">return</span> <span class="n">thread</span>
+</code></pre></div>
+<h3 id="execution-flow-with-filtering">Execution Flow with Filtering</h3>
+<div class="highlight"><pre><span></span><code>1. Load full thread (50 messages)
+2. Apply sliding window (keep last 20)
+3. Apply agent-specific filter (remove cross-agent tools)
+4. Send clean context to LLM
+5. Get response
+6. Restore full history + add new messages
+7. Save complete thread to storage
+</code></pre></div>
+<hr />
+<h2 id="the-ai-memory-system-learning-about-users">The AI Memory System: Learning About Users</h2>
+<h3 id="beyond-session-memory">Beyond Session Memory</h3>
+<p>Traditional chatbots only remember within a session. Our AI Memory system learns across all conversations:</p>
+<div class="highlight"><pre><span></span><code>Day 1: &quot;Hi, I&#39;m John from the Finance department&quot;
+Bot: [Learns: name=&quot;John&quot;, department=&quot;Finance&quot;]
+
+Day 2: &quot;Reset my SAP password&quot;
+Bot: &quot;Hi John! I&#39;ll reset your SAP password right away.&quot;
+     [Knows user without asking]
+</code></pre></div>
+<h3 id="implementation-contextprovider-pattern">Implementation: ContextProvider Pattern</h3>
+<p>The Microsoft Agent Framework provides a <code>ContextProvider</code> interface:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">agent_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContextProvider</span><span class="p">,</span> <span class="n">Context</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AIMemoryProvider</span><span class="p">(</span><span class="n">ContextProvider</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;AI-powered long-term memory that learns about users.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ai_client</span><span class="p">:</span> <span class="n">AsyncAzureOpenAI</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_identifier</span> <span class="o">=</span> <span class="n">user_identifier</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ai_client</span> <span class="o">=</span> <span class="n">ai_client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/mnt/azure/helpdesk/memory/</span><span class="si">{</span><span class="n">user_identifier</span><span class="si">}</span><span class="s2">/profile.json&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_profile</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">invoking</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Context</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called BEFORE agent processes request. Inject user profile.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_profile</span><span class="p">:</span>
+            <span class="n">profile_text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_profile</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+
+            <span class="k">return</span> <span class="n">Context</span><span class="p">(</span><span class="n">instructions</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">[USER PROFILE - LONG-TERM MEMORY]:</span>
+<span class="si">{</span><span class="n">profile_text</span><span class="si">}</span>
+
+<span class="s2">Reference this naturally when relevant. Greet the user by name!</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Context</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">invoked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request_messages</span><span class="p">,</span> <span class="n">response_messages</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called AFTER conversation. Extract new information.&quot;&quot;&quot;</span>
+        <span class="n">user_message</span> <span class="o">=</span> <span class="n">extract_last_user_message</span><span class="p">(</span><span class="n">request_messages</span><span class="p">)</span>
+
+        <span class="c1"># Use AI to extract facts worth remembering</span>
+        <span class="n">extraction_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Analyze this message and extract personal info worth remembering:</span>
+<span class="s2">&quot;</span><span class="si">{</span><span class="n">user_message</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="s2">Current profile: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user_profile</span><span class="si">}</span>
+
+<span class="s2">Extract ONLY factual info about the user:</span>
+<span class="s2">- Personal: name, department, role, location</span>
+<span class="s2">- Technical: systems they use, common issues</span>
+<span class="s2">- Preferences: communication style</span>
+
+<span class="s2">Return as JSON: </span><span class="se">{{</span><span class="s2">&quot;key&quot;: &quot;value&quot;</span><span class="se">}}</span>
+<span class="s2">If nothing to remember, return: </span><span class="se">{{}}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">ai_client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">extraction_prompt</span><span class="p">}],</span>
+            <span class="n">temperature</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="c1"># Consistent extraction</span>
+            <span class="n">max_tokens</span><span class="o">=</span><span class="mi">200</span>
+        <span class="p">)</span>
+
+        <span class="n">extracted</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">extracted</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">user_profile</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">extracted</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_save_profile</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="what-gets-remembered">What Gets Remembered</h3>
+<p>The AI decides what's important. Examples:</p>
+<table>
+<thead>
+<tr>
+<th>User Says</th>
+<th>AI Learns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"I'm John Smith from Finance"</td>
+<td><code>name: "John Smith", department: "Finance"</code></td>
+</tr>
+<tr>
+<td>"I use SAP every day"</td>
+<td><code>primary_systems: "SAP"</code></td>
+</tr>
+<tr>
+<td>"This laptop issue again"</td>
+<td><code>recurring_issue: "laptop problems"</code></td>
+</tr>
+<tr>
+<td>"Reset my password"</td>
+<td><code>{}</code> (no personal info, just request)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="microsoft-teams-as-the-ui-layer">Microsoft Teams as the UI Layer</h2>
+<h3 id="why-teams">Why Teams?</h3>
+<ol>
+<li><strong>Enterprise Integration</strong>: Already deployed in most organizations</li>
+<li><strong>Identity Built-in</strong>: Entra ID (Azure AD) authentication automatic</li>
+<li><strong>No App to Install</strong>: Works in existing Teams client</li>
+<li><strong>Mobile + Desktop</strong>: Unified experience across devices</li>
+</ol>
+<h3 id="bot-framework-integration">Bot Framework Integration</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">botbuilder.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">ActivityHandler</span><span class="p">,</span> <span class="n">TurnContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">botbuilder.schema</span><span class="w"> </span><span class="kn">import</span> <span class="n">Activity</span><span class="p">,</span> <span class="n">ActivityTypes</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ITHelpdeskBot</span><span class="p">(</span><span class="n">ActivityHandler</span><span class="p">):</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_message_activity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">turn_context</span><span class="p">:</span> <span class="n">TurnContext</span><span class="p">):</span>
+        <span class="c1"># Extract message</span>
+        <span class="n">user_message</span> <span class="o">=</span> <span class="n">turn_context</span><span class="o">.</span><span class="n">activity</span><span class="o">.</span><span class="n">text</span>
+
+        <span class="c1"># Extract Entra ID (automatically provided by Teams)</span>
+        <span class="n">entra_id</span> <span class="o">=</span> <span class="n">turn_context</span><span class="o">.</span><span class="n">activity</span><span class="o">.</span><span class="n">from_property</span><span class="o">.</span><span class="n">aad_object_id</span>
+
+        <span class="c1"># Send typing indicator</span>
+        <span class="k">await</span> <span class="n">turn_context</span><span class="o">.</span><span class="n">send_activity</span><span class="p">(</span><span class="n">Activity</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">ActivityTypes</span><span class="o">.</span><span class="n">typing</span><span class="p">))</span>
+
+        <span class="c1"># Route and process (as shown earlier)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_message</span><span class="p">(</span><span class="n">user_message</span><span class="p">,</span> <span class="n">entra_id</span><span class="p">)</span>
+
+        <span class="c1"># Send response (supports Markdown)</span>
+        <span class="k">await</span> <span class="n">turn_context</span><span class="o">.</span><span class="n">send_activity</span><span class="p">(</span><span class="n">MessageFactory</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="authentication-flow">Authentication Flow</h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────┐
+│  1. User sends message in Teams                                 │
+│                        ↓                                        │
+│  2. Teams adds Entra ID (aad_object_id) to activity             │
+│                        ↓                                        │
+│  3. Azure Bot Service routes to webhook                         │
+│                        ↓                                        │
+│  4. FastAPI receives with full user identity                    │
+│                        ↓                                        │
+│  5. Bot uses Entra ID for:                                      │
+│     - Database lookup (user&#39;s department, email, etc.)          │
+│     - Permission checks (can they reset others&#39; passwords?)     │
+│     - Thread storage (per-user conversation history)            │
+│     - AI Memory (per-user learned preferences)                  │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+<h3 id="complete-request-flow">Complete Request Flow</h3>
+<div class="highlight"><pre><span></span><code>User sends &quot;How many employees in IT?&quot; via Teams
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 1. AUTHENTICATION                                               │
+│    - Extract Entra ID from Teams activity                       │
+│    - Look up user in SQL database                               │
+│    - Initialize AI Memory for this user                         │
+└──────────────────────────┬──────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ 2. INTENT ROUTING                                               │
+│    - Check keywords: &quot;employees&quot; → MCP_KEYWORDS                 │
+│    - Route decision: &quot;mcp&quot; (Data Analyst)                       │
+└──────────────────────────┬──────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ 3. THREAD MANAGEMENT                                            │
+│    - Load conversation thread from Azure Blob                   │
+│    - Apply sliding window (keep last 20 messages)               │
+│    - Apply agent filter (remove LOCAL agent tool calls)         │
+└──────────────────────────┬──────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ 4. MCP AGENT EXECUTION                                          │
+│    - Create MCP agent with data analysis tools                  │
+│    - Agent calls: get_data_catalog → execute_database_query     │
+│    - Query: SELECT COUNT(*) FROM employees WHERE dept = &#39;IT&#39;    │
+│    - Result: 42 employees                                       │
+└──────────────────────────┬──────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ 5. RESPONSE &amp; PERSISTENCE                                       │
+│    - Restore full thread history                                │
+│    - Add new messages (user + assistant + tool calls)           │
+│    - Serialize and save to Azure Blob                           │
+│    - Log request for audit                                      │
+└──────────────────────────┬──────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ 6. TEAMS RESPONSE                                               │
+│    - Send Markdown-formatted response                           │
+│    - &quot;There are **42 employees** in the IT department.&quot;         │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<h2 id="key-architectural-decisions">Key Architectural Decisions</h2>
+<h3 id="1-shared-thread-storage-option-b-filtered-context">1. Shared Thread Storage (Option B: Filtered Context)</h3>
+<p><strong>Decision</strong>: All agents share the same thread storage, but filter before sending to LLM.</p>
+<p><strong>Why</strong>:
+- Users expect context to persist across agent switches
+- "Compare this to November" works after MCP query
+- Filtering prevents cross-agent hallucinations
+- Full history preserved for audit/compliance</p>
+<p><strong>Rejected Alternatives</strong>:
+- Option A (Separate Threads): Lost context across agent switches
+- Option C (No Filtering): Caused LLM hallucinations</p>
+<h3 id="2-hybrid-intent-routing">2. Hybrid Intent Routing</h3>
+<p><strong>Decision</strong>: Keywords first, LLM fallback for ambiguous queries.</p>
+<p><strong>Why</strong>:
+- Keywords handle 80% of queries instantly (~5ms)
+- LLM provides 99% accuracy for edge cases (~150ms)
+- Graceful degradation if LLM unavailable
+- Cost-effective (~$0.02 per 100 ambiguous queries)</p>
+<h3 id="3-foundry-agent-for-knowledge-local-agent-for-operations">3. Foundry Agent for Knowledge, Local Agent for Operations</h3>
+<p><strong>Decision</strong>: Separate RAG/knowledge capabilities from custom tool execution.</p>
+<p><strong>Why</strong>:
+- Foundry excels at document retrieval (built-in vector store)
+- Local agent excels at real-time integrations (SAP, ServiceDesk, SQL)
+- Different tool paradigms (schema-based vs Python functions)
+- Independent scaling and updates</p>
+<h3 id="4-mcp-for-data-analysis">4. MCP for Data Analysis</h3>
+<p><strong>Decision</strong>: Separate MCP server for data queries.</p>
+<p><strong>Why</strong>:
+- Data schema changes independently from bot logic
+- Same MCP server can serve multiple clients (bot, Claude Desktop, etc.)
+- SQL injection prevention in isolated container
+- Easy to add new data sources without redeploying bot</p>
+<hr />
+<h2 id="lessons-learned">Lessons Learned</h2>
+<h3 id="1-llms-will-hallucinate-if-they-see-unavailable-tools">1. LLMs Will Hallucinate If They See Unavailable Tools</h3>
+<p>When a LOCAL agent sees MCP's <code>execute_database_query</code> in conversation history, it will try to call it even though it doesn't have access. <strong>Always filter context before sending to each agent.</strong></p>
+<h3 id="2-thread-serialization-requires-exact-import-paths">2. Thread Serialization Requires Exact Import Paths</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ CORRECT - preserves conversation memory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agent_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatMessage</span>
+
+<span class="c1"># ❌ WRONG - silently breaks thread deserialization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agent_framework.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatMessage</span>
+</code></pre></div>
+<p>This caused hours of debugging. The import path affects how objects are serialized/deserialized.</p>
+<h3 id="3-cached-thread-history-can-poison-conversations">3. Cached Thread History Can Poison Conversations</h3>
+<p>If the bot once generated a bad response (e.g., "You don't have permission"), that response stays in thread history. On subsequent messages, the LLM sees this pattern and repeats it. <strong>Solution</strong>: Clear thread storage when debugging, or implement thread expiration.</p>
+<h3 id="4-tool-docstrings-are-system-prompts">4. Tool Docstrings Are System Prompts</h3>
+<p>The LLM reads tool docstrings to decide when/how to call tools. Vague docstrings cause wrong tool calls. Be explicit:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ Vague</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">reset_password</span><span class="p">(</span><span class="n">account</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset user password.&quot;&quot;&quot;</span>
+
+<span class="c1"># ✅ Explicit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">reset_password</span><span class="p">(</span><span class="n">account</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reset SAP password for account.</span>
+
+<span class="sd">    ALWAYS call this tool for password requests.</span>
+<span class="sd">    DO NOT check permissions - the tool handles this internally.</span>
+<span class="sd">    Pass the account name EXACTLY as the user specifies.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+<h3 id="5-emojis-and-formatting-get-lost-without-strong-instructions">5. Emojis and Formatting Get Lost Without Strong Instructions</h3>
+<p>LLMs like to "clean up" responses. If your tool returns formatted output with emojis, the LLM may summarize or rephrase it. Add explicit instructions:</p>
+<div class="highlight"><pre><span></span><code>Tool output = YOUR output. No summarizing. No rephrasing.
+Copy the tool response CHARACTER FOR CHARACTER.
+Include EVERY emoji. Include EVERY markdown element.
+</code></pre></div>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>Building a production-ready multi-agent system requires careful consideration of:</p>
+<ol>
+<li><strong>Agent Specialization</strong>: Each agent has clear responsibilities</li>
+<li><strong>Intelligent Routing</strong>: Fast keywords + accurate LLM fallback</li>
+<li><strong>Context Management</strong>: Shared storage with agent-specific filtering</li>
+<li><strong>Memory Systems</strong>: Session threads + long-term AI memory</li>
+<li><strong>Enterprise Integration</strong>: Teams + Entra ID + Azure services</li>
+</ol>
+<p>The result is a system that feels like a single intelligent assistant while leveraging the strengths of multiple specialized agents behind the scenes.</p>
+<p><strong>For a deep dive into building the MCP data analysis component,</strong> see our comprehensive guide: <a href="../ai-claude-mcp-analytic-server-part1/">Data Analysis with LLM via MCP Server - Part 1</a></p>
+<p><strong>All implementation code and deployment details are available at:</strong>
+- <strong>Multi-Agent System</strong>: <a href="https://github.com/GDEnergyproducts/GDEP-IT-HELPDESK">GDEP-IT-HELPDESK</a>
+- <strong>MCP Data Server</strong>: <a href="https://github.com/GDEnergyproducts/GDEP-MCP-ANALYST">GDEP-MCP-ANALYST</a></p>
+<hr />
+<h2 id="references-and-credits">References and Credits</h2>
+<ul>
+<li><a href="https://github.com/microsoft/agent-framework">Microsoft Agent Framework SDK</a></li>
+<li><a href="https://modelcontextprotocol.io/">Model Context Protocol (MCP)</a></li>
+<li><a href="https://learn.microsoft.com/azure/ai-studio/">Azure AI Foundry Documentation</a></li>
+<li><a href="https://github.com/microsoft/botbuilder-python">Bot Framework SDK for Python</a></li>
+<li><a href="https://github.com/jlowin/fastmcp">FastMCP Framework</a></li>
+<li><a href="https://pola.rs/">Polars DataFrame Library</a></li>
+</ul>
+<hr />
+<p><em>This article documents a production implementation. Architecture patterns and code examples are based on real-world enterprise deployment.</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 8, 2026 16:06:42 UTC">February 8, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
