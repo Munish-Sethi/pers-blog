@@ -3832,23 +3832,23 @@
                                      │ HTTPS Webhook
                                      ▼
 ┌────────────────────────────────────────────────────────────────────────────┐
-│                    FastAPI Backend (Port 8000)                              │
+│                    FastAPI Backend (Port 8000)                             │
 │  ┌──────────────────────────────────────────────────────────────────────┐  │
-│  │                     Teams Bot Handler                                 │  │
-│  │  • User Authentication (Entra ID extraction)                          │  │
-│  │  • Thread Persistence Management                                      │  │
-│  │  • Context Injection                                                  │  │
-│  │  • AI Memory Provider (learns about users)                            │  │
+│  │                     Teams Bot Handler                                │  │
+│  │  • User Authentication (Entra ID extraction)                         │  │
+│  │  • Thread Persistence Management                                     │  │
+│  │  • Context Injection                                                 │  │
+│  │  • AI Memory Provider (learns about users)                           │  │
 │  └──────────────────────────────────────────────────────────────────────┘  │
-│                                     │                                       │
-│                                     ▼                                       │
+│                                     │                                      │
+│                                     ▼                                      │
 │  ┌──────────────────────────────────────────────────────────────────────┐  │
-│  │                    Hybrid Intent Router                               │  │
+│  │                    Hybrid Intent Router                              │  │
 │  │  1. Keyword Matching (~5ms, 80% of queries)                          │  │
 │  │  2. LLM Classification (~150ms, 20% ambiguous queries)               │  │
 │  │  3. Priority: MCP → Local → Foundry → Default (Local)                │  │
 │  └──────────────────────────────────────────────────────────────────────┘  │
-│                                     │                                       │
+│                                     │                                      │
 │           ┌─────────────────────────┼─────────────────────────┐            │
 │           ▼                         ▼                         ▼            │
 │  ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐       │
@@ -3862,10 +3862,10 @@
 │  │ • SQL Queries   │     │ • Password      │     │ • Vector Store  │       │
 │  │ • File Queries  │     │   Reset         │     │ • RAG Retrieval │       │
 │  │ • Reports       │     │ • Tickets       │     │ • Policies/Docs │       │
-│  └────────┬────────┘     │ • Phone Orders  │     └─────────────────┘       │
-│           │              │ • AI Memory     │                                │
-│           │              └─────────────────┘                                │
-└───────────┼─────────────────────────────────────────────────────────────────┘
+│  │                 │     │ • Phone Orders  │     │                 │       │
+│  │                 │     │ • AI Memory     │     │                 │       │
+│  └────────┬────────┘     └─────────────────┘     └─────────────────┘       │
+└───────────┼────────────────────────────────────────────────────────────────┘
             │ HTTP (RFC 1918 private network)
             ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -3884,7 +3884,6 @@
 │  9. get_user_info         - User context lookup                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 </code></pre></div>
-<hr />
 <h2 id="the-multi-agent-paradigm">The Multi-Agent Paradigm</h2>
 <h3 id="why-multiple-agents">Why Multiple Agents?</h3>
 <p>A single monolithic agent faces several challenges at enterprise scale:</p>
@@ -4112,13 +4111,13 @@
 <p><strong>Full implementation details available in:</strong> <a href="https://github.com/GDEnergyproducts/GDEP-MCP-ANALYST">GDEP-MCP-ANALYST Repository</a></p>
 <h3 id="network-architecture">Network Architecture</h3>
 <p>The MCP server runs on a private RFC 1918 network:</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────┐         ┌─────────────────────┐
-│  Bot Container      │  HTTP   │  MCP Container      │
-│  (Port 8000)        │ ──────► │  (Port 8001)        │
-│                     │         │                     │
-│  10.27.6.4          │  No     │  10.27.6.5          │
-│                     │  Auth   │                     │
-└─────────────────────┘         └─────────────────────┘
+<div class="highlight"><pre><span></span><code>┌─────────────────────┐          ┌─────────────────────┐
+│  Bot Container      │   HTTP   │  MCP Container      │
+│  (Port 8000)        │ ───────► │  (Port 8001)        │
+│                     │          │                     │
+│  10.27.6.4          │  No Auth │  10.27.6.5          │
+│                     │          │                     │
+└─────────────────────┘          └─────────────────────┘
 </code></pre></div>
 <p><strong>No authentication is needed</strong> because both containers are on the same Azure virtual network with no public exposure.</p>
 <hr />
@@ -4689,7 +4688,7 @@ Include EVERY emoji. Include EVERY markdown element.
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 8, 2026 16:07:05 UTC">February 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 8, 2026 16:31:39 UTC">February 8, 2026</span>
   </span>
 
     
