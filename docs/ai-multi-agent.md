@@ -20,7 +20,7 @@ The key insight driving this architecture is that **no single agent can do every
 - Learns about users over time with AI-powered memory
 - Executes custom Python tools, RAG queries, and data analysis seamlessly
 
-**All code and implementation examples are available in the source repository:** [GDEP-IT-HELPDESK](https://github.com/GDEnergyproducts/GDEP-IT-HELPDESK)
+**All code and implementation examples are available in the source repository:** [teams-multi-ai-agent](https://github.com/Munish-Sethi/teams-multi-ai-agent)
 
 ---
 
@@ -324,7 +324,7 @@ The MCP server runs as a separate container and exposes these tools:
 | `execute_polars_sql`        | Query files using Polars                        |
 | `execute_database_query`    | Query SQL Server                                |
 
-**Full implementation details available in:** [GDEP-MCP-ANALYST Repository](https://github.com/GDEnergyproducts/GDEP-MCP-ANALYST)
+**Full implementation details available in:** [enterprise-mcp-analyst Repository](https://github.com/Munish-Sethi/enterprise-mcp-analyst)
 
 ### Network Architecture
 
@@ -916,8 +916,8 @@ The result is a system that feels like a single intelligent assistant while leve
 **For a deep dive into building the MCP data analysis component,** see our comprehensive guide: [Data Analysis with LLM via MCP Server - Part 1](ai-claude-mcp-analytic-server-part1.md)
 
 **All implementation code and deployment details are available at:**
-- **Multi-Agent System**: [GDEP-IT-HELPDESK](https://github.com/GDEnergyproducts/GDEP-IT-HELPDESK)
-- **MCP Data Server**: [GDEP-MCP-ANALYST](https://github.com/GDEnergyproducts/GDEP-MCP-ANALYST)
+- **Multi-Agent System**: [teams-multi-ai-agent](https://github.com/Munish-Sethi/teams-multi-ai-agent)
+- **MCP Data Server**: [enterprise-mcp-analyst](https://github.com/Munish-Sethi/enterprise-mcp-analyst)
 
 ---
 
