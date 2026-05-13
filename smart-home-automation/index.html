@@ -10,13 +10,11 @@
       
       
       
-        <link rel="canonical" href="https://munishsethi.com/azure-ad-user/">
+        <link rel="canonical" href="https://munishsethi.com/smart-home-automation/">
       
       
-        <link rel="prev" href="../azure-query-recovery-services-vault/">
+        <link rel="prev" href="../proofpointo365connector/">
       
-      
-        <link rel="next" href="../azure-ad-user-devices/">
       
       
         
@@ -27,7 +25,7 @@
     
     
       
-        <title>Entra Users, User Groups and Licence assignments - Munish(s) Blog</title>
+        <title>Smart Home Automation with Home Assistant - Munish(s) Blog</title>
       
     
     
@@ -70,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#retrieving-entra-azure-ad-users-group-membership-and-license-assignments" class="md-skip">
+        <a href="#from-pool-timers-to-a-full-smart-home-automation-platform-in-a-weekend" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Entra Users, User Groups and Licence assignments
+              Smart Home Automation with Home Assistant
             
           </span>
         </div>
@@ -425,8 +423,6 @@
       
   
   
-    
-  
   
   
     
@@ -439,11 +435,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -464,7 +460,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -591,37 +587,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Entra Users, User Groups and Licence assignments
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
         
   
   
@@ -637,193 +606,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introduction
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prerequisites
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#constants-and-endpoints" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Constants and Endpoints
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-retrieve-users-with-license-assignments-and-group-memberships" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Retrieve Users with License Assignments and Group Memberships
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 1: Retrieve Users with License Assignments and Group Memberships">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-get_users_licenseassignments_and_groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Function: get_users_licenseassignments_and_groups
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-retrieve-all-groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Retrieve All Groups
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2: Retrieve All Groups">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-get_list_of_groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Function: get_list_of_groups
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-combine-user-license-and-group-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Combine User, License, and Group Data
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 3: Combine User, License, and Group Data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-get_users_with_license_and_groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Function: get_users_with_license_and_groups
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-high-level-orchestration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 4: High-Level Orchestration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 4: High-Level Orchestration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-get_list_of_users_with_license_and_groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Function: get_list_of_users_with_license_and_groups
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-function-execute_odata_query_get" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting Function: execute_odata_query_get
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2342,8 +2124,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -2354,11 +2138,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
@@ -2379,7 +2163,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2478,10 +2262,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../smart-home-automation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Smart Home Automation with Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2497,6 +2308,347 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-home-assistant-on-hyper-v-to-unify-pool-equipment-multi-zone-audio-and-security-cameras" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying Home Assistant on Hyper-V to Unify Pool Equipment, Multi-Zone Audio, and Security Cameras
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equipment-selected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equipment Selected
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-electrician-visit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Electrician Visit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matter-the-protocol-that-promises-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matter: The Protocol That Promises Everything
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Matter: The Protocol That Promises Everything">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-home-offline-after-every-commissioning-attempt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Home: Offline After Every Commissioning Attempt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apple-home-worked-immediately-no-hub-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apple Home: Worked Immediately, No Hub Required
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matter-multi-admin-fabric-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matter Multi-Admin Fabric Sharing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-custom-automation-home-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Custom Automation: Home Assistant
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-home-assistant-on-windows-11-via-hyper-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying Home Assistant on Windows 11 via Hyper-V
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Home Assistant on Windows 11 via Hyper-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hyper-v-vm-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hyper-V VM Creation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-network-switch-why-ethernet-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Network Switch — Why Ethernet Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrations-deployed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integrations Deployed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrations Deployed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matter-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matter Devices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smart-life-tuya" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smart Life / Tuya
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#denon-avr-heos-denon-avr-network-receivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Denon AVR (HEOS / Denon AVR Network Receivers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-nest-cameras-sdm-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Nest Cameras (SDM API)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Dashboard
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#home-view-manual-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Home View (Manual Control)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenes-view-one-tap-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenes View (One-Tap Scenarios)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-fm-radio-preset-control-a-concrete-example-of-why-custom-automation-wins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom FM Radio Preset Control — A Concrete Example of Why Custom Automation Wins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheduling-and-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling and Automation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-and-honest-observations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations and Honest Observations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credits-and-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Credits and Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2536,10 +2688,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#deploying-home-assistant-on-hyper-v-to-unify-pool-equipment-multi-zone-audio-and-security-cameras" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Introduction
+        Deploying Home Assistant on Hyper-V to Unify Pool Equipment, Multi-Zone Audio, and Security Cameras
       
     </span>
   </a>
@@ -2547,6 +2699,112 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equipment-selected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equipment Selected
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-electrician-visit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Electrician Visit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matter-the-protocol-that-promises-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matter: The Protocol That Promises Everything
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Matter: The Protocol That Promises Everything">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-home-offline-after-every-commissioning-attempt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Home: Offline After Every Commissioning Attempt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apple-home-worked-immediately-no-hub-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apple Home: Worked Immediately, No Hub Required
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matter-multi-admin-fabric-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matter Multi-Admin Fabric Sharing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-custom-automation-home-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Custom Automation: Home Assistant
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-home-assistant-on-windows-11-via-hyper-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying Home Assistant on Windows 11 via Hyper-V
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Home Assistant on Windows 11 via Hyper-V">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2556,35 +2814,34 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#constants-and-endpoints" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Constants and Endpoints
+        Download
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-retrieve-users-with-license-assignments-and-group-memberships" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#hyper-v-vm-creation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Retrieve Users with License Assignments and Group Memberships
+        Hyper-V VM Creation
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Step 1: Retrieve Users with License Assignments and Group Memberships">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#function-get_users_licenseassignments_and_groups" class="md-nav__link">
+  <a href="#the-network-switch-why-ethernet-matters" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Function: get_users_licenseassignments_and_groups
+        The Network Switch — Why Ethernet Matters
       
     </span>
   </a>
@@ -2597,22 +2854,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-retrieve-all-groups" class="md-nav__link">
+  <a href="#integrations-deployed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Retrieve All Groups
+        Integrations Deployed
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Step 2: Retrieve All Groups">
+    <nav class="md-nav" aria-label="Integrations Deployed">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#function-get_list_of_groups" class="md-nav__link">
+  <a href="#matter-devices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Function: get_list_of_groups
+        Matter Devices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smart-life-tuya" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smart Life / Tuya
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#denon-avr-heos-denon-avr-network-receivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Denon AVR (HEOS / Denon AVR Network Receivers)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-nest-cameras-sdm-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Nest Cameras (SDM API)
       
     </span>
   </a>
@@ -2625,22 +2915,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-combine-user-license-and-group-data" class="md-nav__link">
+  <a href="#the-dashboard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Combine User, License, and Group Data
+        The Dashboard
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Step 3: Combine User, License, and Group Data">
+    <nav class="md-nav" aria-label="The Dashboard">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#function-get_users_with_license_and_groups" class="md-nav__link">
+  <a href="#home-view-manual-control" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Function: get_users_with_license_and_groups
+        Home View (Manual Control)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenes-view-one-tap-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenes View (One-Tap Scenarios)
       
     </span>
   </a>
@@ -2653,38 +2954,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-high-level-orchestration" class="md-nav__link">
+  <a href="#custom-fm-radio-preset-control-a-concrete-example-of-why-custom-automation-wins" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4: High-Level Orchestration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 4: High-Level Orchestration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-get_list_of_users_with_license_and_groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Function: get_list_of_users_with_license_and_groups
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-function-execute_odata_query_get" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting Function: execute_odata_query_get
+        Custom FM Radio Preset Control — A Concrete Example of Why Custom Automation Wins
       
     </span>
   </a>
@@ -2692,10 +2965,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#scheduling-and-automation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Scheduling and Automation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-and-honest-observations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations and Honest Observations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credits-and-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Credits and Resources
       
     </span>
   </a>
@@ -2719,194 +3025,167 @@
 
 
 
-<h1 id="retrieving-entra-azure-ad-users-group-membership-and-license-assignments">Retrieving Entra (Azure AD) Users, Group Membership, and License Assignments</h1>
-<h2 id="introduction">Introduction</h2>
-<p>This guide demonstrates how to programmatically retrieve a list of all users from Microsoft Entra (Azure AD), including their group memberships and license assignments, using Python and the Microsoft Graph API. The approach is modular, production-ready, and company-agnostic. All code is explained step by step, with constants and endpoints included for clarity.</p>
+<h1 id="from-pool-timers-to-a-full-smart-home-automation-platform-in-a-weekend">From Pool Timers to a Full Smart Home Automation Platform in a Weekend</h1>
+<h2 id="deploying-home-assistant-on-hyper-v-to-unify-pool-equipment-multi-zone-audio-and-security-cameras">Deploying Home Assistant on Hyper-V to Unify Pool Equipment, Multi-Zone Audio, and Security Cameras</h2>
+<p>I spent a weekend going down a rabbit hole that started with replacing three mechanical pool timers and ended with a fully custom smart home automation platform running on my home network — controlling pool equipment, a multi-zone audio system, four security cameras, and a home theater receiver, all from a single app. This is the story of how that happened, what worked, what didn't, and why I ended up building something I didn't plan to.</p>
 <hr />
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="the-problem">The Problem</h2>
+<p>My pool equipment pad had three aging mechanical timers. They worked, but required manual adjustment for season changes, gave no remote visibility, and offered zero integration with anything else in the house.</p>
+<p>The goal was simple: replace them with smart WiFi timers, set schedules remotely, and ideally bring them into a unified app alongside the cameras and audio system already in the house. What followed was anything but simple.</p>
+<hr />
+<h2 id="equipment-selected">Equipment Selected</h2>
+<p>After research, I purchased the following:</p>
 <ul>
-<li>Python 3.8+</li>
-<li>The following Python packages:</li>
-<li><code>requests</code></li>
-<li><code>msal</code> (for authentication, not shown here)</li>
-<li>An Azure AD application (service principal) with permissions to read users, groups, and licenses</li>
-<li>Secure storage for credentials (e.g., Azure Key Vault)</li>
+<li><strong>2× DEWENWILS Matter Smart WiFi Pool Timer (HOWT01J/HOWT01K)</strong> — 240VAC, 40A, 3HP, Matter-enabled — for the pool pump and waterfall pump</li>
+<li><strong>1× DEWENWILS WiFi Pool Timer</strong> — 120-277VAC universal voltage, 40A, 2HP — for the Polaris booster pump</li>
+</ul>
+<p>The distinction between the two product lines matters for this article: the first two are <strong>Matter-certified devices</strong>, while the third is a standard <strong>Smart Life/Tuya</strong> platform device. As you will see, this distinction drove most of the complexity that followed.</p>
+<hr />
+<h2 id="the-electrician-visit">The Electrician Visit</h2>
+<p>The physical installation was straightforward — existing wiring stayed in place, new timer boxes mounted directly on the equipment pad wall. A GFCI outlet for the pool light was also inspected and resolved in the same visit.</p>
+<p><strong>Practical tip</strong>: Most Denon and other network-capable AV receivers expose a local web configuration interface accessible directly via their IP address (e.g., <code>http://192.168.x.x</code>). This is useful for configuration without relying on the manufacturer app — AirPlay, for example, is disabled by default and must be enabled here. More on this later.</p>
+<p>All devices powered on manually — wiring confirmed good. The challenge was everything that came after.</p>
+<hr />
+<h2 id="matter-the-protocol-that-promises-everything">Matter: The Protocol That Promises Everything</h2>
+<p>Matter is the smart home industry's answer to fragmentation — a universal protocol backed by Apple, Google, Amazon, and Samsung that promises any device works with any platform. In practice, the experience was considerably more nuanced.</p>
+<h3 id="google-home-offline-after-every-commissioning-attempt">Google Home: Offline After Every Commissioning Attempt</h3>
+<p>The two DEWENWILS Matter timers were commissioned through Google Home via QR code scan. Every time, the app confirmed successful setup. Every time, the devices showed as <strong>offline</strong> immediately afterward.</p>
+<p>Several things are worth documenting for anyone hitting the same wall:</p>
+<p><strong>Enable IPv6 on Google Nest WiFi.</strong> This is disabled by default and Matter requires it. Go to Google Home → WiFi → Settings → Advanced Networking → turn on IPv6. In my case it was off by default. While enabling it alone did not resolve the offline issue, it is best practice and increasingly important as more IoT devices adopt IPv6. Enable it regardless.</p>
+<p><strong>2.4GHz and iPhone Personal Hotspot.</strong> These Matter timers are 2.4GHz only. On newer iPhones, go to Settings → Personal Hotspot → <strong>Maximize Compatibility</strong> to force the hotspot to 2.4GHz. This is a valid tip worth knowing for initial commissioning of any 2.4GHz-only device, even though it did not resolve the offline issue in this case.</p>
+<p><strong>The real reason Google Home failed</strong>: Google Home requires a dedicated <strong>Matter Controller</strong> device on the local network — a physical Google device such as a Nest Hub, Nest Mini, or Nest Audio — to maintain persistent communication with Matter devices. Without one, Google Home can commission a device and store its credentials, but cannot maintain an active local connection, resulting in a permanent offline state. This is a known and documented limitation of the Google Home ecosystem.</p>
+<h3 id="apple-home-worked-immediately-no-hub-required">Apple Home: Worked Immediately, No Hub Required</h3>
+<p>After resetting both devices, they were added to <strong>Apple Home</strong> using the same QR code scan. Both devices came online immediately and were fully controllable within seconds — no additional hub, no additional configuration.</p>
+<p><strong>Why Apple Home worked without a hub while Google Home required one</strong>: Starting with iOS 18, Apple removed the hub requirement for Matter-over-WiFi devices. The iPhone itself acts as the local Matter controller. Google Home does not have an equivalent capability on the mobile app and continues to require a dedicated hub device on the network.</p>
+<p><strong>Practical takeaway</strong>: If your Matter device shows offline in Google Home, try Apple Home first. If it works there, the device and your network are fine — the issue is Google Home's hub dependency. Amazon Alexa is also Matter-compatible but similarly requires an Echo device acting as a hub. Apple Home on iOS 18 is currently the only major platform that does not require additional hardware for Matter-over-WiFi devices.</p>
+<h3 id="matter-multi-admin-fabric-sharing">Matter Multi-Admin Fabric Sharing</h3>
+<p>Once both devices were working in Apple Home, they were shared to Google Home using Matter's multi-admin capability:</p>
+<ol>
+<li>In Apple Home → tap the device → settings → <strong>Turn on Pairing Mode</strong> — generates a pairing code</li>
+<li>In Google Home → Add device → Enter code manually → paste the pairing code</li>
+</ol>
+<p>This allows multiple ecosystems to share control of the same physical device without resetting it. The process is not immediately intuitive but is fully supported by the Matter specification. Note that the app used for initial commissioning must remain installed — it is required to put the device into pairing mode for subsequent fabric sharing.</p>
+<hr />
+<h2 id="why-custom-automation-home-assistant">Why Custom Automation: Home Assistant</h2>
+<p>With the devices working in Apple Home and the Smart Life app, the question became: how do you bring everything — pool equipment, audio system, cameras — into a single app with custom schedules and one-tap scenes?</p>
+<p>The major vendor platforms each have hard limits:</p>
+<ul>
+<li><strong>Google Home</strong>: Capable, but requires Google ecosystem hub devices; Matter devices require a controller; camera on/off via SDM API not supported</li>
+<li><strong>Apple Home</strong>: Excellent Matter support on iOS 18, but remote access and automations require a HomePod or Apple TV hub; no native support for AV receivers or Tuya/Smart Life devices</li>
+<li><strong>Amazon Alexa</strong>: Full-featured but requires an Echo device as a hub</li>
+</ul>
+<p>None of these platforms could unify all devices into a single interface with custom logic — particularly the AV receiver with zone control and FM radio preset selection, which requires sending raw HTTP commands to the receiver's network interface. This is simply not possible within the automation models of any major vendor platform.</p>
+<p><strong><a href="https://www.home-assistant.io">Home Assistant</a></strong> is an open-source local automation platform that runs on your own infrastructure. No vendor lock-in, no subscription required for local control, and an integration library covering thousands of devices. The decision to deploy it was straightforward once the limitations of the vendor platforms became clear.</p>
+<hr />
+<h2 id="deploying-home-assistant-on-windows-11-via-hyper-v">Deploying Home Assistant on Windows 11 via Hyper-V</h2>
+<p>Home Assistant OS is distributed as a virtual machine image with official Hyper-V support. Deployment took approximately 30 minutes.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Windows 11 with Hyper-V enabled (Settings → Turn Windows features on or off → Hyper-V)</li>
+<li>PC connected via <strong>Ethernet to your router</strong> — critical, explained below</li>
+<li>4GB RAM allocated to the VM</li>
+</ul>
+<h3 id="download">Download</h3>
+<p>Download the latest Home Assistant OS <code>.vhdx</code> image from the official GitHub releases page:</p>
+<p><strong><a href="https://github.com/home-assistant/operating-system/releases/latest">https://github.com/home-assistant/operating-system/releases/latest</a></strong></p>
+<p>Select <code>haos_ova-[version].vhdx.zip</code>, extract it, and retain the <code>.vhdx</code> file.</p>
+<h3 id="hyper-v-vm-creation">Hyper-V VM Creation</h3>
+<ol>
+<li>Hyper-V Manager → Action → New → Virtual Machine</li>
+<li>Generation: <strong>Generation 2</strong></li>
+<li>Memory: 4096 MB, disable Dynamic Memory</li>
+<li>Network: assign the <strong>External Switch</strong> (created below)</li>
+<li>Hard disk: Use an existing virtual hard disk → select the extracted <code>.vhdx</code></li>
+<li>Before starting: Settings → Security → <strong>uncheck Secure Boot</strong></li>
+</ol>
+<h3 id="the-network-switch-why-ethernet-matters">The Network Switch — Why Ethernet Matters</h3>
+<p>Create an External Switch in Hyper-V Virtual Switch Manager, selecting your <strong>Ethernet adapter</strong> as the external network. Check "Allow management operating system to share this network adapter."</p>
+<p><strong>Do not use the Default Switch.</strong> The Default Switch places the VM on an isolated internal subnet (172.17.x.x) rather than your home network. The VM appears to work — Home Assistant loads locally — but it cannot discover or communicate with any devices on your LAN, and Matter commissioning will fail entirely because Matter relies on multicast networking that does not traverse NAT. With the External Switch bound to the Ethernet adapter, the VM receives a proper IP address in the same subnet as all other devices on your network.</p>
+<p><strong>Assign a static IP</strong> to the host PC in your router settings to ensure Home Assistant is always reachable at the same address after reboots.</p>
+<p>Once the VM starts, the console displays the assigned IP and the Home Assistant URL:</p>
+<div class="highlight"><pre><span></span><code>Home Assistant URL: http://homeassistant.local:8123
+</code></pre></div>
+<hr />
+<h2 id="integrations-deployed">Integrations Deployed</h2>
+<h3 id="matter-devices">Matter Devices</h3>
+<p>Home Assistant includes native Matter support. After installing the Matter Server add-on via Settings → Add-ons:</p>
+<p>Settings → Devices &amp; Services → Add Integration → Matter → <strong>Add shared device</strong></p>
+<p>Use Apple Home's "Turn on Pairing Mode" to generate a pairing code, then enter it in Home Assistant. The devices join the existing Matter fabric without resetting. Both devices appeared as controllable switch entities immediately.</p>
+<h3 id="smart-life-tuya">Smart Life / Tuya</h3>
+<p>The Polaris timer uses the Smart Life/Tuya platform. Home Assistant includes a native Tuya integration — link your Smart Life account credentials and devices appear automatically.</p>
+<h3 id="denon-avr-heos-denon-avr-network-receivers">Denon AVR (HEOS / Denon AVR Network Receivers)</h3>
+<p>The Denon AVR-X1600H is supported natively via the <strong>Denon AVR Network Receivers</strong> integration. Home Assistant auto-discovered the receiver on the local network. In the integration options, enable <strong>Zone 2</strong> to expose both zones as separate media player entities — enabling independent volume and source control for the living room zone and the distributed whole-house speaker zone.</p>
+<p><strong>Zone 2 and multi-room audio</strong>: When Zone 2's source is set to <strong>"Source"</strong> mode, it follows whatever is playing in the main zone. This means AirPlay playback from any iOS app — Spotify, Pandora, SiriusXM, Apple Music — plays through all zones simultaneously via a single AirPlay selection on the iPhone. No separate app or routing configuration required.</p>
+<h3 id="google-nest-cameras-sdm-api">Google Nest Cameras (SDM API)</h3>
+<p>Integrating Google Nest cameras requires a one-time setup through the Google Device Access program. The steps involve:</p>
+<ol>
+<li>Creating a Google Cloud project and enabling the Smart Device Management API and Cloud Pub/Sub API</li>
+<li>Configuring an OAuth 2.0 client ID</li>
+<li>Creating a Cloud Pub/Sub topic for event delivery</li>
+<li>Registering a Device Access project at <a href="https://console.nest.google.com/device-access">console.nest.google.com/device-access</a> — a one-time $5 USD fee applies</li>
+<li>Completing the OAuth authorization flow in Home Assistant</li>
+</ol>
+<p>The underlying concepts — OAuth client credentials, pub/sub event delivery, consent screens — are conceptually familiar for anyone who has worked with cloud APIs. The challenge is navigating multiple Google Cloud consoles across several steps without losing track of which project ID, client ID, and topic name belong together. Follow the <a href="https://www.home-assistant.io/integrations/nest/">official Home Assistant Nest documentation</a> closely.</p>
+<p>Once connected, all cameras appeared in Home Assistant with livestream and motion event entities.</p>
+<hr />
+<h2 id="the-dashboard">The Dashboard</h2>
+<p>Home Assistant's dashboard system uses YAML-based Lovelace configuration, giving complete control over layout, card types, and interactions. The result is a single interface covering all devices — something no single vendor platform could provide.</p>
+<p><img alt="Home Assistant Dashboard — Home view showing Music, Pool Equipment, and Cameras sections" src="../assets/ha-dashboard-screenshot.png" /></p>
+<p><em>The Home view in Home Assistant — Music section with zone controls, volume sliders, FM Radio source button, and direct station preset buttons; Pool Equipment section with pool pump, waterfall, and cleaner controls; Cameras section below. The mobile app provides the same interface in a touch-optimized layout.</em></p>
+<h3 id="home-view-manual-control">Home View (Manual Control)</h3>
+<ul>
+<li><strong>Music section</strong>: Media control cards for both AVR zones (Living Room and Whole House) with independent volume sliders; FM Radio source button; direct station preset buttons</li>
+<li><strong>Pool Equipment section</strong>: On/off tile cards for all three pool devices</li>
+<li><strong>Cameras section</strong>: Live picture-glance cards for all four cameras</li>
+</ul>
+<h3 id="scenes-view-one-tap-scenarios">Scenes View (One-Tap Scenarios)</h3>
+<p>Scenes are implemented as <strong>Scripts</strong> in Home Assistant — sequences of actions that execute in order with configurable delays. This is important: unlike the scene primitives in Google Home or Apple Home which capture static device states, Home Assistant scripts execute dynamic sequences, making them suitable for multi-device workflows that require ordering and timing.</p>
+<p>Example scenes configured:</p>
+<ul>
+<li><strong>Get in Pool</strong>: Powers on pool equipment and starts audio across all zones</li>
+<li><strong>Get Out of Pool</strong>: Powers off pool equipment and all audio</li>
+<li><strong>Music On — All Zones</strong>: Powers on the AVR, enables Zone 2 in Source mode (so it follows the main zone), and starts FM radio — the same music plays throughout the house including outdoor areas</li>
+<li><strong>Music Off</strong>: Powers off both audio zones</li>
+<li><strong>All Off</strong>: Powers off all pool equipment and all audio in a single tap</li>
 </ul>
 <hr />
-<h2 id="constants-and-endpoints">Constants and Endpoints</h2>
-<div class="highlight"><pre><span></span><code><span class="n">AZURE_GRAPH_BETA</span> <span class="o">=</span> <span class="s1">&#39;https://graph.microsoft.com/beta/&#39;</span>
-<span class="n">LIST_OF_AAD_USER_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;displayName&#39;</span><span class="p">,</span> <span class="s1">&#39;accountEnabled&#39;</span><span class="p">,</span> <span class="s1">&#39;userPrincipalName&#39;</span><span class="p">,</span> <span class="s1">&#39;licenseAssignmentStates&#39;</span><span class="p">,</span>
-<span class="p">]</span>
+<h2 id="custom-fm-radio-preset-control-a-concrete-example-of-why-custom-automation-wins">Custom FM Radio Preset Control — A Concrete Example of Why Custom Automation Wins</h2>
+<p>The Denon AVR-X1600H has a built-in FM tuner. After running an auto-preset scan across local stations, the goal was to put direct-access buttons for favorite stations on the dashboard — tap once, that station plays immediately.</p>
+<p>Home Assistant's Denon integration exposes a <code>denonavr.get_command</code> action that sends raw HTTP commands directly to the receiver's local network interface. Switching to the FM tuner source:</p>
+<div class="highlight"><pre><span></span><code>/goform/formiPhoneAppDirect.xml?SITUNER
 </code></pre></div>
-<hr />
-<h2 id="step-1-retrieve-users-with-license-assignments-and-group-memberships">Step 1: Retrieve Users with License Assignments and Group Memberships</h2>
-<h3 id="function-get_users_licenseassignments_and_groups">Function: <code>get_users_licenseassignments_and_groups</code></h3>
-<p>This function retrieves a list of users from Entra (Azure AD), including their license assignment states and group memberships, using the Microsoft Graph API.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_users_licenseassignments_and_groups</span><span class="p">():</span>
-    <span class="n">user_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Initialize list to store user data</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">LIST_OF_AAD_USER_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;displayName&#39;</span><span class="p">,</span> <span class="s1">&#39;accountEnabled&#39;</span><span class="p">,</span> <span class="s1">&#39;userPrincipalName&#39;</span><span class="p">,</span> <span class="s1">&#39;licenseAssignmentStates&#39;</span><span class="p">,</span>
-        <span class="p">]</span>
-        <span class="n">selected_attributes</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">LIST_OF_AAD_USER_ATTRIBUTES</span><span class="p">)</span>
-        <span class="n">query_params</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;$select=</span><span class="si">{</span><span class="n">selected_attributes</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="n">query_params</span> <span class="o">+=</span> <span class="s2">&quot;&amp;$expand=memberOf&quot;</span>
-        <span class="n">user_list</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_BETA</span><span class="si">}</span><span class="s2">users?</span><span class="si">{</span><span class="n">query_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">user_list</span>
+<p>Jumping directly to a saved preset:</p>
+<div class="highlight"><pre><span></span><code>/goform/formiPhoneAppDirect.xml?TPAN06
 </code></pre></div>
-<p><strong>Explanation:</strong>
-- Builds a query to select user attributes and expand group memberships (<code>memberOf</code>).
-- Calls <code>execute_odata_query_get</code> to make the API request and handle pagination.
-- Returns a list of user dictionaries with license and group data.</p>
+<p>Each station button on the dashboard calls this action with its corresponding preset number. One tap — that station plays.</p>
+<p>This capability is not available in Google Home, Apple Home, or Amazon Alexa. Those platforms surface only the device capabilities their integration providers choose to expose. Home Assistant gives direct access to the device's native network API — any capability the device exposes locally is controllable. The same principle applies to Zone 2 source switching, power-on sequencing with delays between steps, and any workflow that requires interacting with device internals rather than just on/off state.</p>
 <hr />
-<h2 id="step-2-retrieve-all-groups">Step 2: Retrieve All Groups</h2>
-<h3 id="function-get_list_of_groups">Function: <code>get_list_of_groups</code></h3>
-<p>This function retrieves all groups from Entra (Azure AD).</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_list_of_groups</span><span class="p">():</span>
-    <span class="n">group_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Initialize list to store group data</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">group_list</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_BETA</span><span class="si">}</span><span class="s2">groups?&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">group_list</span>
-</code></pre></div>
-<p><strong>Explanation:</strong>
-- Calls the Microsoft Graph <code>/groups</code> endpoint to retrieve all groups.
-- Uses <code>execute_odata_query_get</code> for API calls and pagination.
-- Returns a list of group dictionaries.</p>
+<h2 id="scheduling-and-automation">Scheduling and Automation</h2>
+<p>Home Assistant supports time-based triggers, state-based triggers, and condition logic as first-class automation capabilities. Pool equipment, audio zones, or any connected device can be scheduled to turn on and off on any recurring pattern — daily, day-of-week, seasonal, or based on sunrise/sunset offsets.</p>
+<p>Automations are defined in YAML and managed through the Home Assistant UI or directly in configuration files. They are idempotent by default — sending a "turn on" command to a device already on produces no adverse effect, so manual overrides via the dashboard do not conflict with scheduled automations.</p>
+<p>The scheduling capability alone — applied to pool equipment, irrigation, lighting, or any IP-connected device — represents significant value that previously required either proprietary smart timers with limited app support or expensive dedicated controllers.</p>
 <hr />
-<h2 id="step-3-combine-user-license-and-group-data">Step 3: Combine User, License, and Group Data</h2>
-<h3 id="function-get_users_with_license_and_groups">Function: <code>get_users_with_license_and_groups</code></h3>
-<p>This function combines user, license, and group data into a unified list.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_users_with_license_and_groups</span><span class="p">():</span>
-    <span class="n">final_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Final list of dictionaries</span>
-    <span class="n">SKU_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;ee02fd1b-340e-4a4b-b355-4a514e4c8943&quot;</span><span class="p">:</span> <span class="s2">&quot;Exchange Online Archiving&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;05e9a617-0261-4cee-bb44-138d3ef5d965&quot;</span><span class="p">:</span> <span class="s2">&quot;365 E3&quot;</span><span class="p">,</span>
-        <span class="c1"># ... (other SKU mappings) ...</span>
-    <span class="p">}</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">users</span> <span class="o">=</span> <span class="n">get_users_licenseassignments_and_groups</span><span class="p">()</span>
-        <span class="n">groups</span> <span class="o">=</span> <span class="n">get_list_of_groups</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">:</span>
-            <span class="c1"># Extract license assignments and group memberships</span>
-            <span class="n">license_assignments</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">group_memberships</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="c1"># Parse license assignments</span>
-            <span class="k">for</span> <span class="n">license</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;licenseAssignmentStates&#39;</span><span class="p">,</span> <span class="p">[]):</span>
-                <span class="n">sku_id</span> <span class="o">=</span> <span class="n">license</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;skuId&#39;</span><span class="p">)</span>
-                <span class="n">sku_name</span> <span class="o">=</span> <span class="n">SKU_MAPPING</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sku_id</span><span class="p">,</span> <span class="n">sku_id</span><span class="p">)</span>
-                <span class="n">license_assignments</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                    <span class="s1">&#39;sku_id&#39;</span><span class="p">:</span> <span class="n">sku_id</span><span class="p">,</span>
-                    <span class="s1">&#39;sku_name&#39;</span><span class="p">:</span> <span class="n">sku_name</span><span class="p">,</span>
-                    <span class="s1">&#39;assigned_by_group&#39;</span><span class="p">:</span> <span class="n">license</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;assignedByGroup&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-                <span class="p">})</span>
-            <span class="c1"># Parse group memberships</span>
-            <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;memberOf&#39;</span><span class="p">,</span> <span class="p">[]):</span>
-                <span class="n">group_memberships</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                    <span class="s1">&#39;group_id&#39;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">),</span>
-                    <span class="s1">&#39;display_name&#39;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;displayName&#39;</span><span class="p">),</span>
-                <span class="p">})</span>
-            <span class="n">final_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;user_principal_name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;userPrincipalName&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;display_name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;displayName&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;account_enabled&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;accountEnabled&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;license_assignments&#39;</span><span class="p">:</span> <span class="n">license_assignments</span><span class="p">,</span>
-                <span class="s1">&#39;group_memberships&#39;</span><span class="p">:</span> <span class="n">group_memberships</span><span class="p">,</span>
-            <span class="p">})</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">final_list</span>
-</code></pre></div>
-<p><strong>Explanation:</strong>
-- Calls the previous two functions to get users and groups.
-- Maps license SKUs to human-readable names.
-- Extracts and structures license and group membership data for each user.
-- Returns a list of user dictionaries with all relevant information.</p>
+<h2 id="limitations-and-honest-observations">Limitations and Honest Observations</h2>
+<p><strong>Camera on/off via automation</strong>: Not supported through the Google SDM API. Cameras can be viewed in Home Assistant but cannot be toggled on or off programmatically. This is a confirmed API limitation, not a Home Assistant limitation.</p>
+<p><strong>Remote access outside the home network</strong>: Home Assistant runs locally. Remote access requires either <a href="https://www.nabucasa.com">Nabu Casa</a> (the official Home Assistant cloud relay at $7/month) or a self-hosted solution. This has not yet been configured — the security implications of exposing a home automation server externally warrant assessment before enabling. Nabu Casa is the recommended path for most users as it handles the secure tunnel without requiring port forwarding or a VPN.</p>
+<p><strong>Google Home Matter without a hub</strong>: Matter devices will commission successfully in Google Home but remain permanently offline without a dedicated Matter Controller (Nest Hub, Nest Mini, etc.) on the network. This is a Google Home architectural requirement, not a device or network issue.</p>
+<p><strong>Initial device app dependency</strong>: Smart Life/Tuya devices require their native app for initial commissioning and the app must remain installed. Matter devices require their commissioning app to generate pairing mode codes for multi-admin fabric sharing. Neither process is particularly intuitive on first encounter, but both are well-documented and fully supported.</p>
 <hr />
-<h2 id="step-4-high-level-orchestration">Step 4: High-Level Orchestration</h2>
-<h3 id="function-get_list_of_users_with_license_and_groups">Function: <code>get_list_of_users_with_license_and_groups</code></h3>
-<p>This function orchestrates the retrieval and structuring of user, license, and group data.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_list_of_users_with_license_and_groups</span><span class="p">():</span>
-    <span class="n">user_groups</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">user_license</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">user_lic_and_groups</span> <span class="o">=</span> <span class="n">get_users_with_license_and_groups</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">user_lic_and_groups</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">membership</span> <span class="ow">in</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;group_memberships&#39;</span><span class="p">]:</span>
-            <span class="n">user_groups</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;user_principal_name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;user_principal_name&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;group_id&#39;</span><span class="p">:</span> <span class="n">membership</span><span class="p">[</span><span class="s1">&#39;group_id&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;group_display_name&#39;</span><span class="p">:</span> <span class="n">membership</span><span class="p">[</span><span class="s1">&#39;display_name&#39;</span><span class="p">],</span>
-            <span class="p">})</span>
-        <span class="k">for</span> <span class="n">licassignment</span> <span class="ow">in</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;license_assignments&#39;</span><span class="p">]:</span>
-            <span class="n">user_license</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;user_principal_name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;user_principal_name&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;sku_id&#39;</span><span class="p">:</span> <span class="n">licassignment</span><span class="p">[</span><span class="s1">&#39;sku_id&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;sku_name&#39;</span><span class="p">:</span> <span class="n">licassignment</span><span class="p">[</span><span class="s1">&#39;sku_name&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;assigned_by_group&#39;</span><span class="p">:</span> <span class="n">licassignment</span><span class="p">[</span><span class="s1">&#39;assigned_by_group&#39;</span><span class="p">],</span>
-            <span class="p">})</span>
-    <span class="k">return</span> <span class="n">user_groups</span><span class="p">,</span> <span class="n">user_license</span>
-</code></pre></div>
-<p><strong>Explanation:</strong>
-- Calls <code>get_users_with_license_and_groups</code> to get the unified user data.
-- Flattens group memberships and license assignments into separate lists for easy processing or storage.
-- Returns two lists: one for user-group relationships, one for user-license assignments.</p>
+<h2 id="whats-next">What's Next</h2>
+<p><strong>Energy Monitoring</strong>: Home Assistant supports integrations for utility grid data and real-time electricity pricing. For time-of-use rate plan subscribers, this opens the possibility of automating equipment to run during off-peak pricing windows — a meaningful saving when applied to devices that run for hours daily. Grid carbon intensity monitoring is also available, enabling automation decisions based on how cleanly the grid is running at any given time.</p>
+<p><strong>Voice-Activated Scenes</strong>: Home Assistant supports voice assistant integration which would allow scenes to be triggered by voice — "turn on pool mode" activating the full Get in Pool script. This has not yet been configured but is a natural extension of the existing scene architecture.</p>
+<p><strong>Extensibility</strong>: The platform is open-ended. Any IP-connected device with a Home Assistant integration — thermostats, irrigation controllers, EV chargers, door locks, lighting systems — can be added to the same platform and brought into the same dashboard and automation engine without architectural changes.</p>
 <hr />
-<h2 id="supporting-function-execute_odata_query_get">Supporting Function: <code>execute_odata_query_get</code></h2>
-<p>This function is used throughout to make authenticated, paginated requests to the Microsoft Graph API.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">execute_odata_query_get</span><span class="p">(</span><span class="n">urltoInvoke</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">localUserList</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">token</span><span class="p">:</span>
-            <span class="n">acesstokenforClientapp</span> <span class="o">=</span> <span class="n">get_access_token_API_Access_AAD</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">acesstokenforClientapp</span> <span class="o">=</span> <span class="n">token</span>
-        <span class="n">continueLooping</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">while</span> <span class="n">continueLooping</span><span class="p">:</span>
-            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-                <span class="n">url</span><span class="o">=</span><span class="n">urltoInvoke</span><span class="p">,</span>
-                <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Bearer </span><span class="si">{</span><span class="n">acesstokenforClientapp</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}</span>
-            <span class="p">)</span>
-            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>  <span class="c1"># Throttling response</span>
-                <span class="n">retry_after</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Retry-After&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Throttled! Retrying after </span><span class="si">{</span><span class="n">retry_after</span><span class="si">}</span><span class="s2"> seconds...&quot;</span><span class="p">)</span>
-                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">retry_after</span><span class="p">)</span>
-                <span class="k">continue</span>
-            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>  <span class="c1"># Token expired or invalid</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Token expired or invalid. Fetching a new one...&quot;</span><span class="p">)</span>
-                <span class="n">acesstokenforClientapp</span> <span class="o">=</span> <span class="n">get_access_token_API_Access_AAD</span><span class="p">()</span>
-                <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-                    <span class="n">url</span><span class="o">=</span><span class="n">urltoInvoke</span><span class="p">,</span>
-                    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Bearer </span><span class="si">{</span><span class="n">acesstokenforClientapp</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}</span>
-                <span class="p">)</span>
-                <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
-                    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">403</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;403 Forbidden: Access denied for URL </span><span class="si">{</span><span class="n">urltoInvoke</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
-                <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-            <span class="n">graph_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-            <span class="n">localUserList</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">graph_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="p">[]))</span>
-            <span class="k">if</span> <span class="s2">&quot;@odata.nextLink&quot;</span> <span class="ow">in</span> <span class="n">graph_data</span><span class="p">:</span>
-                <span class="n">urltoInvoke</span> <span class="o">=</span> <span class="n">graph_data</span><span class="p">[</span><span class="s2">&quot;@odata.nextLink&quot;</span><span class="p">]</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">continueLooping</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="n">localUserList</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">&#39;args&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span> <span class="ow">and</span> <span class="s1">&#39;403 Forbidden&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-            <span class="k">raise</span>
-        <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-</code></pre></div>
-<p><strong>Explanation:</strong>
-- Handles authentication, pagination, throttling, and error handling for Microsoft Graph API requests.
-- Used by all higher-level functions to retrieve data from Entra (Azure AD).  For a deep dive into certificate-based authentication setup, see the dedicated article: <a href="../azure-ad-certificate/">Certificate Based Authorization for Azure AD</a>.</p>
-<hr />
-<h2 id="conclusion">Conclusion</h2>
-<p>By following this step-by-step approach, you can programmatically retrieve all users from Entra (Azure AD), along with their group memberships and license assignments, using Python and the Microsoft Graph API. The modular design allows for easy extension and integration into enterprise automation workflows.</p>
-<p>For more details, see the <a href="https://learn.microsoft.com/en-us/graph/api/resources/users?view=graph-rest-beta">Microsoft Graph API documentation</a>.</p>
+<h2 id="credits-and-resources">Credits and Resources</h2>
+<ul>
+<li><strong>Home Assistant</strong>: <a href="https://www.home-assistant.io">https://www.home-assistant.io</a></li>
+<li><strong>Home Assistant OS GitHub Releases</strong>: <a href="https://github.com/home-assistant/operating-system/releases">https://github.com/home-assistant/operating-system/releases</a></li>
+<li><strong>Home Assistant Nest Integration</strong>: <a href="https://www.home-assistant.io/integrations/nest/">https://www.home-assistant.io/integrations/nest/</a></li>
+<li><strong>Home Assistant Denon AVR Integration</strong>: <a href="https://www.home-assistant.io/integrations/denonavr/">https://www.home-assistant.io/integrations/denonavr/</a></li>
+<li><strong>Google Device Access Console</strong>: <a href="https://console.nest.google.com/device-access">https://console.nest.google.com/device-access</a></li>
+<li><strong>Nabu Casa (Remote Access)</strong>: <a href="https://www.nabucasa.com">https://www.nabucasa.com</a></li>
+</ul>
+<p>The YAML configurations for dashboards, automations, and scripts referenced in this article were generated with assistance from an LLM during implementation. The platform generates syntactically correct YAML against a known schema, which significantly accelerates iterative dashboard development and multi-step script authoring. The conceptual design, device selection, infrastructure decisions, and all hands-on troubleshooting were done directly.</p>
 
 
 
@@ -2927,7 +3206,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:21:49 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 13, 2026 23:06:20 UTC">May 13, 2026</span>
   </span>
 
     
