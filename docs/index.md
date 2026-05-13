@@ -106,3 +106,4 @@
 - [Proof Point User Management](proofpoint-user-management.md)
 - [Understanding DMARC/Spoofing, O365 with ProofPoint](proofpointo365connector.md)
 - [Clean GitHub Deployments](github-clean-deployments.md)
+- [Smart Home Automation with Home Assistant](smart-home-automation.md)
