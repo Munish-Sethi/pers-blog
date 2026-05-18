@@ -1,0 +1,4100 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A professional blog showcasing business problem solutions.">
+      
+      
+      
+        <link rel="canonical" href="https://munishsethi.com/ai-claude-mcp-onestream-mcp-financial-analytics/">
+      
+      
+        <link rel="prev" href="../ai-multi-agent/">
+      
+      
+        <link rel="next" href="../azure-ad-certificate/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Exposing OneStream Financial Data to an LLM — Live CEO/CFO Analytics via MCP - Munish(s) Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exposing-onestream-financial-data-to-an-llm-securely-live-ceocfo-analytics-via-mcp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish(s) Blog" class="md-header__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish(s) Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Exposing OneStream Financial Data to an LLM — Live CEO/CFO Analytics via MCP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish(s) Blog" class="md-nav__button md-logo" aria-label="Munish(s) Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish(s) Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (csv/Parquet) stdio- Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (database) stdio- Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (files/database) https- Part 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging MCP Servers (Https) with VS Code - Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building an Enterprise Multi-Agent AI System with Microsoft Teams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exposing OneStream Financial Data to an LLM — Live CEO/CFO Analytics via MCP
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exposing OneStream Financial Data to an LLM — Live CEO/CFO Analytics via MCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-existing-mcp-analytic-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Existing MCP Analytic Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-onestream-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. OneStream Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-azure-key-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Azure Key Vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-python-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Python Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-onestream-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: OneStream Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: OneStream Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-non-sso-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a Non-SSO Service Account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assigning-the-security-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assigning the Security Role
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-a-personal-access-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generating a Personal Access Token
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-understanding-the-onestream-rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Understanding the OneStream REST API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Understanding the OneStream REST API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cube-view-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cube View Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-designing-the-copa-sales-cube-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Designing the COPA Sales Cube Views
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Designing the COPA Sales Cube Views">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-first-major-pitfall-existing-dashboard-views-are-not-callable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The First Major Pitfall: Existing Dashboard Views Are Not Callable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discovering-account-member-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discovering Account Member Names
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copa-sales-view-point-of-view-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COPA Sales View: Point of View Tab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copa-sales-view-columns-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COPA Sales View: Columns Tab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copa-sales-view-rows-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COPA Sales View: Rows Tab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-four-sales-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All Four Sales Views
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-designing-the-orders-and-backlog-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Designing the Orders and Backlog Views
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Designing the Orders and Backlog Views">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#three-key-differences-from-sales-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three Key Differences from Sales Views
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orders-column-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orders Column Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-view-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete View Inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-programmatic-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Programmatic Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-the-mcp-server-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: The MCP Server Code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: The MCP Server Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helper-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Helper Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-flatten-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Flatten Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-view-catalogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The View Catalogue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-mcp-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The MCP Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-security-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Security Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-llm-project-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: LLM Project Instructions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 8: LLM Project Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-instructions-that-prevent-common-llm-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key instructions that prevent common LLM mistakes:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-and-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting and Tips
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Azure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certificate Based Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download Azure Bill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download Azure Resource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query Recovery Services Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entra Users, User Groups and Licence assignments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entra User Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-container-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrating Scheduled Jobs (Container Instances)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-build-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Build Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Deploy Container IaC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Deploy Container Github Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-custon-image-compute-gallery-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building and Publishing an Custom Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-publish-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying Azure Virtual Desktop (AVD) Desktops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-cleanup-obsolete-fsLogix-profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cleanup Obsolete FXLogix Profiles(AVD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Coninuity Program / Diasister Recovery - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Continuity Program / Disaster Recovery - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Continuity Program / Disaster Recovery - Git Hub Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restore VM from RSV Backup - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restore VM from RSV Backup - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fabric
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fabric
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-wharehouse-fact-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Warehouse data import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki, Nagios XI & Manage Engine
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cisco Meraki, Nagios XI & Manage Engine
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-unused-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki Unused Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki Devices Discovery and Nagios Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-itsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrating Monitoring System with ITSM System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-vm-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying Cisco Meraki vMX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory Domain Services
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory Domain Services
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create ADDS User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Update ADDS User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SAP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup PyRFC in your Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calling SAP RFC Function Modules from Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-system-start-stop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automating SAP System Start/Stop Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    O365
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outlook Actionable Adaptive Card - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outlook Actionable Adaptive Card - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharepoint Sites Enumeration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharepoint Document Library Enumeration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrate Sharepoint Document Library to Azure File Share
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concur Expense Report Aggregation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teams-user-number-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get all Teams Phone Assignment(s)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprovision-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deprovison User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tenantallowblocklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant Allow Block List - False Positive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spo-o365_excel_automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365/Excel Automation via SPO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UKG
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UKG
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secure File Transfer with UKG Dimensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Employee Verification via API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-integration-and-dataview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automating Integration Execution and Dataview extract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Misc
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Misc
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proof Point User Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-clean-deployments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clean GitHub Deployments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpointo365connector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding DMARC/Spoofing, O365 with ProofPoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../smart-home-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Smart Home Automation with Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-existing-mcp-analytic-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Existing MCP Analytic Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-onestream-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. OneStream Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-azure-key-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Azure Key Vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-python-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Python Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-onestream-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: OneStream Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: OneStream Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-non-sso-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a Non-SSO Service Account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assigning-the-security-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assigning the Security Role
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-a-personal-access-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generating a Personal Access Token
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-understanding-the-onestream-rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Understanding the OneStream REST API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Understanding the OneStream REST API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cube-view-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cube View Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-designing-the-copa-sales-cube-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Designing the COPA Sales Cube Views
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Designing the COPA Sales Cube Views">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-first-major-pitfall-existing-dashboard-views-are-not-callable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The First Major Pitfall: Existing Dashboard Views Are Not Callable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discovering-account-member-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discovering Account Member Names
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copa-sales-view-point-of-view-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COPA Sales View: Point of View Tab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copa-sales-view-columns-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COPA Sales View: Columns Tab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copa-sales-view-rows-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COPA Sales View: Rows Tab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-four-sales-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All Four Sales Views
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-designing-the-orders-and-backlog-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Designing the Orders and Backlog Views
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Designing the Orders and Backlog Views">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#three-key-differences-from-sales-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three Key Differences from Sales Views
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orders-column-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orders Column Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-view-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete View Inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-programmatic-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Programmatic Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-the-mcp-server-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: The MCP Server Code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: The MCP Server Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helper-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Helper Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-flatten-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Flatten Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-view-catalogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The View Catalogue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-mcp-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The MCP Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-security-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Security Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-llm-project-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: LLM Project Instructions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 8: LLM Project Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-instructions-that-prevent-common-llm-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key instructions that prevent common LLM mistakes:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-and-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting and Tips
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="exposing-onestream-financial-data-to-an-llm-securely-live-ceocfo-analytics-via-mcp">Exposing OneStream Financial Data to an LLM Securely — Live CEO/CFO Analytics via MCP</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This article is a standalone extension of the <a href="../ai-claude-mcp-analytic-server-part1/">four-part MCP Analytic Server series</a>. That series covered building a secure MCP server that lets Claude answer natural-language questions against organisational data. This article covers a specific and significant expansion: connecting the MCP server directly to OneStream, exposing live financial cube view data to an LLM so executives can interact with it conversationally.</p>
+<p>At GD Energy Products, our CEO and CFO review financial performance regularly. The traditional workflow — opening OneStream dashboards, exporting to Excel, building PowerPoint slides, and sitting in review meetings — adds latency and interpretation overhead at every step. The premise of this project is simple: what if an executive could ask a question directly and get a live answer in seconds, with full drill-down capability, without opening a single dashboard or waiting on a report?</p>
+<p>There is a second, less obvious benefit. OneStream contains business-meaningful metadata hierarchies — Customer trees, Product trees, Region trees, Basin trees — built and maintained by the FP&amp;A team directly in OneStream. Our source system (SAP ECC) has flat transactional data. The rollup structures, the groupings, the business logic for how a customer rolls into a region rolls into a total — all of that lives in OneStream. By exposing cube view data via API, the LLM gets those pre-built, business-validated hierarchies automatically. Every row returned includes an <code>Indent</code> level (<code>0</code> = grand total, <code>1</code> = first-level groups, <code>2+</code> = sub-levels) so the LLM understands where each number sits in the hierarchy without any additional prompting.</p>
+<p>The result is a live, conversational financial analytics interface that a CEO or CFO can use from Claude — connected to production OneStream data, secured via Azure OAuth, with per-user audit logging.</p>
+<hr />
+<h2 id="prerequisites">Prerequisites</h2>
+<h3 id="1-existing-mcp-analytic-server">1. Existing MCP Analytic Server</h3>
+<p>This article builds directly on the GDEP MCP Analytic Server (port 8000, Azure OAuth, FastMCP framework) built in the four-part series. Complete Parts 1–4 before proceeding:</p>
+<ul>
+<li><a href="../ai-claude-mcp-analytic-server-part1/">Part 1 — MCP Server with CSV/Parquet (stdio)</a></li>
+<li><a href="../ai-claude-mcp-analytic-server-part2/">Part 2 — MCP Server with Database (stdio)</a></li>
+<li><a href="../ai-claude-mcp-analytic-server-part3/">Part 3 — MCP Server with Files/Database (HTTPS)</a></li>
+<li><a href="../ai-claude-mcp-analytic-server-part4/">Part 4 — Debugging MCP Servers (HTTPS) with VS Code</a></li>
+</ul>
+<h3 id="2-onestream-access">2. OneStream Access</h3>
+<ul>
+<li>OneStream tenant with REST API enabled (<code>api-version=5.2.0</code>)</li>
+<li>Administrative access to create Security Groups, Users, and Cube Views in OneStream Designer</li>
+<li>Access to the COPA cube</li>
+</ul>
+<h3 id="3-azure-key-vault">3. Azure Key Vault</h3>
+<ul>
+<li>An existing Azure Key Vault reachable from the MCP server (already in use from the series)</li>
+<li>Permissions to add new secrets</li>
+</ul>
+<h3 id="4-python-environment">4. Python Environment</h3>
+<p>The MCP server already has these from the series. Verify they are present in <code>requirements.txt</code>:</p>
+<div class="highlight"><pre><span></span><code>requests
+azure-keyvault-secrets
+azure-identity
+fastmcp
+</code></pre></div>
+<hr />
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The solution builds on the existing GDEP MCP Analytic Server. The MCP server acts as a secure intermediary between Claude and OneStream. <strong>Claude never calls OneStream directly</strong> — it calls MCP tools, which authenticate to OneStream using a service account Personal Access Token (PAT) stored in Azure Key Vault, execute cube view queries, and return structured results.</p>
+<div class="highlight"><pre><span></span><code>Claude (Teams) → Azure OAuth → MCP Server (port 8000, FastMCP)
+                                      ↓
+                               Azure Key Vault (PAT retrieval)
+                                      ↓
+                               OneStream REST API (DataProvider)
+                                      ↓
+                            MCP_API_Views Cube View Group
+                               (12 purpose-built views)
+</code></pre></div>
+<p><strong>Key design decisions made upfront:</strong></p>
+<ul>
+<li><strong>Entity</strong> is always hardcoded to <code>GDEP_Cons</code> (consolidated group). This is a CEO/CFO tool — no plant-level drill-down via MCP.</li>
+<li><strong>Currency</strong> is always USD.</li>
+<li>The PAT is fetched from Azure Key Vault <strong>on every call</strong> so a rotated PAT is picked up instantly without restarting the server.</li>
+<li>Access is controlled via the existing <code>dbo.mcp_user_permissions</code> table with a new <code>object_name</code> per subject area (<code>os_copa_sales</code>).</li>
+<li>Port 8001 (the internal helpdesk server) has <strong>zero access</strong> to financial tools — hard-blocked in code regardless of any configuration.</li>
+</ul>
+<hr />
+<h2 id="step-1-onestream-setup">Step 1: OneStream Setup</h2>
+<h3 id="creating-a-non-sso-service-account">Creating a Non-SSO Service Account</h3>
+<p>The OneStream REST API requires a dedicated service account that authenticates with a username and password — not SSO. In OneStream, navigate to <strong>System &gt; Security &gt; Users</strong> and create a new user (we named ours <code>GDEPOSApiUser</code>). This user must be a <strong>Standard</strong> user, not an SSO user. SSO users cannot generate Personal Access Tokens.</p>
+<h3 id="assigning-the-security-role">Assigning the Security Role</h3>
+<p>The service account needs read access to the cubes and cube views it will query. In OneStream:</p>
+<ol>
+<li>Create a <strong>Security Group</strong> (we named ours <code>API Access</code>) with read-only access to the relevant cubes (in our case the COPA cube).</li>
+<li>Assign this group to the service account.</li>
+<li>When you create custom cube views for API use (covered below), assign those views to this security group so only the API user can see them — keeping your standard dashboard views clean and uncluttered.</li>
+</ol>
+<h3 id="generating-a-personal-access-token">Generating a Personal Access Token</h3>
+<ol>
+<li>Log into OneStream as the service account (<code>GDEPOSApiUser</code>).</li>
+<li>Navigate to the user profile menu (top right) &gt; <strong>Security &gt; Personal Access Tokens</strong>.</li>
+<li>Generate a new PAT and copy the value immediately — you will not be able to retrieve it again.</li>
+<li>Store this value in Azure Key Vault as secret <code>os-api-pat</code>.</li>
+<li>Also store the application name (e.g. <code>OneStream Production</code>) as secret <code>os-application</code>.</li>
+</ol>
+<p>The PAT serves as a Bearer token for all API calls. OneStream's REST API technically supports a 3-step auth flow (PAT → Logon → OpenApplication) but for the DataProvider endpoints (cube view queries and SQL queries), the PAT Bearer token alone is sufficient. You do not need to exchange it for a session token. This simplifies the MCP server code significantly.</p>
+<hr />
+<h2 id="step-2-understanding-the-onestream-rest-api">Step 2: Understanding the OneStream REST API</h2>
+<p>OneStream exposes two relevant endpoints for this use case.</p>
+<h3 id="cube-view-endpoint">Cube View Endpoint</h3>
+<p>Executes a named cube view and returns its data as a JSON dataset:</p>
+<div class="highlight"><pre><span></span><code><span class="err">POST /Onestreamapi/api/DataProvider/GetAdoDataSetForCubeViewCommand?api-version=5.2.0</span>
+<span class="err">Authorization: Bearer &lt;PAT&gt;</span>
+<span class="err">Content-Type: application/json</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;BaseWebServerUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://&lt;tenant&gt;.onestreamcloud.com/onestreamweb&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;ApplicationName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OneStream Production&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;CubeViewName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;view_name&gt;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;DataTablePerCubeViewRow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;ResultDataTableName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;R&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;CustomSubstVarsAsCommaSeparatedPairs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;substitution_vars&gt;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;CubeViewDataTableOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;IncludeTitle&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The substitution variables string passes runtime parameters to the view:</p>
+<div class="highlight"><pre><span></span><code>GDParam_Entity=[GDEP_Cons],GDParam_Scenario=[COPA],GDParam_Time_Reports=[2026M4],GDParam_Year=[2026]
+</code></pre></div>
+<p>Time periods use OneStream's internal format: <code>2026M4</code> = April 2026, <code>2026M12</code> = December 2026.</p>
+<h3 id="sql-endpoint">SQL Endpoint</h3>
+<p>Executes a SQL query against OneStream's internal metadata tables — useful for discovering cube view definitions, member names, and account codes:</p>
+<div class="highlight"><pre><span></span><code><span class="err">POST /Onestreamapi/api/DataProvider/GetAdoDataSetForSqlCommand?api-version=5.2.0</span>
+</code></pre></div>
+<p>This endpoint was invaluable during development for discovering the correct account member names in the COPA cube. See the example query in Step 3 below.</p>
+<hr />
+<h2 id="step-3-designing-the-copa-sales-cube-views">Step 3: Designing the COPA Sales Cube Views</h2>
+<h3 id="the-first-major-pitfall-existing-dashboard-views-are-not-callable">The First Major Pitfall: Existing Dashboard Views Are Not Callable</h3>
+<p>The natural first instinct is to call the existing cube views that power the OneStream dashboards. The Sales/Orders/Backlog dashboard has views like <code>CV_Left_Customer</code>, <code>CV1_CustomerTree_Sales_X</code>, and so on. We tried this — all returned 0 rows.</p>
+<p>The reason is architectural. These dashboard views are <strong>shell views</strong> that use row sharing and column sharing from other dashboard-context views. <code>CV_Left_Customer</code> has no data of its own — its rows come from <code>CV1_CustomerTree_|!Param_SOB!|_X</code> (a dashboard parameter that switches between Sales, Orders, and Backlog) and its columns come from another context view. These context variables only exist inside the OneStream dashboard engine. Via the REST API there is no dashboard session, so these variables never resolve and the view returns nothing.</p>
+<p><strong>The solution:</strong> create purpose-built cube views specifically for API consumption. These views are self-contained, use only substitution variables that can be passed via API, and are stored in a dedicated group visible only to the API service account.</p>
+<p>In OneStream Designer, create a new <strong>Cube View Group</strong> called <code>MCP_API_Views</code> and set both the Access Group and Maintenance Group to your <code>API Access</code> security group. This keeps the views invisible to regular dashboard users and clearly separated from operational views.</p>
+<h3 id="discovering-account-member-names">Discovering Account Member Names</h3>
+<p>Before designing any view, use the SQL endpoint to discover the correct account member names in the COPA cube:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Description</span><span class="p">,</span><span class="w"> </span><span class="n">DimId</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Member</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">Description</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%Margin%&#39;</span>
+<span class="w">   </span><span class="k">OR</span><span class="w"> </span><span class="n">Description</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%Quantity%&#39;</span>
+</code></pre></div>
+<p>This returned <code>F42099</code> (Quantity Average), <code>F55099</code> (Std Margin) — allowing us to verify the exact codes before building the views.</p>
+<h3 id="copa-sales-view-point-of-view-tab">COPA Sales View: Point of View Tab</h3>
+<p>Walk-through for <code>MCP_COPA_ByCustomer</code> (the representative example — the same pattern applies to all other dimensions):</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cube</td>
+<td>COPA</td>
+</tr>
+<tr>
+<td>Entity</td>
+<td><code>\|!GDParam_Entity!|</code> (default <code>GDEP_Cons</code>)</td>
+</tr>
+<tr>
+<td>Consolidation</td>
+<td>USD</td>
+</tr>
+<tr>
+<td>Scenario</td>
+<td><code>\|!GDParam_Scenario!|</code> (default <code>COPA</code>)</td>
+</tr>
+<tr>
+<td>Time</td>
+<td><code>\|!GDParam_Time_Reports!|</code></td>
+</tr>
+<tr>
+<td>View</td>
+<td>Periodic</td>
+</tr>
+<tr>
+<td>Account</td>
+<td><code>A45000</code> (Net Sales)</td>
+</tr>
+<tr>
+<td>Flow, Origin, IC</td>
+<td>Top</td>
+</tr>
+<tr>
+<td>UD1–UD8</td>
+<td>Top, <strong>except</strong> the dimension used in Rows (must be blank)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Critical rule:</strong> whichever dimension you put in the Rows tab must be left blank in the POV. If you set UD5 (Customer) in both POV and Rows, OneStream returns an error. For <code>ByCustomer</code>, set UD5 to blank. For <code>ByRegion</code>, set UD7 to blank. And so on.</p>
+</blockquote>
+<h3 id="copa-sales-view-columns-tab">COPA Sales View: Columns Tab</h3>
+<p>We need three groups of columns: Net Sales (YTD by month), Quantity (YTD by month), and Standard Margin % (both YTD and periodic).</p>
+<blockquote>
+<p><strong>The naive approach</strong> — adding Account as a row dimension alongside Customer — produces a cross-join that returns blank results when Account is also in the POV. The correct approach is to use OneStream's <strong>multidimensional colon-delimited member filter syntax</strong> to pin the account at the column level.</p>
+</blockquote>
+<p><strong>Net Sales (COPA_YTD) — Member Expansion 1:</strong></p>
+<div class="highlight"><pre><span></span><code>A#A45000:T#|!GDParam_Year!|M1:Name(Sales Jan),
+A#A45000:T#|!GDParam_Year!|M2:Name(Sales Feb),
+A#A45000:T#|!GDParam_Year!|M3:Name(Sales Mar),
+A#A45000:T#|!GDParam_Year!|M4:Name(Sales Apr),
+A#A45000:T#|!GDParam_Year!|M5:Name(Sales May),
+A#A45000:T#|!GDParam_Year!|M6:Name(Sales Jun),
+A#A45000:T#|!GDParam_Year!|M7:Name(Sales Jul),
+A#A45000:T#|!GDParam_Year!|M8:Name(Sales Aug),
+A#A45000:T#|!GDParam_Year!|M9:Name(Sales Sep),
+A#A45000:T#|!GDParam_Year!|M10:Name(Sales Oct),
+A#A45000:T#|!GDParam_Year!|M11:Name(Sales Nov),
+A#A45000:T#|!GDParam_Year!|M12:Name(Sales Dec)
+</code></pre></div>
+<p>Nested Member Expansion 2: <code>V#YTD</code></p>
+<p>The colon syntax (<code>A#A45000:T#...</code>) pins the account to <code>A45000</code> for every time member in this column group. The <code>:Name()</code> suffix gives each column a unique, readable header that survives the API response — without this, all 12 months across all column groups would be named <code>Jan 2026</code>, <code>Feb 2026</code> etc. and would collide in the flattened output.</p>
+<p><strong>Quantity (Quantity_YTD):</strong> same structure, replace <code>A#A45000</code> with <code>A#F42099</code>, prefix column names with <code>Qty</code>. Nested: <code>V#YTD</code>.</p>
+<p><strong>Standard Margin % YTD (StdMargin_Pct):</strong> replace with <code>A#F55099</code>, prefix <code>Mgn</code>. Nested: <code>V#YTD</code>.</p>
+<p><strong>Standard Margin % Periodic (StdMargin_Periodic):</strong> same account <code>A#F55099</code>, prefix <code>MgnP</code>. Nested: <code>V#Periodic</code>.</p>
+<blockquote>
+<p><strong>Why two margin columns?</strong> YTD margin (<code>Mgn</code>) is a blended cumulative figure. If a CEO asks "what was our margin in April specifically?" the answer requires the periodic figure, not the YTD. Subtracting YTD March margin from YTD April margin is mathematically invalid — margin percentage is a ratio, not an additive value. We return both and let the LLM use the right one based on the question.</p>
+</blockquote>
+<h3 id="copa-sales-view-rows-tab">COPA Sales View: Rows Tab</h3>
+<p>For <code>ByCustomer</code>, add one row:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dimension</td>
+<td>UD5</td>
+</tr>
+<tr>
+<td>Member Filter</td>
+<td><code>U5#Customer.Tree</code></td>
+</tr>
+<tr>
+<td>Suppress Zero Rows</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>The <code>.Tree</code> expansion is critical.</strong> We initially used <code>.ChildrenInclusive</code> (too shallow) and <code>.DescendantsInclusive</code> (flattened all indent levels to 0). Only <code>.Tree</code> returns the full hierarchy with correct indent levels at every level — essential for the LLM to understand rollup structure without double counting.</p>
+</blockquote>
+<p>The result: a single view that returns the full customer hierarchy as rows, with 50 data columns (12 Sales YTD + 12 Qty YTD + 12 Mgn YTD + 12 MgnP Periodic + Label + Indent), validated against the corresponding dashboard grand total.</p>
+<h3 id="all-four-sales-views">All Four Sales Views</h3>
+<p>Create three additional views following the identical pattern, changing only the row dimension and its POV setting:</p>
+<table>
+<thead>
+<tr>
+<th>View Name</th>
+<th>Row Dimension</th>
+<th>POV Setting</th>
+<th>Member Filter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MCP_COPA_ByCustomer</code></td>
+<td>UD5</td>
+<td>UD5 = blank</td>
+<td><code>U5#Customer.Tree</code></td>
+</tr>
+<tr>
+<td><code>MCP_COPA_ByRegion</code></td>
+<td>UD7</td>
+<td>UD7 = blank</td>
+<td><code>U7#Top.Tree</code></td>
+</tr>
+<tr>
+<td><code>MCP_COPA_ByProduct</code></td>
+<td>UD1</td>
+<td>UD1 = blank</td>
+<td><code>U1#Top.Tree</code></td>
+</tr>
+<tr>
+<td><code>MCP_COPA_ByBasin</code></td>
+<td>UD6</td>
+<td>UD6 = blank</td>
+<td><code>U6#Top.Tree</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="step-4-designing-the-orders-and-backlog-views">Step 4: Designing the Orders and Backlog Views</h2>
+<p>Orders and Backlog require additional discovery work because the account codes are in a different dimension than Net Sales.</p>
+<p>We initially tried account <code>DOrdExt</code> for Orders. It exists in the Member table but belongs to <code>DimId=1</code> (the Finance cube account dimension) — not the COPA cube. The correct accounts for COPA are:</p>
+<table>
+<thead>
+<tr>
+<th>Subject</th>
+<th>Value Account</th>
+<th>Quantity Account</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orders</td>
+<td><code>OrdExt</code></td>
+<td><code>QtyNetOrd</code></td>
+</tr>
+<tr>
+<td>Backlog</td>
+<td><code>DBacklog</code></td>
+<td><code>QtyBacklog</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="three-key-differences-from-sales-views">Three Key Differences from Sales Views</h3>
+<p><strong>1. POV Account must be explicitly set.</strong> For Sales, the POV Account is <code>A45000</code>, which anchors the data intersection. For Orders and Backlog, set the POV Account to the subject account (<code>OrdExt</code> or <code>DBacklog</code>) — not blank and not Top. We discovered this by comparing the working Sales view XML against the non-working Orders view XML side by side.</p>
+<p><strong>2. POV View must be <code>Periodic</code>, not <code>YTD</code>.</strong> Orders and Backlog data in the COPA cube is stored as periodic monthly values, not cumulative YTD. <code>V#YTD</code> returns 0 rows for these accounts.</p>
+<p><strong>3. POV UD2 must be blank.</strong> The existing dashboard Orders views use a plant-level filter via UD2. At the <code>GDEP_Cons</code> consolidation level, UD2 must be left blank for consolidated data to flow through.</p>
+<h3 id="orders-column-structure">Orders Column Structure</h3>
+<p>Column structure for Orders views is simpler — no margin columns:</p>
+<div class="highlight"><pre><span></span><code>A#OrdExt:T#|!GDParam_Year!|M1:Name(Ord Jan),...  Nested: V#Periodic
+A#QtyNetOrd:T#|!GDParam_Year!|M1:Name(Qty Jan),... Nested: V#Periodic
+</code></pre></div>
+<h3 id="complete-view-inventory">Complete View Inventory</h3>
+<p>Create four Orders views and four Backlog views following the same pattern:</p>
+<table>
+<thead>
+<tr>
+<th>View Name</th>
+<th>Data Type</th>
+<th>Accounts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MCP_COPA_Orders_ByCustomer</code></td>
+<td>Orders</td>
+<td><code>OrdExt</code>, <code>QtyNetOrd</code></td>
+</tr>
+<tr>
+<td><code>MCP_COPA_Orders_ByRegion</code></td>
+<td>Orders</td>
+<td><code>OrdExt</code>, <code>QtyNetOrd</code></td>
+</tr>
+<tr>
+<td><code>MCP_COPA_Orders_ByProduct</code></td>
+<td>Orders</td>
+<td><code>OrdExt</code>, <code>QtyNetOrd</code></td>
+</tr>
+<tr>
+<td><code>MCP_COPA_Orders_ByBasin</code></td>
+<td>Orders</td>
+<td><code>OrdExt</code>, <code>QtyNetOrd</code></td>
+</tr>
+<tr>
+<td><code>MCP_COPA_Backlog_ByCustomer</code></td>
+<td>Backlog</td>
+<td><code>DBacklog</code>, <code>QtyBacklog</code></td>
+</tr>
+<tr>
+<td><code>MCP_COPA_Backlog_ByRegion</code></td>
+<td>Backlog</td>
+<td><code>DBacklog</code>, <code>QtyBacklog</code></td>
+</tr>
+<tr>
+<td><code>MCP_COPA_Backlog_ByProduct</code></td>
+<td>Backlog</td>
+<td><code>DBacklog</code>, <code>QtyBacklog</code></td>
+</tr>
+<tr>
+<td><code>MCP_COPA_Backlog_ByBasin</code></td>
+<td>Backlog</td>
+<td><code>DBacklog</code>, <code>QtyBacklog</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total: 12 purpose-built cube views in the <code>MCP_API_Views</code> group.</strong></p>
+<hr />
+<h2 id="step-5-programmatic-validation">Step 5: Programmatic Validation</h2>
+<p>Before writing any MCP server code, validate all 12 views using a standalone Python test harness that calls the OneStream API directly. The test script uses the same Azure Key Vault helper as the MCP server to fetch the PAT, calls each view with April 2026 COPA parameters, and checks the grand total (<code>Indent=0</code> row).</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">call_cv</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">app_name</span><span class="p">,</span> <span class="n">cv_name</span><span class="p">,</span> <span class="n">subst_vars</span><span class="p">):</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="s2">&quot;gdep.onestreamcloud.com&quot;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">pat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span>
+    <span class="p">}</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;BaseWebServerUrl&quot;</span><span class="p">:</span>                     <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">/onestreamweb&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ApplicationName&quot;</span><span class="p">:</span>                      <span class="n">app_name</span><span class="p">,</span>
+        <span class="s2">&quot;CubeViewName&quot;</span><span class="p">:</span>                         <span class="n">cv_name</span><span class="p">,</span>
+        <span class="s2">&quot;DataTablePerCubeViewRow&quot;</span><span class="p">:</span>              <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;ResultDataTableName&quot;</span><span class="p">:</span>                  <span class="s2">&quot;R&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CustomSubstVarsAsCommaSeparatedPairs&quot;</span><span class="p">:</span> <span class="n">subst_vars</span><span class="p">,</span>
+        <span class="s2">&quot;CubeViewDataTableOptions&quot;</span><span class="p">:</span>             <span class="p">{</span><span class="s2">&quot;IncludeTitle&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">/Onestreamapi/api/DataProvider/GetAdoDataSetForCubeViewCommand&quot;</span><span class="p">,</span>
+        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+        <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;api-version&quot;</span><span class="p">:</span> <span class="s2">&quot;5.2.0&quot;</span><span class="p">},</span>
+        <span class="n">json</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="o">=</span><span class="mi">120</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HTTP </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">subst</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;GDParam_Entity=[GDEP_Cons],&quot;</span>
+    <span class="s2">&quot;GDParam_Consolidation=[USD],&quot;</span>
+    <span class="s2">&quot;GDParam_Scenario=[COPA],&quot;</span>
+    <span class="s2">&quot;GDParam_Time_Reports=[2026M4],&quot;</span>
+    <span class="s2">&quot;GDParam_Year=[2026]&quot;</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">view</span><span class="p">,</span> <span class="n">os_name</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;Sales_ByCustomer&quot;</span><span class="p">,</span>   <span class="s2">&quot;MCP_COPA_ByCustomer&quot;</span><span class="p">,</span>          <span class="s2">&quot;Sales Apr&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Orders_ByCustomer&quot;</span><span class="p">,</span>  <span class="s2">&quot;MCP_COPA_Orders_ByCustomer&quot;</span><span class="p">,</span>   <span class="s2">&quot;Ord Apr&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Backlog_ByCustomer&quot;</span><span class="p">,</span> <span class="s2">&quot;MCP_COPA_Backlog_ByCustomer&quot;</span><span class="p">,</span>  <span class="s2">&quot;Bkl Apr&quot;</span><span class="p">),</span>
+<span class="p">]:</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">call_cv</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">app_name</span><span class="p">,</span> <span class="n">os_name</span><span class="p">,</span> <span class="n">subst</span><span class="p">)</span>
+    <span class="c1"># flatten rows and find Indent=0 grand total ...</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">view</span><span class="si">}</span><span class="s2">: Grand Total = </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Validation results (April 2026):</strong></p>
+<div class="highlight"><pre><span></span><code>Sales_ByCustomer:   Grand Total = &lt;your_sales_total&gt;
+Orders_ByCustomer:  Grand Total = &lt;your_orders_total&gt;
+Backlog_ByCustomer: Grand Total = &lt;your_backlog_total&gt;
+</code></pre></div>
+<p>We then opened the OneStream Sales/Orders/Backlog dashboard set to <code>Entity=GDEP_Cons</code>, <code>Time=Apr 2026</code>, <code>Scenario=COPA</code> and compared:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Dashboard</th>
+<th>API</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales YTD total</td>
+<td>matches</td>
+<td>matches</td>
+<td>✅ Match</td>
+</tr>
+<tr>
+<td>Orders Periodic April</td>
+<td>matches</td>
+<td>matches</td>
+<td>✅ Match</td>
+</tr>
+<tr>
+<td>Backlog Periodic April</td>
+<td>matches</td>
+<td>matches</td>
+<td>✅ Match</td>
+</tr>
+</tbody>
+</table>
+<p>All 12 views were validated across all 4 dimensions with consistent grand totals. <strong>This dashboard screenshot comparison step is important</strong> — it proves not just that the API returns data, but that it returns the same data a human analyst would see.</p>
+<hr />
+<h2 id="step-6-the-mcp-server-code">Step 6: The MCP Server Code</h2>
+<p>The MCP server builds on the FastMCP + Azure OAuth foundation from the existing series. The OneStream integration adds helper functions and two new tools.</p>
+<h3 id="helper-functions">Helper Functions</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_os_get_pat</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">get_azure_kv_secret</span><span class="p">(</span><span class="s2">&quot;os-api-pat&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_os_get_app_name</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">get_azure_kv_secret</span><span class="p">(</span><span class="s2">&quot;os-application&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_os_server</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;gdep.onestreamcloud.com&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_os_to_period</span><span class="p">(</span><span class="n">period</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;&#39;Apr 2026&#39; → (&#39;2026M4&#39;, &#39;2026&#39;)&quot;&quot;&quot;</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="s2">&quot;%b %Y&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="si">}</span><span class="s2">M</span><span class="si">{</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_os_call_cv</span><span class="p">(</span><span class="n">cv_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">subst_vars</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="n">pat</span>      <span class="o">=</span> <span class="n">_os_get_pat</span><span class="p">()</span>
+    <span class="n">app_name</span> <span class="o">=</span> <span class="n">_os_get_app_name</span><span class="p">()</span>
+    <span class="n">server</span>   <span class="o">=</span> <span class="n">_os_server</span><span class="p">()</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">/Onestreamapi/api&quot;</span>
+    <span class="n">web_url</span>  <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">/onestreamweb&quot;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">pat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span>  <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Accept&quot;</span><span class="p">:</span>        <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;BaseWebServerUrl&quot;</span><span class="p">:</span>                     <span class="n">web_url</span><span class="p">,</span>
+        <span class="s2">&quot;ApplicationName&quot;</span><span class="p">:</span>                      <span class="n">app_name</span><span class="p">,</span>
+        <span class="s2">&quot;CubeViewName&quot;</span><span class="p">:</span>                         <span class="n">cv_name</span><span class="p">,</span>
+        <span class="s2">&quot;DataTablePerCubeViewRow&quot;</span><span class="p">:</span>              <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;ResultDataTableName&quot;</span><span class="p">:</span>                  <span class="s2">&quot;R&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CustomSubstVarsAsCommaSeparatedPairs&quot;</span><span class="p">:</span> <span class="n">subst_vars</span><span class="p">,</span>
+        <span class="s2">&quot;CubeViewDataTableOptions&quot;</span><span class="p">:</span>             <span class="p">{</span><span class="s2">&quot;IncludeTitle&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/DataProvider/GetAdoDataSetForCubeViewCommand&quot;</span><span class="p">,</span>
+        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+        <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;api-version&quot;</span><span class="p">:</span> <span class="s2">&quot;5.2.0&quot;</span><span class="p">},</span>
+        <span class="n">json</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>
+        <span class="n">verify</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;OneStream API returned HTTP </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="the-flatten-function">The Flatten Function</h3>
+<p>Converts the raw API response (keyed by <code>ColNHdr0NameAndDesc</code> and <code>ColNValue</code>) into clean dictionaries. The <code>:Name()</code> suffixes set in OneStream Designer populate the <code>Hdr0NameAndDesc</code> fields, giving distinct column names across all 50 columns:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_os_flatten</span><span class="p">(</span><span class="n">rows</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">col_indices</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span>
+        <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="n">k</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">)])</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">sample</span>
+        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Col&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;Hdr0NameAndDesc&quot;</span> <span class="ow">in</span> <span class="n">k</span>
+    <span class="p">))</span>
+    <span class="n">col_headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">i</span><span class="p">:</span> <span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Col</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">Hdr0NameAndDesc&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;Col</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">col_indices</span>
+    <span class="p">}</span>
+    <span class="n">flat</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="n">rec</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Label&quot;</span><span class="p">:</span>  <span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;RowHdr0NameAndDesc&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+            <span class="s2">&quot;Indent&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;RowHdr0Indent&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">col_indices</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Col</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">Value&quot;</span><span class="p">)</span>
+            <span class="n">rec</span><span class="p">[</span><span class="n">col_headers</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">flat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">flat</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Do not round values in the flatten function.</strong> The LLM handles formatting — rounding Net Sales to nearest dollar, displaying Margin % as a percentage by multiplying by 100. Early versions of this code rounded everything to the nearest dollar, which silently zeroed out all margin % values (e.g. <code>0.42</code> became <code>0</code>) — a subtle bug that only surfaced during LLM response testing.</p>
+</blockquote>
+<h3 id="the-view-catalogue">The View Catalogue</h3>
+<div class="highlight"><pre><span></span><code><span class="n">_OS_COPA_VIEWS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Sales_ByCustomer&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;os_view_name&quot;</span><span class="p">:</span> <span class="s2">&quot;MCP_COPA_ByCustomer&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span>  <span class="s2">&quot;COPA Net Sales, Quantity, and Standard Margin % by Customer&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dimension&quot;</span><span class="p">:</span>    <span class="s2">&quot;Customer (UD5)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data_type&quot;</span><span class="p">:</span>    <span class="s2">&quot;Sales&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span>       <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Sales_ByRegion&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;os_view_name&quot;</span><span class="p">:</span> <span class="s2">&quot;MCP_COPA_ByRegion&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span>  <span class="s2">&quot;COPA Net Sales, Quantity, and Standard Margin % by Region&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dimension&quot;</span><span class="p">:</span>    <span class="s2">&quot;Region (UD7)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data_type&quot;</span><span class="p">:</span>    <span class="s2">&quot;Sales&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span>       <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Sales_ByProduct&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;os_view_name&quot;</span><span class="p">:</span> <span class="s2">&quot;MCP_COPA_ByProduct&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span>  <span class="s2">&quot;COPA Net Sales, Quantity, and Standard Margin % by Product&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dimension&quot;</span><span class="p">:</span>    <span class="s2">&quot;Product (UD1)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data_type&quot;</span><span class="p">:</span>    <span class="s2">&quot;Sales&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span>       <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Sales_ByBasin&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;os_view_name&quot;</span><span class="p">:</span> <span class="s2">&quot;MCP_COPA_ByBasin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span>  <span class="s2">&quot;COPA Net Sales, Quantity, and Standard Margin % by Basin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dimension&quot;</span><span class="p">:</span>    <span class="s2">&quot;Basin (UD6)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data_type&quot;</span><span class="p">:</span>    <span class="s2">&quot;Sales&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span>       <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Orders_ByCustomer&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;os_view_name&quot;</span><span class="p">:</span> <span class="s2">&quot;MCP_COPA_Orders_ByCustomer&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span>  <span class="s2">&quot;COPA Orders and Quantity by Customer — periodic monthly&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dimension&quot;</span><span class="p">:</span>    <span class="s2">&quot;Customer (UD5)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data_type&quot;</span><span class="p">:</span>    <span class="s2">&quot;Orders&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span>       <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="c1"># Orders_ByRegion, Orders_ByProduct, Orders_ByBasin follow the same pattern</span>
+    <span class="c1"># Backlog_ByCustomer, Backlog_ByRegion, Backlog_ByProduct, Backlog_ByBasin follow the same pattern</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="the-mcp-tools">The MCP Tools</h3>
+<p>Two tools are exposed: a catalogue tool (so the LLM always knows what is available) and a data retrieval tool.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_os_copa_catalog</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    List available OneStream COPA cube views queryable via get_os_copa_sales().</span>
+<span class="sd">    Always call this first. Returns view names, descriptions, dimensions, and data types.</span>
+<span class="sd">    Available: Sales_ByX (4), Orders_ByX (4), Backlog_ByX (4).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">HELPDESK_MODE</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;OneStream tools not available on helpdesk server.&quot;</span><span class="p">}]</span>
+    <span class="k">if</span> <span class="n">get_current_business_function</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;fin&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;This tool is only available for the fin business function.&quot;</span><span class="p">}]</span>
+    <span class="n">denied</span> <span class="o">=</span> <span class="n">check_hr_fin_access</span><span class="p">(</span><span class="s2">&quot;get_os_copa_catalog&quot;</span><span class="p">,</span> <span class="s2">&quot;os_copa_sales&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">denied</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">denied</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;view&quot;</span><span class="p">:</span>        <span class="n">name</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">meta</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;dimension&quot;</span><span class="p">:</span>   <span class="n">meta</span><span class="p">[</span><span class="s2">&quot;dimension&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;data_type&quot;</span><span class="p">:</span>   <span class="n">meta</span><span class="p">[</span><span class="s2">&quot;data_type&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span>      <span class="n">meta</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">meta</span> <span class="ow">in</span> <span class="n">_OS_COPA_VIEWS</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">meta</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;active&quot;</span>
+    <span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_os_copa_sales</span><span class="p">(</span>
+    <span class="n">view</span><span class="p">:</span> <span class="nb">str</span>     <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;View name e.g. &#39;Sales_ByCustomer&#39;. Call get_os_copa_catalog() first.&quot;</span><span class="p">),</span>
+    <span class="n">period</span><span class="p">:</span> <span class="nb">str</span>   <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Period in &#39;Mon YYYY&#39; format e.g. &#39;Apr 2026&#39;.&quot;</span><span class="p">),</span>
+    <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;COPA&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Scenario: COPA (default), Actual, Budget, Forecast.&quot;</span><span class="p">),</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve COPA data from OneStream for the requested view, period and scenario.</span>
+<span class="sd">    Sales views: 50 cols (Sales Jan-Dec YTD, Qty Jan-Dec YTD, Mgn Jan-Dec YTD%, MgnP Jan-Dec Periodic%).</span>
+<span class="sd">    Orders/Backlog views: 26 cols (value Jan-Dec Periodic, Qty Jan-Dec Periodic).</span>
+<span class="sd">    Indent=0 is always the grand total. Do NOT sum all rows — that double counts.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">HELPDESK_MODE</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;OneStream tools not available on helpdesk server.&quot;</span><span class="p">}]</span>
+    <span class="k">if</span> <span class="n">get_current_business_function</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;fin&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;This tool is only available for the fin business function.&quot;</span><span class="p">}]</span>
+    <span class="n">denied</span> <span class="o">=</span> <span class="n">check_hr_fin_access</span><span class="p">(</span><span class="s2">&quot;get_os_copa_sales&quot;</span><span class="p">,</span> <span class="s2">&quot;os_copa_sales&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">denied</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">denied</span>
+
+    <span class="k">if</span> <span class="n">view</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_OS_COPA_VIEWS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Unknown view &#39;</span><span class="si">{</span><span class="n">view</span><span class="si">}</span><span class="s2">&#39;. Valid: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">_OS_COPA_VIEWS</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">period_os</span><span class="p">,</span> <span class="n">year</span> <span class="o">=</span> <span class="n">_os_to_period</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Invalid period &#39;</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s2">&#39;. Use &#39;Mon YYYY&#39; e.g. &#39;Apr 2026&#39;.&quot;</span><span class="p">}]</span>
+
+    <span class="n">scenario</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">scenario</span> <span class="k">else</span> <span class="s2">&quot;COPA&quot;</span>
+    <span class="k">if</span> <span class="n">scenario</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;COPA&quot;</span><span class="p">,</span> <span class="s2">&quot;Actual&quot;</span><span class="p">,</span> <span class="s2">&quot;Budget&quot;</span><span class="p">,</span> <span class="s2">&quot;Forecast&quot;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Invalid scenario &#39;</span><span class="si">{</span><span class="n">scenario</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">}]</span>
+
+    <span class="n">cv_name</span> <span class="o">=</span> <span class="n">_OS_COPA_VIEWS</span><span class="p">[</span><span class="n">view</span><span class="p">][</span><span class="s2">&quot;os_view_name&quot;</span><span class="p">]</span>
+    <span class="n">subst</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;GDParam_Entity=[GDEP_Cons],&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;GDParam_Consolidation=[USD],&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;GDParam_Scenario=[</span><span class="si">{</span><span class="n">scenario</span><span class="si">}</span><span class="s2">],&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;GDParam_Time_Reports=[</span><span class="si">{</span><span class="n">period_os</span><span class="si">}</span><span class="s2">],&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;GDParam_Year=[</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">]&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">log_user_activity</span><span class="p">(</span><span class="s2">&quot;get_os_copa_sales&quot;</span><span class="p">,</span> <span class="n">get_current_user_info</span><span class="p">(),</span>
+                          <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">view</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">scenario</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">raw</span>  <span class="o">=</span> <span class="n">_os_call_cv</span><span class="p">(</span><span class="n">cv_name</span><span class="p">,</span> <span class="n">subst</span><span class="p">)</span>
+        <span class="n">flat</span> <span class="o">=</span> <span class="n">_os_flatten</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">flat</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;get_os_copa_sales error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;OneStream API error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}]</span>
+</code></pre></div>
+<hr />
+<h2 id="step-7-security-model">Step 7: Security Model</h2>
+<p>Access to the OneStream tools is controlled at three layers.</p>
+<p><strong>Layer 1 — Business function isolation.</strong> The MCP server routes requests by URL parameter (<code>?function=fin</code>). These tools check <code>get_current_business_function()</code> and return an error if the caller is not on the <code>fin</code> endpoint. An IT or HR user connecting to their respective endpoint cannot reach financial data.</p>
+<p><strong>Layer 2 — Per-subject-area permissions.</strong> The existing <code>check_hr_fin_access()</code> function checks <code>dbo.mcp_user_permissions</code> for an explicit grant:</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dbo</span><span class="p">.</span><span class="n">mcp_user_permissions</span>
+<span class="w">    </span><span class="p">(</span><span class="n">user_email</span><span class="p">,</span><span class="w"> </span><span class="n">business_function</span><span class="p">,</span><span class="w"> </span><span class="n">object_name</span><span class="p">,</span><span class="w"> </span><span class="k">granted</span><span class="p">)</span>
+<span class="k">VALUES</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;user@company.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;fin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;os_copa_sales&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
+<p>The <code>object_name</code> <code>os_copa_sales</code> covers all 12 COPA views (Sales, Orders, Backlog). Future subject areas (P&amp;L, Cash Flow, Balance Sheet) get their own <code>object_name</code>, allowing per-subject-area access control independent of COPA.</p>
+<p><strong>Layer 3 — Helpdesk server hard-block.</strong> The helpdesk server (port 8001, no auth, VNET only) sets <code>HELPDESK_MODE=True</code>. Both OS tools check this flag at entry and return an error immediately. This is not a soft check — it is the first line of code in each tool, before any other logic runs.</p>
+<p><strong>Audit logging</strong> writes to a per-user log file (<code>/mnt/azure/mcp/logs/{email}.log</code>) on every successful tool call, capturing timestamp, tool name, user name, and query parameters. This gives administrators a complete record of who queried what data and when.</p>
+<hr />
+<h2 id="step-8-llm-project-instructions">Step 8: LLM Project Instructions</h2>
+<p>The MCP tools return structured data, but the LLM needs precise instructions to interpret it correctly. This is as important as the server code itself. We use Claude Teams as an organisation with a dedicated <strong>Claude Project</strong> for financial analytics connected via OAuth to the MCP server.</p>
+<h3 id="key-instructions-that-prevent-common-llm-mistakes">Key instructions that prevent common LLM mistakes:</h3>
+<p><strong>On column structure:</strong>
+Sales columns (<code>Sales Jan</code> through <code>Sales Dec</code>) are YTD cumulative. To derive a specific month's value, subtract the prior month: April Sales = <code>Sales Apr</code> minus <code>Sales Mar</code>. January is always periodic since there is no prior month. Orders and Backlog columns (<code>Ord Jan</code>, <code>Bkl Jan</code>) are already periodic monthly figures — read them directly, no subtraction needed.</p>
+<p><strong>On margin percentage:</strong>
+<code>Mgn</code> columns are decimals between 0 and 1. Always multiply by 100 to display as a percentage (e.g. <code>0.42</code> = 42.00%). Never subtract <code>Mgn</code> columns to derive periodic margin — it is mathematically invalid. Use <code>MgnP</code> columns (periodic margin) for single-month margin questions. Use <code>Mgn</code> columns for YTD margin and state this clearly.</p>
+<p><strong>On hierarchy:</strong>
+<code>Indent=0</code> is always the grand total. Never sum all rows — that double counts because parent rows include their children. Use <code>Indent=0</code> for top-line numbers. Use higher indent rows for drill-down.</p>
+<p><strong>On data sourcing:</strong>
+All values come directly from OneStream production via live API call. No caching, no stale data, no exports. For questions about specific accounting treatment, refer to the FP&amp;A team.</p>
+<p><strong>On the connector:</strong>
+The user must be connected to the GDEP Fin connector to access financial data. If not connected, no data is available.</p>
+<hr />
+<h2 id="troubleshooting-and-tips">Troubleshooting and Tips</h2>
+<ul>
+<li><strong>View returns 0 rows (Sales):</strong> Verify <code>V#YTD</code> is the nested View dimension. Confirm the POV Account is set to the correct account code and not left blank.</li>
+<li><strong>View returns 0 rows (Orders/Backlog):</strong> Switch the nested View dimension from <code>V#YTD</code> to <code>V#Periodic</code>. Orders and Backlog data is stored as periodic only — <code>V#YTD</code> returns nothing for these accounts.</li>
+<li><strong>All dashboard views return 0 rows via API:</strong> Do not reuse dashboard views. Create purpose-built views in <code>MCP_API_Views</code> as described in Step 3. Dashboard views use context variables that do not exist outside the dashboard engine.</li>
+<li><strong>Columns collide or have duplicate headers:</strong> Ensure every column expansion entry uses the <code>:Name()</code> suffix with a unique prefix per column group (e.g. <code>Sales Jan</code>, <code>Qty Jan</code>, <code>Mgn Jan</code>, <code>MgnP Jan</code>). Without <code>:Name()</code>, all 12 months across all column groups share the same month labels and collide in the flattened output.</li>
+<li><strong>Margin % shows as 0 after flatten:</strong> Do not round in <code>_os_flatten()</code>. Margin % values are decimals (e.g. <code>0.42</code>). Rounding to the nearest dollar silently zeros them out. Let the LLM format the output.</li>
+<li><strong>LLM produces doubled totals:</strong> The LLM must be instructed (in the Project instructions) never to sum all rows. Parent rows in the hierarchy already include their children. Only <code>Indent=0</code> is the safe grand total.</li>
+<li><strong>401 Unauthorized from OneStream API:</strong> Check that the PAT in Azure Key Vault is current. The PAT is fetched on every call — rotate it in OneStream, update the secret in Key Vault, and the next call picks it up automatically without a server restart.</li>
+<li><strong>403 Forbidden from OneStream API:</strong> Verify the service account (<code>GDEPOSApiUser</code>) is a member of the <code>API Access</code> security group and that admin consent is current for the cube.</li>
+</ul>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li><a href="../ai-claude-mcp-analytic-server-part1/">GDEP MCP Analytic Server — Part 1 (CSV/Parquet, stdio)</a></li>
+<li><a href="../ai-claude-mcp-analytic-server-part2/">GDEP MCP Analytic Server — Part 2 (Database, stdio)</a></li>
+<li><a href="../ai-claude-mcp-analytic-server-part3/">GDEP MCP Analytic Server — Part 3 (Files/Database, HTTPS)</a></li>
+<li><a href="../ai-claude-mcp-analytic-server-part4/">GDEP MCP Analytic Server — Part 4 (Debugging with VS Code)</a></li>
+<li><a href="https://github.com/Munish-Sethi/enterprise-mcp-analyst">MCP Analyst — GitHub Repository</a></li>
+<li><a href="https://developer.onestream.com/">OneStream REST API Documentation</a></li>
+<li><a href="https://developer.onestream.com/">OneStream DataProvider Endpoints — api-version 5.2.0</a></li>
+<li><a href="https://github.com/jlowin/fastmcp">FastMCP Framework Documentation</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python">Azure Key Vault Secrets — Python SDK</a></li>
+</ul>
+<hr />
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Create a dedicated <strong>non-SSO service account</strong> in OneStream with a PAT stored in Azure Key Vault — fetched on every MCP call so key rotation requires no server restart</li>
+<li><strong>Do not reuse dashboard cube views</strong> via the API — they are shell views that rely on dashboard-session context variables that do not exist in REST calls. Build purpose-built views in a dedicated <code>MCP_API_Views</code> group</li>
+<li>Use <strong>OneStream's substitution variable system</strong> (<code>|!GDParam_Entity!|</code>, <code>|!GDParam_Time_Reports!|</code> etc.) to parameterise time and scenario at runtime</li>
+<li>Use the <strong>multidimensional colon-delimited column filter syntax</strong> (<code>A#A45000:T#2026M1:Name(Sales Jan)</code>) to return multiple metrics (Sales, Quantity, Margin YTD, Margin Periodic) in a single API call with unique, collision-free column headers</li>
+<li>Use <code>.Tree</code> row expansion — not <code>.ChildrenInclusive</code> or <code>.DescendantsInclusive</code> — to get the full member hierarchy with correct <code>Indent</code> levels at every level</li>
+<li>For Orders and Backlog views, set the POV Account explicitly, use <code>V#Periodic</code> (not <code>V#YTD</code>), and leave UD2 blank at the consolidated level</li>
+<li><strong>Validate all views programmatically</strong> against the OneStream dashboard before writing MCP server code — confirm grand totals match to the dollar</li>
+<li>Do not round values in <code>_os_flatten()</code> — margin % values are decimals; rounding silently zeroes them out</li>
+<li>Apply three-layer security: business function isolation → per-subject-area permissions table → helpdesk server hard-block</li>
+<li>Invest equal effort in the <strong>Claude Project instructions</strong> as in the server code — the LLM's ability to interpret YTD vs periodic, margin % decimals, and hierarchy rollups correctly depends entirely on these instructions</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 18, 2026 11:16:42 UTC">May 18, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
