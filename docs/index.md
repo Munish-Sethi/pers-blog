@@ -26,6 +26,7 @@
 - [Data Analysis with LLM via MCP Server - Part 3](ai-claude-mcp-analytic-server-part3.md)
 - [Data Analysis with LLM via MCP Server - Part 4](ai-claude-mcp-analytic-server-part4.md)
 - [Building an Enterprise Multi-Agent AI System with Microsoft Teams](ai-multi-agent.md)
+- [Exposing OneStream Financial Data to an LLM — Live CEO/CFO Analytics via MCP](ai-claude-mcp-onestream-mcp-financial-analytics.md)
 ---
 
 ## 🔷 Azure
