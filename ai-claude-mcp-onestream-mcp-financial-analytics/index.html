@@ -3432,56 +3432,22 @@ fastmcp
 <p>This returned <code>F42099</code> (Quantity Average), <code>F55099</code> (Std Margin) — allowing us to verify the exact codes before building the views.</p>
 <h3 id="copa-sales-view-point-of-view-tab">COPA Sales View: Point of View Tab</h3>
 <p>Walk-through for <code>MCP_COPA_ByCustomer</code> (the representative example — the same pattern applies to all other dimensions):</p>
-<table>
-<thead>
-<tr>
-<th>Setting</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cube</td>
-<td>COPA</td>
-</tr>
-<tr>
-<td>Entity</td>
-<td><code>\|!GDParam_Entity!|</code> (default <code>GDEP_Cons</code>)</td>
-</tr>
-<tr>
-<td>Consolidation</td>
-<td>USD</td>
-</tr>
-<tr>
-<td>Scenario</td>
-<td><code>\|!GDParam_Scenario!|</code> (default <code>COPA</code>)</td>
-</tr>
-<tr>
-<td>Time</td>
-<td><code>\|!GDParam_Time_Reports!|</code></td>
-</tr>
-<tr>
-<td>View</td>
-<td>Periodic</td>
-</tr>
-<tr>
-<td>Account</td>
-<td><code>A45000</code> (Net Sales)</td>
-</tr>
-<tr>
-<td>Flow, Origin, IC</td>
-<td>Top</td>
-</tr>
-<tr>
-<td>UD1–UD8</td>
-<td>Top, <strong>except</strong> the dimension used in Rows (must be blank)</td>
-</tr>
-<tr>
-<td>{ .compact }</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<div class="compact" markdown="1">
+
+| Setting | Value |
+|---|---|
+| Cube | COPA |
+| Entity | `\|!GDParam_Entity!|` (default `GDEP_Cons`) |
+| Consolidation | USD |
+| Scenario | `\|!GDParam_Scenario!|` (default `COPA`) |
+| Time | `\|!GDParam_Time_Reports!|` |
+| View | Periodic |
+| Account | `A45000` (Net Sales) |
+| Flow, Origin, IC | Top |
+| UD1–UD8 | Top, **except** the dimension used in Rows (must be blank) |
+
+</div>
+
 <blockquote>
 <p><strong>Critical rule:</strong> whichever dimension you put in the Rows tab must be left blank in the POV. If you set UD5 (Customer) in both POV and Rows, OneStream returns an error. For <code>ByCustomer</code>, set UD5 to blank. For <code>ByRegion</code>, set UD7 to blank. And so on.</p>
 </blockquote>
@@ -3514,110 +3480,46 @@ A#A45000:T#|!GDParam_Year!|M12:Name(Sales Dec)
 </blockquote>
 <h3 id="copa-sales-view-rows-tab">COPA Sales View: Rows Tab</h3>
 <p>For <code>ByCustomer</code>, add one row:</p>
-<table>
-<thead>
-<tr>
-<th>Setting</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Dimension</td>
-<td>UD5</td>
-</tr>
-<tr>
-<td>Member Filter</td>
-<td><code>U5#Customer.Tree</code></td>
-</tr>
-<tr>
-<td>Suppress Zero Rows</td>
-<td>True</td>
-</tr>
-<tr>
-<td>{ .compact }</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<div class="compact" markdown="1">
+
+| Setting | Value |
+|---|---|
+| Dimension | UD5 |
+| Member Filter | `U5#Customer.Tree` |
+| Suppress Zero Rows | True |
+
+</div>
+
 <blockquote>
 <p><strong>The <code>.Tree</code> expansion is critical.</strong> We initially used <code>.ChildrenInclusive</code> (too shallow) and <code>.DescendantsInclusive</code> (flattened all indent levels to 0). Only <code>.Tree</code> returns the full hierarchy with correct indent levels at every level — essential for the LLM to understand rollup structure without double counting.</p>
 </blockquote>
 <p>The result: a single view that returns the full customer hierarchy as rows, with 50 data columns (12 Sales YTD + 12 Qty YTD + 12 Mgn YTD + 12 MgnP Periodic + Label + Indent), validated against the corresponding dashboard grand total.</p>
 <h3 id="all-four-sales-views">All Four Sales Views</h3>
 <p>Create three additional views following the identical pattern, changing only the row dimension and its POV setting:</p>
-<table>
-<thead>
-<tr>
-<th>View Name</th>
-<th>Row Dimension</th>
-<th>POV Setting</th>
-<th>Member Filter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>MCP_COPA_ByCustomer</code></td>
-<td>UD5</td>
-<td>UD5 = blank</td>
-<td><code>U5#Customer.Tree</code></td>
-</tr>
-<tr>
-<td><code>MCP_COPA_ByRegion</code></td>
-<td>UD7</td>
-<td>UD7 = blank</td>
-<td><code>U7#Top.Tree</code></td>
-</tr>
-<tr>
-<td><code>MCP_COPA_ByProduct</code></td>
-<td>UD1</td>
-<td>UD1 = blank</td>
-<td><code>U1#Top.Tree</code></td>
-</tr>
-<tr>
-<td><code>MCP_COPA_ByBasin</code></td>
-<td>UD6</td>
-<td>UD6 = blank</td>
-<td><code>U6#Top.Tree</code></td>
-</tr>
-<tr>
-<td>{ .compact }</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<div class="compact" markdown="1">
+
+| View Name | Row Dimension | POV Setting | Member Filter |
+|---|---|---|---|
+| `MCP_COPA_ByCustomer` | UD5 | UD5 = blank | `U5#Customer.Tree` |
+| `MCP_COPA_ByRegion` | UD7 | UD7 = blank | `U7#Top.Tree` |
+| `MCP_COPA_ByProduct` | UD1 | UD1 = blank | `U1#Top.Tree` |
+| `MCP_COPA_ByBasin` | UD6 | UD6 = blank | `U6#Top.Tree` |
+
+</div>
+
 <hr />
 <h2 id="step-4-designing-the-orders-and-backlog-views">Step 4: Designing the Orders and Backlog Views</h2>
 <p>Orders and Backlog require additional discovery work because the account codes are in a different dimension than Net Sales.</p>
 <p>We initially tried account <code>DOrdExt</code> for Orders. It exists in the Member table but belongs to <code>DimId=1</code> (the Finance cube account dimension) — not the COPA cube. The correct accounts for COPA are:</p>
-<table>
-<thead>
-<tr>
-<th>Subject</th>
-<th>Value Account</th>
-<th>Quantity Account</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Orders</td>
-<td><code>OrdExt</code></td>
-<td><code>QtyNetOrd</code></td>
-</tr>
-<tr>
-<td>Backlog</td>
-<td><code>DBacklog</code></td>
-<td><code>QtyBacklog</code></td>
-</tr>
-<tr>
-<td>{ .compact }</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<div class="compact" markdown="1">
+
+| Subject | Value Account | Quantity Account |
+|---|---|---|
+| Orders | `OrdExt` | `QtyNetOrd` |
+| Backlog | `DBacklog` | `QtyBacklog` |
+
+</div>
+
 <h3 id="three-key-differences-from-sales-views">Three Key Differences from Sales Views</h3>
 <p><strong>1. POV Account must be explicitly set.</strong> For Sales, the POV Account is <code>A45000</code>, which anchors the data intersection. For Orders and Backlog, set the POV Account to the subject account (<code>OrdExt</code> or <code>DBacklog</code>) — not blank and not Top. We discovered this by comparing the working Sales view XML against the non-working Orders view XML side by side.</p>
 <p><strong>2. POV View must be <code>Periodic</code>, not <code>YTD</code>.</strong> Orders and Backlog data in the COPA cube is stored as periodic monthly values, not cumulative YTD. <code>V#YTD</code> returns 0 rows for these accounts.</p>
@@ -3629,62 +3531,21 @@ A#QtyNetOrd:T#|!GDParam_Year!|M1:Name(Qty Jan),... Nested: V#Periodic
 </code></pre></div>
 <h3 id="complete-view-inventory">Complete View Inventory</h3>
 <p>Create four Orders views and four Backlog views following the same pattern:</p>
-<table>
-<thead>
-<tr>
-<th>View Name</th>
-<th>Data Type</th>
-<th>Accounts</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>MCP_COPA_Orders_ByCustomer</code></td>
-<td>Orders</td>
-<td><code>OrdExt</code>, <code>QtyNetOrd</code></td>
-</tr>
-<tr>
-<td><code>MCP_COPA_Orders_ByRegion</code></td>
-<td>Orders</td>
-<td><code>OrdExt</code>, <code>QtyNetOrd</code></td>
-</tr>
-<tr>
-<td><code>MCP_COPA_Orders_ByProduct</code></td>
-<td>Orders</td>
-<td><code>OrdExt</code>, <code>QtyNetOrd</code></td>
-</tr>
-<tr>
-<td><code>MCP_COPA_Orders_ByBasin</code></td>
-<td>Orders</td>
-<td><code>OrdExt</code>, <code>QtyNetOrd</code></td>
-</tr>
-<tr>
-<td><code>MCP_COPA_Backlog_ByCustomer</code></td>
-<td>Backlog</td>
-<td><code>DBacklog</code>, <code>QtyBacklog</code></td>
-</tr>
-<tr>
-<td><code>MCP_COPA_Backlog_ByRegion</code></td>
-<td>Backlog</td>
-<td><code>DBacklog</code>, <code>QtyBacklog</code></td>
-</tr>
-<tr>
-<td><code>MCP_COPA_Backlog_ByProduct</code></td>
-<td>Backlog</td>
-<td><code>DBacklog</code>, <code>QtyBacklog</code></td>
-</tr>
-<tr>
-<td><code>MCP_COPA_Backlog_ByBasin</code></td>
-<td>Backlog</td>
-<td><code>DBacklog</code>, <code>QtyBacklog</code></td>
-</tr>
-<tr>
-<td>{ .compact }</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<div class="compact" markdown="1">
+
+| View Name | Data Type | Accounts |
+|---|---|---|
+| `MCP_COPA_Orders_ByCustomer` | Orders | `OrdExt`, `QtyNetOrd` |
+| `MCP_COPA_Orders_ByRegion` | Orders | `OrdExt`, `QtyNetOrd` |
+| `MCP_COPA_Orders_ByProduct` | Orders | `OrdExt`, `QtyNetOrd` |
+| `MCP_COPA_Orders_ByBasin` | Orders | `OrdExt`, `QtyNetOrd` |
+| `MCP_COPA_Backlog_ByCustomer` | Backlog | `DBacklog`, `QtyBacklog` |
+| `MCP_COPA_Backlog_ByRegion` | Backlog | `DBacklog`, `QtyBacklog` |
+| `MCP_COPA_Backlog_ByProduct` | Backlog | `DBacklog`, `QtyBacklog` |
+| `MCP_COPA_Backlog_ByBasin` | Backlog | `DBacklog`, `QtyBacklog` |
+
+</div>
+
 <p><strong>Total: 12 purpose-built cube views in the <code>MCP_API_Views</code> group.</strong></p>
 <hr />
 <h2 id="step-5-programmatic-validation">Step 5: Programmatic Validation</h2>
@@ -3741,42 +3602,16 @@ Orders_ByCustomer:  Grand Total = &lt;your_orders_total&gt;
 Backlog_ByCustomer: Grand Total = &lt;your_backlog_total&gt;
 </code></pre></div>
 <p>We then opened the OneStream Sales/Orders/Backlog dashboard set to <code>Entity=GDEP_Cons</code>, <code>Time=Apr 2026</code>, <code>Scenario=COPA</code> and compared:</p>
-<table>
-<thead>
-<tr>
-<th>Metric</th>
-<th>Dashboard</th>
-<th>API</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Sales YTD total</td>
-<td>matches</td>
-<td>matches</td>
-<td>✅ Match</td>
-</tr>
-<tr>
-<td>Orders Periodic April</td>
-<td>matches</td>
-<td>matches</td>
-<td>✅ Match</td>
-</tr>
-<tr>
-<td>Backlog Periodic April</td>
-<td>matches</td>
-<td>matches</td>
-<td>✅ Match</td>
-</tr>
-<tr>
-<td>{ .compact }</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<div class="compact" markdown="1">
+
+| Metric | Dashboard | API | Result |
+|---|---|---|---|
+| Sales YTD total | matches | matches | ✅ Match |
+| Orders Periodic April | matches | matches | ✅ Match |
+| Backlog Periodic April | matches | matches | ✅ Match |
+
+</div>
+
 <p>All 12 views were validated across all 4 dimensions with consistent grand totals. <strong>This dashboard screenshot comparison step is important</strong> — it proves not just that the API returns data, but that it returns the same data a human analyst would see.</p>
 <hr />
 <h2 id="step-6-the-mcp-server-code">Step 6: The MCP Server Code</h2>
@@ -4068,7 +3903,7 @@ The user must be connected to the GDEP Fin connector to access financial data. I
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 18, 2026 11:24:20 UTC">May 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 18, 2026 11:27:26 UTC">May 18, 2026</span>
   </span>
 
     
