@@ -15,5 +15,8 @@
   },
   "forwardPorts": [8000],
   "postCreateCommand": "pip install --upgrade pip",
-  "remoteUser": "root"
+  "remoteUser": "root",
+  "mounts": [
+		"source=${localEnv:USERPROFILE}/.claude,target=/root/.claude,type=bind,consistency=cached"
+	]
 }
