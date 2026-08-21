@@ -2797,6 +2797,7 @@
 <li><strong>SAP itself is building toward this natively.</strong> SAP and Anthropic have integrated Claude into Joule, SAP's own AI assistant, via MCP — spanning S/4HANA, SuccessFactors, and Ariba. If your organization is already invested in Joule, that path may arrive with less custom engineering than building your own bridge.</li>
 <li><strong>If you run SAP Datasphere</strong>, it's worth treating as a third front door distinct from either raw ECC or bare OData: Datasphere sits in front of S/4HANA as a data fabric/virtualization layer, and MCP servers already exist that target Datasphere's own API directly — useful if your organization has already invested in Datasphere for other reasons.</li>
 </ul>
+<p>Worth being honest about what this list actually is, though: every option on it that isn't a pre-released standard API is still someone modeling a purpose-built view before the LLM can touch it — which is precisely the cost on-prem SQL access lets you skip. This isn't hypothetical. It's the same shape of work as the <a href="../ai-claude-mcp-onestream-mcp-financial-analytics/">OneStream article</a>'s 12 purpose-built cube views — built specifically so the LLM had a clean, self-contained dataset to query, because the existing dashboard views couldn't be called directly via API. That build was real, proven to work well once done, and not overly complex — a few days of view design, not a multi-month project. But it was still a build, done ahead of the first question, by someone who understood the cube. A CDS view for S/4HANA is the same trade: a one-time, per-subject-area modeling cost that has to happen before the LLM has anything to query, not instead of it.</p>
 <p>The architectural point stands regardless of which of these you pick: <strong>the MCP server, the OAuth layer, the catalog-driven tool selection, and the LLM don't change.</strong> Only the "data connector" tool — SQL-on-raw-tables vs. OData-on-a-published-view — changes underneath them. That's the same lesson the <a href="../ai-claude-mcp-onestream-mcp-financial-analytics/">OneStream article</a> already demonstrated for a SaaS FP&amp;A platform: build the connector once per source, and the rest of the stack is reusable.</p>
 <hr />
 <h2 id="where-this-fits-next-to-the-data-warehouse-not-instead-of-it">Where This Fits Next to the Data Warehouse, Not Instead of It</h2>
@@ -2867,7 +2868,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 21, 2026 17:44:57 UTC">August 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 21, 2026 17:53:08 UTC">August 21, 2026</span>
   </span>
 
     
