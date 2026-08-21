@@ -541,10 +541,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Why On-Prem Has an Architectural Head Start (and What You Give Up in the Cloud)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#if-youre-on-s4hana-youre-not-out-of-options" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -552,11 +551,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2610,10 +2604,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Why On-Prem Has an Architectural Head Start (and What You Give Up in the Cloud)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#if-youre-on-s4hana-youre-not-out-of-options" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2621,11 +2614,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2760,9 +2748,9 @@
 <hr />
 <h2 id="the-saas-bargain-revisited">The SaaS Bargain, Revisited</h2>
 <p>The traditional pitch for moving off on-prem ERP was never really about the database. It was about everything <em>around</em> the database — patching, upgrades, hardware refresh cycles, disaster recovery, security perimeter. All real, all worth paying for.</p>
-<p>What rarely made it into the pitch deck: SaaS ERP vendors don't just take over the operations burden. They also take away the thing that made ad-hoc reporting possible in the first place — a live SQL connection to the tables themselves. That trade was invisible for years, because nobody needed to write novel, ad-hoc queries against raw tables very often. Power BI, SSRS, Excel with a linked server, a report a developer built last quarter — all of it either used a pre-built extract or a small, stable set of views. The cost of losing direct table access was low, because direct table access wasn't being exercised very hard.</p>
-<p>LLMs changed the exercise pattern completely. The entire value of a natural-language interface over ERP data is that a business user can ask a question nobody anticipated: "which work centers had the biggest efficiency drop last month, and does it correlate with anything on the attendance side?" A pre-built report can't answer that unless someone already thought to build it. A live SQL connection, paired with an LLM that can read a schema and write a query, can — on the first try, in seconds.</p>
-<p>So the SaaS bargain, restated for the AI era: <strong>you traded ops burden for query flexibility, and didn't know it until an LLM came along wanting the flexibility back.</strong></p>
+<p>What rarely made it into the pitch deck: SaaS ERP vendors don't just take over the operations burden. They also take away the thing that made ad-hoc reporting possible in the first place — a live SQL connection to the tables themselves. That trade was invisible for years, but not because the need for ad-hoc queries was low. Companies pulled reports directly from transaction systems constantly, and built (or bought) entire data warehouses on top of that access precisely because the need was real and ongoing. The real bottleneck was never demand — it was that an ERP like SAP ECC has thousands of tables, and knowing what's stored where, and the business logic layered on top of it (effective-dated rows, status flags, the difference between a "confirmed" quantity and a genuinely worked one), took years to learn. That expertise lived in a small number of people — a BASIS team, a handful of senior analysts, an external consultant — which meant direct table access existed, but the ability to <em>use</em> it well was scarce and expensive. Losing that access when moving to SaaS felt cheap, because most of an organization was never in a position to exercise it directly anyway; they went through the expert, or through whatever the expert had already built.</p>
+<p>LLMs changed that equation, not by creating a new need but by collapsing the scarce resource. The entire value of a natural-language interface over ERP data is that a business user can ask a question nobody anticipated: "which work centers had the biggest efficiency drop last month, and does it correlate with anything on the attendance side?" A pre-built report can't answer that unless someone already thought to build it, and reaching a human SAP expert to write a new one still means a ticket and a wait. An LLM that already understands the data model — the table names, the field mnemonics, the way SAP's own T-codes join underneath — paired with a live SQL connection, can answer it directly, on the first try, in seconds. What used to require years of accumulated schema knowledge is now something the LLM already knows on day one.</p>
+<p>So the SaaS bargain, restated for the AI era: <strong>you traded ops burden for direct access to a data model that used to require years of expertise to use well — and didn't know what that access would be worth until an LLM showed up already knowing the model.</strong></p>
 <hr />
 <h2 id="why-on-prem-has-an-architectural-head-start-and-what-you-give-up-in-the-cloud">Why On-Prem Has an Architectural Head Start (and What You Give Up in the Cloud)</h2>
 <p>The mechanics of the trade-off are worth stating precisely, because "cloud is harder" isn't a complaint about SaaS vendors being difficult — it's a direct, confirmed, and honestly reasonable consequence of how S/4HANA Cloud is designed. SAP's own documentation is explicit about it: with S/4HANA Cloud Public Edition, <strong>RFC and database connections are not available, and neither is direct access to the tables that make up the internal SAP data model.</strong> In their place is the Virtual Data Model — CDS views, exposed as OData services, most of which support read-only access by design.</p>
@@ -2800,12 +2788,12 @@
 </table>
 <p>That middle row is the whole argument. Ad-hoc SQL access lets the LLM <em>be</em> the query planner. A pre-built CDS/OData layer means a human already had to be the query planner, ahead of time, for every shape of question someone might someday ask. The entire promise of natural-language analytics — answering the question nobody thought to ask in advance — survives on-prem intact and gets clipped on S/4HANA Cloud in direct proportion to how many views you're willing to build and keep current.</p>
 <p>None of this means S/4HANA customers are locked out. It means the "instant, zero-modeling" version of this pattern is specific to systems where a read-only SQL account is still possible — and today, that's on-prem ECC, and (with RFC generally more available) S/4HANA private edition/RISE, more than S/4HANA public edition/GROW.</p>
-<h3 id="if-youre-on-s4hana-youre-not-out-of-options">If you're on S/4HANA — you're not out of options</h3>
+<h2 id="if-youre-on-s4hana-youre-not-out-of-options">If you're on S/4HANA — you're not out of options</h2>
 <p>The good news: the industry has converged hard on a workable answer for the cloud case, and it follows the exact same shape described below for on-prem — an MCP server, an LLM, and a catalog-driven tool-selection layer — with one piece swapped out.</p>
 <ul>
 <li><strong>Check the SAP Business Accelerator Hub first</strong> (<code>api.sap.com</code>). SAP publishes a large catalog of released OData V2/V4 APIs across Finance, Logistics, HR, and more. If a standard API already covers what you need, there's no CDS modeling to do at all — point your MCP tool at the released service and go.</li>
 <li><strong>If nothing standard fits, model a custom CDS view</strong> via the Custom CDS Views app (no ABAP required for straightforward cases) or full developer extensibility, set it to expose externally, and publish it through a Communication Arrangement. This <em>is</em> the modeling cost from the table above — real, but one-time per subject area, not per question.</li>
-<li><strong>Generic OData→MCP bridges already exist and are open source.</strong> Projects like <code>sap-odata-mcp-server</code> (works against any SAP system with OData/Gateway enabled — ECC or S/4HANA, cloud or on-prem, no RFC SDK required) and several BTP-based bridges turn any released or custom OData service into MCP tools automatically, with schema discovery built in. You are very likely not the first person to need the specific API you're after.</li>
+<li><strong>Generic OData→MCP bridges already exist and are open source.</strong> Projects like <a href="https://github.com/GutjahrAI/sap-odata-mcp-server"><code>sap-odata-mcp-server</code></a> (works against any SAP system with OData/Gateway enabled — ECC or S/4HANA, cloud or on-prem, no RFC SDK required) and several BTP-based bridges turn any released or custom OData service into MCP tools automatically, with schema discovery built in. You are very likely not the first person to need the specific API you're after.</li>
 <li><strong>SAP itself is building toward this natively.</strong> SAP and Anthropic have integrated Claude into Joule, SAP's own AI assistant, via MCP — spanning S/4HANA, SuccessFactors, and Ariba. If your organization is already invested in Joule, that path may arrive with less custom engineering than building your own bridge.</li>
 <li><strong>If you run SAP Datasphere</strong>, it's worth treating as a third front door distinct from either raw ECC or bare OData: Datasphere sits in front of S/4HANA as a data fabric/virtualization layer, and MCP servers already exist that target Datasphere's own API directly — useful if your organization has already invested in Datasphere for other reasons.</li>
 </ul>
@@ -2857,7 +2845,7 @@
 <li><a href="../ai-claude-mcp-onestream-mcp-financial-analytics/">OneStream Financial Analytics via MCP</a> — the same architecture pointed at a SaaS platform's REST API instead of a database</li>
 <li><a href="https://api.sap.com/">SAP Business Accelerator Hub</a> — catalog of released S/4HANA OData APIs, check here before modeling a custom CDS view</li>
 <li><a href="https://help.sap.com/docs/SAP_S4HANA_CLOUD/c0c54048d35849128be8e872df5bea6d/8573b810511948c8a99c0672abc159aa.html">SAP S/4HANA Cloud — Virtual Data Model and CDS Views</a> — background on why direct table access isn't available in S/4HANA Cloud</li>
-<li><code>sap-odata-mcp-server</code> and similar open-source OData→MCP bridges — generic connectors for any SAP system with OData/Gateway enabled</li>
+<li><a href="https://github.com/GutjahrAI/sap-odata-mcp-server"><code>sap-odata-mcp-server</code></a> and similar open-source OData→MCP bridges — generic connectors for any SAP system with OData/Gateway enabled</li>
 </ul>
 
 
@@ -2879,7 +2867,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 18, 2026 18:53:09 UTC">August 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 21, 2026 17:44:57 UTC">August 21, 2026</span>
   </span>
 
     
