@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://munishsethi.com/sap-rfc-python/">
+        <link rel="canonical" href="https://munishsethi.com/email-workmail-to-m365-part2/">
       
       
-        <link rel="prev" href="../sap-rfc-python-container/">
+        <link rel="prev" href="../email-workmail-to-m365-part1/">
       
       
-        <link rel="next" href="../sap-system-start-stop/">
+        <link rel="next" href="../ukg-sftp-file-transfer/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Calling SAP RFC Function Modules from Python - Munish(s) Blog</title>
+        <title>Migrating from Amazon WorkMail to Microsoft 365 - Part 2 (DNS Cutover, Catch-All & Cleanup) - Munish(s) Blog</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#calling-sap-rfc-function-modules-from-python-using-pyrfc-a-step-by-step-guide" class="md-skip">
+        <a href="#migrating-from-amazon-workmail-to-microsoft-365" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Calling SAP RFC Function Modules from Python
+              Migrating from Amazon WorkMail to Microsoft 365 - Part 2 (DNS Cutover, Catch-All & Cleanup)
             
           </span>
         </div>
@@ -1417,8 +1417,6 @@
       
   
   
-    
-  
   
   
     
@@ -1431,11 +1429,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1456,7 +1454,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1499,37 +1497,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Calling SAP RFC Function Modules from Python
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
         
   
   
@@ -1545,142 +1516,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introduction
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prerequisites
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-extracting-data-from-sap-via-rfc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: Extracting Data from SAP via RFC
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example: Extracting Data from SAP via RFC">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-define-your-rfc-connection-and-extract-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Define Your RFC Connection and Extract Configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-utility-functions-for-rfc-calls-and-csv-export" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Utility Functions for RFC Calls and CSV Export
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-main-script-running-the-extract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Main Script: Running the Extract
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-running-the-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Running the Script
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-step-by-step-explanation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Step-by-Step Explanation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Further Reading
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1725,8 +1560,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1737,11 +1574,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
@@ -1762,7 +1599,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2225,10 +2062,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../email-workmail-to-m365-part2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrating from Amazon WorkMail to Microsoft 365 - Part 2 (DNS Cutover, Catch-All & Cleanup)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2244,6 +2108,275 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-dns-cutover-catch-all-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: DNS Cutover, Catch-All &amp; Cleanup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: DNS Cutover, Catch-All &amp; Cleanup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Series Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-collect-the-required-dns-records-from-m365" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Collect the Required DNS Records from M365
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-dns-cutover-make-changes-one-at-a-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: DNS Cutover — Make Changes One at a Time
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: DNS Cutover — Make Changes One at a Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-replace-the-mx-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Replace the MX Record
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-replace-the-spf-txt-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Replace the SPF TXT Record
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-add-the-autodiscover-cname" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Add the Autodiscover CNAME
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-add-m365-dkim-cnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Add M365 DKIM CNAMEs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-verify-dns-propagation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Verify DNS Propagation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-verify-email-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Verify Email Health
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-update-dmarc-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Update DMARC Policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-set-up-catch-all-email-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Set Up Catch-All Email Routing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: Set Up Catch-All Email Routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-change-domain-type-to-internal-relay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Change Domain Type to Internal Relay
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-create-the-catch-all-mail-flow-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Create the Catch-All Mail Flow Rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-test-the-catch-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Test the Catch-All
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-remove-old-workmail-dns-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Remove Old WorkMail DNS Records
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-decommission-amazon-workmail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: Decommission Amazon WorkMail
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-final-dns-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 9: Final DNS State
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lessons Learned
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2597,66 +2730,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#part-2-dns-cutover-catch-all-cleanup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Introduction
+        Part 2: DNS Cutover, Catch-All &amp; Cleanup
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prerequisites
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-extracting-data-from-sap-via-rfc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: Extracting Data from SAP via RFC
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example: Extracting Data from SAP via RFC">
+    <nav class="md-nav" aria-label="Part 2: DNS Cutover, Catch-All &amp; Cleanup">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-define-your-rfc-connection-and-extract-configuration" class="md-nav__link">
+  <a href="#series-navigation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Define Your RFC Connection and Extract Configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-utility-functions-for-rfc-calls-and-csv-export" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Utility Functions for RFC Calls and CSV Export
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-main-script-running-the-extract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Main Script: Running the Extract
+        📚 Series Navigation
       
     </span>
   </a>
@@ -2669,10 +2758,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-running-the-script" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Running the Script
+        Overview
       
     </span>
   </a>
@@ -2680,10 +2769,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-step-by-step-explanation" class="md-nav__link">
+  <a href="#step-1-collect-the-required-dns-records-from-m365" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Step-by-Step Explanation
+        Step 1: Collect the Required DNS Records from M365
       
     </span>
   </a>
@@ -2691,10 +2780,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#step-2-dns-cutover-make-changes-one-at-a-time" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Step 2: DNS Cutover — Make Changes One at a Time
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: DNS Cutover — Make Changes One at a Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-replace-the-mx-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Replace the MX Record
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-replace-the-spf-txt-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Replace the SPF TXT Record
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-add-the-autodiscover-cname" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Add the Autodiscover CNAME
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-add-m365-dkim-cnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Add M365 DKIM CNAMEs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-verify-dns-propagation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Verify DNS Propagation
       
     </span>
   </a>
@@ -2702,10 +2852,126 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
+  <a href="#step-4-verify-email-health" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Further Reading
+        Step 4: Verify Email Health
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-update-dmarc-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Update DMARC Policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-set-up-catch-all-email-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Set Up Catch-All Email Routing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: Set Up Catch-All Email Routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-change-domain-type-to-internal-relay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Change Domain Type to Internal Relay
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-create-the-catch-all-mail-flow-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Create the Catch-All Mail Flow Rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-test-the-catch-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Test the Catch-All
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-remove-old-workmail-dns-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Remove Old WorkMail DNS Records
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-decommission-amazon-workmail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: Decommission Amazon WorkMail
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-final-dns-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 9: Final DNS State
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lessons Learned
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
       
     </span>
   </a>
@@ -2729,173 +2995,353 @@
 
 
 
-<h1 id="calling-sap-rfc-function-modules-from-python-using-pyrfc-a-step-by-step-guide">Calling SAP RFC Function Modules from Python Using PyRFC: A Step-by-Step Guide</h1>
+<h1 id="migrating-from-amazon-workmail-to-microsoft-365">Migrating from Amazon WorkMail to Microsoft 365</h1>
+<h2 id="part-2-dns-cutover-catch-all-cleanup">Part 2: DNS Cutover, Catch-All &amp; Cleanup</h2>
+<hr />
+<h3 id="series-navigation">📚 <strong>Series Navigation</strong></h3>
+<ul>
+<li><a href="../email-workmail-to-m365-part1/">Part 1: Tenant Setup &amp; Mailbox Migration</a></li>
+<li><strong>Part 2: DNS Cutover, Catch-All &amp; Cleanup</strong> <em>(Current)</em></li>
+</ul>
+<p><em>This is Part 2 of a two-part guide. <a href="../email-workmail-to-m365-part1/">Part 1</a> covers tenant setup and IMAP mailbox migration. This part assumes all mailboxes have been successfully migrated and verified in Microsoft 365.</em></p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>At this point:</p>
+<ul>
+<li>✅ All email is migrated and verified in M365 mailboxes</li>
+<li>✅ MX records still point to WorkMail — email continues flowing normally</li>
+<li>✅ WorkMail is untouched and still receiving new mail</li>
+</ul>
+<p>This part covers the DNS cutover that switches email flow from WorkMail to M365, followed by catch-all configuration, email health verification, and AWS decommission.</p>
+<p>The sequence matters: <strong>DNS changes happen after migration, not before.</strong></p>
+<hr />
+<h2 id="step-1-collect-the-required-dns-records-from-m365">Step 1: Collect the Required DNS Records from M365</h2>
+<p>Before touching any DNS, collect all the records M365 needs from the admin center.</p>
+<p>Go to <strong>Microsoft 365 Admin Center → Settings → Domains → yourdomain.com → Continue setup</strong></p>
+<p>When prompted, select <strong>"Add your own DNS records"</strong> and download the CSV — M365 provides the exact values for your tenant. You will need:</p>
+<table>
+<thead>
+<tr>
+<th>Record Type</th>
+<th>Name</th>
+<th>Value</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MX</td>
+<td>@</td>
+<td><code>yourdomain-com.mail.protection.outlook.com</code></td>
+<td>Routes inbound email to M365</td>
+</tr>
+<tr>
+<td>TXT</td>
+<td>@</td>
+<td><code>v=spf1 include:spf.protection.outlook.com -all</code></td>
+<td>SPF — authorizes M365 to send</td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td>autodiscover</td>
+<td><code>autodiscover.outlook.com</code></td>
+<td>Outlook auto-configuration</td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td>selector1._domainkey</td>
+<td>(value from M365 DKIM setup)</td>
+<td>DKIM signing</td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td>selector2._domainkey</td>
+<td>(value from M365 DKIM setup)</td>
+<td>DKIM signing</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p><strong>Note:</strong> For details on installing and configuring the <code>PyRFC</code> module inside a container, see the companion article: <a href="../sap-rfc-python-container/">Installing the PyRFC Module for SAP Integration</a></p>
+<p><strong>Note:</strong> The DKIM CNAME values are tenant-specific and generated separately from the domain setup wizard. Get them from <strong>Microsoft 365 Defender → Email &amp; collaboration → Policies &amp; rules → Threat policies → Email authentication settings → DKIM → yourdomain.com → Create DKIM keys.</strong></p>
 </blockquote>
-<h2 id="introduction">Introduction</h2>
-<p>SAP ECC systems expose powerful RFC (Remote Function Call) interfaces that allow external programs to interact with SAP data and business logic. Python, with the help of the <a href="https://github.com/SAP/PyRFC">PyRFC</a> library, makes it possible to call these RFC function modules directly and process the results in a modern, flexible way.</p>
-<p>This article demonstrates how to:
-- Connect to an SAP ECC 6.0 (EHP 8) system from Python
-- Call a custom RFC function module 
-- Pass parameters to the RFC
-- Retrieve tabular data
-- Save the results to a CSV file</p>
-<p>We will use a modular, production-ready approach inspired by real-world enterprise integration scripts.</p>
+<p>Export your current DNS records from your DNS provider before making any changes. This is your rollback reference.</p>
 <hr />
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="step-2-dns-cutover-make-changes-one-at-a-time">Step 2: DNS Cutover — Make Changes One at a Time</h2>
+<p>Make DNS changes in this exact order. Do not make all changes simultaneously.</p>
+<h3 id="21-replace-the-mx-record">2.1 Replace the MX Record</h3>
+<p>The MX record determines where inbound email is delivered. Changing it is the most critical step.</p>
+<p><strong>Delete</strong> the existing WorkMail MX record:
+<div class="highlight"><pre><span></span><code>@ MX 10 inbound-smtp.&lt;region&gt;.amazonaws.com
+</code></pre></div></p>
+<p><strong>Add</strong> the M365 MX record:
+<div class="highlight"><pre><span></span><code>Type:     MX
+Name:     @
+Value:    yourdomain-com.mail.protection.outlook.com
+Priority: 0
+TTL:      3600
+</code></pre></div></p>
+<p>After saving, new email will begin routing to M365. DNS propagation typically takes a few minutes with short TTLs, or up to an hour with longer TTLs.</p>
+<h3 id="22-replace-the-spf-txt-record">2.2 Replace the SPF TXT Record</h3>
+<p><strong>Delete</strong> the existing WorkMail SPF record:
+<div class="highlight"><pre><span></span><code>v=spf1 include:amazonses.com ~all
+</code></pre></div></p>
+<p><strong>Add</strong> the M365 SPF record:
+<div class="highlight"><pre><span></span><code>Type:  TXT
+Name:  @
+Value: v=spf1 include:spf.protection.outlook.com -all
+TTL:   3600
+</code></pre></div></p>
+<blockquote>
+<p><strong>Why <code>-all</code> and not <code>~all</code>?</strong> The <code>-all</code> (hard fail) instructs receiving servers to reject mail that doesn't pass SPF, rather than just marking it as suspicious. This is the correct setting once you are fully on M365 and no longer sending from WorkMail.</p>
+</blockquote>
+<h3 id="23-add-the-autodiscover-cname">2.3 Add the Autodiscover CNAME</h3>
+<div class="highlight"><pre><span></span><code>Type:  CNAME
+Name:  autodiscover
+Value: autodiscover.outlook.com
+TTL:   3600
+Proxy: DNS Only (not proxied through Cloudflare or similar CDN)
+</code></pre></div>
+<blockquote>
+<p><strong>Important for Cloudflare users:</strong> The autodiscover CNAME must be set to <strong>DNS Only</strong> (grey cloud), not Proxied (orange cloud). Proxying this record breaks Outlook auto-configuration.</p>
+</blockquote>
+<h3 id="24-add-m365-dkim-cnames">2.4 Add M365 DKIM CNAMEs</h3>
+<div class="highlight"><pre><span></span><code>Type:  CNAME
+Name:  selector1._domainkey
+Value: selector1-yourdomain-com._domainkey.&lt;tenant&gt;.onmicrosoft.com
+TTL:   3600
+Proxy: DNS Only
+
+Type:  CNAME
+Name:  selector2._domainkey
+Value: selector2-yourdomain-com._domainkey.&lt;tenant&gt;.onmicrosoft.com
+TTL:   3600
+Proxy: DNS Only
+</code></pre></div>
+<p>The exact target values come from the DKIM setup page in Microsoft 365 Defender. Copy them exactly — they are tenant-specific.</p>
+<p>After adding the CNAMEs, go back to <strong>Microsoft 365 Defender → DKIM → yourdomain.com</strong> and click <strong>Enable</strong>. If you receive an error that the CNAME records were not found, wait 15–30 minutes for DNS propagation and retry. Microsoft's DNS resolver can take longer to pick up changes than third-party tools like MXToolbox.</p>
+<hr />
+<h2 id="step-3-verify-dns-propagation">Step 3: Verify DNS Propagation</h2>
+<p>Use <a href="https://mxtoolbox.com/SuperTool.aspx">MXToolbox</a> to verify each record has propagated before proceeding:</p>
 <ul>
-<li>Access to an SAP ECC system with a custom RFC function module you can call</li>
-<li>SAP user credentials with RFC permissions</li>
-<li>The <a href="https://github.com/SAP/PyRFC">PyRFC</a> library installed (see <a href="../sap-rfc-python-container/">Installing the PyRFC Module for SAP Integration</a> for setup)</li>
-<li>Python 3.7+</li>
+<li><strong>MX Lookup</strong> → <code>yourdomain.com</code> → should show <code>mail.protection.outlook.com</code></li>
+<li><strong>DNS Lookup → CNAME</strong> → <code>selector1._domainkey.yourdomain.com</code> → should return the Microsoft selector value</li>
+<li><strong>DNS Lookup → CNAME</strong> → <code>selector2._domainkey.yourdomain.com</code> → should return the Microsoft selector value</li>
 </ul>
+<p>Do not enable DKIM in M365 until both selector CNAMEs are confirmed by MXToolbox. The M365 DKIM enablement will fail with a CNAME not found error if DNS hasn't propagated yet.</p>
 <hr />
-<h2 id="example-extracting-data-from-sap-via-rfc">Example: Extracting Data from SAP via RFC</h2>
-<p>Suppose you want to extract financial data from SAP using a custom RFC function module. The following example shows how to do this in a robust, reusable way.</p>
-<h3 id="1-define-your-rfc-connection-and-extract-configuration">1. Define Your RFC Connection and Extract Configuration</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pyrfc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">LogonError</span><span class="p">,</span> <span class="n">ABAPApplicationError</span><span class="p">,</span> <span class="n">ABAPRuntimeError</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
-
-<span class="c1"># Configure logging</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;sap_rfc_extract&quot;</span><span class="p">)</span>
-
-<span class="c1"># --- RFC Connection Parameters (replace with your SAP system details) ---</span>
-<span class="n">SAP_CONN_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;ashost&#39;</span><span class="p">:</span> <span class="s1">&#39;SAP_APP_SERVER_HOST&#39;</span><span class="p">,</span>   <span class="c1"># SAP application server</span>
-    <span class="s1">&#39;sysnr&#39;</span><span class="p">:</span> <span class="s1">&#39;00&#39;</span><span class="p">,</span>                     <span class="c1"># System number</span>
-    <span class="s1">&#39;client&#39;</span><span class="p">:</span> <span class="s1">&#39;100&#39;</span><span class="p">,</span>                   <span class="c1"># Client number</span>
-    <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="s1">&#39;SAP_USERNAME&#39;</span><span class="p">,</span>            <span class="c1"># SAP user</span>
-    <span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;SAP_PASSWORD&#39;</span><span class="p">,</span>          <span class="c1"># SAP password</span>
-    <span class="s1">&#39;lang&#39;</span><span class="p">:</span> <span class="s1">&#39;EN&#39;</span><span class="p">,</span>                      <span class="c1"># Language</span>
-<span class="p">}</span>
-
-<span class="c1"># --- RFC Extract Configuration ---</span>
-<span class="n">EXTRACT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;example_extract&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;function_module&#39;</span><span class="p">:</span> <span class="s1">&#39;ZMY_CUSTOM_RFC_MODULE&#39;</span><span class="p">,</span>  <span class="c1"># Replace with your RFC FM name</span>
-        <span class="s1">&#39;table_name&#39;</span><span class="p">:</span> <span class="s1">&#39;IT_RESULT_TAB&#39;</span><span class="p">,</span>              <span class="c1"># The table returned by the RFC</span>
-        <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IM_CC&#39;</span><span class="p">,</span> <span class="s1">&#39;IM_YEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;IM_PERIOD&#39;</span><span class="p">],</span>
-        <span class="s1">&#39;default_params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;IM_CC&#39;</span><span class="p">:</span> <span class="s1">&#39;1000&#39;</span><span class="p">,</span> <span class="s1">&#39;IM_YEAR&#39;</span><span class="p">:</span> <span class="s1">&#39;2025&#39;</span><span class="p">,</span> <span class="s1">&#39;IM_PERIOD&#39;</span><span class="p">:</span> <span class="s1">&#39;05&#39;</span><span class="p">},</span>
-        <span class="s1">&#39;filename_fmt&#39;</span><span class="p">:</span> <span class="s1">&#39;sap_extract_</span><span class="si">{cc}</span><span class="s1">_</span><span class="si">{year}</span><span class="s1">_</span><span class="si">{period}</span><span class="s1">.csv&#39;</span><span class="p">,</span>
-    <span class="p">},</span>
-<span class="p">}</span>
+<h2 id="step-4-verify-email-health">Step 4: Verify Email Health</h2>
+<p>Send a test email from your M365 account (via Outlook Web at <a href="https://outlook.office.com">https://outlook.office.com</a>) to an external Gmail address. In Gmail, open the email and select <strong>Show original</strong> (three-dot menu). You should see:</p>
+<div class="highlight"><pre><span></span><code>dkim=pass    header.i=@yourdomain.com    (selector1 or selector2)
+spf=pass     smtp.mailfrom=yourdomain.com
+dmarc=pass   dis=NONE
 </code></pre></div>
-<h3 id="2-utility-functions-for-rfc-calls-and-csv-export">2. Utility Functions for RFC Calls and CSV Export</h3>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">call_rfc</span><span class="p">(</span><span class="n">conn_params</span><span class="p">,</span> <span class="n">function_module</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">conn</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="o">**</span><span class="n">conn_params</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calling RFC: </span><span class="si">{</span><span class="n">function_module</span><span class="si">}</span><span class="s2"> with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">function_module</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">LogonError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Logon Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">ABAPApplicationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ABAP Application Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">ABAPRuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ABAP Runtime Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="kc">None</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">export_result_to_csv</span><span class="p">(</span><span class="n">table_data</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">table_data</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No data to export.&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
-        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">table_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-        <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
-        <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">table_data</span><span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exported data to </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="3-main-script-running-the-extract">3. Main Script: Running the Extract</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Run SAP RFC extract via PyRFC.&quot;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--im_cc&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">&#39;example_extract&#39;</span><span class="p">][</span><span class="s1">&#39;default_params&#39;</span><span class="p">][</span><span class="s1">&#39;IM_CC&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Company code&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--im_year&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">&#39;example_extract&#39;</span><span class="p">][</span><span class="s1">&#39;default_params&#39;</span><span class="p">][</span><span class="s1">&#39;IM_YEAR&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Fiscal year&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--im_period&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">&#39;example_extract&#39;</span><span class="p">][</span><span class="s1">&#39;default_params&#39;</span><span class="p">][</span><span class="s1">&#39;IM_PERIOD&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Fiscal period&#39;</span><span class="p">)</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
-
-    <span class="c1"># Prepare parameters for RFC call</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;IM_CC&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">im_cc</span><span class="p">,</span>
-        <span class="s1">&#39;IM_YEAR&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">im_year</span><span class="p">,</span>
-        <span class="s1">&#39;IM_PERIOD&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">im_period</span><span class="p">,</span>
-    <span class="p">}</span>
-
-    <span class="n">config</span> <span class="o">=</span> <span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">&#39;example_extract&#39;</span><span class="p">]</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">call_rfc</span><span class="p">(</span><span class="n">SAP_CONN_PARAMS</span><span class="p">,</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;function_module&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">result</span> <span class="ow">and</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;table_name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
-        <span class="c1"># Build filename</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;filename_fmt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">cc</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">im_cc</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">im_year</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">im_period</span>
-        <span class="p">)</span>
-        <span class="n">export_result_to_csv</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;table_name&#39;</span><span class="p">]],</span> <span class="n">filename</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;No data returned from RFC or table not found in result.&quot;</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
-</code></pre></div>
+<p>All three must show <strong>pass</strong> before the migration can be considered complete. If any show fail:</p>
+<table>
+<thead>
+<tr>
+<th>Failure</th>
+<th>Likely Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dkim=fail</code></td>
+<td>DKIM not yet enabled in M365 Defender, or DNS not propagated</td>
+</tr>
+<tr>
+<td><code>spf=fail</code></td>
+<td>Old WorkMail SPF record not yet replaced, or DNS not propagated</td>
+</tr>
+<tr>
+<td><code>dmarc=fail</code></td>
+<td>SPF and DKIM both failing — fix those first and DMARC will pass automatically</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h2 id="4-running-the-script">4. Running the Script</h2>
-<p>You can run the script from the command line, specifying parameters as needed:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>sap_rfc_extract.py<span class="w"> </span>--im_cc<span class="o">=</span><span class="m">1000</span><span class="w"> </span>--im_year<span class="o">=</span><span class="m">2025</span><span class="w"> </span>--im_period<span class="o">=</span><span class="m">05</span>
+<h2 id="step-5-update-dmarc-policy">Step 5: Update DMARC Policy</h2>
+<p>After confirming all three checks pass, consider tightening your DMARC policy from <code>quarantine</code> to <code>reject</code>. The <code>reject</code> policy instructs receiving mail servers to outright reject email that fails DMARC, rather than delivering it to the spam folder.</p>
+<p>Find your existing <code>_dmarc</code> TXT record and update the <code>p=</code> value:</p>
+<div class="highlight"><pre><span></span><code>Before: v=DMARC1;p=quarantine;pct=100;fo=1
+After:  v=DMARC1;p=reject;pct=100;fo=1
 </code></pre></div>
-<ul>
-<li>The script will connect to SAP, call the RFC, and save the results to a CSV file (e.g., <code>sap_extract_1000_2025_05.csv</code>).</li>
-<li>You can override any parameter using the command line.</li>
-</ul>
+<blockquote>
+<p><strong>Note:</strong> Only change to <code>p=reject</code> after you have confirmed DKIM and SPF are both passing consistently for at least one full day. Moving to reject too early can cause legitimate email to be silently dropped if any sending path isn't yet covered by your SPF record.</p>
+</blockquote>
 <hr />
-<h2 id="5-step-by-step-explanation">5. Step-by-Step Explanation</h2>
+<h2 id="step-6-set-up-catch-all-email-routing">Step 6: Set Up Catch-All Email Routing</h2>
+<p>A catch-all mailbox receives email sent to any address at your domain that doesn't correspond to a real mailbox. This is useful if you use addresses like <code>bills@yourdomain.com</code>, <code>info@yourdomain.com</code>, or <code>postmaster@yourdomain.com</code> without creating dedicated mailboxes for each.</p>
+<p>M365 handles catch-all via three steps: changing the domain type, and creating a mail flow rule.</p>
+<h3 id="61-change-domain-type-to-internal-relay">6.1 Change Domain Type to Internal Relay</h3>
+<p>By default, M365 treats your domain as <strong>Authoritative</strong> — meaning it rejects email to unknown addresses and returns an NDR (Non-Delivery Report). Changing to <strong>Internal Relay</strong> tells Exchange to accept all email for the domain and let mail flow rules decide what to do with it.</p>
+<p>Go to <strong>Exchange Admin Center → Mail flow → Accepted domains → yourdomain.com → Edit</strong></p>
+<p>Change <strong>"This accepted domain is"</strong> from <strong>Authoritative</strong> to <strong>Internal relay</strong>.</p>
+<p>Leave the following as defaulted:
+- Accept mail for all subdomains: <strong>Off</strong>
+- Allow email to be sent from this domain: <strong>On</strong></p>
+<p>Save the change.</p>
+<h3 id="62-create-the-catch-all-mail-flow-rule">6.2 Create the Catch-All Mail Flow Rule</h3>
+<p>Go to <strong>Exchange Admin Center → Mail flow → Rules → + Add a rule → Create a new rule</strong></p>
+<p>Configure as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td><code>Catch-All Rule</code></td>
+</tr>
+<tr>
+<td>Apply this rule if</td>
+<td>The recipient → domain is → <code>yourdomain.com</code></td>
+</tr>
+<tr>
+<td>Do the following</td>
+<td>Redirect the message to → <code>yourprimaryuser@yourdomain.com</code></td>
+</tr>
+<tr>
+<td>Except if</td>
+<td>The recipient → is this person → add all valid mailboxes (e.g., <code>user1@</code>, <code>user2@</code>)</td>
+</tr>
+<tr>
+<td>Rule mode</td>
+<td>Enforce</td>
+</tr>
+<tr>
+<td>Comments</td>
+<td>Add a description for future reference</td>
+</tr>
+</tbody>
+</table>
+<p>The exception list is critical — it ensures email addressed to real mailboxes (<code>user1@</code>, <code>user2@</code>) is delivered normally and not redirected to the catch-all inbox.</p>
+<blockquote>
+<p><strong>Loop prevention:</strong> Internal Relay + the exception list prevents mail loops. Email to valid addresses is excluded from the rule. Email to invalid addresses is redirected. Exchange does not re-process redirected mail through the same rule.</p>
+<p><strong>Tip:</strong> After creating the rule, verify it is in <strong>Enabled</strong> state. New rules are sometimes created in a disabled state in the Exchange Admin Center.</p>
+</blockquote>
+<h3 id="63-test-the-catch-all">6.3 Test the Catch-All</h3>
+<p>Send two test emails from an external account:</p>
 <ol>
-<li><strong>Configuration:</strong></li>
-<li>All SAP connection details and extract metadata are defined at the top for easy maintenance.</li>
-<li>
-<p>The RFC function module name and table name are generic placeholders—replace them with your actual SAP details.</p>
-</li>
-<li>
-<p><strong>Calling the RFC:</strong></p>
-</li>
-<li>The <code>call_rfc</code> function establishes a connection and calls the RFC, handling common SAP errors.</li>
-<li>
-<p>Parameters are passed as a dictionary, matching the RFC signature.</p>
-</li>
-<li>
-<p><strong>Exporting Data:</strong></p>
-</li>
-<li>
-<p>The <code>export_result_to_csv</code> function writes the returned table to a CSV file, using the first row's keys as headers.</p>
-</li>
-<li>
-<p><strong>Command-Line Interface:</strong></p>
-</li>
-<li>
-<p>The script uses <code>argparse</code> to allow easy parameter overrides from the command line.</p>
-</li>
-<li>
-<p><strong>Error Handling:</strong></p>
-</li>
-<li>All errors are logged, and the script will not crash on SAP or network errors.</li>
+<li><strong>To a valid address</strong> (e.g., <code>user1@yourdomain.com</code>) — should arrive normally in that user's inbox</li>
+<li><strong>To a non-existent address</strong> (e.g., <code>bills@yourdomain.com</code>) — should arrive in the catch-all inbox (your primary user)</li>
 </ol>
+<p>If the second email does not arrive and there is no NDR, check that the rule is enabled and that the domain type was changed to Internal relay.</p>
 <hr />
-<h2 id="conclusion">Conclusion</h2>
-<p>With this approach, you can easily:
-- Call any SAP RFC function module from Python
-- Parameterize your extracts
-- Save results to CSV for downstream processing
-- Integrate SAP data into modern Python workflows</p>
-<p>For more advanced scenarios (multi-company code loops, dynamic extract configuration, etc.), see the full project code or reach out for further examples.</p>
+<h2 id="step-7-remove-old-workmail-dns-records">Step 7: Remove Old WorkMail DNS Records</h2>
+<p>Once M365 email is confirmed working and DKIM is passing, remove the WorkMail-specific DNS records that are no longer needed:</p>
+<p><strong>Delete these records from your DNS provider:</strong></p>
+<div class="highlight"><pre><span></span><code>CNAME  &lt;hash1&gt;._domainkey  →  &lt;hash1&gt;.dkim.amazonses.com
+CNAME  &lt;hash2&gt;._domainkey  →  &lt;hash2&gt;.dkim.amazonses.com
+CNAME  &lt;hash3&gt;._domainkey  →  &lt;hash3&gt;.dkim.amazonses.com
+CNAME  autodiscover        →  autodiscover.mail.&lt;region&gt;.awsapps.com  (if present)
+TXT    _amazonses          →  (SES verification token, if present)
+</code></pre></div>
+<blockquote>
+<p><strong>Do not delete before M365 DKIM is confirmed working.</strong> If M365 DKIM is not yet active, the WorkMail DKIM CNAMEs are still signing your outbound email. Deleting them before M365 DKIM is enabled causes DMARC failures and email landing in spam. Only delete them once <code>dkim=pass header.i=@yourdomain.com selector1</code> appears in your email headers.</p>
+</blockquote>
 <hr />
-<h2 id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://github.com/SAP/PyRFC">PyRFC Documentation</a></li>
-<li><a href="https://support.sap.com/en/product/connectors.html">SAP RFC SDK</a></li>
-<li><a href="../sap-rfc-python-container/">Installing the PyRFC Module for SAP Integration</a> — How to install and configure PyRFC in a container</li>
-</ul>
+<h2 id="step-8-decommission-amazon-workmail">Step 8: Decommission Amazon WorkMail</h2>
+<p>Wait at least 48 hours after DNS cutover before deleting WorkMail. This window catches any email that was in transit or cached in DNS during propagation.</p>
+<p>During this window, check the WorkMail inbox periodically for any new email that arrived after the MX cutover. If you find any, run the M365 IMAP migration batch one final time (incremental sync) to pull those messages into M365.</p>
+<p>When ready:</p>
+<ol>
+<li>Go to <strong>AWS Console → Amazon WorkMail → Organizations</strong></li>
+<li>Select your organization → <strong>Actions → Delete organization</strong></li>
+<li>Type the organization name to confirm → Delete</li>
+</ol>
+<p>WorkMail billing stops immediately after deletion.</p>
+<hr />
+<h2 id="step-9-final-dns-state">Step 9: Final DNS State</h2>
+<p>After completing all steps, your DNS should look similar to this (using yourdomain.com as placeholder):</p>
+<div class="highlight"><pre><span></span><code>MX     @                       yourdomain-com.mail.protection.outlook.com   (M365 inbound)
+TXT    @                       v=spf1 include:spf.protection.outlook.com -all
+TXT    _dmarc                  v=DMARC1;p=reject;pct=100;fo=1
+CNAME  autodiscover            autodiscover.outlook.com                      (DNS Only)
+CNAME  selector1._domainkey    selector1-yourdomain-com._domainkey.&lt;tenant&gt;.onmicrosoft.com
+CNAME  selector2._domainkey    selector2-yourdomain-com._domainkey.&lt;tenant&gt;.onmicrosoft.com
+</code></pre></div>
+<p>WorkMail-specific records (amazonses DKIM CNAMEs, WorkMail autodiscover, SES TXT) should all be gone.</p>
+<hr />
+<h2 id="lessons-learned">Lessons Learned</h2>
+<p><strong>Do one DNS change at a time.</strong> Making all changes simultaneously makes it impossible to isolate the cause if something breaks. MX → SPF → Autodiscover → DKIM in sequence, with verification between each step.</p>
+<p><strong>DKIM takes time.</strong> Microsoft's DKIM validation can take longer than external DNS propagation. MXToolbox may show your CNAME records as live while M365 still reports CNAME not found. Wait 30–60 minutes and retry — don't keep clicking Enable repeatedly.</p>
+<p><strong>Internal Relay + catch-all works cleanly.</strong> The combination of Internal Relay domain type and a mail flow rule with proper exceptions is robust and loop-safe. The key is ensuring the exception list covers all valid mailboxes.</p>
+<p><strong>Email headers are ground truth.</strong> When verifying SPF, DKIM, and DMARC, always check the raw email headers from the receiving side — not just the sending side. Gmail's Show original is the fastest way to get a full authentication result breakdown.</p>
+<p><strong>Delete WorkMail last.</strong> Keep WorkMail alive for at least 48 hours post-cutover. It costs nothing extra during this window and provides a safety net if any email straggler needs to be recovered.</p>
+<hr />
+<h2 id="summary">Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Part 1</td>
+<td>Set up M365 tenant, create users, assign licenses</td>
+<td>Before DNS changes</td>
+</tr>
+<tr>
+<td>Part 1</td>
+<td>Run IMAP migration batch, verify all email in M365</td>
+<td>Before DNS changes</td>
+</tr>
+<tr>
+<td>Part 2</td>
+<td>Replace MX record</td>
+<td>After migration verified</td>
+</tr>
+<tr>
+<td>Part 2</td>
+<td>Replace SPF TXT record</td>
+<td>Same time as MX</td>
+</tr>
+<tr>
+<td>Part 2</td>
+<td>Add Autodiscover CNAME</td>
+<td>Same time as MX</td>
+</tr>
+<tr>
+<td>Part 2</td>
+<td>Add M365 DKIM CNAMEs, enable DKIM</td>
+<td>After MX confirmed working</td>
+</tr>
+<tr>
+<td>Part 2</td>
+<td>Update DMARC to p=reject</td>
+<td>After DKIM confirmed passing</td>
+</tr>
+<tr>
+<td>Part 2</td>
+<td>Configure catch-all (Internal Relay + mail flow rule)</td>
+<td>Any time after MX cutover</td>
+</tr>
+<tr>
+<td>Part 2</td>
+<td>Delete WorkMail DKIM CNAMEs</td>
+<td>After M365 DKIM confirmed</td>
+</tr>
+<tr>
+<td>Part 2</td>
+<td>Delete WorkMail organization in AWS</td>
+<td>48 hours after cutover</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>References:</strong>
+- AWS WorkMail end of support: <a href="https://docs.aws.amazon.com/workmail/latest/adminguide/workmail-end-of-support.html">https://docs.aws.amazon.com/workmail/latest/adminguide/workmail-end-of-support.html</a>
+- AWS WorkMail IMAP settings: <a href="https://docs.aws.amazon.com/workmail/latest/userguide/using_IMAP.html">https://docs.aws.amazon.com/workmail/latest/userguide/using_IMAP.html</a>
+- Microsoft IMAP migration guide: <a href="https://learn.microsoft.com/en-us/exchange/mailbox-migration/migrating-imap-mailboxes/migrating-imap-mailboxes">https://learn.microsoft.com/en-us/exchange/mailbox-migration/migrating-imap-mailboxes/migrating-imap-mailboxes</a>
+- Microsoft DKIM setup for Exchange Online: <a href="https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/email-authentication-dkim-configure">https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/email-authentication-dkim-configure</a></p>
+</blockquote>
 
 
 
@@ -2916,7 +3362,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 30, 2025 21:58:08 UTC">June 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 16:38:19 UTC">September 10, 2026</span>
   </span>
 
     

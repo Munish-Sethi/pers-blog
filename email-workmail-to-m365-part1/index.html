@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://munishsethi.com/sap-rfc-python/">
+        <link rel="canonical" href="https://munishsethi.com/email-workmail-to-m365-part1/">
       
       
-        <link rel="prev" href="../sap-rfc-python-container/">
+        <link rel="prev" href="../spo-o365_excel_automation/">
       
       
-        <link rel="next" href="../sap-system-start-stop/">
+        <link rel="next" href="../email-workmail-to-m365-part2/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Calling SAP RFC Function Modules from Python - Munish(s) Blog</title>
+        <title>Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration) - Munish(s) Blog</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#calling-sap-rfc-function-modules-from-python-using-pyrfc-a-step-by-step-guide" class="md-skip">
+        <a href="#migrating-from-amazon-workmail-to-microsoft-365" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Calling SAP RFC Function Modules from Python
+              Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration)
             
           </span>
         </div>
@@ -1417,8 +1417,6 @@
       
   
   
-    
-  
   
   
     
@@ -1431,11 +1429,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1456,7 +1454,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1499,37 +1497,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Calling SAP RFC Function Modules from Python
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
         
   
   
@@ -1545,142 +1516,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introduction
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prerequisites
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-extracting-data-from-sap-via-rfc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: Extracting Data from SAP via RFC
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example: Extracting Data from SAP via RFC">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-define-your-rfc-connection-and-extract-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Define Your RFC Connection and Extract Configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-utility-functions-for-rfc-calls-and-csv-export" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Utility Functions for RFC Calls and CSV Export
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-main-script-running-the-extract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Main Script: Running the Extract
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-running-the-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Running the Script
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-step-by-step-explanation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Step-by-Step Explanation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Further Reading
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1725,8 +1560,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1737,11 +1574,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
@@ -1762,7 +1599,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2197,10 +2034,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../email-workmail-to-m365-part1/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2216,6 +2080,292 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-tenant-setup-mailbox-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Tenant Setup &amp; Mailbox Migration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Tenant Setup &amp; Mailbox Migration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Series Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-microsoft-365-and-not-awss-recommended-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Microsoft 365 and Not AWS's Recommended Alternatives?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workmail-imap-server-by-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WorkMail IMAP Server by Region
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-a-note-on-mailbox-passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important: A Note on Mailbox Passwords
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-prepare-your-microsoft-365-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Prepare Your Microsoft 365 Tenant
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Prepare Your Microsoft 365 Tenant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-you-already-have-an-m365-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do You Already Have an M365 Tenant?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-right-license" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the Right License
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-add-and-verify-your-domain-in-m365" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Add and Verify Your Domain in M365
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-user-accounts-and-assign-licenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Create User Accounts and Assign Licenses
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-run-the-imap-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Run the IMAP Migration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Run the IMAP Migration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-create-the-migration-batch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Create the Migration Batch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-configure-the-imap-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Configure the IMAP Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-prepare-the-migration-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Prepare the Migration CSV
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-configure-migration-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Configure Migration Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-monitor-the-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Monitor the Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-run-an-incremental-sync-after-dns-cutover" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Run an Incremental Sync After DNS Cutover
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-imap-migration-does-and-does-not-migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What IMAP Migration Does and Does Not Migrate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lessons Learned
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2597,10 +2747,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#part-1-tenant-setup-mailbox-migration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Introduction
+        Part 1: Tenant Setup &amp; Mailbox Migration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Tenant Setup &amp; Mailbox Migration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Series Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-microsoft-365-and-not-awss-recommended-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Microsoft 365 and Not AWS's Recommended Alternatives?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
       
     </span>
   </a>
@@ -2616,47 +2805,14 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-extracting-data-from-sap-via-rfc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: Extracting Data from SAP via RFC
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example: Extracting Data from SAP via RFC">
+    <nav class="md-nav" aria-label="Prerequisites">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-define-your-rfc-connection-and-extract-configuration" class="md-nav__link">
+  <a href="#workmail-imap-server-by-region" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Define Your RFC Connection and Extract Configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-utility-functions-for-rfc-calls-and-csv-export" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Utility Functions for RFC Calls and CSV Export
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-main-script-running-the-extract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Main Script: Running the Extract
+        WorkMail IMAP Server by Region
       
     </span>
   </a>
@@ -2669,10 +2825,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-running-the-script" class="md-nav__link">
+  <a href="#important-a-note-on-mailbox-passwords" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Running the Script
+        Important: A Note on Mailbox Passwords
       
     </span>
   </a>
@@ -2680,10 +2836,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-step-by-step-explanation" class="md-nav__link">
+  <a href="#step-1-prepare-your-microsoft-365-tenant" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Step-by-Step Explanation
+        Step 1: Prepare Your Microsoft 365 Tenant
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Prepare Your Microsoft 365 Tenant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-you-already-have-an-m365-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do You Already Have an M365 Tenant?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-right-license" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the Right License
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-add-and-verify-your-domain-in-m365" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Add and Verify Your Domain in M365
       
     </span>
   </a>
@@ -2691,10 +2886,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#step-3-create-user-accounts-and-assign-licenses" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Step 3: Create User Accounts and Assign Licenses
       
     </span>
   </a>
@@ -2702,10 +2897,115 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
+  <a href="#step-4-run-the-imap-migration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Further Reading
+        Step 4: Run the IMAP Migration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Run the IMAP Migration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-create-the-migration-batch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Create the Migration Batch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-configure-the-imap-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Configure the IMAP Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-prepare-the-migration-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Prepare the Migration CSV
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-configure-migration-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Configure Migration Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-monitor-the-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Monitor the Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-run-an-incremental-sync-after-dns-cutover" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Run an Incremental Sync After DNS Cutover
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-imap-migration-does-and-does-not-migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What IMAP Migration Does and Does Not Migrate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lessons Learned
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
       
     </span>
   </a>
@@ -2729,173 +3029,268 @@
 
 
 
-<h1 id="calling-sap-rfc-function-modules-from-python-using-pyrfc-a-step-by-step-guide">Calling SAP RFC Function Modules from Python Using PyRFC: A Step-by-Step Guide</h1>
+<h1 id="migrating-from-amazon-workmail-to-microsoft-365">Migrating from Amazon WorkMail to Microsoft 365</h1>
+<h2 id="part-1-tenant-setup-mailbox-migration">Part 1: Tenant Setup &amp; Mailbox Migration</h2>
+<hr />
+<h3 id="series-navigation">📚 <strong>Series Navigation</strong></h3>
+<ul>
+<li><strong>Part 1: Tenant Setup &amp; Mailbox Migration</strong> <em>(Current)</em></li>
+<li><a href="../email-workmail-to-m365-part2/">Part 2: DNS Cutover, Catch-All &amp; Cleanup</a></li>
+</ul>
+<p><em>AWS has announced the end of support for Amazon WorkMail, effective March 31, 2027. After that date, all WorkMail accounts, console access, and stored data will be permanently deleted with no recovery option. This two-part guide documents a real-world migration from Amazon WorkMail to Microsoft 365 Exchange Online, using the built-in IMAP migration tooling available in the Exchange Admin Center — no third-party tools required.</em></p>
 <blockquote>
-<p><strong>Note:</strong> For details on installing and configuring the <code>PyRFC</code> module inside a container, see the companion article: <a href="../sap-rfc-python-container/">Installing the PyRFC Module for SAP Integration</a></p>
+<p><strong>AWS Official End of Support Notice:</strong>
+<a href="https://docs.aws.amazon.com/workmail/latest/adminguide/workmail-end-of-support.html">https://docs.aws.amazon.com/workmail/latest/adminguide/workmail-end-of-support.html</a></p>
 </blockquote>
-<h2 id="introduction">Introduction</h2>
-<p>SAP ECC systems expose powerful RFC (Remote Function Call) interfaces that allow external programs to interact with SAP data and business logic. Python, with the help of the <a href="https://github.com/SAP/PyRFC">PyRFC</a> library, makes it possible to call these RFC function modules directly and process the results in a modern, flexible way.</p>
-<p>This article demonstrates how to:
-- Connect to an SAP ECC 6.0 (EHP 8) system from Python
-- Call a custom RFC function module 
-- Pass parameters to the RFC
-- Retrieve tabular data
-- Save the results to a CSV file</p>
-<p>We will use a modular, production-ready approach inspired by real-world enterprise integration scripts.</p>
+<hr />
+<h2 id="why-microsoft-365-and-not-awss-recommended-alternatives">Why Microsoft 365 and Not AWS's Recommended Alternatives?</h2>
+<p>AWS officially recommends migrating to Kopano Cloud, Zoho Mail, or Zoom Mail. These are reasonable options, but if your organization is already in the Microsoft ecosystem — using Outlook on desktop or mobile — Microsoft 365 Exchange Online is the natural home for your email. You get:</p>
+<ul>
+<li>Native Exchange protocol (not IMAP workarounds) for Outlook on PC and iPhone</li>
+<li>50 GB mailbox per user</li>
+<li>Full SPF, DKIM, and DMARC support with proper domain alignment</li>
+<li>Built-in IMAP migration tooling in Exchange Admin Center — no third-party software required</li>
+<li>A single platform for email, Teams, OneDrive, and identity management (Entra ID)</li>
+</ul>
+<p>There is no official AWS or Microsoft documentation specifically covering the WorkMail → Microsoft 365 migration path. This guide fills that gap based on a hands-on migration completed in September 2026.</p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>The migration is split into two parts:</p>
+<ul>
+<li><strong>Part 1 (this article):</strong> M365 tenant preparation, user creation, license assignment, and IMAP mailbox migration</li>
+<li><strong>Part 2:</strong> DNS cutover (MX, SPF, DKIM, DMARC), catch-all configuration, and AWS decommission</li>
+</ul>
+<p>The key principle throughout: <strong>mailbox data is migrated before any DNS records are changed.</strong> This means email continues flowing to WorkMail during the migration, and users experience zero disruption.</p>
 <hr />
 <h2 id="prerequisites">Prerequisites</h2>
+<p>Before starting, you need:</p>
 <ul>
-<li>Access to an SAP ECC system with a custom RFC function module you can call</li>
-<li>SAP user credentials with RFC permissions</li>
-<li>The <a href="https://github.com/SAP/PyRFC">PyRFC</a> library installed (see <a href="../sap-rfc-python-container/">Installing the PyRFC Module for SAP Integration</a> for setup)</li>
-<li>Python 3.7+</li>
+<li>An active Amazon WorkMail organization with admin access</li>
+<li>The IMAP server address for your WorkMail region (see table below)</li>
+<li>Passwords for each WorkMail mailbox being migrated (or admin rights to reset them)</li>
+<li>A Microsoft 365 tenant (existing or new) with Global Admin access</li>
+<li>Your custom domain already added and verified in M365 (or ready to be added)</li>
 </ul>
+<h3 id="workmail-imap-server-by-region">WorkMail IMAP Server by Region</h3>
+<table>
+<thead>
+<tr>
+<th>AWS Region</th>
+<th>IMAP Server</th>
+<th>Port</th>
+<th>Encryption</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US East (N. Virginia)</td>
+<td><code>imap.mail.us-east-1.awsapps.com</code></td>
+<td>993</td>
+<td>SSL/TLS</td>
+</tr>
+<tr>
+<td>US West (Oregon)</td>
+<td><code>imap.mail.us-west-2.awsapps.com</code></td>
+<td>993</td>
+<td>SSL/TLS</td>
+</tr>
+<tr>
+<td>Europe (Ireland)</td>
+<td><code>imap.mail.eu-west-1.awsapps.com</code></td>
+<td>993</td>
+<td>SSL/TLS</td>
+</tr>
+</tbody>
+</table>
+<p>To confirm your region, check the URL in the AWS WorkMail console — it will contain the region identifier (e.g., <code>us-east-1</code>).</p>
+<blockquote>
+<p><strong>AWS WorkMail IMAP documentation:</strong>
+<a href="https://docs.aws.amazon.com/workmail/latest/userguide/using_IMAP.html">https://docs.aws.amazon.com/workmail/latest/userguide/using_IMAP.html</a></p>
+</blockquote>
 <hr />
-<h2 id="example-extracting-data-from-sap-via-rfc">Example: Extracting Data from SAP via RFC</h2>
-<p>Suppose you want to extract financial data from SAP using a custom RFC function module. The following example shows how to do this in a robust, reusable way.</p>
-<h3 id="1-define-your-rfc-connection-and-extract-configuration">1. Define Your RFC Connection and Extract Configuration</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pyrfc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">LogonError</span><span class="p">,</span> <span class="n">ABAPApplicationError</span><span class="p">,</span> <span class="n">ABAPRuntimeError</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
-
-<span class="c1"># Configure logging</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;sap_rfc_extract&quot;</span><span class="p">)</span>
-
-<span class="c1"># --- RFC Connection Parameters (replace with your SAP system details) ---</span>
-<span class="n">SAP_CONN_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;ashost&#39;</span><span class="p">:</span> <span class="s1">&#39;SAP_APP_SERVER_HOST&#39;</span><span class="p">,</span>   <span class="c1"># SAP application server</span>
-    <span class="s1">&#39;sysnr&#39;</span><span class="p">:</span> <span class="s1">&#39;00&#39;</span><span class="p">,</span>                     <span class="c1"># System number</span>
-    <span class="s1">&#39;client&#39;</span><span class="p">:</span> <span class="s1">&#39;100&#39;</span><span class="p">,</span>                   <span class="c1"># Client number</span>
-    <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="s1">&#39;SAP_USERNAME&#39;</span><span class="p">,</span>            <span class="c1"># SAP user</span>
-    <span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;SAP_PASSWORD&#39;</span><span class="p">,</span>          <span class="c1"># SAP password</span>
-    <span class="s1">&#39;lang&#39;</span><span class="p">:</span> <span class="s1">&#39;EN&#39;</span><span class="p">,</span>                      <span class="c1"># Language</span>
-<span class="p">}</span>
-
-<span class="c1"># --- RFC Extract Configuration ---</span>
-<span class="n">EXTRACT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;example_extract&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;function_module&#39;</span><span class="p">:</span> <span class="s1">&#39;ZMY_CUSTOM_RFC_MODULE&#39;</span><span class="p">,</span>  <span class="c1"># Replace with your RFC FM name</span>
-        <span class="s1">&#39;table_name&#39;</span><span class="p">:</span> <span class="s1">&#39;IT_RESULT_TAB&#39;</span><span class="p">,</span>              <span class="c1"># The table returned by the RFC</span>
-        <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IM_CC&#39;</span><span class="p">,</span> <span class="s1">&#39;IM_YEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;IM_PERIOD&#39;</span><span class="p">],</span>
-        <span class="s1">&#39;default_params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;IM_CC&#39;</span><span class="p">:</span> <span class="s1">&#39;1000&#39;</span><span class="p">,</span> <span class="s1">&#39;IM_YEAR&#39;</span><span class="p">:</span> <span class="s1">&#39;2025&#39;</span><span class="p">,</span> <span class="s1">&#39;IM_PERIOD&#39;</span><span class="p">:</span> <span class="s1">&#39;05&#39;</span><span class="p">},</span>
-        <span class="s1">&#39;filename_fmt&#39;</span><span class="p">:</span> <span class="s1">&#39;sap_extract_</span><span class="si">{cc}</span><span class="s1">_</span><span class="si">{year}</span><span class="s1">_</span><span class="si">{period}</span><span class="s1">.csv&#39;</span><span class="p">,</span>
-    <span class="p">},</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="2-utility-functions-for-rfc-calls-and-csv-export">2. Utility Functions for RFC Calls and CSV Export</h3>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">call_rfc</span><span class="p">(</span><span class="n">conn_params</span><span class="p">,</span> <span class="n">function_module</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">conn</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="o">**</span><span class="n">conn_params</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calling RFC: </span><span class="si">{</span><span class="n">function_module</span><span class="si">}</span><span class="s2"> with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">function_module</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">LogonError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Logon Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">ABAPApplicationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ABAP Application Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">ABAPRuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ABAP Runtime Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="kc">None</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">export_result_to_csv</span><span class="p">(</span><span class="n">table_data</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">table_data</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No data to export.&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
-        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">table_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-        <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
-        <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">table_data</span><span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exported data to </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="3-main-script-running-the-extract">3. Main Script: Running the Extract</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Run SAP RFC extract via PyRFC.&quot;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--im_cc&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">&#39;example_extract&#39;</span><span class="p">][</span><span class="s1">&#39;default_params&#39;</span><span class="p">][</span><span class="s1">&#39;IM_CC&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Company code&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--im_year&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">&#39;example_extract&#39;</span><span class="p">][</span><span class="s1">&#39;default_params&#39;</span><span class="p">][</span><span class="s1">&#39;IM_YEAR&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Fiscal year&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--im_period&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">&#39;example_extract&#39;</span><span class="p">][</span><span class="s1">&#39;default_params&#39;</span><span class="p">][</span><span class="s1">&#39;IM_PERIOD&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Fiscal period&#39;</span><span class="p">)</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
-
-    <span class="c1"># Prepare parameters for RFC call</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;IM_CC&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">im_cc</span><span class="p">,</span>
-        <span class="s1">&#39;IM_YEAR&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">im_year</span><span class="p">,</span>
-        <span class="s1">&#39;IM_PERIOD&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">im_period</span><span class="p">,</span>
-    <span class="p">}</span>
-
-    <span class="n">config</span> <span class="o">=</span> <span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">&#39;example_extract&#39;</span><span class="p">]</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">call_rfc</span><span class="p">(</span><span class="n">SAP_CONN_PARAMS</span><span class="p">,</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;function_module&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">result</span> <span class="ow">and</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;table_name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
-        <span class="c1"># Build filename</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;filename_fmt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">cc</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">im_cc</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">im_year</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">im_period</span>
-        <span class="p">)</span>
-        <span class="n">export_result_to_csv</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;table_name&#39;</span><span class="p">]],</span> <span class="n">filename</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;No data returned from RFC or table not found in result.&quot;</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
-</code></pre></div>
-<hr />
-<h2 id="4-running-the-script">4. Running the Script</h2>
-<p>You can run the script from the command line, specifying parameters as needed:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>sap_rfc_extract.py<span class="w"> </span>--im_cc<span class="o">=</span><span class="m">1000</span><span class="w"> </span>--im_year<span class="o">=</span><span class="m">2025</span><span class="w"> </span>--im_period<span class="o">=</span><span class="m">05</span>
-</code></pre></div>
+<h2 id="important-a-note-on-mailbox-passwords">Important: A Note on Mailbox Passwords</h2>
+<p>The IMAP migration tool requires the <strong>WorkMail password</strong> for each mailbox being migrated. As a WorkMail admin, you can reset any user's password from the WorkMail console without knowing the current password:</p>
 <ul>
-<li>The script will connect to SAP, call the RFC, and save the results to a CSV file (e.g., <code>sap_extract_1000_2025_05.csv</code>).</li>
-<li>You can override any parameter using the command line.</li>
+<li>AWS Console → WorkMail → Organizations → your org → Users → select user → Reset password</li>
 </ul>
+<p>Set a temporary password, note it down, and use it in the migration CSV file. The password only needs to work for the duration of the migration — a few hours at most.</p>
 <hr />
-<h2 id="5-step-by-step-explanation">5. Step-by-Step Explanation</h2>
+<h2 id="step-1-prepare-your-microsoft-365-tenant">Step 1: Prepare Your Microsoft 365 Tenant</h2>
+<h3 id="do-you-already-have-an-m365-tenant">Do You Already Have an M365 Tenant?</h3>
+<p>Before purchasing a new subscription, check whether a tenant already exists for your domain. This is more common than expected — organizations sometimes create tenants during learning or trials and forget about them.</p>
+<p>To check, open a browser and navigate to:</p>
+<div class="highlight"><pre><span></span><code>https://login.microsoftonline.com/yourdomain.com/.well-known/openid-configuration
+</code></pre></div>
+<p>If the response contains a valid <code>issuer</code> URL with a tenant GUID, a tenant already exists. If you get an error, no tenant exists and you can create a fresh one.</p>
+<p>If a tenant does exist, verify you have admin credentials before proceeding. Signing in at <a href="https://admin.microsoft.com">https://admin.microsoft.com</a> with your domain email will confirm access.</p>
+<h3 id="choosing-the-right-license">Choosing the Right License</h3>
+<p>For email-only migration from WorkMail, two plans are appropriate:</p>
+<table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>Price</th>
+<th>What's Included</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exchange Online Plan 1</td>
+<td>$4/user/month</td>
+<td>Email only — 50 GB mailbox, Outlook support</td>
+</tr>
+<tr>
+<td>Microsoft 365 Business Basic</td>
+<td>$7/user/month</td>
+<td>Email + 1 TB OneDrive + Teams + web Office apps</td>
+</tr>
+</tbody>
+</table>
+<p>If your users only need email, Exchange Online Plan 1 is sufficient. If you want OneDrive for Business and Teams included, Business Basic is worth the upgrade. Both plans support native Exchange connectivity for Outlook on PC and iPhone — no IMAP configuration needed post-migration.</p>
+<p>Purchase licenses via the M365 Admin Center: <strong>Billing → Purchase services</strong>.</p>
+<hr />
+<h2 id="step-2-add-and-verify-your-domain-in-m365">Step 2: Add and Verify Your Domain in M365</h2>
+<p>If your domain is not yet verified in M365:</p>
 <ol>
-<li><strong>Configuration:</strong></li>
-<li>All SAP connection details and extract metadata are defined at the top for easy maintenance.</li>
-<li>
-<p>The RFC function module name and table name are generic placeholders—replace them with your actual SAP details.</p>
-</li>
-<li>
-<p><strong>Calling the RFC:</strong></p>
-</li>
-<li>The <code>call_rfc</code> function establishes a connection and calls the RFC, handling common SAP errors.</li>
-<li>
-<p>Parameters are passed as a dictionary, matching the RFC signature.</p>
-</li>
-<li>
-<p><strong>Exporting Data:</strong></p>
-</li>
-<li>
-<p>The <code>export_result_to_csv</code> function writes the returned table to a CSV file, using the first row's keys as headers.</p>
-</li>
-<li>
-<p><strong>Command-Line Interface:</strong></p>
-</li>
-<li>
-<p>The script uses <code>argparse</code> to allow easy parameter overrides from the command line.</p>
-</li>
-<li>
-<p><strong>Error Handling:</strong></p>
-</li>
-<li>All errors are logged, and the script will not crash on SAP or network errors.</li>
+<li>Go to <strong>Microsoft 365 Admin Center → Settings → Domains → Add domain</strong></li>
+<li>Enter your domain name and follow the verification wizard</li>
+<li>M365 will provide a TXT record to add to your DNS provider for verification</li>
+<li>Add only the verification TXT record at this stage — <strong>do not change MX records yet</strong></li>
+<li>Return to M365 and click Verify</li>
 </ol>
+<blockquote>
+<p><strong>Important:</strong> When M365 asks how you want to connect your domain, select <strong>"Add your own DNS records"</strong> — not the automatic option. You will manage DNS changes manually in Part 2, after mailbox migration is confirmed complete.</p>
+</blockquote>
 <hr />
-<h2 id="conclusion">Conclusion</h2>
-<p>With this approach, you can easily:
-- Call any SAP RFC function module from Python
-- Parameterize your extracts
-- Save results to CSV for downstream processing
-- Integrate SAP data into modern Python workflows</p>
-<p>For more advanced scenarios (multi-company code loops, dynamic extract configuration, etc.), see the full project code or reach out for further examples.</p>
+<h2 id="step-3-create-user-accounts-and-assign-licenses">Step 3: Create User Accounts and Assign Licenses</h2>
+<p>For each user being migrated from WorkMail:</p>
+<ol>
+<li>Go to <strong>M365 Admin Center → Users → Active Users → Add a user</strong></li>
+<li>Create the account with the same email address as WorkMail (e.g., <code>user@yourdomain.com</code>)</li>
+<li>Set a temporary password</li>
+<li>Assign the purchased license (Exchange Online Plan 1 or Business Basic)</li>
+</ol>
+<blockquote>
+<p><strong>Usage Location requirement:</strong> Microsoft requires a usage location to be set before a license can be assigned. If you receive a license assignment error, go to the user's profile → Edit → Settings → set Usage location to your country, then retry the license assignment.</p>
+</blockquote>
+<p>After license assignment, verify mailboxes are provisioned by going to <strong>Exchange Admin Center → Recipients → Mailboxes</strong>. Both user mailboxes should appear within a few minutes.</p>
 <hr />
-<h2 id="further-reading">Further Reading</h2>
+<h2 id="step-4-run-the-imap-migration">Step 4: Run the IMAP Migration</h2>
+<p>This is the core step — pulling all email from WorkMail into M365. This runs entirely in the background while WorkMail continues receiving new email. Users experience no disruption.</p>
+<h3 id="41-create-the-migration-batch">4.1 Create the Migration Batch</h3>
+<p>Navigate to <strong>Exchange Admin Center → Migration → Migration batches → + Add migration batch</strong></p>
 <ul>
-<li><a href="https://github.com/SAP/PyRFC">PyRFC Documentation</a></li>
-<li><a href="https://support.sap.com/en/product/connectors.html">SAP RFC SDK</a></li>
-<li><a href="../sap-rfc-python-container/">Installing the PyRFC Module for SAP Integration</a> — How to install and configure PyRFC in a container</li>
+<li><strong>Migration batch name:</strong> Give it a descriptive name (e.g., <code>WorkMail-Migration-Sept2026</code>)</li>
+<li><strong>Migration path:</strong> Migration to Exchange Online</li>
+<li><strong>Migration type:</strong> IMAP migration</li>
 </ul>
+<h3 id="42-configure-the-imap-endpoint">4.2 Configure the IMAP Endpoint</h3>
+<p>On the IMAP server configuration screen, enter:</p>
+<ul>
+<li><strong>IMAP server:</strong> your WorkMail IMAP server address (from the table above)</li>
+<li><strong>Port:</strong> 993</li>
+<li><strong>Encryption:</strong> SSL</li>
+<li><strong>Accept untrusted certificates:</strong> unchecked</li>
+<li><strong>Skip verification:</strong> unchecked</li>
+</ul>
+<p>Click Next — M365 will validate connectivity to your WorkMail IMAP server.</p>
+<h3 id="43-prepare-the-migration-csv">4.3 Prepare the Migration CSV</h3>
+<p>Download the CSV template provided by the wizard. The format is:</p>
+<div class="highlight"><pre><span></span><code>EmailAddress,UserName,Password
+user1@yourdomain.com,user1@yourdomain.com,TempPassword123!
+user2@yourdomain.com,user2@yourdomain.com,TempPassword456!
+</code></pre></div>
+<p>Key points:
+- <code>EmailAddress</code> must match the M365 mailbox address exactly
+- <code>UserName</code> for WorkMail is always the full email address
+- Use the temporary passwords you set in Step 0 (or reset them now)
+- Save the file and upload it in the wizard</p>
+<h3 id="44-configure-migration-settings">4.4 Configure Migration Settings</h3>
+<p>On the configuration settings screen:
+- Leave both folder filter checkboxes <strong>unchecked</strong> — migrate everything, all folders, all time ranges
+- Set your notification email address for completion alerts
+- <strong>Start:</strong> Automatically
+- <strong>End:</strong> Leave disabled — you will monitor and manage the batch manually</p>
+<p>Click <strong>Save</strong> to start the migration batch.</p>
+<h3 id="45-monitor-the-migration">4.5 Monitor the Migration</h3>
+<p>Go to <strong>Migration → Migration batches</strong> and click on your batch. The status will progress through:</p>
+<ul>
+<li><strong>Queued</strong> → starting up</li>
+<li><strong>Syncing</strong> → actively copying email from WorkMail</li>
+<li><strong>Synced</strong> → initial copy complete, incremental sync running</li>
+</ul>
+<p>The migration log shows real-time progress including messages copied, bytes transferred, and folders completed. For a 500 MB mailbox, expect 10–30 minutes depending on network speed.</p>
+<p>When the log shows:</p>
+<div class="highlight"><pre><span></span><code>Mailbox contents verification of target mailbox: successful
+Source and Target: X folders, X items, X MB
+</code></pre></div>
+<p>The migration is complete and verified. All email is now safely in M365.</p>
+<h3 id="46-run-an-incremental-sync-after-dns-cutover">4.6 Run an Incremental Sync After DNS Cutover</h3>
+<p>After you change MX records in Part 2, some email may arrive at WorkMail during the DNS propagation window (typically 30–60 minutes). To capture these stragglers, run the migration batch one more time after DNS has fully propagated — M365 will only copy new items not yet migrated (delta sync).</p>
+<hr />
+<h2 id="what-imap-migration-does-and-does-not-migrate">What IMAP Migration Does and Does Not Migrate</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Migrated?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inbox</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td>Sent Items</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td>Deleted Items</td>
+<td>✅ Yes (including items deleted but not purged)</td>
+</tr>
+<tr>
+<td>All custom folders</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td>Contacts</td>
+<td>❌ No — export from WorkMail webmail as .vcf and import manually</td>
+</tr>
+<tr>
+<td>Calendar items</td>
+<td>❌ No — export from WorkMail webmail as .ics and import manually</td>
+</tr>
+<tr>
+<td>Tasks</td>
+<td>❌ No</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note on deleted items:</strong> IMAP migration pulls everything present on the server, including items in the Deleted Items folder that were never permanently purged. Users may see emails they thought were deleted reappear in their M365 mailbox. This is expected — Exchange Online now handles deletions properly (true two-way sync), so users can delete these items and they will sync across all devices immediately.</p>
+</blockquote>
+<hr />
+<h2 id="lessons-learned">Lessons Learned</h2>
+<p><strong>Reset mailbox passwords before starting.</strong> The IMAP migration fails silently if credentials are wrong — the batch shows as syncing with 0 bytes transferred. Always test IMAP credentials manually before running the migration.</p>
+<p><strong>Don't change DNS before migration completes.</strong> The safest sequence is: migrate first, verify the data is in M365, then cut over DNS. Changing MX records while migration is running doesn't break anything, but it adds unnecessary complexity.</p>
+<p><strong>The migration is non-destructive.</strong> WorkMail is not modified or affected in any way. If the migration fails or data looks wrong, WorkMail is still intact and you can start over.</p>
+<p><strong>Mailbox size matters less than you expect.</strong> A 500 MB mailbox migrates in under 30 minutes on a normal broadband connection. Even a 2 GB mailbox typically completes within a couple of hours.</p>
+<hr />
+<h2 id="next-steps">Next Steps</h2>
+<p>With mailboxes confirmed in M365, Part 2 covers:</p>
+<ul>
+<li>Updating DNS records (MX, SPF, DKIM, DMARC) at your DNS provider</li>
+<li>Setting up catch-all email for non-existent addresses</li>
+<li>Verifying email health with header analysis</li>
+<li>Decommissioning the WorkMail organization and cleaning up AWS resources</li>
+</ul>
+<blockquote>
+<p><strong>References:</strong>
+- AWS WorkMail end of support: <a href="https://docs.aws.amazon.com/workmail/latest/adminguide/workmail-end-of-support.html">https://docs.aws.amazon.com/workmail/latest/adminguide/workmail-end-of-support.html</a>
+- AWS WorkMail IMAP settings: <a href="https://docs.aws.amazon.com/workmail/latest/userguide/using_IMAP.html">https://docs.aws.amazon.com/workmail/latest/userguide/using_IMAP.html</a>
+- Microsoft IMAP migration guide: <a href="https://learn.microsoft.com/en-us/exchange/mailbox-migration/migrating-imap-mailboxes/migrating-imap-mailboxes">https://learn.microsoft.com/en-us/exchange/mailbox-migration/migrating-imap-mailboxes/migrating-imap-mailboxes</a></p>
+</blockquote>
 
 
 
@@ -2916,7 +3311,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 30, 2025 21:58:08 UTC">June 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 16:38:19 UTC">September 10, 2026</span>
   </span>
 
     
