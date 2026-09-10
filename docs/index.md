@@ -80,6 +80,8 @@
 - [O365 and Proof Point Essentials - Part 4](email-o365-proofpoint-part4.md)
 - [O365 and Proof Point Essentials - Part 5](email-o365-proofpoint-part5.md)
 - [O365/Excel Automation via SPO](spo-o365_excel_automation.md)
+- [Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration)](email-workmail-to-m365-part1.md)
+- [Migrating from Amazon WorkMail to Microsoft 365 - Part 2 (DNS Cutover, Catch-All & Cleanup)](email-workmail-to-m365-part2.md)
 
 ---
 

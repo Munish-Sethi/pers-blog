@@ -1,9 +1,10 @@
-site_name: Munish(s) Blog
+site_name: Munish Sethi's Technical Blog
 site_description: >-
   A professional blog showcasing business problem solutions.
 site_url: https://munishsethi.com/
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.sections
     - content.code.annotate
@@ -77,6 +78,8 @@ nav:
       - O365 and Proof Point Essentials - Part 4: email-o365-proofpoint-part4.md
       - O365 and Proof Point Essentials - Part 5: email-o365-proofpoint-part5.md
       - O365/Excel Automation via SPO: spo-o365_excel_automation.md
+      - Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration): email-workmail-to-m365-part1.md
+      - Migrating from Amazon WorkMail to Microsoft 365 - Part 2 (DNS Cutover, Catch-All & Cleanup): email-workmail-to-m365-part2.md
   - UKG:
       - Secure File Transfer with UKG Dimensions: ukg-sftp-file-transfer.md
       - Employee Verification via API: ukg-api-employee-verification.md
