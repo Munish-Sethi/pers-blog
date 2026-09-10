@@ -1,3 +1,7 @@
+---
+description: Retrieving Entra ID device inventory and registered-user information programmatically with Python and the Microsoft Graph API.
+---
+
 # Retrieving Entra (Azure AD) User Device 
 
 ## Introduction

@@ -1,3 +1,7 @@
+---
+description: Connecting an MCP server directly to OneStream's REST API so executives can query live financial cube data conversationally through Claude, secured via Azure OAuth.
+---
+
 # Exposing OneStream Financial Data to an LLM Securely — Live CEO/CFO Analytics via MCP
 
 ## Introduction

@@ -1,3 +1,7 @@
+---
+description: A Bash script approach for identifying obsolete FSLogix profile containers in Azure Files based on last-modified date to cut storage costs and improve AVD performance.
+---
+
 # Cleaning Up Obsolete FSLogix Profiles in Azure
 
 Obsolete FSLogix profile containers can consume significant storage and increase costs in Azure environments. This article explains how to identify and delete outdated profiles using a Bash script, helping you save space and reduce expenses. The approach is multi-step: first, list and analyze profiles, then safely delete those that are no longer needed. This process is ideal for automation and can be run in a container for portability and security.

@@ -1,3 +1,7 @@
+---
+description: A Python workflow for importing employee CSV data into Azure Fabric Data Warehouse using pyodbc and Azure Data Lake Storage Gen2.
+---
+
 # Importing Data into Fabric Data Warehouse 
 
 ## Introduction

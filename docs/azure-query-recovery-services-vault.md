@@ -1,3 +1,7 @@
+---
+description: Querying Azure Recovery Services Vault backup details with the Python SDK and a service principal for compliance reporting and operational analysis.
+---
+
 # Querying Azure Recovery Services Vault (RSV)
 
 ## Introduction

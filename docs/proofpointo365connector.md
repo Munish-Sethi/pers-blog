@@ -1,3 +1,7 @@
+---
+description: How attackers bypassed Office 365 and Proofpoint MX record protections via .onmicrosoft.com domains, and the redirect-based SPF/DKIM/DMARC fix that closed the gap.
+---
+
 # Understanding SPF, DKIM, and DMARC in O365 with Proofpoint: Preventing Spoofing and Bypass Attacks
 
 ## Introduction

@@ -1,3 +1,7 @@
+---
+description: How to build and send actionable Adaptive Card emails in Outlook with Python and Microsoft Graph so managers can review consultants directly from their inbox.
+---
+
 # Reviewing Consultants via Adaptive Card (Actionable Outlook Messages) – Part 1
 
 In this article, we’ll walk through a real-world Python implementation for reviewing consultants using Adaptive Cards in Outlook. This solution enables managers to receive an actionable email, review their consultants, and submit decisions directly from their inbox. We'll cover the end-to-end process, focusing on how to build and send an actionable Adaptive Card email using Python and Microsoft Graph.

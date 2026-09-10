@@ -1,3 +1,7 @@
+---
+description: Securely transferring and PGP-encrypting/decrypting files with UKG Dimensions SFTP using Python, pysftp, paramiko, and Azure Key Vault for credentials.
+---
+
 # Secure File Transfer with UKG Dimensions SFTP
 
 ---

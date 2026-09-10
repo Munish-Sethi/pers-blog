@@ -1,3 +1,7 @@
+---
+description: Deploying Azure Container Instances with a Bicep Infrastructure-as-Code template, including secure parameters sourced from Azure Key Vault.
+---
+
 # Deploying Azure Container Instances with BICEP (IaC)
 
 This article demonstrates how to use Infrastructure as Code (IaC) with BICEP to deploy an Azure Container Instance (ACI). We'll walk through the main BICEP template, explain each section, and highlight best practices such as using Azure Key Vault for secrets management.

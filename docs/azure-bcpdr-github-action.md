@@ -1,3 +1,7 @@
+---
+description: Automating a full Azure backup-and-restore disaster recovery run end-to-end with GitHub Actions workflows for infrastructure, VM restore, and NIC attachment.
+---
+
 # Azure BCP/DR with GitHub Actions: Fully Automated Disaster Recovery
 
 This article demonstrates how to automate the entire Azure Business Continuity/Disaster Recovery (BCP/DR) process using GitHub Actions. If you want to understand the step-by-step process, rationale, and all code involved, first review:

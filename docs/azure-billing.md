@@ -1,3 +1,7 @@
+---
+description: Programmatically downloading Azure billing/cost data via the REST API using certificate-based authentication and storing results in SQL Server with Python.
+---
+
 <!-- Programmatically Downloading and Storing Azure Billing Data -->
 
 # Programmatically Downloading and Storing Azure Billing Data: 

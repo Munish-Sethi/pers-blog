@@ -1,3 +1,7 @@
+---
+description: Part 1 of an Azure BCP/DR series: building the resource group, storage, and network foundation in a secondary region using Bicep for cost-effective backup-based disaster recovery.
+---
+
 # Azure BCP/DR with Backup & Restore: Part 1 – Resource Group, Storage, and Network Foundation
 
 This multi-part technical blog series walks you through a practical, cost-effective approach to Business Continuity and Disaster Recovery (BCP/DR) in Azure using backup and restore, rather than Azure Site Recovery. The scenario targets restoring all critical infrastructure from Azure East (primary) to Azure West (DR region). Each step is explained with code and rationale, so you can duplicate this in your own environment.

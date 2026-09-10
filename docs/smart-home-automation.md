@@ -1,3 +1,7 @@
+---
+description: Deploying Home Assistant on Hyper-V to unify pool equipment WiFi timers, multi-zone audio, and security cameras into one smart home platform, including Matter pitfalls.
+---
+
 # From Pool Timers to a Full Smart Home Automation Platform in a Weekend
 ## Deploying Home Assistant on Hyper-V to Unify Pool Equipment, Multi-Zone Audio, and Security Cameras
 

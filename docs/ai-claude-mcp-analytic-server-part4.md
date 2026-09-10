@@ -1,3 +1,7 @@
+---
+description: A debugging workflow for HTTPS-based MCP servers using VS Code's Python debugger and Cloudflare Tunnels to test OAuth flows locally without redeploying.
+---
+
 # Secure, On-Premises Data Analysis with LLM and a Custom MCP Server
 ## Part 4: Debugging MCP Servers with VS Code and Cloudflare Tunnels
 

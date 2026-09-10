@@ -1,3 +1,7 @@
+---
+description: Integrating Nagios monitoring with ServiceDesk Plus ITSM using Python to automatically open and close tickets based on monitoring events.
+---
+
 # Integrating Monitoring System with ITSM System
 
 This technical article provides a comprehensive, vendor-neutral guide to integrating a monitoring system (Nagios) with an ITSM system (ServiceDesk Plus by ManageEngine) using Python. The solution demonstrates how to automatically open and close ITSM tickets based on monitoring events, with all relevant code and in-line explanations. 

@@ -1,3 +1,7 @@
+---
+description: Automating Microsoft 365 and Active Directory user deprovisioning with Python, including account disabling and reassigning OneDrive and mailbox access to a manager.
+---
+
 # Automating User Deprovisioning in Microsoft 365: OneDrive and Mailbox Reassignment
 
 When an employee leaves an organization, it's critical to deprovision their accounts securely and efficiently, while ensuring business continuity. This article demonstrates a Python-based approach to automate user deprovisioning in Microsoft 365, focusing on:

@@ -1,3 +1,7 @@
+---
+description: Part 1 of a two-part series automating Azure VM restore from Recovery Services Vault backups across regions using the restorevms.ps1 PowerShell script.
+---
+
 # Azure VM Restore from Backup – Part 1: Automated Restore with PowerShell
 
 This article is Part 1 of a two-part series on automating Azure VM restore from Recovery Services Vault (RSV) backups, enabling Business Continuity/Disaster Recovery (BCP/DR) across regions. Here, we focus on the main restore process using the `restorevms.ps1` script. In [Part 2](./azure-restore-from-backup-part2.md), we cover NIC re-creation and IP assignment for a true like-for-like DR.

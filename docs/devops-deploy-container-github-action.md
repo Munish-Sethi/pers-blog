@@ -1,3 +1,7 @@
+---
+description: Running an Azure Container Instance Bicep deployment through a GitHub Actions workflow, covering build, push, and deploy steps.
+---
+
 # How to Run Your Azure Container Instance Bicep Deployment
 
 This article explains how to execute your Bicep-based Azure Container Instance deployment, both via GitHub Actions and from the command line.

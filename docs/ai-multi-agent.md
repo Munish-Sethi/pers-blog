@@ -1,3 +1,7 @@
+---
+description: Architecture and implementation of a production multi-agent AI assistant for Microsoft Teams, combining an Azure AI Foundry RAG agent, a local tool agent, and an MCP data-analysis agent.
+---
+
 # Building an Enterprise Multi-Agent AI System with Microsoft Teams Integration
 ## A Production-Ready Architecture Using Azure AI Foundry, Model Context Protocol, and Agent Orchestration
 

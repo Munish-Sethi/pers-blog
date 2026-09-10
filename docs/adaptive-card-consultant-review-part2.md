@@ -1,3 +1,7 @@
+---
+description: A deep dive into securely receiving, verifying, and processing the manager's Adaptive Card response, including JWT validation of the Action-Authorization header.
+---
+
 # Company-Agnostic Adaptive Card Consultant Review Blog (Part 2, Deep Dive)
 
 ## Introduction

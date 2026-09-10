@@ -1,3 +1,7 @@
+---
+description: Part 1 of a series on building a custom local MCP server that lets Claude Desktop run natural-language queries against enterprise CSV and Parquet files using Polars.
+---
+
 # Secure, On-Premises Data Analysis with LLM and a Custom MCP Server
 ## Part 1: CSV/Parquet files 
 

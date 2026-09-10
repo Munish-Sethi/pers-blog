@@ -1,3 +1,7 @@
+---
+description: Part 1 of an email security series explaining the fundamentals of SPF, DKIM, and DMARC before integrating Office 365 with Proofpoint Essentials.
+---
+
 # 📧 Email Security Implementation (O365 and Proof Point Essentials) Series
 ## Part 1: Understanding SPF, DKIM, and DMARC Fundamentals
 

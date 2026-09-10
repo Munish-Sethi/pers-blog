@@ -1,3 +1,7 @@
+---
+description: Part 4 configuring Proofpoint Essentials domain relay, security features, warning tags, and DKIM key management to complete the O365 integration.
+---
+
 # 📧 Email Security Implementation (O365 and Proof Point Essentials) Series
 ## Part 4: Proofpoint Integration Setup
 

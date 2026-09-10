@@ -1,3 +1,7 @@
+---
+description: Calling custom SAP ECC RFC function modules from Python using PyRFC, including passing parameters, retrieving tabular data, and exporting to CSV.
+---
+
 # Calling SAP RFC Function Modules from Python Using PyRFC: A Step-by-Step Guide
 
 > **Note:** For details on installing and configuring the `PyRFC` module inside a container, see the companion article: [Installing the PyRFC Module for SAP Integration](sap-rfc-python-container.md)

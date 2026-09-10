@@ -1,3 +1,7 @@
+---
+description: Deploying Azure Virtual Desktop VMs from a custom Compute Gallery image with Bicep, including domain join via a service account and post-deployment validation.
+---
+
 # Part 2: Deploying Azure Virtual Desktop (AVD) Desktops
 
 This article provides a detailed, step-by-step guide to deploying AVD VMs from a custom image in the Azure Compute Gallery, joining them to a domain, and ensuring a successful deployment. For the image creation process, see [Part 1: Building and Publishing an AVD Image](avd-custon-image-compute-gallery-part1.md).

@@ -1,3 +1,7 @@
+---
+description: A step-by-step guide to installing the SAP NetWeaver RFC SDK and building the PyRFC Python package for SAP integration in a container.
+---
+
 # Installing the `PyRFC` Module for SAP Integration: A Step-by-Step Guide
 
 Integrating Python with SAP systems using the `PyRFC` module can unlock powerful automation and data access capabilities. This article provides a clear, professional walkthrough for setting up the SAP NetWeaver RFC SDK and building the `PyRFC` Python package from scratch.

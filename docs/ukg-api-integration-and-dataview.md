@@ -1,3 +1,7 @@
+---
+description: Automating UKG Dimensions integration execution (such as payroll exports) and DataView extraction via Hyperfind queries using Python.
+---
+
 # Automating UKG Dimensions Integrations and DataView Exports with Python
 
 ## Introduction

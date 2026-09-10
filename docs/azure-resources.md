@@ -1,3 +1,7 @@
+---
+description: Programmatically inventorying Azure resources and their tags with Python and syncing the results into a SQL Server database for governance and cost management.
+---
+
 <!-- Azure Resources Article -->
 
 # Programmatically Downloading Azure Resource Inventory and Tag Management

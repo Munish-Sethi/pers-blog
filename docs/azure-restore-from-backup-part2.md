@@ -1,3 +1,7 @@
+---
+description: Part 2 covering NIC re-creation and IP re-assignment for Azure VMs restored from backup, using the attachnics.ps1 PowerShell script for true like-for-like DR.
+---
+
 # Azure VM Restore from Backup – Part 2: NIC Re-Creation and IP Assignment
 
 This article is Part 2 of the series on automating Azure VM restore from Recovery Services Vault (RSV) backups for BCP/DR. Here, we focus on the process of re-creating and attaching NICs to restored VMs, ensuring each VM receives the correct IP address and network configuration—just as it was in the source region.

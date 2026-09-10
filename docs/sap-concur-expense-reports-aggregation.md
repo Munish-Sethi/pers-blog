@@ -1,3 +1,7 @@
+---
+description: Automating SAP Concur expense report aggregation via OAuth2 and delivering organization-wide rollups to managers through interactive Adaptive Card email notifications.
+---
+
 # Automating SAP Concur Expense Report Aggregation and Adaptive Card Notifications
 
 ## Introduction

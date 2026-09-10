@@ -1,3 +1,7 @@
+---
+description: Using Microsoft Graph API and Python to inject data into an Excel workbook stored on SharePoint Online, trigger native recalculation, and export refreshed charts to a PDF report.
+---
+
 # Programmatically Editing Excel Files on SharePoint Online with Python
 
 ## Introduction

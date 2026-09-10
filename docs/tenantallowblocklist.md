@@ -1,3 +1,7 @@
+---
+description: A technical case study diagnosing an O365 Tenant Allow/Block List false positive that blocked internal email after a user reported a message as phishing.
+---
+
 # Investigating a False Positive in O365 Tenant Allow/Block List: A Complete Technical Analysis
 
 ## Executive Summary

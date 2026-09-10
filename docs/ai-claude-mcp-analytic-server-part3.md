@@ -1,3 +1,7 @@
+---
+description: Turning a local stdio MCP server into a production HTTPS service secured with Azure Entra ID OAuth 2.0 and multi-tenant, containerized deployment.
+---
+
 # Secure, On-Premises Data Analysis with LLM and a Custom MCP Server
 ## Part 3: HTTPS-Based MCP Server with OAuth 2.0 (Azure Entra ID) and Multi-Tenant Architecture
 

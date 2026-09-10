@@ -1,3 +1,7 @@
+---
+description: A PowerShell solution for automating SAP ECC, BW, and Dispatch system start/stop operations with secure credential handling, logging, and email notifications.
+---
+
 # Automating SAP System Start/Stop Operations with PowerShell
 
 ## Introduction

@@ -1,3 +1,7 @@
+---
+description: Part 2 covering the DNS records needed for O365 and Proofpoint email security, including SPF character-limit handling, DKIM CNAMEs, and DMARC.
+---
+
 # 📧 Email Security Implementation (O365 and Proof Point Essentials) Series
 ## Part 2: DNS Configuration and Setup
 

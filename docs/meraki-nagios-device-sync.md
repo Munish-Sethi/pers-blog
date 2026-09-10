@@ -1,3 +1,7 @@
+---
+description: A Python workflow that syncs Cisco Meraki device inventory into Nagios XI monitoring, using SNMP OIDs for hostnames and checking firmware compliance.
+---
+
 # Automating Cisco Meraki Device Discovery and Nagios XI Monitoring Integration
 
 ## Introduction

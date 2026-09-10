@@ -1,3 +1,7 @@
+---
+description: Updating standard and custom Active Directory user attributes in bulk with Python's ldap3 library via the update_existing_users_adds function.
+---
+
 # Updating Active Directory User Attributes
 
 ## Introduction

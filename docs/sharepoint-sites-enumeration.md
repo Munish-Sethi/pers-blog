@@ -1,3 +1,7 @@
+---
+description: Programmatically enumerating all SharePoint sites in a Microsoft 365 tenant using Python, the Microsoft Graph API, and certificate-based authentication.
+---
+
 # How to Retrieve All SharePoint Sites in Your Microsoft 365 Tenant
 
 ## Introduction

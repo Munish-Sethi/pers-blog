@@ -1,3 +1,7 @@
+---
+description: How to generate a certificate with OpenSSL, upload it to an Entra ID app registration, and use certificate-based authentication instead of client secrets.
+---
+
 <!-- Certificate Based Authentication for Azure AD -->
 
 # Certificate-Based Authentication for Azure AD: Why and How

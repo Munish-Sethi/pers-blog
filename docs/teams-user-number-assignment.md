@@ -1,3 +1,7 @@
+---
+description: Retrieving Microsoft Teams phone number assignments for Entra ID users by combining Python with PowerShell Teams modules.
+---
+
 # Retrieving Teams Phone Number Assignments 
 
 ## Introduction

@@ -1,3 +1,7 @@
+---
+description: Validating employee data consistency between UKG Dimensions and a source HR system like ADP after a Dell Boomi integration, using Python to compare and report discrepancies.
+---
+
 # Validating Employee Data Consistency Between UKG and Your HR System
 
 ## Introduction

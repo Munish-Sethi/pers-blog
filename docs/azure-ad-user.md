@@ -1,3 +1,7 @@
+---
+description: Retrieving Entra ID users along with their group memberships and license assignments using Python and the Microsoft Graph API.
+---
+
 # Retrieving Entra (Azure AD) Users, Group Membership, and License Assignments 
 
 ## Introduction

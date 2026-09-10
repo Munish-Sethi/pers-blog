@@ -1,3 +1,7 @@
+---
+description: Building a custom Azure Virtual Desktop image with Bicep and publishing it to the Azure Compute Gallery, including cleaning up old image versions.
+---
+
 # Part 1: Building and Publishing an Custom Image to Azure Compute Gallery
 
 This article provides a comprehensive, step-by-step guide to creating a custom Azure Virtual Desktop (AVD) image using Infrastructure as Code (IaC), and publishing it to the Azure Compute Gallery. This is the foundation for deploying consistent, secure, and up-to-date AVD environments. For deploying AVD desktops from this image, see [Part 2](avd-publish-part2.md).

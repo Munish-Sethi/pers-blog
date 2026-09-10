@@ -1,3 +1,7 @@
+---
+description: Part 5 of the email security series: a testing and troubleshooting methodology covering DNS verification, O365 message tracing, and mail flow checks.
+---
+
 # 📧 Email Security Implementation (O365 and Proof Point Essentials) Series
 ## Part 5: Testing and Troubleshooting
 

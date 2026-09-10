@@ -1,3 +1,7 @@
+---
+description: Building a timezone-aware Python job scheduler for containerized environments using the schedule library, threading, and Supervisor for auto-start.
+---
+
 # Orchestrating Scheduled Jobs in a Python Container Using a Scheduler Script
 
 This article demonstrates how to build a robust job scheduler in a Python-based container environment. The scheduler coordinates the execution of various Python scripts at specific times or intervals, ensuring that business processes run reliably and in the correct timezone. The approach is suitable for any containerized environment, such as those running in Azure, AWS, or on-premises.

@@ -1,3 +1,7 @@
+---
+description: Automating Active Directory user creation and group assignment with Python and the ldap3 library, including secure connections and password setup.
+---
+
 # Automating Active Directory User Creation and Group Assignment
 
 ## Introduction

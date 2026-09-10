@@ -1,3 +1,7 @@
+---
+description: A multi-threaded Python solution for copying large volumes of files from SharePoint Online into Azure File Shares using chunked uploads for 30-50GB+ files.
+---
+
 # Copying Files from SharePoint to Azure File Share at Scale
 
 ## Overview

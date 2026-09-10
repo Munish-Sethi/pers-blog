@@ -1,3 +1,7 @@
+---
+description: Deploying a Cisco Meraki vMX virtual appliance in Azure with a Bicep template for SD-WAN connectivity between Azure and on-premises locations.
+---
+
 # Deploying Cisco Meraki vMX with BICEP
 
 This technical article walks you through deploying a Cisco Meraki vMX virtual appliance in Azure using a Bicep template. The vMX is commonly used for SD-WAN and secure connectivity between Azure and on-premises or branch locations. This guide explains the Bicep code, required parameters, and best practices for secure deployment.

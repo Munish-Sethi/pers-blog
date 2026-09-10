@@ -1,3 +1,7 @@
+---
+description: Extending a custom MCP server to run hybrid natural-language queries across both CSV/Parquet files and SQL Server databases with catalog-driven tool selection.
+---
+
 # Secure, On-Premises Data Analysis with LLM and a Custom MCP Server
 ## Part 2: CSV/Parquet & Database 
 

@@ -1,3 +1,7 @@
+---
+description: Inventorying all files and folders across every SharePoint site and document library in a Microsoft 365 tenant using Python and the Microsoft Graph API.
+---
+
 # SharePoint Files and Folders Inventory with Python and Microsoft Graph API
 
 ## Introduction

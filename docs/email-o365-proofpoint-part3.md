@@ -1,3 +1,7 @@
+---
+description: Part 3 configuring Office 365 inbound/outbound connectors, an SMTP relay connector, and a transport rule to integrate Proofpoint Essentials mail flow.
+---
+
 # 📧 Email Security Implementation (O365 and Proof Point Essentials) Series
 ## Part 3: Office 365 Connector Configuration
 

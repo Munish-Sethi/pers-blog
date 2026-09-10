@@ -1,3 +1,7 @@
+---
+description: Using the Meraki Dashboard API and Python to identify Meraki inventory devices that are not assigned to any network, for hardware utilization tracking.
+---
+
 # Identifying Unused Meraki Inventory Devices
 
 ## Introduction

@@ -1,3 +1,7 @@
+---
+description: Explaining the Dockerfile and requirements.txt used to build a Python-based Azure Container Instance image, including SQL Server driver setup.
+---
+
 # Building the Container Image: Dockerfile Explained
 
 This article explains how to build the container image for your Azure Container Instance, focusing on the `Dockerfile` and `requirements.txt`. This is the foundation for running your application in the cloud. For deploying and running the image using Bicep and GitHub Actions, see the related articles linked below.

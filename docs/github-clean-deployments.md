@@ -1,3 +1,7 @@
+---
+description: A Bash script using the GitHub CLI and jq to bulk-delete all deployments from a GitHub repository, since no UI option exists for this.
+---
+
 # Automating GitHub Deployment Cleanup with Bash, GitHub CLI, and jq
 
 Managing deployments in GitHub can be tedious, especially when you want to delete all deployments and there is no UI option to do so. This article explains how to automate the cleanup of deployments in a GitHub repository using a Bash script, the GitHub CLI, and the `jq` tool for JSON parsing.

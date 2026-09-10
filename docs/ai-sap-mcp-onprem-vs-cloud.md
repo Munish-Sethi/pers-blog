@@ -1,3 +1,7 @@
+---
+description: Why an on-premises SAP ECC system's direct SQL access makes it easier to connect an LLM/MCP server than S/4HANA Cloud's OData-only Virtual Data Model, with a real 8-hour dashboard example.
+---
+
 # SAP + AI: Did Moving to SaaS Quietly Cost Us Our Ability to Use AI on Our Own ERP Data?
 
 ## Introduction

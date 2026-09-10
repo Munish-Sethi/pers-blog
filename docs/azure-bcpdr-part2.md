@@ -1,3 +1,7 @@
+---
+description: Part 2 of an Azure BCP/DR series: deploying the Fortinet firewall, VPN, and compute resources and restoring VMs into the DR region with Bicep and PowerShell.
+---
+
 # Azure BCP/DR with Backup & Restore: Part 2 – Compute, Firewall, VPN, and Restore
 
 **[Back to Part 1: Resource Group, Storage, and Network Foundation](azure-bcpdr-part1.md)**

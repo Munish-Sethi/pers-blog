@@ -1,3 +1,7 @@
+---
+description: Using the Proofpoint Essentials API and Python to mark service/shared/terminated accounts as functional accounts, reducing licensing costs.
+---
+
 # Automating User Management in Proofpoint Essentials 
 
 ## Introduction
