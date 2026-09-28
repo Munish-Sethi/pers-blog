@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2235,6 +2235,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2716,7 +2744,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">server</span> <span class="o">=</span> <span class="n">ldap3</span><span class="o">.</span><span class="n">Server</span><span class="p">(</span><span class="n">dc_ip</span><span class="p">,</span> <span class="n">use_ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">conn</span> <span class="o">=</span> <span class="n">ldap3</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">LDAP_USER_ID</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">LDAP_USER_PASSWORD</span><span class="p">)</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">conn</span><span class="o">.</span><span class="n">bind</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in bind&#39;</span><span class="p">,</span> <span class="n">conn</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Error in bind'</span><span class="p">,</span> <span class="n">conn</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
 <p>This returns a connection object used for all subsequent LDAP operations.</p>
 <hr />
@@ -2727,13 +2755,13 @@
 <p><strong>Adds the user object:</strong>
   <div class="highlight"><pre><span></span><code><span class="n">conn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="n">distinguished_name</span><span class="p">,</span>
-    <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">,</span> <span class="s1">&#39;organizationalPerson&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'top'</span><span class="p">,</span> <span class="s1">'person'</span><span class="p">,</span> <span class="s1">'organizationalPerson'</span><span class="p">,</span> <span class="s1">'user'</span><span class="p">],</span>
     <span class="p">{</span>
-        <span class="s1">&#39;givenName&#39;</span><span class="p">:</span> <span class="n">first_name</span><span class="p">,</span>
-        <span class="s1">&#39;sn&#39;</span><span class="p">:</span> <span class="n">last_name</span><span class="p">,</span>
-        <span class="s1">&#39;sAMAccountName&#39;</span><span class="p">:</span> <span class="n">sam_account_name</span><span class="p">,</span>
-        <span class="s1">&#39;userPrincipalName&#39;</span><span class="p">:</span> <span class="n">upn_name</span><span class="p">,</span>
-        <span class="s1">&#39;mail&#39;</span><span class="p">:</span> <span class="n">upn_name</span>
+        <span class="s1">'givenName'</span><span class="p">:</span> <span class="n">first_name</span><span class="p">,</span>
+        <span class="s1">'sn'</span><span class="p">:</span> <span class="n">last_name</span><span class="p">,</span>
+        <span class="s1">'sAMAccountName'</span><span class="p">:</span> <span class="n">sam_account_name</span><span class="p">,</span>
+        <span class="s1">'userPrincipalName'</span><span class="p">:</span> <span class="n">upn_name</span><span class="p">,</span>
+        <span class="s1">'mail'</span><span class="p">:</span> <span class="n">upn_name</span>
     <span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -2744,8 +2772,8 @@
   <div class="highlight"><pre><span></span><code><span class="n">conn</span><span class="o">.</span><span class="n">modify</span><span class="p">(</span>
     <span class="n">distinguished_name</span><span class="p">,</span>
     <span class="p">{</span>
-        <span class="s1">&#39;userAccountControl&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">ldap3</span><span class="o">.</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="mi">512</span><span class="p">])],</span>  <span class="c1"># Enable the account</span>
-        <span class="s1">&#39;unicodePwd&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">ldap3</span><span class="o">.</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">default_password</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-16-le&#39;</span><span class="p">)])]</span>
+        <span class="s1">'userAccountControl'</span><span class="p">:</span> <span class="p">[(</span><span class="n">ldap3</span><span class="o">.</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="mi">512</span><span class="p">])],</span>  <span class="c1"># Enable the account</span>
+        <span class="s1">'unicodePwd'</span><span class="p">:</span> <span class="p">[(</span><span class="n">ldap3</span><span class="o">.</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">'"</span><span class="si">{</span><span class="n">default_password</span><span class="si">}</span><span class="s1">"'</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf-16-le'</span><span class="p">)])]</span>
     <span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -2776,28 +2804,28 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">ldap3.extend.microsoft.addMembersToGroups</span><span class="w"> </span><span class="kn">import</span> <span class="n">ad_add_members_to_groups</span> <span class="k">as</span> <span class="n">add_members_to_group</span>
 
 <span class="c1"># Connect to ADDS</span>
-<span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span><span class="s1">&#39;your_dc_ip&#39;</span><span class="p">,</span> <span class="n">use_ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;your_user&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;your_password&#39;</span><span class="p">)</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span><span class="s1">'your_dc_ip'</span><span class="p">,</span> <span class="n">use_ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">'your_user'</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">'your_password'</span><span class="p">)</span>
 <span class="n">conn</span><span class="o">.</span><span class="n">bind</span><span class="p">()</span>
 
 <span class="c1"># Create user</span>
-<span class="n">dn</span> <span class="o">=</span> <span class="s1">&#39;CN=John Doe,OU=Users,DC=example,DC=com&#39;</span>
-<span class="n">conn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dn</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">,</span> <span class="s1">&#39;organizationalPerson&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">],</span> <span class="p">{</span>
-    <span class="s1">&#39;givenName&#39;</span><span class="p">:</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;sn&#39;</span><span class="p">:</span> <span class="s1">&#39;Doe&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;sAMAccountName&#39;</span><span class="p">:</span> <span class="s1">&#39;jdoe&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;userPrincipalName&#39;</span><span class="p">:</span> <span class="s1">&#39;jdoe@example.com&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;mail&#39;</span><span class="p">:</span> <span class="s1">&#39;jdoe@example.com&#39;</span>
+<span class="n">dn</span> <span class="o">=</span> <span class="s1">'CN=John Doe,OU=Users,DC=example,DC=com'</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dn</span><span class="p">,</span> <span class="p">[</span><span class="s1">'top'</span><span class="p">,</span> <span class="s1">'person'</span><span class="p">,</span> <span class="s1">'organizationalPerson'</span><span class="p">,</span> <span class="s1">'user'</span><span class="p">],</span> <span class="p">{</span>
+    <span class="s1">'givenName'</span><span class="p">:</span> <span class="s1">'John'</span><span class="p">,</span>
+    <span class="s1">'sn'</span><span class="p">:</span> <span class="s1">'Doe'</span><span class="p">,</span>
+    <span class="s1">'sAMAccountName'</span><span class="p">:</span> <span class="s1">'jdoe'</span><span class="p">,</span>
+    <span class="s1">'userPrincipalName'</span><span class="p">:</span> <span class="s1">'jdoe@example.com'</span><span class="p">,</span>
+    <span class="s1">'mail'</span><span class="p">:</span> <span class="s1">'jdoe@example.com'</span>
 <span class="p">})</span>
 
 <span class="c1"># Enable account and set password</span>
 <span class="n">conn</span><span class="o">.</span><span class="n">modify</span><span class="p">(</span><span class="n">dn</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s1">&#39;userAccountControl&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="mi">512</span><span class="p">])],</span>
-    <span class="s1">&#39;unicodePwd&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;&quot;YourPassword123!&quot;&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-16-le&#39;</span><span class="p">)])]</span>
+    <span class="s1">'userAccountControl'</span><span class="p">:</span> <span class="p">[(</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="mi">512</span><span class="p">])],</span>
+    <span class="s1">'unicodePwd'</span><span class="p">:</span> <span class="p">[(</span><span class="n">MODIFY_REPLACE</span><span class="p">,</span> <span class="p">[</span><span class="s1">'"YourPassword123!"'</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf-16-le'</span><span class="p">)])]</span>
 <span class="p">})</span>
 
 <span class="c1"># Add to groups</span>
-<span class="n">group_dns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CN=YourGroup,OU=Groups,DC=example,DC=com&#39;</span><span class="p">]</span>
+<span class="n">group_dns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'CN=YourGroup,OU=Groups,DC=example,DC=com'</span><span class="p">]</span>
 <span class="n">add_members_to_group</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="p">[</span><span class="n">dn</span><span class="p">],</span> <span class="n">group_dns</span><span class="p">,</span> <span class="n">fix</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">conn</span><span class="o">.</span><span class="n">unbind</span><span class="p">()</span>
@@ -2832,7 +2860,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 30, 2025 21:58:08 UTC">June 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -2885,7 +2913,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

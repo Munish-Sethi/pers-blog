@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2087,6 +2087,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2756,14 +2784,14 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">your_utils_module</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_azure_kv_sceret</span>  <span class="c1"># Replace with your actual secret retrieval function</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_ukg_environment_credentials</span><span class="p">(</span><span class="n">environment</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">environment</span> <span class="o">==</span> <span class="s1">&#39;PROD&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">environment</span> <span class="o">==</span> <span class="s1">'PROD'</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
-            <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;ukg-base-uri&#39;</span><span class="p">),</span>
-            <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;ukg-api-username&#39;</span><span class="p">),</span>
-            <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;ukg-api-password&#39;</span><span class="p">),</span>
-            <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;ukg-api-key&#39;</span><span class="p">),</span>
-            <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;ukg-api-client-id&#39;</span><span class="p">),</span>
-            <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;ukg-api-client-secret&#39;</span><span class="p">)</span>
+            <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">'ukg-base-uri'</span><span class="p">),</span>
+            <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">'ukg-api-username'</span><span class="p">),</span>
+            <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">'ukg-api-password'</span><span class="p">),</span>
+            <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">'ukg-api-key'</span><span class="p">),</span>
+            <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">'ukg-api-client-id'</span><span class="p">),</span>
+            <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">'ukg-api-client-secret'</span><span class="p">)</span>
         <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Use your non-production secrets</span>
@@ -2771,22 +2799,22 @@
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_token_apikey_and_uri</span><span class="p">(</span><span class="n">environment</span><span class="p">):</span>
     <span class="n">base_uri</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">api_key</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span> <span class="o">=</span> <span class="n">get_ukg_environment_credentials</span><span class="p">(</span><span class="n">environment</span><span class="p">)</span>
-    <span class="n">access_token_uri</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="s1">&#39;api/authentication/access_token&#39;</span>
+    <span class="n">access_token_uri</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="s1">'api/authentication/access_token'</span>
     <span class="n">payload</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;username=</span><span class="si">{</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">username</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;&quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;password=</span><span class="si">{</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">password</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;&quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;client_id=</span><span class="si">{</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">client_id</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;&quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;client_secret=</span><span class="si">{</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">client_secret</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;&quot;</span>
-        <span class="s2">&quot;grant_type=password&amp;auth_chain=OAuthLdapService&quot;</span>
+        <span class="sa">f</span><span class="s2">"username=</span><span class="si">{</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">username</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;"</span>
+        <span class="sa">f</span><span class="s2">"password=</span><span class="si">{</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">password</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;"</span>
+        <span class="sa">f</span><span class="s2">"client_id=</span><span class="si">{</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">client_id</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;"</span>
+        <span class="sa">f</span><span class="s2">"client_secret=</span><span class="si">{</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">client_secret</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;"</span>
+        <span class="s2">"grant_type=password&amp;auth_chain=OAuthLdapService"</span>
     <span class="p">)</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;appkey&#39;</span><span class="p">:</span> <span class="n">api_key</span>
+        <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/x-www-form-urlencoded'</span><span class="p">,</span>
+        <span class="s1">'appkey'</span><span class="p">:</span> <span class="n">api_key</span>
     <span class="p">}</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">access_token_uri</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
     <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
     <span class="n">response_json</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">response_json</span><span class="p">[</span><span class="s2">&quot;access_token&quot;</span><span class="p">],</span> <span class="n">base_uri</span><span class="p">,</span> <span class="n">api_key</span>
+    <span class="k">return</span> <span class="n">response_json</span><span class="p">[</span><span class="s2">"access_token"</span><span class="p">],</span> <span class="n">base_uri</span><span class="p">,</span> <span class="n">api_key</span>
 </code></pre></div>
 <p><strong>Explanation:</strong>
 - Credentials are retrieved securely.
@@ -2800,16 +2828,16 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">get_all_employees</span><span class="p">(</span><span class="n">environment</span><span class="p">):</span>
     <span class="n">access_token</span><span class="p">,</span> <span class="n">base_uri</span><span class="p">,</span> <span class="n">api_key</span> <span class="o">=</span> <span class="n">get_token_apikey_and_uri</span><span class="p">(</span><span class="n">environment</span><span class="p">)</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;appkey&#39;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span>
-        <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="n">access_token</span>
+        <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+        <span class="s1">'appkey'</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span>
+        <span class="s1">'Authorization'</span><span class="p">:</span> <span class="n">access_token</span>
     <span class="p">}</span>
     <span class="n">employees</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="c1"># Example endpoint for listing employees (adjust as needed for your UKG tenant)</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="s1">&#39;api/v1/commons/persons&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="s1">'api/v1/commons/persons'</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
     <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-    <span class="n">employees</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;persons&#39;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="n">employees</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'persons'</span><span class="p">,</span> <span class="p">[])</span>
     <span class="k">return</span> <span class="n">employees</span>
 </code></pre></div>
 <p><strong>Explanation:</strong>
@@ -2819,22 +2847,22 @@
 <h2 id="step-3-retrieve-employee-data-from-your-hr-system-eg-adp">Step 3: Retrieve Employee Data from Your HR System (e.g., ADP)</h2>
 <p>Assuming you have a database or API access to your HR system, you can retrieve employee data for comparison. Here is a sample function for fetching from a SQL database:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fetch_users_from_hr</span><span class="p">():</span>
-    <span class="n">sql_query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+    <span class="n">sql_query</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">        SELECT email, position_id, status, associate_id, last_name, first_name, location, pay_rate_code, reports_to</span>
 <span class="s2">        FROM hr_employees</span>
-<span class="s2">    &quot;&quot;&quot;</span>
+<span class="s2">    """</span>
     <span class="c1"># Replace with your actual DB query logic</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">execute_Select_SQL_statement</span><span class="p">(</span><span class="n">sql_query</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="p">{</span>
-            <span class="s2">&quot;position_id&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-            <span class="s2">&quot;associate_id&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
-            <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
-            <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span>
-            <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span>
-            <span class="s2">&quot;pay_rate_code&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span>
-            <span class="s2">&quot;reports_to&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+            <span class="s2">"position_id"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="s2">"status"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="s2">"associate_id"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+            <span class="s2">"last_name"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+            <span class="s2">"first_name"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span>
+            <span class="s2">"pay_rate_code"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span>
+            <span class="s2">"reports_to"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
         <span class="p">}</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span>
     <span class="p">}</span>
 </code></pre></div>
@@ -2847,24 +2875,24 @@
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">compare_ukg_and_hr_employees</span><span class="p">(</span><span class="n">ukg_employees</span><span class="p">,</span> <span class="n">hr_employees</span><span class="p">):</span>
     <span class="n">processed_details</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">employee</span> <span class="ow">in</span> <span class="n">ukg_employees</span><span class="p">:</span>
-        <span class="n">username</span> <span class="o">=</span> <span class="n">employee</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;userAccount&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;userName&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="n">employee</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'user'</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'userAccount'</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'userName'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">username</span> <span class="ow">and</span> <span class="n">username</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">hr_employees</span><span class="p">:</span>
             <span class="n">hr_user</span> <span class="o">=</span> <span class="n">hr_employees</span><span class="p">[</span><span class="n">username</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
             <span class="c1"># Compare fields as needed</span>
             <span class="n">processed_details</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;ukg_username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
-                <span class="s1">&#39;ukg_status&#39;</span><span class="p">:</span> <span class="n">employee</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;hr_status&#39;</span><span class="p">:</span> <span class="n">hr_user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">),</span>
+                <span class="s1">'ukg_username'</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
+                <span class="s1">'ukg_status'</span><span class="p">:</span> <span class="n">employee</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'status'</span><span class="p">),</span>
+                <span class="s1">'hr_status'</span><span class="p">:</span> <span class="n">hr_user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'status'</span><span class="p">),</span>
                 <span class="c1"># Add more fields as needed</span>
             <span class="p">})</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">processed_details</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;ukg_username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
-                <span class="s1">&#39;ukg_status&#39;</span><span class="p">:</span> <span class="n">employee</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;hr_status&#39;</span><span class="p">:</span> <span class="s1">&#39;Not Found&#39;</span><span class="p">,</span>
+                <span class="s1">'ukg_username'</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
+                <span class="s1">'ukg_status'</span><span class="p">:</span> <span class="n">employee</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'status'</span><span class="p">),</span>
+                <span class="s1">'hr_status'</span><span class="p">:</span> <span class="s1">'Not Found'</span><span class="p">,</span>
             <span class="p">})</span>
     <span class="c1"># Save to CSV for review</span>
-    <span class="n">save_list_to_csv</span><span class="p">(</span><span class="n">processed_details</span><span class="p">,</span> <span class="s1">&#39;ukg_hr_comparison.csv&#39;</span><span class="p">)</span>
+    <span class="n">save_list_to_csv</span><span class="p">(</span><span class="n">processed_details</span><span class="p">,</span> <span class="s1">'ukg_hr_comparison.csv'</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Explanation:</strong>
 - For each UKG employee, attempts to find a match in the HR system by email/username.
@@ -2873,13 +2901,13 @@
 <hr />
 <h2 id="step-5-full-example-putting-it-all-together">Step 5: Full Example – Putting It All Together</h2>
 <p>Here is a complete example that ties all the steps together:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">environment</span><span class="o">=</span><span class="s1">&#39;PROD&#39;</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">environment</span><span class="o">=</span><span class="s1">'PROD'</span><span class="p">):</span>
     <span class="n">ukg_employees</span> <span class="o">=</span> <span class="n">get_all_employees</span><span class="p">(</span><span class="n">environment</span><span class="p">)</span>
     <span class="n">hr_employees</span> <span class="o">=</span> <span class="n">fetch_users_from_hr</span><span class="p">()</span>
     <span class="n">compare_ukg_and_hr_employees</span><span class="p">(</span><span class="n">ukg_employees</span><span class="p">,</span> <span class="n">hr_employees</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Comparison complete. Results saved to ukg_hr_comparison.csv.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Comparison complete. Results saved to ukg_hr_comparison.csv."</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 <hr />
@@ -2914,7 +2942,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:21:49 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -2967,7 +2995,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

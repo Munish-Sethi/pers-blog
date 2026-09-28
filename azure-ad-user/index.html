@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2303,6 +2303,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2849,9 +2877,9 @@
 </ul>
 <hr />
 <h2 id="constants-and-endpoints">Constants and Endpoints</h2>
-<div class="highlight"><pre><span></span><code><span class="n">AZURE_GRAPH_BETA</span> <span class="o">=</span> <span class="s1">&#39;https://graph.microsoft.com/beta/&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">AZURE_GRAPH_BETA</span> <span class="o">=</span> <span class="s1">'https://graph.microsoft.com/beta/'</span>
 <span class="n">LIST_OF_AAD_USER_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;displayName&#39;</span><span class="p">,</span> <span class="s1">&#39;accountEnabled&#39;</span><span class="p">,</span> <span class="s1">&#39;userPrincipalName&#39;</span><span class="p">,</span> <span class="s1">&#39;licenseAssignmentStates&#39;</span><span class="p">,</span>
+    <span class="s1">'displayName'</span><span class="p">,</span> <span class="s1">'accountEnabled'</span><span class="p">,</span> <span class="s1">'userPrincipalName'</span><span class="p">,</span> <span class="s1">'licenseAssignmentStates'</span><span class="p">,</span>
 <span class="p">]</span>
 </code></pre></div>
 <hr />
@@ -2862,12 +2890,12 @@
     <span class="n">user_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Initialize list to store user data</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">LIST_OF_AAD_USER_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;displayName&#39;</span><span class="p">,</span> <span class="s1">&#39;accountEnabled&#39;</span><span class="p">,</span> <span class="s1">&#39;userPrincipalName&#39;</span><span class="p">,</span> <span class="s1">&#39;licenseAssignmentStates&#39;</span><span class="p">,</span>
+            <span class="s1">'displayName'</span><span class="p">,</span> <span class="s1">'accountEnabled'</span><span class="p">,</span> <span class="s1">'userPrincipalName'</span><span class="p">,</span> <span class="s1">'licenseAssignmentStates'</span><span class="p">,</span>
         <span class="p">]</span>
-        <span class="n">selected_attributes</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">LIST_OF_AAD_USER_ATTRIBUTES</span><span class="p">)</span>
-        <span class="n">query_params</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;$select=</span><span class="si">{</span><span class="n">selected_attributes</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="n">query_params</span> <span class="o">+=</span> <span class="s2">&quot;&amp;$expand=memberOf&quot;</span>
-        <span class="n">user_list</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_BETA</span><span class="si">}</span><span class="s2">users?</span><span class="si">{</span><span class="n">query_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">selected_attributes</span> <span class="o">=</span> <span class="s2">","</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">LIST_OF_AAD_USER_ATTRIBUTES</span><span class="p">)</span>
+        <span class="n">query_params</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"$select=</span><span class="si">{</span><span class="n">selected_attributes</span><span class="si">}</span><span class="s2">"</span>
+        <span class="n">query_params</span> <span class="o">+=</span> <span class="s2">"&amp;$expand=memberOf"</span>
+        <span class="n">user_list</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">AZURE_GRAPH_BETA</span><span class="si">}</span><span class="s2">users?</span><span class="si">{</span><span class="n">query_params</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
         <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">user_list</span>
@@ -2883,7 +2911,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_list_of_groups</span><span class="p">():</span>
     <span class="n">group_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Initialize list to store group data</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">group_list</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_BETA</span><span class="si">}</span><span class="s2">groups?&quot;</span><span class="p">)</span>
+        <span class="n">group_list</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">AZURE_GRAPH_BETA</span><span class="si">}</span><span class="s2">groups?"</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
         <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">group_list</span>
@@ -2899,8 +2927,8 @@
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_users_with_license_and_groups</span><span class="p">():</span>
     <span class="n">final_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Final list of dictionaries</span>
     <span class="n">SKU_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;ee02fd1b-340e-4a4b-b355-4a514e4c8943&quot;</span><span class="p">:</span> <span class="s2">&quot;Exchange Online Archiving&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;05e9a617-0261-4cee-bb44-138d3ef5d965&quot;</span><span class="p">:</span> <span class="s2">&quot;365 E3&quot;</span><span class="p">,</span>
+        <span class="s2">"ee02fd1b-340e-4a4b-b355-4a514e4c8943"</span><span class="p">:</span> <span class="s2">"Exchange Online Archiving"</span><span class="p">,</span>
+        <span class="s2">"05e9a617-0261-4cee-bb44-138d3ef5d965"</span><span class="p">:</span> <span class="s2">"365 E3"</span><span class="p">,</span>
         <span class="c1"># ... (other SKU mappings) ...</span>
     <span class="p">}</span>
     <span class="k">try</span><span class="p">:</span>
@@ -2911,26 +2939,26 @@
             <span class="n">license_assignments</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">group_memberships</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="c1"># Parse license assignments</span>
-            <span class="k">for</span> <span class="n">license</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;licenseAssignmentStates&#39;</span><span class="p">,</span> <span class="p">[]):</span>
-                <span class="n">sku_id</span> <span class="o">=</span> <span class="n">license</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;skuId&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">license</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'licenseAssignmentStates'</span><span class="p">,</span> <span class="p">[]):</span>
+                <span class="n">sku_id</span> <span class="o">=</span> <span class="n">license</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'skuId'</span><span class="p">)</span>
                 <span class="n">sku_name</span> <span class="o">=</span> <span class="n">SKU_MAPPING</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sku_id</span><span class="p">,</span> <span class="n">sku_id</span><span class="p">)</span>
                 <span class="n">license_assignments</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                    <span class="s1">&#39;sku_id&#39;</span><span class="p">:</span> <span class="n">sku_id</span><span class="p">,</span>
-                    <span class="s1">&#39;sku_name&#39;</span><span class="p">:</span> <span class="n">sku_name</span><span class="p">,</span>
-                    <span class="s1">&#39;assigned_by_group&#39;</span><span class="p">:</span> <span class="n">license</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;assignedByGroup&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                    <span class="s1">'sku_id'</span><span class="p">:</span> <span class="n">sku_id</span><span class="p">,</span>
+                    <span class="s1">'sku_name'</span><span class="p">:</span> <span class="n">sku_name</span><span class="p">,</span>
+                    <span class="s1">'assigned_by_group'</span><span class="p">:</span> <span class="n">license</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'assignedByGroup'</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
                 <span class="p">})</span>
             <span class="c1"># Parse group memberships</span>
-            <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;memberOf&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'memberOf'</span><span class="p">,</span> <span class="p">[]):</span>
                 <span class="n">group_memberships</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                    <span class="s1">&#39;group_id&#39;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">),</span>
-                    <span class="s1">&#39;display_name&#39;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;displayName&#39;</span><span class="p">),</span>
+                    <span class="s1">'group_id'</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'id'</span><span class="p">),</span>
+                    <span class="s1">'display_name'</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'displayName'</span><span class="p">),</span>
                 <span class="p">})</span>
             <span class="n">final_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;user_principal_name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;userPrincipalName&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;display_name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;displayName&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;account_enabled&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;accountEnabled&#39;</span><span class="p">),</span>
-                <span class="s1">&#39;license_assignments&#39;</span><span class="p">:</span> <span class="n">license_assignments</span><span class="p">,</span>
-                <span class="s1">&#39;group_memberships&#39;</span><span class="p">:</span> <span class="n">group_memberships</span><span class="p">,</span>
+                <span class="s1">'user_principal_name'</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'userPrincipalName'</span><span class="p">),</span>
+                <span class="s1">'display_name'</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'displayName'</span><span class="p">),</span>
+                <span class="s1">'account_enabled'</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'accountEnabled'</span><span class="p">),</span>
+                <span class="s1">'license_assignments'</span><span class="p">:</span> <span class="n">license_assignments</span><span class="p">,</span>
+                <span class="s1">'group_memberships'</span><span class="p">:</span> <span class="n">group_memberships</span><span class="p">,</span>
             <span class="p">})</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
         <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
@@ -2950,18 +2978,18 @@
     <span class="n">user_license</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">user_lic_and_groups</span> <span class="o">=</span> <span class="n">get_users_with_license_and_groups</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">user_lic_and_groups</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">membership</span> <span class="ow">in</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;group_memberships&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">membership</span> <span class="ow">in</span> <span class="n">user</span><span class="p">[</span><span class="s1">'group_memberships'</span><span class="p">]:</span>
             <span class="n">user_groups</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;user_principal_name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;user_principal_name&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;group_id&#39;</span><span class="p">:</span> <span class="n">membership</span><span class="p">[</span><span class="s1">&#39;group_id&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;group_display_name&#39;</span><span class="p">:</span> <span class="n">membership</span><span class="p">[</span><span class="s1">&#39;display_name&#39;</span><span class="p">],</span>
+                <span class="s1">'user_principal_name'</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s1">'user_principal_name'</span><span class="p">],</span>
+                <span class="s1">'group_id'</span><span class="p">:</span> <span class="n">membership</span><span class="p">[</span><span class="s1">'group_id'</span><span class="p">],</span>
+                <span class="s1">'group_display_name'</span><span class="p">:</span> <span class="n">membership</span><span class="p">[</span><span class="s1">'display_name'</span><span class="p">],</span>
             <span class="p">})</span>
-        <span class="k">for</span> <span class="n">licassignment</span> <span class="ow">in</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;license_assignments&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">licassignment</span> <span class="ow">in</span> <span class="n">user</span><span class="p">[</span><span class="s1">'license_assignments'</span><span class="p">]:</span>
             <span class="n">user_license</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;user_principal_name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;user_principal_name&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;sku_id&#39;</span><span class="p">:</span> <span class="n">licassignment</span><span class="p">[</span><span class="s1">&#39;sku_id&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;sku_name&#39;</span><span class="p">:</span> <span class="n">licassignment</span><span class="p">[</span><span class="s1">&#39;sku_name&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;assigned_by_group&#39;</span><span class="p">:</span> <span class="n">licassignment</span><span class="p">[</span><span class="s1">&#39;assigned_by_group&#39;</span><span class="p">],</span>
+                <span class="s1">'user_principal_name'</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s1">'user_principal_name'</span><span class="p">],</span>
+                <span class="s1">'sku_id'</span><span class="p">:</span> <span class="n">licassignment</span><span class="p">[</span><span class="s1">'sku_id'</span><span class="p">],</span>
+                <span class="s1">'sku_name'</span><span class="p">:</span> <span class="n">licassignment</span><span class="p">[</span><span class="s1">'sku_name'</span><span class="p">],</span>
+                <span class="s1">'assigned_by_group'</span><span class="p">:</span> <span class="n">licassignment</span><span class="p">[</span><span class="s1">'assigned_by_group'</span><span class="p">],</span>
             <span class="p">})</span>
     <span class="k">return</span> <span class="n">user_groups</span><span class="p">,</span> <span class="n">user_license</span>
 </code></pre></div>
@@ -2972,7 +3000,7 @@
 <hr />
 <h2 id="supporting-function-execute_odata_query_get">Supporting Function: <code>execute_odata_query_get</code></h2>
 <p>This function is used throughout to make authenticated, paginated requests to the Microsoft Graph API.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">execute_odata_query_get</span><span class="p">(</span><span class="n">urltoInvoke</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">execute_odata_query_get</span><span class="p">(</span><span class="n">urltoInvoke</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s1">''</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">localUserList</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">token</span><span class="p">:</span>
@@ -2983,35 +3011,35 @@
         <span class="k">while</span> <span class="n">continueLooping</span><span class="p">:</span>
             <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
                 <span class="n">url</span><span class="o">=</span><span class="n">urltoInvoke</span><span class="p">,</span>
-                <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Bearer </span><span class="si">{</span><span class="n">acesstokenforClientapp</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}</span>
+                <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">'Authorization'</span><span class="p">:</span> <span class="sa">f</span><span class="s1">'Bearer </span><span class="si">{</span><span class="n">acesstokenforClientapp</span><span class="si">}</span><span class="s1">'</span><span class="p">}</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>  <span class="c1"># Throttling response</span>
-                <span class="n">retry_after</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Retry-After&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Throttled! Retrying after </span><span class="si">{</span><span class="n">retry_after</span><span class="si">}</span><span class="s2"> seconds...&quot;</span><span class="p">)</span>
+                <span class="n">retry_after</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Retry-After"</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Throttled! Retrying after </span><span class="si">{</span><span class="n">retry_after</span><span class="si">}</span><span class="s2"> seconds..."</span><span class="p">)</span>
                 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">retry_after</span><span class="p">)</span>
                 <span class="k">continue</span>
             <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>  <span class="c1"># Token expired or invalid</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Token expired or invalid. Fetching a new one...&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">"Token expired or invalid. Fetching a new one..."</span><span class="p">)</span>
                 <span class="n">acesstokenforClientapp</span> <span class="o">=</span> <span class="n">get_access_token_API_Access_AAD</span><span class="p">()</span>
                 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
                     <span class="n">url</span><span class="o">=</span><span class="n">urltoInvoke</span><span class="p">,</span>
-                    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Bearer </span><span class="si">{</span><span class="n">acesstokenforClientapp</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}</span>
+                    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">'Authorization'</span><span class="p">:</span> <span class="sa">f</span><span class="s1">'Bearer </span><span class="si">{</span><span class="n">acesstokenforClientapp</span><span class="si">}</span><span class="s1">'</span><span class="p">}</span>
                 <span class="p">)</span>
                 <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
                     <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">403</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;403 Forbidden: Access denied for URL </span><span class="si">{</span><span class="n">urltoInvoke</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">"403 Forbidden: Access denied for URL </span><span class="si">{</span><span class="n">urltoInvoke</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
                 <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
             <span class="n">graph_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-            <span class="n">localUserList</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">graph_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="p">[]))</span>
-            <span class="k">if</span> <span class="s2">&quot;@odata.nextLink&quot;</span> <span class="ow">in</span> <span class="n">graph_data</span><span class="p">:</span>
-                <span class="n">urltoInvoke</span> <span class="o">=</span> <span class="n">graph_data</span><span class="p">[</span><span class="s2">&quot;@odata.nextLink&quot;</span><span class="p">]</span>
+            <span class="n">localUserList</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">graph_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'value'</span><span class="p">,</span> <span class="p">[]))</span>
+            <span class="k">if</span> <span class="s2">"@odata.nextLink"</span> <span class="ow">in</span> <span class="n">graph_data</span><span class="p">:</span>
+                <span class="n">urltoInvoke</span> <span class="o">=</span> <span class="n">graph_data</span><span class="p">[</span><span class="s2">"@odata.nextLink"</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">continueLooping</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="n">localUserList</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">&#39;args&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span> <span class="ow">and</span> <span class="s1">&#39;403 Forbidden&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">'args'</span><span class="p">)</span> <span class="ow">and</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span> <span class="ow">and</span> <span class="s1">'403 Forbidden'</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
             <span class="k">raise</span>
         <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
 </code></pre></div>
@@ -3042,7 +3070,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:21:49 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3095,7 +3123,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

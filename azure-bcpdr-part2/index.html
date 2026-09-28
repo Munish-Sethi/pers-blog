@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2237,6 +2237,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2733,27 +2761,27 @@ param fortinetsku string //Will need to check what is availabe at the time of DR
 </code></pre></div></p>
 <p><strong>Parameter File: <code>nva.json</code></strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;resource_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dr-rg-gdep-pwus-fortinet&quot;</span>
+<span class="w">  </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"contentVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"resource_group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dr-rg-gdep-pwus-fortinet"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;adminusername&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nvafwadmin&quot;</span>
+<span class="w">    </span><span class="nt">"adminusername"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nvafwadmin"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;fortinetoffer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fortinet_fortigate-vm_v5&quot;</span>
+<span class="w">    </span><span class="nt">"fortinetoffer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fortinet_fortigate-vm_v5"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;fortinetsku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fortinet_fg-vm_payg_2023&quot;</span>
+<span class="w">    </span><span class="nt">"fortinetsku"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fortinet_fg-vm_payg_2023"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;adminPassword&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;keyVault&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/subscriptions/df8d9f29-f5c5-4e48-a004-21ea3b8a4834/resourceGroups/rg-gdep-peus-applications/providers/Microsoft.KeyVault/vaults/kv-gdep-peus-iac&quot;</span>
+<span class="w">    </span><span class="nt">"adminPassword"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"keyVault"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/subscriptions/df8d9f29-f5c5-4e48-a004-21ea3b8a4834/resourceGroups/rg-gdep-peus-applications/providers/Microsoft.KeyVault/vaults/kv-gdep-peus-iac"</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;secretName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new-vm-password&quot;</span>
+<span class="w">        </span><span class="nt">"secretName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-vm-password"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -2786,67 +2814,67 @@ for VPN Gateway we do.  As such notice
 param location string = resourceGroup().location
 param resource_group string
 
-var applicationtag = &#39;Infrastructure&#39;
-var environmetag = &#39;Disaster Recovery&#39;
-var AADTenant = &#39;${environment().authentication.loginEndpoint}${subscription().tenantId}&#39;
+var applicationtag = 'Infrastructure'
+var environmetag = 'Disaster Recovery'
+var AADTenant = '${environment().authentication.loginEndpoint}${subscription().tenantId}'
 
-module pipgdepdrfw &#39;../../networking/pip/pip.bicep&#39; = {
-  name: &#39;${deployment().name}-pipp2svpn&#39;
+module pipgdepdrfw '../../networking/pip/pip.bicep' = {
+  name: '${deployment().name}-pipp2svpn'
   scope: resourceGroup(resource_group)
   params: {
-    name: &#39;pip-gdep-pwus-p2svpn&#39;
+    name: 'pip-gdep-pwus-p2svpn'
     location: location
     tags: { Application: applicationtag, Environment: environmetag }
     properties: {
-      publicIPAllocationMethod: &#39;Static&#39;
-      publicIPAddressVersion: &#39;IPv4&#39;
+      publicIPAllocationMethod: 'Static'
+      publicIPAddressVersion: 'IPv4'
     }
   }
 }
 //Create VPN Gateway
-module vngwpoint2site &#39;./p2sngw.bicep&#39; = {
-  name: &#39;${deployment().name}-vngwpoint2site&#39;
-  scope: resourceGroup(&#39;dr-rg-gdep-pwus-vnets&#39;)
+module vngwpoint2site './p2sngw.bicep' = {
+  name: '${deployment().name}-vngwpoint2site'
+  scope: resourceGroup('dr-rg-gdep-pwus-vnets')
   params: {
-    name: &#39;vngw_gdep_pwus&#39;
+    name: 'vngw_gdep_pwus'
     location: location
     tags: { Application: applicationtag, Environment: environmetag }
     properties: {
       enablePrivateIpAddress: false
       ipConfigurations: [ ... ]
       sku: {
-        name: &#39;VpnGw2&#39;
-        tier: &#39;VpnGw2&#39;
+        name: 'VpnGw2'
+        tier: 'VpnGw2'
       }
-      gatewayType: &#39;Vpn&#39;
-      vpnType: &#39;RouteBased&#39;
+      gatewayType: 'Vpn'
+      vpnType: 'RouteBased'
       enableBgp: false
       activeActive: false
       vpnClientConfiguration: {
         vpnClientAddressPool: {
-          addressPrefixes: [&#39;10.27.48.0/22&#39;]
+          addressPrefixes: ['10.27.48.0/22']
         }
-        vpnClientProtocols: [&#39;OpenVPN&#39;]
-        vpnAuthenticationTypes: [&#39;AAD&#39;]
+        vpnClientProtocols: ['OpenVPN']
+        vpnAuthenticationTypes: ['AAD']
         aadTenant: AADTenant
-        aadAudience: &#39;41b23e61-6c1e-4545-b367-cd054e0ed4b4&#39;
-        aadIssuer: &#39;${&#39;https://sts.windows.net/&#39;}${subscription().tenantId}${&#39;/&#39;}&#39;
+        aadAudience: '41b23e61-6c1e-4545-b367-cd054e0ed4b4'
+        aadIssuer: '${'https://sts.windows.net/'}${subscription().tenantId}${'/'}'
       }
       customRoutes: {
         addressPrefixes: [ ... ]
       }
-      vpnGatewayGeneration: &#39;Generation2&#39;
+      vpnGatewayGeneration: 'Generation2'
     }
   }
 }
 </code></pre></div></p>
 <p><strong>Parameter File: <code>p2sp.json</code></strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;resource_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dr-rg-gdep-pwus-fortinet&quot;</span>
+<span class="w">  </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"contentVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"resource_group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dr-rg-gdep-pwus-fortinet"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -2857,15 +2885,15 @@ module vngwpoint2site &#39;./p2sngw.bicep&#39; = {
 <h2 id="step-10-restore-virtual-machines-or-disks">Step 10: Restore Virtual Machines or Disks</h2>
 <p>Restore VMs using PowerShell Core. All VMs to be restored should be listed in <code>vmlist.json</code>.</p>
 <p><strong>Command:</strong>
-<div class="highlight"><pre><span></span><code><span class="n">pwsh</span> <span class="p">./</span><span class="n">scripts</span><span class="p">/</span><span class="n">bcpdr</span><span class="p">/</span><span class="n">vm</span><span class="p">/</span><span class="n">restorevms</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-restorediskonly</span> <span class="s2">&quot;false&quot;</span> <span class="n">-numberofhours2wait</span> <span class="n">5</span> <span class="n">-vmlist</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">pwsh</span> <span class="p">./</span><span class="n">scripts</span><span class="p">/</span><span class="n">bcpdr</span><span class="p">/</span><span class="n">vm</span><span class="p">/</span><span class="n">restorevms</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-restorediskonly</span> <span class="s2">"false"</span> <span class="n">-numberofhours2wait</span> <span class="n">5</span> <span class="n">-vmlist</span> <span class="s1">'./scripts/bcpdr/vm/vmlist.json'</span>
 </code></pre></div></p>
 <p><strong>PowerShell Script: <code>restorevms.ps1</code></strong>
 <div class="highlight"><pre><span></span><code><span class="c"># Boolean variable to indicate whether to restore disks only</span>
 <span class="c"># If it is True then VM will also be created so be careful </span>
 <span class="k">param</span> <span class="p">(</span>
-    <span class="no">[string]</span> <span class="nv">$restorediskonly</span> <span class="p">=</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+    <span class="no">[string]</span> <span class="nv">$restorediskonly</span> <span class="p">=</span> <span class="s2">"false"</span><span class="p">,</span>
     <span class="no">[int]</span> <span class="nv">$numberofhours2wait</span> <span class="p">=</span> <span class="n">2</span><span class="p">,</span>
-    <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span>
+    <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">'./scripts/bcpdr/vm/vmlist.json'</span>
 <span class="p">)</span>
 
 <span class="c"># ...existing code for restore logic (see repo for full details)...</span>
@@ -2881,13 +2909,13 @@ module vngwpoint2site &#39;./p2sngw.bicep&#39; = {
 <h2 id="step-11-attach-nics-to-restored-vms">Step 11: Attach NICs to Restored VMs</h2>
 <p>Attach NICs to the restored VMs using PowerShell Core. This can be run multiple times safely.</p>
 <p><strong>Command:</strong>
-<div class="highlight"><pre><span></span><code><span class="n">pwsh</span> <span class="p">./</span><span class="n">scripts</span><span class="p">/</span><span class="n">bcpdr</span><span class="p">/</span><span class="n">vm</span><span class="p">/</span><span class="n">attachnics</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-vaultname</span> <span class="s2">&quot;&lt;your-recovery-vault&gt;&quot;</span> <span class="n">-vaultresourcegroupname</span> <span class="s2">&quot;&lt;your-backup-rg&gt;&quot;</span> <span class="n">-vmlist</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">pwsh</span> <span class="p">./</span><span class="n">scripts</span><span class="p">/</span><span class="n">bcpdr</span><span class="p">/</span><span class="n">vm</span><span class="p">/</span><span class="n">attachnics</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-vaultname</span> <span class="s2">"&lt;your-recovery-vault&gt;"</span> <span class="n">-vaultresourcegroupname</span> <span class="s2">"&lt;your-backup-rg&gt;"</span> <span class="n">-vmlist</span> <span class="s1">'./scripts/bcpdr/vm/vmlist.json'</span>
 </code></pre></div></p>
 <p><strong>PowerShell Script: <code>attachnics.ps1</code></strong>
 <div class="highlight"><pre><span></span><code><span class="k">param</span> <span class="p">(</span>
-    <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span><span class="p">,</span>
-    <span class="no">[string]</span> <span class="nv">$vaultname</span> <span class="p">=</span> <span class="s1">&#39;rsv-prod-eus-01&#39;</span><span class="p">,</span>
-    <span class="no">[string]</span> <span class="nv">$vaultresourcegroupname</span> <span class="p">=</span> <span class="s1">&#39;rg-gdep-peus-backup&#39;</span>
+    <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">'./scripts/bcpdr/vm/vmlist.json'</span><span class="p">,</span>
+    <span class="no">[string]</span> <span class="nv">$vaultname</span> <span class="p">=</span> <span class="s1">'rsv-prod-eus-01'</span><span class="p">,</span>
+    <span class="no">[string]</span> <span class="nv">$vaultresourcegroupname</span> <span class="p">=</span> <span class="s1">'rg-gdep-peus-backup'</span>
 <span class="p">)</span>
 
 <span class="c"># ...existing code for NIC attachment logic (see repo for full details)...</span>
@@ -2940,7 +2968,7 @@ module vngwpoint2site &#39;./p2sngw.bicep&#39; = {
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:21:49 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -2993,7 +3021,7 @@ module vngwpoint2site &#39;./p2sngw.bicep&#39; = {
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

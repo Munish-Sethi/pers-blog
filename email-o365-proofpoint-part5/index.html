@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -3079,6 +3079,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4415,7 +4443,7 @@
 <p>Before testing mail flow, verify all DNS records are properly configured:</p>
 <h4 id="spf-record-testing"><strong>SPF Record Testing</strong></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Test main SPF record</span>
-dig<span class="w"> </span>TXT<span class="w"> </span>yourdomain.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;v=spf1&quot;</span>
+dig<span class="w"> </span>TXT<span class="w"> </span>yourdomain.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"v=spf1"</span>
 
 <span class="c1"># Verify SPF includes are resolving</span>
 dig<span class="w"> </span>TXT<span class="w"> </span>_spf1.yourdomain.com
@@ -4552,10 +4580,10 @@ Delivery status: All (or specific status)
 <span class="nb">Connect-ExchangeOnline</span>
 
 <span class="c"># Advanced trace with details</span>
-<span class="nb">Get-MessageTrace</span> <span class="n">-StartDate</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddHours</span><span class="p">(-</span><span class="n">24</span><span class="p">)</span> <span class="n">-EndDate</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">)</span> <span class="n">-SenderAddress</span> <span class="s2">&quot;user@yourdomain.com&quot;</span> <span class="p">|</span> <span class="nb">Get-MessageTraceDetail</span>
+<span class="nb">Get-MessageTrace</span> <span class="n">-StartDate</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddHours</span><span class="p">(-</span><span class="n">24</span><span class="p">)</span> <span class="n">-EndDate</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">)</span> <span class="n">-SenderAddress</span> <span class="s2">"user@yourdomain.com"</span> <span class="p">|</span> <span class="nb">Get-MessageTraceDetail</span>
 
 <span class="c"># Trace specific message</span>
-<span class="nb">Get-MessageTrace</span> <span class="n">-MessageId</span> <span class="s2">&quot;message-id-here&quot;</span> <span class="p">|</span> <span class="nb">Get-MessageTraceDetail</span>
+<span class="nb">Get-MessageTrace</span> <span class="n">-MessageId</span> <span class="s2">"message-id-here"</span> <span class="p">|</span> <span class="nb">Get-MessageTraceDetail</span>
 </code></pre></div>
 <h4 id="interpreting-detailed-results"><strong>Interpreting Detailed Results</strong></h4>
 <p><strong>Common Events to Look For:</strong>
@@ -4633,15 +4661,15 @@ Received: from mx2-us1.ppe-hosted.com (67.231.149.xxx)
 3. Incorrect Proofpoint IP ranges</p>
 <p><strong>Solutions:</strong>
 <div class="highlight"><pre><span></span><code><span class="c"># Verify connector configuration</span>
-<span class="nb">Get-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">&quot;Proofpoint Inbound connector&quot;</span> <span class="p">|</span> 
+<span class="nb">Get-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">"Proofpoint Inbound connector"</span> <span class="p">|</span> 
     <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">RestrictDomainsToIPAddresses</span><span class="p">,</span> <span class="n">TlsSettings</span><span class="p">,</span> <span class="n">Enabled</span>
 
 <span class="c"># Check IP ranges in connector</span>
-<span class="nb">Get-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">&quot;Proofpoint Inbound connector&quot;</span> <span class="p">|</span> 
+<span class="nb">Get-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">"Proofpoint Inbound connector"</span> <span class="p">|</span> 
     <span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">RestrictDomainsToCertificate</span>
 
 <span class="c"># Correct the setting if needed</span>
-<span class="nb">Set-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">&quot;Proofpoint Inbound connector&quot;</span> <span class="n">-RestrictDomainsToIPAddresses</span> <span class="nv">$True</span>
+<span class="nb">Set-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">"Proofpoint Inbound connector"</span> <span class="n">-RestrictDomainsToIPAddresses</span> <span class="nv">$True</span>
 </code></pre></div></p>
 <h3 id="issue-2-outbound-mail-not-routing-through-proofpoint"><strong>Issue 2: Outbound Mail Not Routing Through Proofpoint</strong></h3>
 <p><strong>Symptoms:</strong>
@@ -4653,15 +4681,15 @@ Received: from mx2-us1.ppe-hosted.com (67.231.149.xxx)
 3. Connector disabled</p>
 <p><strong>Solutions:</strong>
 <div class="highlight"><pre><span></span><code><span class="c"># Check outbound connector</span>
-<span class="nb">Get-OutboundConnector</span> <span class="n">-Identity</span> <span class="s2">&quot;ProofPoint Outbound connector&quot;</span> <span class="p">|</span> 
+<span class="nb">Get-OutboundConnector</span> <span class="n">-Identity</span> <span class="s2">"ProofPoint Outbound connector"</span> <span class="p">|</span> 
     <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Enabled</span><span class="p">,</span> <span class="n">SmartHosts</span><span class="p">,</span> <span class="n">ConnectorType</span>
 
 <span class="c"># Verify connector scope</span>
-<span class="nb">Get-OutboundConnector</span> <span class="n">-Identity</span> <span class="s2">&quot;ProofPoint Outbound connector&quot;</span> <span class="p">|</span> 
+<span class="nb">Get-OutboundConnector</span> <span class="n">-Identity</span> <span class="s2">"ProofPoint Outbound connector"</span> <span class="p">|</span> 
     <span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">RecipientDomains</span>
 
 <span class="c"># Enable if disabled</span>
-<span class="nb">Set-OutboundConnector</span> <span class="n">-Identity</span> <span class="s2">&quot;ProofPoint Outbound connector&quot;</span> <span class="n">-Enabled</span> <span class="nv">$True</span>
+<span class="nb">Set-OutboundConnector</span> <span class="n">-Identity</span> <span class="s2">"ProofPoint Outbound connector"</span> <span class="n">-Enabled</span> <span class="nv">$True</span>
 </code></pre></div></p>
 <h3 id="issue-3-smtp-relay-authentication-failures"><strong>Issue 3: SMTP Relay Authentication Failures</strong></h3>
 <p><strong>Symptoms:</strong>
@@ -4676,17 +4704,17 @@ Received: from mx2-us1.ppe-hosted.com (67.231.149.xxx)
 3. Connector misconfigured</p>
 <p><strong>Solutions:</strong>
 <div class="highlight"><pre><span></span><code><span class="c"># Check SMTP relay connector</span>
-<span class="nb">Get-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">&quot;SMTP Relay&quot;</span> <span class="p">|</span> 
+<span class="nb">Get-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">"SMTP Relay"</span> <span class="p">|</span> 
     <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Enabled</span><span class="p">,</span> <span class="n">RestrictDomainsToCertificate</span>
 
 <span class="c"># Verify IP ranges</span>
-<span class="nb">Get-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">&quot;SMTP Relay&quot;</span> <span class="p">|</span> 
+<span class="nb">Get-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">"SMTP Relay"</span> <span class="p">|</span> 
     <span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">RestrictDomainsToCertificate</span>
 
 <span class="c"># Add missing IP if needed</span>
-<span class="nv">$currentIPs</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">&quot;SMTP Relay&quot;</span><span class="p">).</span><span class="n">RestrictDomainsToCertificate</span>
-<span class="nv">$newIPs</span> <span class="p">=</span> <span class="nv">$currentIPs</span> <span class="p">+</span> <span class="s2">&quot;192.168.1.100&quot;</span>
-<span class="nb">Set-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">&quot;SMTP Relay&quot;</span> <span class="n">-RestrictDomainsToCertificate</span> <span class="nv">$newIPs</span>
+<span class="nv">$currentIPs</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">"SMTP Relay"</span><span class="p">).</span><span class="n">RestrictDomainsToCertificate</span>
+<span class="nv">$newIPs</span> <span class="p">=</span> <span class="nv">$currentIPs</span> <span class="p">+</span> <span class="s2">"192.168.1.100"</span>
+<span class="nb">Set-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">"SMTP Relay"</span> <span class="n">-RestrictDomainsToCertificate</span> <span class="nv">$newIPs</span>
 </code></pre></div></p>
 <h3 id="issue-4-double-scanning-scl-not-set-to-1"><strong>Issue 4: Double-Scanning (SCL Not Set to -1)</strong></h3>
 <p><strong>Symptoms:</strong>
@@ -4698,15 +4726,15 @@ Received: from mx2-us1.ppe-hosted.com (67.231.149.xxx)
 3. Rule priority too low</p>
 <p><strong>Solutions:</strong>
 <div class="highlight"><pre><span></span><code><span class="c"># Check transport rule</span>
-<span class="nb">Get-TransportRule</span> <span class="n">-Identity</span> <span class="s2">&quot;ProofPoint Spam bypass&quot;</span> <span class="p">|</span> 
+<span class="nb">Get-TransportRule</span> <span class="n">-Identity</span> <span class="s2">"ProofPoint Spam bypass"</span> <span class="p">|</span> 
     <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">State</span><span class="p">,</span> <span class="n">Priority</span><span class="p">,</span> <span class="n">SetSCL</span>
 
 <span class="c"># Verify rule conditions</span>
-<span class="nb">Get-TransportRule</span> <span class="n">-Identity</span> <span class="s2">&quot;ProofPoint Spam bypass&quot;</span> <span class="p">|</span> 
+<span class="nb">Get-TransportRule</span> <span class="n">-Identity</span> <span class="s2">"ProofPoint Spam bypass"</span> <span class="p">|</span> 
     <span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">SenderIPRanges</span>
 
 <span class="c"># Fix rule priority if needed</span>
-<span class="nb">Set-TransportRule</span> <span class="n">-Identity</span> <span class="s2">&quot;ProofPoint Spam bypass&quot;</span> <span class="n">-Priority</span> <span class="n">1</span>
+<span class="nb">Set-TransportRule</span> <span class="n">-Identity</span> <span class="s2">"ProofPoint Spam bypass"</span> <span class="n">-Priority</span> <span class="n">1</span>
 </code></pre></div></p>
 <h3 id="issue-5-spf-authentication-failures"><strong>Issue 5: SPF Authentication Failures</strong></h3>
 <p><strong>Symptoms:</strong>
@@ -4718,7 +4746,7 @@ Received: from mx2-us1.ppe-hosted.com (67.231.149.xxx)
 3. Incorrect SPF syntax</p>
 <p><strong>Solutions:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1"># Test SPF record</span>
-dig<span class="w"> </span>TXT<span class="w"> </span>yourdomain.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;v=spf1&quot;</span>
+dig<span class="w"> </span>TXT<span class="w"> </span>yourdomain.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"v=spf1"</span>
 
 <span class="c1"># Check lookup count</span>
 <span class="c1"># Use online SPF checker to count DNS lookups</span>
@@ -4758,7 +4786,7 @@ dig<span class="w"> </span>CNAME<span class="w"> </span>hs1-19543953._domainkey.
 <span class="nb">Get-OutboundConnector</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Enabled</span><span class="p">,</span> <span class="n">LastModifiedDateTime</span>
 
 <span class="c"># Transport rule status</span>
-<span class="nb">Get-TransportRule</span> <span class="n">-Identity</span> <span class="s2">&quot;ProofPoint Spam bypass&quot;</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">State</span>
+<span class="nb">Get-TransportRule</span> <span class="n">-Identity</span> <span class="s2">"ProofPoint Spam bypass"</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">State</span>
 </code></pre></div>
 <h4 id="message-volume-analysis"><strong>Message Volume Analysis</strong></h4>
 <ul>
@@ -4807,8 +4835,8 @@ dig<span class="w"> </span>CNAME<span class="w"> </span>hs1-19543953._domainkey.
 </ol>
 <h4 id="ip-address-management"><strong>IP Address Management</strong></h4>
 <div class="highlight"><pre><span></span><code><span class="c"># Monthly IP address audit</span>
-<span class="nv">$spfRecord</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Resolve-DnsName</span> <span class="n">-Name</span> <span class="n">yourdomain</span><span class="p">.</span><span class="n">com</span> <span class="n">-Type</span> <span class="n">TXT</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Strings</span> <span class="o">-like</span> <span class="s2">&quot;*v=spf1*&quot;</span><span class="p">}).</span><span class="n">Strings</span>
-<span class="nv">$smtpRelay</span> <span class="p">=</span> <span class="nb">Get-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">&quot;SMTP Relay&quot;</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">RestrictDomainsToCertificate</span>
+<span class="nv">$spfRecord</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Resolve-DnsName</span> <span class="n">-Name</span> <span class="n">yourdomain</span><span class="p">.</span><span class="n">com</span> <span class="n">-Type</span> <span class="n">TXT</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Strings</span> <span class="o">-like</span> <span class="s2">"*v=spf1*"</span><span class="p">}).</span><span class="n">Strings</span>
+<span class="nv">$smtpRelay</span> <span class="p">=</span> <span class="nb">Get-InboundConnector</span> <span class="n">-Identity</span> <span class="s2">"SMTP Relay"</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">RestrictDomainsToCertificate</span>
 
 <span class="c"># Compare and identify discrepancies</span>
 <span class="c"># Update records as needed</span>
@@ -4898,21 +4926,21 @@ dig<span class="w"> </span>CNAME<span class="w"> </span>hs1-19543953._domainkey.
 <h3 id="powershell-diagnostic-scripts"><strong>PowerShell Diagnostic Scripts</strong></h3>
 <h4 id="comprehensive-mail-flow-test"><strong>Comprehensive Mail Flow Test</strong></h4>
 <div class="highlight"><pre><span></span><code><span class="c"># Test all connectors</span>
-<span class="nb">Write-Host</span> <span class="s2">&quot;Testing Inbound Connectors...&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+<span class="nb">Write-Host</span> <span class="s2">"Testing Inbound Connectors..."</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
 <span class="nb">Get-InboundConnector</span> <span class="p">|</span> <span class="nb">Test-InboundConnector</span>
 
-<span class="nb">Write-Host</span> <span class="s2">&quot;Testing Outbound Connectors...&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>  
+<span class="nb">Write-Host</span> <span class="s2">"Testing Outbound Connectors..."</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>  
 <span class="nb">Get-OutboundConnector</span> <span class="p">|</span> <span class="nb">Test-OutboundConnector</span>
 
 <span class="c"># Check transport rules</span>
-<span class="nb">Write-Host</span> <span class="s2">&quot;Checking Transport Rules...&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
-<span class="nb">Get-TransportRule</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">State</span> <span class="o">-eq</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">}</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Priority</span><span class="p">,</span> <span class="n">State</span>
+<span class="nb">Write-Host</span> <span class="s2">"Checking Transport Rules..."</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+<span class="nb">Get-TransportRule</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">State</span> <span class="o">-eq</span> <span class="s2">"Enabled"</span><span class="p">}</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Priority</span><span class="p">,</span> <span class="n">State</span>
 </code></pre></div>
 <h4 id="authentication-status-check"><strong>Authentication Status Check</strong></h4>
 <div class="highlight"><pre><span></span><code><span class="c"># Check recent authentication results</span>
 <span class="nb">Get-MessageTrace</span> <span class="n">-StartDate</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddHours</span><span class="p">(-</span><span class="n">4</span><span class="p">)</span> <span class="n">-EndDate</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">)</span> <span class="p">|</span> 
     <span class="nb">Get-MessageTraceDetail</span> <span class="p">|</span> 
-    <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Event</span> <span class="o">-eq</span> <span class="s2">&quot;RECEIVE&quot;</span><span class="p">}</span> <span class="p">|</span> 
+    <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Event</span> <span class="o">-eq</span> <span class="s2">"RECEIVE"</span><span class="p">}</span> <span class="p">|</span> 
     <span class="nb">Select-Object</span> <span class="n">Date</span><span class="p">,</span> <span class="n">SenderAddress</span><span class="p">,</span> <span class="n">RecipientAddress</span><span class="p">,</span> <span class="n">Data</span>
 </code></pre></div>
 <h3 id="external-validation-tools"><strong>External Validation Tools</strong></h3>
@@ -4999,7 +5027,7 @@ dig<span class="w"> </span>CNAME<span class="w"> </span>hs1-19543953._domainkey.
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 14, 2025 19:00:18 UTC">August 14, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -5052,7 +5080,7 @@ dig<span class="w"> </span>CNAME<span class="w"> </span>hs1-19543953._domainkey.
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

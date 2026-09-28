@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2324,6 +2324,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2912,22 +2940,22 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
-<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--file_location&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;data/*.csv&quot;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"--file_location"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">"data/*.csv"</span><span class="p">)</span>
 <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 
-<span class="n">mcp</span> <span class="o">=</span> <span class="n">FastMCP</span><span class="p">(</span><span class="s2">&quot;analyst&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;polars&quot;</span><span class="p">])</span>
+<span class="n">mcp</span> <span class="o">=</span> <span class="n">FastMCP</span><span class="p">(</span><span class="s2">"analyst"</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">"polars"</span><span class="p">])</span>
 
 <span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_files_list</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Get the list of files that are source of data</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">files_list</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">file_location</span><span class="p">)</span>
-    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">files_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">files_list</span><span class="p">)</span>
 
 <span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_data_catalog</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Get the data catalog with descriptions of all available datasets.</span>
 
 <span class="sd">    Use this tool to understand:</span>
@@ -2943,111 +2971,111 @@
 <span class="sd">    The data_catalog.json file follows this schema:</span>
 
 <span class="sd">    {</span>
-<span class="sd">      &quot;version&quot;: &quot;X.X&quot;,                    // Catalog version number</span>
-<span class="sd">      &quot;last_updated&quot;: &quot;YYYY-MM-DD&quot;,        // Last modification date</span>
-<span class="sd">      &quot;datasets&quot;: {</span>
-<span class="sd">        &quot;dataset_key&quot;: {                   // Lowercase key (not filename)</span>
-<span class="sd">          &quot;filename&quot;: &quot;Actual_File.csv&quot;,   // Real filename (case-sensitive)</span>
-<span class="sd">          &quot;category&quot;: &quot;Category_Name&quot;,     // From categories section</span>
-<span class="sd">          &quot;description&quot;: &quot;...&quot;,            // Business purpose</span>
-<span class="sd">          &quot;source_system&quot;: &quot;...&quot;,          // Origin system(s)</span>
-<span class="sd">          &quot;delimiter&quot;: &quot;,&quot; or &quot;;&quot;,         // CSV delimiter</span>
-<span class="sd">          &quot;update_frequency&quot;: &quot;...&quot;,       // Optional: refresh schedule</span>
+<span class="sd">      "version": "X.X",                    // Catalog version number</span>
+<span class="sd">      "last_updated": "YYYY-MM-DD",        // Last modification date</span>
+<span class="sd">      "datasets": {</span>
+<span class="sd">        "dataset_key": {                   // Lowercase key (not filename)</span>
+<span class="sd">          "filename": "Actual_File.csv",   // Real filename (case-sensitive)</span>
+<span class="sd">          "category": "Category_Name",     // From categories section</span>
+<span class="sd">          "description": "...",            // Business purpose</span>
+<span class="sd">          "source_system": "...",          // Origin system(s)</span>
+<span class="sd">          "delimiter": "," or ";",         // CSV delimiter</span>
+<span class="sd">          "update_frequency": "...",       // Optional: refresh schedule</span>
 
-<span class="sd">          &quot;columns&quot;: {                     // Column documentation</span>
-<span class="sd">            &quot;_note&quot;: &quot;...&quot;,                // ALWAYS start with _note explaining schema approach</span>
+<span class="sd">          "columns": {                     // Column documentation</span>
+<span class="sd">            "_note": "...",                // ALWAYS start with _note explaining schema approach</span>
 
 <span class="sd">            // Then document ONLY the important/non-obvious columns:</span>
-<span class="sd">            &quot;critical_column_name&quot;: {</span>
-<span class="sd">              &quot;description&quot;: &quot;...&quot;,        // What this column means</span>
-<span class="sd">              &quot;data_type&quot;: &quot;...&quot;,          // string|integer|boolean|date</span>
-<span class="sd">              &quot;required&quot;: true|false,      // Is it always populated?</span>
-<span class="sd">              &quot;importance&quot;: &quot;CRITICAL&quot;,    // Mark important columns</span>
-<span class="sd">              &quot;possible_values&quot;: [...],    // Optional: enum values</span>
-<span class="sd">              &quot;constant_value&quot;: &quot;...&quot;,     // Optional: if always same</span>
-<span class="sd">              &quot;format&quot;: &quot;...&quot;,             // Optional: date formats etc</span>
-<span class="sd">              &quot;usage_note&quot;: &quot;...&quot;,         // Optional: how to use it</span>
-<span class="sd">              &quot;source&quot;: &quot;...&quot;              // Optional: for prefixed columns (adds_, entra_, etc.)</span>
+<span class="sd">            "critical_column_name": {</span>
+<span class="sd">              "description": "...",        // What this column means</span>
+<span class="sd">              "data_type": "...",          // string|integer|boolean|date</span>
+<span class="sd">              "required": true|false,      // Is it always populated?</span>
+<span class="sd">              "importance": "CRITICAL",    // Mark important columns</span>
+<span class="sd">              "possible_values": [...],    // Optional: enum values</span>
+<span class="sd">              "constant_value": "...",     // Optional: if always same</span>
+<span class="sd">              "format": "...",             // Optional: date formats etc</span>
+<span class="sd">              "usage_note": "...",         // Optional: how to use it</span>
+<span class="sd">              "source": "..."              // Optional: for prefixed columns (adds_, entra_, etc.)</span>
 <span class="sd">            }</span>
 <span class="sd">            // Leave out self-descriptive columns - LLM will discover via get_schema()</span>
 <span class="sd">          },</span>
 
-<span class="sd">          &quot;business_rules&quot;: [...],         // Important constraints</span>
-<span class="sd">          &quot;common_queries&quot;: [...],         // Example questions</span>
-<span class="sd">          &quot;device_types_included&quot;: [...],  // Optional: for inventories</span>
+<span class="sd">          "business_rules": [...],         // Important constraints</span>
+<span class="sd">          "common_queries": [...],         // Example questions</span>
+<span class="sd">          "device_types_included": [...],  // Optional: for inventories</span>
 
-<span class="sd">          &quot;joins&quot;: {                       // Optional: join definitions</span>
-<span class="sd">            &quot;join_name&quot;: {</span>
-<span class="sd">              &quot;target_dataset&quot;: &quot;...&quot;,</span>
-<span class="sd">              &quot;join_condition&quot;: &quot;...&quot;,</span>
-<span class="sd">              &quot;description&quot;: &quot;...&quot;</span>
+<span class="sd">          "joins": {                       // Optional: join definitions</span>
+<span class="sd">            "join_name": {</span>
+<span class="sd">              "target_dataset": "...",</span>
+<span class="sd">              "join_condition": "...",</span>
+<span class="sd">              "description": "..."</span>
 <span class="sd">            }</span>
 <span class="sd">          },</span>
 
-<span class="sd">          &quot;related_datasets&quot;: [...],       // Related file keys</span>
-<span class="sd">          &quot;usage_tip&quot;: &quot;...&quot;,              // Consumption guidance</span>
-<span class="sd">          &quot;comparison_note&quot;: &quot;...&quot;         // Optional: vs other files</span>
+<span class="sd">          "related_datasets": [...],       // Related file keys</span>
+<span class="sd">          "usage_tip": "...",              // Consumption guidance</span>
+<span class="sd">          "comparison_note": "..."         // Optional: vs other files</span>
 <span class="sd">        }</span>
 <span class="sd">      },</span>
 
-<span class="sd">      &quot;categories&quot;: {                      // Category definitions</span>
-<span class="sd">        &quot;Category_Name&quot;: {</span>
-<span class="sd">          &quot;description&quot;: &quot;...&quot;</span>
+<span class="sd">      "categories": {                      // Category definitions</span>
+<span class="sd">        "Category_Name": {</span>
+<span class="sd">          "description": "..."</span>
 <span class="sd">        }</span>
 <span class="sd">      }</span>
 <span class="sd">    }</span>
 
 <span class="sd">    IMPORTANT CONVENTIONS:</span>
-<span class="sd">    - Dataset keys are lowercase with underscores (e.g., &quot;idp_hr&quot;)</span>
-<span class="sd">    - Filenames preserve original casing (e.g., &quot;IDP_HR.csv&quot;)</span>
+<span class="sd">    - Dataset keys are lowercase with underscores (e.g., "idp_hr")</span>
+<span class="sd">    - Filenames preserve original casing (e.g., "IDP_HR.csv")</span>
 <span class="sd">    - **Columns section philosophy**: Document only important/non-obvious columns</span>
-<span class="sd">      * ALWAYS start with &quot;_note&quot; explaining the schema approach</span>
+<span class="sd">      * ALWAYS start with "_note" explaining the schema approach</span>
 <span class="sd">      * Document critical columns (joins, filters, business rules)</span>
 <span class="sd">      * Skip self-descriptive columns - LLM discovers them via get_schema()</span>
 <span class="sd">      * This reduces maintenance and focuses LLM attention on what matters</span>
-<span class="sd">    - Always include &quot;usage_tip&quot; directing users to call get_schema()</span>
+<span class="sd">    - Always include "usage_tip" directing users to call get_schema()</span>
 <span class="sd">    - Column prefixes (adds_, entra_, hr_) indicate source systems</span>
-<span class="sd">    - &quot;importance&quot;: &quot;CRITICAL&quot; marks key columns for joins/filters</span>
-<span class="sd">    - Delimiter usually &quot;,&quot; but &quot;;&quot; for SAP files (sap_* prefix)</span>
+<span class="sd">    - "importance": "CRITICAL" marks key columns for joins/filters</span>
+<span class="sd">    - Delimiter usually "," but ";" for SAP files (sap_* prefix)</span>
 
 <span class="sd">    Returns comprehensive documentation for all datasets in JSON format.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="c1"># Use the same directory logic as the CSV files</span>
     <span class="n">file_pattern</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">file_location</span>
     <span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">file_pattern</span><span class="p">)</span>
-    <span class="n">catalog_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;data_catalog.json&quot;</span><span class="p">)</span>
+    <span class="n">catalog_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">"data_catalog.json"</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">catalog_path</span><span class="p">):</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">catalog_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">catalog_path</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">catalog</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">catalog</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
-            <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Data catalog not found&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;path_checked&quot;</span><span class="p">:</span> <span class="n">catalog_path</span><span class="p">,</span>
-            <span class="s2">&quot;note&quot;</span><span class="p">:</span> <span class="s2">&quot;Ensure data_catalog.json is in the same folder as CSV files&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;schema_help&quot;</span><span class="p">:</span> <span class="s2">&quot;See get_data_catalog() docstring for data_catalog.json structure&quot;</span>
+            <span class="s2">"error"</span><span class="p">:</span> <span class="s2">"Data catalog not found"</span><span class="p">,</span>
+            <span class="s2">"path_checked"</span><span class="p">:</span> <span class="n">catalog_path</span><span class="p">,</span>
+            <span class="s2">"note"</span><span class="p">:</span> <span class="s2">"Ensure data_catalog.json is in the same folder as CSV files"</span><span class="p">,</span>
+            <span class="s2">"schema_help"</span><span class="p">:</span> <span class="s2">"See get_data_catalog() docstring for data_catalog.json structure"</span>
         <span class="p">})</span>
 
         <span class="k">return</span> <span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">file_type</span> <span class="o">==</span> <span class="s2">&quot;parquet&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">file_type</span> <span class="o">==</span> <span class="s2">"parquet"</span><span class="p">:</span>
         <span class="n">dfs</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">file_locations</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">dfs</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported file type: </span><span class="si">{</span><span class="n">file_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unsupported file type: </span><span class="si">{</span><span class="n">file_type</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_schema</span><span class="p">(</span>
     <span class="n">file_location</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">file_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
-        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The type of the file to be read. Supported types are csv and parquet&quot;</span><span class="p">,</span>
-        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">"The type of the file to be read. Supported types are csv and parquet"</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">"csv"</span><span class="p">,</span>
     <span class="p">),</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Get the schema of a single data file from the given file location</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="n">file_location</span><span class="p">,</span> <span class="n">file_type</span><span class="p">)</span>
     <span class="n">schema</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">schema</span>
     <span class="n">schema_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -3061,16 +3089,16 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">execute_polars_sql</span><span class="p">(</span>
     <span class="n">file_locations</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="n">query</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
-        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The polars sql query to be executed.&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">"The polars sql query to be executed."</span><span class="p">,</span>
     <span class="p">),</span>
     <span class="n">file_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
-        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The type of the file to be read. Supported types are csv and parquet&quot;</span><span class="p">,</span>
-        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">"The type of the file to be read. Supported types are csv and parquet"</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">"csv"</span><span class="p">,</span>
     <span class="p">),</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Reads the data from the given file locations. Executes the given polars sql query and returns the result.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">read_file_list</span><span class="p">(</span><span class="n">file_locations</span><span class="p">,</span> <span class="n">file_type</span><span class="p">)</span>
     <span class="n">op_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
     <span class="n">output_records</span> <span class="o">=</span> <span class="n">op_df</span><span class="o">.</span><span class="n">to_dicts</span><span class="p">()</span>
@@ -3079,7 +3107,7 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">mcp</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 <hr />
@@ -3122,28 +3150,28 @@
 <hr />
 <h2 id="data-catalog-example-datadata_catalogjson">Data Catalog Example (<code>data/data_catalog.json</code>)</h2>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-10-19&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;datasets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;idp_hr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;idp_hr.csv&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identity_Management&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Master identity dataset merging ADDS, Entra ID, and HR system attributes...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;columns&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;_note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Most columns are self-descriptive with prefixes indicating source system (adds_, entra_, hr_, onedrive_). Critical columns documented below.&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;entra_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Entra user GUID. JOIN KEY from entra_user_devices.csv (user_id column).&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;data_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;importance&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRITICAL - Primary key for joins&quot;</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.1"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-10-19"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"datasets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"idp_hr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"idp_hr.csv"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Identity_Management"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Master identity dataset merging ADDS, Entra ID, and HR system attributes..."</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"columns"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Most columns are self-descriptive with prefixes indicating source system (adds_, entra_, hr_, onedrive_). Critical columns documented below."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"entra_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Entra user GUID. JOIN KEY from entra_user_devices.csv (user_id column)."</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"importance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRITICAL - Primary key for joins"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;business_rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;One row per person - all ADDS, Entra, and HR attributes merged&quot;</span>
+<span class="w">      </span><span class="nt">"business_rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"One row per person - all ADDS, Entra, and HR attributes merged"</span>
 <span class="w">      </span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;common_queries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;Users in ADDS but not Entra (source_adds_entra = &#39;adds&#39;)&quot;</span>
+<span class="w">      </span><span class="nt">"common_queries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"Users in ADDS but not Entra (source_adds_entra = 'adds')"</span>
 <span class="w">      </span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;usage_tip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is the PRIMARY user lookup table. Use column prefixes to understand data source. Use get_schema() to explore all columns.&quot;</span>
+<span class="w">      </span><span class="nt">"usage_tip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is the PRIMARY user lookup table. Use column prefixes to understand data source. Use get_schema() to explore all columns."</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -3211,7 +3239,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 22, 2025 13:27:44 UTC">November 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3264,7 +3292,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

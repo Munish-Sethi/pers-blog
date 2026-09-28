@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2375,6 +2375,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3017,14 +3045,14 @@
 <h2 id="connecting-to-nagios-and-servicedesk-plus-apis">Connecting to Nagios and ServiceDesk Plus APIs</h2>
 <p>To interact with both systems, you need API endpoints and credentials. Below are example constants (replace with your own values):</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Constants for ServiceDesk Plus (ITSM)</span>
-<span class="n">SERVICE_DESK_API_KEY</span> <span class="o">=</span> <span class="s1">&#39;YOUR_SERVICEDESKPLUS_API_KEY&#39;</span>
-<span class="n">SERVICEDESK_BASE_URL</span> <span class="o">=</span> <span class="s1">&#39;https://your-servicedeskplus-instance/api/v3/&#39;</span>
-<span class="n">SERVICE_DESK_USER</span> <span class="o">=</span> <span class="s1">&#39;automation_user&#39;</span>  <span class="c1"># The user that creates tickets via API</span>
+<span class="n">SERVICE_DESK_API_KEY</span> <span class="o">=</span> <span class="s1">'YOUR_SERVICEDESKPLUS_API_KEY'</span>
+<span class="n">SERVICEDESK_BASE_URL</span> <span class="o">=</span> <span class="s1">'https://your-servicedeskplus-instance/api/v3/'</span>
+<span class="n">SERVICE_DESK_USER</span> <span class="o">=</span> <span class="s1">'automation_user'</span>  <span class="c1"># The user that creates tickets via API</span>
 
 <span class="c1"># Constants for Nagios</span>
-<span class="n">NAGIOS_API_KEY</span> <span class="o">=</span> <span class="s1">&#39;YOUR_NAGIOS_API_KEY&#39;</span>
-<span class="n">NAGIOSXI_BASE_URL</span> <span class="o">=</span> <span class="s1">&#39;https://your-nagios-instance/nagiosxi/api/v1/&#39;</span>
-<span class="n">NAGIOS_COMMENT_FORMAT</span> <span class="o">=</span> <span class="s1">&#39;Automated Ticket Number Added By Interface Engine &#39;</span>
+<span class="n">NAGIOS_API_KEY</span> <span class="o">=</span> <span class="s1">'YOUR_NAGIOS_API_KEY'</span>
+<span class="n">NAGIOSXI_BASE_URL</span> <span class="o">=</span> <span class="s1">'https://your-nagios-instance/nagiosxi/api/v1/'</span>
+<span class="n">NAGIOS_COMMENT_FORMAT</span> <span class="o">=</span> <span class="s1">'Automated Ticket Number Added By Interface Engine '</span>
 </code></pre></div>
 <hr />
 <h2 id="core-integration-workflow">Core Integration Workflow</h2>
@@ -3037,9 +3065,9 @@
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">open_and_close_incidents</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Retrieve Nagios host inventory from a database</span>
-        <span class="n">nagioshostinventory</span> <span class="o">=</span> <span class="n">execute_sql_fetch_dicts</span><span class="p">(</span><span class="s1">&#39;select lower(host_name) as host_name, notes from fact_nagios_hosts &#39;</span><span class="p">)</span>
+        <span class="n">nagioshostinventory</span> <span class="o">=</span> <span class="n">execute_sql_fetch_dicts</span><span class="p">(</span><span class="s1">'select lower(host_name) as host_name, notes from fact_nagios_hosts '</span><span class="p">)</span>
         <span class="c1"># Fetch current Nagios host group members via API</span>
-        <span class="n">nagioshostgroupmembers</span> <span class="o">=</span> <span class="n">get_data_from_Nagios</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;objects/hostgroupmembers&#39;</span><span class="p">,</span> <span class="s1">&#39;hostgroup&#39;</span><span class="p">)</span>
+        <span class="n">nagioshostgroupmembers</span> <span class="o">=</span> <span class="n">get_data_from_Nagios</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">'objects/hostgroupmembers'</span><span class="p">,</span> <span class="s1">'hostgroup'</span><span class="p">)</span>
 
         <span class="c1"># Close incidents in ITSM tool for resolved monitoring issues</span>
         <span class="n">hostandservicesjustclosed</span> <span class="o">=</span> <span class="n">closeincidents</span><span class="p">(</span><span class="n">nagioshostgroupmembers</span><span class="p">)</span>
@@ -3065,42 +3093,42 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Calculate timestamp for incidents created in the last 10 days</span>
         <span class="n">twoweeksago</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-        <span class="n">twoweeksago</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">calendar</span><span class="o">.</span><span class="n">timegm</span><span class="p">(</span><span class="n">twoweeksago</span><span class="o">.</span><span class="n">timetuple</span><span class="p">()))</span> <span class="o">+</span> <span class="s1">&#39;000&#39;</span>
+        <span class="n">twoweeksago</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">calendar</span><span class="o">.</span><span class="n">timegm</span><span class="p">(</span><span class="n">twoweeksago</span><span class="o">.</span><span class="n">timetuple</span><span class="p">()))</span> <span class="o">+</span> <span class="s1">'000'</span>
         <span class="c1"># Search for resolved/closed/cancelled tickets created by the automation user</span>
         <span class="n">searchcrteria</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;status.name&quot;</span><span class="p">,</span> <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="s2">&quot;is &quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Resolved&quot;</span><span class="p">,</span> <span class="s2">&quot;Closed&quot;</span><span class="p">,</span> <span class="s2">&quot;Cancelled&quot;</span><span class="p">]},</span>
-            <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;created_by.name&quot;</span><span class="p">,</span> <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="s2">&quot;logical_operator&quot;</span><span class="p">:</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">SERVICE_DESK_USER</span><span class="p">)},</span>
-            <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;created_time&quot;</span><span class="p">,</span> <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="s2">&quot;greater than&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">twoweeksago</span><span class="p">,</span> <span class="s2">&quot;logical_operator&quot;</span><span class="p">:</span> <span class="s2">&quot;and&quot;</span><span class="p">}</span>
+            <span class="p">{</span><span class="s2">"field"</span><span class="p">:</span> <span class="s2">"status.name"</span><span class="p">,</span> <span class="s2">"condition"</span><span class="p">:</span> <span class="s2">"is "</span><span class="p">,</span> <span class="s2">"values"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Resolved"</span><span class="p">,</span> <span class="s2">"Closed"</span><span class="p">,</span> <span class="s2">"Cancelled"</span><span class="p">]},</span>
+            <span class="p">{</span><span class="s2">"field"</span><span class="p">:</span> <span class="s2">"created_by.name"</span><span class="p">,</span> <span class="s2">"condition"</span><span class="p">:</span> <span class="s2">"is"</span><span class="p">,</span> <span class="s2">"logical_operator"</span><span class="p">:</span> <span class="s2">"and"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">SERVICE_DESK_USER</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s2">"field"</span><span class="p">:</span> <span class="s2">"created_time"</span><span class="p">,</span> <span class="s2">"condition"</span><span class="p">:</span> <span class="s2">"greater than"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">twoweeksago</span><span class="p">,</span> <span class="s2">"logical_operator"</span><span class="p">:</span> <span class="s2">"and"</span><span class="p">}</span>
         <span class="p">]</span>
-        <span class="n">servicedeskincidents</span> <span class="o">=</span> <span class="n">get_all_Service_Desk_Requests</span><span class="p">(</span><span class="s1">&#39;requests&#39;</span><span class="p">,</span> <span class="s1">&#39;requests&#39;</span><span class="p">,</span> <span class="n">searchcrteria</span><span class="p">,</span> <span class="n">SERVICE_DESK_API_KEY</span><span class="p">,</span> <span class="n">SERVICEDESK_BASE_URL</span><span class="p">)</span>
-        <span class="n">nagiosallcurrentcomments</span> <span class="o">=</span> <span class="n">get_data_from_Nagios</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;objects/comment&#39;</span><span class="p">,</span> <span class="s1">&#39;comment&#39;</span><span class="p">)</span>
+        <span class="n">servicedeskincidents</span> <span class="o">=</span> <span class="n">get_all_Service_Desk_Requests</span><span class="p">(</span><span class="s1">'requests'</span><span class="p">,</span> <span class="s1">'requests'</span><span class="p">,</span> <span class="n">searchcrteria</span><span class="p">,</span> <span class="n">SERVICE_DESK_API_KEY</span><span class="p">,</span> <span class="n">SERVICEDESK_BASE_URL</span><span class="p">)</span>
+        <span class="n">nagiosallcurrentcomments</span> <span class="o">=</span> <span class="n">get_data_from_Nagios</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">'objects/comment'</span><span class="p">,</span> <span class="s1">'comment'</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">eachNagiosComment</span> <span class="ow">in</span> <span class="n">nagiosallcurrentcomments</span><span class="p">:</span>
-            <span class="n">commentData</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">eachNagiosComment</span><span class="p">[</span><span class="s1">&#39;comment_data&#39;</span><span class="p">])</span>
+            <span class="n">commentData</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">eachNagiosComment</span><span class="p">[</span><span class="s1">'comment_data'</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">NAGIOS_COMMENT_FORMAT</span> <span class="ow">in</span> <span class="n">commentData</span><span class="p">:</span>
                 <span class="n">nagiosticketnumber</span> <span class="o">=</span> <span class="n">commentData</span><span class="p">[(</span><span class="nb">len</span><span class="p">(</span><span class="n">NAGIOS_COMMENT_FORMAT</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">commentData</span><span class="p">)):]</span>
                 <span class="n">deleteNagiosAcknowledgement</span> <span class="o">=</span> <span class="kc">False</span>
                 <span class="k">for</span> <span class="n">eachiSightRequest</span> <span class="ow">in</span> <span class="n">servicedeskincidents</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">eachiSightRequest</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">nagiosticketnumber</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">eachiSightRequest</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">==</span> <span class="n">nagiosticketnumber</span><span class="p">:</span>
                         <span class="n">deleteNagiosAcknowledgement</span> <span class="o">=</span> <span class="kc">True</span>
                         <span class="k">break</span>
                 <span class="k">if</span> <span class="n">deleteNagiosAcknowledgement</span><span class="p">:</span>
-                    <span class="n">delete_nagios_acknowledgement</span><span class="p">(</span><span class="n">eachNagiosComment</span><span class="p">[</span><span class="s1">&#39;host_name&#39;</span><span class="p">],</span> <span class="n">eachNagiosComment</span><span class="p">[</span><span class="s1">&#39;service_description&#39;</span><span class="p">])</span>
+                    <span class="n">delete_nagios_acknowledgement</span><span class="p">(</span><span class="n">eachNagiosComment</span><span class="p">[</span><span class="s1">'host_name'</span><span class="p">],</span> <span class="n">eachNagiosComment</span><span class="p">[</span><span class="s1">'service_description'</span><span class="p">])</span>
         <span class="c1"># Close requests in ITSM tool if not present in Nagios comments</span>
         <span class="k">for</span> <span class="n">eachiSightRequest</span> <span class="ow">in</span> <span class="n">servicedeskincidents</span><span class="p">:</span>
             <span class="n">hname</span><span class="p">,</span> <span class="n">sname</span><span class="p">,</span> <span class="n">onerowaffected</span> <span class="o">=</span> <span class="n">close_Request_if_ticket_not_in_comments</span><span class="p">(</span><span class="n">eachiSightRequest</span><span class="p">,</span> <span class="n">nagiosallcurrentcomments</span><span class="p">,</span> <span class="n">nagioshostgroupmembers</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">onerowaffected</span> <span class="ow">and</span> <span class="n">hname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">hostandservicesjustclosed</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;hname&quot;</span><span class="p">:</span> <span class="n">hname</span><span class="p">,</span> <span class="s2">&quot;sname&quot;</span><span class="p">:</span> <span class="n">sname</span><span class="p">})</span>
+                <span class="n">hostandservicesjustclosed</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"hname"</span><span class="p">:</span> <span class="n">hname</span><span class="p">,</span> <span class="s2">"sname"</span><span class="p">:</span> <span class="n">sname</span><span class="p">})</span>
         <span class="c1"># Repeat for open tickets</span>
         <span class="n">searchcrteria</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;status.name&quot;</span><span class="p">,</span> <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="s2">&quot;is not&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Resolved&quot;</span><span class="p">,</span> <span class="s2">&quot;Closed&quot;</span><span class="p">,</span> <span class="s2">&quot;Cancelled&quot;</span><span class="p">]},</span>
-            <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;created_by.name&quot;</span><span class="p">,</span> <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="s2">&quot;logical_operator&quot;</span><span class="p">:</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">SERVICE_DESK_USER</span><span class="p">)}</span>
+            <span class="p">{</span><span class="s2">"field"</span><span class="p">:</span> <span class="s2">"status.name"</span><span class="p">,</span> <span class="s2">"condition"</span><span class="p">:</span> <span class="s2">"is not"</span><span class="p">,</span> <span class="s2">"values"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Resolved"</span><span class="p">,</span> <span class="s2">"Closed"</span><span class="p">,</span> <span class="s2">"Cancelled"</span><span class="p">]},</span>
+            <span class="p">{</span><span class="s2">"field"</span><span class="p">:</span> <span class="s2">"created_by.name"</span><span class="p">,</span> <span class="s2">"condition"</span><span class="p">:</span> <span class="s2">"is"</span><span class="p">,</span> <span class="s2">"logical_operator"</span><span class="p">:</span> <span class="s2">"and"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">SERVICE_DESK_USER</span><span class="p">)}</span>
         <span class="p">]</span>
-        <span class="n">servicedeskincidents</span> <span class="o">=</span> <span class="n">get_all_Service_Desk_Requests</span><span class="p">(</span><span class="s1">&#39;requests&#39;</span><span class="p">,</span> <span class="s1">&#39;requests&#39;</span><span class="p">,</span> <span class="n">searchcrteria</span><span class="p">,</span> <span class="n">SERVICE_DESK_API_KEY</span><span class="p">,</span> <span class="n">SERVICEDESK_BASE_URL</span><span class="p">)</span>
-        <span class="n">nagiosallcurrentcomments</span> <span class="o">=</span> <span class="n">get_data_from_Nagios</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;objects/comment&#39;</span><span class="p">,</span> <span class="s1">&#39;comment&#39;</span><span class="p">)</span>
+        <span class="n">servicedeskincidents</span> <span class="o">=</span> <span class="n">get_all_Service_Desk_Requests</span><span class="p">(</span><span class="s1">'requests'</span><span class="p">,</span> <span class="s1">'requests'</span><span class="p">,</span> <span class="n">searchcrteria</span><span class="p">,</span> <span class="n">SERVICE_DESK_API_KEY</span><span class="p">,</span> <span class="n">SERVICEDESK_BASE_URL</span><span class="p">)</span>
+        <span class="n">nagiosallcurrentcomments</span> <span class="o">=</span> <span class="n">get_data_from_Nagios</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">'objects/comment'</span><span class="p">,</span> <span class="s1">'comment'</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">eachiSightRequest</span> <span class="ow">in</span> <span class="n">servicedeskincidents</span><span class="p">:</span>
             <span class="n">hname</span><span class="p">,</span> <span class="n">sname</span><span class="p">,</span> <span class="n">onerowaffected</span> <span class="o">=</span> <span class="n">close_Request_if_ticket_not_in_comments</span><span class="p">(</span><span class="n">eachiSightRequest</span><span class="p">,</span> <span class="n">nagiosallcurrentcomments</span><span class="p">,</span> <span class="n">nagioshostgroupmembers</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">onerowaffected</span> <span class="ow">and</span> <span class="n">hname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">hostandservicesjustclosed</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;hname&quot;</span><span class="p">:</span> <span class="n">hname</span><span class="p">,</span> <span class="s2">&quot;sname&quot;</span><span class="p">:</span> <span class="n">sname</span><span class="p">})</span>
+                <span class="n">hostandservicesjustclosed</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"hname"</span><span class="p">:</span> <span class="n">hname</span><span class="p">,</span> <span class="s2">"sname"</span><span class="p">:</span> <span class="n">sname</span><span class="p">})</span>
         <span class="k">return</span> <span class="n">hostandservicesjustclosed</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">localExceptionObject</span><span class="p">:</span>
         <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">localExceptionObject</span><span class="p">)</span>
@@ -3141,22 +3169,22 @@
 <p>Below are key supporting functions referenced in the workflow. These functions handle API calls, database queries, and other integration logic.</p>
 <h3 id="execute_sql_fetch_dicts">execute_sql_fetch_dicts</h3>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">execute_sql_fetch_dicts</span><span class="p">(</span><span class="n">sqlstatement</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Executes a SQL query and returns the results as a list of dictionaries.</span>
 <span class="sd">    Implementation depends on your database setup. Example below uses pyodbc.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">pyodbc</span>
     <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Replace with your actual connection string</span>
-        <span class="n">conn</span> <span class="o">=</span> <span class="n">pyodbc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;DRIVER={ODBC Driver 17 for SQL Server};SERVER=your_server;DATABASE=your_db;UID=your_user;PWD=your_password&#39;</span><span class="p">)</span>
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">pyodbc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'DRIVER={ODBC Driver 17 for SQL Server};SERVER=your_server;DATABASE=your_db;UID=your_user;PWD=your_password'</span><span class="p">)</span>
         <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sqlstatement</span><span class="p">)</span>
         <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">column</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">description</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
             <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">row</span><span class="p">)))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SQL execution error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SQL execution error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -3169,11 +3197,11 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_data_from_Nagios</span><span class="p">(</span><span class="n">queryParms</span><span class="p">,</span> <span class="n">object2Query</span><span class="p">,</span> <span class="n">responseField</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Calls the Nagios API and returns the requested data.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;apikey&#39;</span><span class="p">:</span> <span class="n">NAGIOS_API_KEY</span><span class="p">}</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'apikey'</span><span class="p">:</span> <span class="n">NAGIOS_API_KEY</span><span class="p">}</span>
         <span class="k">if</span> <span class="n">queryParms</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">queryParms</span><span class="p">)</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">NAGIOSXI_BASE_URL</span> <span class="o">+</span> <span class="n">object2Query</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -3184,7 +3212,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">json_data</span><span class="p">[</span><span class="n">responseField</span><span class="p">]</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nagios API error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Nagios API error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div>
 <h3 id="get_all_service_desk_requests">get_all_Service_Desk_Requests</h3>
@@ -3192,80 +3220,80 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_all_Service_Desk_Requests</span><span class="p">(</span><span class="n">object2Query</span><span class="p">,</span> <span class="n">responseField</span><span class="p">,</span> <span class="n">searchcriteria</span><span class="p">,</span> <span class="n">apikey</span><span class="p">,</span> <span class="n">apibaseurl</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Calls the ServiceDesk Plus API to retrieve tickets matching the search criteria.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Authtoken&#39;</span><span class="p">:</span> <span class="n">apikey</span><span class="p">}</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">apibaseurl</span><span class="si">}{</span><span class="n">object2Query</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;criteria&quot;</span><span class="p">:</span> <span class="n">searchcriteria</span><span class="p">})}</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Authtoken'</span><span class="p">:</span> <span class="n">apikey</span><span class="p">}</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">apibaseurl</span><span class="si">}{</span><span class="n">object2Query</span><span class="si">}</span><span class="s2">"</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"input_data"</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">"criteria"</span><span class="p">:</span> <span class="n">searchcriteria</span><span class="p">})}</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
         <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">responseField</span><span class="p">,</span> <span class="p">[])</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ServiceDesk API error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ServiceDesk API error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[]</span>
 </code></pre></div>
 <h3 id="delete_nagios_acknowledgement">delete_nagios_acknowledgement</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">delete_nagios_acknowledgement</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">servicedescription</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Removes an acknowledgement (comment) from Nagios for the given host/service.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">servicedescription</span><span class="p">:</span>
-            <span class="n">nagiosCommand</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;cmd=REMOVE_HOST_ACKNOWLEDGEMENT;</span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="n">nagiosCommand</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'cmd=REMOVE_HOST_ACKNOWLEDGEMENT;</span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s1">'</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">nagiosCommand</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;cmd=REMOVE_SVC_ACKNOWLEDGEMENT;</span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s1">;</span><span class="si">{</span><span class="n">servicedescription</span><span class="si">}</span><span class="s1">&#39;</span>
-        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">}</span>
-        <span class="n">OBJECT_URL</span> <span class="o">=</span> <span class="s1">&#39;system/corecommand&#39;</span>
+            <span class="n">nagiosCommand</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'cmd=REMOVE_SVC_ACKNOWLEDGEMENT;</span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s1">;</span><span class="si">{</span><span class="n">servicedescription</span><span class="si">}</span><span class="s1">'</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/x-www-form-urlencoded'</span><span class="p">}</span>
+        <span class="n">OBJECT_URL</span> <span class="o">=</span> <span class="s1">'system/corecommand'</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
             <span class="n">NAGIOSXI_BASE_URL</span> <span class="o">+</span> <span class="n">OBJECT_URL</span><span class="p">,</span>
-            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;apikey&#39;</span><span class="p">:</span> <span class="n">NAGIOS_API_KEY</span><span class="p">},</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">'apikey'</span><span class="p">:</span> <span class="n">NAGIOS_API_KEY</span><span class="p">},</span>
             <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
             <span class="n">data</span><span class="o">=</span><span class="n">nagiosCommand</span><span class="p">,</span>
             <span class="n">verify</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nagios acknowledgement deletion error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Nagios acknowledgement deletion error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div>
 <h3 id="close_request_if_ticket_not_in_comments">close_Request_if_ticket_not_in_comments</h3>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">close_Request_if_ticket_not_in_comments</span><span class="p">(</span><span class="n">iSightRequest</span><span class="p">,</span> <span class="n">nagiosallcurrentcomments</span><span class="p">,</span> <span class="n">nagioshostgroupmembers</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Closes the ITSM ticket if it is no longer present in Nagios comments.</span>
 <span class="sd">    Returns (hostname, servicename, rowaffected)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">lookforRequestNumber</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">iSightRequest</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+<span class="sd">    """</span>
+    <span class="n">lookforRequestNumber</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">iSightRequest</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])</span>
     <span class="n">closerequest</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">hostname</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">servicename</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">onerowaffected</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">for</span> <span class="n">eachNagiosComment</span> <span class="ow">in</span> <span class="n">nagiosallcurrentcomments</span><span class="p">:</span>
-        <span class="n">commentData</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">eachNagiosComment</span><span class="p">[</span><span class="s1">&#39;comment_data&#39;</span><span class="p">])</span>
+        <span class="n">commentData</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">eachNagiosComment</span><span class="p">[</span><span class="s1">'comment_data'</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">lookforRequestNumber</span> <span class="ow">in</span> <span class="n">commentData</span><span class="p">:</span>
             <span class="n">closerequest</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">break</span>
     <span class="k">if</span> <span class="n">closerequest</span><span class="p">:</span>
         <span class="c1"># Here you would call the ITSM API to close the ticket</span>
         <span class="c1"># For demonstration, we just print and return</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closing ITSM ticket </span><span class="si">{</span><span class="n">lookforRequestNumber</span><span class="si">}</span><span class="s2"> as it is not present in Nagios comments.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Closing ITSM ticket </span><span class="si">{</span><span class="n">lookforRequestNumber</span><span class="si">}</span><span class="s2"> as it is not present in Nagios comments."</span><span class="p">)</span>
         <span class="n">onerowaffected</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="c1"># Optionally, update the ticket status via API here</span>
     <span class="k">return</span> <span class="n">hostname</span><span class="p">,</span> <span class="n">servicename</span><span class="p">,</span> <span class="n">onerowaffected</span>
 </code></pre></div>
 <h3 id="handle_global_exception">handle_global_exception</h3>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">handle_global_exception</span><span class="p">(</span><span class="n">functionName</span><span class="p">,</span> <span class="n">exceptionObject</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Handles exceptions and sends notification emails if needed.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exception in </span><span class="si">{</span><span class="n">functionName</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">exceptionObject</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Exception in </span><span class="si">{</span><span class="n">functionName</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">exceptionObject</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
     <span class="c1"># Optionally, send an email notification here</span>
-    <span class="c1"># send_email(recipients=[...], subject=&#39;Exception occurred&#39;, plain_message=str(exceptionObject))</span>
+    <span class="c1"># send_email(recipients=[...], subject='Exception occurred', plain_message=str(exceptionObject))</span>
 </code></pre></div>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
@@ -3291,7 +3319,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:21:49 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3344,7 +3372,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2230,6 +2230,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2703,9 +2731,9 @@
 <div class="highlight"><pre><span></span><code><span class="c"># Boolean variable to indicate whether to restore disks only</span>
 <span class="c"># If it is True then VM will also be created so be careful </span>
 <span class="k">param</span> <span class="p">(</span>
-    <span class="no">[string]</span> <span class="nv">$restorediskonly</span> <span class="p">=</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+    <span class="no">[string]</span> <span class="nv">$restorediskonly</span> <span class="p">=</span> <span class="s2">"false"</span><span class="p">,</span>
     <span class="no">[int]</span> <span class="nv">$numberofhours2wait</span> <span class="p">=</span> <span class="n">2</span><span class="p">,</span>
-    <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span>
+    <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">'./scripts/bcpdr/vm/vmlist.json'</span>
 <span class="p">)</span>
 
 <span class="c">########################################################</span>
@@ -2726,7 +2754,7 @@
         <span class="p">-</span><span class="n">-item-name</span> <span class="nv">$vmname</span> <span class="p">`</span>
         <span class="p">-</span><span class="n">-resource-group</span> <span class="nv">$vaultresourcegroupname</span> <span class="p">`</span>
         <span class="p">-</span><span class="n">-vault-name</span> <span class="nv">$vaultname</span> <span class="p">`</span>
-        <span class="p">-</span><span class="n">-query</span> <span class="s2">&quot;[0]&quot;</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-query</span> <span class="s2">"[0]"</span> <span class="p">`</span>
         <span class="p">-</span><span class="n">-use-secondary-region</span> <span class="p">`</span>
         <span class="p">-</span><span class="n">-output</span> <span class="n">json</span> <span class="p">`</span>
     <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
@@ -2743,10 +2771,10 @@
         <span class="no">[string]</span><span class="nv">$storageaccountname</span><span class="p">,</span>
         <span class="no">[string]</span><span class="nv">$recoverypointname</span><span class="p">,</span>
         <span class="no">[string]</span><span class="nv">$targetresourcegroupname</span><span class="p">,</span>
-        <span class="no">[string]</span><span class="nv">$targetvmname</span> <span class="p">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-        <span class="no">[string]</span><span class="nv">$targetvnetname</span> <span class="p">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-        <span class="no">[string]</span><span class="nv">$targetvnetresourcegroup</span> <span class="p">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-        <span class="no">[string]</span><span class="nv">$targetsubnetname</span> <span class="p">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$targetvmname</span> <span class="p">=</span> <span class="s1">''</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$targetvnetname</span> <span class="p">=</span> <span class="s1">''</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$targetvnetresourcegroup</span> <span class="p">=</span> <span class="s1">''</span><span class="p">,</span>
+        <span class="no">[string]</span><span class="nv">$targetsubnetname</span> <span class="p">=</span> <span class="s1">''</span><span class="p">,</span>
         <span class="no">[bool]</span><span class="nv">$restoretodisk</span> <span class="p">=</span> <span class="nv">$false</span>
     <span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$restoretodisk</span><span class="p">)</span> <span class="p">{</span>
@@ -2783,12 +2811,12 @@
 <span class="k">function</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="p">{</span>
     <span class="k">param</span> <span class="p">(</span>
         <span class="no">[string]</span><span class="nv">$command</span><span class="p">,</span>
-        <span class="no">[string]</span><span class="nv">$message</span> <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="no">[string]</span><span class="nv">$message</span> <span class="p">=</span> <span class="s2">""</span>
     <span class="p">)</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="no">[string]</span><span class="p">::</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="nv">$message</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to run message {0}&quot;</span> <span class="o">-f</span> <span class="nv">$message</span><span class="p">)</span>
-        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to run command {0}&quot;</span> <span class="o">-f</span> <span class="nv">$command</span><span class="p">)</span>
+        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"About to run message {0}"</span> <span class="o">-f</span> <span class="nv">$message</span><span class="p">)</span>
+        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"About to run command {0}"</span> <span class="o">-f</span> <span class="nv">$command</span><span class="p">)</span>
     <span class="p">}</span>
     <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-Expression</span> <span class="nv">$command</span>
     <span class="k">return</span> <span class="nv">$executionResult</span>
@@ -2798,44 +2826,44 @@
     <span class="k">param</span> <span class="p">(</span>
         <span class="no">[string]</span><span class="nv">$message</span>
     <span class="p">)</span>
-    <span class="nb">Write-Host</span> <span class="s2">&quot;::notice::$message&quot;</span>
+    <span class="nb">Write-Host</span> <span class="s2">"::notice::$message"</span>
 <span class="p">}</span>
 
 <span class="nv">$booleanRestorediskonly</span> <span class="p">=</span> <span class="nv">$false</span>
 
 <span class="k">switch</span> <span class="p">(</span><span class="nv">$restorediskonly</span><span class="p">.</span><span class="n">ToLower</span><span class="p">())</span> <span class="p">{</span>
-    <span class="s2">&quot;true&quot;</span> <span class="p">{</span>
+    <span class="s2">"true"</span> <span class="p">{</span>
         <span class="nv">$restorediskonly</span> <span class="p">=</span> <span class="no">[bool]</span><span class="nv">$true</span>
         <span class="nv">$booleanRestorediskonly</span> <span class="p">=</span> <span class="nv">$true</span>
     <span class="p">}</span>
-    <span class="s2">&quot;false&quot;</span> <span class="p">{</span>
+    <span class="s2">"false"</span> <span class="p">{</span>
         <span class="nv">$restorediskonly</span> <span class="p">=</span> <span class="no">[bool]</span><span class="nv">$false</span>
         <span class="nv">$booleanRestorediskonly</span> <span class="p">=</span> <span class="nv">$false</span>
     <span class="p">}</span>
     <span class="k">default</span> <span class="p">{</span>
-        <span class="k">throw</span> <span class="s2">&quot;Invalid value for restorediskonly: $restorediskonly. Must be &#39;true&#39; or &#39;false&#39;.&quot;</span>
+        <span class="k">throw</span> <span class="s2">"Invalid value for restorediskonly: $restorediskonly. Must be 'true' or 'false'."</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c"># Log values with type information</span>
-<span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;BooleanRestorediskonly variable value: $booleanRestorediskonly (Type: </span><span class="p">$(</span><span class="nv">$booleanRestorediskonly</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">)</span><span class="s2">)&quot;</span><span class="p">)</span>
-<span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Numberofhours2wait variable value: $numberofhours2wait (Type: </span><span class="p">$(</span><span class="nv">$numberofhours2wait</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">)</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"BooleanRestorediskonly variable value: $booleanRestorediskonly (Type: </span><span class="p">$(</span><span class="nv">$booleanRestorediskonly</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">)</span><span class="s2">)"</span><span class="p">)</span>
+<span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"Numberofhours2wait variable value: $numberofhours2wait (Type: </span><span class="p">$(</span><span class="nv">$numberofhours2wait</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">)</span><span class="s2">)"</span><span class="p">)</span>
 
 <span class="c"># Use the boolean variable in further logic</span>
 <span class="k">if</span> <span class="p">(</span><span class="nv">$booleanRestorediskonly</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nb">Write-CustomLog</span> <span class="s2">&quot;Restoring disk only.&quot;</span>
+    <span class="nb">Write-CustomLog</span> <span class="s2">"Restoring disk only."</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nb">Write-CustomLog</span> <span class="s2">&quot;Performing full restore.&quot;</span>
+    <span class="nb">Write-CustomLog</span> <span class="s2">"Performing full restore."</span>
 <span class="p">}</span>
 
 <span class="c">############################################################</span>
 <span class="c"># Variables, note the staging SA we created in earler steps</span>
 <span class="c">############################################################</span>
-<span class="nv">$gdep_rsv_vault_name</span> <span class="p">=</span> <span class="s2">&quot;rsv-prod-eus-01&quot;</span>
-<span class="nv">$gdep_rsv_vault_resource_group</span> <span class="p">=</span> <span class="s2">&quot;rg-gdep-peus-backup&quot;</span>
+<span class="nv">$gdep_rsv_vault_name</span> <span class="p">=</span> <span class="s2">"rsv-prod-eus-01"</span>
+<span class="nv">$gdep_rsv_vault_resource_group</span> <span class="p">=</span> <span class="s2">"rg-gdep-peus-backup"</span>
 
-<span class="nv">$gdep_staging_storage_account</span> <span class="p">=</span> <span class="n">az</span> <span class="n">storage</span> <span class="n">account</span> <span class="n">show</span> <span class="p">-</span><span class="n">-name</span> <span class="n">storegdeppwusstaging</span> <span class="p">-</span><span class="n">-query</span> <span class="s1">&#39;id&#39;</span> <span class="p">-</span><span class="n">-output</span> <span class="n">tsv</span>
-<span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Staging storage account is {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_staging_storage_account</span><span class="p">)</span>
+<span class="nv">$gdep_staging_storage_account</span> <span class="p">=</span> <span class="n">az</span> <span class="n">storage</span> <span class="n">account</span> <span class="n">show</span> <span class="p">-</span><span class="n">-name</span> <span class="n">storegdeppwusstaging</span> <span class="p">-</span><span class="n">-query</span> <span class="s1">'id'</span> <span class="p">-</span><span class="n">-output</span> <span class="n">tsv</span>
+<span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"Staging storage account is {0}"</span> <span class="o">-f</span> <span class="nv">$gdep_staging_storage_account</span><span class="p">)</span>
 
 <span class="cm">&lt;#</span>
 <span class="cm">    gdep_virtual_machine                = Specifies the name of the backed-up VM item to restore.</span>
@@ -2863,9 +2891,9 @@
 
 <span class="c"># Lets add restore Job related properties to keep track of each job </span>
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$gdepvm</span> <span class="k">in</span> <span class="nv">$vm_list</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$gdepvm</span> <span class="p">|</span> <span class="nb">Add-Member</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&quot;gdep_restore_job_name&quot;</span> <span class="n">-Value</span> <span class="s2">&quot;&quot;</span>
-    <span class="nv">$gdepvm</span> <span class="p">|</span> <span class="nb">Add-Member</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&quot;gdep_restore_job_status&quot;</span> <span class="n">-Value</span> <span class="s2">&quot;Not Started&quot;</span>
-    <span class="nv">$gdepvm</span> <span class="p">|</span> <span class="nb">Add-Member</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">&quot;gdep_nic_operation_completed&quot;</span> <span class="n">-Value</span> <span class="nv">$false</span>
+    <span class="nv">$gdepvm</span> <span class="p">|</span> <span class="nb">Add-Member</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">"gdep_restore_job_name"</span> <span class="n">-Value</span> <span class="s2">""</span>
+    <span class="nv">$gdepvm</span> <span class="p">|</span> <span class="nb">Add-Member</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">"gdep_restore_job_status"</span> <span class="n">-Value</span> <span class="s2">"Not Started"</span>
+    <span class="nv">$gdepvm</span> <span class="p">|</span> <span class="nb">Add-Member</span> <span class="n">-MemberType</span> <span class="n">NoteProperty</span> <span class="n">-Name</span> <span class="s2">"gdep_nic_operation_completed"</span> <span class="n">-Value</span> <span class="nv">$false</span>
 <span class="p">}</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$gdepvm</span> <span class="k">in</span> <span class="nv">$vm_list</span><span class="p">)</span> <span class="p">{</span>
@@ -2879,7 +2907,7 @@
         <span class="nv">$gdep_target_vnet_resource_group</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_vnet_resource_group</span>
         <span class="nv">$gdep_target_subnet_name</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_subnet_name</span>
 
-        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to obtain recovery point for VM {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
+        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"About to obtain recovery point for VM {0}"</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
 
         <span class="nv">$latest_recovery_point</span> <span class="p">=</span> <span class="nb">Get-Latest</span><span class="n">-Recovery-Point</span> <span class="p">`</span>
             <span class="n">-vmname</span> <span class="nv">$gdep_virtual_machine</span> <span class="p">`</span>
@@ -2888,7 +2916,7 @@
             <span class="n">-vaultresourcegroupname</span> <span class="nv">$gdep_rsv_vault_resource_group</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nv">$booleanRestorediskonly</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Sould not have come into this loop {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
+            <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"Sould not have come into this loop {0}"</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
             <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="no">[string]</span><span class="p">::</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="nv">$latest_recovery_point</span><span class="p">))</span> <span class="p">{</span>
                 <span class="nv">$restore_operation</span> <span class="p">=</span> <span class="nb">Restore-Disks</span> <span class="p">`</span>
                     <span class="n">-vmname</span> <span class="nv">$gdep_virtual_machine</span> <span class="p">`</span>
@@ -2901,15 +2929,15 @@
                     <span class="n">-restoretodisk</span> <span class="nv">$true</span>
                 <span class="c"># ($restore_operation | ConvertFrom-Json).properties.activityId</span>
                 <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_restore_job_name</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$restore_operation</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span><span class="p">).</span><span class="n">name</span>
-                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Working on Restoring Disk for job name {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_restore_job_name</span><span class="p">)</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"Working on Restoring Disk for job name {0}"</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_restore_job_name</span><span class="p">)</span>
             <span class="p">}</span>
             <span class="k">else</span> <span class="p">{</span>
-                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;No disk(s) recovery point found for VM specfified {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"No disk(s) recovery point found for VM specfified {0}"</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
             <span class="p">}</span>
         <span class="p">}</span>
         <span class="k">else</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="no">[string]</span><span class="p">::</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="nv">$latest_recovery_point</span><span class="p">))</span> <span class="p">{</span>
-                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;This is the correct condition for VM {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"This is the correct condition for VM {0}"</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
                 <span class="nv">$restore_operation</span> <span class="p">=</span> <span class="nb">Restore-Disks</span> <span class="p">`</span>
                     <span class="n">-vmname</span> <span class="nv">$gdep_virtual_machine</span> <span class="p">`</span>
                     <span class="n">-vmcontainername</span> <span class="nv">$gdep_virtual_machine_container_name</span> <span class="p">`</span>
@@ -2924,15 +2952,15 @@
                     <span class="n">-targetsubnetname</span> <span class="nv">$gdep_target_subnet_name</span> <span class="p">`</span>
                     <span class="n">-restoretodisk</span> <span class="nv">$false</span>
                 <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_restore_job_name</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$restore_operation</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span><span class="p">).</span><span class="n">name</span>
-                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Working on Restoring Virtual Machine for job name {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_restore_job_name</span><span class="p">)</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"Working on Restoring Virtual Machine for job name {0}"</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_restore_job_name</span><span class="p">)</span>
             <span class="p">}</span>
             <span class="k">else</span> <span class="p">{</span>
-                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;No virtual machine recovery point found for VM {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"No virtual machine recovery point found for VM {0}"</span> <span class="o">-f</span> <span class="nv">$gdep_virtual_machine</span><span class="p">)</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">catch</span> <span class="p">{</span>
-        <span class="nb">Write-Error</span> <span class="s2">&quot;An error occurred: $_&quot;</span>
+        <span class="nb">Write-Error</span> <span class="s2">"An error occurred: $_"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2961,13 +2989,13 @@
 <p>The script expects a JSON file like this:</p>
 <div class="highlight"><pre><span></span><code><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MDCAVDPRDAE02&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine_containername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MDCAVDPRDAE02&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gdep_target_resource_group_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dr-rg-gdep-pwus-infrastructure&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gdep_target_vm_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRMDCAVDPRDAE02&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gdep_target_vnet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vnet-gdep-pwus-management&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gdep_target_vnet_resource_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dr-rg-gdep-pwus-vnets&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gdep_target_subnet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;snet-gdep-pwus-management-restore&quot;</span>
+<span class="w">    </span><span class="nt">"gdep_virtual_machine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDCAVDPRDAE02"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"gdep_virtual_machine_containername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDCAVDPRDAE02"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"gdep_target_resource_group_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dr-rg-gdep-pwus-infrastructure"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"gdep_target_vm_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRMDCAVDPRDAE02"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"gdep_target_vnet_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vnet-gdep-pwus-management"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"gdep_target_vnet_resource_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dr-rg-gdep-pwus-vnets"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"gdep_target_subnet_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snet-gdep-pwus-management-restore"</span>
 <span class="w">    </span><span class="c1">// ...other NIC properties...</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">]</span>
@@ -3001,7 +3029,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 17:00:50 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3054,7 +3082,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

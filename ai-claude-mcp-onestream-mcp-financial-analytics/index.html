@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2585,6 +2585,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3482,14 +3510,14 @@ fastmcp
 <span class="err">Content-Type: application/json</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;BaseWebServerUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://&lt;tenant&gt;.onestreamcloud.com/onestreamweb&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;ApplicationName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OneStream Production&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;CubeViewName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;view_name&gt;&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;DataTablePerCubeViewRow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;ResultDataTableName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;R&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;CustomSubstVarsAsCommaSeparatedPairs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;substitution_vars&gt;&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;CubeViewDataTableOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;IncludeTitle&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="nt">"BaseWebServerUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;tenant&gt;.onestreamcloud.com/onestreamweb"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"ApplicationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OneStream Production"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"CubeViewName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;view_name&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"DataTablePerCubeViewRow"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"ResultDataTableName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"R"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"CustomSubstVarsAsCommaSeparatedPairs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;substitution_vars&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"CubeViewDataTableOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"IncludeTitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -3513,8 +3541,8 @@ fastmcp
 <p>Before designing any view, use the SQL endpoint to discover the correct account member names in the COPA cube:</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Description</span><span class="p">,</span><span class="w"> </span><span class="n">DimId</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">Member</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">Description</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%Margin%&#39;</span>
-<span class="w">   </span><span class="k">OR</span><span class="w"> </span><span class="n">Description</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%Quantity%&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">Description</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'%Margin%'</span>
+<span class="w">   </span><span class="k">OR</span><span class="w"> </span><span class="n">Description</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'%Quantity%'</span>
 </code></pre></div>
 <p>This returned <code>F42099</code> (Quantity Average), <code>F55099</code> (Std Margin) — allowing us to verify the exact codes before building the views.</p>
 <h3 id="copa-sales-view-point-of-view-tab">COPA Sales View: Point of View Tab</h3>
@@ -3755,48 +3783,48 @@ A#QtyNetOrd:T#|!GDParam_Year!|M1:Name(Qty Jan),... Nested: V#Periodic
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">call_cv</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">app_name</span><span class="p">,</span> <span class="n">cv_name</span><span class="p">,</span> <span class="n">subst_vars</span><span class="p">):</span>
-    <span class="n">server</span> <span class="o">=</span> <span class="s2">&quot;&lt;your-tenant&gt;.onestreamcloud.com&quot;</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="s2">"&lt;your-tenant&gt;.onestreamcloud.com"</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">pat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">pat</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+        <span class="s2">"Accept"</span><span class="p">:</span> <span class="s2">"application/json"</span>
     <span class="p">}</span>
     <span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;BaseWebServerUrl&quot;</span><span class="p">:</span>                     <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">/onestreamweb&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ApplicationName&quot;</span><span class="p">:</span>                      <span class="n">app_name</span><span class="p">,</span>
-        <span class="s2">&quot;CubeViewName&quot;</span><span class="p">:</span>                         <span class="n">cv_name</span><span class="p">,</span>
-        <span class="s2">&quot;DataTablePerCubeViewRow&quot;</span><span class="p">:</span>              <span class="kc">False</span><span class="p">,</span>
-        <span class="s2">&quot;ResultDataTableName&quot;</span><span class="p">:</span>                  <span class="s2">&quot;R&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;CustomSubstVarsAsCommaSeparatedPairs&quot;</span><span class="p">:</span> <span class="n">subst_vars</span><span class="p">,</span>
-        <span class="s2">&quot;CubeViewDataTableOptions&quot;</span><span class="p">:</span>             <span class="p">{</span><span class="s2">&quot;IncludeTitle&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+        <span class="s2">"BaseWebServerUrl"</span><span class="p">:</span>                     <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">/onestreamweb"</span><span class="p">,</span>
+        <span class="s2">"ApplicationName"</span><span class="p">:</span>                      <span class="n">app_name</span><span class="p">,</span>
+        <span class="s2">"CubeViewName"</span><span class="p">:</span>                         <span class="n">cv_name</span><span class="p">,</span>
+        <span class="s2">"DataTablePerCubeViewRow"</span><span class="p">:</span>              <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">"ResultDataTableName"</span><span class="p">:</span>                  <span class="s2">"R"</span><span class="p">,</span>
+        <span class="s2">"CustomSubstVarsAsCommaSeparatedPairs"</span><span class="p">:</span> <span class="n">subst_vars</span><span class="p">,</span>
+        <span class="s2">"CubeViewDataTableOptions"</span><span class="p">:</span>             <span class="p">{</span><span class="s2">"IncludeTitle"</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
     <span class="p">}</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">/Onestreamapi/api/DataProvider/GetAdoDataSetForCubeViewCommand&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">/Onestreamapi/api/DataProvider/GetAdoDataSetForCubeViewCommand"</span><span class="p">,</span>
         <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-        <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;api-version&quot;</span><span class="p">:</span> <span class="s2">&quot;5.2.0&quot;</span><span class="p">},</span>
+        <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"api-version"</span><span class="p">:</span> <span class="s2">"5.2.0"</span><span class="p">},</span>
         <span class="n">json</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
         <span class="n">timeout</span><span class="o">=</span><span class="mi">120</span>
     <span class="p">)</span>
     <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="p">[])</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HTTP </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"R"</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"HTTP </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">subst</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;GDParam_Entity=[GDEP_Cons],&quot;</span>
-    <span class="s2">&quot;GDParam_Consolidation=[USD],&quot;</span>
-    <span class="s2">&quot;GDParam_Scenario=[COPA],&quot;</span>
-    <span class="s2">&quot;GDParam_Time_Reports=[2026M4],&quot;</span>
-    <span class="s2">&quot;GDParam_Year=[2026]&quot;</span>
+    <span class="s2">"GDParam_Entity=[GDEP_Cons],"</span>
+    <span class="s2">"GDParam_Consolidation=[USD],"</span>
+    <span class="s2">"GDParam_Scenario=[COPA],"</span>
+    <span class="s2">"GDParam_Time_Reports=[2026M4],"</span>
+    <span class="s2">"GDParam_Year=[2026]"</span>
 <span class="p">)</span>
 
 <span class="k">for</span> <span class="n">view</span><span class="p">,</span> <span class="n">os_name</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;Sales_ByCustomer&quot;</span><span class="p">,</span>   <span class="s2">&quot;MCP_COPA_ByCustomer&quot;</span><span class="p">,</span>          <span class="s2">&quot;Sales Apr&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;Orders_ByCustomer&quot;</span><span class="p">,</span>  <span class="s2">&quot;MCP_COPA_Orders_ByCustomer&quot;</span><span class="p">,</span>   <span class="s2">&quot;Ord Apr&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;Backlog_ByCustomer&quot;</span><span class="p">,</span> <span class="s2">&quot;MCP_COPA_Backlog_ByCustomer&quot;</span><span class="p">,</span>  <span class="s2">&quot;Bkl Apr&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Sales_ByCustomer"</span><span class="p">,</span>   <span class="s2">"MCP_COPA_ByCustomer"</span><span class="p">,</span>          <span class="s2">"Sales Apr"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Orders_ByCustomer"</span><span class="p">,</span>  <span class="s2">"MCP_COPA_Orders_ByCustomer"</span><span class="p">,</span>   <span class="s2">"Ord Apr"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Backlog_ByCustomer"</span><span class="p">,</span> <span class="s2">"MCP_COPA_Backlog_ByCustomer"</span><span class="p">,</span>  <span class="s2">"Bkl Apr"</span><span class="p">),</span>
 <span class="p">]:</span>
     <span class="n">rows</span> <span class="o">=</span> <span class="n">call_cv</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">app_name</span><span class="p">,</span> <span class="n">os_name</span><span class="p">,</span> <span class="n">subst</span><span class="p">)</span>
     <span class="c1"># flatten rows and find Indent=0 grand total ...</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">view</span><span class="si">}</span><span class="s2">: Grand Total = </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">view</span><span class="si">}</span><span class="s2">: Grand Total = </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Validation results (April 2026):</strong></p>
 <div class="highlight"><pre><span></span><code>Sales_ByCustomer:   Grand Total = &lt;your_sales_total&gt;
@@ -3840,50 +3868,50 @@ Backlog_ByCustomer: Grand Total = &lt;your_backlog_total&gt;
 <p>The MCP server builds on the FastMCP + Azure OAuth foundation from the existing series. The OneStream integration adds helper functions and two new tools.</p>
 <h3 id="helper-functions">Helper Functions</h3>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_os_get_pat</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">get_azure_kv_secret</span><span class="p">(</span><span class="s2">&quot;os-api-pat&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">get_azure_kv_secret</span><span class="p">(</span><span class="s2">"os-api-pat"</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_os_get_app_name</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">get_azure_kv_secret</span><span class="p">(</span><span class="s2">&quot;os-application&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">get_azure_kv_secret</span><span class="p">(</span><span class="s2">"os-application"</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_os_server</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="s2">&quot;&lt;your-tenant&gt;.onestreamcloud.com&quot;</span>
+    <span class="k">return</span> <span class="s2">"&lt;your-tenant&gt;.onestreamcloud.com"</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_os_to_period</span><span class="p">(</span><span class="n">period</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;&#39;Apr 2026&#39; → (&#39;2026M4&#39;, &#39;2026&#39;)&quot;&quot;&quot;</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="s2">&quot;%b %Y&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="si">}</span><span class="s2">M</span><span class="si">{</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">"""'Apr 2026' → ('2026M4', '2026')"""</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="s2">"%b %Y"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="si">}</span><span class="s2">M</span><span class="si">{</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_os_call_cv</span><span class="p">(</span><span class="n">cv_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">subst_vars</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
     <span class="n">pat</span>      <span class="o">=</span> <span class="n">_os_get_pat</span><span class="p">()</span>
     <span class="n">app_name</span> <span class="o">=</span> <span class="n">_os_get_app_name</span><span class="p">()</span>
     <span class="n">server</span>   <span class="o">=</span> <span class="n">_os_server</span><span class="p">()</span>
-    <span class="n">base_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">/Onestreamapi/api&quot;</span>
-    <span class="n">web_url</span>  <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">/onestreamweb&quot;</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">/Onestreamapi/api"</span>
+    <span class="n">web_url</span>  <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">/onestreamweb"</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">pat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span>  <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Accept&quot;</span><span class="p">:</span>        <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">pat</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="s2">"Content-Type"</span><span class="p">:</span>  <span class="s2">"application/json"</span><span class="p">,</span>
+        <span class="s2">"Accept"</span><span class="p">:</span>        <span class="s2">"application/json"</span><span class="p">,</span>
     <span class="p">}</span>
     <span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;BaseWebServerUrl&quot;</span><span class="p">:</span>                     <span class="n">web_url</span><span class="p">,</span>
-        <span class="s2">&quot;ApplicationName&quot;</span><span class="p">:</span>                      <span class="n">app_name</span><span class="p">,</span>
-        <span class="s2">&quot;CubeViewName&quot;</span><span class="p">:</span>                         <span class="n">cv_name</span><span class="p">,</span>
-        <span class="s2">&quot;DataTablePerCubeViewRow&quot;</span><span class="p">:</span>              <span class="kc">False</span><span class="p">,</span>
-        <span class="s2">&quot;ResultDataTableName&quot;</span><span class="p">:</span>                  <span class="s2">&quot;R&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;CustomSubstVarsAsCommaSeparatedPairs&quot;</span><span class="p">:</span> <span class="n">subst_vars</span><span class="p">,</span>
-        <span class="s2">&quot;CubeViewDataTableOptions&quot;</span><span class="p">:</span>             <span class="p">{</span><span class="s2">&quot;IncludeTitle&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+        <span class="s2">"BaseWebServerUrl"</span><span class="p">:</span>                     <span class="n">web_url</span><span class="p">,</span>
+        <span class="s2">"ApplicationName"</span><span class="p">:</span>                      <span class="n">app_name</span><span class="p">,</span>
+        <span class="s2">"CubeViewName"</span><span class="p">:</span>                         <span class="n">cv_name</span><span class="p">,</span>
+        <span class="s2">"DataTablePerCubeViewRow"</span><span class="p">:</span>              <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">"ResultDataTableName"</span><span class="p">:</span>                  <span class="s2">"R"</span><span class="p">,</span>
+        <span class="s2">"CustomSubstVarsAsCommaSeparatedPairs"</span><span class="p">:</span> <span class="n">subst_vars</span><span class="p">,</span>
+        <span class="s2">"CubeViewDataTableOptions"</span><span class="p">:</span>             <span class="p">{</span><span class="s2">"IncludeTitle"</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
     <span class="p">}</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/DataProvider/GetAdoDataSetForCubeViewCommand&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/DataProvider/GetAdoDataSetForCubeViewCommand"</span><span class="p">,</span>
         <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-        <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;api-version&quot;</span><span class="p">:</span> <span class="s2">&quot;5.2.0&quot;</span><span class="p">},</span>
+        <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"api-version"</span><span class="p">:</span> <span class="s2">"5.2.0"</span><span class="p">},</span>
         <span class="n">json</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
         <span class="n">timeout</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>
         <span class="n">verify</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="p">[])</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;OneStream API returned HTTP </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"R"</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"OneStream API returned HTTP </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="the-flatten-function">The Flatten Function</h3>
 <p>Converts the raw API response (keyed by <code>ColNHdr0NameAndDesc</code> and <code>ColNValue</code>) into clean dictionaries. The <code>:Name()</code> suffixes set in OneStream Designer populate the <code>Hdr0NameAndDesc</code> fields, giving distinct column names across all 50 columns:</p>
@@ -3892,22 +3920,22 @@ Backlog_ByCustomer: Grand Total = &lt;your_backlog_total&gt;
         <span class="k">return</span> <span class="p">[]</span>
     <span class="n">sample</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">col_indices</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span>
-        <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="n">k</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">)])</span>
+        <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="n">k</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">"H"</span><span class="p">)])</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">sample</span>
-        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Col&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;Hdr0NameAndDesc&quot;</span> <span class="ow">in</span> <span class="n">k</span>
+        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"Col"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"Hdr0NameAndDesc"</span> <span class="ow">in</span> <span class="n">k</span>
     <span class="p">))</span>
     <span class="n">col_headers</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">i</span><span class="p">:</span> <span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Col</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">Hdr0NameAndDesc&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;Col</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">i</span><span class="p">:</span> <span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Col</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">Hdr0NameAndDesc"</span><span class="p">)</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">"Col</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">col_indices</span>
     <span class="p">}</span>
     <span class="n">flat</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
         <span class="n">rec</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;Label&quot;</span><span class="p">:</span>  <span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;RowHdr0NameAndDesc&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
-            <span class="s2">&quot;Indent&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;RowHdr0Indent&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">"Label"</span><span class="p">:</span>  <span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"RowHdr0NameAndDesc"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+            <span class="s2">"Indent"</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"RowHdr0Indent"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
         <span class="p">}</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">col_indices</span><span class="p">:</span>
-            <span class="n">val</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Col</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">Value&quot;</span><span class="p">)</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Col</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">Value"</span><span class="p">)</span>
             <span class="n">rec</span><span class="p">[</span><span class="n">col_headers</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="n">flat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">flat</span>
@@ -3917,40 +3945,40 @@ Backlog_ByCustomer: Grand Total = &lt;your_backlog_total&gt;
 </blockquote>
 <h3 id="the-view-catalogue">The View Catalogue</h3>
 <div class="highlight"><pre><span></span><code><span class="n">_OS_COPA_VIEWS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;Sales_ByCustomer&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;os_view_name&quot;</span><span class="p">:</span> <span class="s2">&quot;MCP_COPA_ByCustomer&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="p">:</span>  <span class="s2">&quot;COPA Net Sales, Quantity, and Standard Margin % by Customer&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dimension&quot;</span><span class="p">:</span>    <span class="s2">&quot;Customer (UD5)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;data_type&quot;</span><span class="p">:</span>    <span class="s2">&quot;Sales&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span>       <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+    <span class="s2">"Sales_ByCustomer"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"os_view_name"</span><span class="p">:</span> <span class="s2">"MCP_COPA_ByCustomer"</span><span class="p">,</span>
+        <span class="s2">"description"</span><span class="p">:</span>  <span class="s2">"COPA Net Sales, Quantity, and Standard Margin % by Customer"</span><span class="p">,</span>
+        <span class="s2">"dimension"</span><span class="p">:</span>    <span class="s2">"Customer (UD5)"</span><span class="p">,</span>
+        <span class="s2">"data_type"</span><span class="p">:</span>    <span class="s2">"Sales"</span><span class="p">,</span>
+        <span class="s2">"status"</span><span class="p">:</span>       <span class="s2">"active"</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="s2">&quot;Sales_ByRegion&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;os_view_name&quot;</span><span class="p">:</span> <span class="s2">&quot;MCP_COPA_ByRegion&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="p">:</span>  <span class="s2">&quot;COPA Net Sales, Quantity, and Standard Margin % by Region&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dimension&quot;</span><span class="p">:</span>    <span class="s2">&quot;Region (UD7)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;data_type&quot;</span><span class="p">:</span>    <span class="s2">&quot;Sales&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span>       <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+    <span class="s2">"Sales_ByRegion"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"os_view_name"</span><span class="p">:</span> <span class="s2">"MCP_COPA_ByRegion"</span><span class="p">,</span>
+        <span class="s2">"description"</span><span class="p">:</span>  <span class="s2">"COPA Net Sales, Quantity, and Standard Margin % by Region"</span><span class="p">,</span>
+        <span class="s2">"dimension"</span><span class="p">:</span>    <span class="s2">"Region (UD7)"</span><span class="p">,</span>
+        <span class="s2">"data_type"</span><span class="p">:</span>    <span class="s2">"Sales"</span><span class="p">,</span>
+        <span class="s2">"status"</span><span class="p">:</span>       <span class="s2">"active"</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="s2">&quot;Sales_ByProduct&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;os_view_name&quot;</span><span class="p">:</span> <span class="s2">&quot;MCP_COPA_ByProduct&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="p">:</span>  <span class="s2">&quot;COPA Net Sales, Quantity, and Standard Margin % by Product&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dimension&quot;</span><span class="p">:</span>    <span class="s2">&quot;Product (UD1)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;data_type&quot;</span><span class="p">:</span>    <span class="s2">&quot;Sales&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span>       <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+    <span class="s2">"Sales_ByProduct"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"os_view_name"</span><span class="p">:</span> <span class="s2">"MCP_COPA_ByProduct"</span><span class="p">,</span>
+        <span class="s2">"description"</span><span class="p">:</span>  <span class="s2">"COPA Net Sales, Quantity, and Standard Margin % by Product"</span><span class="p">,</span>
+        <span class="s2">"dimension"</span><span class="p">:</span>    <span class="s2">"Product (UD1)"</span><span class="p">,</span>
+        <span class="s2">"data_type"</span><span class="p">:</span>    <span class="s2">"Sales"</span><span class="p">,</span>
+        <span class="s2">"status"</span><span class="p">:</span>       <span class="s2">"active"</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="s2">&quot;Sales_ByBasin&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;os_view_name&quot;</span><span class="p">:</span> <span class="s2">&quot;MCP_COPA_ByBasin&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="p">:</span>  <span class="s2">&quot;COPA Net Sales, Quantity, and Standard Margin % by Basin&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dimension&quot;</span><span class="p">:</span>    <span class="s2">&quot;Basin (UD6)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;data_type&quot;</span><span class="p">:</span>    <span class="s2">&quot;Sales&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span>       <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+    <span class="s2">"Sales_ByBasin"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"os_view_name"</span><span class="p">:</span> <span class="s2">"MCP_COPA_ByBasin"</span><span class="p">,</span>
+        <span class="s2">"description"</span><span class="p">:</span>  <span class="s2">"COPA Net Sales, Quantity, and Standard Margin % by Basin"</span><span class="p">,</span>
+        <span class="s2">"dimension"</span><span class="p">:</span>    <span class="s2">"Basin (UD6)"</span><span class="p">,</span>
+        <span class="s2">"data_type"</span><span class="p">:</span>    <span class="s2">"Sales"</span><span class="p">,</span>
+        <span class="s2">"status"</span><span class="p">:</span>       <span class="s2">"active"</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="s2">&quot;Orders_ByCustomer&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;os_view_name&quot;</span><span class="p">:</span> <span class="s2">&quot;MCP_COPA_Orders_ByCustomer&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="p">:</span>  <span class="s2">&quot;COPA Orders and Quantity by Customer — periodic monthly&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dimension&quot;</span><span class="p">:</span>    <span class="s2">&quot;Customer (UD5)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;data_type&quot;</span><span class="p">:</span>    <span class="s2">&quot;Orders&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span>       <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+    <span class="s2">"Orders_ByCustomer"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"os_view_name"</span><span class="p">:</span> <span class="s2">"MCP_COPA_Orders_ByCustomer"</span><span class="p">,</span>
+        <span class="s2">"description"</span><span class="p">:</span>  <span class="s2">"COPA Orders and Quantity by Customer — periodic monthly"</span><span class="p">,</span>
+        <span class="s2">"dimension"</span><span class="p">:</span>    <span class="s2">"Customer (UD5)"</span><span class="p">,</span>
+        <span class="s2">"data_type"</span><span class="p">:</span>    <span class="s2">"Orders"</span><span class="p">,</span>
+        <span class="s2">"status"</span><span class="p">:</span>       <span class="s2">"active"</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="c1"># Orders_ByRegion, Orders_ByProduct, Orders_ByBasin follow the same pattern</span>
     <span class="c1"># Backlog_ByCustomer, Backlog_ByRegion, Backlog_ByProduct, Backlog_ByBasin follow the same pattern</span>
@@ -3960,74 +3988,74 @@ Backlog_ByCustomer: Grand Total = &lt;your_backlog_total&gt;
 <p>Two tools are exposed: a catalogue tool (so the LLM always knows what is available) and a data retrieval tool.</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_os_copa_catalog</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    List available OneStream COPA cube views queryable via get_os_copa_sales().</span>
 <span class="sd">    Always call this first. Returns view names, descriptions, dimensions, and data types.</span>
 <span class="sd">    Available: Sales_ByX (4), Orders_ByX (4), Backlog_ByX (4).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">HELPDESK_MODE</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;OneStream tools not available on helpdesk server.&quot;</span><span class="p">}]</span>
-    <span class="k">if</span> <span class="n">get_current_business_function</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;fin&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;This tool is only available for the fin business function.&quot;</span><span class="p">}]</span>
-    <span class="n">denied</span> <span class="o">=</span> <span class="n">check_hr_fin_access</span><span class="p">(</span><span class="s2">&quot;get_os_copa_catalog&quot;</span><span class="p">,</span> <span class="s2">&quot;os_copa_sales&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"OneStream tools not available on helpdesk server."</span><span class="p">}]</span>
+    <span class="k">if</span> <span class="n">get_current_business_function</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">"fin"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"This tool is only available for the fin business function."</span><span class="p">}]</span>
+    <span class="n">denied</span> <span class="o">=</span> <span class="n">check_hr_fin_access</span><span class="p">(</span><span class="s2">"get_os_copa_catalog"</span><span class="p">,</span> <span class="s2">"os_copa_sales"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">denied</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">denied</span>
     <span class="k">return</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;view&quot;</span><span class="p">:</span>        <span class="n">name</span><span class="p">,</span>
-            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">meta</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;dimension&quot;</span><span class="p">:</span>   <span class="n">meta</span><span class="p">[</span><span class="s2">&quot;dimension&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;data_type&quot;</span><span class="p">:</span>   <span class="n">meta</span><span class="p">[</span><span class="s2">&quot;data_type&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;status&quot;</span><span class="p">:</span>      <span class="n">meta</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">],</span>
+            <span class="s2">"view"</span><span class="p">:</span>        <span class="n">name</span><span class="p">,</span>
+            <span class="s2">"description"</span><span class="p">:</span> <span class="n">meta</span><span class="p">[</span><span class="s2">"description"</span><span class="p">],</span>
+            <span class="s2">"dimension"</span><span class="p">:</span>   <span class="n">meta</span><span class="p">[</span><span class="s2">"dimension"</span><span class="p">],</span>
+            <span class="s2">"data_type"</span><span class="p">:</span>   <span class="n">meta</span><span class="p">[</span><span class="s2">"data_type"</span><span class="p">],</span>
+            <span class="s2">"status"</span><span class="p">:</span>      <span class="n">meta</span><span class="p">[</span><span class="s2">"status"</span><span class="p">],</span>
         <span class="p">}</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">meta</span> <span class="ow">in</span> <span class="n">_OS_COPA_VIEWS</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">meta</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;active&quot;</span>
+        <span class="k">if</span> <span class="n">meta</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"active"</span>
     <span class="p">]</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_os_copa_sales</span><span class="p">(</span>
-    <span class="n">view</span><span class="p">:</span> <span class="nb">str</span>     <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;View name e.g. &#39;Sales_ByCustomer&#39;. Call get_os_copa_catalog() first.&quot;</span><span class="p">),</span>
-    <span class="n">period</span><span class="p">:</span> <span class="nb">str</span>   <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Period in &#39;Mon YYYY&#39; format e.g. &#39;Apr 2026&#39;.&quot;</span><span class="p">),</span>
-    <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;COPA&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Scenario: COPA (default), Actual, Budget, Forecast.&quot;</span><span class="p">),</span>
+    <span class="n">view</span><span class="p">:</span> <span class="nb">str</span>     <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"View name e.g. 'Sales_ByCustomer'. Call get_os_copa_catalog() first."</span><span class="p">),</span>
+    <span class="n">period</span><span class="p">:</span> <span class="nb">str</span>   <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"Period in 'Mon YYYY' format e.g. 'Apr 2026'."</span><span class="p">),</span>
+    <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">"COPA"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Scenario: COPA (default), Actual, Budget, Forecast."</span><span class="p">),</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Retrieve COPA data from OneStream for the requested view, period and scenario.</span>
 <span class="sd">    Sales views: 50 cols (Sales Jan-Dec YTD, Qty Jan-Dec YTD, Mgn Jan-Dec YTD%, MgnP Jan-Dec Periodic%).</span>
 <span class="sd">    Orders/Backlog views: 26 cols (value Jan-Dec Periodic, Qty Jan-Dec Periodic).</span>
 <span class="sd">    Indent=0 is always the grand total. Do NOT sum all rows — that double counts.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">HELPDESK_MODE</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;OneStream tools not available on helpdesk server.&quot;</span><span class="p">}]</span>
-    <span class="k">if</span> <span class="n">get_current_business_function</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;fin&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;This tool is only available for the fin business function.&quot;</span><span class="p">}]</span>
-    <span class="n">denied</span> <span class="o">=</span> <span class="n">check_hr_fin_access</span><span class="p">(</span><span class="s2">&quot;get_os_copa_sales&quot;</span><span class="p">,</span> <span class="s2">&quot;os_copa_sales&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"OneStream tools not available on helpdesk server."</span><span class="p">}]</span>
+    <span class="k">if</span> <span class="n">get_current_business_function</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">"fin"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"This tool is only available for the fin business function."</span><span class="p">}]</span>
+    <span class="n">denied</span> <span class="o">=</span> <span class="n">check_hr_fin_access</span><span class="p">(</span><span class="s2">"get_os_copa_sales"</span><span class="p">,</span> <span class="s2">"os_copa_sales"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">denied</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">denied</span>
 
     <span class="k">if</span> <span class="n">view</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_OS_COPA_VIEWS</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Unknown view &#39;</span><span class="si">{</span><span class="n">view</span><span class="si">}</span><span class="s2">&#39;. Valid: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">_OS_COPA_VIEWS</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}]</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">"error"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Unknown view '</span><span class="si">{</span><span class="n">view</span><span class="si">}</span><span class="s2">'. Valid: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">_OS_COPA_VIEWS</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">"</span><span class="p">}]</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">period_os</span><span class="p">,</span> <span class="n">year</span> <span class="o">=</span> <span class="n">_os_to_period</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Invalid period &#39;</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s2">&#39;. Use &#39;Mon YYYY&#39; e.g. &#39;Apr 2026&#39;.&quot;</span><span class="p">}]</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">"error"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Invalid period '</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s2">'. Use 'Mon YYYY' e.g. 'Apr 2026'."</span><span class="p">}]</span>
 
-    <span class="n">scenario</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">scenario</span> <span class="k">else</span> <span class="s2">&quot;COPA&quot;</span>
-    <span class="k">if</span> <span class="n">scenario</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;COPA&quot;</span><span class="p">,</span> <span class="s2">&quot;Actual&quot;</span><span class="p">,</span> <span class="s2">&quot;Budget&quot;</span><span class="p">,</span> <span class="s2">&quot;Forecast&quot;</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Invalid scenario &#39;</span><span class="si">{</span><span class="n">scenario</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">}]</span>
+    <span class="n">scenario</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">scenario</span> <span class="k">else</span> <span class="s2">"COPA"</span>
+    <span class="k">if</span> <span class="n">scenario</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"COPA"</span><span class="p">,</span> <span class="s2">"Actual"</span><span class="p">,</span> <span class="s2">"Budget"</span><span class="p">,</span> <span class="s2">"Forecast"</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">"error"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Invalid scenario '</span><span class="si">{</span><span class="n">scenario</span><span class="si">}</span><span class="s2">'."</span><span class="p">}]</span>
 
-    <span class="n">cv_name</span> <span class="o">=</span> <span class="n">_OS_COPA_VIEWS</span><span class="p">[</span><span class="n">view</span><span class="p">][</span><span class="s2">&quot;os_view_name&quot;</span><span class="p">]</span>
+    <span class="n">cv_name</span> <span class="o">=</span> <span class="n">_OS_COPA_VIEWS</span><span class="p">[</span><span class="n">view</span><span class="p">][</span><span class="s2">"os_view_name"</span><span class="p">]</span>
     <span class="n">subst</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;GDParam_Entity=[GDEP_Cons],&quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;GDParam_Consolidation=[USD],&quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;GDParam_Scenario=[</span><span class="si">{</span><span class="n">scenario</span><span class="si">}</span><span class="s2">],&quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;GDParam_Time_Reports=[</span><span class="si">{</span><span class="n">period_os</span><span class="si">}</span><span class="s2">],&quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;GDParam_Year=[</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">]&quot;</span>
+        <span class="sa">f</span><span class="s2">"GDParam_Entity=[GDEP_Cons],"</span>
+        <span class="sa">f</span><span class="s2">"GDParam_Consolidation=[USD],"</span>
+        <span class="sa">f</span><span class="s2">"GDParam_Scenario=[</span><span class="si">{</span><span class="n">scenario</span><span class="si">}</span><span class="s2">],"</span>
+        <span class="sa">f</span><span class="s2">"GDParam_Time_Reports=[</span><span class="si">{</span><span class="n">period_os</span><span class="si">}</span><span class="s2">],"</span>
+        <span class="sa">f</span><span class="s2">"GDParam_Year=[</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">]"</span>
     <span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">log_user_activity</span><span class="p">(</span><span class="s2">&quot;get_os_copa_sales&quot;</span><span class="p">,</span> <span class="n">get_current_user_info</span><span class="p">(),</span>
-                          <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">view</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">scenario</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">log_user_activity</span><span class="p">(</span><span class="s2">"get_os_copa_sales"</span><span class="p">,</span> <span class="n">get_current_user_info</span><span class="p">(),</span>
+                          <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">view</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">scenario</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
         <span class="k">pass</span>
 
@@ -4036,8 +4064,8 @@ Backlog_ByCustomer: Grand Total = &lt;your_backlog_total&gt;
         <span class="n">flat</span> <span class="o">=</span> <span class="n">_os_flatten</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">flat</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;get_os_copa_sales error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;OneStream API error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}]</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"get_os_copa_sales error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[{</span><span class="s2">"error"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"OneStream API error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">}]</span>
 </code></pre></div>
 <hr />
 <h2 id="step-7-security-model">Step 7: Security Model</h2>
@@ -4047,7 +4075,7 @@ Backlog_ByCustomer: Grand Total = &lt;your_backlog_total&gt;
 <div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dbo</span><span class="p">.</span><span class="n">mcp_user_permissions</span>
 <span class="w">    </span><span class="p">(</span><span class="n">user_email</span><span class="p">,</span><span class="w"> </span><span class="n">business_function</span><span class="p">,</span><span class="w"> </span><span class="n">object_name</span><span class="p">,</span><span class="w"> </span><span class="k">granted</span><span class="p">)</span>
 <span class="k">VALUES</span>
-<span class="w">    </span><span class="p">(</span><span class="s1">&#39;user@company.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;fin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;os_copa_sales&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">'user@company.com'</span><span class="p">,</span><span class="w"> </span><span class="s1">'fin'</span><span class="p">,</span><span class="w"> </span><span class="s1">'os_copa_sales'</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 </code></pre></div>
 <p>The <code>object_name</code> <code>os_copa_sales</code> covers all 12 COPA views (Sales, Orders, Backlog). Future subject areas (P&amp;L, Cash Flow, Balance Sheet) get their own <code>object_name</code>, allowing per-subject-area access control independent of COPA.</p>
 <p><strong>Layer 3 — Helpdesk server hard-block.</strong> The helpdesk server (port 8001, no auth, VNET only) sets <code>HELPDESK_MODE=True</code>. Both OS tools check this flag at entry and return an error immediately. This is not a soft check — it is the first line of code in each tool, before any other logic runs.</p>
@@ -4125,7 +4153,7 @@ The user must be connected to the GDEP Fin connector to access financial data. I
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 18, 2026 11:34:58 UTC">May 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -4178,7 +4206,7 @@ The user must be connected to the GDEP Fin connector to access financial data. I
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

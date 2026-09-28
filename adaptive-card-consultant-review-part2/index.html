@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2302,6 +2302,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2838,14 +2866,14 @@
 <hr />
 <h2 id="1-endpoint-consultant-review-confirmation">1. Endpoint: <code>/consultant-review-confirmation</code></h2>
 <p>When a manager submits the Adaptive Card, the card's action posts the data to the <code>/consultant-review-confirmation</code> endpoint:</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/consultant-review-confirmation&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'/consultant-review-confirmation'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">'POST'</span><span class="p">])</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">consultant_review_confirmation</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">payload</span><span class="p">,</span> <span class="n">client_ip</span><span class="p">,</span> <span class="n">error_response</span><span class="p">,</span> <span class="n">status_code</span> <span class="o">=</span> <span class="n">process_request_headers_and_payload</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">error_response</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">error_response</span><span class="p">,</span> <span class="n">status_code</span>
         <span class="n">process_adaptive_card_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">client_ip</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Actions processed successfully&quot;</span><span class="p">}),</span> <span class="mi">200</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span> <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Actions processed successfully"</span><span class="p">}),</span> <span class="mi">200</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
         <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
 </code></pre></div>
@@ -2861,65 +2889,65 @@
 - Extracting the JSON payload from the request.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_request_headers_and_payload</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Request headers: </span><span class="si">{</span><span class="n">headers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">action_auth_header</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Action-Authorization&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">client_ip</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;X-Forwarded-For&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Incoming request from IP: </span><span class="si">{</span><span class="n">client_ip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Action Authorization: </span><span class="si">{</span><span class="n">action_auth_header</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">action_auth_header</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Bearer &quot;</span><span class="p">):</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing or invalid Bearer token in Action-Authorization header from </span><span class="si">{</span><span class="n">client_ip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Unauthorized - Missing Bearer token&quot;</span><span class="p">}),</span> <span class="mi">401</span>
-    <span class="n">token</span> <span class="o">=</span> <span class="n">action_auth_header</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Request headers: </span><span class="si">{</span><span class="n">headers</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">action_auth_header</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Action-Authorization"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+    <span class="n">client_ip</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"X-Forwarded-For"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Incoming request from IP: </span><span class="si">{</span><span class="n">client_ip</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Action Authorization: </span><span class="si">{</span><span class="n">action_auth_header</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">action_auth_header</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"Bearer "</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Missing or invalid Bearer token in Action-Authorization header from </span><span class="si">{</span><span class="n">client_ip</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"Unauthorized - Missing Bearer token"</span><span class="p">}),</span> <span class="mi">401</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">action_auth_header</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">log_jwt_payload</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
     <span class="n">public_key</span> <span class="o">=</span> <span class="n">fetch_public_key</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">public_key</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Public key not found!&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Unauthorized - Invalid Bearer token&quot;</span><span class="p">}),</span> <span class="mi">401</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"Public key not found!"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"Unauthorized - Invalid Bearer token"</span><span class="p">}),</span> <span class="mi">401</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">validate_token</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">public_key</span><span class="p">):</span>
-        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Unauthorized - Invalid Bearer token&quot;</span><span class="p">}),</span> <span class="mi">401</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"Unauthorized - Invalid Bearer token"</span><span class="p">}),</span> <span class="mi">401</span>
     <span class="n">payload</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Payload: </span><span class="si">{</span><span class="n">payload</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Payload: </span><span class="si">{</span><span class="n">payload</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">payload</span><span class="p">,</span> <span class="n">client_ip</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
 </code></pre></div>
 <h3 id="21-log_jwt_payloadtoken">2.1. <code>log_jwt_payload(token)</code></h3>
 <p>Logs the decoded JWT payload (without verifying the signature) for debugging and traceability.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">log_jwt_payload</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Logs the decoded JWT payload without verification.&quot;&quot;&quot;</span>
-    <span class="n">payload</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;verify_signature&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
+<span class="w">    </span><span class="sd">"""Logs the decoded JWT payload without verification."""</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">"verify_signature"</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">payload</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="22-fetch_public_keytoken">2.2. <code>fetch_public_key(token)</code></h3>
 <p>Extracts the key ID (<code>kid</code>) from the JWT header, fetches the public keys from the identity provider's JWKS endpoint, and finds the matching key for signature verification.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fetch_public_key</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fetches the public key for the given token.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Fetches the public key for the given token."""</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">header</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">get_unverified_header</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-        <span class="n">key_id</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kid&quot;</span><span class="p">)</span>
-        <span class="n">jwks_url</span> <span class="o">=</span> <span class="s1">&#39;https://substrate.office.com/sts/common/discovery/keys&#39;</span>  <span class="c1"># Replace with your IdP&#39;s JWKS endpoint if needed</span>
+        <span class="n">key_id</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"kid"</span><span class="p">)</span>
+        <span class="n">jwks_url</span> <span class="o">=</span> <span class="s1">'https://substrate.office.com/sts/common/discovery/keys'</span>  <span class="c1"># Replace with your IdP's JWKS endpoint if needed</span>
         <span class="n">jwks</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">jwks_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">jwks</span><span class="p">[</span><span class="s2">&quot;keys&quot;</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="s2">&quot;kid&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">key_id</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">jwks</span><span class="p">[</span><span class="s2">"keys"</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="s2">"kid"</span><span class="p">]</span> <span class="o">==</span> <span class="n">key_id</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">RSAAlgorithm</span><span class="o">.</span><span class="n">from_jwk</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error fetching public key: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error fetching public key: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div>
 <h3 id="23-validate_tokentoken-public_key">2.3. <code>validate_token(token, public_key)</code></h3>
 <p>Decodes and verifies the JWT signature using the public key, checks the token's issuer and audience, and raises an error if the token is expired or invalid.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">validate_token</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">public_key</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validates the JWT token using the public key.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Validates the JWT token using the public key."""</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">decoded_token</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span>
-            <span class="n">token</span><span class="p">,</span> <span class="n">public_key</span><span class="p">,</span> <span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;RS256&quot;</span><span class="p">],</span> <span class="n">audience</span><span class="o">=</span><span class="s2">&quot;https://api.mycompany.com&quot;</span>
+            <span class="n">token</span><span class="p">,</span> <span class="n">public_key</span><span class="p">,</span> <span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="s2">"RS256"</span><span class="p">],</span> <span class="n">audience</span><span class="o">=</span><span class="s2">"https://api.mycompany.com"</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="n">decoded_token</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;iss&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;https://substrate.office.com/sts/&quot;</span><span class="p">:</span>  <span class="c1"># Replace with your IdP&#39;s issuer if needed</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Invalid issuer!&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">decoded_token</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"iss"</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">"https://substrate.office.com/sts/"</span><span class="p">:</span>  <span class="c1"># Replace with your IdP's issuer if needed</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">"Invalid issuer!"</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="n">jwt</span><span class="o">.</span><span class="n">ExpiredSignatureError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Token has expired&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">"Token has expired"</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">jwt</span><span class="o">.</span><span class="n">InvalidTokenError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Invalid token!&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">"Invalid token!"</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Summary:</strong> Only requests with a valid JWT token (issued by your identity provider) are accepted. The payload is only processed if authentication passes. All actions are logged for traceability.</p>
 <hr />
@@ -2930,36 +2958,36 @@
 - Taking the appropriate action (e.g., sending confirmation emails, saving to disk, triggering downstream automation).</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_adaptive_card_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">client_ip</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">consultant_id</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">payload</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">manager_email</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;manageremail&quot;</span><span class="p">)</span>
-        <span class="n">manager_name</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;managername&quot;</span><span class="p">)</span>
-        <span class="c1"># ... process each consultant&#39;s action ...</span>
+        <span class="n">manager_email</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"manageremail"</span><span class="p">)</span>
+        <span class="n">manager_name</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"managername"</span><span class="p">)</span>
+        <span class="c1"># ... process each consultant's action ...</span>
     <span class="n">send_email_to_manager</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">manager_email</span><span class="p">,</span> <span class="n">manager_name</span><span class="p">)</span>
     <span class="n">save_payload_to_disk</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">manager_email</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="31-send_email_to_managerpayload-manager_email-manager_name">3.1. <code>send_email_to_manager(payload, manager_email, manager_name)</code></h3>
 <p>Builds an HTML summary of the manager's actions for all consultants and sends a confirmation email to the manager with a table of decisions (keep/deactivate).</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">send_email_to_manager</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">manager_email</span><span class="p">,</span> <span class="n">manager_name</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sends an HTML formatted email to the manager.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Sends an HTML formatted email to the manager."""</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">subject</span> <span class="o">=</span> <span class="s2">&quot;Consultant Review Actions Summary&quot;</span>
-        <span class="n">body</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+        <span class="n">subject</span> <span class="o">=</span> <span class="s2">"Consultant Review Actions Summary"</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""</span>
 <span class="s2">        &lt;html&gt;</span>
-<span class="s2">        &lt;body style=</span><span class="se">\&quot;</span><span class="s2">font-family:verdana,courier,serif; font-size: 13px;</span><span class="se">\&quot;</span><span class="s2">&gt;</span>
+<span class="s2">        &lt;body style=</span><span class="se">\"</span><span class="s2">font-family:verdana,courier,serif; font-size: 13px;</span><span class="se">\"</span><span class="s2">&gt;</span>
 <span class="s2">            &lt;p&gt;Dear </span><span class="si">{</span><span class="n">manager_name</span><span class="si">}</span><span class="s2">,&lt;/p&gt;</span>
 <span class="s2">            &lt;p&gt;Thank you for reviewing the consultants. Below is a summary of your actions:&lt;/p&gt;</span>
-<span class="s2">            &lt;table border=</span><span class="se">\&quot;</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2"> style=</span><span class="se">\&quot;</span><span class="s2">border-collapse: collapse; width: 100%; font-family:verdana,courier,serif; font-size: 13px;</span><span class="se">\&quot;</span><span class="s2">&gt;</span>
+<span class="s2">            &lt;table border=</span><span class="se">\"</span><span class="s2">1</span><span class="se">\"</span><span class="s2"> style=</span><span class="se">\"</span><span class="s2">border-collapse: collapse; width: 100%; font-family:verdana,courier,serif; font-size: 13px;</span><span class="se">\"</span><span class="s2">&gt;</span>
 <span class="s2">            &lt;tr&gt;</span>
 <span class="s2">                &lt;th&gt;Consultant Email&lt;/th&gt;</span>
 <span class="s2">                &lt;th&gt;Decision&lt;/th&gt;</span>
 <span class="s2">            &lt;/tr&gt;</span>
-<span class="s2">        &quot;&quot;&quot;</span>
+<span class="s2">        """</span>
         <span class="k">for</span> <span class="n">consultant_id</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">payload</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">body</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&lt;tr&gt;&lt;td&gt;</span><span class="si">{</span><span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&lt;/td&gt;&lt;td&gt;</span><span class="si">{</span><span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;decision&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&lt;/td&gt;&lt;/tr&gt;&quot;</span>
-        <span class="n">body</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;</span>
+            <span class="n">body</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">"&lt;tr&gt;&lt;td&gt;</span><span class="si">{</span><span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'email'</span><span class="p">)</span><span class="si">}</span><span class="s2">&lt;/td&gt;&lt;td&gt;</span><span class="si">{</span><span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'decision'</span><span class="p">)</span><span class="si">}</span><span class="s2">&lt;/td&gt;&lt;/tr&gt;"</span>
+        <span class="n">body</span> <span class="o">+=</span> <span class="s2">"""</span>
 <span class="s2">            &lt;/table&gt;</span>
 <span class="s2">        &lt;/body&gt;</span>
 <span class="s2">        &lt;/html&gt;</span>
-<span class="s2">        &quot;&quot;&quot;</span>
+<span class="s2">        """</span>
         <span class="n">send_email</span><span class="p">(</span><span class="n">recipients</span><span class="o">=</span><span class="p">[</span><span class="n">manager_email</span><span class="p">],</span> <span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">html_message</span><span class="o">=</span><span class="n">body</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
@@ -2967,12 +2995,12 @@
 <h3 id="32-save_payload_to_diskpayload-manager_email">3.2. <code>save_payload_to_disk(payload, manager_email)</code></h3>
 <p>Serializes the entire payload to a JSON file and saves it to a mounted share or persistent storage for auditing and further processing.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">save_payload_to_disk</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">manager_email</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Saves the entire payload to the mounted share as a single JSON file.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Saves the entire payload to the mounted share as a single JSON file."""</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">datetime</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">manager_email</span><span class="si">}</span><span class="s2">_consultant_review_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">%H%M%S</span><span class="si">%f</span><span class="s1">&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.json&quot;</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">manager_email</span><span class="si">}</span><span class="s2">_consultant_review_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">%H%M%S</span><span class="si">%f</span><span class="s1">'</span><span class="p">)</span><span class="si">}</span><span class="s2">.json"</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">UNPROCESSED_PATH</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
@@ -2988,18 +3016,18 @@
     <span class="n">deactivate_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">manager_consultants_files</span> <span class="o">=</span> <span class="n">fetch_and_ignore_unprocessed_review_files</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">manager_consultants_files</span><span class="p">:</span>
-        <span class="n">file_path</span><span class="p">,</span> <span class="n">file_name</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">file_path</span><span class="p">,</span> <span class="n">file_name</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">file_time_utc</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-        <span class="n">file_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">file_time_utc</span><span class="p">,</span> <span class="n">pytz</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">pytz</span><span class="o">.</span><span class="n">timezone</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">))</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">file_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">file_time_utc</span><span class="p">,</span> <span class="n">pytz</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">pytz</span><span class="o">.</span><span class="n">timezone</span><span class="p">(</span><span class="s1">'America/Chicago'</span><span class="p">))</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">file_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         <span class="n">consultants_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">file_content</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">consultant</span><span class="p">,</span> <span class="n">details</span> <span class="ow">in</span> <span class="n">consultants_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;decision&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;deactivate&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'decision'</span><span class="p">)</span> <span class="o">==</span> <span class="s1">'deactivate'</span><span class="p">:</span>
                 <span class="n">deactivate_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                    <span class="s1">&#39;manager_email&#39;</span><span class="p">:</span> <span class="n">details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;manageremail&#39;</span><span class="p">),</span>
-                    <span class="s1">&#39;consultant_email&#39;</span><span class="p">:</span> <span class="n">details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">),</span>
-                    <span class="s1">&#39;approval_time&#39;</span><span class="p">:</span> <span class="n">file_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">)</span>
+                    <span class="s1">'manager_email'</span><span class="p">:</span> <span class="n">details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'manageremail'</span><span class="p">),</span>
+                    <span class="s1">'consultant_email'</span><span class="p">:</span> <span class="n">details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'email'</span><span class="p">),</span>
+                    <span class="s1">'approval_time'</span><span class="p">:</span> <span class="n">file_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S'</span><span class="p">)</span>
                 <span class="p">})</span>
     <span class="k">if</span> <span class="n">deactivate_list</span><span class="p">:</span>
         <span class="n">send_email_to_hr_and_it</span><span class="p">(</span><span class="n">deactivate_list</span><span class="p">)</span>
@@ -3012,7 +3040,7 @@
 <h2 id="5-error-handling-handle_global_exception">5. Error Handling: <code>handle_global_exception</code></h2>
 <p>All major functions use <code>handle_global_exception</code> to log and report errors, ensuring that issues are traceable and do not silently fail.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">handle_global_exception</span><span class="p">(</span><span class="n">function_name</span><span class="p">,</span> <span class="n">exception_obj</span><span class="p">):</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exception in </span><span class="si">{</span><span class="n">function_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">exception_obj</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Exception in </span><span class="si">{</span><span class="n">function_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">exception_obj</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="c1"># Optionally, send an alert email or take other action</span>
 </code></pre></div>
 <hr />
@@ -3068,7 +3096,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 30, 2025 21:58:08 UTC">June 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3121,7 +3149,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

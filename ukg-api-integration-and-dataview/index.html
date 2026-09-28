@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2087,6 +2087,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2881,37 +2909,37 @@
     <span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">csv</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
     <span class="c1"># ... import your secret and DB utilities ...</span>
-    <span class="n">unique_id</span> <span class="o">=</span> <span class="s1">&#39;Automation-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+    <span class="n">unique_id</span> <span class="o">=</span> <span class="s1">'Automation-'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
     <span class="n">access_token</span><span class="p">,</span> <span class="n">base_uri</span><span class="p">,</span> <span class="n">api_key</span> <span class="o">=</span> <span class="n">get_token_apikey_and_uri</span><span class="p">(</span><span class="n">environment</span><span class="p">)</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;appkey&#39;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span>
-        <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="n">access_token</span>
+        <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+        <span class="s1">'appkey'</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span>
+        <span class="s1">'Authorization'</span><span class="p">:</span> <span class="n">access_token</span>
     <span class="p">}</span>
     <span class="c1"># 1. Trigger the integration</span>
-    <span class="n">dimensions_api_uri</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="s1">&#39;api/v1/platform/integrations/4/execute&#39;</span>
+    <span class="n">dimensions_api_uri</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="s1">'api/v1/platform/integrations/4/execute'</span>
     <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
-        <span class="s2">&quot;integrationParameters&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Symbolic Period&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;symbolicPeriod&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">},</span> <span class="s1">&#39;startDate&#39;</span><span class="p">:</span> <span class="n">week_start</span> <span class="o">+</span> <span class="s1">&#39;.000Z&#39;</span><span class="p">,</span> <span class="s1">&#39;endDate&#39;</span><span class="p">:</span> <span class="n">week_end</span> <span class="o">+</span> <span class="s1">&#39;.000Z&#39;</span><span class="p">}},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Summary File Name&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;AutomationPayrollSummaryExport.csv&quot;</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hyperfind ID&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;hyperfind&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;1304&#39;</span><span class="p">}}},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ignore Sign Off&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;File Name&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;automationpayrollexport.csv&quot;</span><span class="p">}</span>
+        <span class="s2">"integrationParameters"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Symbolic Period"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="p">{</span><span class="s1">'symbolicPeriod'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'id'</span><span class="p">:</span> <span class="s1">'0'</span><span class="p">},</span> <span class="s1">'startDate'</span><span class="p">:</span> <span class="n">week_start</span> <span class="o">+</span> <span class="s1">'.000Z'</span><span class="p">,</span> <span class="s1">'endDate'</span><span class="p">:</span> <span class="n">week_end</span> <span class="o">+</span> <span class="s1">'.000Z'</span><span class="p">}},</span>
+            <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Summary File Name"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"AutomationPayrollSummaryExport.csv"</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Hyperfind ID"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="p">{</span><span class="s1">'hyperfind'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'id'</span><span class="p">:</span> <span class="s1">'1304'</span><span class="p">}}},</span>
+            <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Ignore Sign Off"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"File Name"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"automationpayrollexport.csv"</span><span class="p">}</span>
         <span class="p">],</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">unique_id</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="n">unique_id</span>
     <span class="p">})</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">dimensions_api_uri</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
     <span class="c1"># 2. Poll for completion</span>
-    <span class="n">execution_id</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
-    <span class="n">status_url</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;api/v1/platform/integration_executions/</span><span class="si">{</span><span class="n">execution_id</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">execution_id</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span>
+    <span class="n">status_url</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">'api/v1/platform/integration_executions/</span><span class="si">{</span><span class="n">execution_id</span><span class="si">}</span><span class="s1">'</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">status_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">status_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">status_response</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Completed&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">status_response</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Completed'</span><span class="p">:</span>
             <span class="k">break</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># Wait before polling again</span>
     <span class="c1"># 3. Download the output file</span>
-    <span class="n">file_url</span> <span class="o">=</span> <span class="n">status_url</span> <span class="o">+</span> <span class="s1">&#39;/file&#39;</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;file_name&#39;</span><span class="p">:</span> <span class="s1">&#39;automationpayrollexport.csv&#39;</span><span class="p">}</span>
+    <span class="n">file_url</span> <span class="o">=</span> <span class="n">status_url</span> <span class="o">+</span> <span class="s1">'/file'</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'file_name'</span><span class="p">:</span> <span class="s1">'automationpayrollexport.csv'</span><span class="p">}</span>
     <span class="n">file_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
     <span class="n">data_file</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">file_response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
     <span class="n">csv_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
@@ -2934,49 +2962,49 @@
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fetch_and_store_hours_using_dataview</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">week_start_datetime</span><span class="p">,</span> <span class="n">week_end_datetime</span><span class="p">):</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">csv</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
     <span class="c1"># ... import your secret and DB utilities ...</span>
-    <span class="n">pay_code_translation</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;Regular&#39;</span><span class="p">:</span> <span class="s1">&#39;REG&#39;</span><span class="p">,</span> <span class="s1">&#39;Overtime 1.5&#39;</span><span class="p">:</span> <span class="s1">&#39;OT&#39;</span><span class="p">,</span> <span class="s1">&#39;Doubletime&#39;</span><span class="p">:</span> <span class="s1">&#39;DBL&#39;</span><span class="p">,</span> <span class="o">...</span> <span class="p">}</span>
+    <span class="n">pay_code_translation</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'Regular'</span><span class="p">:</span> <span class="s1">'REG'</span><span class="p">,</span> <span class="s1">'Overtime 1.5'</span><span class="p">:</span> <span class="s1">'OT'</span><span class="p">,</span> <span class="s1">'Doubletime'</span><span class="p">:</span> <span class="s1">'DBL'</span><span class="p">,</span> <span class="o">...</span> <span class="p">}</span>
     <span class="n">access_token</span><span class="p">,</span> <span class="n">base_uri</span><span class="p">,</span> <span class="n">api_key</span> <span class="o">=</span> <span class="n">get_token_apikey_and_uri</span><span class="p">(</span><span class="n">environment</span><span class="p">)</span>
-    <span class="n">export_url</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="s1">&#39;api/v1/commons/exports/async&#39;</span>
+    <span class="n">export_url</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="s1">'api/v1/commons/exports/async'</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;appkey&#39;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span>
-        <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="n">access_token</span>
+        <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+        <span class="s1">'appkey'</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span>
+        <span class="s1">'Authorization'</span><span class="p">:</span> <span class="n">access_token</span>
     <span class="p">}</span>
     <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;UKG DV Export Pay Code&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;payLoad&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-                <span class="s2">&quot;employeeSet&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;hyperfind&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1304&quot;</span><span class="p">},</span>
-                    <span class="s2">&quot;dateRange&quot;</span><span class="p">:</span> <span class="p">{</span>
-                        <span class="s2">&quot;startDate&quot;</span><span class="p">:</span> <span class="n">week_start_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">),</span>
-                        <span class="s2">&quot;endDate&quot;</span><span class="p">:</span> <span class="n">week_end_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">),</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"UKG DV Export Pay Code"</span><span class="p">,</span>
+        <span class="s2">"payLoad"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"from"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"view"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">"employeeSet"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">"hyperfind"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"id"</span><span class="p">:</span> <span class="s2">"1304"</span><span class="p">},</span>
+                    <span class="s2">"dateRange"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"startDate"</span><span class="p">:</span> <span class="n">week_start_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">"</span><span class="p">),</span>
+                        <span class="s2">"endDate"</span><span class="p">:</span> <span class="n">week_end_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">"</span><span class="p">),</span>
                     <span class="p">}</span>
                 <span class="p">},</span>
-                <span class="s2">&quot;viewPresentation&quot;</span><span class="p">:</span> <span class="s2">&quot;People&quot;</span>
+                <span class="s2">"viewPresentation"</span><span class="p">:</span> <span class="s2">"People"</span>
             <span class="p">},</span>
-            <span class="s2">&quot;select&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;PEOPLE_PERSON_NUMBER&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;Employee ID&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
-                <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;CORE_PAYCODE&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;Pay Code Name&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
-                <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;TIMECARD_TRANS_ACTUAL_HOURS&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;Actual Hours&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
+            <span class="s2">"select"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">"key"</span><span class="p">:</span> <span class="s2">"PEOPLE_PERSON_NUMBER"</span><span class="p">,</span> <span class="s2">"alias"</span><span class="p">:</span> <span class="s2">"Employee ID"</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">"key"</span><span class="p">:</span> <span class="s2">"CORE_PAYCODE"</span><span class="p">,</span> <span class="s2">"alias"</span><span class="p">:</span> <span class="s2">"Pay Code Name"</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">"key"</span><span class="p">:</span> <span class="s2">"TIMECARD_TRANS_ACTUAL_HOURS"</span><span class="p">,</span> <span class="s2">"alias"</span><span class="p">:</span> <span class="s2">"Actual Hours"</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
                 <span class="c1"># ... more fields ...</span>
             <span class="p">],</span>
-            <span class="s2">&quot;groupBy&quot;</span><span class="p">:</span> <span class="p">[],</span>
-            <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">"groupBy"</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">"where"</span><span class="p">:</span> <span class="p">[],</span>
         <span class="p">},</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;DATA&quot;</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"DATA"</span>
     <span class="p">})</span>
     <span class="c1"># 1. Trigger DataView export</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">export_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
-    <span class="n">execution_key</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;executionKey&#39;</span><span class="p">]</span>
+    <span class="n">execution_key</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">'executionKey'</span><span class="p">]</span>
     <span class="c1"># 2. Wait for export to complete</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
     <span class="c1"># 3. Download the CSV file</span>
-    <span class="n">csv_export_url</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;api/v1/commons/exports/</span><span class="si">{</span><span class="n">execution_key</span><span class="si">}</span><span class="s1">/file&#39;</span>
+    <span class="n">csv_export_url</span> <span class="o">=</span> <span class="n">base_uri</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">'api/v1/commons/exports/</span><span class="si">{</span><span class="n">execution_key</span><span class="si">}</span><span class="s1">/file'</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">csv_export_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-    <span class="n">temp_file_path</span> <span class="o">=</span> <span class="s1">&#39;/tmp/paycodeextracttempdetail.csv&#39;</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">temp_file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">temp_file_path</span> <span class="o">=</span> <span class="s1">'/tmp/paycodeextracttempdetail.csv'</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">temp_file_path</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
         <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
     <span class="c1"># ... process CSV as needed ...</span>
 </code></pre></div>
@@ -2993,23 +3021,23 @@
 <h2 id="3-orchestrating-the-process-process_and_validate_payroll_hours">3. Orchestrating the Process: <code>process_and_validate_payroll_hours</code></h2>
 <p>This function coordinates the two previous steps, automating the extraction of both payroll export and DataView data for a given period. It uses the <code>fetch_period</code> function to retrieve the start and end dates for both the prior and current pay periods, and then passes these as parameters to the extraction functions.</p>
 <h3 id="python-function-process_and_validate_payroll_hours-with-prior_period-and-current_period-parameters">Python Function: <code>process_and_validate_payroll_hours</code> (with <code>prior_period</code> and <code>current_period</code> parameters)</h3>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_and_validate_payroll_hours</span><span class="p">(</span><span class="n">environment</span><span class="o">=</span><span class="s1">&#39;PROD&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_and_validate_payroll_hours</span><span class="p">(</span><span class="n">environment</span><span class="o">=</span><span class="s1">'PROD'</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Main function to process and validate payroll hours.</span>
 <span class="sd">    Steps:</span>
 <span class="sd">    1. Fetches the prior period data and stores payroll hours.</span>
 <span class="sd">    2. Fetches and stores hours using dataview for the prior period.</span>
 <span class="sd">    3. Fetches the current period data and stores hours using dataview.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># Get prior period (returns tuple: start_date, end_date, start_datetime, end_datetime)</span>
-    <span class="n">prior_period</span> <span class="o">=</span> <span class="n">fetch_period</span><span class="p">(</span><span class="s1">&#39;Previous&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="p">)</span>
+    <span class="n">prior_period</span> <span class="o">=</span> <span class="n">fetch_period</span><span class="p">(</span><span class="s1">'Previous'</span><span class="p">,</span> <span class="n">environment</span><span class="p">)</span>
     <span class="c1"># Extract and store payroll hours for prior period</span>
     <span class="n">fetch_and_store_payroll_hours</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="o">*</span><span class="n">prior_period</span><span class="p">)</span>
     <span class="c1"># Extract and store DataView hours for prior period</span>
     <span class="n">fetch_and_store_hours_using_dataview</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">prior_period</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">prior_period</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 
     <span class="c1"># Get current period</span>
-    <span class="n">current_period</span> <span class="o">=</span> <span class="n">fetch_period</span><span class="p">(</span><span class="s1">&#39;Current&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="p">)</span>
+    <span class="n">current_period</span> <span class="o">=</span> <span class="n">fetch_period</span><span class="p">(</span><span class="s1">'Current'</span><span class="p">,</span> <span class="n">environment</span><span class="p">)</span>
     <span class="c1"># Extract and store DataView hours for current period</span>
     <span class="n">fetch_and_store_hours_using_dataview</span><span class="p">(</span><span class="n">environment</span><span class="p">,</span> <span class="n">current_period</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">current_period</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 
@@ -3030,8 +3058,8 @@
 </ul>
 <p>This approach ensures that all data extraction is aligned to the correct pay periods, and makes it easy to extend the process for additional periods or custom ranges.</p>
 <h3 id="example-usage">Example Usage</h3>
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">process_and_validate_payroll_hours</span><span class="p">(</span><span class="n">environment</span><span class="o">=</span><span class="s2">&quot;PROD&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">process_and_validate_payroll_hours</span><span class="p">(</span><span class="n">environment</span><span class="o">=</span><span class="s2">"PROD"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="explanation_2">Explanation</h3>
 <ul>
@@ -3063,7 +3091,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:21:49 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3116,7 +3144,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

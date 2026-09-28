@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2230,6 +2230,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2702,16 +2730,16 @@
 <h2 id="the-script-attachnicsps1">The Script: <code>attachnics.ps1</code></h2>
 <p>Below is the full script used to automate the NIC re-creation and assignment process:</p>
 <div class="highlight"><pre><span></span><code><span class="k">param</span> <span class="p">(</span>
-    <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">&#39;./scripts/bcpdr/vm/vmlist.json&#39;</span><span class="p">,</span>
-    <span class="no">[string]</span> <span class="nv">$vaultname</span> <span class="p">=</span> <span class="s1">&#39;rsv-prod-eus-01&#39;</span><span class="p">,</span>
-    <span class="no">[string]</span> <span class="nv">$vaultresourcegroupname</span> <span class="p">=</span> <span class="s1">&#39;rg-gdep-peus-backup&#39;</span>
+    <span class="no">[string]</span> <span class="nv">$vmlist</span> <span class="p">=</span> <span class="s1">'./scripts/bcpdr/vm/vmlist.json'</span><span class="p">,</span>
+    <span class="no">[string]</span> <span class="nv">$vaultname</span> <span class="p">=</span> <span class="s1">'rsv-prod-eus-01'</span><span class="p">,</span>
+    <span class="no">[string]</span> <span class="nv">$vaultresourcegroupname</span> <span class="p">=</span> <span class="s1">'rg-gdep-peus-backup'</span>
 <span class="p">)</span>
 
 <span class="k">function</span> <span class="nb">Write-CustomLog</span> <span class="p">{</span>
     <span class="k">param</span> <span class="p">(</span>
         <span class="no">[string]</span><span class="nv">$message</span>
     <span class="p">)</span>
-    <span class="nb">Write-Host</span> <span class="s2">&quot;::notice::$message&quot;</span>
+    <span class="nb">Write-Host</span> <span class="s2">"::notice::$message"</span>
 <span class="p">}</span>
 
 <span class="k">function</span> <span class="nb">Get-Last</span><span class="n">-Restore-JobID</span> <span class="p">{</span>
@@ -2723,23 +2751,23 @@
     <span class="p">)</span>
 
     <span class="nv">$vmname</span> <span class="p">=</span> <span class="nv">$vmname</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()</span>
-    <span class="nv">$jobid</span> <span class="p">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="nv">$jobid</span> <span class="p">=</span> <span class="s1">''</span>
 
     <span class="nv">$backupJobsJson</span> <span class="p">=</span> <span class="n">az</span> <span class="n">backup</span> <span class="n">job</span> <span class="n">list</span> <span class="p">`</span>
         <span class="p">-</span><span class="n">-resource-group</span> <span class="nv">$vaultresourcegroupname</span> <span class="p">`</span>
         <span class="p">-</span><span class="n">-vault-name</span> <span class="nv">$vaultname</span> <span class="p">`</span>
-        <span class="p">-</span><span class="n">-query</span> <span class="s2">&quot;[?properties.endTime &gt;= &#39;$timeRangeStart&#39; `</span>
-<span class="s2">                &amp;&amp; properties.operation == &#39;CrossRegionRestore&#39;  `</span>
-<span class="s2">                &amp;&amp; properties.jobType == &#39;AzureIaaSVMJob&#39; `</span>
-<span class="s2">                &amp;&amp; properties.status == &#39;Completed&#39; `</span>
-<span class="s2">                ] | sort_by(@, &amp;properties.endTime) | reverse(@)&quot;</span> <span class="p">`</span>
+        <span class="p">-</span><span class="n">-query</span> <span class="s2">"[?properties.endTime &gt;= '$timeRangeStart' `</span>
+<span class="s2">                &amp;&amp; properties.operation == 'CrossRegionRestore'  `</span>
+<span class="s2">                &amp;&amp; properties.jobType == 'AzureIaaSVMJob' `</span>
+<span class="s2">                &amp;&amp; properties.status == 'Completed' `</span>
+<span class="s2">                ] | sort_by(@, &amp;properties.endTime) | reverse(@)"</span> <span class="p">`</span>
         <span class="p">-</span><span class="n">-output</span> <span class="n">json</span>
     <span class="nv">$backupJobsJson</span> <span class="p">=</span> <span class="nv">$backupJobsJson</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
 
     <span class="k">foreach</span> <span class="p">(</span><span class="nv">$job</span> <span class="k">in</span> <span class="nv">$backupJobsJson</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$job</span><span class="p">.</span><span class="n">properties</span><span class="p">.</span><span class="n">entityFriendlyName</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()</span> <span class="o">-like</span> <span class="s2">&quot;*$vmName*&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$job</span><span class="p">.</span><span class="n">properties</span><span class="p">.</span><span class="n">entityFriendlyName</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()</span> <span class="o">-like</span> <span class="s2">"*$vmName*"</span><span class="p">)</span> <span class="p">{</span>
             <span class="nv">$vmNameRestored</span> <span class="p">=</span> <span class="nv">$job</span><span class="p">.</span><span class="n">properties</span><span class="p">.</span><span class="n">entityFriendlyName</span>
-            <span class="nb">Write-CustomLog</span> <span class="s2">&quot;Cross Region Restore for VM has completed : $vmNameRestored&quot;</span>
+            <span class="nb">Write-CustomLog</span> <span class="s2">"Cross Region Restore for VM has completed : $vmNameRestored"</span>
             <span class="nv">$jobid</span> <span class="p">=</span> <span class="nv">$job</span><span class="p">.</span><span class="n">id</span>
             <span class="k">break</span>
         <span class="p">}</span>
@@ -2750,29 +2778,29 @@
 <span class="k">function</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="p">{</span>
     <span class="k">param</span> <span class="p">(</span>
         <span class="no">[string]</span><span class="nv">$command</span><span class="p">,</span>
-        <span class="no">[string]</span><span class="nv">$message</span> <span class="p">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="no">[string]</span><span class="nv">$message</span> <span class="p">=</span> <span class="s2">""</span>
     <span class="p">)</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="no">[string]</span><span class="p">::</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="nv">$message</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to run message {0}&quot;</span> <span class="o">-f</span> <span class="nv">$message</span><span class="p">)</span>
-        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to run command {0}&quot;</span> <span class="o">-f</span> <span class="nv">$command</span><span class="p">)</span>
+        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"About to run message {0}"</span> <span class="o">-f</span> <span class="nv">$message</span><span class="p">)</span>
+        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"About to run command {0}"</span> <span class="o">-f</span> <span class="nv">$command</span><span class="p">)</span>
     <span class="p">}</span>
     <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-Expression</span> <span class="nv">$command</span>
     <span class="k">return</span> <span class="nv">$executionResult</span>
 <span class="p">}</span>
 
 <span class="nv">$vm_list</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="nv">$vmlist</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
-<span class="nv">$deploymentresourceGroupName</span> <span class="p">=</span> <span class="s2">&quot;dr-rg-gdep-pwus-deployment&quot;</span>
-<span class="nv">$templateFilePath</span> <span class="p">=</span> <span class="s2">&quot;./networking/nic/nic4drvms.bicep&quot;</span>
-<span class="nv">$vaultname</span> <span class="p">=</span> <span class="s1">&#39;rsv-prod-eus-01&#39;</span>
-<span class="nv">$vaultresourcegroupname</span> <span class="p">=</span> <span class="s1">&#39;rg-gdep-peus-backup&#39;</span>
-<span class="nv">$data2gobacktoo</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddDays</span><span class="p">(-</span><span class="n">2</span><span class="p">).</span><span class="n">ToString</span><span class="p">(</span><span class="s2">&quot;yyyy-MM-ddTHH:mm:ssZ&quot;</span><span class="p">)</span>
+<span class="nv">$deploymentresourceGroupName</span> <span class="p">=</span> <span class="s2">"dr-rg-gdep-pwus-deployment"</span>
+<span class="nv">$templateFilePath</span> <span class="p">=</span> <span class="s2">"./networking/nic/nic4drvms.bicep"</span>
+<span class="nv">$vaultname</span> <span class="p">=</span> <span class="s1">'rsv-prod-eus-01'</span>
+<span class="nv">$vaultresourcegroupname</span> <span class="p">=</span> <span class="s1">'rg-gdep-peus-backup'</span>
+<span class="nv">$data2gobacktoo</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddDays</span><span class="p">(-</span><span class="n">2</span><span class="p">).</span><span class="n">ToString</span><span class="p">(</span><span class="s2">"yyyy-MM-ddTHH:mm:ssZ"</span><span class="p">)</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$gdepvm</span> <span class="k">in</span> <span class="nv">$vm_list</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">try</span> <span class="p">{</span>
 
         <span class="nv">$nicName</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_name</span>
-        <span class="nv">$deploymentGroupName</span> <span class="p">=</span> <span class="s2">&quot;gdepdr-&quot;</span> <span class="p">+</span> <span class="nv">$nicName</span>
+        <span class="nv">$deploymentGroupName</span> <span class="p">=</span> <span class="s2">"gdepdr-"</span> <span class="p">+</span> <span class="nv">$nicName</span>
         <span class="nv">$nicResouceGroup</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_resource_group_name</span>
         <span class="nv">$nicIpAddress</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_ip</span>
         <span class="nv">$nicSubnetResourceGroup</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_subnet_resource_group</span>
@@ -2781,7 +2809,7 @@
         <span class="nv">$vmName</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_vm_name</span>
         <span class="nv">$vmresourceGroupName</span> <span class="p">=</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_resource_group_name</span>
 
-        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Retrieving last completed cross region restore status for VM {0} since {1}&quot;</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine</span><span class="p">,</span><span class="nv">$data2gobacktoo</span><span class="p">)</span>
+        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"Retrieving last completed cross region restore status for VM {0} since {1}"</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine</span><span class="p">,</span><span class="nv">$data2gobacktoo</span><span class="p">)</span>
         <span class="nv">$gdep_restore_job_id</span> <span class="p">=</span> <span class="nb">Get-Last</span><span class="n">-Restore-JobID</span> <span class="p">`</span>
             <span class="n">-vaultname</span> <span class="nv">$vaultname</span> <span class="p">`</span>
             <span class="n">-vaultresourcegroupname</span> <span class="nv">$vaultresourcegroupname</span> <span class="p">`</span>
@@ -2790,69 +2818,69 @@
 
         <span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="no">[string]</span><span class="p">::</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="nv">$gdep_restore_job_id</span><span class="p">))</span> <span class="p">{</span>
             <span class="c">#This means that VM has been restored </span>
-            <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Restore job {0} has finished for VM {1}&quot;</span> <span class="o">-f</span> <span class="nv">$gdep_restore_job_id</span><span class="p">,</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine</span><span class="p">)</span>
+            <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"Restore job {0} has finished for VM {1}"</span> <span class="o">-f</span> <span class="nv">$gdep_restore_job_id</span><span class="p">,</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine</span><span class="p">)</span>
             <span class="c">#Check if we have already created and attached the new NIC for this or not</span>
             <span class="nv">$nicExists</span> <span class="p">=</span> <span class="n">az</span> <span class="n">network</span> <span class="n">nic</span> <span class="n">show</span> <span class="p">-</span><span class="n">-resource-group</span> <span class="nv">$nicResouceGroup</span> <span class="p">-</span><span class="n">-name</span> <span class="nv">$nicName</span> <span class="p">-</span><span class="n">-query</span> <span class="n">id</span> <span class="p">-</span><span class="n">-output</span> <span class="n">tsv</span>
             <span class="k">if</span> <span class="p">(</span><span class="nv">$nicExists</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;NIC {0} has already been created and attached to VM {1} nothing to do&quot;</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_name</span><span class="p">,</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_vm_name</span><span class="p">)</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"NIC {0} has already been created and attached to VM {1} nothing to do"</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_name</span><span class="p">,</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_vm_name</span><span class="p">)</span>
             <span class="p">}</span>
             <span class="k">else</span> <span class="p">{</span>
-                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to create new NIC namely {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_name</span><span class="p">)</span>
-                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">&quot;az deployment group create --name $deploymentGroupName --resource-group $deploymentresourceGroupName --template-file $templateFilePath --parameters nic_name=$nicName nic_resource_group=$nicResouceGroup nic_ipaddress=$nicIpAddress nic_subnet_resourcegroup=$nicSubnetResourceGroup nic_vnet_name=$nicVnetName nic_subnet_name=$nicSubnetName&quot;</span>
-                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">&quot;About to Create new NIC for VM : $vmName&quot;</span>
-                <span class="nb">Write-CustomLog</span> <span class="s2">&quot;Provisioning State: </span><span class="p">$(((</span><span class="nv">$executionResult</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span><span class="p">).</span><span class="n">properties</span><span class="p">.</span><span class="n">provisioningState</span><span class="p">))</span><span class="s2">&quot;</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"About to create new NIC namely {0}"</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine_nic_name</span><span class="p">)</span>
+                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">"az deployment group create --name $deploymentGroupName --resource-group $deploymentresourceGroupName --template-file $templateFilePath --parameters nic_name=$nicName nic_resource_group=$nicResouceGroup nic_ipaddress=$nicIpAddress nic_subnet_resourcegroup=$nicSubnetResourceGroup nic_vnet_name=$nicVnetName nic_subnet_name=$nicSubnetName"</span>
+                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">"About to Create new NIC for VM : $vmName"</span>
+                <span class="nb">Write-CustomLog</span> <span class="s2">"Provisioning State: </span><span class="p">$(((</span><span class="nv">$executionResult</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span><span class="p">).</span><span class="n">properties</span><span class="p">.</span><span class="n">provisioningState</span><span class="p">))</span><span class="s2">"</span>
                 <span class="c">#Setup New NIC Variables we are going to need later</span>
                 <span class="nv">$nicid2add</span> <span class="p">=</span> <span class="p">(</span><span class="n">az</span> <span class="n">network</span> <span class="n">nic</span> <span class="n">show</span> <span class="n">-g</span> <span class="nv">$nicResouceGroup</span> <span class="n">-n</span> <span class="nv">$nicName</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span><span class="p">).</span><span class="n">id</span>
                 <span class="c">#Dealocate the VM first as it would be up and running </span>
-                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;About to deallocate VM namely {0}&quot;</span> <span class="o">-f</span> <span class="nv">$vmName</span><span class="p">)</span>
-                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">&quot;az vm deallocate --name $vmName --resource-group $vmresourceGroupName --no-wait&quot;</span>
-                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">&quot;About to deallocate restored VM: $vmName&quot;</span>
+                <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"About to deallocate VM namely {0}"</span> <span class="o">-f</span> <span class="nv">$vmName</span><span class="p">)</span>
+                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">"az vm deallocate --name $vmName --resource-group $vmresourceGroupName --no-wait"</span>
+                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">"About to deallocate restored VM: $vmName"</span>
 
                 <span class="c"># Verify that VM is deallocated</span>
                 <span class="nv">$vmStatus</span> <span class="p">=</span> <span class="nv">$null</span>
-                <span class="k">while</span> <span class="p">(</span><span class="nv">$vmStatus</span> <span class="o">-ne</span> <span class="s2">&quot;VM deallocated&quot;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">while</span> <span class="p">(</span><span class="nv">$vmStatus</span> <span class="o">-ne</span> <span class="s2">"VM deallocated"</span><span class="p">)</span> <span class="p">{</span>
                     <span class="nv">$vmStatus</span> <span class="p">=</span> <span class="n">az</span> <span class="n">vm</span> <span class="nb">get-instance</span><span class="n">-view</span> <span class="p">-</span><span class="n">-name</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_vm_name</span> <span class="p">-</span><span class="n">-resource-group</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_target_resource_group_name</span>
                     <span class="nv">$vmObject</span> <span class="p">=</span> <span class="nv">$vmStatus</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
                     <span class="nv">$nicid2remove</span> <span class="p">=</span> <span class="nv">$vmObject</span><span class="p">.</span><span class="n">networkProfile</span><span class="p">.</span><span class="n">networkInterfaces</span><span class="p">[</span><span class="n">0</span><span class="p">].</span><span class="n">id</span>
-                    <span class="nv">$nicname2remove</span> <span class="p">=</span> <span class="n">az</span> <span class="n">network</span> <span class="n">nic</span> <span class="n">show</span> <span class="p">-</span><span class="n">-ids</span> <span class="nv">$nicid2remove</span> <span class="p">-</span><span class="n">-query</span> <span class="s2">&quot;name&quot;</span> <span class="n">-o</span> <span class="n">tsv</span>
+                    <span class="nv">$nicname2remove</span> <span class="p">=</span> <span class="n">az</span> <span class="n">network</span> <span class="n">nic</span> <span class="n">show</span> <span class="p">-</span><span class="n">-ids</span> <span class="nv">$nicid2remove</span> <span class="p">-</span><span class="n">-query</span> <span class="s2">"name"</span> <span class="n">-o</span> <span class="n">tsv</span>
 
                     <span class="nv">$vmInstanceView</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$vmStatus</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span><span class="p">).</span><span class="n">instanceView</span>  
-                    <span class="nv">$powerState</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$vmInstanceView</span><span class="p">.</span><span class="n">statuses</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">code</span> <span class="o">-eq</span> <span class="s2">&quot;PowerState/deallocated&quot;</span> <span class="p">}).</span><span class="n">displayStatus</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nv">$powerState</span> <span class="o">-eq</span> <span class="s2">&quot;VM deallocated&quot;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;VM namely {0} is deallocated &quot;</span> <span class="o">-f</span> <span class="nv">$vmName</span><span class="p">)</span>
-                        <span class="nv">$vmStatus</span> <span class="p">=</span> <span class="s2">&quot;VM deallocated&quot;</span>
+                    <span class="nv">$powerState</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$vmInstanceView</span><span class="p">.</span><span class="n">statuses</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">code</span> <span class="o">-eq</span> <span class="s2">"PowerState/deallocated"</span> <span class="p">}).</span><span class="n">displayStatus</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$powerState</span> <span class="o">-eq</span> <span class="s2">"VM deallocated"</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"VM namely {0} is deallocated "</span> <span class="o">-f</span> <span class="nv">$vmName</span><span class="p">)</span>
+                        <span class="nv">$vmStatus</span> <span class="p">=</span> <span class="s2">"VM deallocated"</span>
                     <span class="p">}</span>
                     <span class="k">else</span> <span class="p">{</span>
-                        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;VM namely {0} is still not deallocated sleeping for 15 seconds&quot;</span> <span class="o">-f</span> <span class="nv">$vmName</span><span class="p">)</span>
+                        <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"VM namely {0} is still not deallocated sleeping for 15 seconds"</span> <span class="o">-f</span> <span class="nv">$vmName</span><span class="p">)</span>
                         <span class="nb">Start-Sleep</span> <span class="n">-Seconds</span> <span class="n">15</span>
                     <span class="p">}</span>      
                 <span class="p">}</span>
 
                 <span class="c"># First we need to associate the new NIC to this VM and Make it primary</span>
-                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">&quot;az vm nic add -g $vmresourceGroupName --vm-name $vmName --nics $nicid2add --primary-nic $nicid2add&quot;</span>
-                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">&quot;Adding NIC $nicid2add to $vmName&quot;</span>
+                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">"az vm nic add -g $vmresourceGroupName --vm-name $vmName --nics $nicid2add --primary-nic $nicid2add"</span>
+                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">"Adding NIC $nicid2add to $vmName"</span>
                 <span class="c"># Now lets remove and delete NIC</span>
-                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">&quot;az vm nic remove -g $vmresourceGroupName --vm-name $vmName --nics $nicid2remove&quot;</span>
-                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">&quot;Removing NIC $nicid2remove from $vmName&quot;</span>
-                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">&quot;az network nic delete -g $nicResouceGroup -n $nicname2remove&quot;</span>
-                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">&quot;Deleting NIC $nicname2remove&quot;</span>
+                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">"az vm nic remove -g $vmresourceGroupName --vm-name $vmName --nics $nicid2remove"</span>
+                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">"Removing NIC $nicid2remove from $vmName"</span>
+                <span class="nv">$command</span> <span class="p">=</span> <span class="s2">"az network nic delete -g $nicResouceGroup -n $nicname2remove"</span>
+                <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">"Deleting NIC $nicname2remove"</span>
 
-                <span class="c"># Check if the NIC name is &#39;nic-dr-azgdepprt01&#39; so we can add to backend pool of printer lb created earlier</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nv">$nicIpAddress</span> <span class="o">-eq</span> <span class="s2">&quot;10.27.17.39&quot;</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nv">$backendAddressPoolName</span> <span class="p">=</span> <span class="s2">&quot;bep-lbi-gdep-pwus-print&quot;</span>
-                    <span class="nv">$printerilbname</span> <span class="p">=</span> <span class="s2">&quot;lbi-gdep-pwus-print-001&quot;</span>
-                    <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;Adding NIC $nicid2add to backend address pool $backendAddressPoolName&quot;</span><span class="p">)</span>
-                    <span class="nv">$command</span> <span class="p">=</span> <span class="s2">&quot;az network nic ip-config address-pool add --address-pool $backendAddressPoolName --ip-config-name ipconfig --nic-name $nicName --resource-group $nicResouceGroup --lb-name $printerilbname&quot;</span>
-                    <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">&quot;Adding NIC $nicid2add to backend address pool $backendAddressPoolName&quot;</span>
+                <span class="c"># Check if the NIC name is 'nic-dr-azgdepprt01' so we can add to backend pool of printer lb created earlier</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$nicIpAddress</span> <span class="o">-eq</span> <span class="s2">"10.27.17.39"</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$backendAddressPoolName</span> <span class="p">=</span> <span class="s2">"bep-lbi-gdep-pwus-print"</span>
+                    <span class="nv">$printerilbname</span> <span class="p">=</span> <span class="s2">"lbi-gdep-pwus-print-001"</span>
+                    <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"Adding NIC $nicid2add to backend address pool $backendAddressPoolName"</span><span class="p">)</span>
+                    <span class="nv">$command</span> <span class="p">=</span> <span class="s2">"az network nic ip-config address-pool add --address-pool $backendAddressPoolName --ip-config-name ipconfig --nic-name $nicName --resource-group $nicResouceGroup --lb-name $printerilbname"</span>
+                    <span class="nv">$executionResult</span> <span class="p">=</span> <span class="nb">Invoke-AzureCLICommand</span> <span class="n">-command</span> <span class="nv">$command</span> <span class="n">-message</span> <span class="s2">"Adding NIC $nicid2add to backend address pool $backendAddressPoolName"</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
         <span class="k">else</span> <span class="p">{</span>
-            <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">&quot;No completed restore job found for VM {0}&quot;</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine</span><span class="p">)</span>
+            <span class="nb">Write-CustomLog</span> <span class="p">(</span><span class="s2">"No completed restore job found for VM {0}"</span> <span class="o">-f</span> <span class="nv">$gdepvm</span><span class="p">.</span><span class="n">gdep_virtual_machine</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">catch</span> <span class="p">{</span>
-        <span class="nb">Write-Error</span> <span class="s2">&quot;An error occurred: $_&quot;</span>
+        <span class="nb">Write-Error</span> <span class="s2">"An error occurred: $_"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2882,12 +2910,12 @@
 <p>The script expects a JSON file like this:</p>
 <div class="highlight"><pre><span></span><code><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MDCAVDPRDAE02&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine_nic_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nic-dr-mdcavdprdae02&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine_nic_ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.27.11.5&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine_nic_subnet_resource_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dr-rg-gdep-pwus-vnets&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine_nic_vnet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vnet-gdep-pwus-management&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;gdep_virtual_machine_nic_snet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;snet-gdep-pwus-management&quot;</span>
+<span class="w">    </span><span class="nt">"gdep_virtual_machine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDCAVDPRDAE02"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"gdep_virtual_machine_nic_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nic-dr-mdcavdprdae02"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"gdep_virtual_machine_nic_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.27.11.5"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"gdep_virtual_machine_nic_subnet_resource_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dr-rg-gdep-pwus-vnets"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"gdep_virtual_machine_nic_vnet_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vnet-gdep-pwus-management"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"gdep_virtual_machine_nic_snet_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snet-gdep-pwus-management"</span>
 <span class="w">    </span><span class="c1">// ...other properties...</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">]</span>
@@ -2921,7 +2949,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 17:00:50 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -2974,7 +3002,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2391,6 +2391,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3039,8 +3067,8 @@
 <p>To connect to the Meraki Dashboard API, you need an API key. This key can be generated in your Meraki dashboard under <strong>Organization &gt; Settings &gt; Dashboard API access</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">meraki</span>
 
-<span class="n">MERAKI_API_KEY</span> <span class="o">=</span> <span class="s1">&#39;YOUR_MERAKI_API_KEY&#39;</span>  <span class="c1"># Replace with your Meraki API key</span>
-<span class="n">MERAKI_BASE_URL</span> <span class="o">=</span> <span class="s1">&#39;https://api.meraki.com/api/v1/&#39;</span>
+<span class="n">MERAKI_API_KEY</span> <span class="o">=</span> <span class="s1">'YOUR_MERAKI_API_KEY'</span>  <span class="c1"># Replace with your Meraki API key</span>
+<span class="n">MERAKI_BASE_URL</span> <span class="o">=</span> <span class="s1">'https://api.meraki.com/api/v1/'</span>
 
 <span class="n">dashboard</span> <span class="o">=</span> <span class="n">meraki</span><span class="o">.</span><span class="n">DashboardAPI</span><span class="p">(</span>
     <span class="n">api_key</span><span class="o">=</span><span class="n">MERAKI_API_KEY</span><span class="p">,</span>
@@ -3054,22 +3082,22 @@
 <p>Nagios XI provides a REST API. You need an API key, which can be generated in the Nagios XI web interface under <strong>My Account &gt; API Keys</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
-<span class="n">NAGIOS_XI_API_URL</span> <span class="o">=</span> <span class="s1">&#39;https://your-nagios-server.example.com/nagiosxi/api/v1/&#39;</span>  <span class="c1"># Replace with your Nagios XI URL</span>
-<span class="n">NAGIOS_XI_API_KEY</span> <span class="o">=</span> <span class="s1">&#39;YOUR_NAGIOS_API_KEY&#39;</span>  <span class="c1"># Replace with your Nagios XI API key</span>
+<span class="n">NAGIOS_XI_API_URL</span> <span class="o">=</span> <span class="s1">'https://your-nagios-server.example.com/nagiosxi/api/v1/'</span>  <span class="c1"># Replace with your Nagios XI URL</span>
+<span class="n">NAGIOS_XI_API_KEY</span> <span class="o">=</span> <span class="s1">'YOUR_NAGIOS_API_KEY'</span>  <span class="c1"># Replace with your Nagios XI API key</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">call_nagios_api</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">NAGIOS_XI_API_URL</span><span class="si">}{</span><span class="n">endpoint</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Bearer </span><span class="si">{</span><span class="n">NAGIOS_XI_API_KEY</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}</span>
-    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">call_nagios_api</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">'GET'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">NAGIOS_XI_API_URL</span><span class="si">}{</span><span class="n">endpoint</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Authorization'</span><span class="p">:</span> <span class="sa">f</span><span class="s1">'Bearer </span><span class="si">{</span><span class="n">NAGIOS_XI_API_KEY</span><span class="si">}</span><span class="s1">'</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">'GET'</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">'POST'</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;PUT&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">'PUT'</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;DELETE&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">'DELETE'</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unsupported HTTP method&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Unsupported HTTP method'</span><span class="p">)</span>
     <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
@@ -3092,7 +3120,7 @@
 </blockquote>
 <h3 id="plugging-the-community-string-into-your-code">Plugging the Community String into Your Code</h3>
 <p>In your Python code, set the value as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="n">MERAKI_DASHBOARD_SNMP_COMMUNITY_STRING</span> <span class="o">=</span> <span class="s1">&#39;mysnmpcommunity&#39;</span>  <span class="c1"># Replace with your actual SNMP community string</span>
+<div class="highlight"><pre><span></span><code><span class="n">MERAKI_DASHBOARD_SNMP_COMMUNITY_STRING</span> <span class="o">=</span> <span class="s1">'mysnmpcommunity'</span>  <span class="c1"># Replace with your actual SNMP community string</span>
 </code></pre></div>
 <p>This value is then used in SNMP queries, for example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
@@ -3100,33 +3128,33 @@
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_snmp_data</span><span class="p">(</span><span class="n">snmp_server</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">oid</span><span class="p">,</span> <span class="n">community</span><span class="p">):</span>
     <span class="n">command</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;snmpwalk&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;-v&quot;</span><span class="p">,</span> <span class="s2">&quot;2c&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="n">community</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">snmp_server</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">"snmpwalk"</span><span class="p">,</span>
+        <span class="s2">"-v"</span><span class="p">,</span> <span class="s2">"2c"</span><span class="p">,</span>
+        <span class="s2">"-c"</span><span class="p">,</span> <span class="n">community</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">snmp_server</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
         <span class="n">oid</span>
     <span class="p">]</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">output</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">stdout</span>
         <span class="n">snmp_dict</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\S+)\s+=\s+STRING:\s+&quot;([^&quot;]+)&quot;&#39;</span><span class="p">)</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(\S+)\s+=\s+STRING:\s+"([^"]+)"'</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">pattern</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
             <span class="n">oid</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
             <span class="n">string_value</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
             <span class="n">snmp_dict</span><span class="p">[</span><span class="n">string_value</span><span class="p">]</span> <span class="o">=</span> <span class="n">oid</span>
         <span class="k">return</span> <span class="n">snmp_dict</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SNMP error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SNMP error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
 
-<span class="n">MERAKI_DASHBOARD_SNMP_HOST_NAME</span> <span class="o">=</span> <span class="s1">&#39;snmp.meraki.com&#39;</span>
-<span class="n">MERAKI_DASHBOARD_SNMP_PORT</span> <span class="o">=</span> <span class="s1">&#39;16100&#39;</span>
+<span class="n">MERAKI_DASHBOARD_SNMP_HOST_NAME</span> <span class="o">=</span> <span class="s1">'snmp.meraki.com'</span>
+<span class="n">MERAKI_DASHBOARD_SNMP_PORT</span> <span class="o">=</span> <span class="s1">'16100'</span>
 
 <span class="n">merakihostnames</span> <span class="o">=</span> <span class="n">get_snmp_data</span><span class="p">(</span>
     <span class="n">MERAKI_DASHBOARD_SNMP_HOST_NAME</span><span class="p">,</span>
     <span class="n">MERAKI_DASHBOARD_SNMP_PORT</span><span class="p">,</span>
-    <span class="s1">&#39;1.3.6.1.4.1.29671.1.1.4.1.2&#39;</span><span class="p">,</span>
+    <span class="s1">'1.3.6.1.4.1.29671.1.1.4.1.2'</span><span class="p">,</span>
     <span class="n">MERAKI_DASHBOARD_SNMP_COMMUNITY_STRING</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -3135,7 +3163,7 @@
 <h2 id="2-obtaining-all-current-devices-from-meraki">2. Obtaining All Current Devices from Meraki</h2>
 <p>We use the official Meraki Dashboard API to fetch all organizations, devices, and networks:</p>
 <p><div class="highlight"><pre><span></span><code><span class="n">gdepOrganizations</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">organizations</span><span class="o">.</span><span class="n">getOrganizations</span><span class="p">()</span>
-<span class="n">organizationid</span> <span class="o">=</span> <span class="n">gdepOrganizations</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+<span class="n">organizationid</span> <span class="o">=</span> <span class="n">gdepOrganizations</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'id'</span><span class="p">]</span>
 <span class="n">gdepdevices</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">organizations</span><span class="o">.</span><span class="n">getOrganizationDevices</span><span class="p">(</span><span class="n">organizationid</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">gdepnetworks</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">organizations</span><span class="o">.</span><span class="n">getOrganizationNetworks</span><span class="p">(</span><span class="n">organizationid</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
@@ -3160,30 +3188,30 @@
 <h3 id="example-usage">Example Usage</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># For each network, get firmware upgrade status</span>
 <span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">gdepnetworks</span><span class="p">:</span>
-    <span class="n">network_id</span> <span class="o">=</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+    <span class="n">network_id</span> <span class="o">=</span> <span class="n">network</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span>
     <span class="n">networkupgrades</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">getNetworkFirmwareUpgrades</span><span class="p">(</span><span class="n">network_id</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Firmware info for network </span><span class="si">{</span><span class="n">network</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">networkupgrades</span><span class="p">)</span>
-    <span class="k">if</span> <span class="s1">&#39;products&#39;</span> <span class="ow">in</span> <span class="n">networkupgrades</span><span class="p">:</span>
-        <span class="n">products</span> <span class="o">=</span> <span class="n">networkupgrades</span><span class="p">[</span><span class="s1">&#39;products&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Firmware info for network </span><span class="si">{</span><span class="n">network</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">networkupgrades</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">'products'</span> <span class="ow">in</span> <span class="n">networkupgrades</span><span class="p">:</span>
+        <span class="n">products</span> <span class="o">=</span> <span class="n">networkupgrades</span><span class="p">[</span><span class="s1">'products'</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">firmware_info</span> <span class="ow">in</span> <span class="n">products</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Product: </span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current Version: </span><span class="si">{</span><span class="n">firmware_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;currentVersion&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;N/A&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Available Version: </span><span class="si">{</span><span class="n">firmware_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;availableVersion&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;N/A&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Status: </span><span class="si">{</span><span class="n">firmware_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;N/A&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Product: </span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Current Version: </span><span class="si">{</span><span class="n">firmware_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'currentVersion'</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span><span class="w"> </span><span class="s1">'N/A'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Available Version: </span><span class="si">{</span><span class="n">firmware_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'availableVersion'</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span><span class="w"> </span><span class="s1">'N/A'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Status: </span><span class="si">{</span><span class="n">firmware_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'status'</span><span class="p">,</span><span class="w"> </span><span class="s1">'N/A'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="sample-output-structure">Sample Output Structure</h4>
 <p>The returned dictionary typically looks like:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;products&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;appliance&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;currentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MX 18.107.2&quot;</span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;availableVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MX 18.107.4&quot;</span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Up to date&quot;</span>
+<span class="w">  </span><span class="nt">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"appliance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"currentVersion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MX 18.107.2"</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"availableVersion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MX 18.107.4"</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Up to date"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;switch&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;currentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MS 15.21&quot;</span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;availableVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MS 15.22&quot;</span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Upgrade available&quot;</span>
+<span class="w">    </span><span class="nt">"switch"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"currentVersion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MS 15.21"</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"availableVersion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MS 15.22"</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Upgrade available"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -3197,9 +3225,9 @@
 <hr />
 <h2 id="5-comparing-meraki-devices-to-nagios-xi-hosts">5. Comparing Meraki Devices to Nagios XI Hosts</h2>
 <p>We fetch all hosts from Nagios XI and compare them to the Meraki inventory:</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">nagioshost</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">&#39;objects/host&#39;</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">nagioshost</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">'objects/host'</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">gdepdevices</span><span class="p">:</span>
-    <span class="n">nagioshostitems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">nh</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">nh</span><span class="p">[</span><span class="s1">&#39;host_name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">nagioshost</span><span class="p">))</span>
+    <span class="n">nagioshostitems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">nh</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">nh</span><span class="p">[</span><span class="s1">'host_name'</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">nagioshost</span><span class="p">))</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nagioshostitems</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="c1"># Device is missing from Nagios XI</span>
         <span class="c1"># ...add to missing list and prepare for addition...</span>
@@ -3209,20 +3237,20 @@
 <hr />
 <h2 id="6-adding-missing-devices-to-nagios-xi">6. Adding Missing Devices to Nagios XI</h2>
 <p>For each missing device, we call helper functions to create/update hosts and services in Nagios XI:</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SKIP_MERAKI_HOSTS</span><span class="p">):</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SKIP_MERAKI_HOSTS</span><span class="p">):</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;productType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;appliance&#39;</span> <span class="ow">and</span> <span class="s1">&#39;VMX&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">device</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]):</span>
-                <span class="n">applianceVLANs</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">appliance</span><span class="o">.</span><span class="n">getNetworkApplianceVlans</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;networkId&#39;</span><span class="p">])</span>
-                <span class="n">vlan999</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">av</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">av</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;999&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">applianceVLANs</span><span class="p">))</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SKIP_MERAKI_HOSTS</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SKIP_MERAKI_HOSTS</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'productType'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'appliance'</span> <span class="ow">and</span> <span class="s1">'VMX'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">device</span><span class="p">[</span><span class="s1">'model'</span><span class="p">]):</span>
+                <span class="n">applianceVLANs</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">appliance</span><span class="o">.</span><span class="n">getNetworkApplianceVlans</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'networkId'</span><span class="p">])</span>
+                <span class="n">vlan999</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">av</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">av</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="s1">'999'</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">applianceVLANs</span><span class="p">))</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vlan999</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">device</span><span class="p">[</span><span class="s1">&#39;lanIp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span>
+                    <span class="n">device</span><span class="p">[</span><span class="s1">'lanIp'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'0.0.0.0'</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">device</span><span class="p">[</span><span class="s1">&#39;lanIp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vlan999</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;applianceIp&#39;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">device</span><span class="p">[</span><span class="s1">&#39;lanIp&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">device</span><span class="p">[</span><span class="s1">&#39;lanIp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span>
+                    <span class="n">device</span><span class="p">[</span><span class="s1">'lanIp'</span><span class="p">]</span> <span class="o">=</span> <span class="n">vlan999</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'applianceIp'</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">device</span><span class="p">[</span><span class="s1">'lanIp'</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">device</span><span class="p">[</span><span class="s1">'lanIp'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'0.0.0.0'</span>
             <span class="n">create_update_meraki_host</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">nagioshostitems</span><span class="p">,</span> <span class="n">gdepnetworks</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-            <span class="n">nagiosserviceitems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ns</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">ns</span><span class="p">[</span><span class="s1">&#39;host_name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">nagioshostservices</span><span class="p">))</span>
+            <span class="n">nagiosserviceitems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ns</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">ns</span><span class="p">[</span><span class="s1">'host_name'</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">nagioshostservices</span><span class="p">))</span>
             <span class="n">create_update_meraki_host_services</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">nagiosserviceitems</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">merakihostnames</span><span class="p">)</span>
 </code></pre></div>
 - <code>create_update_meraki_host()</code> and <code>create_update_meraki_host_services()</code> are responsible for adding/updating hosts and their services in Nagios XI.
@@ -3230,9 +3258,9 @@
 <hr />
 <h2 id="7-applying-configuration">7. Applying Configuration</h2>
 <p>After all additions/updates, we apply the Nagios XI configuration:</p>
-<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alias&#39;</span><span class="p">:</span> <span class="s1">&#39;Nagios XI&#39;</span><span class="p">,</span> <span class="s1">&#39;applyconfig&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">}</span>
-<span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">&#39;config/host/localhost&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;PUT&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="n">nagioshost</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">&#39;objects/host&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'alias'</span><span class="p">:</span> <span class="s1">'Nagios XI'</span><span class="p">,</span> <span class="s1">'applyconfig'</span><span class="p">:</span> <span class="s1">'1'</span><span class="p">}</span>
+<span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">'config/host/localhost'</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">'PUT'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="n">nagioshost</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">'objects/host'</span><span class="p">)</span>
 </code></pre></div>
 <hr />
 <h2 id="8-full-function-code-add_missing_network_device_to_nagios">8. Full Function Code: <code>add_missing_network_device_to_nagios</code></h2>
@@ -3243,65 +3271,65 @@
         <span class="n">merakihostnames</span> <span class="o">=</span> <span class="n">get_snmp_data</span><span class="p">(</span>
             <span class="n">MERAKI_DASHBOARD_SNMP_HOST_NAME</span><span class="p">,</span> 
             <span class="n">MERAKI_DASHBOARD_SNMP_PORT</span><span class="p">,</span>
-            <span class="s1">&#39;1.3.6.1.4.1.29671.1.1.4.1.2&#39;</span><span class="p">,</span>
+            <span class="s1">'1.3.6.1.4.1.29671.1.1.4.1.2'</span><span class="p">,</span>
             <span class="n">MERAKI_DASHBOARD_SNMP_COMMUNITY_STRING</span><span class="p">)</span>
         <span class="n">gdepOrganizations</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">organizations</span><span class="o">.</span><span class="n">getOrganizations</span><span class="p">()</span>
-        <span class="n">organizationid</span> <span class="o">=</span> <span class="n">gdepOrganizations</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+        <span class="n">organizationid</span> <span class="o">=</span> <span class="n">gdepOrganizations</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'id'</span><span class="p">]</span>
         <span class="n">gdepdevices</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">organizations</span><span class="o">.</span><span class="n">getOrganizationDevices</span><span class="p">(</span><span class="n">organizationid</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">gdepnetworks</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">organizations</span><span class="o">.</span><span class="n">getOrganizationNetworks</span><span class="p">(</span><span class="n">organizationid</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">gdepnetworks</span><span class="p">:</span>
-            <span class="n">networkupgrades</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">getNetworkFirmwareUpgrades</span><span class="p">(</span><span class="n">network</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
-            <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;products&#39;</span> <span class="ow">in</span> <span class="n">networkupgrades</span><span class="p">):</span>
-                <span class="n">products</span> <span class="o">=</span> <span class="n">networkupgrades</span><span class="p">[</span><span class="s1">&#39;products&#39;</span><span class="p">]</span>
+            <span class="n">networkupgrades</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">getNetworkFirmwareUpgrades</span><span class="p">(</span><span class="n">network</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])</span>
+            <span class="k">if</span> <span class="p">(</span><span class="s1">'products'</span> <span class="ow">in</span> <span class="n">networkupgrades</span><span class="p">):</span>
+                <span class="n">products</span> <span class="o">=</span> <span class="n">networkupgrades</span><span class="p">[</span><span class="s1">'products'</span><span class="p">]</span>
                 <span class="c1"># ...process firmware info as needed...</span>
 
-        <span class="n">nagioshost</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">&#39;objects/host&#39;</span><span class="p">)</span>
-        <span class="n">nagioshostservices</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">&#39;objects/service&#39;</span><span class="p">)</span>
-        <span class="n">nagioshostconfig</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">&#39;config/host&#39;</span><span class="p">)</span>
-        <span class="n">nagioshostgroupmembers</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">&#39;objects/hostgroupmembers&#39;</span><span class="p">)</span>
-        <span class="n">nagioshostservicesconfig</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">&#39;config/service&#39;</span><span class="p">)</span>
+        <span class="n">nagioshost</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">'objects/host'</span><span class="p">)</span>
+        <span class="n">nagioshostservices</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">'objects/service'</span><span class="p">)</span>
+        <span class="n">nagioshostconfig</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">'config/host'</span><span class="p">)</span>
+        <span class="n">nagioshostgroupmembers</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">'objects/hostgroupmembers'</span><span class="p">)</span>
+        <span class="n">nagioshostservicesconfig</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">'config/service'</span><span class="p">)</span>
 
-        <span class="n">SKIP_MERAKI_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tst&#39;</span><span class="p">,</span><span class="s1">&#39;tes&#39;</span><span class="p">]</span>
+        <span class="n">SKIP_MERAKI_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'tst'</span><span class="p">,</span><span class="s1">'tes'</span><span class="p">]</span>
 
         <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">gdepdevices</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;productType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;appliance&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'productType'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'appliance'</span><span class="p">):</span>
                 <span class="c1"># ...handle appliance types...</span>
                 <span class="k">pass</span>
-            <span class="k">elif</span> <span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;productType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;camera&#39;</span><span class="p">):</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'productType'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'camera'</span><span class="p">):</span>
                 <span class="k">pass</span>
-            <span class="k">elif</span> <span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;productType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;switch&#39;</span><span class="p">):</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'productType'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'switch'</span><span class="p">):</span>
                 <span class="k">pass</span>
-            <span class="k">elif</span> <span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;productType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;wireless&#39;</span><span class="p">):</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'productType'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'wireless'</span><span class="p">):</span>
                 <span class="k">pass</span>
             <span class="c1"># ...other device handling as needed...</span>
-            <span class="n">nagioshostitems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">nh</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">nh</span><span class="p">[</span><span class="s1">&#39;host_name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">nagioshost</span><span class="p">))</span>
+            <span class="n">nagioshostitems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">nh</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">nh</span><span class="p">[</span><span class="s1">'host_name'</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">nagioshost</span><span class="p">))</span>
             <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nagioshostitems</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SKIP_MERAKI_HOSTS</span><span class="p">)):</span>
-                        <span class="k">if</span> <span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SKIP_MERAKI_HOSTS</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SKIP_MERAKI_HOSTS</span><span class="p">)):</span>
+                        <span class="k">if</span> <span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SKIP_MERAKI_HOSTS</span><span class="p">)):</span>
                             <span class="c1"># ...add to Nagios XI...</span>
                             <span class="k">pass</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
-                <span class="k">if</span> <span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SKIP_MERAKI_HOSTS</span><span class="p">)):</span>
-                    <span class="k">if</span> <span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SKIP_MERAKI_HOSTS</span><span class="p">)):</span>
-                        <span class="k">if</span> <span class="p">((</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;productType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;appliance&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;VMX&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">device</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">])):</span>
-                            <span class="n">applianceVLANs</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">appliance</span><span class="o">.</span><span class="n">getNetworkApplianceVlans</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;networkId&#39;</span><span class="p">])</span>
-                            <span class="n">vlan999</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">av</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">av</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;999&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">applianceVLANs</span><span class="p">))</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="k">if</span> <span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SKIP_MERAKI_HOSTS</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SKIP_MERAKI_HOSTS</span><span class="p">)):</span>
+                        <span class="k">if</span> <span class="p">((</span><span class="n">device</span><span class="p">[</span><span class="s1">'productType'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'appliance'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">'VMX'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">device</span><span class="p">[</span><span class="s1">'model'</span><span class="p">])):</span>
+                            <span class="n">applianceVLANs</span> <span class="o">=</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">appliance</span><span class="o">.</span><span class="n">getNetworkApplianceVlans</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'networkId'</span><span class="p">])</span>
+                            <span class="n">vlan999</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">av</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">av</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="s1">'999'</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">applianceVLANs</span><span class="p">))</span>
                             <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vlan999</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-                                <span class="n">device</span><span class="p">[</span><span class="s1">&#39;lanIp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span>
+                                <span class="n">device</span><span class="p">[</span><span class="s1">'lanIp'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'0.0.0.0'</span>
                             <span class="k">else</span><span class="p">:</span>
-                                <span class="n">device</span><span class="p">[</span><span class="s1">&#39;lanIp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vlan999</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;applianceIp&#39;</span><span class="p">]</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;lanIp&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
-                            <span class="n">device</span><span class="p">[</span><span class="s1">&#39;lanIp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span>
+                                <span class="n">device</span><span class="p">[</span><span class="s1">'lanIp'</span><span class="p">]</span> <span class="o">=</span> <span class="n">vlan999</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'applianceIp'</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'lanIp'</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+                            <span class="n">device</span><span class="p">[</span><span class="s1">'lanIp'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'0.0.0.0'</span>
                         <span class="n">create_update_meraki_host</span><span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="n">nagioshostitems</span><span class="p">,</span><span class="n">gdepnetworks</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span>
-                        <span class="n">nagiosserviceitems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ns</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">ns</span><span class="p">[</span><span class="s1">&#39;host_name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">nagioshostservices</span><span class="p">))</span>
+                        <span class="n">nagiosserviceitems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ns</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">ns</span><span class="p">[</span><span class="s1">'host_name'</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">nagioshostservices</span><span class="p">))</span>
                         <span class="n">create_update_meraki_host_services</span><span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="n">nagiosserviceitems</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="n">merakihostnames</span><span class="p">)</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alias&#39;</span><span class="p">:</span> <span class="s1">&#39;Nagios XI&#39;</span><span class="p">,</span> <span class="s1">&#39;applyconfig&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">}</span>
-        <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">&#39;config/host/localhost&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;PUT&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">nagioshost</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">&#39;objects/host&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'alias'</span><span class="p">:</span> <span class="s1">'Nagios XI'</span><span class="p">,</span> <span class="s1">'applyconfig'</span><span class="p">:</span> <span class="s1">'1'</span><span class="p">}</span>
+        <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">'config/host/localhost'</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">'PUT'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">nagioshost</span> <span class="o">=</span> <span class="n">call_nagios_api</span><span class="p">(</span><span class="s1">'objects/host'</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exception_obj</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">exception_obj</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error: </span><span class="si">{</span><span class="n">exception_obj</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <hr />
 <h2 id="9-conclusion">9. Conclusion</h2>
@@ -3332,7 +3360,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 30, 2025 21:58:08 UTC">June 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3385,7 +3413,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2857,6 +2857,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4051,15 +4079,15 @@
     <span class="n">user_identifier</span> <span class="o">=</span> <span class="n">extract_entra_id</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 
     <span class="c1"># 2. Route to appropriate agent</span>
-    <span class="n">agent_type</span> <span class="o">=</span> <span class="n">route_to_agent</span><span class="p">(</span><span class="n">user_message</span><span class="p">)</span>  <span class="c1"># &quot;mcp&quot; | &quot;local&quot; | &quot;foundry&quot;</span>
+    <span class="n">agent_type</span> <span class="o">=</span> <span class="n">route_to_agent</span><span class="p">(</span><span class="n">user_message</span><span class="p">)</span>  <span class="c1"># "mcp" | "local" | "foundry"</span>
 
     <span class="c1"># 3. Load/create conversation thread</span>
     <span class="n">thread</span> <span class="o">=</span> <span class="k">await</span> <span class="n">load_or_create_thread</span><span class="p">(</span><span class="n">conversation_id</span><span class="p">)</span>
 
     <span class="c1"># 4. Execute with appropriate agent</span>
-    <span class="k">if</span> <span class="n">agent_type</span> <span class="o">==</span> <span class="s2">&quot;mcp&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">agent_type</span> <span class="o">==</span> <span class="s2">"mcp"</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">mcp_agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">user_message</span><span class="p">,</span> <span class="n">thread</span><span class="o">=</span><span class="n">thread</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">agent_type</span> <span class="o">==</span> <span class="s2">&quot;foundry&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">agent_type</span> <span class="o">==</span> <span class="s2">"foundry"</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">foundry_agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">user_message</span><span class="p">)</span>  <span class="c1"># Stateless</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">local_agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">user_message</span><span class="p">,</span> <span class="n">thread</span><span class="o">=</span><span class="n">thread</span><span class="p">)</span>
@@ -4093,9 +4121,9 @@
 <span class="c1"># Create agent client</span>
 <span class="n">foundry_client</span> <span class="o">=</span> <span class="n">AzureAIAgentClient</span><span class="p">(</span>
     <span class="n">credential</span><span class="o">=</span><span class="n">credential</span><span class="p">,</span>
-    <span class="n">project_endpoint</span><span class="o">=</span><span class="s2">&quot;https://your-project.services.ai.azure.com/...&quot;</span><span class="p">,</span>
-    <span class="n">agent_id</span><span class="o">=</span><span class="s2">&quot;asst_xxxxxxxxxxxx&quot;</span><span class="p">,</span>  <span class="c1"># Pre-configured agent ID</span>
-    <span class="n">model_deployment_name</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span>
+    <span class="n">project_endpoint</span><span class="o">=</span><span class="s2">"https://your-project.services.ai.azure.com/..."</span><span class="p">,</span>
+    <span class="n">agent_id</span><span class="o">=</span><span class="s2">"asst_xxxxxxxxxxxx"</span><span class="p">,</span>  <span class="c1"># Pre-configured agent ID</span>
+    <span class="n">model_deployment_name</span><span class="o">=</span><span class="s2">"gpt-4.1"</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="use-cases-for-foundry-agent">Use Cases for Foundry Agent</h3>
@@ -4121,12 +4149,12 @@
 
 <span class="n">agent</span> <span class="o">=</span> <span class="n">AzureOpenAIChatClient</span><span class="p">(</span>
     <span class="n">endpoint</span><span class="o">=</span><span class="n">AZURE_OPENAI_ENDPOINT</span><span class="p">,</span>
-    <span class="n">deployment_name</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span><span class="p">,</span>
+    <span class="n">deployment_name</span><span class="o">=</span><span class="s2">"gpt-4.1"</span><span class="p">,</span>
     <span class="n">api_key</span><span class="o">=</span><span class="n">AZURE_OPENAI_API_KEY</span><span class="p">,</span>
-    <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;2024-05-01-preview&quot;</span>
+    <span class="n">api_version</span><span class="o">=</span><span class="s2">"2024-05-01-preview"</span>
 <span class="p">)</span><span class="o">.</span><span class="n">create_agent</span><span class="p">(</span>
-    <span class="n">instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;You are an IT helpdesk assistant...&quot;&quot;&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;IT-Helpdesk-Local&quot;</span><span class="p">,</span>
+    <span class="n">instructions</span><span class="o">=</span><span class="s2">"""You are an IT helpdesk assistant..."""</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"IT-Helpdesk-Local"</span><span class="p">,</span>
     <span class="n">tools</span><span class="o">=</span><span class="p">[</span>
         <span class="n">get_user_info</span><span class="p">,</span>        <span class="c1"># SQL database lookup</span>
         <span class="n">reset_sap_password</span><span class="p">,</span>   <span class="c1"># SAP RFC integration</span>
@@ -4142,9 +4170,9 @@
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">reset_sap_password</span><span class="p">(</span>
     <span class="n">sap_account_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">user_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">identifier_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;entra_id&quot;</span>
+    <span class="n">identifier_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"entra_id"</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Reset SAP password for user account.</span>
 
 <span class="sd">    ALWAYS call this tool for password reset requests.</span>
@@ -4157,7 +4185,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Formatted result with new temporary password</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># Implementation connects to SAP via RFC</span>
     <span class="c1"># Validates permissions, resets password, returns result</span>
     <span class="o">...</span>
@@ -4193,21 +4221,21 @@
 
 <span class="c1"># Create MCP tool that connects to remote server</span>
 <span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPStreamableHTTPTool</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;data-analyst&quot;</span><span class="p">,</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://mcp-server:8001/mcp?function=it&quot;</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Data analysis tools - employee data, reports, SQL queries&quot;</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"data-analyst"</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">"http://mcp-server:8001/mcp?function=it"</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">"Data analysis tools - employee data, reports, SQL queries"</span>
 <span class="p">)</span>
 
 <span class="c1"># Create agent with MCP tools</span>
 <span class="n">mcp_agent</span> <span class="o">=</span> <span class="n">AzureOpenAIChatClient</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">create_agent</span><span class="p">(</span>
-    <span class="n">instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;You are a data analyst assistant.</span>
+    <span class="n">instructions</span><span class="o">=</span><span class="s2">"""You are a data analyst assistant.</span>
 
 <span class="s2">    CRITICAL FIRST STEP:</span>
 <span class="s2">    1. ALWAYS call get_data_catalog FIRST before any query</span>
 <span class="s2">    2. This shows available datasets with query_tool field</span>
 <span class="s2">    3. Use the appropriate execution tool based on query_tool</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Data-Analyst&quot;</span><span class="p">,</span>
+<span class="s2">    """</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Data-Analyst"</span><span class="p">,</span>
     <span class="n">tools</span><span class="o">=</span><span class="n">mcp_tool</span>  <span class="c1"># Single tool that exposes 9 MCP capabilities</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -4304,55 +4332,55 @@
     <span class="n">message_lower</span> <span class="o">=</span> <span class="n">user_message</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
     <span class="c1"># Step 1: Check MCP keywords (HIGHEST PRIORITY) - ~5ms</span>
-    <span class="n">mcp_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;analyze&quot;</span><span class="p">,</span> <span class="s2">&quot;employees&quot;</span><span class="p">,</span> <span class="s2">&quot;bill&quot;</span><span class="p">,</span> <span class="s2">&quot;report&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="n">mcp_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"data"</span><span class="p">,</span> <span class="s2">"analyze"</span><span class="p">,</span> <span class="s2">"employees"</span><span class="p">,</span> <span class="s2">"bill"</span><span class="p">,</span> <span class="s2">"report"</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">mcp_keywords</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">message_lower</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;mcp&quot;</span>
+            <span class="k">return</span> <span class="s2">"mcp"</span>
 
     <span class="c1"># Step 2: Check operational keywords - ~5ms</span>
-    <span class="n">operational_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;reset password&quot;</span><span class="p">,</span> <span class="s2">&quot;create ticket&quot;</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="n">operational_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"reset password"</span><span class="p">,</span> <span class="s2">"create ticket"</span><span class="p">,</span> <span class="s2">"hello"</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">operational_keywords</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">message_lower</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;local&quot;</span>
+            <span class="k">return</span> <span class="s2">"local"</span>
 
     <span class="c1"># Step 3: Check knowledge keywords - ~5ms</span>
-    <span class="n">knowledge_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;policy&quot;</span><span class="p">,</span> <span class="s2">&quot;procedure&quot;</span><span class="p">,</span> <span class="s2">&quot;how to&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="n">knowledge_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"policy"</span><span class="p">,</span> <span class="s2">"procedure"</span><span class="p">,</span> <span class="s2">"how to"</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">knowledge_keywords</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">message_lower</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;foundry&quot;</span>
+            <span class="k">return</span> <span class="s2">"foundry"</span>
 
     <span class="c1"># Step 4: No match - use LLM classification - ~150ms</span>
     <span class="n">intent</span> <span class="o">=</span> <span class="n">classify_with_llm</span><span class="p">(</span><span class="n">user_message</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">intent</span> <span class="o">==</span> <span class="s2">&quot;data_analysis&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;mcp&quot;</span>
-    <span class="k">elif</span> <span class="n">intent</span> <span class="o">==</span> <span class="s2">&quot;operational_task&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;local&quot;</span>
-    <span class="k">elif</span> <span class="n">intent</span> <span class="o">==</span> <span class="s2">&quot;knowledge_base&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;foundry&quot;</span>
+    <span class="k">if</span> <span class="n">intent</span> <span class="o">==</span> <span class="s2">"data_analysis"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"mcp"</span>
+    <span class="k">elif</span> <span class="n">intent</span> <span class="o">==</span> <span class="s2">"operational_task"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"local"</span>
+    <span class="k">elif</span> <span class="n">intent</span> <span class="o">==</span> <span class="s2">"knowledge_base"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"foundry"</span>
 
     <span class="c1"># Step 5: Default fallback</span>
-    <span class="k">return</span> <span class="s2">&quot;local&quot;</span>
+    <span class="k">return</span> <span class="s2">"local"</span>
 </code></pre></div>
 <h3 id="llm-intent-classifier">LLM Intent Classifier</h3>
 <p>For ambiguous queries, we use GPT-4.1-mini (fast, cheap):</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IntentClassifier</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;You are an intent classifier.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span> <span class="o">=</span> <span class="s2">"""You are an intent classifier.</span>
 <span class="s2">        Classify into exactly ONE category:</span>
 
 <span class="s2">        1. data_analysis - Data, numbers, reports, employee info</span>
 <span class="s2">        2. operational_task - Password resets, tickets, actions</span>
 <span class="s2">        3. knowledge_base - Policies, procedures, how-to questions</span>
 
-<span class="s2">        Respond with ONLY ONE WORD: data_analysis OR operational_task OR knowledge_base&quot;&quot;&quot;</span>
+<span class="s2">        Respond with ONLY ONE WORD: data_analysis OR operational_task OR knowledge_base"""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">classify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1-mini&quot;</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4.1-mini"</span><span class="p">,</span>
             <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
-                <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span><span class="p">},</span>
-                <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">message</span><span class="p">}</span>
+                <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"system"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">message</span><span class="p">}</span>
             <span class="p">],</span>
             <span class="n">temperature</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>        <span class="c1"># Consistent classification</span>
             <span class="n">max_tokens</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>          <span class="c1"># One word response</span>
@@ -4395,25 +4423,25 @@
 <h2 id="thread-persistence-conversation-memory">Thread Persistence &amp; Conversation Memory</h2>
 <h3 id="the-challenge">The Challenge</h3>
 <p>Users expect continuity across messages:</p>
-<div class="highlight"><pre><span></span><code>User: &quot;What is our December Azure bill?&quot;
-Bot: &quot;The December 2025 Azure bill is $56,940.03&quot;
+<div class="highlight"><pre><span></span><code>User: "What is our December Azure bill?"
+Bot: "The December 2025 Azure bill is $56,940.03"
 
-User: &quot;Compare that to November&quot;  ← Bot needs to remember &quot;December bill&quot;
+User: "Compare that to November"  ← Bot needs to remember "December bill"
 </code></pre></div>
 <h3 id="solution-serialized-thread-storage">Solution: Serialized Thread Storage</h3>
 <p>We serialize the entire conversation thread to Azure Blob Storage:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ThreadStorage</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conversation_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">user_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">base_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/mnt/azure/helpdesk/threads/</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"/mnt/azure/helpdesk/threads/</span><span class="si">{</span><span class="n">conversation_id</span><span class="si">}</span><span class="s2">"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">save_thread</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thread_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thread_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_path</span><span class="si">}</span><span class="s2">/thread_</span><span class="si">{</span><span class="n">thread_id</span><span class="si">}</span><span class="s2">.json&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_path</span><span class="si">}</span><span class="s2">/thread_</span><span class="si">{</span><span class="n">thread_id</span><span class="si">}</span><span class="s2">.json"</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">thread_data</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">load_thread</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thread_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="n">file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_path</span><span class="si">}</span><span class="s2">/thread_</span><span class="si">{</span><span class="n">thread_id</span><span class="si">}</span><span class="s2">.json&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_path</span><span class="si">}</span><span class="s2">/thread_</span><span class="si">{</span><span class="n">thread_id</span><span class="si">}</span><span class="s2">.json"</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="thread-serialization-with-agent-framework">Thread Serialization with Agent Framework</h3>
@@ -4427,11 +4455,11 @@ User: &quot;Compare that to November&quot;  ← Bot needs to remember &quot;Dece
 
 <span class="c1"># Convert dicts back to ChatMessage objects</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">agent_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatMessage</span>
-<span class="k">if</span> <span class="s1">&#39;chat_message_store_state&#39;</span> <span class="ow">in</span> <span class="n">thread_data</span><span class="p">:</span>
-    <span class="n">store</span> <span class="o">=</span> <span class="n">thread_data</span><span class="p">[</span><span class="s1">&#39;chat_message_store_state&#39;</span><span class="p">]</span>
-    <span class="n">store</span><span class="p">[</span><span class="s1">&#39;messages&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+<span class="k">if</span> <span class="s1">'chat_message_store_state'</span> <span class="ow">in</span> <span class="n">thread_data</span><span class="p">:</span>
+    <span class="n">store</span> <span class="o">=</span> <span class="n">thread_data</span><span class="p">[</span><span class="s1">'chat_message_store_state'</span><span class="p">]</span>
+    <span class="n">store</span><span class="p">[</span><span class="s1">'messages'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">ChatMessage</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">msg</span>
-        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">store</span><span class="p">[</span><span class="s1">&#39;messages&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">store</span><span class="p">[</span><span class="s1">'messages'</span><span class="p">]</span>
     <span class="p">]</span>
 
 <span class="c1"># Restore thread with history</span>
@@ -4440,7 +4468,7 @@ User: &quot;Compare that to November&quot;  ← Bot needs to remember &quot;Dece
 <h3 id="sliding-window-cost-optimization">Sliding Window: Cost Optimization</h3>
 <p>Long conversations can consume excessive tokens. We apply a sliding window:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">apply_sliding_window</span><span class="p">(</span><span class="n">thread</span><span class="p">,</span> <span class="n">max_messages</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Keep only last N messages for LLM context, but save full history.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Keep only last N messages for LLM context, but save full history."""</span>
 
     <span class="n">original_messages</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="n">_chat_message_store</span><span class="o">.</span><span class="n">messages</span>
     <span class="n">original_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">original_messages</span><span class="p">)</span>
@@ -4465,47 +4493,47 @@ User: &quot;Compare that to November&quot;  ← Bot needs to remember &quot;Dece
 <h2 id="agent-specific-context-filtering">Agent-Specific Context Filtering</h2>
 <h3 id="the-cross-agent-hallucination-problem">The Cross-Agent Hallucination Problem</h3>
 <p>When agents share conversation history, a dangerous issue emerges:</p>
-<div class="highlight"><pre><span></span><code>1. User: &quot;What is December Azure bill?&quot;
-2. MCP Agent: [calls execute_database_query] → &quot;$56,940.03&quot;
+<div class="highlight"><pre><span></span><code>1. User: "What is December Azure bill?"
+2. MCP Agent: [calls execute_database_query] → "$56,940.03"
 
-3. User: &quot;Reset my password&quot;  ← Routes to LOCAL agent
+3. User: "Reset my password"  ← Routes to LOCAL agent
 4. LOCAL Agent sees: execute_database_query in history
-5. LOCAL Agent doesn&#39;t have this tool
+5. LOCAL Agent doesn't have this tool
 6. LOCAL Agent HALLUCINATES random tool calls! ❌
 </code></pre></div>
 <h3 id="solution-filter-before-sending-to-llm">Solution: Filter Before Sending to LLM</h3>
 <p>Before sending context to each agent, filter out tool calls from other agents:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">filter_context_by_agent</span><span class="p">(</span><span class="n">thread</span><span class="p">,</span> <span class="n">target_agent</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Remove cross-agent tool calls to prevent hallucinations.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Remove cross-agent tool calls to prevent hallucinations."""</span>
 
     <span class="n">MCP_TOOLS</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;get_data_catalog&#39;</span><span class="p">,</span> <span class="s1">&#39;execute_database_query&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;execute_polars_sql&#39;</span><span class="p">,</span> <span class="s1">&#39;get_schema&#39;</span><span class="p">,</span> <span class="o">...</span>
+        <span class="s1">'get_data_catalog'</span><span class="p">,</span> <span class="s1">'execute_database_query'</span><span class="p">,</span>
+        <span class="s1">'execute_polars_sql'</span><span class="p">,</span> <span class="s1">'get_schema'</span><span class="p">,</span> <span class="o">...</span>
     <span class="p">}</span>
 
     <span class="n">LOCAL_TOOLS</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;get_user_info&#39;</span><span class="p">,</span> <span class="s1">&#39;reset_sap_password&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;create_ticket&#39;</span><span class="p">,</span> <span class="s1">&#39;check_ticket_status&#39;</span><span class="p">,</span> <span class="o">...</span>
+        <span class="s1">'get_user_info'</span><span class="p">,</span> <span class="s1">'reset_sap_password'</span><span class="p">,</span>
+        <span class="s1">'create_ticket'</span><span class="p">,</span> <span class="s1">'check_ticket_status'</span><span class="p">,</span> <span class="o">...</span>
     <span class="p">}</span>
 
     <span class="n">filtered_messages</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">thread</span><span class="o">.</span><span class="n">messages</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s1">&#39;user&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s1">'user'</span><span class="p">:</span>
             <span class="c1"># ALWAYS keep user messages</span>
             <span class="n">filtered_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-        <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s1">&#39;assistant&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s1">'assistant'</span><span class="p">:</span>
             <span class="c1"># Check for cross-agent tool calls</span>
             <span class="n">has_foreign_tools</span> <span class="o">=</span> <span class="kc">False</span>
 
             <span class="k">for</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">contents</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">content</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;function_call&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">content</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">'function_call'</span><span class="p">:</span>
                     <span class="n">tool_name</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">name</span>
 
-                    <span class="k">if</span> <span class="n">target_agent</span> <span class="o">==</span> <span class="s1">&#39;local&#39;</span> <span class="ow">and</span> <span class="n">tool_name</span> <span class="ow">in</span> <span class="n">MCP_TOOLS</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">target_agent</span> <span class="o">==</span> <span class="s1">'local'</span> <span class="ow">and</span> <span class="n">tool_name</span> <span class="ow">in</span> <span class="n">MCP_TOOLS</span><span class="p">:</span>
                         <span class="n">has_foreign_tools</span> <span class="o">=</span> <span class="kc">True</span>
-                    <span class="k">elif</span> <span class="n">target_agent</span> <span class="o">==</span> <span class="s1">&#39;mcp&#39;</span> <span class="ow">and</span> <span class="n">tool_name</span> <span class="ow">in</span> <span class="n">LOCAL_TOOLS</span><span class="p">:</span>
+                    <span class="k">elif</span> <span class="n">target_agent</span> <span class="o">==</span> <span class="s1">'mcp'</span> <span class="ow">and</span> <span class="n">tool_name</span> <span class="ow">in</span> <span class="n">LOCAL_TOOLS</span><span class="p">:</span>
                         <span class="n">has_foreign_tools</span> <span class="o">=</span> <span class="kc">True</span>
 
             <span class="k">if</span> <span class="ow">not</span> <span class="n">has_foreign_tools</span><span class="p">:</span>
@@ -4527,11 +4555,11 @@ User: &quot;Compare that to November&quot;  ← Bot needs to remember &quot;Dece
 <h2 id="the-ai-memory-system-learning-about-users">The AI Memory System: Learning About Users</h2>
 <h3 id="beyond-session-memory">Beyond Session Memory</h3>
 <p>Traditional chatbots only remember within a session. Our AI Memory system learns across all conversations:</p>
-<div class="highlight"><pre><span></span><code>Day 1: &quot;Hi, I&#39;m John from the Finance department&quot;
-Bot: [Learns: name=&quot;John&quot;, department=&quot;Finance&quot;]
+<div class="highlight"><pre><span></span><code>Day 1: "Hi, I'm John from the Finance department"
+Bot: [Learns: name="John", department="Finance"]
 
-Day 2: &quot;Reset my SAP password&quot;
-Bot: &quot;Hi John! I&#39;ll reset your SAP password right away.&quot;
+Day 2: "Reset my SAP password"
+Bot: "Hi John! I'll reset your SAP password right away."
      [Knows user without asking]
 </code></pre></div>
 <h3 id="implementation-contextprovider-pattern">Implementation: ContextProvider Pattern</h3>
@@ -4539,35 +4567,35 @@ Bot: &quot;Hi John! I&#39;ll reset your SAP password right away.&quot;
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">agent_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContextProvider</span><span class="p">,</span> <span class="n">Context</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">AIMemoryProvider</span><span class="p">(</span><span class="n">ContextProvider</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;AI-powered long-term memory that learns about users.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""AI-powered long-term memory that learns about users."""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ai_client</span><span class="p">:</span> <span class="n">AsyncAzureOpenAI</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">user_identifier</span> <span class="o">=</span> <span class="n">user_identifier</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ai_client</span> <span class="o">=</span> <span class="n">ai_client</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">profile_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/mnt/azure/helpdesk/memory/</span><span class="si">{</span><span class="n">user_identifier</span><span class="si">}</span><span class="s2">/profile.json&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"/mnt/azure/helpdesk/memory/</span><span class="si">{</span><span class="n">user_identifier</span><span class="si">}</span><span class="s2">/profile.json"</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_load_profile</span><span class="p">()</span>
 
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">invoking</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Context</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called BEFORE agent processes request. Inject user profile.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Called BEFORE agent processes request. Inject user profile."""</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_profile</span><span class="p">:</span>
-            <span class="n">profile_text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_profile</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+            <span class="n">profile_text</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">"- </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_profile</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
 
-            <span class="k">return</span> <span class="n">Context</span><span class="p">(</span><span class="n">instructions</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+            <span class="k">return</span> <span class="n">Context</span><span class="p">(</span><span class="n">instructions</span><span class="o">=</span><span class="sa">f</span><span class="s2">"""</span>
 <span class="s2">[USER PROFILE - LONG-TERM MEMORY]:</span>
 <span class="si">{</span><span class="n">profile_text</span><span class="si">}</span>
 
 <span class="s2">Reference this naturally when relevant. Greet the user by name!</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">"""</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Context</span><span class="p">()</span>
 
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">invoked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request_messages</span><span class="p">,</span> <span class="n">response_messages</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called AFTER conversation. Extract new information.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Called AFTER conversation. Extract new information."""</span>
         <span class="n">user_message</span> <span class="o">=</span> <span class="n">extract_last_user_message</span><span class="p">(</span><span class="n">request_messages</span><span class="p">)</span>
 
         <span class="c1"># Use AI to extract facts worth remembering</span>
-        <span class="n">extraction_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+        <span class="n">extraction_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""</span>
 <span class="s2">Analyze this message and extract personal info worth remembering:</span>
-<span class="s2">&quot;</span><span class="si">{</span><span class="n">user_message</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="s2">"</span><span class="si">{</span><span class="n">user_message</span><span class="si">}</span><span class="s2">"</span>
 
 <span class="s2">Current profile: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user_profile</span><span class="si">}</span>
 
@@ -4576,13 +4604,13 @@ Bot: &quot;Hi John! I&#39;ll reset your SAP password right away.&quot;
 <span class="s2">- Technical: systems they use, common issues</span>
 <span class="s2">- Preferences: communication style</span>
 
-<span class="s2">Return as JSON: </span><span class="se">{{</span><span class="s2">&quot;key&quot;: &quot;value&quot;</span><span class="se">}}</span>
+<span class="s2">Return as JSON: </span><span class="se">{{</span><span class="s2">"key": "value"</span><span class="se">}}</span>
 <span class="s2">If nothing to remember, return: </span><span class="se">{{}}</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
         <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">ai_client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span><span class="p">,</span>
-            <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">extraction_prompt</span><span class="p">}],</span>
+            <span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4.1"</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">extraction_prompt</span><span class="p">}],</span>
             <span class="n">temperature</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="c1"># Consistent extraction</span>
             <span class="n">max_tokens</span><span class="o">=</span><span class="mi">200</span>
         <span class="p">)</span>
@@ -4662,8 +4690,8 @@ Bot: &quot;Hi John! I&#39;ll reset your SAP password right away.&quot;
 │  4. FastAPI receives with full user identity                    │
 │                        ↓                                        │
 │  5. Bot uses Entra ID for:                                      │
-│     - Database lookup (user&#39;s department, email, etc.)          │
-│     - Permission checks (can they reset others&#39; passwords?)     │
+│     - Database lookup (user's department, email, etc.)          │
+│     - Permission checks (can they reset others' passwords?)     │
 │     - Thread storage (per-user conversation history)            │
 │     - AI Memory (per-user learned preferences)                  │
 └─────────────────────────────────────────────────────────────────┘
@@ -4671,7 +4699,7 @@ Bot: &quot;Hi John! I&#39;ll reset your SAP password right away.&quot;
 <hr />
 <h2 id="putting-it-all-together">Putting It All Together</h2>
 <h3 id="complete-request-flow">Complete Request Flow</h3>
-<div class="highlight"><pre><span></span><code>User sends &quot;How many employees in IT?&quot; via Teams
+<div class="highlight"><pre><span></span><code>User sends "How many employees in IT?" via Teams
 
 ┌─────────────────────────────────────────────────────────────────┐
 │ 1. AUTHENTICATION                                               │
@@ -4682,8 +4710,8 @@ Bot: &quot;Hi John! I&#39;ll reset your SAP password right away.&quot;
                            ↓
 ┌─────────────────────────────────────────────────────────────────┐
 │ 2. INTENT ROUTING                                               │
-│    - Check keywords: &quot;employees&quot; → MCP_KEYWORDS                 │
-│    - Route decision: &quot;mcp&quot; (Data Analyst)                       │
+│    - Check keywords: "employees" → MCP_KEYWORDS                 │
+│    - Route decision: "mcp" (Data Analyst)                       │
 └──────────────────────────┬──────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────────────┐
@@ -4697,7 +4725,7 @@ Bot: &quot;Hi John! I&#39;ll reset your SAP password right away.&quot;
 │ 4. MCP AGENT EXECUTION                                          │
 │    - Create MCP agent with data analysis tools                  │
 │    - Agent calls: get_data_catalog → execute_database_query     │
-│    - Query: SELECT COUNT(*) FROM employees WHERE dept = &#39;IT&#39;    │
+│    - Query: SELECT COUNT(*) FROM employees WHERE dept = 'IT'    │
 │    - Result: 42 employees                                       │
 └──────────────────────────┬──────────────────────────────────────┘
                            ↓
@@ -4712,7 +4740,7 @@ Bot: &quot;Hi John! I&#39;ll reset your SAP password right away.&quot;
 ┌─────────────────────────────────────────────────────────────────┐
 │ 6. TEAMS RESPONSE                                               │
 │    - Send Markdown-formatted response                           │
-│    - &quot;There are **42 employees** in the IT department.&quot;         │
+│    - "There are **42 employees** in the IT department."         │
 └─────────────────────────────────────────────────────────────────┘
 </code></pre></div>
 <hr />
@@ -4766,17 +4794,17 @@ Bot: &quot;Hi John! I&#39;ll reset your SAP password right away.&quot;
 <p>The LLM reads tool docstrings to decide when/how to call tools. Vague docstrings cause wrong tool calls. Be explicit:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ❌ Vague</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">reset_password</span><span class="p">(</span><span class="n">account</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset user password.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Reset user password."""</span>
 
 <span class="c1"># ✅ Explicit</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">reset_password</span><span class="p">(</span><span class="n">account</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Reset SAP password for account.</span>
 
 <span class="sd">    ALWAYS call this tool for password requests.</span>
 <span class="sd">    DO NOT check permissions - the tool handles this internally.</span>
 <span class="sd">    Pass the account name EXACTLY as the user specifies.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </code></pre></div>
 <h3 id="5-emojis-and-formatting-get-lost-without-strong-instructions">5. Emojis and Formatting Get Lost Without Strong Instructions</h3>
 <p>LLMs like to "clean up" responses. If your tool returns formatted output with emojis, the LLM may summarize or rephrase it. Add explicit instructions:</p>
@@ -4831,7 +4859,7 @@ Include EVERY emoji. Include EVERY markdown element.
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 11, 2026 00:37:45 UTC">February 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -4884,7 +4912,7 @@ Include EVERY emoji. Include EVERY markdown element.
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

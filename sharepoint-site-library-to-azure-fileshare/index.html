@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2285,6 +2285,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2831,12 +2859,12 @@
 <hr />
 <h2 id="full-python-code-example">Full Python Code Example</h2>
 <p>Below is a complete, production-ready script for the file copy process. All company-specific values have been removed. Replace stub values and secret names as appropriate for your environment.</p>
-<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="sd">"""</span>
 <span class="sd">This script copies files from SharePoint Online to Azure File Share using multi-threading and chunked uploads.</span>
 <span class="sd">- Designed for high-volume, large-file scenarios (30–50 GB+)</span>
 <span class="sd">- All secrets are retrieved from Azure Key Vault</span>
 <span class="sd">- Can be run as an Azure Container Instance (ACI) or VM</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">queue</span><span class="w"> </span><span class="kn">import</span> <span class="n">Queue</span>
@@ -2874,31 +2902,31 @@
 <span class="n">token_expiry_time</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">refresh_access_token</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Refreshes the Microsoft Graph access token using certificate-based auth.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Refreshes the Microsoft Graph access token using certificate-based auth."""</span>
     <span class="k">global</span> <span class="n">access_token</span><span class="p">,</span> <span class="n">token_expiry_time</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Refreshing access token...&quot;</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;certs/</span><span class="si">{</span><span class="n">PFX_CERTIFICATE_NAME</span><span class="si">}</span><span class="s2">.key&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">key_file</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Refreshing access token..."</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"certs/</span><span class="si">{</span><span class="n">PFX_CERTIFICATE_NAME</span><span class="si">}</span><span class="s2">.key"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">key_file</span><span class="p">:</span>
             <span class="n">private_key</span> <span class="o">=</span> <span class="n">key_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         <span class="n">app</span> <span class="o">=</span> <span class="n">ConfidentialClientApplication</span><span class="p">(</span>
             <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
-            <span class="n">authority</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_AUTHORITY_BASE_URL</span><span class="si">}{</span><span class="n">AZURE_TENANT_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">authority</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">AZURE_AUTHORITY_BASE_URL</span><span class="si">}{</span><span class="n">AZURE_TENANT_ID</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
             <span class="n">client_credential</span><span class="o">=</span><span class="p">{</span>
-                <span class="s2">&quot;thumbprint&quot;</span><span class="p">:</span> <span class="n">PFX_CERTIFICATE_NAME_TP</span><span class="p">,</span>
-                <span class="s2">&quot;private_key&quot;</span><span class="p">:</span> <span class="n">private_key</span><span class="p">,</span>
+                <span class="s2">"thumbprint"</span><span class="p">:</span> <span class="n">PFX_CERTIFICATE_NAME_TP</span><span class="p">,</span>
+                <span class="s2">"private_key"</span><span class="p">:</span> <span class="n">private_key</span><span class="p">,</span>
             <span class="p">},</span>
         <span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">acquire_token_for_client</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="n">AZURE_GRAPH_DEFAULT_RESOURCE</span><span class="p">)</span>
-        <span class="n">access_token</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;access_token&quot;</span><span class="p">]</span>
-        <span class="n">expires_in</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;expires_in&quot;</span><span class="p">]</span>
+        <span class="n">access_token</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"access_token"</span><span class="p">]</span>
+        <span class="n">expires_in</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"expires_in"</span><span class="p">]</span>
         <span class="n">token_expiry_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">expires_in</span> <span class="o">-</span> <span class="mi">60</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Access token refreshed successfully.&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Access token refreshed successfully."</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to refresh access token: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Access token refresh failed.&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Failed to refresh access token: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">"Access token refresh failed."</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_access_token</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a valid access token, refreshing if expired.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Returns a valid access token, refreshing if expired."""</span>
     <span class="k">global</span> <span class="n">access_token</span><span class="p">,</span> <span class="n">token_expiry_time</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">access_token</span> <span class="ow">or</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">token_expiry_time</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
@@ -2907,19 +2935,19 @@
                 <span class="k">break</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrying token refresh (attempt </span><span class="si">{</span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/3)...&quot;</span><span class="p">)</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Retrying token refresh (attempt </span><span class="si">{</span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/3)..."</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="n">e</span>
     <span class="k">return</span> <span class="n">access_token</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">ensure_directory_path_exists</span><span class="p">(</span><span class="n">azure_conn_str</span><span class="p">,</span> <span class="n">share_name</span><span class="p">,</span> <span class="n">directory_path</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ensures the full directory path exists in Azure File Share.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Ensures the full directory path exists in Azure File Share."""</span>
     <span class="k">if</span> <span class="n">cache</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">cache</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-    <span class="n">parts</span> <span class="o">=</span> <span class="n">directory_path</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-    <span class="n">current_path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">directory_path</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
+    <span class="n">current_path</span> <span class="o">=</span> <span class="s1">''</span>
     <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
-        <span class="n">current_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">part</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">current_path</span> <span class="k">else</span> <span class="n">part</span>
+        <span class="n">current_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">current_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">part</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">current_path</span> <span class="k">else</span> <span class="n">part</span>
         <span class="k">if</span> <span class="n">current_path</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
             <span class="k">continue</span>
         <span class="n">dir_client</span> <span class="o">=</span> <span class="n">ShareDirectoryClient</span><span class="o">.</span><span class="n">from_connection_string</span><span class="p">(</span>
@@ -2931,20 +2959,20 @@
             <span class="n">dir_client</span><span class="o">.</span><span class="n">create_directory</span><span class="p">()</span>
             <span class="n">cache</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">current_path</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s2">&quot;ResourceAlreadyExists&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s2">"ResourceAlreadyExists"</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">):</span>
                 <span class="n">cache</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">current_path</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">copy_file_from_sp_to_azure</span><span class="p">(</span><span class="n">site_id</span><span class="p">,</span> <span class="n">drive_id</span><span class="p">,</span> <span class="n">item_id</span><span class="p">,</span> <span class="n">azure_file_client</span><span class="p">,</span> <span class="n">total_file_size_in_bytes</span><span class="p">,</span> <span class="n">created_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">modified_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Streams a file from SharePoint and uploads to Azure File Share in chunks.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Streams a file from SharePoint and uploads to Azure File Share in chunks."""</span>
     <span class="n">access_token</span> <span class="o">=</span> <span class="n">get_access_token</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://graph.microsoft.com/v1.0/sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s2">/drives/</span><span class="si">{</span><span class="n">drive_id</span><span class="si">}</span><span class="s2">/items/</span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">/content&quot;</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://graph.microsoft.com/v1.0/sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s2">/drives/</span><span class="si">{</span><span class="n">drive_id</span><span class="si">}</span><span class="s2">/items/</span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">/content"</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s2">"</span><span class="p">}</span>
     <span class="n">retries</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">retries</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting file copy for item_id: </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Starting file copy for item_id: </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
                 <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
                 <span class="n">azure_file_client</span><span class="o">.</span><span class="n">create_file</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">total_file_size_in_bytes</span><span class="p">)</span>
@@ -2956,43 +2984,43 @@
                     <span class="k">if</span> <span class="n">total_file_size_in_bytes</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">:</span>
                         <span class="n">percent_complete</span> <span class="o">=</span> <span class="p">(</span><span class="n">offset</span> <span class="o">/</span> <span class="n">total_file_size_in_bytes</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
                         <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">offset</span> <span class="o">/</span> <span class="n">CHUNK_SIZE</span><span class="p">)</span> <span class="o">%</span> <span class="nb">int</span><span class="p">((</span><span class="n">total_file_size_in_bytes</span> <span class="o">/</span> <span class="n">CHUNK_SIZE</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">percent_complete</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% complete&quot;</span><span class="p">)</span>
+                            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"File </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">percent_complete</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% complete"</span><span class="p">)</span>
             <span class="c1"># Set file properties for created/modified dates</span>
             <span class="k">if</span> <span class="n">created_date</span> <span class="ow">or</span> <span class="n">modified_date</span><span class="p">:</span>
                 <span class="n">file_properties</span> <span class="o">=</span> <span class="p">{}</span>
                 <span class="k">if</span> <span class="n">created_date</span><span class="p">:</span>
                     <span class="n">created_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">created_date</span><span class="p">,</span> <span class="n">time</span><span class="p">())</span>
-                    <span class="n">file_properties</span><span class="p">[</span><span class="s1">&#39;file_creation_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">created_datetime</span>
+                    <span class="n">file_properties</span><span class="p">[</span><span class="s1">'file_creation_time'</span><span class="p">]</span> <span class="o">=</span> <span class="n">created_datetime</span>
                 <span class="k">if</span> <span class="n">modified_date</span><span class="p">:</span>
                     <span class="n">modified_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">modified_date</span><span class="p">,</span> <span class="n">time</span><span class="p">())</span>
-                    <span class="n">file_properties</span><span class="p">[</span><span class="s1">&#39;file_last_write_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">modified_datetime</span>
+                    <span class="n">file_properties</span><span class="p">[</span><span class="s1">'file_last_write_time'</span><span class="p">]</span> <span class="o">=</span> <span class="n">modified_datetime</span>
                 <span class="kn">from</span><span class="w"> </span><span class="nn">azure.storage.fileshare</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContentSettings</span>
-                <span class="n">content_settings</span> <span class="o">=</span> <span class="n">ContentSettings</span><span class="p">(</span><span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/octet-stream&quot;</span><span class="p">)</span>
-                <span class="n">azure_file_client</span><span class="o">.</span><span class="n">set_http_headers</span><span class="p">(</span><span class="n">file_attributes</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">content_settings</span><span class="o">=</span><span class="n">content_settings</span><span class="p">,</span> <span class="o">**</span><span class="n">file_properties</span><span class="p">)</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully copied file for item_id: </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">content_settings</span> <span class="o">=</span> <span class="n">ContentSettings</span><span class="p">(</span><span class="n">content_type</span><span class="o">=</span><span class="s2">"application/octet-stream"</span><span class="p">)</span>
+                <span class="n">azure_file_client</span><span class="o">.</span><span class="n">set_http_headers</span><span class="p">(</span><span class="n">file_attributes</span><span class="o">=</span><span class="s2">"none"</span><span class="p">,</span> <span class="n">content_settings</span><span class="o">=</span><span class="n">content_settings</span><span class="p">,</span> <span class="o">**</span><span class="n">file_properties</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Successfully copied file for item_id: </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">return</span>
         <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="n">retries</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrying file copy for item_id </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2"> (attempt </span><span class="si">{</span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">retries</span><span class="si">}</span><span class="s2">)...&quot;</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Retrying file copy for item_id </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2"> (attempt </span><span class="si">{</span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">retries</span><span class="si">}</span><span class="s2">)..."</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to copy file for item_id: </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">. Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Failed to copy file for item_id: </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">. Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
                 <span class="k">raise</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error during file copy for item_id </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unexpected error during file copy for item_id </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">worker</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">azure_conn_str</span><span class="p">,</span> <span class="n">share_name</span><span class="p">,</span> <span class="n">created_dirs</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Thread worker function: processes files from the queue.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Thread worker function: processes files from the queue."""</span>
     <span class="k">global</span> <span class="n">processed_files</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">file_record</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-            <span class="n">site_id</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;site_id&#39;</span><span class="p">]</span>
-            <span class="n">drive_id</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;drive_id&#39;</span><span class="p">]</span>
-            <span class="n">item_id</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;item_id&#39;</span><span class="p">]</span>
-            <span class="n">total_file_size_in_bytes</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">]</span>
-            <span class="n">created_date</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;created_date&#39;</span><span class="p">]</span>
-            <span class="n">modified_date</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;modified_date&#39;</span><span class="p">]</span>
-            <span class="n">decoded_path</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;decoded_path&#39;</span><span class="p">]</span>
+            <span class="n">site_id</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">'site_id'</span><span class="p">]</span>
+            <span class="n">drive_id</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">'drive_id'</span><span class="p">]</span>
+            <span class="n">item_id</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">'item_id'</span><span class="p">]</span>
+            <span class="n">total_file_size_in_bytes</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">'length'</span><span class="p">]</span>
+            <span class="n">created_date</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">'created_date'</span><span class="p">]</span>
+            <span class="n">modified_date</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">'modified_date'</span><span class="p">]</span>
+            <span class="n">decoded_path</span> <span class="o">=</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">'decoded_path'</span><span class="p">]</span>
             <span class="c1"># Ensure directory exists</span>
             <span class="n">azure_directory_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">decoded_path</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">azure_directory_path</span><span class="p">:</span>
@@ -3006,54 +3034,54 @@
             <span class="c1"># Mark as copied in DB</span>
             <span class="k">with</span> <span class="n">sql_dbconnection</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
                 <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;UPDATE [dbo].[Fact_Document_Library_Details] SET [copied] = 1 WHERE [unique_id] = ?&quot;</span><span class="p">,</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">&#39;unique_id&#39;</span><span class="p">])</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"UPDATE [dbo].[Fact_Document_Library_Details] SET [copied] = 1 WHERE [unique_id] = ?"</span><span class="p">,</span> <span class="n">file_record</span><span class="p">[</span><span class="s1">'unique_id'</span><span class="p">])</span>
                 <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
             <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
                 <span class="k">global</span> <span class="n">processed_files</span>
                 <span class="n">processed_files</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="n">overall_progress</span> <span class="o">=</span> <span class="p">(</span><span class="n">processed_files</span> <span class="o">/</span> <span class="n">total_files</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overall Progress: </span><span class="si">{</span><span class="n">overall_progress</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% (</span><span class="si">{</span><span class="n">processed_files</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_files</span><span class="si">}</span><span class="s2"> files complete)&quot;</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Overall Progress: </span><span class="si">{</span><span class="n">overall_progress</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% (</span><span class="si">{</span><span class="n">processed_files</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_files</span><span class="si">}</span><span class="s2"> files complete)"</span><span class="p">)</span>
             <span class="n">queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error processing file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error processing file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Main entry point: loads file metadata, initializes threads, and starts the copy process.</span>
 <span class="sd">    - Loads Azure File Share connection string from Key Vault</span>
 <span class="sd">    - Loads file metadata (site_id, drive_id, item_id, file path, size, timestamps, etc.)</span>
 <span class="sd">    - Spawns worker threads to process the file queue</span>
 <span class="sd">    - Tracks and logs progress</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">global</span> <span class="n">total_files</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">azure_conn_str</span> <span class="o">=</span> <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;your-azure-file-connection-string-secret&#39;</span><span class="p">)</span>
-        <span class="n">share_name</span> <span class="o">=</span> <span class="s2">&quot;your-azure-file-share-name&quot;</span>
-        <span class="n">site_id</span> <span class="o">=</span> <span class="s2">&quot;your-sharepoint-site-id&quot;</span>
-        <span class="n">drive_id</span> <span class="o">=</span> <span class="s2">&quot;your-sharepoint-drive-id&quot;</span>
+        <span class="n">azure_conn_str</span> <span class="o">=</span> <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">'your-azure-file-connection-string-secret'</span><span class="p">)</span>
+        <span class="n">share_name</span> <span class="o">=</span> <span class="s2">"your-azure-file-share-name"</span>
+        <span class="n">site_id</span> <span class="o">=</span> <span class="s2">"your-sharepoint-site-id"</span>
+        <span class="n">drive_id</span> <span class="o">=</span> <span class="s2">"your-sharepoint-drive-id"</span>
         <span class="n">created_dirs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="c1"># Fetch files to copy (replace with your DB or CSV logic)</span>
         <span class="k">with</span> <span class="n">sql_dbconnection</span><span class="p">()</span> <span class="k">as</span> <span class="n">sqlConnection</span><span class="p">:</span>
             <span class="n">cursor</span> <span class="o">=</span> <span class="n">sqlConnection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM [dbo].[Fact_Document_Library_Details] WHERE [type] = &#39;file&#39; AND [copied] = 0&quot;</span><span class="p">)</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT * FROM [dbo].[Fact_Document_Library_Details] WHERE [type] = 'file' AND [copied] = 0"</span><span class="p">)</span>
             <span class="n">results</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
         <span class="n">total_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">total_files</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No files to process.&quot;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"No files to process."</span><span class="p">)</span>
             <span class="k">return</span>
         <span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
             <span class="n">sp_relative_url</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">server_relative_url</span>
-            <span class="n">decoded_path</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">sp_relative_url</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;/sites/YourSite/YourLibrary&quot;</span><span class="p">):]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">))</span>
+            <span class="n">decoded_path</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">sp_relative_url</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s2">"/sites/YourSite/YourLibrary"</span><span class="p">):]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'/'</span><span class="p">))</span>
             <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">({</span>
-                <span class="s1">&#39;site_id&#39;</span><span class="p">:</span> <span class="n">site_id</span><span class="p">,</span>
-                <span class="s1">&#39;drive_id&#39;</span><span class="p">:</span> <span class="n">drive_id</span><span class="p">,</span>
-                <span class="s1">&#39;item_id&#39;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">unique_id</span><span class="p">,</span>
-                <span class="s1">&#39;unique_id&#39;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">unique_id</span><span class="p">,</span>
-                <span class="s1">&#39;length&#39;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">length</span><span class="p">,</span>
-                <span class="s1">&#39;created_date&#39;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">time_created</span><span class="p">,</span>
-                <span class="s1">&#39;modified_date&#39;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">time_last_modified</span><span class="p">,</span>
-                <span class="s1">&#39;decoded_path&#39;</span><span class="p">:</span> <span class="n">decoded_path</span>
+                <span class="s1">'site_id'</span><span class="p">:</span> <span class="n">site_id</span><span class="p">,</span>
+                <span class="s1">'drive_id'</span><span class="p">:</span> <span class="n">drive_id</span><span class="p">,</span>
+                <span class="s1">'item_id'</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">unique_id</span><span class="p">,</span>
+                <span class="s1">'unique_id'</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">unique_id</span><span class="p">,</span>
+                <span class="s1">'length'</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">length</span><span class="p">,</span>
+                <span class="s1">'created_date'</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">time_created</span><span class="p">,</span>
+                <span class="s1">'modified_date'</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">time_last_modified</span><span class="p">,</span>
+                <span class="s1">'decoded_path'</span><span class="p">:</span> <span class="n">decoded_path</span>
             <span class="p">})</span>
         <span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">THREAD_COUNT</span><span class="p">):</span>
@@ -3062,12 +3090,12 @@
             <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
             <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;All files have been processed successfully.&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"All files have been processed successfully."</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error in main function: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error in main function: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">logger</span> <span class="o">=</span> <span class="n">setup_logger</span><span class="p">(</span><span class="s2">&quot;sp2azfileshare&quot;</span><span class="p">,</span> <span class="s2">&quot;/mnt/azure/logs/sp2azfileshare.log&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">setup_logger</span><span class="p">(</span><span class="s2">"sp2azfileshare"</span><span class="p">,</span> <span class="s2">"/mnt/azure/logs/sp2azfileshare.log"</span><span class="p">)</span>
     <span class="n">main</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
 </code></pre></div>
 <hr />
@@ -3135,7 +3163,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 1, 2025 19:10:11 UTC">July 1, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3188,7 +3216,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

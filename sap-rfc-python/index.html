@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2252,6 +2252,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2763,26 +2791,26 @@
 
 <span class="c1"># Configure logging</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;sap_rfc_extract&quot;</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">"sap_rfc_extract"</span><span class="p">)</span>
 
 <span class="c1"># --- RFC Connection Parameters (replace with your SAP system details) ---</span>
 <span class="n">SAP_CONN_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;ashost&#39;</span><span class="p">:</span> <span class="s1">&#39;SAP_APP_SERVER_HOST&#39;</span><span class="p">,</span>   <span class="c1"># SAP application server</span>
-    <span class="s1">&#39;sysnr&#39;</span><span class="p">:</span> <span class="s1">&#39;00&#39;</span><span class="p">,</span>                     <span class="c1"># System number</span>
-    <span class="s1">&#39;client&#39;</span><span class="p">:</span> <span class="s1">&#39;100&#39;</span><span class="p">,</span>                   <span class="c1"># Client number</span>
-    <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="s1">&#39;SAP_USERNAME&#39;</span><span class="p">,</span>            <span class="c1"># SAP user</span>
-    <span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="s1">&#39;SAP_PASSWORD&#39;</span><span class="p">,</span>          <span class="c1"># SAP password</span>
-    <span class="s1">&#39;lang&#39;</span><span class="p">:</span> <span class="s1">&#39;EN&#39;</span><span class="p">,</span>                      <span class="c1"># Language</span>
+    <span class="s1">'ashost'</span><span class="p">:</span> <span class="s1">'SAP_APP_SERVER_HOST'</span><span class="p">,</span>   <span class="c1"># SAP application server</span>
+    <span class="s1">'sysnr'</span><span class="p">:</span> <span class="s1">'00'</span><span class="p">,</span>                     <span class="c1"># System number</span>
+    <span class="s1">'client'</span><span class="p">:</span> <span class="s1">'100'</span><span class="p">,</span>                   <span class="c1"># Client number</span>
+    <span class="s1">'user'</span><span class="p">:</span> <span class="s1">'SAP_USERNAME'</span><span class="p">,</span>            <span class="c1"># SAP user</span>
+    <span class="s1">'passwd'</span><span class="p">:</span> <span class="s1">'SAP_PASSWORD'</span><span class="p">,</span>          <span class="c1"># SAP password</span>
+    <span class="s1">'lang'</span><span class="p">:</span> <span class="s1">'EN'</span><span class="p">,</span>                      <span class="c1"># Language</span>
 <span class="p">}</span>
 
 <span class="c1"># --- RFC Extract Configuration ---</span>
 <span class="n">EXTRACT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;example_extract&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;function_module&#39;</span><span class="p">:</span> <span class="s1">&#39;ZMY_CUSTOM_RFC_MODULE&#39;</span><span class="p">,</span>  <span class="c1"># Replace with your RFC FM name</span>
-        <span class="s1">&#39;table_name&#39;</span><span class="p">:</span> <span class="s1">&#39;IT_RESULT_TAB&#39;</span><span class="p">,</span>              <span class="c1"># The table returned by the RFC</span>
-        <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IM_CC&#39;</span><span class="p">,</span> <span class="s1">&#39;IM_YEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;IM_PERIOD&#39;</span><span class="p">],</span>
-        <span class="s1">&#39;default_params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;IM_CC&#39;</span><span class="p">:</span> <span class="s1">&#39;1000&#39;</span><span class="p">,</span> <span class="s1">&#39;IM_YEAR&#39;</span><span class="p">:</span> <span class="s1">&#39;2025&#39;</span><span class="p">,</span> <span class="s1">&#39;IM_PERIOD&#39;</span><span class="p">:</span> <span class="s1">&#39;05&#39;</span><span class="p">},</span>
-        <span class="s1">&#39;filename_fmt&#39;</span><span class="p">:</span> <span class="s1">&#39;sap_extract_</span><span class="si">{cc}</span><span class="s1">_</span><span class="si">{year}</span><span class="s1">_</span><span class="si">{period}</span><span class="s1">.csv&#39;</span><span class="p">,</span>
+    <span class="s1">'example_extract'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'function_module'</span><span class="p">:</span> <span class="s1">'ZMY_CUSTOM_RFC_MODULE'</span><span class="p">,</span>  <span class="c1"># Replace with your RFC FM name</span>
+        <span class="s1">'table_name'</span><span class="p">:</span> <span class="s1">'IT_RESULT_TAB'</span><span class="p">,</span>              <span class="c1"># The table returned by the RFC</span>
+        <span class="s1">'params'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'IM_CC'</span><span class="p">,</span> <span class="s1">'IM_YEAR'</span><span class="p">,</span> <span class="s1">'IM_PERIOD'</span><span class="p">],</span>
+        <span class="s1">'default_params'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'IM_CC'</span><span class="p">:</span> <span class="s1">'1000'</span><span class="p">,</span> <span class="s1">'IM_YEAR'</span><span class="p">:</span> <span class="s1">'2025'</span><span class="p">,</span> <span class="s1">'IM_PERIOD'</span><span class="p">:</span> <span class="s1">'05'</span><span class="p">},</span>
+        <span class="s1">'filename_fmt'</span><span class="p">:</span> <span class="s1">'sap_extract_</span><span class="si">{cc}</span><span class="s1">_</span><span class="si">{year}</span><span class="s1">_</span><span class="si">{period}</span><span class="s1">.csv'</span><span class="p">,</span>
     <span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2790,57 +2818,57 @@
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">call_rfc</span><span class="p">(</span><span class="n">conn_params</span><span class="p">,</span> <span class="n">function_module</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">conn</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="o">**</span><span class="n">conn_params</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calling RFC: </span><span class="si">{</span><span class="n">function_module</span><span class="si">}</span><span class="s2"> with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Calling RFC: </span><span class="si">{</span><span class="n">function_module</span><span class="si">}</span><span class="s2"> with params: </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">function_module</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">LogonError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Logon Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Logon Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">ABAPApplicationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ABAP Application Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ABAP Application Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">ABAPRuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ABAP Runtime Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ABAP Runtime Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">None</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">export_result_to_csv</span><span class="p">(</span><span class="n">table_data</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">table_data</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No data to export.&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"No data to export."</span><span class="p">)</span>
         <span class="k">return</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
         <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">table_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
         <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">table_data</span><span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exported data to </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Exported data to </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="3-main-script-running-the-extract">3. Main Script: Running the Extract</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Run SAP RFC extract via PyRFC.&quot;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--im_cc&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">&#39;example_extract&#39;</span><span class="p">][</span><span class="s1">&#39;default_params&#39;</span><span class="p">][</span><span class="s1">&#39;IM_CC&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Company code&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--im_year&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">&#39;example_extract&#39;</span><span class="p">][</span><span class="s1">&#39;default_params&#39;</span><span class="p">][</span><span class="s1">&#39;IM_YEAR&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Fiscal year&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--im_period&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">&#39;example_extract&#39;</span><span class="p">][</span><span class="s1">&#39;default_params&#39;</span><span class="p">][</span><span class="s1">&#39;IM_PERIOD&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Fiscal period&#39;</span><span class="p">)</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"Run SAP RFC extract via PyRFC."</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--im_cc'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">'example_extract'</span><span class="p">][</span><span class="s1">'default_params'</span><span class="p">][</span><span class="s1">'IM_CC'</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">'Company code'</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--im_year'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">'example_extract'</span><span class="p">][</span><span class="s1">'default_params'</span><span class="p">][</span><span class="s1">'IM_YEAR'</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">'Fiscal year'</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--im_period'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">'example_extract'</span><span class="p">][</span><span class="s1">'default_params'</span><span class="p">][</span><span class="s1">'IM_PERIOD'</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">'Fiscal period'</span><span class="p">)</span>
     <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 
     <span class="c1"># Prepare parameters for RFC call</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;IM_CC&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">im_cc</span><span class="p">,</span>
-        <span class="s1">&#39;IM_YEAR&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">im_year</span><span class="p">,</span>
-        <span class="s1">&#39;IM_PERIOD&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">im_period</span><span class="p">,</span>
+        <span class="s1">'IM_CC'</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">im_cc</span><span class="p">,</span>
+        <span class="s1">'IM_YEAR'</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">im_year</span><span class="p">,</span>
+        <span class="s1">'IM_PERIOD'</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">im_period</span><span class="p">,</span>
     <span class="p">}</span>
 
-    <span class="n">config</span> <span class="o">=</span> <span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">&#39;example_extract&#39;</span><span class="p">]</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">call_rfc</span><span class="p">(</span><span class="n">SAP_CONN_PARAMS</span><span class="p">,</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;function_module&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">result</span> <span class="ow">and</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;table_name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">EXTRACT_CONFIG</span><span class="p">[</span><span class="s1">'example_extract'</span><span class="p">]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">call_rfc</span><span class="p">(</span><span class="n">SAP_CONN_PARAMS</span><span class="p">,</span> <span class="n">config</span><span class="p">[</span><span class="s1">'function_module'</span><span class="p">],</span> <span class="n">params</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="ow">and</span> <span class="n">config</span><span class="p">[</span><span class="s1">'table_name'</span><span class="p">]</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
         <span class="c1"># Build filename</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;filename_fmt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">'filename_fmt'</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">cc</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">im_cc</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">im_year</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">im_period</span>
         <span class="p">)</span>
-        <span class="n">export_result_to_csv</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;table_name&#39;</span><span class="p">]],</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">export_result_to_csv</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">config</span><span class="p">[</span><span class="s1">'table_name'</span><span class="p">]],</span> <span class="n">filename</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;No data returned from RFC or table not found in result.&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"No data returned from RFC or table not found in result."</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 <hr />
@@ -2919,7 +2947,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 30, 2025 21:58:08 UTC">June 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -2972,7 +3000,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

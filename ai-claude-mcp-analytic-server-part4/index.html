@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2369,6 +2369,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3023,7 +3051,7 @@ python<span class="w"> </span>my_script.py
 <p><strong>OAuth redirect mismatch:</strong>
    <div class="highlight"><pre><span></span><code>Azure Entra ID redirect URI: https://mcp.company.com/oauth/callback
 Your local server:           http://localhost:8000/oauth/callback
-Result: OAuth flow fails with &quot;redirect_uri_mismatch&quot; error
+Result: OAuth flow fails with "redirect_uri_mismatch" error
 </code></pre></div></p>
 </li>
 <li>
@@ -3171,31 +3199,31 @@ code<span class="w"> </span>.
 <p><strong>4.1. Locate the OAuth configuration in your code:</strong></p>
 <p>Open <code>src/analyst.py</code> in VS Code and find the Azure OAuth configuration section (typically near the top of the file, after imports and logging setup):</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Azure OAuth Configuration</span>
-<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Configuring Azure OAuth Provider&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Configuring Azure OAuth Provider"</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">azure_auth</span> <span class="o">=</span> <span class="n">AzureProvider</span><span class="p">(</span>
         <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
         <span class="n">client_secret</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_SECRET</span><span class="p">,</span>
-        <span class="n">tenant_id</span><span class="o">=</span><span class="s2">&quot;00b1a755-0b06-4d05-9a59-259ebf7f9e00&quot;</span><span class="p">,</span>
-        <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://mcp.gdenergyproducts.com&quot;</span><span class="p">,</span>  <span class="c1"># ← Production URL</span>
-        <span class="n">required_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;access_as_user&quot;</span><span class="p">],</span>
-        <span class="n">additional_authorize_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;User.Read&quot;</span><span class="p">,</span> <span class="s2">&quot;offline_access&quot;</span><span class="p">]</span>
+        <span class="n">tenant_id</span><span class="o">=</span><span class="s2">"00b1a755-0b06-4d05-9a59-259ebf7f9e00"</span><span class="p">,</span>
+        <span class="n">base_url</span><span class="o">=</span><span class="s2">"https://mcp.gdenergyproducts.com"</span><span class="p">,</span>  <span class="c1"># ← Production URL</span>
+        <span class="n">required_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">"access_as_user"</span><span class="p">],</span>
+        <span class="n">additional_authorize_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">"User.Read"</span><span class="p">,</span> <span class="s2">"offline_access"</span><span class="p">]</span>
     <span class="p">)</span>
 </code></pre></div>
 <p><strong>4.2. Replace the <code>base_url</code> with your tunnel URL:</strong></p>
 <p>Change the <code>base_url</code> parameter to your Cloudflare Tunnel URL from Step 3:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Azure OAuth Configuration (DEBUG MODE)</span>
-<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Configuring Azure OAuth Provider&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Configuring Azure OAuth Provider"</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">azure_auth</span> <span class="o">=</span> <span class="n">AzureProvider</span><span class="p">(</span>
         <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
         <span class="n">client_secret</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_SECRET</span><span class="p">,</span>
-        <span class="n">tenant_id</span><span class="o">=</span><span class="s2">&quot;00b1a755-0b06-4d05-9a59-259ebf7f9e00&quot;</span><span class="p">,</span>
-        <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://come-mart-anime-bring.trycloudflare.com&quot;</span><span class="p">,</span>  <span class="c1"># ← Your tunnel URL</span>
-        <span class="n">required_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;access_as_user&quot;</span><span class="p">],</span>
-        <span class="n">additional_authorize_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;User.Read&quot;</span><span class="p">,</span> <span class="s2">&quot;offline_access&quot;</span><span class="p">]</span>
+        <span class="n">tenant_id</span><span class="o">=</span><span class="s2">"00b1a755-0b06-4d05-9a59-259ebf7f9e00"</span><span class="p">,</span>
+        <span class="n">base_url</span><span class="o">=</span><span class="s2">"https://come-mart-anime-bring.trycloudflare.com"</span><span class="p">,</span>  <span class="c1"># ← Your tunnel URL</span>
+        <span class="n">required_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">"access_as_user"</span><span class="p">],</span>
+        <span class="n">additional_authorize_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">"User.Read"</span><span class="p">,</span> <span class="s2">"offline_access"</span><span class="p">]</span>
     <span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Azure OAuth Provider configured successfully&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Azure OAuth Provider configured successfully"</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>⚠️ Critical:</strong> Replace <code>https://come-mart-anime-bring.trycloudflare.com</code> with <strong>your actual tunnel URL</strong> from Step 3.</p>
 <p><strong>4.3. Why this change is necessary:</strong></p>
@@ -3223,7 +3251,7 @@ code<span class="w"> </span>.
 <p><strong>5.2. Open the configuration file:</strong></p>
 <p>From VS Code:
 <div class="highlight"><pre><span></span><code><span class="c1"># Windows</span>
-code<span class="w"> </span><span class="s2">&quot;%APPDATA%\Claude\claude_desktop_config.json&quot;</span>
+code<span class="w"> </span><span class="s2">"%APPDATA%\Claude\claude_desktop_config.json"</span>
 
 <span class="c1"># macOS/Linux</span>
 code<span class="w"> </span>~/Library/Application<span class="se">\ </span>Support/Claude/claude_desktop_config.json
@@ -3231,10 +3259,10 @@ code<span class="w"> </span>~/Library/Application<span class="se">\ </span>Suppo
 <p><strong>5.3. Find your MCP server configuration:</strong></p>
 <p>The file contains a <code>mcpServers</code> object. Look for your server (e.g., <code>gdep-mcp-analyst-server</code>):</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;gdep-mcp-analyst-server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://mcp.gdenergyproducts.com/mcp?function=fin&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
+<span class="w">  </span><span class="nt">"mcpServers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"gdep-mcp-analyst-server"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mcp.gdenergyproducts.com/mcp?function=fin"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -3242,10 +3270,10 @@ code<span class="w"> </span>~/Library/Application<span class="se">\ </span>Suppo
 <p><strong>5.4. Update the URL to your Cloudflare Tunnel:</strong></p>
 <p>Replace the production URL with your tunnel URL from Step 3:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;gdep-mcp-analyst-server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://come-mart-anime-bring.trycloudflare.com/mcp?function=fin&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
+<span class="w">  </span><span class="nt">"mcpServers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"gdep-mcp-analyst-server"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://come-mart-anime-bring.trycloudflare.com/mcp?function=fin"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -3260,18 +3288,18 @@ code<span class="w"> </span>~/Library/Application<span class="se">\ </span>Suppo
 <p><strong>Example with multiple business functions for testing:</strong></p>
 <p>If you want to test different business functions in the same debugging session:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;gdep-mcp-analyst-it&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://come-mart-anime-bring.trycloudflare.com/mcp?function=it&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
+<span class="w">  </span><span class="nt">"mcpServers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"gdep-mcp-analyst-it"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://come-mart-anime-bring.trycloudflare.com/mcp?function=it"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;gdep-mcp-analyst-hr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://come-mart-anime-bring.trycloudflare.com/mcp?function=hr&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
+<span class="w">    </span><span class="nt">"gdep-mcp-analyst-hr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://come-mart-anime-bring.trycloudflare.com/mcp?function=hr"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;gdep-mcp-analyst-fin&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://come-mart-anime-bring.trycloudflare.com/mcp?function=fin&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
+<span class="w">    </span><span class="nt">"gdep-mcp-analyst-fin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://come-mart-anime-bring.trycloudflare.com/mcp?function=fin"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -3344,21 +3372,21 @@ https://claude.ai/api/mcp/auth_callback
 <p><strong>7.1. Create VS Code launch configuration:</strong></p>
 <p>Create <code>.vscode/launch.json</code> in your project root:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Debug MCP Server&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;debugpy&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}/src/analyst.py&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;console&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integratedTerminal&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;justMyCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;PYTHONUNBUFFERED&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;MCP_DEBUG&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debug MCP Server"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debugpy"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/src/analyst.py"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"console"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integratedTerminal"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"justMyCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"PYTHONUNBUFFERED"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"MCP_DEBUG"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">            </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span>
+<span class="w">            </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -3373,17 +3401,17 @@ https://claude.ai/api/mcp/auth_callback
 <div class="highlight"><pre><span></span><code><span class="n">azure_auth</span> <span class="o">=</span> <span class="n">AzureProvider</span><span class="p">(</span>
     <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
     <span class="n">client_secret</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_SECRET</span><span class="p">,</span>
-    <span class="n">tenant_id</span><span class="o">=</span><span class="s2">&quot;00b1a755-0b06-4d05-9a59-259ebf7f9e00&quot;</span><span class="p">,</span>
-    <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://come-mart-anime-bring.trycloudflare.com&quot;</span><span class="p">,</span>  <span class="c1"># ← Breakpoint here</span>
-    <span class="n">required_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;access_as_user&quot;</span><span class="p">],</span>
-    <span class="n">additional_authorize_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;User.Read&quot;</span><span class="p">,</span> <span class="s2">&quot;offline_access&quot;</span><span class="p">]</span>
+    <span class="n">tenant_id</span><span class="o">=</span><span class="s2">"00b1a755-0b06-4d05-9a59-259ebf7f9e00"</span><span class="p">,</span>
+    <span class="n">base_url</span><span class="o">=</span><span class="s2">"https://come-mart-anime-bring.trycloudflare.com"</span><span class="p">,</span>  <span class="c1"># ← Breakpoint here</span>
+    <span class="n">required_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">"access_as_user"</span><span class="p">],</span>
+    <span class="n">additional_authorize_scopes</span><span class="o">=</span><span class="p">[</span><span class="s2">"User.Read"</span><span class="p">,</span> <span class="s2">"offline_access"</span><span class="p">]</span>
 <span class="p">)</span>
 </code></pre></div></p>
 <p><strong>B. Business Function Extraction (verify routing):</strong>
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">call_next</span><span class="p">):</span>
-    <span class="n">function_via_query_string</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;function&quot;</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
+    <span class="n">function_via_query_string</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"function"</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
 
-    <span class="k">if</span> <span class="n">function_via_query_string</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;it&quot;</span><span class="p">,</span> <span class="s2">&quot;hr&quot;</span><span class="p">,</span> <span class="s2">&quot;fin&quot;</span><span class="p">}:</span>
+    <span class="k">if</span> <span class="n">function_via_query_string</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">"it"</span><span class="p">,</span> <span class="s2">"hr"</span><span class="p">,</span> <span class="s2">"fin"</span><span class="p">}:</span>
         <span class="n">business_function</span> <span class="o">=</span> <span class="n">function_via_query_string</span>  <span class="c1"># ← Breakpoint here</span>
 </code></pre></div></p>
 <p><strong>C. User Context (inspect OAuth token):</strong>
@@ -3391,22 +3419,22 @@ https://claude.ai/api/mcp/auth_callback
     <span class="n">token</span> <span class="o">=</span> <span class="n">get_access_token</span><span class="p">()</span>  <span class="c1"># ← Breakpoint here</span>
 
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">claims</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;preferred_username&quot;</span><span class="p">),</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">claims</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">),</span>
-        <span class="s2">&quot;oid&quot;</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">claims</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;oid&quot;</span><span class="p">)</span>
+        <span class="s2">"email"</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">claims</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"preferred_username"</span><span class="p">),</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">claims</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"name"</span><span class="p">),</span>
+        <span class="s2">"oid"</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">claims</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"oid"</span><span class="p">)</span>
     <span class="p">}</span>  <span class="c1"># ← Breakpoint here</span>
 </code></pre></div></p>
 <p><strong>D. Data Catalog Loading:</strong>
 <div class="highlight"><pre><span></span><code><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_data_catalog</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="n">business_function</span> <span class="o">=</span> <span class="n">get_current_business_function</span><span class="p">()</span>  <span class="c1"># ← Breakpoint here</span>
-    <span class="n">catalog_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/mnt/azure/mcp/</span><span class="si">{</span><span class="n">business_function</span><span class="si">}</span><span class="s2">/data_catalog.json&quot;</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Looking for catalog file: </span><span class="si">{</span><span class="n">catalog_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
+    <span class="n">catalog_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"/mnt/azure/mcp/</span><span class="si">{</span><span class="n">business_function</span><span class="si">}</span><span class="s2">/data_catalog.json"</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Looking for catalog file: </span><span class="si">{</span><span class="n">catalog_path</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
 </code></pre></div></p>
 <p><strong>E. Query Execution:</strong>
 <div class="highlight"><pre><span></span><code><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">execute_polars_sql</span><span class="p">(</span><span class="n">file_locations</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;csv&quot;</span><span class="p">):</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Query: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">execute_polars_sql</span><span class="p">(</span><span class="n">file_locations</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"csv"</span><span class="p">):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Query: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">read_file_list</span><span class="p">(</span><span class="n">file_locations</span><span class="p">,</span> <span class="n">file_type</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
     <span class="n">op_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>  <span class="c1"># ← Breakpoint here</span>
 </code></pre></div></p>
@@ -3441,10 +3469,10 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 </code></pre></div></p>
 <p>Expected response (MCP server is running):
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-32600</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Invalid Request&quot;</span>
+<span class="w">  </span><span class="nt">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-32600</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid Request"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
@@ -3520,10 +3548,10 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
 <span class="c1"># Output:</span>
 <span class="p">{</span>
-  <span class="s1">&#39;preferred_username&#39;</span><span class="p">:</span> <span class="s1">&#39;john.doe@company.com&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;John Doe&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;oid&#39;</span><span class="p">:</span> <span class="s1">&#39;12345678-1234-1234-1234-123456789012&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;scp&#39;</span><span class="p">:</span> <span class="s1">&#39;access_as_user User.Read&#39;</span>
+  <span class="s1">'preferred_username'</span><span class="p">:</span> <span class="s1">'john.doe@company.com'</span><span class="p">,</span>
+  <span class="s1">'name'</span><span class="p">:</span> <span class="s1">'John Doe'</span><span class="p">,</span>
+  <span class="s1">'oid'</span><span class="p">:</span> <span class="s1">'12345678-1234-1234-1234-123456789012'</span><span class="p">,</span>
+  <span class="s1">'scp'</span><span class="p">:</span> <span class="s1">'access_as_user User.Read'</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Press <code>F5</code> to continue. Browser closes, Claude Desktop shows 🟢 Connected.</p>
@@ -3536,51 +3564,51 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 <div class="highlight"><pre><span></span><code>Show me the number of active employees
 </code></pre></div></p>
 <p><strong>For Finance function (<code>?function=fin</code>):</strong>
-<div class="highlight"><pre><span></span><code>What&#39;s our total budget allocation for this quarter?
+<div class="highlight"><pre><span></span><code>What's our total budget allocation for this quarter?
 </code></pre></div></p>
 <p><strong>9.4. Observe breakpoints hitting in sequence:</strong></p>
 <p>As Claude processes your query:</p>
 <p><strong>A. Business Function Extraction:</strong>
 <div class="highlight"><pre><span></span><code>🔴 Breakpoint hit: BusinessFunctionExtractionMiddleware.dispatch()
 Variables panel shows:
-  - request.query_params = {&quot;function&quot;: &quot;it&quot;}
-  - business_function = &quot;it&quot;
+  - request.query_params = {"function": "it"}
+  - business_function = "it"
 </code></pre></div></p>
 <p>Press <code>F5</code> to continue.</p>
 <p><strong>B. Data Catalog Retrieval:</strong>
 <div class="highlight"><pre><span></span><code>🔴 Breakpoint hit: get_data_catalog()
 Variables panel shows:
-  - business_function = &quot;it&quot;
-  - catalog_path = &quot;/mnt/azure/mcp/it/data_catalog.json&quot;
+  - business_function = "it"
+  - catalog_path = "/mnt/azure/mcp/it/data_catalog.json"
 </code></pre></div></p>
 <p>Inspect in Debug Console:
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">catalog_path</span><span class="p">)</span>  <span class="c1"># Verify file exists</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">catalog_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">catalog_path</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
     <span class="n">catalog</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datasets: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">catalog</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;datasets&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Datasets: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">catalog</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'datasets'</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div></p>
 <p>Press <code>F5</code> to continue.</p>
 <p><strong>C. Query Execution:</strong>
 <div class="highlight"><pre><span></span><code>🔴 Breakpoint hit: execute_polars_sql()
 Variables panel shows:
-  - query = &quot;SELECT COUNT(*) as device_count FROM self WHERE DeviceType = &#39;Laptop&#39;&quot;
-  - file_locations = [&quot;/mnt/azure/mcp/it/device_inventory.csv&quot;]
+  - query = "SELECT COUNT(*) as device_count FROM self WHERE DeviceType = 'Laptop'"
+  - file_locations = ["/mnt/azure/mcp/it/device_inventory.csv"]
 </code></pre></div></p>
 <p>Inspect the query Claude generated:
 <div class="highlight"><pre><span></span><code><span class="c1"># In Debug Console</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Query:</span><span class="se">\n</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Query:</span><span class="se">\n</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># Load data and test query</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">read_file_list</span><span class="p">(</span><span class="n">file_locations</span><span class="p">,</span> <span class="n">file_type</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data shape: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Columns: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Data shape: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Columns: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># Execute query</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Result:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div></p>
 <p>Press <code>F5</code> to continue.</p>
 <p><strong>9.5. Verify results in Claude Desktop:</strong></p>
@@ -3610,7 +3638,7 @@ Variables panel shows:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 22, 2025 13:27:44 UTC">November 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3663,7 +3691,7 @@ Variables panel shows:
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

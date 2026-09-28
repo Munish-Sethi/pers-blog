@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2087,6 +2087,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2709,18 +2737,18 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">your_utils_module</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_azure_kv_sceret</span>  <span class="c1"># Replace with your actual secret retrieval function</span>
 
-<span class="n">PROOFPOINT_BASE_API</span> <span class="o">=</span> <span class="s1">&#39;https://&lt;your-region&gt;.proofpointessentials.com/api/v1/&#39;</span>
-<span class="n">PROOFPOINT_API_USER</span> <span class="o">=</span> <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;pp-api-user&#39;</span><span class="p">)</span>
-<span class="n">PROOFPOINT_API_PASSWORD</span> <span class="o">=</span> <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">&#39;pp-api-key&#39;</span><span class="p">)</span>
+<span class="n">PROOFPOINT_BASE_API</span> <span class="o">=</span> <span class="s1">'https://&lt;your-region&gt;.proofpointessentials.com/api/v1/'</span>
+<span class="n">PROOFPOINT_API_USER</span> <span class="o">=</span> <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">'pp-api-user'</span><span class="p">)</span>
+<span class="n">PROOFPOINT_API_PASSWORD</span> <span class="o">=</span> <span class="n">get_azure_kv_sceret</span><span class="p">(</span><span class="s1">'pp-api-key'</span><span class="p">)</span>
 
 <span class="c1"># Example: Get all users in your organization</span>
-<span class="n">url</span> <span class="o">=</span> <span class="n">PROOFPOINT_BASE_API</span> <span class="o">+</span> <span class="s1">&#39;orgs/&lt;your-domain&gt;/users&#39;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">PROOFPOINT_BASE_API</span> <span class="o">+</span> <span class="s1">'orgs/&lt;your-domain&gt;/users'</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
     <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;X-user&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_USER</span><span class="p">,</span> <span class="s1">&#39;X-password&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_PASSWORD</span><span class="p">},</span>
+    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">'X-user'</span><span class="p">:</span> <span class="n">PROOFPOINT_API_USER</span><span class="p">,</span> <span class="s1">'X-password'</span><span class="p">:</span> <span class="n">PROOFPOINT_API_PASSWORD</span><span class="p">},</span>
 <span class="p">)</span>
 <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-<span class="n">users</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="p">[])</span>
+<span class="n">users</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'users'</span><span class="p">,</span> <span class="p">[])</span>
 </code></pre></div>
 <p><strong>Explanation:</strong>
 - Credentials are retrieved securely.
@@ -2729,10 +2757,10 @@
 <h2 id="step-2-retrieve-user-data-from-your-hr-system">Step 2: Retrieve User Data from Your HR System</h2>
 <p>Assume you have a function to get user data from your HR system (e.g., via SQL):</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_latest_hr_data</span><span class="p">():</span>
-    <span class="n">sql_statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+    <span class="n">sql_statement</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">        SELECT status, email, company_code, worker_category_code, location_code</span>
 <span class="s2">        FROM hr_employees WHERE email IS NOT NULL</span>
-<span class="s2">    &quot;&quot;&quot;</span>
+<span class="s2">    """</span>
     <span class="k">return</span> <span class="n">execute_sql_fetch_dicts</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">)</span>
 </code></pre></div>
 <hr />
@@ -2741,45 +2769,45 @@
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">mark_users_as_functional</span><span class="p">(</span><span class="n">hr_users</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Get active users from Proofpoint</span>
-        <span class="n">url_to_invoke</span> <span class="o">=</span> <span class="n">PROOFPOINT_BASE_API</span> <span class="o">+</span> <span class="s1">&#39;orgs/&lt;your-domain&gt;/users&#39;</span>
+        <span class="n">url_to_invoke</span> <span class="o">=</span> <span class="n">PROOFPOINT_BASE_API</span> <span class="o">+</span> <span class="s1">'orgs/&lt;your-domain&gt;/users'</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
             <span class="n">url</span><span class="o">=</span><span class="n">url_to_invoke</span><span class="p">,</span>
-            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;X-user&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_USER</span><span class="p">,</span> <span class="s1">&#39;X-password&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_PASSWORD</span><span class="p">},</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">'X-user'</span><span class="p">:</span> <span class="n">PROOFPOINT_API_USER</span><span class="p">,</span> <span class="s1">'X-password'</span><span class="p">:</span> <span class="n">PROOFPOINT_API_PASSWORD</span><span class="p">},</span>
         <span class="p">)</span>
         <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-        <span class="n">active_users_from_pp</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">active_users_from_pp</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'users'</span><span class="p">,</span> <span class="p">[])</span>
 
-        <span class="n">hr_emails</span> <span class="o">=</span> <span class="p">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">user</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">hr_users</span><span class="p">}</span>
+        <span class="n">hr_emails</span> <span class="o">=</span> <span class="p">{</span><span class="n">user</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">user</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">hr_users</span><span class="p">}</span>
         <span class="n">users_to_mark_functional</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">active_users_from_pp</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;end_user&#39;</span><span class="p">:</span>
-                <span class="n">email</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;primary_email&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'type'</span><span class="p">)</span> <span class="o">==</span> <span class="s1">'end_user'</span><span class="p">:</span>
+                <span class="n">email</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s1">'primary_email'</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
                 <span class="n">hr_user</span> <span class="o">=</span> <span class="n">hr_emails</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
                 <span class="c1"># Example logic: mark as functional if not in HR or if terminated</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">hr_user</span> <span class="ow">or</span> <span class="n">hr_user</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;terminated&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">hr_user</span> <span class="ow">or</span> <span class="n">hr_user</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'terminated'</span><span class="p">:</span>
                     <span class="n">users_to_mark_functional</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users_to_mark_functional</span><span class="p">:</span>
-            <span class="n">email_to_lookup</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;primary_email&#39;</span><span class="p">]</span>
-            <span class="n">url_update</span> <span class="o">=</span> <span class="n">PROOFPOINT_BASE_API</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;orgs/&lt;your-domain&gt;/users/</span><span class="si">{</span><span class="n">email_to_lookup</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="n">email_to_lookup</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s1">'primary_email'</span><span class="p">]</span>
+            <span class="n">url_update</span> <span class="o">=</span> <span class="n">PROOFPOINT_BASE_API</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">'orgs/&lt;your-domain&gt;/users/</span><span class="si">{</span><span class="n">email_to_lookup</span><span class="si">}</span><span class="s1">'</span>
             <span class="n">json_update_values</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;uid&quot;</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;uid&#39;</span><span class="p">],</span>
-                <span class="s2">&quot;primary_email&quot;</span><span class="p">:</span> <span class="n">email_to_lookup</span><span class="p">,</span>
-                <span class="s2">&quot;is_active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;functional_account&quot;</span>
+                <span class="s2">"uid"</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s1">'uid'</span><span class="p">],</span>
+                <span class="s2">"primary_email"</span><span class="p">:</span> <span class="n">email_to_lookup</span><span class="p">,</span>
+                <span class="s2">"is_active"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"functional_account"</span>
             <span class="p">}</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
                     <span class="n">url_update</span><span class="p">,</span>
                     <span class="n">json</span><span class="o">=</span><span class="n">json_update_values</span><span class="p">,</span>
-                    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;X-user&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_USER</span><span class="p">,</span> <span class="s1">&#39;X-password&#39;</span><span class="p">:</span> <span class="n">PROOFPOINT_API_PASSWORD</span><span class="p">}</span>
+                    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">'X-user'</span><span class="p">:</span> <span class="n">PROOFPOINT_API_USER</span><span class="p">,</span> <span class="s1">'X-password'</span><span class="p">:</span> <span class="n">PROOFPOINT_API_PASSWORD</span><span class="p">}</span>
                 <span class="p">)</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
             <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">RequestException</span><span class="p">:</span>
                 <span class="k">pass</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div>
 <p><strong>Explanation:</strong>
@@ -2793,7 +2821,7 @@
     <span class="n">hr_data</span> <span class="o">=</span> <span class="n">get_latest_hr_data</span><span class="p">()</span>
     <span class="n">mark_users_as_functional</span><span class="p">(</span><span class="n">hr_data</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 <hr />
@@ -2820,7 +2848,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:21:49 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -2873,7 +2901,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

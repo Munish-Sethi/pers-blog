@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2087,6 +2087,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3856,13 +3884,13 @@ dig<span class="w"> </span>+short<span class="w"> </span>TXT<span class="w"> </s
 <h2 id="4-evolution-from-quarantine-to-redirect-approach">4. Evolution from Quarantine to Redirect Approach</h2>
 <h3 id="initial-quarantine-approach-problematic">Initial Quarantine Approach (Problematic)</h3>
 <p>Our first attempt used a broad quarantine rule:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">New-TransportRule</span> <span class="n">-Name</span> <span class="s2">&quot;Quarantine external spoof bypass Proofpoint&quot;</span> <span class="p">`</span>
+<div class="highlight"><pre><span></span><code><span class="nb">New-TransportRule</span> <span class="n">-Name</span> <span class="s2">"Quarantine external spoof bypass Proofpoint"</span> <span class="p">`</span>
   <span class="n">-FromScope</span> <span class="n">NotInOrganization</span> <span class="p">`</span>
   <span class="n">-SetAuditSeverity</span> <span class="n">High</span> <span class="p">`</span>
   <span class="n">-Quarantine</span> <span class="nv">$true</span> <span class="p">`</span>
-  <span class="n">-ExceptIfSenderDomainIs</span> <span class="p">@(</span><span class="s2">&quot;skype.voicemail.microsoft.com&quot;</span><span class="p">,</span> <span class="s2">&quot;microsoft.com&quot;</span><span class="p">)</span> <span class="p">`</span>
-  <span class="n">-ExceptIfHeaderMatchesMessageHeader</span> <span class="s2">&quot;X-PPE-TRUSTED&quot;</span> <span class="n">-ExceptIfHeaderMatchesPatterns</span> <span class="s2">&quot;[\s\S]*&quot;</span> <span class="p">`</span>
-  <span class="n">-ExceptIfHeaderContainsMessageHeader</span> <span class="s2">&quot;X-MS-Exchange-MeetingForward-Message&quot;</span> <span class="n">-ExceptIfHeaderContainsWords</span> <span class="s2">&quot;Forward&quot;</span>
+  <span class="n">-ExceptIfSenderDomainIs</span> <span class="p">@(</span><span class="s2">"skype.voicemail.microsoft.com"</span><span class="p">,</span> <span class="s2">"microsoft.com"</span><span class="p">)</span> <span class="p">`</span>
+  <span class="n">-ExceptIfHeaderMatchesMessageHeader</span> <span class="s2">"X-PPE-TRUSTED"</span> <span class="n">-ExceptIfHeaderMatchesPatterns</span> <span class="s2">"[\s\S]*"</span> <span class="p">`</span>
+  <span class="n">-ExceptIfHeaderContainsMessageHeader</span> <span class="s2">"X-MS-Exchange-MeetingForward-Message"</span> <span class="n">-ExceptIfHeaderContainsWords</span> <span class="s2">"Forward"</span>
 </code></pre></div>
 <h3 id="problems-with-the-quarantine-approach">Problems with the Quarantine Approach</h3>
 <ol>
@@ -3955,7 +3983,7 @@ dig<span class="w"> </span>+short<span class="w"> </span>TXT<span class="w"> </s
 <div class="highlight"><pre><span></span><code>Rule: ProofPoint SCL Trust Rule
 Priority: 1 (Highest)
 Conditions: sender ip addresses belong to ProofPoint ranges
-Actions: Set the spam confidence level (SCL) to &#39;-1&#39;
+Actions: Set the spam confidence level (SCL) to '-1'
 </code></pre></div>
 <p><strong>Why this is critical:</strong>
 - SCL -1 = "Trusted sender" bypasses all EOP spam filtering
@@ -3967,8 +3995,8 @@ Actions: Set the spam confidence level (SCL) to &#39;-1&#39;
 <span class="nb">Connect-ExchangeOnline</span> <span class="n">-UserPrincipalName</span> <span class="p">&lt;</span><span class="n">your-admin-account</span><span class="p">&gt;</span>
 
 <span class="c"># Create outbound connector for redirect functionality</span>
-<span class="nb">New-OutboundConnector</span> <span class="n">-Name</span> <span class="s1">&#39;Redirect Bypass to MX&#39;</span> <span class="p">`</span>
-  <span class="n">-ConnectorType</span> <span class="s1">&#39;Partner&#39;</span> <span class="p">`</span>
+<span class="nb">New-OutboundConnector</span> <span class="n">-Name</span> <span class="s1">'Redirect Bypass to MX'</span> <span class="p">`</span>
+  <span class="n">-ConnectorType</span> <span class="s1">'Partner'</span> <span class="p">`</span>
   <span class="n">-UseMxRecord</span><span class="p">:</span><span class="nv">$true</span> <span class="p">`</span>
   <span class="n">-IsTransportRuleScoped</span><span class="p">:</span><span class="nv">$True</span>
 </code></pre></div>
@@ -3978,12 +4006,12 @@ Actions: Set the spam confidence level (SCL) to &#39;-1&#39;
 - This connector will route suspicious mail back to ProofPoint for proper processing</p>
 <h3 id="step-3-create-application-server-exception-rule">Step 3: Create Application Server Exception Rule</h3>
 <div class="highlight"><pre><span></span><code><span class="c"># Rule to allow legitimate application servers (Azure, Physical Company Locations etc.)</span>
-<span class="nb">New-TransportRule</span> <span class="n">-Name</span> <span class="s1">&#39;Allow Company Servers Direct Delivery&#39;</span> <span class="p">`</span>
+<span class="nb">New-TransportRule</span> <span class="n">-Name</span> <span class="s1">'Allow Company Servers Direct Delivery'</span> <span class="p">`</span>
   <span class="n">-FromScope</span> <span class="n">NotInOrganization</span> <span class="p">`</span>
-  <span class="n">-RecipientDomainIs</span> <span class="s2">&quot;yourdomain.com&quot;</span> <span class="p">`</span>
+  <span class="n">-RecipientDomainIs</span> <span class="s2">"yourdomain.com"</span> <span class="p">`</span>
   <span class="n">-SenderIpRanges</span> <span class="p">@(</span>
     <span class="c"># Azure/Application Server IPs</span>
-    <span class="s2">&quot;XXX.XX.XX.XX/32&quot;</span><span class="p">,</span><span class="s2">&quot;YY.YY.YYY.YYY/32&quot;</span>
+    <span class="s2">"XXX.XX.XX.XX/32"</span><span class="p">,</span><span class="s2">"YY.YY.YYY.YYY/32"</span>
   <span class="p">)</span> <span class="p">`</span>
   <span class="n">-SetAuditSeverity</span> <span class="n">Low</span> <span class="p">`</span>
   <span class="n">-StopRuleProcessing</span> <span class="nv">$true</span>
@@ -3994,31 +4022,31 @@ Actions: Set the spam confidence level (SCL) to &#39;-1&#39;
 - <strong>Easy Maintenance</strong>: Simple to update when adding new Azure regions or application servers</p>
 <h3 id="step-4-create-the-main-bypass-redirect-rule">Step 4: Create the Main Bypass Redirect Rule</h3>
 <div class="highlight"><pre><span></span><code><span class="c"># Main rule to redirect ProofPoint bypass attempts</span>
-<span class="nb">New-TransportRule</span> <span class="n">-Name</span> <span class="s1">&#39;Redirect Direct Delivery to MX&#39;</span> <span class="p">`</span>
+<span class="nb">New-TransportRule</span> <span class="n">-Name</span> <span class="s1">'Redirect Direct Delivery to MX'</span> <span class="p">`</span>
   <span class="n">-FromScope</span> <span class="n">NotInOrganization</span> <span class="p">`</span>
-  <span class="n">-RecipientDomainIs</span> <span class="s2">&quot;yourdomain.com&quot;</span> <span class="p">`</span>
+  <span class="n">-RecipientDomainIs</span> <span class="s2">"yourdomain.com"</span> <span class="p">`</span>
   <span class="n">-ExceptIfSenderIpRanges</span> <span class="p">@(</span>
     <span class="c"># ProofPoint IP Ranges (Static - rarely change)</span>
-    <span class="s2">&quot;67.231.149.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;67.231.148.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;67.231.147.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;67.231.146.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;67.231.145.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;67.231.144.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;67.231.156.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;67.231.155.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;67.231.154.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;67.231.153.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;67.231.152.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.159.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;148.163.158.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.157.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.156.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;148.163.155.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.154.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.153.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;148.163.152.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.151.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.150.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;148.163.149.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.148.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.147.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;148.163.146.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.145.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.144.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;148.163.143.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.142.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.141.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;148.163.140.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.139.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.138.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;148.163.137.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.136.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.135.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;148.163.134.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.133.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.132.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;148.163.131.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.130.0/24&quot;</span><span class="p">,</span><span class="s2">&quot;148.163.129.0/24&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;148.163.128.0/24&quot;</span>
+    <span class="s2">"67.231.149.0/24"</span><span class="p">,</span><span class="s2">"67.231.148.0/24"</span><span class="p">,</span><span class="s2">"67.231.147.0/24"</span><span class="p">,</span>
+    <span class="s2">"67.231.146.0/24"</span><span class="p">,</span><span class="s2">"67.231.145.0/24"</span><span class="p">,</span><span class="s2">"67.231.144.0/24"</span><span class="p">,</span>
+    <span class="s2">"67.231.156.0/24"</span><span class="p">,</span><span class="s2">"67.231.155.0/24"</span><span class="p">,</span><span class="s2">"67.231.154.0/24"</span><span class="p">,</span>
+    <span class="s2">"67.231.153.0/24"</span><span class="p">,</span><span class="s2">"67.231.152.0/24"</span><span class="p">,</span><span class="s2">"148.163.159.0/24"</span><span class="p">,</span>
+    <span class="s2">"148.163.158.0/24"</span><span class="p">,</span><span class="s2">"148.163.157.0/24"</span><span class="p">,</span><span class="s2">"148.163.156.0/24"</span><span class="p">,</span>
+    <span class="s2">"148.163.155.0/24"</span><span class="p">,</span><span class="s2">"148.163.154.0/24"</span><span class="p">,</span><span class="s2">"148.163.153.0/24"</span><span class="p">,</span>
+    <span class="s2">"148.163.152.0/24"</span><span class="p">,</span><span class="s2">"148.163.151.0/24"</span><span class="p">,</span><span class="s2">"148.163.150.0/24"</span><span class="p">,</span>
+    <span class="s2">"148.163.149.0/24"</span><span class="p">,</span><span class="s2">"148.163.148.0/24"</span><span class="p">,</span><span class="s2">"148.163.147.0/24"</span><span class="p">,</span>
+    <span class="s2">"148.163.146.0/24"</span><span class="p">,</span><span class="s2">"148.163.145.0/24"</span><span class="p">,</span><span class="s2">"148.163.144.0/24"</span><span class="p">,</span>
+    <span class="s2">"148.163.143.0/24"</span><span class="p">,</span><span class="s2">"148.163.142.0/24"</span><span class="p">,</span><span class="s2">"148.163.141.0/24"</span><span class="p">,</span>
+    <span class="s2">"148.163.140.0/24"</span><span class="p">,</span><span class="s2">"148.163.139.0/24"</span><span class="p">,</span><span class="s2">"148.163.138.0/24"</span><span class="p">,</span>
+    <span class="s2">"148.163.137.0/24"</span><span class="p">,</span><span class="s2">"148.163.136.0/24"</span><span class="p">,</span><span class="s2">"148.163.135.0/24"</span><span class="p">,</span>
+    <span class="s2">"148.163.134.0/24"</span><span class="p">,</span><span class="s2">"148.163.133.0/24"</span><span class="p">,</span><span class="s2">"148.163.132.0/24"</span><span class="p">,</span>
+    <span class="s2">"148.163.131.0/24"</span><span class="p">,</span><span class="s2">"148.163.130.0/24"</span><span class="p">,</span><span class="s2">"148.163.129.0/24"</span><span class="p">,</span>
+    <span class="s2">"148.163.128.0/24"</span>
   <span class="p">)</span> <span class="p">`</span>
-  <span class="n">-ExceptIfHeaderMatchesMessageHeader</span> <span class="s2">&quot;X-PPE-TRUSTED&quot;</span> <span class="p">`</span>
-  <span class="n">-ExceptIfHeaderMatchesPatterns</span> <span class="s2">&quot;[\s\S]*&quot;</span> <span class="p">`</span>
+  <span class="n">-ExceptIfHeaderMatchesMessageHeader</span> <span class="s2">"X-PPE-TRUSTED"</span> <span class="p">`</span>
+  <span class="n">-ExceptIfHeaderMatchesPatterns</span> <span class="s2">"[\s\S]*"</span> <span class="p">`</span>
   <span class="n">-SetAuditSeverity</span> <span class="n">Low</span> <span class="p">`</span>
-  <span class="n">-RouteMessageOutboundConnector</span> <span class="s1">&#39;Redirect Bypass to MX&#39;</span>
+  <span class="n">-RouteMessageOutboundConnector</span> <span class="s1">'Redirect Bypass to MX'</span>
 </code></pre></div>
 <p><strong>Explanation:</strong>
 - <strong>Target</strong>: External emails to your domain that didn't come through ProofPoint
@@ -4148,7 +4176,7 @@ Redirect rule exceptions apply → Mail delivered normally (no loop)
 <li>
 <p><strong>Check Rule Reports</strong>:
    <div class="highlight"><pre><span></span><code><span class="c"># Check rule execution statistics</span>
-<span class="nb">Get-TransportRule</span> <span class="s2">&quot;Redirect Direct Delivery to MX&quot;</span> <span class="p">|</span> <span class="nb">Get-TransportRuleReport</span>
+<span class="nb">Get-TransportRule</span> <span class="s2">"Redirect Direct Delivery to MX"</span> <span class="p">|</span> <span class="nb">Get-TransportRuleReport</span>
 </code></pre></div></p>
 </li>
 <li>
@@ -4160,11 +4188,11 @@ Redirect rule exceptions apply → Mail delivered normally (no loop)
 </ol>
 <h3 id="maintenance-commands">Maintenance Commands</h3>
 <p><strong>Update Azure/Application IPs:</strong>
-<div class="highlight"><pre><span></span><code><span class="nb">Set-TransportRule</span> <span class="n">-Identity</span> <span class="s1">&#39;Allow Azure Application Servers Direct Delivery&#39;</span> <span class="p">`</span>
-  <span class="n">-SenderIpRanges</span> <span class="p">@(</span><span class="s2">&quot;NEW_IP_LIST_HERE&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">Set-TransportRule</span> <span class="n">-Identity</span> <span class="s1">'Allow Azure Application Servers Direct Delivery'</span> <span class="p">`</span>
+  <span class="n">-SenderIpRanges</span> <span class="p">@(</span><span class="s2">"NEW_IP_LIST_HERE"</span><span class="p">)</span>
 </code></pre></div></p>
 <p><strong>Check Current Settings:</strong>
-<div class="highlight"><pre><span></span><code><span class="nb">Get-TransportRule</span> <span class="s2">&quot;Allow Azure Application Servers Direct Delivery&quot;</span> <span class="p">|</span> 
+<div class="highlight"><pre><span></span><code><span class="nb">Get-TransportRule</span> <span class="s2">"Allow Azure Application Servers Direct Delivery"</span> <span class="p">|</span> 
   <span class="nb">Select-Object</span> <span class="n">SenderIpRanges</span>
 </code></pre></div></p>
 <hr />
@@ -4188,20 +4216,20 @@ Redirect rule exceptions apply → Mail delivered normally (no loop)
 <h3 id="adding-regional-proofpoint-ips">Adding Regional ProofPoint IPs</h3>
 <p>If your organization expands to new regions with different ProofPoint IPs:</p>
 <div class="highlight"><pre><span></span><code><span class="c"># Get current ProofPoint IPs</span>
-<span class="nv">$currentRule</span> <span class="p">=</span> <span class="nb">Get-TransportRule</span> <span class="s2">&quot;Redirect Direct Delivery to MX&quot;</span>
+<span class="nv">$currentRule</span> <span class="p">=</span> <span class="nb">Get-TransportRule</span> <span class="s2">"Redirect Direct Delivery to MX"</span>
 <span class="nv">$currentIPs</span> <span class="p">=</span> <span class="nv">$currentRule</span><span class="p">.</span><span class="n">ExceptIfSenderIpRanges</span>
 
 <span class="c"># Add new regional IPs</span>
-<span class="nv">$newIPs</span> <span class="p">=</span> <span class="nv">$currentIPs</span> <span class="p">+</span> <span class="p">@(</span><span class="s2">&quot;NEW_PROOFPOINT_RANGE_1&quot;</span><span class="p">,</span><span class="s2">&quot;NEW_PROOFPOINT_RANGE_2&quot;</span><span class="p">)</span>
+<span class="nv">$newIPs</span> <span class="p">=</span> <span class="nv">$currentIPs</span> <span class="p">+</span> <span class="p">@(</span><span class="s2">"NEW_PROOFPOINT_RANGE_1"</span><span class="p">,</span><span class="s2">"NEW_PROOFPOINT_RANGE_2"</span><span class="p">)</span>
 
 <span class="c"># Update rule</span>
-<span class="nb">Set-TransportRule</span> <span class="n">-Identity</span> <span class="s2">&quot;Redirect Direct Delivery to MX&quot;</span> <span class="n">-ExceptIfSenderIpRanges</span> <span class="nv">$newIPs</span>
+<span class="nb">Set-TransportRule</span> <span class="n">-Identity</span> <span class="s2">"Redirect Direct Delivery to MX"</span> <span class="n">-ExceptIfSenderIpRanges</span> <span class="nv">$newIPs</span>
 </code></pre></div>
 <h3 id="custom-reporting">Custom Reporting</h3>
 <p>Create custom monitoring for redirect activity:</p>
 <div class="highlight"><pre><span></span><code><span class="c"># Get message trace for redirected emails (last 7 days)</span>
 <span class="nb">Get-MessageTrace</span> <span class="n">-StartDate</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddDays</span><span class="p">(-</span><span class="n">7</span><span class="p">)</span> <span class="n">-EndDate</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">)</span> <span class="p">|</span>
-  <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">MessageTraceId</span> <span class="o">-like</span> <span class="s2">&quot;*Redirect*&quot;</span><span class="p">}</span> <span class="p">|</span>
+  <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">MessageTraceId</span> <span class="o">-like</span> <span class="s2">"*Redirect*"</span><span class="p">}</span> <span class="p">|</span>
   <span class="nb">Select-Object</span> <span class="n">Received</span><span class="p">,</span> <span class="n">SenderAddress</span><span class="p">,</span> <span class="n">RecipientAddress</span><span class="p">,</span> <span class="n">Status</span>
 </code></pre></div>
 <hr />
@@ -4258,13 +4286,13 @@ Redirect rule exceptions apply → Mail delivered normally (no loop)
 <span class="nb">Get-TransportRule</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Priority</span><span class="p">,</span> <span class="n">State</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">Priority</span>
 
 <span class="c"># Check specific rule details</span>
-<span class="nb">Get-TransportRule</span> <span class="s2">&quot;Redirect Direct Delivery to MX&quot;</span> <span class="p">|</span> <span class="nb">Format-List</span>
+<span class="nb">Get-TransportRule</span> <span class="s2">"Redirect Direct Delivery to MX"</span> <span class="p">|</span> <span class="nb">Format-List</span>
 
 <span class="c"># View connector status</span>
-<span class="nb">Get-OutboundConnector</span> <span class="s2">&quot;Redirect Bypass to MX&quot;</span> <span class="p">|</span> <span class="nb">Format-List</span>
+<span class="nb">Get-OutboundConnector</span> <span class="s2">"Redirect Bypass to MX"</span> <span class="p">|</span> <span class="nb">Format-List</span>
 
 <span class="c"># Message trace for troubleshooting</span>
-<span class="nb">Get-MessageTrace</span> <span class="n">-SenderAddress</span> <span class="s2">&quot;test@externaldomain.com&quot;</span> <span class="n">-StartDate</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddHours</span><span class="p">(-</span><span class="n">2</span><span class="p">)</span>
+<span class="nb">Get-MessageTrace</span> <span class="n">-SenderAddress</span> <span class="s2">"test@externaldomain.com"</span> <span class="n">-StartDate</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddHours</span><span class="p">(-</span><span class="n">2</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="dns-verification-commands">DNS Verification Commands</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check MX records</span>
@@ -4302,7 +4330,7 @@ dig<span class="w"> </span>+short<span class="w"> </span>TXT<span class="w"> </s
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 31, 2025 11:45:05 UTC">July 31, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -4355,7 +4383,7 @@ dig<span class="w"> </span>+short<span class="w"> </span>TXT<span class="w"> </s
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2369,6 +2369,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2972,7 +3000,7 @@
 <hr />
 <h2 id="microsoft-graph-api-endpoint-constant">Microsoft Graph API Endpoint Constant</h2>
 <p>The code uses the following constant for all Microsoft Graph API v1.0 calls:</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">AZURE_GRAPH_V1</span> <span class="o">=</span> <span class="s1">&#39;https://graph.microsoft.com/v1.0/&#39;</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">AZURE_GRAPH_V1</span> <span class="o">=</span> <span class="s1">'https://graph.microsoft.com/v1.0/'</span>
 </code></pre></div>
 This ensures all API requests are made to the correct Microsoft Graph endpoint.</p>
 <hr />
@@ -2990,19 +3018,19 @@ This ensures all API requests are made to the correct Microsoft Graph endpoint.<
         <span class="n">gdep_all_sites</span> <span class="o">=</span> <span class="n">fetch_all_sites_including_subsites</span><span class="p">(</span><span class="n">gdep_sharepoint_root_sites</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">gdep_all_sites</span><span class="p">:</span>
-            <span class="n">site_id</span> <span class="o">=</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
-            <span class="n">site_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_V1</span><span class="si">}</span><span class="s2">sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s2">/drives&quot;</span>
+            <span class="n">site_id</span> <span class="o">=</span> <span class="n">site</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
+            <span class="n">site_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">AZURE_GRAPH_V1</span><span class="si">}</span><span class="s2">sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s2">/drives"</span>
 
             <span class="n">document_libraries</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="n">site_url</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">library</span> <span class="ow">in</span> <span class="n">document_libraries</span><span class="p">:</span>
-                <span class="n">process_document_library</span><span class="p">(</span><span class="n">site_id</span><span class="p">,</span> <span class="n">library</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">library</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">gdep_all_sites</span><span class="p">)</span>
+                <span class="n">process_document_library</span><span class="p">(</span><span class="n">site_id</span><span class="p">,</span> <span class="n">library</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="n">library</span><span class="p">[</span><span class="s2">"name"</span><span class="p">],</span> <span class="n">gdep_all_sites</span><span class="p">)</span>
                 <span class="n">send_email</span><span class="p">(</span><span class="n">recipients</span><span class="o">=</span><span class="n">EMAIL_TO_SEND_EXCEPTIONS</span><span class="p">,</span>
-                    <span class="n">subject</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Completed Doc Lib --&gt;</span><span class="si">{</span><span class="n">library</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> - on site </span><span class="si">{</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;webUrl&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-                    <span class="n">plain_message</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Update on SP Library</span><span class="si">{</span><span class="n">library</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> - for site </span><span class="si">{</span><span class="n">site_url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                    <span class="n">subject</span><span class="o">=</span><span class="sa">f</span><span class="s1">'Completed Doc Lib --&gt;</span><span class="si">{</span><span class="n">library</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span><span class="si">}</span><span class="s1"> - on site </span><span class="si">{</span><span class="n">site</span><span class="p">[</span><span class="s2">"webUrl"</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span>
+                    <span class="n">plain_message</span><span class="o">=</span><span class="sa">f</span><span class="s1">'Update on SP Library</span><span class="si">{</span><span class="n">library</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span><span class="si">}</span><span class="s1"> - for site </span><span class="si">{</span><span class="n">site_url</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
         <span class="n">send_email</span><span class="p">(</span><span class="n">recipients</span><span class="o">=</span><span class="n">EMAIL_TO_SEND_EXCEPTIONS</span><span class="p">,</span>
-            <span class="n">subject</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Finished all Sites&#39;</span><span class="p">,</span>
-            <span class="n">plain_message</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Finished all Sites&#39;</span><span class="p">)</span>
+            <span class="n">subject</span><span class="o">=</span><span class="sa">f</span><span class="s1">'Finished all Sites'</span><span class="p">,</span>
+            <span class="n">plain_message</span><span class="o">=</span><span class="sa">f</span><span class="s1">'Finished all Sites'</span><span class="p">)</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
@@ -3020,7 +3048,7 @@ This ensures all API requests are made to the correct Microsoft Graph endpoint.<
 <h3 id="2-get_all_sp_sites">2. <code>get_all_sp_sites</code></h3>
 <p>Fetches all root-level SharePoint sites in the tenant using the Microsoft Graph API:
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_all_sp_sites</span><span class="p">():</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_V1</span><span class="si">}</span><span class="s2">sites?search=*&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">AZURE_GRAPH_V1</span><span class="si">}</span><span class="s2">sites?search=*"</span>
     <span class="k">return</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </code></pre></div>
 - <strong>Purpose:</strong> Returns a list of all root SharePoint sites.
@@ -3031,12 +3059,12 @@ This ensures all API requests are made to the correct Microsoft Graph endpoint.<
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fetch_all_sites_including_subsites</span><span class="p">(</span><span class="n">sharepoint_root_sites</span><span class="p">):</span>
     <span class="n">all_sites</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">sharepoint_root_sites</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Started site </span><span class="si">{</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;webUrl&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">all_sites</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="s2">&quot;webUrl&quot;</span><span class="p">:</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;webUrl&quot;</span><span class="p">]})</span>
-        <span class="n">sharepoint_subsites</span> <span class="o">=</span> <span class="n">get_sp_subsites</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Started site </span><span class="si">{</span><span class="n">site</span><span class="p">[</span><span class="s1">'webUrl'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">all_sites</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"id"</span><span class="p">:</span> <span class="n">site</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"webUrl"</span><span class="p">:</span> <span class="n">site</span><span class="p">[</span><span class="s2">"webUrl"</span><span class="p">]})</span>
+        <span class="n">sharepoint_subsites</span> <span class="o">=</span> <span class="n">get_sp_subsites</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">"id"</span><span class="p">])</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sharepoint_subsites</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">subsite</span> <span class="ow">in</span> <span class="n">sharepoint_subsites</span><span class="p">:</span>
-                <span class="n">all_sites</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">subsite</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="s2">&quot;webUrl&quot;</span><span class="p">:</span> <span class="n">subsite</span><span class="p">[</span><span class="s2">&quot;webUrl&quot;</span><span class="p">]})</span>
+                <span class="n">all_sites</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"id"</span><span class="p">:</span> <span class="n">subsite</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"webUrl"</span><span class="p">:</span> <span class="n">subsite</span><span class="p">[</span><span class="s2">"webUrl"</span><span class="p">]})</span>
     <span class="k">return</span> <span class="n">all_sites</span>
 </code></pre></div>
 - <strong>Purpose:</strong> Ensures every site and subsite is included in the inventory.
@@ -3046,24 +3074,24 @@ This ensures all API requests are made to the correct Microsoft Graph endpoint.<
 <p>Processes each document library (drive) for a site:
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_document_library</span><span class="p">(</span><span class="n">site_id</span><span class="p">,</span> <span class="n">drive_id</span><span class="p">,</span> <span class="n">drive_name</span><span class="p">,</span> <span class="n">all_sites</span><span class="p">):</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Started Document Library -- </span><span class="si">{</span><span class="n">drive_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Started Document Library -- </span><span class="si">{</span><span class="n">drive_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-    <span class="n">site_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_GRAPH_V1</span><span class="si">}</span><span class="s2">sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s2">/drives/</span><span class="si">{</span><span class="n">drive_id</span><span class="si">}</span><span class="s2">/root/delta</span><span class="si">{</span><span class="n">DOCUMENT_LIB_SELECT_QUERY</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">site_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">AZURE_GRAPH_V1</span><span class="si">}</span><span class="s2">sites/</span><span class="si">{</span><span class="n">site_id</span><span class="si">}</span><span class="s2">/drives/</span><span class="si">{</span><span class="n">drive_id</span><span class="si">}</span><span class="s2">/root/delta</span><span class="si">{</span><span class="n">DOCUMENT_LIB_SELECT_QUERY</span><span class="si">}</span><span class="s2">"</span>
     <span class="n">search_results</span> <span class="o">=</span> <span class="n">execute_odata_query_get</span><span class="p">(</span><span class="n">site_url</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">search_results</span><span class="p">:</span>
         <span class="n">entry</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;site_id&quot;</span><span class="p">:</span> <span class="n">site_id</span><span class="p">,</span>
-            <span class="s2">&quot;webUrl&quot;</span><span class="p">:</span> <span class="nb">next</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;webUrl&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">all_sites</span> <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">site_id</span><span class="p">),</span>
-            <span class="s2">&quot;drive_id&quot;</span><span class="p">:</span> <span class="n">drive_id</span><span class="p">,</span>
-            <span class="s2">&quot;document_id&quot;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;lastModifiedDateTime&quot;</span><span class="p">:</span> <span class="n">parse_iso_date</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lastModifiedDateTime&quot;</span><span class="p">)),</span>
-            <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;size&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;file&quot;</span> <span class="ow">in</span> <span class="n">item</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+            <span class="s2">"site_id"</span><span class="p">:</span> <span class="n">site_id</span><span class="p">,</span>
+            <span class="s2">"webUrl"</span><span class="p">:</span> <span class="nb">next</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">"webUrl"</span><span class="p">]</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">all_sites</span> <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="o">==</span> <span class="n">site_id</span><span class="p">),</span>
+            <span class="s2">"drive_id"</span><span class="p">:</span> <span class="n">drive_id</span><span class="p">,</span>
+            <span class="s2">"document_id"</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">"name"</span><span class="p">],</span>
+            <span class="s2">"lastModifiedDateTime"</span><span class="p">:</span> <span class="n">parse_iso_date</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"lastModifiedDateTime"</span><span class="p">)),</span>
+            <span class="s2">"size"</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"size"</span><span class="p">)</span> <span class="k">if</span> <span class="s2">"file"</span> <span class="ow">in</span> <span class="n">item</span> <span class="k">else</span> <span class="s2">""</span>
         <span class="p">}</span>
         <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
     <span class="n">write_data_to_csv</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">SP_WITHOUT_VERSION_CSV_FILE_PATH</span><span class="p">)</span>
     <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Document Library &#39;</span><span class="si">{</span><span class="n">drive_name</span><span class="si">}</span><span class="s2">&#39; took </span><span class="si">{</span><span class="n">elapsed_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds to process.&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Document Library '</span><span class="si">{</span><span class="n">drive_name</span><span class="si">}</span><span class="s2">' took </span><span class="si">{</span><span class="n">elapsed_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds to process."</span><span class="p">)</span>
 </code></pre></div>
 - <strong>Purpose:</strong>
   - Queries all files in the document library using the Graph API delta endpoint.
@@ -3077,10 +3105,10 @@ This ensures all API requests are made to the correct Microsoft Graph endpoint.<
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">execute_odata_query_get</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">token</span> <span class="o">=</span> <span class="n">get_access_token_API_Access_AAD</span><span class="p">()</span>
-        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">"</span><span class="p">}</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
         <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"value"</span><span class="p">,</span> <span class="p">[])</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">handle_global_exception</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[]</span>
@@ -3090,8 +3118,8 @@ This ensures all API requests are made to the correct Microsoft Graph endpoint.<
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_iso_date</span><span class="p">(</span><span class="n">date_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">date_str</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
-    <span class="n">date_str</span> <span class="o">=</span> <span class="n">date_str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span>
-    <span class="n">formats</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%f</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&quot;</span><span class="p">]</span>
+    <span class="n">date_str</span> <span class="o">=</span> <span class="n">date_str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">'Z'</span><span class="p">)</span>
+    <span class="n">formats</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%f</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S"</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">fmt</span> <span class="ow">in</span> <span class="n">formats</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">fmt</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
@@ -3103,8 +3131,8 @@ This ensures all API requests are made to the correct Microsoft Graph endpoint.<
 <p>Appends data to a CSV file, writing headers if the file does not exist.
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">write_data_to_csv</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
     <span class="n">file_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_file</span><span class="p">:</span>
-        <span class="n">fieldnames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;site_id&quot;</span><span class="p">,</span> <span class="s2">&quot;webUrl&quot;</span><span class="p">,</span> <span class="s2">&quot;drive_id&quot;</span><span class="p">,</span> <span class="s2">&quot;document_id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;lastModifiedDateTime&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'a'</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_file</span><span class="p">:</span>
+        <span class="n">fieldnames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"site_id"</span><span class="p">,</span> <span class="s2">"webUrl"</span><span class="p">,</span> <span class="s2">"drive_id"</span><span class="p">,</span> <span class="s2">"document_id"</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">,</span> <span class="s2">"lastModifiedDateTime"</span><span class="p">,</span> <span class="s2">"size"</span><span class="p">]</span>
         <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">csv_file</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">file_exists</span><span class="p">:</span>
             <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
@@ -3113,23 +3141,23 @@ This ensures all API requests are made to the correct Microsoft Graph endpoint.<
 <h3 id="handle_global_exceptionfunctionname-exceptionobject"><code>handle_global_exception(functionName, exceptionObject)</code></h3>
 <p>Logs and emails details of any exception that occurs.
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">handle_global_exception</span><span class="p">(</span><span class="n">functionName</span><span class="p">,</span> <span class="n">exceptionObject</span><span class="p">):</span>
-    <span class="n">emailBody</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Function Name: </span><span class="si">{</span><span class="n">functionName</span><span class="si">}</span><span class="s2">; Exception Description: </span><span class="si">{</span><span class="n">exceptionObject</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">emailBody</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Function Name: </span><span class="si">{</span><span class="n">functionName</span><span class="si">}</span><span class="s2">; Exception Description: </span><span class="si">{</span><span class="n">exceptionObject</span><span class="si">}</span><span class="s2">"</span>
     <span class="n">send_email</span><span class="p">(</span><span class="n">recipients</span><span class="o">=</span><span class="n">EMAIL_TO_SEND_EXCEPTIONS</span><span class="p">,</span>
-               <span class="n">subject</span><span class="o">=</span><span class="s1">&#39;Exception occured in code&#39;</span><span class="p">,</span> 
+               <span class="n">subject</span><span class="o">=</span><span class="s1">'Exception occured in code'</span><span class="p">,</span> 
                <span class="n">plain_message</span><span class="o">=</span><span class="n">emailBody</span><span class="p">)</span>
 </code></pre></div></p>
 <h3 id="get_access_token_api_access_aadscopesnone"><code>get_access_token_API_Access_AAD(scopes=None)</code></h3>
 <p>Obtains an access token for Microsoft Graph API using MSAL or Azure Identity. (Example implementation:)
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_access_token_API_Access_AAD</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">scopes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">scopes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://graph.microsoft.com/.default&#39;</span><span class="p">]</span>
+        <span class="n">scopes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'https://graph.microsoft.com/.default'</span><span class="p">]</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">ConfidentialClientApplication</span><span class="p">(</span>
         <span class="n">client_id</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_APP_ID</span><span class="p">,</span>
-        <span class="n">authority</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">AZURE_AUTHORITY_BASE_URL</span><span class="si">}{</span><span class="n">AZURE_TENANT_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">authority</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">AZURE_AUTHORITY_BASE_URL</span><span class="si">}{</span><span class="n">AZURE_TENANT_ID</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
         <span class="n">client_credential</span><span class="o">=</span><span class="n">AZURE_CONFIDENTIAL_SECRET</span>
     <span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">acquire_token_for_client</span><span class="p">(</span><span class="n">scopes</span><span class="o">=</span><span class="n">scopes</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;access_token&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="s2">"access_token"</span><span class="p">]</span>
 </code></pre></div></p>
 <hr />
 <h2 id="handling-large-sharepoint-environments">Handling Large SharePoint Environments</h2>
@@ -3186,7 +3214,7 @@ This ensures all API requests are made to the correct Microsoft Graph endpoint.<
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 30, 2025 21:58:08 UTC">June 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3239,7 +3267,7 @@ This ensures all API requests are made to the correct Microsoft Graph endpoint.<
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

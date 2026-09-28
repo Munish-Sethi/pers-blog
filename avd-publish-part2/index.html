@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2241,6 +2241,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2724,39 +2752,39 @@
 <p>Before deploying, ensure your parameter file (e.g., <code>avdp.json</code>) is up to date with the correct image reference, VM size, network settings, and domain join information.</p>
 <h3 id="example-parameter-file-avdpjson">Example Parameter File (<code>avdp.json</code>)</h3>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;resource_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rg-gdep-peus-avd-pools&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;nic_subnet_resourcegroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rg-gdep-peus-vnets&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;nic_vnet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GDEP_VNET_PROD&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;nic_subnet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prod_AVD_FS_Subnet&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;vm_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AZGDEPENG&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;adminusername&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;avdadmin&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;hostpoolname&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GDEP_Engineering&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;adminPassword&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;keyVault&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/subscriptions/&lt;sub-id&gt;/resourceGroups/&lt;rg&gt;/providers/Microsoft.KeyVault/vaults/&lt;vault-name&gt;&quot;</span>
+<span class="w">  </span><span class="nt">"resource_group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rg-gdep-peus-avd-pools"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"nic_subnet_resourcegroup"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rg-gdep-peus-vnets"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"nic_vnet_name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GDEP_VNET_PROD"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"nic_subnet_name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prod_AVD_FS_Subnet"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"vm_name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZGDEPENG"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"adminusername"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"avdadmin"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"hostpoolname"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GDEP_Engineering"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"adminPassword"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"keyVault"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/subscriptions/&lt;sub-id&gt;/resourceGroups/&lt;rg&gt;/providers/Microsoft.KeyVault/vaults/&lt;vault-name&gt;"</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;secretName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new-vm-password&quot;</span>
+<span class="w">      </span><span class="nt">"secretName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-vm-password"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;adadminusername&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-account@yourdomain.com&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;adadminPassword&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;keyVault&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/subscriptions/&lt;sub-id&gt;/resourceGroups/&lt;rg&gt;/providers/Microsoft.KeyVault/vaults/&lt;vault-name&gt;&quot;</span>
+<span class="w">  </span><span class="nt">"adadminusername"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service-account@yourdomain.com"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"adadminPassword"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"keyVault"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/subscriptions/&lt;sub-id&gt;/resourceGroups/&lt;rg&gt;/providers/Microsoft.KeyVault/vaults/&lt;vault-name&gt;"</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;secretName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ad-join-password&quot;</span>
+<span class="w">      </span><span class="nt">"secretName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad-join-password"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;hostpoolregistrationkey&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;keyVault&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/subscriptions/&lt;sub-id&gt;/resourceGroups/&lt;rg&gt;/providers/Microsoft.KeyVault/vaults/&lt;vault-name&gt;&quot;</span>
+<span class="w">  </span><span class="nt">"hostpoolregistrationkey"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"keyVault"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/subscriptions/&lt;sub-id&gt;/resourceGroups/&lt;rg&gt;/providers/Microsoft.KeyVault/vaults/&lt;vault-name&gt;"</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;secretName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;avd-host-pool-reg-key&quot;</span>
+<span class="w">      </span><span class="nt">"secretName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"avd-host-pool-reg-key"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;vmCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">"vmCount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>Parameter Explanations:</strong>
@@ -2786,31 +2814,31 @@ param adminPassword string
 @secure()
 param adadminPassword string
 
-var applicationtag = &#39;Virtual Desktop&#39;
-var environmetag = &#39;Production&#39;
-var domain = &#39;yourdomain.com&#39;
-var ou2add2 = &#39;OU=Computers,OU=Standard,OU=Virtual Desktops,OU=Azure,OU=GD,DC=yourdomain,DC=com&#39;
+var applicationtag = 'Virtual Desktop'
+var environmetag = 'Production'
+var domain = 'yourdomain.com'
+var ou2add2 = 'OU=Computers,OU=Standard,OU=Virtual Desktops,OU=Azure,OU=GD,DC=yourdomain,DC=com'
 
-@description(&#39;Create NICs for each VM&#39;)
-module nicgdepavd &#39;../../../networking/nic/nic.bicep&#39; = [for i in range(0, vmCount):{
-  name: &#39;${deployment().name}-nic${i}&#39;
+@description('Create NICs for each VM')
+module nicgdepavd '../../../networking/nic/nic.bicep' = [for i in range(0, vmCount):{
+  name: '${deployment().name}-nic${i}'
   scope: resourceGroup(resource_group)
   params: {
-    name: &#39;nicgdepp${location}${vm_name}${i}&#39;
+    name: 'nicgdepp${location}${vm_name}${i}'
     location: location
     tags: { Application: applicationtag, Environment: environmetag }
     properties: {
       ipConfigurations: [
         {
-          name: &#39;ipconfig&#39;
+          name: 'ipconfig'
           properties: {
-            privateIPAllocationMethod: &#39;Dynamic&#39;
+            privateIPAllocationMethod: 'Dynamic'
             subnet: {
               id: resourceId(
-                &#39;${nic_subnet_resourcegroup}&#39;,
-                &#39;Microsoft.Network/virtualNetworks/subnets&#39;,
-                &#39;${nic_vnet_name}&#39;,
-                &#39;${nic_subnet_name}&#39;
+                '${nic_subnet_resourcegroup}',
+                'Microsoft.Network/virtualNetworks/subnets',
+                '${nic_vnet_name}',
+                '${nic_subnet_name}'
               )
             }
           }
@@ -2820,28 +2848,28 @@ module nicgdepavd &#39;../../../networking/nic/nic.bicep&#39; = [for i in range(
   }
 }]
 
-@description(&#39;Create the AVD VM(s)&#39;)
-module vmgdepavd &#39;../vm.bicep&#39; = [for i in range(0, vmCount): {
-  name: &#39;${deployment().name}-${i}&#39;
+@description('Create the AVD VM(s)')
+module vmgdepavd '../vm.bicep' = [for i in range(0, vmCount): {
+  name: '${deployment().name}-${i}'
   scope: resourceGroup(resource_group)
   params: {
-    name: &#39;${vm_name}-${i}&#39;
+    name: '${vm_name}-${i}'
     location: location
     tags: { Application: applicationtag, Environment: environmetag }
     properties: {
-      hardwareProfile: { vmSize: &#39;Standard_NV16as_v4&#39; }
+      hardwareProfile: { vmSize: 'Standard_NV16as_v4' }
       storageProfile: {
         imageReference: {
-          id: resourceId(&#39;Microsoft.Compute/galleries/images&#39;, &#39;GDEP_Azure_Compute_Gallery&#39;, &#39;Win11AVD&#39;)
+          id: resourceId('Microsoft.Compute/galleries/images', 'GDEP_Azure_Compute_Gallery', 'Win11AVD')
         }
         osDisk: {
-          createOption: &#39;FromImage&#39;
+          createOption: 'FromImage'
           diskSizeGB: 512
-          managedDisk: { storageAccountType: &#39;Premium_LRS&#39; }
+          managedDisk: { storageAccountType: 'Premium_LRS' }
         }
       }
       osProfile: {
-        computerName: &#39;${vm_name}-${i}&#39;
+        computerName: '${vm_name}-${i}'
         adminUsername: adminusername
         adminPassword: adminPassword
         windowsConfiguration: {
@@ -2853,31 +2881,31 @@ module vmgdepavd &#39;../vm.bicep&#39; = [for i in range(0, vmCount): {
         networkInterfaces: [
           {
             id: nicgdepavd[i].outputs.id
-            properties: { deleteOption: &#39;Delete&#39; }
+            properties: { deleteOption: 'Delete' }
           }
         ]
       }
       diagnosticsProfile: { bootDiagnostics: { enabled: true } }
-      licenseType: &#39;Windows_Client&#39;
+      licenseType: 'Windows_Client'
     }
   }
 }]
 
-@description(&#39;Add Custom Script Extension for Kofax&#39;)
-resource extkofaxcustomscript &#39;Microsoft.Compute/virtualMachines/extensions@2024-03-01&#39; = [for i in range(0, vmCount): {
-  name: &#39;${vm_name}-${i}/CustomScriptExtension&#39;
+@description('Add Custom Script Extension for Kofax')
+resource extkofaxcustomscript 'Microsoft.Compute/virtualMachines/extensions@2024-03-01' = [for i in range(0, vmCount): {
+  name: '${vm_name}-${i}/CustomScriptExtension'
   location: location
   tags: {
     Environment: environmetag
     Application: applicationtag
   }
   properties: {
-    publisher: &#39;Microsoft.Compute&#39;
-    type: &#39;CustomScriptExtension&#39;
-    typeHandlerVersion: &#39;1.9&#39;
+    publisher: 'Microsoft.Compute'
+    type: 'CustomScriptExtension'
+    typeHandlerVersion: '1.9'
     autoUpgradeMinorVersion: true
     settings: {
-      commandToExecute: &#39;powershell.exe -ExecutionPolicy Unrestricted -Command &quot;Invoke-WebRequest -Uri \&#39;https://storeusgdepsoftware.blob.core.windows.net/software4avd/avdkofax.ps1\&#39; -OutFile \&#39;C:\\software\\avdkofax.ps1\&#39;; Set-Location -Path \&#39;C:\\software\&#39;; .\\avdkofax.ps1&quot;&#39;
+      commandToExecute: 'powershell.exe -ExecutionPolicy Unrestricted -Command "Invoke-WebRequest -Uri \'https://storeusgdepsoftware.blob.core.windows.net/software4avd/avdkofax.ps1\' -OutFile \'C:\\software\\avdkofax.ps1\'; Set-Location -Path \'C:\\software\'; .\\avdkofax.ps1"'
     }
   }
   dependsOn: [
@@ -2885,9 +2913,9 @@ resource extkofaxcustomscript &#39;Microsoft.Compute/virtualMachines/extensions@
   ]
 }]
 
-@description(&#39;Join VM(s) to the domain&#39;)
-resource extadd2adcustomscript &#39;Microsoft.Compute/virtualMachines/extensions@2024-03-01&#39; = [for i in range(0, vmCount): {
-  name: &#39;${vm_name}-${i}/joindomain&#39;
+@description('Join VM(s) to the domain')
+resource extadd2adcustomscript 'Microsoft.Compute/virtualMachines/extensions@2024-03-01' = [for i in range(0, vmCount): {
+  name: '${vm_name}-${i}/joindomain'
   location: location
   tags: {
     Environment: environmetag
@@ -2895,15 +2923,15 @@ resource extadd2adcustomscript &#39;Microsoft.Compute/virtualMachines/extensions
   }
   properties: {
     autoUpgradeMinorVersion: true
-    publisher: &#39;Microsoft.Compute&#39;
-    type: &#39;JsonADDomainExtension&#39;
-    typeHandlerVersion: &#39;1.3&#39;
+    publisher: 'Microsoft.Compute'
+    type: 'JsonADDomainExtension'
+    typeHandlerVersion: '1.3'
     settings: {
       name: domain
       ouPath: ou2add2
       user: adadminusername
       restart: true
-      options: &#39;3&#39;
+      options: '3'
     }
     protectedSettings: {
       password: adadminPassword
@@ -2915,9 +2943,9 @@ resource extadd2adcustomscript &#39;Microsoft.Compute/virtualMachines/extensions
   ]
 }]
 
-@description(&#39;Register VM(s) with AVD Host Pool&#39;)
-resource vmExtension &#39;Microsoft.Compute/virtualMachines/extensions@2024-03-01&#39; = [for i in range(0, vmCount): {
-  name: &#39;${vm_name}-${i}/Microsoft.PowerShell.DSC&#39;
+@description('Register VM(s) with AVD Host Pool')
+resource vmExtension 'Microsoft.Compute/virtualMachines/extensions@2024-03-01' = [for i in range(0, vmCount): {
+  name: '${vm_name}-${i}/Microsoft.PowerShell.DSC'
   location: location
   tags: {
     Environment: environmetag
@@ -2925,12 +2953,12 @@ resource vmExtension &#39;Microsoft.Compute/virtualMachines/extensions@2024-03-0
   }
   properties: {
     autoUpgradeMinorVersion: true
-    publisher: &#39;Microsoft.Powershell&#39;
-    type: &#39;DSC&#39;
-    typeHandlerVersion: &#39;2.73&#39;
+    publisher: 'Microsoft.Powershell'
+    type: 'DSC'
+    typeHandlerVersion: '2.73'
     settings: {
-      modulesUrl: &#39;https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts/Configuration_1.0.02714.342.zip&#39;
-      configurationFunction: &#39;Configuration.ps1\\AddSessionHost&#39;
+      modulesUrl: 'https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts/Configuration_1.0.02714.342.zip'
+      configurationFunction: 'Configuration.ps1\\AddSessionHost'
       properties: {
         hostPoolName: hostpoolname
         registrationInfoToken: hostpoolregistrationkey
@@ -3002,7 +3030,7 @@ resource vmExtension &#39;Microsoft.Compute/virtualMachines/extensions@2024-03-0
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:21:49 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3055,7 +3083,7 @@ resource vmExtension &#39;Microsoft.Compute/virtualMachines/extensions@2024-03-0
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

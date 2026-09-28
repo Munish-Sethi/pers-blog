@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2230,6 +2230,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2723,7 +2751,7 @@ param azure_file_share_password string
 @secure()
 param ukg_encrypt_passphrase string
 param location string = resourceGroup().location
-param containerRegistryServer string = &#39;${container_registry_name}.azurecr.io&#39; 
+param containerRegistryServer string = '${container_registry_name}.azurecr.io' 
 </code></pre></div>
 <p><strong>Explanation:</strong><br />
 - Parameters allow you to customize the deployment.<br />
@@ -2735,7 +2763,7 @@ param containerRegistryServer string = &#39;${container_registry_name}.azurecr.i
 <p><strong>Explanation:</strong><br />
 - Sets the registry username to the registry name for convenience.</p>
 <h3 id="resource-definition">Resource Definition</h3>
-<div class="highlight"><pre><span></span><code>resource aci &#39;Microsoft.ContainerInstance/containerGroups@2023-05-01&#39; = {
+<div class="highlight"><pre><span></span><code>resource aci 'Microsoft.ContainerInstance/containerGroups@2023-05-01' = {
   name: aci_name
   location: location
   tags: tags
@@ -2745,64 +2773,64 @@ param containerRegistryServer string = &#39;${container_registry_name}.azurecr.i
       {
         name: aci_name
         properties: {
-          image: &#39;${containerRegistryServer}/${image_name}:${image_tag}&#39;
+          image: '${containerRegistryServer}/${image_name}:${image_tag}'
           ports: [
             {
               port: 80
-              protocol: &#39;TCP&#39;
+              protocol: 'TCP'
             }
           ]
           resources: {
             limits: {
               cpu: 4
-              memoryInGB: json(&#39;16&#39;)
+              memoryInGB: json('16')
             }
             requests: {
               cpu: 4
-              memoryInGB: json(&#39;16&#39;)
+              memoryInGB: json('16')
             }
           }
           environmentVariables:[
             {
-              name:&#39;application_interface_clientid&#39;
+              name:'application_interface_clientid'
               secureValue:application_interface_clientid
             }
             {
-              name:&#39;application_interface_clientsecret&#39;
+              name:'application_interface_clientsecret'
               secureValue:application_interface_clientsecret
             }
             {
-              name:&#39;application_interface_tenantid&#39;
+              name:'application_interface_tenantid'
               secureValue:application_interface_tenantid
             }
             {
-              name:&#39;azure_file_share_name&#39;
+              name:'azure_file_share_name'
               secureValue:azure_file_share_name
             }
             {
-              name:&#39;azure_file_share_user_name&#39;
+              name:'azure_file_share_user_name'
               secureValue:azure_file_share_user_name
             }
             {
-              name:&#39;azure_file_share_password&#39;
+              name:'azure_file_share_password'
               secureValue:azure_file_share_password
             }
             {
-              name:&#39;ukg_encrypt_passphrase&#39;
+              name:'ukg_encrypt_passphrase'
               secureValue:ukg_encrypt_passphrase
             }
           ]
           volumeMounts: [
             {
               name: volume_name
-              mountPath: &#39;/mnt/azure&#39;
+              mountPath: '/mnt/azure'
               readOnly: false
             }
           ]
         }
       }
     ]
-    osType: &#39;Linux&#39;
+    osType: 'Linux'
     imageRegistryCredentials: [
       {
         server: containerRegistryServer
@@ -2820,9 +2848,9 @@ param containerRegistryServer string = &#39;${container_registry_name}.azurecr.i
         }
       }
     ]
-    priority: &#39;Regular&#39;
-    restartPolicy: &#39;Never&#39;
-    sku: &#39;Standard&#39;
+    priority: 'Regular'
+    restartPolicy: 'Never'
+    sku: 'Standard'
     subnetIds: [
       {
         id: subnet_id
@@ -2831,9 +2859,9 @@ param containerRegistryServer string = &#39;${container_registry_name}.azurecr.i
     ]
     dnsConfig: {
       nameServers: [
-        &#39;10.27.11.4&#39;
-        &#39;10.27.11.5&#39;
-        &#39;168.63.129.16&#39;  
+        '10.27.11.4'
+        '10.27.11.5'
+        '168.63.129.16'  
       ]
     }
   }
@@ -2885,7 +2913,7 @@ param containerRegistryServer string = &#39;${container_registry_name}.azurecr.i
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:21:49 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -2938,7 +2966,7 @@ param containerRegistryServer string = &#39;${container_registry_name}.azurecr.i
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

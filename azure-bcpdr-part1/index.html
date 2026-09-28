@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2237,6 +2237,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2726,7 +2754,7 @@
 <li><strong>Tags:</strong> Infrastructure, Disaster Recovery</li>
 </ul>
 <p><strong>Command:</strong>
-<div class="highlight"><pre><span></span><code>az<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>dr-rg-gdep-pwus-deployment<span class="w"> </span>--location<span class="w"> </span>westus<span class="w"> </span>--tags<span class="w"> </span><span class="s2">&quot;Purpose=Infrastructure&quot;</span><span class="w"> </span><span class="s2">&quot;Type=DisasterRecovery&quot;</span>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>dr-rg-gdep-pwus-deployment<span class="w"> </span>--location<span class="w"> </span>westus<span class="w"> </span>--tags<span class="w"> </span><span class="s2">"Purpose=Infrastructure"</span><span class="w"> </span><span class="s2">"Type=DisasterRecovery"</span>
 </code></pre></div></p>
 <hr />
 <h2 id="step-2-deploy-resource-groups-via-bicep">Step 2: Deploy Resource Groups via Bicep</h2>
@@ -2735,34 +2763,34 @@
 <div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>gdepdr-rg<span class="w"> </span>--template-file<span class="w"> </span>./rg/rg_main.bicep<span class="w"> </span>--resource-group<span class="w"> </span>dr-rg-gdep-pwus-deployment
 </code></pre></div></p>
 <p><strong>Bicep Code: <code>rg_main.bicep</code></strong>
-<div class="highlight"><pre><span></span><code>param location string = &#39;westus&#39;
-var environmetag = &#39;Disaster Recovery&#39;
+<div class="highlight"><pre><span></span><code>param location string = 'westus'
+var environmetag = 'Disaster Recovery'
 
 param resourcegroups2create array = [
-  &#39;dr-rg-gdep-pwus-infrastructure&#39;
-  &#39;dr-rg-gdep-pwus-vnets&#39;
-  &#39;dr-rg-gdep-pwus-fortinet&#39;
-  &#39;dr-rg-gdep-pwus-meraki-sdwan&#39;
+  'dr-rg-gdep-pwus-infrastructure'
+  'dr-rg-gdep-pwus-vnets'
+  'dr-rg-gdep-pwus-fortinet'
+  'dr-rg-gdep-pwus-meraki-sdwan'
 ]
 
-module rggdepwus &#39;./rg.bicep&#39; = [for rggroupname in resourcegroups2create: {
-  name: &#39;${deployment().name}-${rggroupname}&#39;
+module rggdepwus './rg.bicep' = [for rggroupname in resourcegroups2create: {
+  name: '${deployment().name}-${rggroupname}'
   scope:subscription()
   params: {
     name: rggroupname
     location: location
-    tags: {Application:&#39;Infrastructure&#39;,Environment: environmetag}
+    tags: {Application:'Infrastructure',Environment: environmetag}
     }
 }]
 </code></pre></div></p>
 <p><strong>Supporting Bicep: <code>rg.bicep</code></strong>
-<div class="highlight"><pre><span></span><code>targetScope=&#39;subscription&#39;
+<div class="highlight"><pre><span></span><code>targetScope='subscription'
 
 param name string 
 param location string
 param tags object
 
-resource rggdepdrwus &#39;Microsoft.Resources/resourceGroups@2022-09-01&#39; = {
+resource rggdepdrwus 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: name
   location: location
   tags: tags
@@ -2781,48 +2809,48 @@ output resourceGroupName string = rggdepdrwus.name
 </code></pre></div></p>
 <p><strong>Bicep Code: <code>sa_staging.bicep</code></strong>
 <div class="highlight"><pre><span></span><code>param location string = resourceGroup().location
-var applicationtag = &#39;Infrastructure&#39;
-var environmetag = &#39;Disaster Recovery&#39;
-var infrastructure_rg_name = &#39;dr-rg-gdep-pwus-infrastructure&#39;
+var applicationtag = 'Infrastructure'
+var environmetag = 'Disaster Recovery'
+var infrastructure_rg_name = 'dr-rg-gdep-pwus-infrastructure'
 
-@description(&#39;This Storage Account is used as a Staging account to restore VM(s)&#39;)
-module sagdepdrwusstaging &#39;./sa.bicep&#39; = {
-  name: &#39;${deployment().name}-sa-gdep-pwus-staging&#39;
+@description('This Storage Account is used as a Staging account to restore VM(s)')
+module sagdepdrwusstaging './sa.bicep' = {
+  name: '${deployment().name}-sa-gdep-pwus-staging'
   scope: resourceGroup(infrastructure_rg_name)
   params: {
-    name: &#39;storegdeppwusstaging&#39;
+    name: 'storegdeppwusstaging'
     location: location
     tags: { Application: applicationtag, Environment: environmetag }
     properties: {
-      accessTier: &#39;Hot&#39;
+      accessTier: 'Hot'
       allowBlobPublicAccess: false
       allowCrossTenantReplication: false
       allowSharedKeyAccess: true
       defaultToOAuthAuthentication: false
-      dnsEndpointType: &#39;Standard&#39;
+      dnsEndpointType: 'Standard'
       encryption: {
-        keySource: &#39;Microsoft.Storage&#39;
+        keySource: 'Microsoft.Storage'
         requireInfrastructureEncryption: false
         services: {
           blob: {
             enabled: true
-            keyType: &#39;Account&#39;
+            keyType: 'Account'
           }
           file: {
             enabled: true
-            keyType: &#39;Account&#39;
+            keyType: 'Account'
           }
         }
       }
-      largeFileSharesState: &#39;Enabled&#39;
-      minimumTlsVersion: &#39;TLS1_2&#39;
+      largeFileSharesState: 'Enabled'
+      minimumTlsVersion: 'TLS1_2'
       networkAcls: {
-        bypass: &#39;AzureServices&#39;
-        defaultAction: &#39;Allow&#39;
+        bypass: 'AzureServices'
+        defaultAction: 'Allow'
         ipRules: []
         virtualNetworkRules: []
       }
-      publicNetworkAccess: &#39;Enabled&#39;
+      publicNetworkAccess: 'Enabled'
       supportsHttpsTrafficOnly: true
     }
   }
@@ -2834,20 +2862,20 @@ param name string
 param tags object
 param properties object
 
-resource sagdepdrwus &#39;Microsoft.Storage/storageAccounts@2023-04-01&#39; = {
+resource sagdepdrwus 'Microsoft.Storage/storageAccounts@2023-04-01' = {
   name: name
   location: location
   tags: tags
-  kind: &#39;StorageV2&#39;
+  kind: 'StorageV2'
   sku: {
-    name: &#39;Standard_LRS&#39;
+    name: 'Standard_LRS'
   }
   properties: properties
 }
 
-resource sagdepdrwusblobservices &#39;Microsoft.Storage/storageAccounts/blobServices@2023-04-01&#39; = {
+resource sagdepdrwusblobservices 'Microsoft.Storage/storageAccounts/blobServices@2023-04-01' = {
   parent: sagdepdrwus
-  name: &#39;default&#39;
+  name: 'default'
   properties: {
     cors: {
       corsRules: []
@@ -2859,9 +2887,9 @@ resource sagdepdrwusblobservices &#39;Microsoft.Storage/storageAccounts/blobServ
   }
 }
 
-resource sagdepdrwusfileservices &#39;Microsoft.Storage/storageAccounts/fileServices@2023-04-01&#39; = {
+resource sagdepdrwusfileservices 'Microsoft.Storage/storageAccounts/fileServices@2023-04-01' = {
   parent: sagdepdrwus
-  name: &#39;default&#39;
+  name: 'default'
   properties: {
     cors: {
       corsRules: []
@@ -2872,9 +2900,9 @@ resource sagdepdrwusfileservices &#39;Microsoft.Storage/storageAccounts/fileServ
   }
 }
 
-resource sagdepdrwusqueueservices &#39;Microsoft.Storage/storageAccounts/queueServices@2023-04-01&#39; = {
+resource sagdepdrwusqueueservices 'Microsoft.Storage/storageAccounts/queueServices@2023-04-01' = {
   parent: sagdepdrwus
-  name: &#39;default&#39;
+  name: 'default'
   properties: {
     cors: {
       corsRules: []
@@ -2882,9 +2910,9 @@ resource sagdepdrwusqueueservices &#39;Microsoft.Storage/storageAccounts/queueSe
   }
 }
 
-resource sagdepdrwustableservices &#39;Microsoft.Storage/storageAccounts/tableServices@2023-04-01&#39; = {
+resource sagdepdrwustableservices 'Microsoft.Storage/storageAccounts/tableServices@2023-04-01' = {
   parent: sagdepdrwus
-  name: &#39;default&#39;
+  name: 'default'
   properties: {
     cors: {
       corsRules: []
@@ -2904,45 +2932,45 @@ resource sagdepdrwustableservices &#39;Microsoft.Storage/storageAccounts/tableSe
 </code></pre></div></p>
 <p><strong>Bicep Code: <code>nsg_main.bicep</code></strong>
 <div class="highlight"><pre><span></span><code>param location string = resourceGroup().location
-var applicationtag = &#39;Infrastructure&#39;
-var environmetag = &#39;Disaster Recovery&#39;
-var infrastructure_rg_name = &#39;dr-rg-gdep-pwus-infrastructure&#39;
-var fortinet_rg_name = &#39;dr-rg-gdep-pwus-fortinet&#39;
+var applicationtag = 'Infrastructure'
+var environmetag = 'Disaster Recovery'
+var infrastructure_rg_name = 'dr-rg-gdep-pwus-infrastructure'
+var fortinet_rg_name = 'dr-rg-gdep-pwus-fortinet'
 
-@description(&#39;Used By Most of our Subnets&#39;)
-module nsggdepdrwusdefault &#39;./nsg.bicep&#39; = {
-  name: &#39;${deployment().name}-nsg-gdep-pwus-default&#39;
+@description('Used By Most of our Subnets')
+module nsggdepdrwusdefault './nsg.bicep' = {
+  name: '${deployment().name}-nsg-gdep-pwus-default'
   scope: resourceGroup(infrastructure_rg_name)
   params: {
-    name: &#39;nsg-gdep-pwus-default&#39;
+    name: 'nsg-gdep-pwus-default'
     location: location
     tags: { Application: applicationtag, Environment: environmetag }
     properties: {}
   }
 }
-@description(&#39;Used By Meraki Public Subnet&#39;)
-module nsggdepdrwusmeraki &#39;./nsg.bicep&#39; = {
-  name: &#39;${deployment().name}-nsg-gdep-pwus-meraki&#39;
+@description('Used By Meraki Public Subnet')
+module nsggdepdrwusmeraki './nsg.bicep' = {
+  name: '${deployment().name}-nsg-gdep-pwus-meraki'
   scope: resourceGroup(infrastructure_rg_name)
   params: {
-    name: &#39;nsg-gdep-pwus-meraki&#39;
+    name: 'nsg-gdep-pwus-meraki'
     location: location
     tags: { Application: applicationtag, Environment: environmetag }
     properties: {
       securityRules: [
         {
-          name: &#39;AllowAnyCustom443Inbound&#39;
-          type: &#39;Microsoft.Network/networkSecurityGroups/securityRules&#39;
+          name: 'AllowAnyCustom443Inbound'
+          type: 'Microsoft.Network/networkSecurityGroups/securityRules'
           properties: {
-            description: &#39;Per Abhishek this may be required when (if) we enable Cisco Anyconnect&#39;
-            protocol: &#39;*&#39;
-            sourcePortRange: &#39;*&#39;
-            destinationPortRange: &#39;*&#39;
-            sourceAddressPrefix: &#39;*&#39;
-            destinationAddressPrefix: &#39;*&#39;
-            access: &#39;Allow&#39;
+            description: 'Per Abhishek this may be required when (if) we enable Cisco Anyconnect'
+            protocol: '*'
+            sourcePortRange: '*'
+            destinationPortRange: '*'
+            sourceAddressPrefix: '*'
+            destinationAddressPrefix: '*'
+            access: 'Allow'
             priority: 100
-            direction: &#39;Inbound&#39;
+            direction: 'Inbound'
             sourcePortRanges: []
             destinationPortRanges: []
             sourceAddressPrefixes: []
@@ -2950,17 +2978,17 @@ module nsggdepdrwusmeraki &#39;./nsg.bicep&#39; = {
           }
         }
         {
-          name: &#39;AllowAnyCustom443InboundUDP&#39;
-          type: &#39;Microsoft.Network/networkSecurityGroups/securityRules&#39;
+          name: 'AllowAnyCustom443InboundUDP'
+          type: 'Microsoft.Network/networkSecurityGroups/securityRules'
           properties: {
-            protocol: &#39;UDP&#39;
-            sourcePortRange: &#39;443&#39;
-            destinationPortRange: &#39;443&#39;
-            sourceAddressPrefix: &#39;*&#39;
-            destinationAddressPrefix: &#39;*&#39;
-            access: &#39;Allow&#39;
+            protocol: 'UDP'
+            sourcePortRange: '443'
+            destinationPortRange: '443'
+            sourceAddressPrefix: '*'
+            destinationAddressPrefix: '*'
+            access: 'Allow'
             priority: 110
-            direction: &#39;Inbound&#39;
+            direction: 'Inbound'
             sourcePortRanges: []
             destinationPortRanges: []
             sourceAddressPrefixes: []
@@ -2968,17 +2996,17 @@ module nsggdepdrwusmeraki &#39;./nsg.bicep&#39; = {
           }
         }
         {
-          name: &#39;AllowAny&#39;
-          type: &#39;Microsoft.Network/networkSecurityGroups/securityRules&#39;
+          name: 'AllowAny'
+          type: 'Microsoft.Network/networkSecurityGroups/securityRules'
           properties: {
-            protocol: &#39;*&#39;
-            sourcePortRange: &#39;*&#39;
-            destinationPortRange: &#39;*&#39;
-            sourceAddressPrefix: &#39;*&#39;
-            destinationAddressPrefix: &#39;*&#39;
-            access: &#39;Allow&#39;
+            protocol: '*'
+            sourcePortRange: '*'
+            destinationPortRange: '*'
+            sourceAddressPrefix: '*'
+            destinationAddressPrefix: '*'
+            access: 'Allow'
             priority: 120
-            direction: &#39;Outbound&#39;
+            direction: 'Outbound'
             sourcePortRanges: []
             destinationPortRanges: []
             sourceAddressPrefixes: []
@@ -2989,52 +3017,52 @@ module nsggdepdrwusmeraki &#39;./nsg.bicep&#39; = {
     }
   }
 }
-@description(&#39;Used By Fortinet Firewall&#39;)
-module nsggdepdrwusfortinet &#39;./nsg.bicep&#39; = {
-  name: &#39;${deployment().name}-nsg-gdep-pwus-fortinet&#39;
+@description('Used By Fortinet Firewall')
+module nsggdepdrwusfortinet './nsg.bicep' = {
+  name: '${deployment().name}-nsg-gdep-pwus-fortinet'
   scope: resourceGroup(fortinet_rg_name)
   params: {
-    name: &#39;nsg-gdep-pwus-fortinet&#39;
+    name: 'nsg-gdep-pwus-fortinet'
     location: location
     tags: { Application: applicationtag, Environment: environmetag }
     properties: {
       securityRules: [
         {
-          name: &#39;AllowAllOutbound&#39;
+          name: 'AllowAllOutbound'
           properties: {
-            access: &#39;Allow&#39;
-            description: &#39;Allow all out&#39;
-            destinationAddressPrefix: &#39;*&#39;
+            access: 'Allow'
+            description: 'Allow all out'
+            destinationAddressPrefix: '*'
             destinationAddressPrefixes: []
-            destinationPortRange: &#39;*&#39;
+            destinationPortRange: '*'
             destinationPortRanges: []
-            direction: &#39;Outbound&#39;
+            direction: 'Outbound'
             priority: 105
-            protocol: &#39;*&#39;
-            sourceAddressPrefix: &#39;*&#39;
+            protocol: '*'
+            sourceAddressPrefix: '*'
             sourceAddressPrefixes: []
-            sourcePortRange: &#39;*&#39;
+            sourcePortRange: '*'
             sourcePortRanges: []
           }
-          type: &#39;Microsoft.Network/networkSecurityGroups/securityRules&#39;
+          type: 'Microsoft.Network/networkSecurityGroups/securityRules'
         }
         {
-          name: &#39;AllowAllInbound&#39;
+          name: 'AllowAllInbound'
           properties: {
-            access: &#39;Allow&#39;
-            destinationAddressPrefix: &#39;*&#39;
+            access: 'Allow'
+            destinationAddressPrefix: '*'
             destinationAddressPrefixes: []
-            destinationPortRange: &#39;*&#39;
+            destinationPortRange: '*'
             destinationPortRanges: []
-            direction: &#39;Inbound&#39;
+            direction: 'Inbound'
             priority: 110
-            protocol: &#39;*&#39;
-            sourceAddressPrefix: &#39;*&#39;
+            protocol: '*'
+            sourceAddressPrefix: '*'
             sourceAddressPrefixes: []
-            sourcePortRange: &#39;*&#39;
+            sourcePortRange: '*'
             sourcePortRanges: []
           }
-          type: &#39;Microsoft.Network/networkSecurityGroups/securityRules&#39;
+          type: 'Microsoft.Network/networkSecurityGroups/securityRules'
         }
       ]
     }
@@ -3047,7 +3075,7 @@ param name string
 param tags object
 param properties object
 
-resource nsggdepdrwus &#39;Microsoft.Network/networkSecurityGroups@2023-09-01&#39;={
+resource nsggdepdrwus 'Microsoft.Network/networkSecurityGroups@2023-09-01'={
   name:name
   location:location
   tags:tags
@@ -3066,19 +3094,19 @@ resource nsggdepdrwus &#39;Microsoft.Network/networkSecurityGroups@2023-09-01&#3
 </code></pre></div></p>
 <p><strong>Bicep Code: <code>udr_main.bicep</code></strong>
 <div class="highlight"><pre><span></span><code>param location string = resourceGroup().location
-var applicationtag = &#39;Infrastructure&#39;
-var environmetag = &#39;Disaster Recovery&#39;
+var applicationtag = 'Infrastructure'
+var environmetag = 'Disaster Recovery'
 
-//var infrastructure_rg_name = &#39;dr-rg-gdep-pwus-infrastructure&#39;
-var fortinet_rg_name = &#39;dr-rg-gdep-pwus-fortinet&#39;
-var meraki_sdwan_rg_name = &#39;dr-rg-gdep-pwus-meraki-sdwan&#39;
+//var infrastructure_rg_name = 'dr-rg-gdep-pwus-infrastructure'
+var fortinet_rg_name = 'dr-rg-gdep-pwus-fortinet'
+var meraki_sdwan_rg_name = 'dr-rg-gdep-pwus-meraki-sdwan'
 
-@description(&#39;Used to route traffic intended to go to On Premise network from Azure Hub&#39;)
-module udrgdepdrwushub2onprem &#39;./udr.bicep&#39; = {
-  name: &#39;${deployment().name}-route-gdep-pwus-azurehub-onprem&#39;
+@description('Used to route traffic intended to go to On Premise network from Azure Hub')
+module udrgdepdrwushub2onprem './udr.bicep' = {
+  name: '${deployment().name}-route-gdep-pwus-azurehub-onprem'
   scope: resourceGroup(fortinet_rg_name)
   params: {
-    name: &#39;route-gdep-pwus-azurehub-onprem&#39;
+    name: 'route-gdep-pwus-azurehub-onprem'
     location: location
     tags: { Application: applicationtag, Environment: environmetag }
     properties: {
@@ -3095,7 +3123,7 @@ param name string
 param tags object
 param properties object
 
-resource rtgdepdrwus &#39;Microsoft.Network/routeTables@2023-09-01&#39;={
+resource rtgdepdrwus 'Microsoft.Network/routeTables@2023-09-01'={
   name:name
   location:location
   tags:tags
@@ -3114,22 +3142,22 @@ resource rtgdepdrwus &#39;Microsoft.Network/routeTables@2023-09-01&#39;={
 </code></pre></div></p>
 <p><strong>Bicep Code: <code>vnet_main.bicep</code></strong>
 <div class="highlight"><pre><span></span><code>param location string = resourceGroup().location
-var applicationtag = &#39;Infrastructure&#39;
-var environmetag = &#39;Disaster Recovery&#39;
+var applicationtag = 'Infrastructure'
+var environmetag = 'Disaster Recovery'
 
 /*
-var infrastructure_rg_name = &#39;dr-rg-gdep-pwus-infrastructure&#39;
-var fortinet_rg_name = &#39;dr-rg-gdep-pwus-fortinet&#39;
-var meraki_sdwan_rg_name = &#39;dr-rg-gdep-pwus-meraki-sdwan&#39;
+var infrastructure_rg_name = 'dr-rg-gdep-pwus-infrastructure'
+var fortinet_rg_name = 'dr-rg-gdep-pwus-fortinet'
+var meraki_sdwan_rg_name = 'dr-rg-gdep-pwus-meraki-sdwan'
 */
-var vnet_rg_name = &#39;dr-rg-gdep-pwus-vnets&#39;
+var vnet_rg_name = 'dr-rg-gdep-pwus-vnets'
 
-@description(&#39;Hub Virtual Network with NVA namely Fortinet Firewall&#39;)
-module vnetgdepdrwusfortinet &#39;./vnet.bicep&#39; = {
-  name: &#39;${deployment().name}-vnet-gdep-pwus-fortinet&#39;
+@description('Hub Virtual Network with NVA namely Fortinet Firewall')
+module vnetgdepdrwusfortinet './vnet.bicep' = {
+  name: '${deployment().name}-vnet-gdep-pwus-fortinet'
   scope: resourceGroup(vnet_rg_name)
   params: {
-    name: &#39;vnet-gdep-pwus-fortinet&#39;
+    name: 'vnet-gdep-pwus-fortinet'
     location: location
     tags: { Application: applicationtag, Environment: environmetag }
     properties: {
@@ -3152,7 +3180,7 @@ param name string
 param tags object
 param properties object
 
-resource vnetgdepdrwus &#39;Microsoft.Network/virtualNetworks@2023-09-01&#39;={
+resource vnetgdepdrwus 'Microsoft.Network/virtualNetworks@2023-09-01'={
   name:name
   location:location
   tags:tags
@@ -3186,7 +3214,7 @@ output virtualnetworkname string = vnetgdepdrwus.name
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2025 15:21:49 UTC">July 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3239,7 +3267,7 @@ output virtualnetworkname string = vnetgdepdrwus.name
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       

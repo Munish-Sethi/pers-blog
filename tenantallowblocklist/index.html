@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../None">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2419,6 +2419,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3100,21 +3128,21 @@
 <h3 id="investigation-phase-2-audit-log-analysis">Investigation Phase 2: Audit Log Analysis</h3>
 <p>To understand how the user ended up on the block list, we needed to examine the audit logs.</p>
 <div class="highlight"><pre><span></span><code><span class="c"># Search for Tenant Allow/Block List activities on July 17th</span>
-<span class="nb">Search-UnifiedAuditLog</span> <span class="n">-StartDate</span> <span class="s2">&quot;2025-07-17 00:00:00&quot;</span> <span class="n">-EndDate</span> <span class="s2">&quot;2025-07-17 23:59:59&quot;</span> <span class="n">-Operations</span> <span class="s2">&quot;New-TenantAllowBlockListItems&quot;</span> <span class="n">-ResultSize</span> <span class="n">1000</span>
+<span class="nb">Search-UnifiedAuditLog</span> <span class="n">-StartDate</span> <span class="s2">"2025-07-17 00:00:00"</span> <span class="n">-EndDate</span> <span class="s2">"2025-07-17 23:59:59"</span> <span class="n">-Operations</span> <span class="s2">"New-TenantAllowBlockListItems"</span> <span class="n">-ResultSize</span> <span class="n">1000</span>
 </code></pre></div>
 <p><strong>Critical Discovery</strong>: The audit log revealed:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;CreationTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-07-17T14:07:06&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;Operation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;New-TenantAllowBlockListItems&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;UserId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NT AUTHORITY\\SYSTEM (Microsoft.Exchange.AdminApi.NetCore)&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;Parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ListSubType&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Submission&quot;</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Block&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;True&quot;</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Entries&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;john.doe@yourdomain.com&quot;</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SubmissionID&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8c3cd19d-e1fb-4095-fa0a-08ddc53afdd2&quot;</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ListType&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sender&quot;</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExpirationDate&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8/15/2025 6:30:00 PM&quot;</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SubmissionUserId&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin.user@yourdomain.com&quot;</span><span class="p">}</span>
+<span class="w">  </span><span class="nt">"CreationTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-07-17T14:07:06"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New-TenantAllowBlockListItems"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NT AUTHORITY\\SYSTEM (Microsoft.Exchange.AdminApi.NetCore)"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ListSubType"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Submission"</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Block"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Entries"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@yourdomain.com"</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SubmissionID"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8c3cd19d-e1fb-4095-fa0a-08ddc53afdd2"</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ListType"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sender"</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ExpirationDate"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8/15/2025 6:30:00 PM"</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SubmissionUserId"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin.user@yourdomain.com"</span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -3126,7 +3154,7 @@
 <p>The most puzzling aspect was why internal emails were blocked while external emails continued to deliver normally. This behavior seemed inconsistent with how the Tenant Allow/Block List should function.</p>
 <h4 id="message-trace-analysis">Message Trace Analysis</h4>
 <div class="highlight"><pre><span></span><code><span class="c"># Check for failed internal emails</span>
-<span class="nb">Get-MessageTrace</span> <span class="n">-RecipientAddress</span> <span class="s2">&quot;john.doe@yourdomain.com&quot;</span> <span class="n">-StartDate</span> <span class="s2">&quot;2025-07-17 00:00:00&quot;</span> <span class="n">-EndDate</span> <span class="s2">&quot;2025-07-17 23:59:59&quot;</span> <span class="n">-Status</span> <span class="s2">&quot;Failed&quot;</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Received</span><span class="p">,</span> <span class="n">SenderAddress</span><span class="p">,</span> <span class="n">Subject</span><span class="p">,</span> <span class="n">Status</span><span class="p">,</span> <span class="n">MessageTraceId</span>
+<span class="nb">Get-MessageTrace</span> <span class="n">-RecipientAddress</span> <span class="s2">"john.doe@yourdomain.com"</span> <span class="n">-StartDate</span> <span class="s2">"2025-07-17 00:00:00"</span> <span class="n">-EndDate</span> <span class="s2">"2025-07-17 23:59:59"</span> <span class="n">-Status</span> <span class="s2">"Failed"</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Received</span><span class="p">,</span> <span class="n">SenderAddress</span><span class="p">,</span> <span class="n">Subject</span><span class="p">,</span> <span class="n">Status</span><span class="p">,</span> <span class="n">MessageTraceId</span>
 </code></pre></div>
 <p><strong>Results</strong>: Multiple internal emails failed after 8:07 AM CST:</p>
 <div class="highlight"><pre><span></span><code>Received             SenderAddress                    Subject                Status
@@ -3137,16 +3165,16 @@
 </code></pre></div>
 <h4 id="detailed-failure-analysis">Detailed Failure Analysis</h4>
 <div class="highlight"><pre><span></span><code><span class="c"># Get detailed trace for specific failed message</span>
-<span class="nb">Get-MessageTraceDetail</span> <span class="n">-MessageTraceId</span> <span class="s2">&quot;990b654e-bcad-489d-66b1-08ddc579ddd4&quot;</span> <span class="n">-RecipientAddress</span> <span class="s2">&quot;john.doe@yourdomain.com&quot;</span>
+<span class="nb">Get-MessageTraceDetail</span> <span class="n">-MessageTraceId</span> <span class="s2">"990b654e-bcad-489d-66b1-08ddc579ddd4"</span> <span class="n">-RecipientAddress</span> <span class="s2">"john.doe@yourdomain.com"</span>
 </code></pre></div>
 <p><strong>Critical Error Message</strong>:
 <div class="highlight"><pre><span></span><code>Event: Fail
-Reason: [{LED=550 5.7.703 Your message can&#39;t be delivered because messages to john.doe@yourdomain.com...
+Reason: [{LED=550 5.7.703 Your message can't be delivered because messages to john.doe@yourdomain.com...
 </code></pre></div></p>
 <p><strong>Error Code Analysis</strong>: <code>550 5.7.703</code> is the specific error code for Tenant Allow/Block List blocking, confirming the block list was the cause.</p>
 <h4 id="external-email-analysis">External Email Analysis</h4>
 <div class="highlight"><pre><span></span><code><span class="c"># Check if external emails were delivered successfully after the block</span>
-<span class="nb">Get-MessageTrace</span> <span class="n">-RecipientAddress</span> <span class="s2">&quot;john.doe@yourdomain.com&quot;</span> <span class="n">-StartDate</span> <span class="s2">&quot;2025-07-17 08:07:00&quot;</span> <span class="n">-EndDate</span> <span class="s2">&quot;2025-07-17 23:59:59&quot;</span> <span class="n">-Status</span> <span class="s2">&quot;Delivered&quot;</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">SenderAddress</span> <span class="o">-notlike</span> <span class="s2">&quot;*@yourdomain.com&quot;</span><span class="p">}</span>
+<span class="nb">Get-MessageTrace</span> <span class="n">-RecipientAddress</span> <span class="s2">"john.doe@yourdomain.com"</span> <span class="n">-StartDate</span> <span class="s2">"2025-07-17 08:07:00"</span> <span class="n">-EndDate</span> <span class="s2">"2025-07-17 23:59:59"</span> <span class="n">-Status</span> <span class="s2">"Delivered"</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">SenderAddress</span> <span class="o">-notlike</span> <span class="s2">"*@yourdomain.com"</span><span class="p">}</span>
 </code></pre></div>
 <p><strong>Surprising Results</strong>: External emails were successfully delivered:</p>
 <div class="highlight"><pre><span></span><code>Received             SenderAddress                        Subject
@@ -3158,7 +3186,7 @@ Reason: [{LED=550 5.7.703 Your message can&#39;t be delivered because messages t
 <h3 id="investigation-phase-4-proofpoint-connector-analysis">Investigation Phase 4: ProofPoint Connector Analysis</h3>
 <p>The anomalous behavior led us to examine the ProofPoint integration with O365.</p>
 <div class="highlight"><pre><span></span><code><span class="c"># Check for ProofPoint connectors</span>
-<span class="nb">Get-InboundConnector</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="o">-like</span> <span class="s2">&quot;*proof*&quot;</span> <span class="o">-or</span> <span class="nv">$_</span><span class="p">.</span><span class="n">ConnectorSource</span> <span class="o">-like</span> <span class="s2">&quot;*proof*&quot;</span><span class="p">}</span>
+<span class="nb">Get-InboundConnector</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="o">-like</span> <span class="s2">"*proof*"</span> <span class="o">-or</span> <span class="nv">$_</span><span class="p">.</span><span class="n">ConnectorSource</span> <span class="o">-like</span> <span class="s2">"*proof*"</span><span class="p">}</span>
 </code></pre></div>
 <p><strong>Discovery</strong>: 
 <div class="highlight"><pre><span></span><code>Name                         SenderDomains SenderIPAddresses           Enabled
@@ -3166,7 +3194,7 @@ Reason: [{LED=550 5.7.703 Your message can&#39;t be delivered because messages t
 Proofpoint Inbound connector {smtp:*;1}    {67.231.149.0/24, ...}     True
 </code></pre></div></p>
 <div class="highlight"><pre><span></span><code><span class="c"># Get detailed connector configuration</span>
-<span class="nb">Get-InboundConnector</span> <span class="s2">&quot;Proofpoint Inbound connector&quot;</span> <span class="p">|</span> <span class="nb">Format-List</span>
+<span class="nb">Get-InboundConnector</span> <span class="s2">"Proofpoint Inbound connector"</span> <span class="p">|</span> <span class="nb">Format-List</span>
 </code></pre></div>
 <p><strong>Key Configuration Properties</strong>:
 - <strong>SenderDomains</strong>: <code>{smtp:*;1}</code> - Accepts from any domain
@@ -3198,20 +3226,20 @@ Proofpoint Inbound connector {smtp:*;1}    {67.231.149.0/24, ...}     True
 <h2 id="resolution-steps">Resolution Steps</h2>
 <h3 id="step-1-immediate-remediation">Step 1: Immediate Remediation</h3>
 <div class="highlight"><pre><span></span><code><span class="c"># Remove the user from the block list</span>
-<span class="nb">Remove-TenantAllowBlockListItems</span> <span class="n">-ListType</span> <span class="n">Sender</span> <span class="n">-Entries</span> <span class="s2">&quot;john.doe@yourdomain.com&quot;</span>
+<span class="nb">Remove-TenantAllowBlockListItems</span> <span class="n">-ListType</span> <span class="n">Sender</span> <span class="n">-Entries</span> <span class="s2">"john.doe@yourdomain.com"</span>
 </code></pre></div>
 <h3 id="step-2-comprehensive-impact-assessment">Step 2: Comprehensive Impact Assessment</h3>
 <div class="highlight"><pre><span></span><code><span class="c"># Generate comprehensive report of all blocked emails</span>
-<span class="nv">$blockedEmails</span> <span class="p">=</span> <span class="nb">Get-MessageTrace</span> <span class="n">-RecipientAddress</span> <span class="s2">&quot;john.doe@yourdomain.com&quot;</span> <span class="n">-StartDate</span> <span class="s2">&quot;2025-07-17 08:07:00&quot;</span> <span class="n">-EndDate</span> <span class="s2">&quot;2025-07-17 23:59:59&quot;</span> <span class="n">-Status</span> <span class="s2">&quot;Failed&quot;</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">SenderAddress</span> <span class="o">-like</span> <span class="s2">&quot;*@yourdomain.com&quot;</span><span class="p">}</span>
+<span class="nv">$blockedEmails</span> <span class="p">=</span> <span class="nb">Get-MessageTrace</span> <span class="n">-RecipientAddress</span> <span class="s2">"john.doe@yourdomain.com"</span> <span class="n">-StartDate</span> <span class="s2">"2025-07-17 08:07:00"</span> <span class="n">-EndDate</span> <span class="s2">"2025-07-17 23:59:59"</span> <span class="n">-Status</span> <span class="s2">"Failed"</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">SenderAddress</span> <span class="o">-like</span> <span class="s2">"*@yourdomain.com"</span><span class="p">}</span>
 
 <span class="c"># Export for documentation</span>
-<span class="nv">$blockedEmails</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="p">@{</span><span class="n">Name</span><span class="p">=</span><span class="s2">&quot;Time_CST&quot;</span><span class="p">;</span><span class="n">Expression</span><span class="p">={</span><span class="nv">$_</span><span class="p">.</span><span class="n">Received</span><span class="p">.</span><span class="n">AddHours</span><span class="p">(-</span><span class="n">5</span><span class="p">)}},</span> <span class="n">SenderAddress</span><span class="p">,</span> <span class="n">Subject</span><span class="p">,</span> <span class="n">Status</span><span class="p">,</span> <span class="n">MessageTraceId</span> <span class="p">|</span> <span class="nb">Export-Csv</span> <span class="n">-Path</span> <span class="s2">&quot;C:\temp\BlockedEmails_Impact_Assessment.csv&quot;</span> <span class="n">-NoTypeInformation</span>
+<span class="nv">$blockedEmails</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="p">@{</span><span class="n">Name</span><span class="p">=</span><span class="s2">"Time_CST"</span><span class="p">;</span><span class="n">Expression</span><span class="p">={</span><span class="nv">$_</span><span class="p">.</span><span class="n">Received</span><span class="p">.</span><span class="n">AddHours</span><span class="p">(-</span><span class="n">5</span><span class="p">)}},</span> <span class="n">SenderAddress</span><span class="p">,</span> <span class="n">Subject</span><span class="p">,</span> <span class="n">Status</span><span class="p">,</span> <span class="n">MessageTraceId</span> <span class="p">|</span> <span class="nb">Export-Csv</span> <span class="n">-Path</span> <span class="s2">"C:\temp\BlockedEmails_Impact_Assessment.csv"</span> <span class="n">-NoTypeInformation</span>
 
-<span class="nb">Write-Host</span> <span class="s2">&quot;Total internal emails blocked: </span><span class="p">$(</span><span class="nv">$blockedEmails</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span><span class="s2">&quot;</span>
+<span class="nb">Write-Host</span> <span class="s2">"Total internal emails blocked: </span><span class="p">$(</span><span class="nv">$blockedEmails</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span><span class="s2">"</span>
 </code></pre></div>
 <h3 id="step-3-verification">Step 3: Verification</h3>
 <div class="highlight"><pre><span></span><code><span class="c"># Verify removal from block list</span>
-<span class="nb">Get-TenantAllowBlockListItems</span> <span class="n">-ListType</span> <span class="n">Sender</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Value</span> <span class="o">-like</span> <span class="s2">&quot;*john.doe*&quot;</span><span class="p">}</span>
+<span class="nb">Get-TenantAllowBlockListItems</span> <span class="n">-ListType</span> <span class="n">Sender</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Value</span> <span class="o">-like</span> <span class="s2">"*john.doe*"</span><span class="p">}</span>
 </code></pre></div>
 <h2 id="lessons-learned-and-preventive-measures">Lessons Learned and Preventive Measures</h2>
 <h3 id="technical-insights">Technical Insights</h3>
@@ -3231,16 +3259,16 @@ Proofpoint Inbound connector {smtp:*;1}    {67.231.149.0/24, ...}     True
 <span class="nv">$yesterday</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddDays</span><span class="p">(-</span><span class="n">1</span><span class="p">)</span>
 <span class="nv">$today</span> <span class="p">=</span> <span class="nb">Get-Date</span>
 
-<span class="nv">$changes</span> <span class="p">=</span> <span class="nb">Search-UnifiedAuditLog</span> <span class="n">-StartDate</span> <span class="nv">$yesterday</span> <span class="n">-EndDate</span> <span class="nv">$today</span> <span class="n">-Operations</span> <span class="s2">&quot;New-TenantAllowBlockListItems&quot;</span><span class="p">,</span><span class="s2">&quot;Set-TenantAllowBlockListItems&quot;</span><span class="p">,</span><span class="s2">&quot;Remove-TenantAllowBlockListItems&quot;</span> <span class="n">-ResultSize</span> <span class="n">5000</span>
+<span class="nv">$changes</span> <span class="p">=</span> <span class="nb">Search-UnifiedAuditLog</span> <span class="n">-StartDate</span> <span class="nv">$yesterday</span> <span class="n">-EndDate</span> <span class="nv">$today</span> <span class="n">-Operations</span> <span class="s2">"New-TenantAllowBlockListItems"</span><span class="p">,</span><span class="s2">"Set-TenantAllowBlockListItems"</span><span class="p">,</span><span class="s2">"Remove-TenantAllowBlockListItems"</span> <span class="n">-ResultSize</span> <span class="n">5000</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="nv">$changes</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nb">Write-Host</span> <span class="s2">&quot;Tenant Allow/Block List changes detected:&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span>
+    <span class="nb">Write-Host</span> <span class="s2">"Tenant Allow/Block List changes detected:"</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span>
     <span class="nv">$changes</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
         <span class="nv">$details</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">AuditData</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
-        <span class="nb">Write-Host</span> <span class="s2">&quot;Time: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">CreationDate</span><span class="p">)</span><span class="s2"> | Operation: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Operations</span><span class="p">)</span><span class="s2"> | User: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">UserIds</span><span class="p">)</span><span class="s2">&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Cyan</span>
+        <span class="nb">Write-Host</span> <span class="s2">"Time: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">CreationDate</span><span class="p">)</span><span class="s2"> | Operation: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Operations</span><span class="p">)</span><span class="s2"> | User: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">UserIds</span><span class="p">)</span><span class="s2">"</span> <span class="n">-ForegroundColor</span> <span class="n">Cyan</span>
     <span class="p">}</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nb">Write-Host</span> <span class="s2">&quot;No Tenant Allow/Block List changes in the last 24 hours.&quot;</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+    <span class="nb">Write-Host</span> <span class="s2">"No Tenant Allow/Block List changes in the last 24 hours."</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="conclusion">Conclusion</h2>
@@ -3273,7 +3301,7 @@ Proofpoint Inbound connector {smtp:*;1}    {67.231.149.0/24, ...}     True
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 27, 2025 19:19:06 UTC">July 27, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:25 UTC">September 10, 2026</span>
   </span>
 
     
@@ -3326,7 +3354,7 @@ Proofpoint Inbound connector {smtp:*;1}    {67.231.149.0/24, ...}     True
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/custom.js"></script>
       
