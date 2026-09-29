@@ -80,6 +80,7 @@ nav:
       - O365/Excel Automation via SPO: spo-o365_excel_automation.md
       - Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration): email-workmail-to-m365-part1.md
       - Migrating from Amazon WorkMail to Microsoft 365 - Part 2 (DNS Cutover, Catch-All & Cleanup): email-workmail-to-m365-part2.md
+      - "New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)": email-o365-new-outlook-features.md
   - UKG:
       - Secure File Transfer with UKG Dimensions: ukg-sftp-file-transfer.md
       - Employee Verification via API: ukg-api-employee-verification.md
