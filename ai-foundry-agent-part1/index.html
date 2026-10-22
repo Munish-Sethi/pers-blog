@@ -1,0 +1,3536 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Part 1 - why I replaced a custom multi-agent Teams bot with an Azure AI Foundry agent, an authenticated MCP server and Logic Apps, and why Microsoft 365 Copilot Chat became the entry point.">
+      
+      
+      
+        <link rel="canonical" href="https://munishsethi.com/ai-foundry-agent-part1/">
+      
+      
+        <link rel="prev" href="../ai-multi-agent/">
+      
+      
+        <link rel="next" href="../ai-foundry-agent-part2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>From a Custom Multi-Agent Bot to Azure AI Foundry - Part 1 (Architecture, Components and Why I Moved) - Munish Sethi's Technical Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <meta name="google-site-verification" content="rGvhhCws2Kkh_2j7lgAkmDrs7a8ZtKDwTJdnxL_m_mU" />
+  <meta name="msvalidate.01" content="9869170E3DE4D60F1D140D32B60ABFDB" />
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#from-a-custom-multi-agent-bot-to-azure-ai-foundry-an-enterprise-it-help-desk-agent" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish Sethi&#39;s Technical Blog" class="md-header__button md-logo" aria-label="Munish Sethi's Technical Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish Sethi's Technical Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              From a Custom Multi-Agent Bot to Azure AI Foundry - Part 1 (Architecture, Components and Why I Moved)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish Sethi&#39;s Technical Blog" class="md-nav__button md-logo" aria-label="Munish Sethi's Technical Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish Sethi's Technical Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (csv/Parquet) stdio- Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (database) stdio- Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (files/database) https- Part 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging MCP Servers (Https) with VS Code - Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building an Enterprise Multi-Agent AI System with Microsoft Teams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From a Custom Multi-Agent Bot to Azure AI Foundry - Part 1 (Architecture, Components and Why I Moved)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From a Custom Multi-Agent Bot to Azure AI Foundry - Part 1 (Architecture, Components and Why I Moved)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-architecture-components-and-why-i-moved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Architecture, Components and Why I Moved
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Architecture, Components and Why I Moved">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Series Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#then-vs-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Then vs. Now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-microsoft-entra-id-one-app-registration-four-app-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Microsoft Entra ID: one app registration, four app roles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-azure-ai-foundry-project-model-deployment-and-a-versioned-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Azure AI Foundry: project, model deployment and a versioned agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-mcp-server-an-authenticated-endpoint-per-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The MCP server: an authenticated endpoint per audience
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-azure-ai-search-policies-with-a-source-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Azure AI Search: policies with a source link
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-logic-apps-teams-cards-and-waiting-nothing-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Logic Apps: Teams cards and waiting, nothing else
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-publishing-one-app-for-teams-microsoft-365-and-copilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Publishing: one app for Teams, Microsoft 365 and Copilot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-observability-and-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Observability and cost
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem-i-hit-teams-never-starts-a-new-conversation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem I Hit: Teams Never Starts a New Conversation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution-microsoft-365-copilot-chat-as-the-front-door" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution: Microsoft 365 Copilot Chat as the Front Door
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-architectural-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Architectural Decisions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Architectural Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-one-agent-with-tools-not-multiple-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. One agent with tools, not multiple agents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-reuse-the-existing-mcp-server-add-an-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Reuse the existing MCP server, add an endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-custom-oauth-identity-passthrough-not-a-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Custom OAuth identity passthrough, not a service account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-logic-apps-for-humans-in-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Logic Apps for humans-in-the-loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-copilot-chat-over-a-teams-chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Copilot Chat over a Teams chat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lessons Learned
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open Issues
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-foundry-agent-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From a Custom Multi-Agent Bot to Azure AI Foundry - Part 2 (Step-by-Step Build)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-onestream-mcp-financial-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exposing OneStream Financial Data to an LLM — Live CEO/CFO Analytics via MCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-sap-mcp-onprem-vs-cloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP + AI: Did Moving to SaaS Quietly Cost Us Our Ability to Use AI on Our Own ERP Data?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Azure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certificate Based Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download Azure Bill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download Azure Resource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query Recovery Services Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entra Users, User Groups and Licence assignments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entra User Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-container-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrating Scheduled Jobs (Container Instances)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-build-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Build Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Deploy Container IaC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Deploy Container Github Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-custon-image-compute-gallery-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building and Publishing an Custom Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-publish-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying Azure Virtual Desktop (AVD) Desktops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-cleanup-obsolete-fsLogix-profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cleanup Obsolete FXLogix Profiles(AVD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Coninuity Program / Diasister Recovery - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Continuity Program / Disaster Recovery - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Continuity Program / Disaster Recovery - Git Hub Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restore VM from RSV Backup - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restore VM from RSV Backup - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fabric
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fabric
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-wharehouse-fact-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Warehouse data import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki, Nagios XI & Manage Engine
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cisco Meraki, Nagios XI & Manage Engine
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-unused-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki Unused Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki Devices Discovery and Nagios Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-itsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrating Monitoring System with ITSM System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-vm-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying Cisco Meraki vMX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory Domain Services
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory Domain Services
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create ADDS User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Update ADDS User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SAP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup PyRFC in your Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calling SAP RFC Function Modules from Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-system-start-stop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automating SAP System Start/Stop Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    O365
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outlook Actionable Adaptive Card - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outlook Actionable Adaptive Card - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharepoint Sites Enumeration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharepoint Document Library Enumeration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrate Sharepoint Document Library to Azure File Share
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concur Expense Report Aggregation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teams-user-number-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get all Teams Phone Assignment(s)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprovision-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deprovison User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tenantallowblocklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant Allow Block List - False Positive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spo-o365_excel_automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365/Excel Automation via SPO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-workmail-to-m365-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-workmail-to-m365-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrating from Amazon WorkMail to Microsoft 365 - Part 2 (DNS Cutover, Catch-All & Cleanup)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UKG
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UKG
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secure File Transfer with UKG Dimensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Employee Verification via API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-integration-and-dataview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automating Integration Execution and Dataview extract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Misc
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Misc
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proof Point User Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-clean-deployments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clean GitHub Deployments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpointo365connector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding DMARC/Spoofing, O365 with ProofPoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../smart-home-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Smart Home Automation with Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-architecture-components-and-why-i-moved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Architecture, Components and Why I Moved
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Architecture, Components and Why I Moved">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Series Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#then-vs-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Then vs. Now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-microsoft-entra-id-one-app-registration-four-app-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Microsoft Entra ID: one app registration, four app roles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-azure-ai-foundry-project-model-deployment-and-a-versioned-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Azure AI Foundry: project, model deployment and a versioned agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-mcp-server-an-authenticated-endpoint-per-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The MCP server: an authenticated endpoint per audience
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-azure-ai-search-policies-with-a-source-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Azure AI Search: policies with a source link
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-logic-apps-teams-cards-and-waiting-nothing-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Logic Apps: Teams cards and waiting, nothing else
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-publishing-one-app-for-teams-microsoft-365-and-copilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Publishing: one app for Teams, Microsoft 365 and Copilot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-observability-and-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Observability and cost
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem-i-hit-teams-never-starts-a-new-conversation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem I Hit: Teams Never Starts a New Conversation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution-microsoft-365-copilot-chat-as-the-front-door" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution: Microsoft 365 Copilot Chat as the Front Door
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-architectural-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Architectural Decisions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Architectural Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-one-agent-with-tools-not-multiple-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. One agent with tools, not multiple agents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-reuse-the-existing-mcp-server-add-an-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Reuse the existing MCP server, add an endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-custom-oauth-identity-passthrough-not-a-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Custom OAuth identity passthrough, not a service account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-logic-apps-for-humans-in-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Logic Apps for humans-in-the-loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-copilot-chat-over-a-teams-chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Copilot Chat over a Teams chat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lessons Learned
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open Issues
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="from-a-custom-multi-agent-bot-to-azure-ai-foundry-an-enterprise-it-help-desk-agent">From a Custom Multi-Agent Bot to Azure AI Foundry: An Enterprise IT Help Desk Agent</h1>
+<h2 id="part-1-architecture-components-and-why-i-moved">Part 1: Architecture, Components and Why I Moved</h2>
+<hr />
+<h3 id="series-navigation">📚 <strong>Series Navigation</strong></h3>
+<ul>
+<li>Background: <a href="../ai-multi-agent/">Building an Enterprise Multi-Agent AI System with Microsoft Teams</a></li>
+<li><strong>Part 1: Architecture, Components and Why I Moved</strong> <em>(Current)</em></li>
+<li><a href="../ai-foundry-agent-part2/">Part 2: Step-by-Step Build</a></li>
+</ul>
+<p><em>In <a href="../ai-multi-agent/">Building an Enterprise Multi-Agent AI System with Microsoft Teams</a> I documented a help desk assistant I built myself: a Bot Framework backend, a hybrid intent router, three specialized agents, my own thread storage and an AI memory layer. It worked. This two-part series documents what replaced it — the same help desk capabilities, rebuilt on Microsoft-managed services with almost all of the custom orchestration code removed. Part 1 is the architecture and the reasoning; <a href="../ai-foundry-agent-part2/">Part 2</a> is the step-by-step build.</em></p>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>The multi-agent article closed on the idea that a production assistant needs specialization, routing, context management, memory and enterprise integration. All of that is still true. What changed in a year is <strong>who has to build it</strong>.</p>
+<p>When I built the first version, Azure AI Foundry could host a knowledge agent, but anything operational — resetting an SAP password, creating a ticket, starting a phone request — had to live in my own code, behind my own router, in my own bot. Today a single Foundry agent can call my tools over the <strong>Model Context Protocol (MCP)</strong> <em>as the signed-in user</em>, Foundry keeps the conversation, Azure AI Search serves the policy documents, and the agent is published to <strong>Microsoft Teams and Microsoft 365 Copilot</strong> from the Foundry portal.</p>
+<p>The goal of the rebuild was simple: <strong>keep the business logic, delete the plumbing.</strong> Every rule that matters (who may reset whose password, which phone a manager may order, when an approval expires) stays in my code, where it can be tested. Everything that is undifferentiated — hosting a bot, routing intents, persisting threads, rendering a chat UI — moves to the platform.</p>
+<p><strong>The help desk agent handles:</strong></p>
+<ul>
+<li><strong>SAP password reset</strong> — for yourself, or for someone else if you are a help desk power user; the new password is delivered privately in Teams, never through the chat</li>
+<li><strong>Service desk tickets</strong> — "my open tickets", ticket status, create a ticket</li>
+<li><strong>Phone requests</strong> — new hire, replacement or leaver, with manager approval and a phone-admin hand-off in Teams</li>
+<li><strong>IT policy questions</strong> — answered from the company's own policy PDFs, with a link to the source</li>
+<li><strong>"What do you know about me?"</strong> — the user's own profile, accounts and roles</li>
+</ul>
+<hr />
+<h2 id="then-vs-now">Then vs. Now</h2>
+<p>Every section of the original article maps to something that no longer needs custom code:</p>
+<table>
+<thead>
+<tr>
+<th>What the multi-agent article built</th>
+<th>What replaced it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Azure Bot Service + FastAPI webhook + Teams bot handler</td>
+<td><strong>Agent Application</strong> published from Azure AI Foundry to Teams and Microsoft 365 Copilot</td>
+</tr>
+<tr>
+<td>Hybrid intent router (keywords + LLM classifier)</td>
+<td><strong>One Foundry agent</strong> that chooses tools from their descriptions and its instructions</td>
+</tr>
+<tr>
+<td>Local agent with Python tools</td>
+<td><strong>MCP tools</strong> on my existing MCP server, behind a dedicated authenticated endpoint</td>
+</tr>
+<tr>
+<td>Foundry RAG agent with its own vector store</td>
+<td><strong>Azure AI Search</strong> index attached to the same agent</td>
+</tr>
+<tr>
+<td>Thread persistence + sliding window</td>
+<td><strong>Foundry conversations</strong> (managed by the platform — see <em>The Problem I Hit</em>)</td>
+</tr>
+<tr>
+<td>Agent-specific context filtering</td>
+<td>Not needed — one agent, one context</td>
+</tr>
+<tr>
+<td>AI memory system</td>
+<td>Not needed — profile data comes from a tool, on demand</td>
+</tr>
+<tr>
+<td>Entra ID extracted by the bot</td>
+<td><strong>OAuth identity passthrough</strong> — the user's own token reaches my server</td>
+</tr>
+<tr>
+<td>Hard-coded list of power users</td>
+<td><strong>Entra app roles</strong> assigned through groups</td>
+</tr>
+</tbody>
+</table>
+<p>What stayed custom is deliberately small: the MCP tools (the business rules) and two Logic Apps (Teams cards and waits).</p>
+<hr />
+<h2 id="architecture-overview">Architecture Overview</h2>
+<div class="highlight"><pre><span></span><code>        ┌──────────────────────────────┐    ┌──────────────────────────┐
+        │ Microsoft 365 Copilot Chat   │    │ Microsoft Teams          │
+        │ (primary entry point)        │    │ (same app, not promoted) │
+        └──────────────┬───────────────┘    └────────────┬─────────────┘
+                       └───────────────┬─────────────────┘
+                                       ▼
+        ┌─────────────────────────────────────────────────────────────┐
+        │ Azure AI Foundry project                                     │
+        │  ┌───────────────────────────────────────────────────────┐  │
+        │  │ Help desk agent (versioned instructions)              │  │
+        │  │  • Model deployment (US Data Zone)                    │  │
+        │  │  • Tool: Azure AI Search  ──► policy PDFs index       │  │
+        │  │  • Tool: MCP connection (custom OAuth, per-user)      │  │
+        │  └───────────────────────────┬───────────────────────────┘  │
+        │  Tracing ──► Application Insights / Log Analytics           │
+        └──────────────────────────────┼──────────────────────────────┘
+                                       │ HTTPS + the user's Entra token
+                                       ▼
+        ┌─────────────────────────────────────────────────────────────┐
+        │ MCP server (container)                                      │
+        │  /helpdesk/mcp  ← help desk tools only (this series)        │
+        │  /mcp           ← data analysis tools (Claude, MCP series)  │
+        │  • validates token: tenant, audience, scope, app roles      │
+        │  • identity = token, never a tool argument                  │
+        └───┬──────────────┬──────────────┬───────────────┬───────────┘
+            ▼              ▼              ▼               ▼
+      SAP ECC (RFC)   ServiceDesk    HR / identity    Logic Apps
+      BAPIs           Plus API       data (SQL)       (Teams cards, waits)
+                                                          │
+                                                          │ managed identity
+                                                          ▼ callbacks
+                                                     MCP server
+</code></pre></div>
+<p>Two things are worth noticing in the diagram. First, <strong>the model never sees a password or makes a decision</strong> — it collects intent and calls tools; the tools decide. Second, <strong>the same MCP server</strong> from the <a href="../ai-claude-mcp-analytic-server-part1/">MCP Analytic Server series</a> hosts the help desk tools on a second endpoint, so there is one container, one deployment and one set of network routes to SAP and SQL.</p>
+<hr />
+<h2 id="the-components">The Components</h2>
+<h3 id="1-microsoft-entra-id-one-app-registration-four-app-roles">1. Microsoft Entra ID: one app registration, four app roles</h3>
+<p>A single app registration represents the MCP server. It is the audience of every token the server accepts, and it is where access is defined.</p>
+<p><strong>Why app roles instead of group checks in code:</strong> the token already carries the <code>roles</code> claim, so the server never has to call Microsoft Graph to ask "is this user in group X?". Access changes are made in Entra by an administrator, not by redeploying code.</p>
+<table>
+<thead>
+<tr>
+<th>App role</th>
+<th>Assigned to</th>
+<th>Grants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MCP.User</strong></td>
+<td>Analyst groups</td>
+<td>The data analysis tools on <code>/mcp</code> (Claude Desktop / claude.ai)</td>
+</tr>
+<tr>
+<td><strong>HelpDesk.User</strong></td>
+<td>All-employee groups (salaried, hourly, external staff)</td>
+<td>Profile, tickets, own SAP reset, phone requests</td>
+</tr>
+<tr>
+<td><strong>HelpDesk.PowerUser</strong></td>
+<td>Help desk support group</td>
+<td>Everything above, plus resetting <em>other</em> users' SAP passwords</td>
+</tr>
+<tr>
+<td><strong>HelpDesk.Workflow</strong></td>
+<td>Logic App managed identities (applications only)</td>
+<td>Calling back into the server with approval results</td>
+</tr>
+</tbody>
+</table>
+<p>One level deeper:</p>
+<ul>
+<li><strong>Assignment required = Yes.</strong> A user without a role cannot get a token for the app at all — the first line of defense is Entra, not my code.</li>
+<li><strong>Groups, not people.</strong> Roles are assigned to groups; only <em>direct</em> members receive the role (nested groups do not inherit).</li>
+<li><strong>Guests excluded.</strong> By group membership, and by the server checking the token's account-type claim.</li>
+<li><strong>One client secret per consumer.</strong> Foundry's connection and the server's own sign-in proxy use separate secrets on the same app, so either can be rotated or revoked independently. Secrets live in Key Vault with expiry dates set.</li>
+<li><strong>Admin consent granted once</strong> for the delegated scope, so employees are not asked to approve permissions.</li>
+</ul>
+<h3 id="2-azure-ai-foundry-project-model-deployment-and-a-versioned-agent">2. Azure AI Foundry: project, model deployment and a versioned agent</h3>
+<p>All help desk AI resources sit in one dedicated resource group: the Foundry resource and project, the model deployment, the AI Search service and the monitoring resources. That makes cost tracking a single filter in Cost Management.</p>
+<ul>
+<li><strong>Model deployment:</strong> a GA model positioned for multi-step tool orchestration, deployed as <strong>US Data Zone</strong> so prompts — which contain employee names, ticket and account details — are processed in the US. The deployment's <strong>tokens-per-minute (TPM)</strong> limit is a rate limit, not a cost; I raised it before go-live after routing tests hit it.</li>
+<li><strong>The agent</strong> is a <em>prompt agent</em>: instructions + model + tools. Every save creates a <strong>new version</strong>, and the published application serves the version marked Active — so a bad change is one click to roll back.</li>
+<li><strong>Instructions are kept in git</strong> as the source of truth and pasted into Foundry. Only the instruction block is pasted; an early version that accidentally included the whole Markdown file (change log and test lists) added several thousand tokens to <em>every</em> request.</li>
+</ul>
+<h3 id="3-the-mcp-server-an-authenticated-endpoint-per-audience">3. The MCP server: an authenticated endpoint per audience</h3>
+<p>The existing MCP server gained a second endpoint, <code>/helpdesk/mcp</code>, that exposes <strong>only</strong> help desk tools — none of the data analysis tools are reachable from the agent.</p>
+<p>The connection from Foundry uses <strong>custom OAuth identity passthrough</strong>: each user signs in once, Foundry stores their token, and every tool call arrives with that user's own Entra token. The server validates tenant, audience, scope and roles, and then:</p>
+<ul>
+<li><strong>Identity comes only from the token.</strong> No tool has a "user" parameter; the model cannot ask for someone else's data by naming them.</li>
+<li><strong>Sensitive actions are two-step.</strong> A SAP reset first returns a summary of exactly what will happen; only an explicit "yes" within five minutes executes it, using a one-time confirmation bound to that user, that account and that action. The code itself is never shown to the user.</li>
+<li><strong>Write switches.</strong> Every action that changes something (SAP reset, ticket creation, phone requests) is off unless a deployment setting turns it on — tests can never write by accident.</li>
+<li><strong>Repeat-safe.</strong> A repeated "submit" within minutes returns the existing request instead of creating a duplicate.</li>
+<li><strong>Results are returned once, as text.</strong> By default the MCP library returned each result twice (text plus a structured copy); removing the duplicate cut the tokens of every tool reply.</li>
+</ul>
+<h3 id="4-azure-ai-search-policies-with-a-source-link">4. Azure AI Search: policies with a source link</h3>
+<p>The company's IT policies and how-to guides (PDFs) are indexed in an Azure AI Search index attached to the agent as a knowledge tool. Answers cite the document, and the instructions map each document to its SharePoint URL so the user gets a link to the authoritative copy, not a summary they have to trust.</p>
+<h3 id="5-logic-apps-teams-cards-and-waiting-nothing-else">5. Logic Apps: Teams cards and waiting, nothing else</h3>
+<p>Two Consumption Logic Apps do the things an MCP server should not: post Teams cards and wait days for a human to click.</p>
+<ul>
+<li><strong>SAP password delivery.</strong> The server resets the password, then hands the temporary password to a Logic App that posts it to the user in a private Teams card (hidden behind <em>Show password</em>). The password never passes through the chat, the model or the logs; the Logic App's inputs and outputs are marked secure so run history does not show it either.</li>
+<li><strong>Phone requests.</strong> Approval card to the manager, wait; "done" card to the phone administrator, wait; each answer is sent back to the server, which decides what happens next.</li>
+</ul>
+<p>The rule is <strong>the server owns every decision; the Logic App only waits and reports.</strong> Calls into a Logic App carry an Entra bearer token checked by an OAuth authorization policy; calls back use the Logic App's managed identity with the <code>HelpDesk.Workflow</code> app role.</p>
+<h3 id="6-publishing-one-app-for-teams-microsoft-365-and-copilot">6. Publishing: one app for Teams, Microsoft 365 and Copilot</h3>
+<p>From the Foundry portal the agent is published as an <strong>Agent Application</strong>, which produces one Teams app covering Teams, Microsoft 365 and Copilot. Availability is managed in the Teams admin center by group — the same employee groups that hold <code>HelpDesk.User</code> — so who can <em>see</em> the agent and who can <em>use</em> the tools stay aligned.</p>
+<h3 id="7-observability-and-cost">7. Observability and cost</h3>
+<ul>
+<li><strong>Application Insights + Log Analytics</strong> connected to the Foundry project: every run is a trace showing the model calls, tool calls, arguments, results and token counts. This is what answers the eternal question <em>"is it the model or the code?"</em> — a wrong tool choice is the model; wrong data from the right tool is the code.</li>
+<li><strong>A log alert</strong> on failed agent runs (several failures within 15 minutes) and a <strong>monthly budget</strong> on the resource group with an alert at 80% actual and 100% forecast.</li>
+<li><strong>Cost per answer</strong> with a fresh conversation is about <strong>two cents</strong> at US Data Zone list prices — the model is pay-as-you-go, and the Foundry project, agent and idle time cost nothing.</li>
+</ul>
+<hr />
+<h2 id="the-problem-i-hit-teams-never-starts-a-new-conversation">The Problem I Hit: Teams Never Starts a New Conversation</h2>
+<p>Everything worked in testing. Then a simple "show my profile" in Teams started taking far longer than the same question in the Foundry playground, and occasionally hit the model's rate limit.</p>
+<p>The traces explained it. A published agent keeps <strong>one conversation per user per Teams chat — forever</strong>. Every new message re-sends the entire history of that chat to the model:</p>
+<table>
+<thead>
+<tr>
+<th>Where the same question was asked</th>
+<th>Input tokens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fresh conversation (playground, Copilot "New chat")</td>
+<td>~7,500</td>
+</tr>
+<tr>
+<td>A Teams chat after a day of testing</td>
+<td>~30,000</td>
+</tr>
+</tbody>
+</table>
+<p>It grows by roughly a thousand tokens per exchange, so the cost and latency of every answer depend on how long a user has been chatting — not on the question.</p>
+<p>There is a certain irony here. The <a href="../ai-multi-agent/">multi-agent article</a> spent a whole section on thread persistence with a <strong>sliding window</strong> precisely to stop this from happening. The managed platform keeps the whole history, with no window.</p>
+<p>This is a <strong>documented limitation</strong>, not a misconfiguration. Microsoft's troubleshooting guide for published agents says that in Teams the user must send the agent <code>/foundry_new_preview</code> to reset the conversation, and that <em>"Teams doesn't currently provide another way to start a new session."</em> There is no setting for conversation length or idle reset, and the published application does not expose an administrative API to clear users' conversations.</p>
+<p>No employee will ever discover — or remember — a command called <code>/foundry_new_preview</code>.</p>
+<hr />
+<h2 id="the-solution-microsoft-365-copilot-chat-as-the-front-door">The Solution: Microsoft 365 Copilot Chat as the Front Door</h2>
+<p>The same published app also appears in <strong>Microsoft 365 Copilot Chat</strong>, and Copilot has something Teams does not: a <strong>New chat</strong> button that really does start a new conversation. Measured with the same question: first message ~7,500 tokens, a follow-up in the same chat ~8,500, and <em>New chat</em> back to ~7,500 with a new conversation ID.</p>
+<p>The obvious concern was licensing. Microsoft's guidance for published Foundry agents states that users don't need a Microsoft 365 Copilot license to access custom engine agents in Copilot Chat, and my tests agreed: an account with only the free Copilot Chat experience could add the agent and get answers, and an employee with a frontline (F3) license and no Copilot license added it and used its tools end to end.</p>
+<p>So the decision was:</p>
+<ul>
+<li><strong>Copilot Chat is the entry point</strong> I point users to.</li>
+<li><strong>The Teams app still exists</strong> (it is the same app), but I do not promote adding it as a Teams chat.</li>
+<li><strong>Soft release</strong> — enabled for the employee groups without an announcement, so usage grows gradually while I watch the traces and the budget.</li>
+</ul>
+<hr />
+<h2 id="key-architectural-decisions">Key Architectural Decisions</h2>
+<h3 id="1-one-agent-with-tools-not-multiple-agents">1. One agent with tools, not multiple agents</h3>
+<p><strong>Chosen:</strong> a single Foundry agent with MCP tools and a search tool.
+<strong>Rejected:</strong> recreating the router and specialist agents.
+<strong>Why:</strong> current models choose between a dozen well-described tools reliably; one agent means one context, no cross-agent hallucinations and no routing code to maintain. Routing quality is checked with a written routing test list, re-run after every instruction change.</p>
+<h3 id="2-reuse-the-existing-mcp-server-add-an-endpoint">2. Reuse the existing MCP server, add an endpoint</h3>
+<p><strong>Chosen:</strong> a second, help-desk-only endpoint on the server from the MCP series.
+<strong>Rejected:</strong> a separate service for help desk tools.
+<strong>Why:</strong> same network routes to SAP and SQL, same deployment pipeline, same logging — and the endpoint boundary guarantees the agent can never reach the data analysis tools.</p>
+<h3 id="3-custom-oauth-identity-passthrough-not-a-service-account">3. Custom OAuth identity passthrough, not a service account</h3>
+<p><strong>Chosen:</strong> every tool call carries the user's own token.
+<strong>Rejected:</strong> the agent calling tools with one application identity and passing the user's name as a parameter.
+<strong>Why:</strong> a model can be talked into passing someone else's name; it cannot forge a token. Authorization becomes an Entra role check instead of an instruction I hope the model follows.</p>
+<h3 id="4-logic-apps-for-humans-in-the-loop">4. Logic Apps for humans-in-the-loop</h3>
+<p><strong>Chosen:</strong> Logic Apps for Teams cards and multi-day waits, with all rules in the server.
+<strong>Rejected:</strong> approval logic inside the Logic App designer.
+<strong>Why:</strong> rules in code are unit-tested and versioned in git; the Logic App is reduced to a transport that can be rebuilt from its exported definition.</p>
+<h3 id="5-copilot-chat-over-a-teams-chat">5. Copilot Chat over a Teams chat</h3>
+<p><strong>Chosen:</strong> Copilot Chat as the entry point.
+<strong>Rejected:</strong> building my own Teams bridge again to control conversation length.
+<strong>Why:</strong> that would bring back exactly the custom code this project removed. A platform button is cheaper than a platform workaround.</p>
+<hr />
+<h2 id="lessons-learned">Lessons Learned</h2>
+<ol>
+<li><strong>Read the traces before blaming the model.</strong> "Slow" turned out to be history growth plus a rate limit — both visible in token counts, neither a model problem.</li>
+<li><strong>Measure tokens per request early.</strong> Duplicate tool results and an over-long instruction paste each added cost to every single call; both were invisible until I looked.</li>
+<li><strong>Managed platforms move the trade-offs, they don't remove them.</strong> I gave up control over conversation length in exchange for not running a bot. That trade was worth it, but only because Copilot Chat offered a way out.</li>
+<li><strong>Put authorization in Entra.</strong> App roles assigned to groups made "who can do what" an administrator task and removed every hard-coded list from the code.</li>
+<li><strong>Keep the human-in-the-loop dumb.</strong> The less logic lives in the Logic App designer, the safer it is to rebuild.</li>
+</ol>
+<hr />
+<h2 id="open-issues">Open Issues</h2>
+<ul>
+<li><strong>Conversation reset in Teams.</strong> Until Microsoft adds an idle reset, a length limit or an administrative reset for published agents, Teams users must type <code>/foundry_new_preview</code>. I will revisit promoting Teams if that changes.</li>
+<li><strong>First sign-in.</strong> On some users' first use the sign-in card reports an error, yet clicking <strong>Resume</strong> continues and the agent works. Admin consent is already granted; I am collecting correlation IDs to trace it in the Entra sign-in logs.</li>
+</ul>
+<hr />
+<h2 id="next-steps">Next Steps</h2>
+<p><a href="../ai-foundry-agent-part2/">Part 2</a> walks through the build in order:</p>
+<ul>
+<li>Creating the app registration, roles and group assignments</li>
+<li>Deploying the model and sizing its rate limit</li>
+<li>Connecting Foundry to the MCP server with OAuth identity passthrough</li>
+<li>Designing safe tools (two-step actions, write switches, repeat protection)</li>
+<li>Building the SAP password and phone request Logic Apps</li>
+<li>Indexing the policy documents and writing versioned instructions</li>
+<li>Publishing to Teams and Copilot, monitoring, and the go-live checklist</li>
+</ul>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li><a href="../ai-multi-agent/">Building an Enterprise Multi-Agent AI System with Microsoft Teams</a> — the custom architecture this series replaces</li>
+<li><a href="../ai-claude-mcp-analytic-server-part1/">Data Analysis with LLM via MCP Server — Part 1</a> — the MCP server the help desk endpoint is added to</li>
+<li><a href="../sap-rfc-python-container/">Setup PyRFC in your Container</a> — the SAP RFC connector behind the password reset</li>
+<li><a href="https://learn.microsoft.com/azure/foundry/agents/how-to/mcp-authentication">Microsoft Learn — Set up authentication for MCP tools in Foundry Agent Service</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/troubleshoot-publish-copilot">Microsoft Learn — Troubleshoot publishing agents to Microsoft Copilot and Microsoft Teams</a></li>
+<li><a href="https://modelcontextprotocol.io/">Model Context Protocol</a></li>
+</ul>
+<hr />
+<p><em>This article documents a production implementation. Names, identifiers and tenant-specific values have been removed or generalized.</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2026 16:02:27 UTC">October 22, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
