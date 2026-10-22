@@ -7,6 +7,8 @@ description: Architecture and implementation of a production multi-agent AI assi
 
 ---
 
+> **Update:** I have since rebuilt this help desk assistant on Microsoft-managed services — an Azure AI Foundry agent, an authenticated MCP server and Logic Apps, published to Microsoft 365 Copilot. See [From a Custom Multi-Agent Bot to Azure AI Foundry - Part 1](ai-foundry-agent-part1.md) and [Part 2](ai-foundry-agent-part2.md).
+
 ## Introduction
 
 This article documents the architecture and implementation of a production-ready enterprise AI assistant built using a **multi-agent architecture**. The system combines three specialized AI agents, each with distinct capabilities:

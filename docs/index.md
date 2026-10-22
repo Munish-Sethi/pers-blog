@@ -26,6 +26,8 @@
 - [Data Analysis with LLM via MCP Server - Part 3](ai-claude-mcp-analytic-server-part3.md)
 - [Data Analysis with LLM via MCP Server - Part 4](ai-claude-mcp-analytic-server-part4.md)
 - [Building an Enterprise Multi-Agent AI System with Microsoft Teams](ai-multi-agent.md)
+- [From a Custom Multi-Agent Bot to Azure AI Foundry - Part 1 (Architecture, Components and Why I Moved)](ai-foundry-agent-part1.md)
+- [From a Custom Multi-Agent Bot to Azure AI Foundry - Part 2 (Step-by-Step Build)](ai-foundry-agent-part2.md)
 - [Exposing OneStream Financial Data to an LLM — Live CEO/CFO Analytics via MCP](ai-claude-mcp-onestream-mcp-financial-analytics.md)
 - [SAP + AI: Did Moving to SaaS Quietly Cost Us Our Ability to Use AI on Our Own ERP Data?](ai-sap-mcp-onprem-vs-cloud.md)
 ---
