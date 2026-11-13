@@ -17,6 +17,14 @@ plugins:
   - search
   - git-revision-date-localized
   - awesome-pages
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
 nav:
   - Home: index.md
   - AI:
@@ -29,6 +37,10 @@ nav:
     - "From a Custom Multi-Agent Bot to Azure AI Foundry - Part 2 (Step-by-Step Build)": ai-foundry-agent-part2.md
     - Exposing OneStream Financial Data to an LLM — Live CEO/CFO Analytics via MCP: ai-claude-mcp-onestream-mcp-financial-analytics.md
     - "SAP + AI: Did Moving to SaaS Quietly Cost Us Our Ability to Use AI on Our Own ERP Data?": ai-sap-mcp-onprem-vs-cloud.md
+
+  - IT Operations & Security:
+      - "Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 1 (Architecture)": it-dashboard-build-vs-buy-part1.md
+      - "Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings & Exceptions)": it-dashboard-build-vs-buy-part2.md
 
   - Azure:
       - Certificate Based Authentication: azure-ad-certificate.md
@@ -98,8 +110,11 @@ extra:
   description: "Munish Sethi's technical blog on Azure, SAP, and automation."
 extra_css:
   - assets/custom.css
+  - assets/thumbnails.css
 extra_javascript:
   - assets/custom.js
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
+  - attr_list
+  - md_in_html

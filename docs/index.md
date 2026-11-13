@@ -32,6 +32,12 @@
 - [SAP + AI: Did Moving to SaaS Quietly Cost Us Our Ability to Use AI on Our Own ERP Data?](ai-sap-mcp-onprem-vs-cloud.md)
 ---
 
+## 🛡️ IT Operations & Security
+- [Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 1 (Architecture)](it-dashboard-build-vs-buy-part1.md)
+- [Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings & Exceptions)](it-dashboard-build-vs-buy-part2.md)
+
+---
+
 ## 🔷 Azure
 - [Certificate Based Authentication](azure-ad-certificate.md)
 - [Query Recovery Services Vault](azure-query-recovery-services-vault.md)
