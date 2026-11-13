@@ -1,0 +1,3455 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Part 1 - why a small IT team built its own IT operations and security dashboard in a week with an LLM instead of buying one: read-only APIs, nightly CSV snapshots, User/Device 360 and a findings engine.">
+      
+      
+      
+        <link rel="canonical" href="https://munishsethi.com/it-dashboard-build-vs-buy-part1/">
+      
+      
+        <link rel="prev" href="../ai-sap-mcp-onprem-vs-cloud/">
+      
+      
+        <link rel="next" href="../it-dashboard-build-vs-buy-part2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 1 (Architecture) - Munish Sethi's Technical Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <meta name="google-site-verification" content="rGvhhCws2Kkh_2j7lgAkmDrs7a8ZtKDwTJdnxL_m_mU" />
+  <meta name="msvalidate.01" content="9869170E3DE4D60F1D140D32B60ABFDB" />
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#build-vs-buy-an-it-operations-and-security-dashboard-in-a-week" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Munish Sethi&#39;s Technical Blog" class="md-header__button md-logo" aria-label="Munish Sethi's Technical Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Munish Sethi's Technical Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 1 (Architecture)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Munish Sethi&#39;s Technical Blog" class="md-nav__button md-logo" aria-label="Munish Sethi's Technical Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Munish Sethi's Technical Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (csv/Parquet) stdio- Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (database) stdio- Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Analysis with LLM via MCP Server (files/database) https- Part 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-analytic-server-part4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging MCP Servers (Https) with VS Code - Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building an Enterprise Multi-Agent AI System with Microsoft Teams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-foundry-agent-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From a Custom Multi-Agent Bot to Azure AI Foundry - Part 1 (Architecture, Components and Why I Moved)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-foundry-agent-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From a Custom Multi-Agent Bot to Azure AI Foundry - Part 2 (Step-by-Step Build)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-claude-mcp-onestream-mcp-financial-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exposing OneStream Financial Data to an LLM — Live CEO/CFO Analytics via MCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-sap-mcp-onprem-vs-cloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP + AI: Did Moving to SaaS Quietly Cost Us Our Ability to Use AI on Our Own ERP Data?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Operations & Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IT Operations & Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 1 (Architecture)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 1 (Architecture)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-architecture-and-what-it-buys-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Architecture and What It Buys Us
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Architecture and What It Buys Us">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Series Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#then-vs-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Then vs. Now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-not-just-buy-a-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Not Just Buy a Tool?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why Not Just Buy a Tool?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-sentinel-fits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where Sentinel Fits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-architectural-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Architectural Decisions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Architectural Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-read-by-api-from-every-source-on-a-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Read by API, from every source, on a schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-keep-each-sources-data-as-that-source-sees-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Keep each source's data as that source sees it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-flat-files-not-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Flat files, not a database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-join-on-whats-actually-reliable-not-on-a-cmdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Join on what's actually reliable, not on a CMDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-findings-are-rules-severity-is-a-setting-exceptions-are-visible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Findings are rules, severity is a setting, exceptions are visible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-built-with-an-llm-owned-by-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Built with an LLM, owned by us
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-buys-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What It Buys Us
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lessons Learned
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open Issues
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closing-thought" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closing Thought
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../it-dashboard-build-vs-buy-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings & Exceptions)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Azure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certificate Based Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download Azure Bill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download Azure Resource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-query-recovery-services-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query Recovery Services Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entra Users, User Groups and Licence assignments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-ad-user-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entra User Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-container-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrating Scheduled Jobs (Container Instances)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-build-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Build Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-iac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Deploy Container IaC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-deploy-container-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Deploy Container Github Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-custon-image-compute-gallery-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building and Publishing an Custom Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-publish-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying Azure Virtual Desktop (AVD) Desktops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avd-cleanup-obsolete-fsLogix-profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cleanup Obsolete FXLogix Profiles(AVD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Coninuity Program / Diasister Recovery - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Continuity Program / Disaster Recovery - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-bcpdr-github-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Business Continuity Program / Disaster Recovery - Git Hub Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restore VM from RSV Backup - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-restore-from-backup-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restore VM from RSV Backup - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fabric
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fabric
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-wharehouse-fact-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Warehouse data import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki, Nagios XI & Manage Engine
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cisco Meraki, Nagios XI & Manage Engine
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-unused-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki Unused Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-nagios-device-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco Meraki Devices Discovery and Nagios Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-itsm-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrating Monitoring System with ITSM System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meraki-vm-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying Cisco Meraki vMX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory Domain Services
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory Domain Services
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-creation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create ADDS User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adds-user-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Update ADDS User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SAP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python-container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup PyRFC in your Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-rfc-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calling SAP RFC Function Modules from Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-system-start-stop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automating SAP System Start/Stop Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    O365
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outlook Actionable Adaptive Card - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adaptive-card-consultant-review-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outlook Actionable Adaptive Card - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-sites-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharepoint Sites Enumeration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-enumeration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharepoint Document Library Enumeration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint-site-library-to-azure-fileshare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrate Sharepoint Document Library to Azure File Share
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-concur-expense-reports-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concur Expense Report Aggregation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teams-user-number-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get all Teams Phone Assignment(s)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprovision-user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deprovison User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tenantallowblocklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant Allow Block List - False Positive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-proofpoint-part5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365 and Proof Point Essentials - Part 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spo-o365_excel_automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O365/Excel Automation via SPO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-workmail-to-m365-part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-workmail-to-m365-part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrating from Amazon WorkMail to Microsoft 365 - Part 2 (DNS Cutover, Catch-All & Cleanup)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email-o365-new-outlook-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Outlook for Windows: The All Accounts View (and a Classic Outlook Style)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UKG
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UKG
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-sftp-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secure File Transfer with UKG Dimensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-employee-verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Employee Verification via API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukg-api-integration-and-dataview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automating Integration Execution and Dataview extract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Misc
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Misc
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpoint-user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proof Point User Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-clean-deployments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clean GitHub Deployments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proofpointo365connector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding DMARC/Spoofing, O365 with ProofPoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../smart-home-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Smart Home Automation with Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-architecture-and-what-it-buys-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Architecture and What It Buys Us
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Architecture and What It Buys Us">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#series-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Series Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#then-vs-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Then vs. Now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-not-just-buy-a-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Not Just Buy a Tool?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why Not Just Buy a Tool?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-sentinel-fits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where Sentinel Fits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-architectural-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Architectural Decisions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Architectural Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-read-by-api-from-every-source-on-a-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Read by API, from every source, on a schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-keep-each-sources-data-as-that-source-sees-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Keep each source's data as that source sees it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-flat-files-not-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Flat files, not a database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-join-on-whats-actually-reliable-not-on-a-cmdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Join on what's actually reliable, not on a CMDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-findings-are-rules-severity-is-a-setting-exceptions-are-visible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Findings are rules, severity is a setting, exceptions are visible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-built-with-an-llm-owned-by-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Built with an LLM, owned by us
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-buys-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What It Buys Us
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lessons Learned
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open Issues
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closing-thought" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closing Thought
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="build-vs-buy-an-it-operations-and-security-dashboard-in-a-week">Build vs. Buy: An IT Operations and Security Dashboard in a Week</h1>
+<h2 id="part-1-architecture-and-what-it-buys-us">Part 1: Architecture and What It Buys Us</h2>
+<hr />
+<h3 id="series-navigation">📚 <strong>Series Navigation</strong></h3>
+<ul>
+<li><strong>Part 1: Architecture and What It Buys Us</strong> <em>(Current)</em></li>
+<li><a href="../it-dashboard-build-vs-buy-part2/">Part 2: Findings That Fit How We Actually Work</a></li>
+</ul>
+<p><em>Most IT teams don't need another console - they need the consoles they already have to answer one question together. This two-part series documents an IT operations and security dashboard we built in a week, with an LLM writing most of the code. Part 1 is the build-vs-buy reasoning and the architecture; <a href="../it-dashboard-build-vs-buy-part2/">Part 2</a> is the findings engine.</em></p>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Every small and mid-sized IT team I know has the same problem, and it isn't a lack of tools. It's the opposite. Identity lives in Active Directory and Entra ID. Endpoint protection lives in one console, vulnerability scanning in another, web security in a third, email security in a fourth. Network gear, monitoring, backups, the ERP, the HR system and the ticketing system each have their own portal, their own login and their own idea of what a "device" or a "user" is.</p>
+<p>Each of those consoles is good at its own job. None of them answers the questions an IT leader actually gets asked:</p>
+<ul>
+<li>Which of our laptops are missing the endpoint agent, the web security client or the vulnerability scanner — and who uses them?</li>
+<li>Someone left the company last week. Are they really gone everywhere, including the ERP?</li>
+<li>What are the ten things that, if we fixed them this month, would move the needle most — and which team owns each one?</li>
+</ul>
+<p>The usual answer is a marketplace product: an asset inventory platform, a cyber-asset management tool, a vulnerability management suite, or a SIEM with a dashboard on top. We looked at that path. This series is about why we built our own instead, what the architecture looks like, and — the part I want to be upfront about — that the core of it was built in a week, with an LLM as my pair programmer.</p>
+<p>This isn't an argument that buying is wrong. It's an argument that for a small or mid-sized organization, the economics of building changed in the last year, and it's worth re-running the numbers.</p>
+<p>Part 1 covers the architecture and what it buys us. <a href="../it-dashboard-build-vs-buy-part2/">Part 2</a> covers the findings themselves — what we check for, how findings change on their own as releases and patches move, and how we handle exceptions without hiding anything.</p>
+<hr />
+<h2 id="then-vs-now">Then vs. Now</h2>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Before</th>
+<th>Now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Is this laptop fully protected?"</td>
+<td>Log in to four consoles, search the hostname in each, compare by eye</td>
+<td>Search the hostname once; every system's view of that device on one page</td>
+</tr>
+<tr>
+<td>"Who uses this vulnerable device, and where are they?"</td>
+<td>Ask around, check the CMDB (if it's current)</td>
+<td>Last logged-on user from the endpoint agent, office and location from HR attributes</td>
+</tr>
+<tr>
+<td>"Is this leaver fully deprovisioned?"</td>
+<td>A checklist and trust</td>
+<td>A finding the morning after, in every system that still has them active</td>
+</tr>
+<tr>
+<td>Monthly security review</td>
+<td>Screenshots from each console, pasted into slides</td>
+<td>One ranked list of fixes by severity and owning team, with month-over-month change</td>
+</tr>
+<tr>
+<td>Adding a new check</td>
+<td>Feature request to a vendor, or not possible</td>
+<td>Hours</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="why-not-just-buy-a-tool">Why Not Just Buy a Tool?</h2>
+<p>The marketplace tools in this space are genuinely good. Before building, it's worth being honest about what they do well, and where they didn't fit us.</p>
+<p><strong>What a bought tool gives you:</strong> a polished UI, a large catalog of pre-built connectors, vendor support, and somebody else maintaining the integrations when an API changes.</p>
+<p><strong>Where it didn't fit:</strong></p>
+<ol>
+<li>
+<p><strong>Connector coverage is broad, but not ours.</strong> Every platform covers the big names — Entra, the major endpoint vendors, the major scanners. Few cover the long tail that a real company actually runs: an on-premises ERP, a niche HR/payroll system, a regional ticketing tool, a monitoring platform configured years ago. Those are exactly the systems where the gaps hide — a user terminated in HR but still active in the ERP is a finding no off-the-shelf connector was going to give us.</p>
+</li>
+<li>
+<p><strong>The findings are theirs, not ours.</strong> A bought tool ships a fixed set of checks with a fixed idea of severity. Our rules are specific: what counts as "patched" for a laptop that's on the road three weeks a month, which servers are intentionally excluded from a scan agent, when a device one release behind is acceptable. In a product those become feature requests. In our own code they're an afternoon.</p>
+</li>
+<li>
+<p><strong>Pricing scales the wrong way for us.</strong> Most tools in this category are priced per asset or per user. For a small or mid-sized company, that's a recurring cost that grows every time we add a device or a hire — for what is, underneath, reading data from APIs we already pay for.</p>
+</li>
+<li>
+<p><strong>Another console is another console.</strong> The problem was never a lack of dashboards. Adding one more vendor portal with its own login and its own data model doesn't consolidate anything unless it replaces the others — and it doesn't.</p>
+</li>
+<li>
+<p><strong>The build cost collapsed.</strong> This is the one that changed. A year ago, building this would have been months of a developer's time. With an LLM writing most of the code against my design, the core was live in a week, and each new finding since has taken hours. The thing that used to make "buy" the obvious answer — the cost of building — isn't the obstacle it was.</p>
+</li>
+</ol>
+<h3 id="where-sentinel-fits">Where Sentinel Fits</h3>
+<p>We run Microsoft Sentinel, and it isn't going anywhere. Sentinel is our SIEM: it ingests logs, correlates events and raises alerts in near real time when something is happening <em>right now</em>.</p>
+<p>This dashboard answers a different question: what is the <em>state</em> of our environment today, and what should we fix? It's closer to a CMDB, an asset inventory and a vulnerability register joined together than it is to a SIEM. Sentinel tells me a risky sign-in just occurred. The dashboard tells me which accounts have been in a risky state all month, which devices have no endpoint agent, and which patch would close the most findings. One is the smoke detector; the other is the building inspection. We need both.</p>
+<hr />
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The design is deliberately simple: read from every source by API, save what we read, and join it at read time.</p>
+<div class="highlight"><pre><span></span><code> ┌────────────────────────────────────────────────────────────────────────────┐
+ │ SOURCES (read-only API / SDK accounts)                                     │
+ │                                                                            │
+ │  Identity        Endpoint &amp; Security        Infrastructure    Business     │
+ │  • Active Dir.   • CrowdStrike (EDR, ZTA)   • Azure (VMs,     • ERP (SAP)  │
+ │  • Entra ID      • Tenable (vulns, agents)    backup, AVD,    • HR/payroll │
+ │  • Exchange      • Zscaler (ZIA, AI Guard,    billing)        • Ticketing  │
+ │  • SharePoint      Z-Insights)              • Meraki          • Expense    │
+ │                  • Proofpoint TAP           • Nagios                       │
+ └──────────────────────────────────┬─────────────────────────────────────────┘
+                                    │ scheduled extracts, nightly
+                                    │ (one small job per source and object)
+                                    ▼
+ ┌────────────────────────────────────────────────────────────────────────────┐
+ │ SNAPSHOT STORE (Azure file share)                                          │
+ │  one folder per source/object, timestamped CSV per run                     │
+ │  newest file + last file of each month kept → history for free             │
+ └───────────────┬──────────────────────────────────────────┬─────────────────┘
+                 │                                          │
+                 ▼                                          ▼
+ ┌───────────────────────────────────────┐   ┌────────────────────────────────┐
+ │ IT DASHBOARD (web app, container)     │   │ MCP SERVER (same files)        │
+ │  • per-source pages, unmodified       │   │  • ad-hoc questions in plain   │
+ │  • User 360 and Device 360 (joined)   │   │    English from Claude Desktop │
+ │  • Findings engine:                   │   │  • data catalog describes each │
+ │      60+ checks → severity rules      │   │    folder for the LLM          │
+ │      → exceptions (visible, never     │   └────────────────────────────────┘
+ │        silent) → Top Fixes            │
+ │  • monthly snapshot for trends        │
+ └───────────────────┬───────────────────┘
+                     │
+                     ▼
+     Nightly status email: did every source refresh?
+     Monthly review: ranked fixes by team, month over month
+</code></pre></div>
+<p>Three things are worth noticing in the diagram.</p>
+<p>First, <strong>nothing writes back.</strong> Every connection uses a read-only API account or role. The dashboard can't change a firewall rule or disable a user, which makes it easy to approve, easy to audit and safe to give to more people.</p>
+<p>Second, <strong>the snapshot store is the contract.</strong> Extract jobs don't know the dashboard exists, and the dashboard doesn't know how any extract talks to its source. If a vendor changes an API, one small extract job changes and nothing else does.</p>
+<p>Third, <strong>the same files feed an MCP server.</strong> The <a href="../ai-claude-mcp-analytic-server-part1/">MCP Analytic Server series</a> describes a server that lets Claude Desktop answer questions over our data. Because every source lands as a described file, any new source we add to the dashboard is also immediately available for ad-hoc questions in plain English — "which laptops in our largest office are missing the web security client?" — without building a page for it.</p>
+<p><img alt="IT Dashboard home page with the menu expanded" src="../assets/it-dashboard/blog_01_home.png" />
+<em>The home page groups everything by area: findings, user and device profiles, identity, devices, security, network and cloud. The dashboard sits alongside the other business dashboards. (Names masked.)</em></p>
+<hr />
+<h2 id="key-architectural-decisions">Key Architectural Decisions</h2>
+<h3 id="1-read-by-api-from-every-source-on-a-schedule">1. Read by API, from every source, on a schedule</h3>
+<p>Each source gets its own small extract job per object — users, groups, devices, vulnerabilities, rules — run nightly by a scheduler. Fifteen systems, dozens of jobs, each one independent. One source being down doesn't stop the rest, and a nightly status email shows exactly which source didn't refresh.</p>
+<p>The reason to insist on API/SDK access, rather than exported reports or manual downloads, is simple: if a human has to export it, it will eventually stop being exported.</p>
+<h3 id="2-keep-each-sources-data-as-that-source-sees-it">2. Keep each source's data as that source sees it</h3>
+<p>We don't merge Active Directory computers and Entra devices into one "device" table, or CrowdStrike hosts and Tenable assets into one list. Each source's pages show that source's records, unmodified. The joins happen at read time, in the User 360, the Device 360 and the findings.</p>
+<p>This sounds like a small decision. It's the one that makes the findings trustworthy. When the dashboard says "this device has no Tenable agent", you can open the Tenable page and see for yourself. Nobody has to trust a merge rule they can't see.</p>
+<h3 id="3-flat-files-not-a-database">3. Flat files, not a database</h3>
+<p>Every extract writes a timestamped CSV to a file share. We keep the newest file and the last file of each month. That gives us:</p>
+<ul>
+<li><strong>History without a data warehouse.</strong> "How many findings did we have at the end of last month?" is one file.</li>
+<li><strong>Nothing to tune or patch.</strong> No schema migrations when a vendor adds a field.</li>
+<li><strong>Files any tool can read.</strong> The dashboard, the MCP server, Excel and a script all read the same data.</li>
+</ul>
+<p>For a small or mid-sized environment — a few thousand objects per source — this is more than fast enough.</p>
+<h3 id="4-join-on-whats-actually-reliable-not-on-a-cmdb">4. Join on what's actually reliable, not on a CMDB</h3>
+<p>The hardest problem in asset management isn't collecting data, it's knowing which records are the same thing. We use the join key each system actually populates reliably:</p>
+<ul>
+<li><strong>People:</strong> email/UPN across cloud systems; the AD account name for the ERP.</li>
+<li><strong>Devices:</strong> the hostname, case-insensitive, across the endpoint agent, AD, Entra and the scanner.</li>
+<li><strong>Device to person:</strong> the <em>last logged-on user</em> reported by the endpoint agent, matched to the AD account — not an asset-assignment field somebody has to remember to update.</li>
+<li><strong>Person to place:</strong> office and location from HR, passed into AD and Entra by our HR sync.</li>
+</ul>
+<p>That chain — vulnerability → device → last logged-on user → office — means a finding on a laptop arrives with the person who uses it and where they are. Part 2 shows why that matters for a team supporting people who travel.</p>
+<p><img alt="Device 360 with tabs for each source" src="../assets/it-dashboard/blog_06b_device-profile-tenable.png" />
+<em>Device 360: one search, a tab per system (endpoint, scanner, installed software, monitoring, findings). An empty tab is a finding in itself: this device isn't covered by that system. (Names masked.)</em></p>
+<p><img alt="User 360" src="../assets/it-dashboard/blog_07_user-profile.png" />
+<em>User 360: identity and HR, access, collaboration, finance and support, devices and findings for one person. Department and office come from HR. (Names masked.)</em></p>
+<h3 id="5-findings-are-rules-severity-is-a-setting-exceptions-are-visible">5. Findings are rules, severity is a setting, exceptions are visible</h3>
+<p>A finding is a check written in code: "an enabled account that HR says is terminated", "a workstation with the endpoint agent but no web security client". Each check reports <em>which case</em> it found ("Expired" vs. "Expiring soon") and the severity for each case is a setting admins change from a screen — not a code change.</p>
+<p>Exceptions work the same way. When we decide a finding is acceptable, it's recorded with a reason, who decided and when, and it shows up on an Exceptions tab everyone can see. Nothing is silently filtered, and nothing changes in the source system: an exception only changes how the dashboard counts that finding, so removing it brings the finding straight back. Part 2 goes into this in detail, including exceptions that create and remove themselves.</p>
+<p><img alt="Findings Admin severity rules" src="../assets/it-dashboard/blog_08a_findings-admin-severity-rules-top.png" />
+<em>Severity per case is a setting, not a code change. Everyone can view it; three admins can edit it.</em></p>
+<h3 id="6-built-with-an-llm-owned-by-us">6. Built with an LLM, owned by us</h3>
+<p>I'll say this plainly: I didn't write most of this code by hand. I wrote the design — the sources, the join keys, the rules, the decisions above — and an LLM (Claude, working in my repository) wrote the extract jobs, the pages and the findings against it. I reviewed, tested against live data and corrected it when it was wrong — which it sometimes was, confidently.</p>
+<p>The timeline:</p>
+<ul>
+<li><strong>Start:</strong> a discovery document — every source, every object, the join keys, what "done" looks like.</li>
+<li><strong>One week later:</strong> the dashboard live in production, replacing the previous IT dashboard, reading from every source.</li>
+<li><strong>Since then:</strong> new findings, the exceptions model, monthly trends and the Top Fixes view, each added in hours as the review meetings asked for them.</li>
+</ul>
+<p>What made that possible wasn't the LLM alone. It was the LLM combined with things a small IT team already has: API access to its own tools, a container platform, a scheduler and a person who knows what the questions are. The LLM removes the cost of typing the code. It doesn't remove the need to know what to build.</p>
+<hr />
+<h2 id="what-it-buys-us">What It Buys Us</h2>
+<p>The short version: <strong>better visibility gives better remediation, and better remediation gives better meetings.</strong></p>
+<ul>
+<li><strong>Visibility.</strong> One place to see every user and every device, as every system sees it — including the gaps between systems, which is where risk lives.</li>
+<li><strong>Remediation.</strong> Every finding has an owning team, a severity, the device or account, the person and their location — enough to act without a second investigation.</li>
+<li><strong>Meetings.</strong> The monthly security review is one ranked list of fixes, by severity and team, with the change since last month. The conversation moved from "what's the state?" to "what are we fixing next?".</li>
+<li><strong>Our rules, not a vendor's.</strong> A new check, a severity change or a new exception type is our decision, made in hours, not a feature request.</li>
+<li><strong>Cost.</strong> Read-only API access to tools we already license, a small container and a file share. No per-asset fee that grows with every hire.</li>
+<li><strong>No lock-in.</strong> The data is CSV files we own. If we ever do buy a platform, it can read them too.</li>
+</ul>
+<p><img alt="Findings Summary" src="../assets/it-dashboard/blog_02_findings-summary.png" />
+<em>Findings Summary: open findings by severity, then by owning team and check. Each card opens the detail.</em></p>
+<hr />
+<h2 id="lessons-learned">Lessons Learned</h2>
+<ul>
+<li><strong>An empty result is a finding.</strong> "This device isn't in the scanner" is more useful than any vulnerability the scanner could report. Show empty tabs; don't hide them.</li>
+<li><strong>The CMDB was the weakest join.</strong> Last logged-on user from the endpoint agent turned out to be more accurate than any assignment record we'd maintained by hand.</li>
+<li><strong>Read-only accounts make approval easy.</strong> Every API client is view-only. That one decision removed most of the security review.</li>
+<li><strong>Check the LLM's claims against live data.</strong> Most of the corrections during the build came from asking "is that actually true in our tenant?" and checking.</li>
+<li><strong>Tell people when a refresh fails.</strong> A nightly email listing every source and its last refresh caught expired credentials before anyone noticed stale data.</li>
+</ul>
+<hr />
+<h2 id="open-issues">Open Issues</h2>
+<ul>
+<li>
+<p><strong>API limits are the vendor's, not ours.</strong> Some data a console shows isn't available by API — for example, per-user AI activity in our web security platform. We list those gaps rather than working around them.</p>
+<p><img alt="Zscaler AI Access page" src="../assets/it-dashboard/blog_10_zscaler-ai-access.png" />
+<em>Where the API stops: the AI access page shows the policy (who is allowed or blocked from AI apps, and what the AI guard detects or blocks) and overall totals, because per-user AI activity isn't available by API. (Names masked.)</em></p>
+</li>
+<li>
+<p><strong>Ownership is "last logged on", not "assigned".</strong> That's right for most laptops; shared devices and kiosks need a human answer.</p>
+</li>
+</ul>
+<hr />
+<h2 id="closing-thought">Closing Thought</h2>
+<p>If you run IT for a small or mid-sized organization, you probably already have most of what this needs: API access to the tools you pay for, somewhere to run a container and a list of questions your current consoles can't answer. What changed is the cost of turning that into a working system. It's no longer months. For us it was a week, and every improvement since has been measured in hours.</p>
+<p>Buy where a product genuinely does the job better. But before signing a per-asset contract to consolidate data you already own, run the numbers again.</p>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li><a href="../it-dashboard-build-vs-buy-part2/">Part 2: Findings That Fit How We Actually Work</a></li>
+<li><a href="../ai-claude-mcp-analytic-server-part1/">Data Analysis with LLM via MCP Server — Part 1</a> — the MCP server that reads the same snapshot files</li>
+<li><a href="../ai-claude-mcp-analytic-server-part3/">Data Analysis with LLM via MCP Server — Part 3</a> — HTTPS and Entra ID OAuth for that server</li>
+<li><a href="../azure-container-schedule/">Orchestrating Scheduled Jobs (Container Instances)</a> — the scheduling pattern behind the nightly extracts</li>
+<li><a href="../azure-ad-user/">Entra Users, User Groups and License assignments</a> and <a href="../azure-ad-user-devices/">Entra User Devices</a> — two of the original extracts</li>
+</ul>
+<hr />
+<p><em>This article documents a production implementation. Names, identifiers and tenant-specific values have been removed or generalized, and screenshots are masked.</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 13, 2026 19:46:42 UTC">November 13, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../assets/custom.js"></script>
+      
+    
+  </body>
+</html>
