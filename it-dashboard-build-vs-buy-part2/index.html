@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -27,7 +24,7 @@
     
     
       
-        <title>Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings & Exceptions) - Munish Sethi's Technical Blog</title>
+        <title>Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings &amp; Exceptions) - Munish Sethi's Technical Blog</title>
       
     
     
@@ -44,8 +41,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -58,10 +55,20 @@
 
     
     
-  <meta name="google-site-verification" content="rGvhhCws2Kkh_2j7lgAkmDrs7a8ZtKDwTJdnxL_m_mU" />
-  <meta name="msvalidate.01" content="9869170E3DE4D60F1D140D32B60ABFDB" />
+  <meta name="google-site-verification" content="rGvhhCws2Kkh_2j7lgAkmDrs7a8ZtKDwTJdnxL_m_mU">
+  <meta name="msvalidate.01" content="9869170E3DE4D60F1D140D32B60ABFDB">
 
-  </head>
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     <body dir="ltr">
@@ -89,15 +96,15 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Munish Sethi&#39;s Technical Blog" class="md-header__button md-logo" aria-label="Munish Sethi's Technical Blog" data-md-component="logo">
+    <a href=".." title="Munish Sethi's Technical Blog" class="md-header__button md-logo" aria-label="Munish Sethi's Technical Blog" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -109,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings & Exceptions)
+              Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings &amp; Exceptions)
             
           </span>
         </div>
@@ -125,30 +132,30 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -178,7 +185,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -187,16 +194,16 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Munish Sethi&#39;s Technical Blog" class="md-nav__button md-logo" aria-label="Munish Sethi's Technical Blog" data-md-component="logo">
+    <a href=".." title="Munish Sethi's Technical Blog" class="md-nav__button md-logo" aria-label="Munish Sethi's Technical Blog" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     Munish Sethi's Technical Blog
   </label>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -245,7 +252,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -275,7 +282,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -558,7 +565,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -568,7 +575,7 @@
   <span class="md-ellipsis">
     
   
-    IT Operations & Security
+    IT Operations &amp; Security
   
 
     
@@ -584,11 +591,11 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    IT Operations & Security
+    IT Operations &amp; Security
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -641,7 +648,7 @@
   <span class="md-ellipsis">
     
   
-    Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings & Exceptions)
+    Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings &amp; Exceptions)
   
 
     
@@ -659,7 +666,7 @@
   <span class="md-ellipsis">
     
   
-    Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings & Exceptions)
+    Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings &amp; Exceptions)
   
 
     
@@ -682,7 +689,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#part-2-findings-that-fit-how-we-actually-work" class="md-nav__link">
@@ -986,7 +993,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -1016,7 +1023,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1549,7 +1556,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -1579,7 +1586,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1636,7 +1643,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -1646,7 +1653,7 @@
   <span class="md-ellipsis">
     
   
-    Cisco Meraki, Nagios XI & Manage Engine
+    Cisco Meraki, Nagios XI &amp; Manage Engine
   
 
     
@@ -1662,11 +1669,11 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Cisco Meraki, Nagios XI & Manage Engine
+    Cisco Meraki, Nagios XI &amp; Manage Engine
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1807,7 +1814,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1837,7 +1844,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1922,7 +1929,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
@@ -1952,7 +1959,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2065,7 +2072,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
@@ -2095,7 +2102,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2531,7 +2538,7 @@
   <span class="md-ellipsis">
     
   
-    Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration)
+    Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup &amp; Mailbox Migration)
   
 
     
@@ -2559,7 +2566,7 @@
   <span class="md-ellipsis">
     
   
-    Migrating from Amazon WorkMail to Microsoft 365 - Part 2 (DNS Cutover, Catch-All & Cleanup)
+    Migrating from Amazon WorkMail to Microsoft 365 - Part 2 (DNS Cutover, Catch-All &amp; Cleanup)
   
 
     
@@ -2628,7 +2635,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
@@ -2658,7 +2665,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2771,7 +2778,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11">
         
           
           <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
@@ -2801,7 +2808,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2930,7 +2937,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2946,7 +2953,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#part-2-findings-that-fit-how-we-actually-work" class="md-nav__link">
@@ -3233,14 +3240,14 @@
 
 <h1 id="build-vs-buy-an-it-operations-and-security-dashboard-in-a-week">Build vs. Buy: An IT Operations and Security Dashboard in a Week</h1>
 <h2 id="part-2-findings-that-fit-how-we-actually-work">Part 2: Findings That Fit How We Actually Work</h2>
-<hr />
+<hr>
 <h3 id="series-navigation">📚 <strong>Series Navigation</strong></h3>
 <ul>
 <li><a href="../it-dashboard-build-vs-buy-part1/">Part 1: Architecture and What It Buys Us</a></li>
 <li><strong>Part 2: Findings That Fit How We Actually Work</strong> <em>(Current)</em></li>
 </ul>
 <p><em><a href="../it-dashboard-build-vs-buy-part1/">Part 1</a> covered why we built instead of bought and how the data is collected and joined. This part covers what the dashboard actually checks, how findings and exceptions adjust themselves every night, and how it all becomes one ranked list for the monthly review.</em></p>
-<hr />
+<hr>
 <h2 id="introduction">Introduction</h2>
 <p><a href="../it-dashboard-build-vs-buy-part1/">Part 1</a> described the architecture: read-only API access to every source, nightly snapshots on a file share, and a dashboard that joins them at read time. That's the plumbing. This part is about what the plumbing is for — the <strong>findings</strong>.</p>
 <p>A finding is a check that compares what <em>should</em> be true with what our systems say <em>is</em> true: an account HR says is terminated that's still enabled, a laptop with the endpoint agent but no web security client, a vulnerability nobody has patched. We run more than 60 of them every night.</p>
@@ -3253,7 +3260,7 @@
 <li>"Accepted" findings disappear into a filter nobody remembers setting.</li>
 </ul>
 <p>Each of those is a rule <em>we</em> decide. In our own dashboard, each one is a few lines of code and a conversation, not a feature request.</p>
-<hr />
+<hr>
 <h2 id="anatomy-of-a-finding">Anatomy of a Finding</h2>
 <p>Every finding has the same shape, whatever source it comes from:</p>
 <table>
@@ -3297,10 +3304,12 @@
 </tr>
 </tbody>
 </table>
+<figure class="thumb">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/it-dashboard/blog_09a_all-findings-no-scan-results-top.png" data-desc-position="bottom"><img alt="All Findings filtered to one category" loading="lazy" src="../assets/it-dashboard/blog_09a_all-findings-no-scan-results-top.png"></a></p>
+<figcaption>All Findings, filtered to one check: what it is, how it's detected and how to fix it, then each affected asset with its team and severity. Filters include team, type, severity and servers only.</figcaption>
+</figure>
 <p>Separating <em>what</em> is checked from <em>how serious</em> it is turned out to matter more than anything else. The review meeting argues about severity all the time — "is a disabled-but-not-deleted account really Medium?" — and that argument now ends with an admin changing a setting, not a code change.</p>
-<p><img alt="All Findings filtered to one category" src="../assets/it-dashboard/blog_09a_all-findings-no-scan-results-top.png" />
-<em>All Findings, filtered to one check: what it is, how it's detected and how to fix it, then each affected asset with its team and severity. Filters include team, type, severity and servers only.</em></p>
-<hr />
+<hr>
 <h2 id="the-findings-that-matter">The Findings That Matter</h2>
 <p>Not every check is equally interesting. Some are housekeeping — license assignments, naming, tidy group structures — and they matter for governance, but they aren't why we built this. These are the ones that are:</p>
 <h3 id="identity-is-everyone-who-has-access-supposed-to-have-it">Identity: is everyone who has access supposed to have it?</h3>
@@ -3428,8 +3437,12 @@
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="findings-that-change-on-their-own">Findings That Change on Their Own</h2>
+<figure class="thumb">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/it-dashboard/blog_04_top-fixes-exceptions.png" data-desc-position="bottom"><img alt="Top Fixes Exceptions tab" loading="lazy" src="../assets/it-dashboard/blog_04_top-fixes-exceptions.png"></a></p>
+<figcaption>The Exceptions tab: automatic exceptions (patch grace, N-1, the scanner-agent tag) alongside a manual one, each with its reason, who or what added it, the findings it covers and a link to see them. Nothing is hidden from view. (Names masked.)</figcaption>
+</figure>
 <p>This is where owning the rules pays off most. Three kinds of exception create and remove themselves, every night, with no one maintaining a list — and every one of them stays visible on the Exceptions tab.</p>
 <h3 id="patches-released-this-month-a-grace-period">Patches released this month: a grace period</h3>
 <p>Patch Tuesday comes out, and the next morning every scanner reports every device as vulnerable. A bought tool shows that as hundreds of new findings. That isn't a finding; it's the calendar.</p>
@@ -3450,9 +3463,7 @@
 <h3 id="devices-deliberately-without-an-agent">Devices deliberately without an agent</h3>
 <p>Some devices can't or shouldn't run the vulnerability scanner's agent — appliances, certain servers. The security operations team tags them in the scanner itself. The dashboard reads that tag and excepts <em>only</em> the "no scan agent" finding for those devices.</p>
 <p>That last word matters. Those devices are still scanned over the network, so any vulnerability found on them is still a finding. The tag excuses the missing agent, not the device.</p>
-<p><img alt="Top Fixes Exceptions tab" src="../assets/it-dashboard/blog_04_top-fixes-exceptions.png" />
-<em>The Exceptions tab: automatic exceptions (patch grace, N-1, the scanner-agent tag) alongside a manual one, each with its reason, who or what added it, the findings it covers and a link to see them. Nothing is hidden from view. (Names masked.)</em></p>
-<hr />
+<hr>
 <h2 id="whose-device-is-this-and-where-are-they">Whose Device Is This, and Where Are They?</h2>
 <p>A vulnerability on a laptop is only half an answer. To fix it, someone needs to know whose laptop it is and where that person is.</p>
 <p>We don't rely on a CMDB assignment for that. Assignments are only as current as the last person who remembered to update them. Instead:</p>
@@ -3462,11 +3473,17 @@
 <li><strong>Person → place:</strong> office, department and location come from the HR system, which our HR sync writes into Active Directory and Entra ID.</li>
 </ol>
 <p>So a finding arrives as "this laptop, last used by this person, in this office". For a team supporting people who travel, that changes the conversation: "your laptop needs to be online on Thursday" goes to the right person, in the right time zone, the first time.</p>
-<p><img alt="Device 360, Tenable tab" src="../assets/it-dashboard/blog_06b2_device-profile-tenable-vulns.png" />
-<em>Device 360, vulnerabilities tab: the device's open vulnerabilities from the scanner, by severity, each linked to the vendor's write-up.</em></p>
-<p><img alt="Device 360 overview" src="../assets/it-dashboard/blog_06_device-profile-overview.png" />
-<em>Device 360 overview: the endpoint agent reports the last logged-on user (linked to their User 360) and when the device was last seen, here several days ago, a laptop on the road. (Names masked.)</em></p>
-<hr />
+<div class="thumb-row">
+<figure>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/it-dashboard/blog_06b2_device-profile-tenable-vulns.png" data-desc-position="bottom"><img alt="Device 360, Tenable tab" loading="lazy" src="../assets/it-dashboard/blog_06b2_device-profile-tenable-vulns.png"></a></p>
+<figcaption>Device 360, vulnerabilities tab: the device's open vulnerabilities from the scanner, by severity, each linked to the vendor's write-up.</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/it-dashboard/blog_06_device-profile-overview.png" data-desc-position="bottom"><img alt="Device 360 overview" loading="lazy" src="../assets/it-dashboard/blog_06_device-profile-overview.png"></a></p>
+<figcaption>Device 360 overview: the endpoint agent reports the last logged-on user (linked to their User 360) and when the device was last seen, here several days ago, a laptop on the road. (Names masked.)</figcaption>
+</figure>
+</div>
+<hr>
 <h2 id="servers-vs-workstations">Servers vs. Workstations</h2>
 <p>The same check doesn't mean the same thing on a server and on a laptop, so checks are scoped by device type where it matters:</p>
 <ul>
@@ -3476,7 +3493,7 @@
 <li><strong>Device 360</strong> shows the same tabs for both, and an empty tab on either is itself a finding: this device isn't covered by that system.</li>
 </ul>
 <p>The point isn't the specific rules. It's that they're <em>ours</em>, and each one was a short conversation followed by a small change.</p>
-<hr />
+<hr>
 <h2 id="exceptions-in-the-open">Exceptions in the Open</h2>
 <p>Every security tool has a way to suppress a finding. Most of them make it disappear. We went the other way.</p>
 <h3 id="an-exception-changes-our-view-not-the-source">An exception changes our view, not the source</h3>
@@ -3507,7 +3524,7 @@
 </ul>
 <p>The test we applied to every part of this: could someone in the review ask "what are we not looking at, and why?" and get a complete answer from the screen? If not, it wasn't done.</p>
 <p>An exception is a decision, and decisions should be visible.</p>
-<hr />
+<hr>
 <h2 id="from-findings-to-meetings-top-fixes">From Findings to Meetings: Top Fixes</h2>
 <p>The last step is turning 60+ checks into a short list a monthly meeting can act on. Top Fixes ranks <em>fixes</em>, not findings:</p>
 <ul>
@@ -3517,13 +3534,21 @@
 <li>Month-over-month change shows whether we're winning.</li>
 </ul>
 <p>The meeting now starts from "here are the ten fixes that would remove the most risk, by team" and ends with owners. That's the dividend of everything in Part 1: <strong>better visibility, better remediation, better meetings.</strong></p>
-<p><img alt="Findings by month" src="../assets/it-dashboard/blog_02a_findings-summary-top.png" />
-<em>Findings by month, by severity: the trend the monthly review starts from.</em></p>
-<p><img alt="Top Fixes, High tab" src="../assets/it-dashboard/blog_03_top-fixes-high.png" />
-<em>Top Fixes: totals against last month, and how much of the High list the top 3, 5 and 10 fixes would clear, then the fixes ranked with their owning team.</em></p>
-<p><img alt="Top Fixes, how to fix" src="../assets/it-dashboard/blog_05_top-fixes-how-to-fix.png" />
-<em>Each vulnerability fix carries the vendor's solution and references, so the owning team can act straight from the list.</em></p>
-<hr />
+<div class="thumb-row">
+<figure>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/it-dashboard/blog_02a_findings-summary-top.png" data-desc-position="bottom"><img alt="Findings by month" loading="lazy" src="../assets/it-dashboard/blog_02a_findings-summary-top.png"></a></p>
+<figcaption>Findings by month, by severity: the trend the monthly review starts from.</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/it-dashboard/blog_03_top-fixes-high.png" data-desc-position="bottom"><img alt="Top Fixes, High tab" loading="lazy" src="../assets/it-dashboard/blog_03_top-fixes-high.png"></a></p>
+<figcaption>Top Fixes: totals against last month, and how much of the High list the top 3, 5 and 10 fixes would clear, then the fixes ranked with their owning team.</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/it-dashboard/blog_05_top-fixes-how-to-fix.png" data-desc-position="bottom"><img alt="Top Fixes, how to fix" loading="lazy" src="../assets/it-dashboard/blog_05_top-fixes-how-to-fix.png"></a></p>
+<figcaption>Each vulnerability fix carries the vendor's solution and references, so the owning team can act straight from the list.</figcaption>
+</figure>
+</div>
+<hr>
 <h2 id="lessons-learned">Lessons Learned</h2>
 <ul>
 <li><strong>Grace and N-1 did more for the review than any new check.</strong> Removing findings no one would act on made the remaining ones credible.</li>
@@ -3532,11 +3557,11 @@
 <li><strong>Last logged-on user beats the CMDB.</strong> It's always current, and it's what the person fixing the device actually needs.</li>
 <li><strong>Severity is a conversation; make it a setting.</strong> Moving severity out of code ended a recurring argument.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="closing-thought">Closing Thought</h2>
 <p>None of these rules is clever. A grace period for new patches, tolerance for one release behind, an exception for devices that can't run an agent, a finding that knows whose laptop it is — any IT manager would describe them the same way. The difference is that, in a bought tool, each of them is a feature request. In our own dashboard, each was a short conversation with an LLM and a review of its work.</p>
 <p>That's the real argument for building, for a small or mid-sized team: not that you can out-build a vendor, but that you can make the tool match how your organization actually works — in hours, and without paying per asset for the privilege.</p>
-<hr />
+<hr>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="../it-dashboard-build-vs-buy-part1/">Part 1: Architecture and What It Buys Us</a></li>
@@ -3544,7 +3569,7 @@
 <li><a href="../azure-ad-user-devices/">Entra User Devices</a> — one of the device extracts behind Device 360</li>
 <li><a href="../adds-user-creation/">Create User and assign groups</a> and <a href="../adds-user-update/">Update User</a> — how HR attributes reach Active Directory</li>
 </ul>
-<hr />
+<hr>
 <p><em>This article documents a production implementation. Names, identifiers and tenant-specific values have been removed or generalized, and screenshots are masked.</em></p>
 
 
@@ -3564,9 +3589,9 @@
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 13, 2026 19:46:42 UTC">November 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 13, 2026 19:54:08 UTC">November 13, 2026</span>
   </span>
 
     
@@ -3624,5 +3649,7 @@
         <script src="../assets/custom.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

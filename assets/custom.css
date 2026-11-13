@@ -33,3 +33,63 @@ body[data-md-page="index"] .md-sidebar--primary {
 }
 
 /* All code/pre rules removed to restore theme syntax highlighting */
+/* ---- Screenshot thumbnails (click to enlarge via glightbox) ---- */
+/* Single screenshot floated beside the text */
+.md-typeset figure.thumb {
+  float: right;
+  width: 300px;
+  margin: 0.2em 0 1em 1.5em;
+}
+/* Row of related screenshots, side by side */
+.md-typeset .thumb-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 1em 0 1.5em;
+}
+.md-typeset .thumb-row figure {
+  flex: 1 1 200px;
+  max-width: 300px;
+  margin: 0;
+}
+.md-typeset figure.thumb img,
+.md-typeset .thumb-row img {
+  width: 100%;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  cursor: zoom-in;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.md-typeset figure.thumb img:hover,
+.md-typeset .thumb-row img:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+.md-typeset figure.thumb figcaption,
+.md-typeset .thumb-row figcaption {
+  font-size: 0.8em;
+  font-style: italic;
+  text-align: left;
+  max-width: none;
+  margin-top: 0.4em;
+  color: var(--md-default-fg-color--light);
+}
+/* Keep headings, rules, tables and code blocks clear of floated thumbnails */
+.md-typeset h2,
+.md-typeset hr,
+.md-typeset table,
+.md-typeset pre {
+  clear: both;
+}
+/* On phones, thumbnails go full width */
+@media screen and (max-width: 600px) {
+  .md-typeset figure.thumb {
+    float: none;
+    width: 100%;
+    margin: 1em 0;
+  }
+  .md-typeset .thumb-row figure {
+    max-width: none;
+  }
+}

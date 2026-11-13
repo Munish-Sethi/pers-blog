@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -27,7 +24,7 @@
     
     
       
-        <title>Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration) - Munish Sethi's Technical Blog</title>
+        <title>Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup &amp; Mailbox Migration) - Munish Sethi's Technical Blog</title>
       
     
     
@@ -44,8 +41,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -58,10 +55,20 @@
 
     
     
-  <meta name="google-site-verification" content="rGvhhCws2Kkh_2j7lgAkmDrs7a8ZtKDwTJdnxL_m_mU" />
-  <meta name="msvalidate.01" content="9869170E3DE4D60F1D140D32B60ABFDB" />
+  <meta name="google-site-verification" content="rGvhhCws2Kkh_2j7lgAkmDrs7a8ZtKDwTJdnxL_m_mU">
+  <meta name="msvalidate.01" content="9869170E3DE4D60F1D140D32B60ABFDB">
 
-  </head>
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     <body dir="ltr">
@@ -89,15 +96,15 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Munish Sethi&#39;s Technical Blog" class="md-header__button md-logo" aria-label="Munish Sethi's Technical Blog" data-md-component="logo">
+    <a href=".." title="Munish Sethi's Technical Blog" class="md-header__button md-logo" aria-label="Munish Sethi's Technical Blog" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -109,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration)
+              Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup &amp; Mailbox Migration)
             
           </span>
         </div>
@@ -125,30 +132,30 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -178,7 +185,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -187,16 +194,16 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Munish Sethi&#39;s Technical Blog" class="md-nav__button md-logo" aria-label="Munish Sethi's Technical Blog" data-md-component="logo">
+    <a href=".." title="Munish Sethi's Technical Blog" class="md-nav__button md-logo" aria-label="Munish Sethi's Technical Blog" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     Munish Sethi's Technical Blog
   </label>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -245,7 +252,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -275,7 +282,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -556,7 +563,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -566,7 +573,7 @@
   <span class="md-ellipsis">
     
   
-    IT Operations & Security
+    IT Operations &amp; Security
   
 
     
@@ -582,11 +589,11 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    IT Operations & Security
+    IT Operations &amp; Security
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -630,7 +637,7 @@
   <span class="md-ellipsis">
     
   
-    Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings & Exceptions)
+    Build vs. Buy: An IT Operations and Security Dashboard in a Week - Part 2 (Findings &amp; Exceptions)
   
 
     
@@ -671,7 +678,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -701,7 +708,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1234,7 +1241,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -1264,7 +1271,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1321,7 +1328,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -1331,7 +1338,7 @@
   <span class="md-ellipsis">
     
   
-    Cisco Meraki, Nagios XI & Manage Engine
+    Cisco Meraki, Nagios XI &amp; Manage Engine
   
 
     
@@ -1347,11 +1354,11 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Cisco Meraki, Nagios XI & Manage Engine
+    Cisco Meraki, Nagios XI &amp; Manage Engine
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1492,7 +1499,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1522,7 +1529,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1607,7 +1614,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
@@ -1637,7 +1644,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1752,7 +1759,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked="">
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
@@ -1782,7 +1789,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2227,7 +2234,7 @@
   <span class="md-ellipsis">
     
   
-    Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration)
+    Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup &amp; Mailbox Migration)
   
 
     
@@ -2245,7 +2252,7 @@
   <span class="md-ellipsis">
     
   
-    Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup & Mailbox Migration)
+    Migrating from Amazon WorkMail to Microsoft 365 - Part 1 (Tenant Setup &amp; Mailbox Migration)
   
 
     
@@ -2268,7 +2275,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#part-1-tenant-setup-mailbox-migration" class="md-nav__link">
@@ -2570,7 +2577,7 @@
   <span class="md-ellipsis">
     
   
-    Migrating from Amazon WorkMail to Microsoft 365 - Part 2 (DNS Cutover, Catch-All & Cleanup)
+    Migrating from Amazon WorkMail to Microsoft 365 - Part 2 (DNS Cutover, Catch-All &amp; Cleanup)
   
 
     
@@ -2639,7 +2646,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
@@ -2669,7 +2676,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2782,7 +2789,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11">
         
           
           <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
@@ -2812,7 +2819,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2941,7 +2948,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2957,7 +2964,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#part-1-tenant-setup-mailbox-migration" class="md-nav__link">
@@ -3255,7 +3262,7 @@
 
 <h1 id="migrating-from-amazon-workmail-to-microsoft-365">Migrating from Amazon WorkMail to Microsoft 365</h1>
 <h2 id="part-1-tenant-setup-mailbox-migration">Part 1: Tenant Setup &amp; Mailbox Migration</h2>
-<hr />
+<hr>
 <h3 id="series-navigation">📚 <strong>Series Navigation</strong></h3>
 <ul>
 <li><strong>Part 1: Tenant Setup &amp; Mailbox Migration</strong> <em>(Current)</em></li>
@@ -3266,7 +3273,7 @@
 <p><strong>AWS Official End of Support Notice:</strong>
 <a href="https://docs.aws.amazon.com/workmail/latest/adminguide/workmail-end-of-support.html">https://docs.aws.amazon.com/workmail/latest/adminguide/workmail-end-of-support.html</a></p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="why-microsoft-365-and-not-awss-recommended-alternatives">Why Microsoft 365 and Not AWS's Recommended Alternatives?</h2>
 <p>AWS officially recommends migrating to Kopano Cloud, Zoho Mail, or Zoom Mail. These are reasonable options, but if your organization is already in the Microsoft ecosystem — using Outlook on desktop or mobile — Microsoft 365 Exchange Online is the natural home for your email. You get:</p>
 <ul>
@@ -3277,7 +3284,7 @@
 <li>A single platform for email, Teams, OneDrive, and identity management (Entra ID)</li>
 </ul>
 <p>There is no official AWS or Microsoft documentation specifically covering the WorkMail → Microsoft 365 migration path. This guide fills that gap based on a hands-on migration completed in September 2026.</p>
-<hr />
+<hr>
 <h2 id="overview">Overview</h2>
 <p>The migration is split into two parts:</p>
 <ul>
@@ -3285,7 +3292,7 @@
 <li><strong>Part 2:</strong> DNS cutover (MX, SPF, DKIM, DMARC), catch-all configuration, and AWS decommission</li>
 </ul>
 <p>The key principle throughout: <strong>mailbox data is migrated before any DNS records are changed.</strong> This means email continues flowing to WorkMail during the migration, and users experience zero disruption.</p>
-<hr />
+<hr>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Before starting, you need:</p>
 <ul>
@@ -3331,14 +3338,14 @@
 <p><strong>AWS WorkMail IMAP documentation:</strong>
 <a href="https://docs.aws.amazon.com/workmail/latest/userguide/using_IMAP.html">https://docs.aws.amazon.com/workmail/latest/userguide/using_IMAP.html</a></p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="important-a-note-on-mailbox-passwords">Important: A Note on Mailbox Passwords</h2>
 <p>The IMAP migration tool requires the <strong>WorkMail password</strong> for each mailbox being migrated. As a WorkMail admin, you can reset any user's password from the WorkMail console without knowing the current password:</p>
 <ul>
 <li>AWS Console → WorkMail → Organizations → your org → Users → select user → Reset password</li>
 </ul>
 <p>Set a temporary password, note it down, and use it in the migration CSV file. The password only needs to work for the duration of the migration — a few hours at most.</p>
-<hr />
+<hr>
 <h2 id="step-1-prepare-your-microsoft-365-tenant">Step 1: Prepare Your Microsoft 365 Tenant</h2>
 <h3 id="do-you-already-have-an-m365-tenant">Do You Already Have an M365 Tenant?</h3>
 <p>Before purchasing a new subscription, check whether a tenant already exists for your domain. This is more common than expected — organizations sometimes create tenants during learning or trials and forget about them.</p>
@@ -3372,7 +3379,7 @@
 </table>
 <p>If your users only need email, Exchange Online Plan 1 is sufficient. If you want OneDrive for Business and Teams included, Business Basic is worth the upgrade. Both plans support native Exchange connectivity for Outlook on PC and iPhone — no IMAP configuration needed post-migration.</p>
 <p>Purchase licenses via the M365 Admin Center: <strong>Billing → Purchase services</strong>.</p>
-<hr />
+<hr>
 <h2 id="step-2-add-and-verify-your-domain-in-m365">Step 2: Add and Verify Your Domain in M365</h2>
 <p>If your domain is not yet verified in M365:</p>
 <ol>
@@ -3385,7 +3392,7 @@
 <blockquote>
 <p><strong>Important:</strong> When M365 asks how you want to connect your domain, select <strong>"Add your own DNS records"</strong> — not the automatic option. You will manage DNS changes manually in Part 2, after mailbox migration is confirmed complete.</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="step-3-create-user-accounts-and-assign-licenses">Step 3: Create User Accounts and Assign Licenses</h2>
 <p>For each user being migrated from WorkMail:</p>
 <ol>
@@ -3398,7 +3405,7 @@
 <p><strong>Usage Location requirement:</strong> Microsoft requires a usage location to be set before a license can be assigned. If you receive a license assignment error, go to the user's profile → Edit → Settings → set Usage location to your country, then retry the license assignment.</p>
 </blockquote>
 <p>After license assignment, verify mailboxes are provisioned by going to <strong>Exchange Admin Center → Recipients → Mailboxes</strong>. Both user mailboxes should appear within a few minutes.</p>
-<hr />
+<hr>
 <h2 id="step-4-run-the-imap-migration">Step 4: Run the IMAP Migration</h2>
 <p>This is the core step — pulling all email from WorkMail into M365. This runs entirely in the background while WorkMail continues receiving new email. Users experience no disruption.</p>
 <h3 id="41-create-the-migration-batch">4.1 Create the Migration Batch</h3>
@@ -3451,7 +3458,7 @@ Source and Target: X folders, X items, X MB
 <p>The migration is complete and verified. All email is now safely in M365.</p>
 <h3 id="46-run-an-incremental-sync-after-dns-cutover">4.6 Run an Incremental Sync After DNS Cutover</h3>
 <p>After you change MX records in Part 2, some email may arrive at WorkMail during the DNS propagation window (typically 30–60 minutes). To capture these stragglers, run the migration batch one more time after DNS has fully propagated — M365 will only copy new items not yet migrated (delta sync).</p>
-<hr />
+<hr>
 <h2 id="what-imap-migration-does-and-does-not-migrate">What IMAP Migration Does and Does Not Migrate</h2>
 <table>
 <thead>
@@ -3494,13 +3501,13 @@ Source and Target: X folders, X items, X MB
 <blockquote>
 <p><strong>Note on deleted items:</strong> IMAP migration pulls everything present on the server, including items in the Deleted Items folder that were never permanently purged. Users may see emails they thought were deleted reappear in their M365 mailbox. This is expected — Exchange Online now handles deletions properly (true two-way sync), so users can delete these items and they will sync across all devices immediately.</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="lessons-learned">Lessons Learned</h2>
 <p><strong>Reset mailbox passwords before starting.</strong> The IMAP migration fails silently if credentials are wrong — the batch shows as syncing with 0 bytes transferred. Always test IMAP credentials manually before running the migration.</p>
 <p><strong>Don't change DNS before migration completes.</strong> The safest sequence is: migrate first, verify the data is in M365, then cut over DNS. Changing MX records while migration is running doesn't break anything, but it adds unnecessary complexity.</p>
 <p><strong>The migration is non-destructive.</strong> WorkMail is not modified or affected in any way. If the migration fails or data looks wrong, WorkMail is still intact and you can start over.</p>
 <p><strong>Mailbox size matters less than you expect.</strong> A 500 MB mailbox migrates in under 30 minutes on a normal broadband connection. Even a 2 GB mailbox typically completes within a couple of hours.</p>
-<hr />
+<hr>
 <h2 id="next-steps">Next Steps</h2>
 <p>With mailboxes confirmed in M365, Part 2 covers:</p>
 <ul>
@@ -3533,7 +3540,7 @@ Source and Target: X folders, X items, X MB
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 10, 2026 17:27:12 UTC">September 10, 2026</span>
   </span>
@@ -3593,5 +3600,7 @@ Source and Target: X folders, X items, X MB
         <script src="../assets/custom.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
