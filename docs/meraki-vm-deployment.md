@@ -155,3 +155,7 @@ resource applicationResource 'Microsoft.Solutions/applications@2021-07-01' = {
 This Bicep template enables automated, secure deployment of Cisco Meraki vMX in Azure. By parameterizing all key settings and handling secrets securely, you can quickly integrate Meraki SD-WAN into your Azure landing zone.
 
 **Ready to deploy?** Use this template with your own parameters and secrets for a secure, repeatable deployment.
+
+---
+
+**Update:** the vMX in this article was later redeployed on the vendor-recommended size as part of a full hub rebuild. See [Rebuilding a Production Azure Hub with an AI Agent](ai-azure-hub-rebuild-part1.md).

@@ -30,6 +30,8 @@
 - [From a Custom Multi-Agent Bot to Azure AI Foundry - Part 2 (Step-by-Step Build)](ai-foundry-agent-part2.md)
 - [Exposing OneStream Financial Data to an LLM — Live CEO/CFO Analytics via MCP](ai-claude-mcp-onestream-mcp-financial-analytics.md)
 - [SAP + AI: Did Moving to SaaS Quietly Cost Us Our Ability to Use AI on Our Own ERP Data?](ai-sap-mcp-onprem-vs-cloud.md)
+- [Rebuilding a Production Azure Hub with an AI Agent - Part 1 (Why, Guardrails and Approach)](ai-azure-hub-rebuild-part1.md)
+- [Rebuilding a Production Azure Hub with an AI Agent - Part 2 (Rehearsal and Cutover Night)](ai-azure-hub-rebuild-part2.md)
 ---
 
 ## 🛡️ IT Operations & Security

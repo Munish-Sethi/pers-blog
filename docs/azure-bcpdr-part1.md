@@ -519,3 +519,5 @@ output virtualnetworkname string = vnetgdepdrwus.name
 ---
 
 **[Continue to Part 2: Compute, Firewall, and Final Steps](azure-bcpdr-part2.md)**
+
+**Related:** the production hub that this DR design mirrors was later rebuilt as Bicep code. See [Rebuilding a Production Azure Hub with an AI Agent](ai-azure-hub-rebuild-part1.md).
